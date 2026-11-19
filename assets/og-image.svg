@@ -1,8 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#1c1917"/>
-  <rect y="470" width="1200" height="160" fill="#c2410c"/>
-  <text x="80" y="180" font-family="Georgia, serif" font-size="84" fill="#fdf8f0" font-weight="bold">Kitchen Counter</text>
-  <text x="80" y="270" font-family="Georgia, serif" font-size="40" fill="#d6d3d1">Verified air fryer &amp; meat thermometer picks</text>
-  <text x="80" y="340" font-family="Georgia, serif" font-size="32" fill="#a8a29e">Every spec linked to its official listing. Every conflict flagged.</text>
-  <text x="80" y="560" font-family="Arial, sans-serif" font-size="26" fill="#ffffff">Affiliate disclosure: Amazon Associates · shopnow047c-20</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Kitchen Counter — air fryers and meat thermometers compared by their listed specs">
+  <defs><linearGradient id="warm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b1813"/><stop offset="1" stop-color="#2a2015"/></linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#warm)"/>
+  <rect x="0" y="0" width="1200" height="10" fill="#c98a2b"/>
+  <text x="80" y="112" font-family="Helvetica,Arial,sans-serif" font-size="22" letter-spacing="6" fill="#e7c592">KITCHEN COUNTER</text>
+  <text x="80" y="214" font-family="Georgia,serif" font-size="66" fill="#fdf8f0">Air fryers &amp; meat thermometers,</text>
+  <text x="80" y="290" font-family="Georgia,serif" font-size="66" fill="#fdf8f0">compared by the numbers on the label.</text>
+  <text x="80" y="356" font-family="Helvetica,Arial,sans-serif" font-size="28" fill="#d8cdbb">Five listings &#183; dated snapshots &#183; every claim links to its source</text>
+  <g font-family="Helvetica,Arial,sans-serif" font-size="22" fill="#fdf8f0">
+    <rect x="80" y="404" width="250" height="54" rx="27" fill="#b4401b"/><text x="112" y="438">See the five picks</text>
+    <rect x="352" y="404" width="250" height="54" rx="27" fill="none" stroke="#7a6b56" stroke-width="2"/><text x="384" y="438" opacity=".9">Compare side by side</text>
+  </g>
+  <rect x="0" y="530" width="1200" height="100" fill="#12100c"/>
+  <text x="80" y="582" font-family="Helvetica,Arial,sans-serif" font-size="21" fill="#e7e2d8">As an Amazon Associate I earn from qualifying purchases.</text>
+  <text x="80" y="610" font-family="Helvetica,Arial,sans-serif" font-size="17" fill="#a89e90">Listed specs are seller statements, not independent tests &#183; Amazon Associates &#183; shopnow047c-20</text>
 </svg>

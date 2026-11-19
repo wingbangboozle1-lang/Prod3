@@ -47,7 +47,8 @@
       "url": "https://affiliate-program.amazon.com/help/operating/policies",
       "used_for": "Why a 9-character short-link token cannot be an ASIN",
       "quote": "ASIN is a 10-character alphanumeric code (see Associates/Creators API ItemIdType)",
-      "updated": "2026-11-19"
+      "updated": "2026-11-19",
+      "note": "Same URL as S02, cited for a specific definition of ASIN as a 10-character code; kept separate so references stay explicit (audit I-06)."
     },
     {
       "id": "S10",
@@ -119,7 +120,47 @@
       "used_for": "Mobile-first pass (S-20): tap targets below 48x48px that overlap a neighbour fail the audit; ~8px spacing between targets recommended; padding is the suggested way to grow a hit area",
       "quote": "Tap targets that are 48 px by 48 px never fail the audit ... 8 px between tap targets is a good starting point.",
       "updated": "fetched 2026-11-19 (page lists last update 2019-05-02)"
+    },
+    {
+      "id": "S21",
+      "title": "Google Search Central — Creating helpful, reliable, people-first content",
+      "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "used_for": "E-E-A-T questions (who, how, why), originality and insight beyond the obvious, descriptive non-exaggerated headings",
+      "quote": "Ask yourself: is the content original, does it provide insight beyond the obvious, and does the title avoid being exaggerated or shocking?",
+      "updated": "fetched 2026-11-19"
+    },
+    {
+      "id": "S22",
+      "title": "Google Search Central — Guidance on reviews and thin affiliations",
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "used_for": "Thin-affiliation problem: affiliate pages with little original value beyond the links",
+      "quote": "Thin affiliation: good affiliate pages offer meaningful content such as original reviews, rigorous testing, navigation and comparisons.",
+      "updated": "fetched 2026-11-19"
+    },
+    {
+      "id": "S23",
+      "title": "GitHub Pages — Creating a custom 404 page",
+      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site",
+      "used_for": "Custom 404 behaviour for a GitHub Pages project site",
+      "quote": "You can create a custom 404 page for your GitHub Pages site.",
+      "updated": "fetched 2026-11-19"
+    },
+    {
+      "id": "S24",
+      "title": "Google Search Central — Control your snippets in search results (meta descriptions)",
+      "url": "https://developers.google.com/search/docs/appearance/snippet",
+      "used_for": "Unique descriptions per page; snippet quality",
+      "quote": "Create unique descriptions for each page on your site. Identical or similar descriptions on every page are not helpful to users.",
+      "updated": "fetched 2026-11-19"
+    },
+    {
+      "id": "S25",
+      "title": "Google Search Central — Provide a great page experience",
+      "url": "https://developers.google.com/search/docs/appearance/page-experience",
+      "used_for": "Page-experience expectations behind the mobile-first and performance rules",
+      "quote": "Google's core systems reward pages that provide a great page experience.",
+      "updated": "fetched 2026-11-19"
     }
   ],
-  "note": "\"verified\"/\"updated\" fields record when a page was fetched or its listed update date; a fetch date is not an endorsement of the page's product claims. Listing sources are seller pages: specs, ratings, and prices transcribed from them are seller statements. Amazon page availability and content can change."
+  "note": "\"verified\"/\"updated\" fields record when a page was fetched or its listed update date; a fetch date is not an endorsement of the page's product claims. Listing sources are seller pages: specs, ratings, and prices transcribed from them are seller statements. Amazon page availability and content can change. Session a25ccde6 added the Google people-first, thin-affiliation, custom-404, snippet and page-experience sources (S21-S25) after finding that the people-first and thin-affiliation sources had been cited in the data registers without ever being defined (audit I-03). Those additions were renumbered after the merge to avoid colliding with this branch's tap-target source."
 }

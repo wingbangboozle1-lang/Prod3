@@ -76,3 +76,38 @@ Unchosen suggestions stay proposals.
       first, then choose A or B.
 
 **Chosen path:** _(none yet — 2026-11-19)_
+
+## Decision log (dated, with the source each decision rests on)
+
+| Date | Decision | Source | Effect |
+|---|---|---|---|
+| 2026-11-19 | Publish both readings when a listing contradicts itself | S02 | Preset count, battery life, warranty and accessory count shown as conflicts |
+| 2026-11-19 | Display no price while neither Amazon-served nor PA-API data is used | S02 §2(b) | Price slots read "Current price on Amazon"; the gate fails on a currency amount |
+| 2026-11-19 | Remove customer star ratings and rating counts from every page | S02 §2(t) | Ratings replaced with a policy note in the comparison table |
+| 2026-11-19 | Mark every outbound Amazon link `rel="sponsored"` and open in a new tab | S04 | The gate walks every anchor |
+| 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
+| 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |
+
+## Audit findings, session a25ccde6 (2026-11-19)
+
+| ID | Finding | Severity | Status |
+|---|---|---|---|
+| I-01 | `direction.html` carried SG-01..SG-08 with meanings different from `data/suggestions.json` | high | fixed — three generated registers, ID prefixes are exclusive |
+| I-02 | Customer star ratings and rating counts rendered on four pages | high | fixed — removed; gate rule `D10-no-ratings` |
+| I-03 | Data registers cited S07 and S08, which `sources.json` never defined | medium | fixed — S07/S08/S09/S19-S21 now defined; gate rule `D06-source-refs` |
+| I-04 | `feed.xml` described the gift guide as "five verified kitchen gifts, $16.99-$149.99" and the capacity guide as using a "whole-chicken test" the site never ran | high | fixed — descriptions rewritten; gate rules `D11`, `D12` |
+| I-05 | `og:image` was a relative SVG URL, which most social crawlers will not render | medium | fixed — absolute 1200x630 PNG on every page; gate rule `D14-og-absolute` |
+| I-06 | `sources.json` S06 duplicated S02's URL without saying so | low | annotated, kept for citation continuity |
+| I-07 | No structured data on the front page, the pillars or the buying guide | medium | fixed — WebSite/Organization/CollectionPage, BreadcrumbList, FAQPage |
+| I-08 | `404.html` still used the pre-rebrand header and colours | low | rebuilt on the current design system |
+| I-09 | Two copy claims still said a price is compared, after all prices were removed | low | fixed — "& price" now reads "& sourcing" |
+| I-10 | No reader-facing suggestions or questions page existed, although the brief asks for one | high | fixed — `suggestions.html`, `questions.html`, `citations.html` |
+
+## Audit findings recorded but **not** changed (published for review)
+
+| ID | Finding | Why it was not changed |
+|---|---|---|
+| I-11 | `analysis.json` computes "quarts per square inch" from listed dimensions | The arithmetic is reproducible and `scripts/check_site.py` bans the phrase "capacity per inch" from reader pages, so it stays internal. Whether to publish it is proposal SG-18. |
+| I-12 | `data/flagged.json` (F-series) is not linked from any page, while `flagged.html` tracks a separate FLG-series | The two registers overlap in scope. Merging them is a content decision, not a defect fix; logged here rather than half-done. |
+| I-13 | The five `link.amazon` destinations still carry no visible `tag=` | Needs the owner's Associates account (FLG-006/010, Q-02). Not resolvable from outside. |
+| I-14 | No build step regenerates article HTML from data | Articles are hand-written prose; a generator would be a project, not a fix. |

@@ -6,11 +6,14 @@ affiliate site covering air fryers and meat thermometers. Tracking ID:
 Published to GitHub Pages on merge to `main` (project site: https://wingbangboozle1-lang.github.io/Prod3/)
 
 The 2026-11-19 audits (T-12 and the b84724ea compliance pass) set the claim
-policy: specs and ratings are **seller statements from dated listing snapshots**,
+policy: specs are **seller statements from dated listing snapshots**,
 attributed as such; accuracy/NIST wording is quoted as claim, never as test
 result; **no prices are displayed at all** (Program Policies §2(b): price and
 availability may be shown only from Amazon-served or PA-API data); the demo
-email signup was removed. Release gates enforce these rules (banned phrases,
+email signup was removed. A third audit (session a25ccde6) removed customer star
+ratings entirely — Program Policies §2(t) allows them only from Creators/PA API
+data — and added a citation log so every rendered figure has a dated source.
+Release gates enforce these rules (banned phrases,
 currency-amount ban, claim markers, sponsored coverage, canonicals, source-linked
 data tables).
 
@@ -21,13 +24,15 @@ data tables).
 | Submitted tokens that are ASINs | 0 of 5 (they are 9-char short-link tokens; an ASIN is 10 chars) |
 | Observed destinations | B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z |
 | Intended ASINs confirmed | 0 of 5 (blank until owner confirms — see FLG-001) |
-| Pages | 21 HTML (front page, 2 pillars, compare, guide, 8 articles, 7 trust pages incl. analytics, 404 page — not in sitemap) |
-| Gates | `tools/check_site.py`, `scripts/check_site.py`, `tools/verify_site.py` (non-zero exit on violation) |
+| Pages | 24 HTML (front page, 2 pillars, compare, guide, 8 articles, 10 trust pages incl. suggestions/questions/citations, 404 page — not in sitemap) |
+| Gates | `tools/check_site.py`, `scripts/check_site.py`, `tools/verify_site.py`, `scripts/build_registers.py --check` (non-zero exit on violation) |
 
 ## Working with it
 
 ```
 python3 tools/verify_site.py            # whole-tree release gate (exit 3 on violation)
+python3 scripts/build_registers.py      # rebuild suggestions.html, questions.html, citations.html
+python3 scripts/build_registers.py --check  # exit 1 if a register is stale
 python3 scripts/check_site.py           # data + HTML gate (exit 1 on violation)
 python3 scripts/build_sitemap.py        # rewrite sitemap.xml from the tree
 python3 scripts/build_sitemap.py --check # exit 1 if sitemap is stale
@@ -43,10 +48,13 @@ No third-party dependencies: the standard library only.
 - `air-fryers.html`, `meat-thermometers.html` — category pillars
 - `compare.html`, `buying-guide.html` — comparison + decision framework
 - `articles/` — 8 question-shaped guides (also in `feed.xml` + `sitemap.xml`)
-- `disclosure.html`, `sources.html`, `flagged.html`, `direction.html`, `executive-summary.html`, `about.html`, `analytics.html` — trust surfaces
+- `disclosure.html`, `sources.html`, `citations.html`, `flagged.html`, `suggestions.html`, `questions.html`, `direction.html`, `executive-summary.html`, `about.html`, `analytics.html` — trust surfaces
+- `suggestions.html` / `questions.html` / `citations.html` are **generated** from `data/*.json` by `scripts/build_registers.py`; do not hand-edit them
+- `assets/product-art/` — typographic listing cards rendered from each product's own numbers (no photography)
 - `data/` — `products.json` (intent vs observed, never merged), `sources.json`, `campaign-ledger.json` (empty until first-party reports)
 - `assets/` — `style.css`, `app.js` (privacy-preserving measurement), `og-image.svg`, `favicon.svg`
-- `COORDINATION.md` — shared task board · `DIRECTION.md` — suggestions + open questions + path chooser
+- `data/citations.json` — one row per rendered figure, with its observation date and source
+- `COORDINATION.md` — shared task board · `DIRECTION.md` — decision digest + pointers to the three registers
 
 ## Release gates
 
@@ -71,3 +79,16 @@ version and the earlier gates did not catch them:
 It also enforces one `<h1>`, unique titles and descriptions, absolute canonicals, no first-hand
 experience claims, no placeholders, descriptive link text, and that the campaign ledger stays empty
 until a real first-party report exists.
+
+## Registers (as of 2026-11-19, session a25ccde6)
+
+| Register | Page | Data | IDs |
+|---|---|---|---|
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-20 |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-17 |
+| Decisions | `direction.html` | `DIRECTION.md` | dated rows |
+| Flagged irregularities | `flagged.html` | `data/flagged.json` | FLG-001..FLG-015, F-01..F-20 |
+| Citation log | `citations.html` | `data/citations.json` | one row per figure |
+
+An ID prefix belongs to exactly one register. A proposal, a question and a decision
+are never given the same identifier, so no reader has to guess which page is authoritative.

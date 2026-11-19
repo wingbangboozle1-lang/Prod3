@@ -1,7 +1,7 @@
 {
   "generated": "2026-11-19",
   "premise": "The one piece of analysis on this site that no listing can supply, and that is derived entirely from published dimensions. Capacity per square inch of counter footprint. It is arithmetic, not testing, and it is labelled as arithmetic.",
-  "method": "For each appliance with a published footprint, multiply the listed depth by the listed width in inches to get counter area, then divide the listed nominal capacity by that area. The result is quarts of nominal capacity per square inch of counter. Every input is copied from the product's own listing on 2026-11-19; no input is estimated.",
+  "method": "For each appliance with a published footprint, multiply the listed depth by the listed width in inches to get counter area, then divide the listed nominal capacity by that area. The result is quarts of nominal capacity per square inch of counter. Every input is copied from the product's own listing on 2026-11-19; no input is estimated. Sources are the official listing pages recorded as S10-S14 in data/sources.json; the arithmetic is reproducible from the figures shown.",
   "caveats": [
     "Nominal capacity is the manufacturer's headline figure, not a measured usable volume. A basket and an oven of the same nominal capacity do not hold the same food.",
     "Counter area is the footprint as listed. It excludes clearance for opening a door, pulling a basket out, or a wall behind the unit. Real clearance needs are larger, and the oven-style machine needs far more front clearance than a basket drawer.",
@@ -20,7 +20,7 @@
       "footprint_sq_in": 158.02,
       "quarts_per_sq_in": 0.03797,
       "sources": [
-        "S03"
+        "S10"
       ]
     },
     {
@@ -34,7 +34,7 @@
       "footprint_sq_in": 267.02,
       "quarts_per_sq_in": 0.09737,
       "sources": [
-        "S04"
+        "S11"
       ]
     },
     {
@@ -48,7 +48,7 @@
       "footprint_sq_in": 172.13,
       "quarts_per_sq_in": 0.04648,
       "sources": [
-        "S05"
+        "S12"
       ]
     },
     {
@@ -62,7 +62,7 @@
       "quarts_per_sq_in": null,
       "excluded_reason": "No product dimensions on the listing. This is a handheld thermometer, so capacity per counter area is not a meaningful comparison for it anyway (F-04).",
       "sources": [
-        "S06"
+        "S13"
       ]
     },
     {
@@ -76,7 +76,7 @@
       "quarts_per_sq_in": null,
       "excluded_reason": "No product dimensions on the listing (F-04).",
       "sources": [
-        "S07"
+        "S14"
       ]
     }
   ],

@@ -344,3 +344,10 @@ These need access to accounts or decisions this session does not have. They are 
 ### Handoff / conflict log
 
 - Rebase: none needed beyond the fast-forward to `origin/main` after unshallowing; no conflicts.
+
+### Integration record — arena/8eac4288-prod3
+
+- PR #9: https://github.com/wingbangboozle1-lang/Prod3/pull/9 (`arena/8eac4288-prod3` → `main`)
+- Merge result: merged, merge commit `d9323de9213bf5c02ba2e36802597e2ebd48a829`. Merged with `gh pr merge 9 --merge`, without waiting for approval.
+- Pages: `Deploy GitHub Pages` — success; `pages build and deployment` — success (both on `d9323de`).
+- Live check: `https://wingbangboozle1-lang.github.io/Prod3/docs/analytics-endpoint.md` serves the reconciled text.

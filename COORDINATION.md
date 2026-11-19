@@ -729,3 +729,34 @@ python3 scripts/build_sitemap.py --check   OK: up to date (23 URLs)
 python3 scripts/build_registers.py --check OK: register pages match data/*.json
 + custom crawl: 24 pages, 0 broken internal links/anchors; sitemap/feed targets all exist
 ```
+
+### T-23 integration record (PR #18)
+
+- **PR #18:** https://github.com/wingbangboozle1-lang/Prod3/pull/18 (`arena/28d2d6c0-prod3` → `main`)
+- **Merge result:** merged, merge commit `7976331`, 2026-11-19; merged with `gh pr merge --merge`
+  without waiting for approval, per the project instructions.
+- **Pre-merge gates on the final tree (all exit 0):** `scripts/check_site.py` (24 pages),
+  `tools/verify_site.py` (21 sources, cross-references resolve), `tools/check_site.py`
+  (24 pages / 2505 assertions), `scripts/build_sitemap.py --check` (23 URLs),
+  `scripts/build_registers.py --check`; plus a custom crawl of 24 pages with 0 broken internal
+  links or anchors, and sitemap/feed targets all resolving to real files.
+- **Pages deploy:** `Deploy GitHub Pages` run `44626132919` — **success**;
+  `pages build and deployment` run `44626131859` — **success**. Pages status `built`,
+  source `main:/`, URL https://wingbangboozle1-lang.github.io/Prod3/.
+- **Live check after deploy:** `sources.html` on the live site shows the corrected S06 row
+  (Creators API `ItemIdType`, verbatim 10-character wording), the S19 and S21–S25 rows, the
+  disclosure strip above the fold with the exact §5 sentence, and the submitted-links table with
+  intended/observed fields kept separate.
+
+### Post-merge stale-flag correction (follow-up to PR #18)
+
+The publication-polish pass had already replaced `assets/og-image.svg` with a 1200×630
+`assets/og-image.png` on all 24 pages, but three records still described the site as shipping
+the SVG: FLG-016 on `flagged.html`, F-21 in `data/flagged.json`, SG-16 in
+`data/suggestions.json` (status `proposed`), Q-21 in `data/open-questions.json`, and the SG-16
+row on `direction.html`. Corrected: the format concern is resolved; the only part still open is
+the share-debugger check (no debugger could be run from this environment), so SG-16 is now
+`partly implemented`, FLG-016/F-21/Q-21 describe the PNG as shipped with the debugger run
+outstanding, and `scripts/build_registers.py`'s status callout gained a
+"partly implemented" definition so the three-state vocabulary stays honest. Registers
+regenerated; all gates green.

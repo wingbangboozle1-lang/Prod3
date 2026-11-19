@@ -268,8 +268,8 @@
     {
       "id": "SG-16",
       "title": "Replace the SVG social preview with a raster card, and verify it before relying on it",
-      "problem": "assets/og-image.svg is referenced as og:image on every page. SVG is not the format social preview tools typically render, so shared links may show no card at all.",
-      "evidence": "Meta's sharing best-practices documentation asks for JPG or PNG preview images (https://developers.facebook.com/docs/sharing/best-practices — recorded as a to-verify reference; not re-fetched from this network, see F-21).",
+      "problem": "Every page referenced assets/og-image.svg as og:image until the publication-polish pass replaced it with a 1200×630 raster card (assets/og-image.png). SVG is not the format social preview tools typically render, so the format risk is resolved; what remains is confirming the card actually renders in a share debugger.",
+      "evidence": "Meta's sharing best-practices documentation asks for JPG or PNG preview images (https://developers.facebook.com/docs/sharing/best-practices — recorded as a to-verify reference; not re-fetched from this network, see F-21). The PNG is now shipped on all 24 pages; the debugger check (Q-21) has not been run.",
       "options": [
         "A. Produce one 1200×637 PNG card from the existing brand type, swap the og:image hrefs, and confirm with a share debugger.",
         "B. Keep SVG and accept that some previews show nothing.",
@@ -278,7 +278,7 @@
       "recommendation": "A, once someone with a browser can run the share-preview check. The change is one file and nine href lines; the fallback today (a plain-text link preview) is honest but costs the click.",
       "effort": "S",
       "confidence": "medium",
-      "status": "proposed",
+      "status": "partly implemented",
       "decision_owner": "editorial",
       "blocks": "nothing — flagged as F-21 for review"
     },

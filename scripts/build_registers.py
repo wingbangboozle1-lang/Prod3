@@ -107,7 +107,7 @@ def render_suggestions():
 
 <p>This is the review desk. Every proposal carries its problem, the evidence behind it, the options considered, a recommendation, and the person who decides. Machine-readable copy: <code>data/suggestions.json</code>. The questions that block these proposals live on <a href="questions.html">Open questions</a>; what was actually decided is on the <a href="direction.html">decision log</a>.</p>
 
-<div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
+<div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
 <h2>Waiting on a decision ({len(open_items)})</h2>
 <div class="grid mt">{''.join(card(s) for s in open_items)}</div>

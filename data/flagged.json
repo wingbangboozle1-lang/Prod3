@@ -305,10 +305,10 @@
       "severity": "low",
       "area": "Social preview",
       "product": "site-wide",
-      "detail": "Every page references assets/og-image.svg as its og:image. SVG is not the raster format social preview tools typically render; no share-debugger test has been run from this environment.",
+      "detail": "Every page now references assets/og-image.png (1200×630 raster) as its og:image; the earlier SVG reference was replaced during the publication-polish pass. No share-debugger test has been run from this environment.",
       "why_it_matters": "If preview bots skip SVG, shared links render without a card, costing clicks on exactly the surfaces a marketing site depends on.",
-      "action": "Not changed in this pass. SG-16 proposes a 1200×637 PNG replacement; Q-21 records the debugger check. The reference doc (Meta sharing best practices) was cited from memory of the official URL and is marked to-verify, not quoted.",
-      "status": "open — run a share debugger on the live URL, then adopt SG-16 if no card renders",
+      "action": "PNG card adopted (SG-16 option A, minus the debugger check). The remaining step is a share-debugger run on the live URL.",
+      "status": "open — run a share debugger on the live URL to confirm the card renders (format concern resolved 2026-11-19)",
       "sources": [],
       "sources_checked": "2026-11-19"
     }

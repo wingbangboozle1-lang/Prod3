@@ -39,7 +39,7 @@
 | T-20 | Shop-polish redesign: buyer-first front page, product cards, seasonal/trendy guides, mobile-first polish (compliance gates preserved) | done | `arena/33e3e80f-prod3` | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/app.js`, `feed.xml` |
 | T-21 | Expand Direction section: suggestions, open questions, missing-info discovery, path chooser | done | `arena/33e3e80f-prod3` | `direction.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json` |
 | T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | done (PR #14 + #15, live-verified at `bb7d3d2`) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
-| T-23 | Line-by-line verification of data registers and published claims against official sources; fix only demonstrable defects; final integration PR → main, merge, confirm Pages deploy | in progress | arena/28d2d6c0-prod3 | `data/sources.json`, `data/analysis.json`, `data/flagged.json`, `data/policy-checks.json`, `sources.html`, `tools/verify_site.py` (source-resolution gate), `COORDINATION.md` |
+| T-23 | Line-by-line verification of data registers and published claims against official sources; fix only demonstrable defects; final integration PR → main, merge, confirm Pages deploy | done (PR pending) | arena/28d2d6c0-prod3 | `data/sources.json`, `data/analysis.json`, `data/flagged.json`, `data/policy-checks.json`, `sources.html`, `tools/verify_site.py` (source-resolution gate), `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -644,3 +644,88 @@ python3 scripts/build_registers.py --check  OK: register pages match data/*.json
 
 Served crawl at the real `/Prod3/` prefix: **33 URLs, 33 resolved, 0 broken**. HTML parse of all 24
 pages: 0 unclosed elements, 0 duplicate IDs, 0 images without alt text.
+---
+
+## Session arena/28d2d6c0-prod3 — T-23 line-by-line verification and integration (2026-11-19)
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-23 | Line-by-line verification of data registers and published claims against official sources; fix only demonstrable defects; final integration PR → main, merge, confirm Pages deploy | done (PR pending) | arena/28d2d6c0-prod3 | `data/sources.json`, `data/analysis.json`, `data/flagged.json`, `data/policy-checks.json`, `data/citations.json`, `sources.html`, `citations.html` (regenerated), `docs/verification.md`, `tools/verify_site.py`, `COORDINATION.md` |
+
+Note: this session originally claimed "T-20" before the fast-forward to `origin/main` revealed that
+session `arena/33e3e80f-prod3` already owned T-20 (shop-polish redesign). The claim was renumbered
+to **T-23** during the rebase; no other session's rows were altered.
+
+### What was verified live on 2026-11-19 (fetch of each official page, read line by line)
+
+- **All five submitted short links** re-resolved: `B04G1MEwY → B0CDY277D3`, `B02NbDxp3 → B09B7SB46R`,
+  `B00hJ57DV → B08DKYBTPH`, `B0c8moW59 → B0DHZTCNR5`, `B0f3GKalj → B0DZFD6R9Z`. Every live page title
+  matches `observed_title` in `data/products.json` exactly; browse nodes `17659096011` / `289810`
+  confirmed in the breadcrumbs; FLG-004 (B0CNY1YVDD) and FLG-005 (B0GL7Z4KP4) cross-promotions visible
+  on their pages.
+- **FLG-002 confirmed live**: Emeril listing title says "24 One-Touch Preset Options"; the
+  About-this-item bullet says "25 COOKING PRE-SETS". P-02's listed dimensions (16.9"D × 15.8"W ×
+  14.8"H), capacity (24.6 L), special features, material and color all match the live product table.
+  Rating count drifted 18,371 → 18,375 (expected; snapshots are date-only, FLG-012).
+- **Operating Agreement**: "Updated: October 15, 2025"; §1 Special Links wording, §5 exact statement
+  ("As an Amazon Associate I earn from qualifying purchases." or any substantially similar statement)
+  and the §6 material-breach clause all verified verbatim — C-01's quote_basis is correct.
+- **Program Policies**: "Updated: April 14, 2026"; Qualifying-Purchase quote verified verbatim.
+- **FTC Disclosures 101**: "Place it so it's hard to miss. The disclosure should be placed with the
+  endorsement message itself." verbatim; page dated November 2019.
+- **Google rel="sponsored"**: quote verbatim; "Last updated 2025-12-10 UTC".
+- **Google people-first content**: self-assessment questions verified verbatim.
+- **Google spam policies**: "Thin affiliation" section verified verbatim.
+- **Amazon Creators API `ItemIdType`**: "Amazon Standard Identification Number: 10-Character
+  alphanumeric unique identifier assigned by Amazon" — the official basis for the site's
+  10-character ASIN figure.
+- **Tree checks**: 24 pages crawled — 0 broken internal links or anchors; sitemap (23 URLs) and
+  feed (8 items) resolve to real files; no undefined source IDs in any HTML.
+
+### Defects found and fixed (all gates re-run green after each batch)
+
+1. **S06 cited the wrong page.** `data/sources.json` S06 pointed at the Program Policies page for the
+   "ASIN = 10 characters" definition; the definition lives on the Creators API `GetItems` page.
+   URL, title and quote corrected to the verbatim wording (fetched 2026-11-19).
+2. **Stale pre-revision source IDs** in `data/analysis.json` (P1–P5 → S03..S07), `data/flagged.json`
+   (F-01..F-20) and `data/policy-checks.json` — old register IDs that now resolve to unrelated
+   sources (FTC, Google, GitHub) were remapped or removed: C-08 → S22 (Google spam policies),
+   C-09 → S02+S06 (§2(a) + ASIN definition), C-12 → S21+S25, C-14 → S21 (had been cited to a Chefman
+   listing page). Upstream's belt-and-braces copies of the stale IDs were dropped in favour of the
+   correct IDs only.
+3. **`sources.html` published only 14 of 21 registered sources** (S06 and S21–S25 rows missing).
+   All rows added; every registered source is now on the page.
+4. **Citation log gaps.** `data/citations.json` ("a figure with no row here does not belong on the
+   site") had no rows for the rendered S05/S06/S15/S19/S23 figures, and its page-experience row
+   cited S21 instead of S25. Five rows added, attribution fixed, registers regenerated via
+   `scripts/build_registers.py --check` (passes).
+5. **`docs/verification.md`**: wrong flag cross-reference (`++FLG-003++` → FLG-006 for the
+   short-link context), stale "all 21 pages" (now 24), stale session status, and a pointer to a
+   non-existent `flaggedIrregularities` key (now `data/flagged.json`).
+6. **Gate gap closed**: `tools/verify_site.py` now fails (exit 3) if any `Sxx` referenced from
+   `data/*.json` is undefined in `sources.json`, or if any registered source is missing from
+   `sources.html`. Negative-tested with a deliberate `S99`.
+
+### Irregularities logged (non-blocking)
+
+- Upstream's task board carries **duplicate T-20/T-21/T-22 rows** (both "in progress" and "done"
+  variants) left by an earlier reconciliation. Not edited — they belong to `arena/33e3e80f-prod3`'s
+  record; flagged here so the owner can collapse them.
+- Upstream's S06 carried a note rationalising the policies-page citation ("same URL as S02…").
+  Replaced by the verified Creators API citation.
+- Live rating counts drift daily against the dated snapshot (e.g. Emeril 18,371 → 18,375); covered
+  by FLG-007/FLG-012 — no site copy depends on the count.
+- Everything else remains as already published on `/flagged.html` (FLG-001..016): intended ASINs
+  unconfirmed (FLG-001), short-link compliance unresolved (FLG-006), account status unverified
+  (FLG-010), ledger empty by design (FLG-015), SVG social card unverified (FLG-016).
+
+### Verification commands run (all exit 0)
+
+```
+python3 scripts/check_site.py          24 pages — all checks passed
+python3 tools/verify_site.py           21 sources; cross-references resolve; release gate passed
+python3 tools/check_site.py            24 pages, 2505 assertions — all passed
+python3 scripts/build_sitemap.py --check   OK: up to date (23 URLs)
+python3 scripts/build_registers.py --check OK: register pages match data/*.json
++ custom crawl: 24 pages, 0 broken internal links/anchors; sitemap/feed targets all exist
+```

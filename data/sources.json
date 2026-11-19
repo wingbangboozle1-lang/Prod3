@@ -111,6 +111,14 @@
       "url": "https://www.fsis.usda.gov/news-events/news-press-releases/do-you-know-correct-place-insert-your-food-thermometer",
       "used_for": "Thermometer placement guidance cited in the accuracy article",
       "updated": "fetched 2026-11-19"
+    },
+    {
+      "id": "S19",
+      "title": "Google (Chrome for Developers) — Lighthouse: Tap targets are not sized appropriately",
+      "url": "https://developer.chrome.com/docs/lighthouse/seo/tap-targets",
+      "used_for": "Mobile-first pass (S-20): tap targets below 48x48px that overlap a neighbour fail the audit; ~8px spacing between targets recommended; padding is the suggested way to grow a hit area",
+      "quote": "Tap targets that are 48 px by 48 px never fail the audit ... 8 px between tap targets is a good starting point.",
+      "updated": "fetched 2026-11-19 (page lists last update 2019-05-02)"
     }
   ],
   "note": "\"verified\"/\"updated\" fields record when a page was fetched or its listed update date; a fetch date is not an endorsement of the page's product claims. Listing sources are seller pages: specs, ratings, and prices transcribed from them are seller statements. Amazon page availability and content can change."

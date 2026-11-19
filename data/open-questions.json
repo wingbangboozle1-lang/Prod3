@@ -201,6 +201,7 @@
       "who": "engineering",
       "cost": "5 minutes",
       "status": "queued",
+      "verification_2026-11-19": "Structural check passes and is enforced by a gate: tools/check_site.py P01-disclosure-position fails any page where the disclosure marker does not appear before the first <h1>, so on every one of the 21 pages the disclosure precedes all headings and product content in reading order. The strip is a normal full-width block (not positioned after the hero), so it is not reordered below content at 320px. The mobile-first pass (S-20, session 65474d4f) also sets the strip to 0.8rem at <=600px so it stays compact rather than pushing content. A physical pixel measurement in a real browser at 320px with an enlarged system font was NOT run from this sandbox; that last confirmation remains a browser task.",
       "changes": "The masthead layout, if the strip wraps below the fold."
     },
     {

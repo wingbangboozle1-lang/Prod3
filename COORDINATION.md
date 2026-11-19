@@ -29,7 +29,7 @@
 | T-08 | Direction section: suggestions, open questions, path chooser | done | 5a4e180c | `direction.html`, `DIRECTION.md` |
 | T-09 | Executive summary | done | 5a4e180c | `executive-summary.html`, `EXECUTIVE_SUMMARY.md` |
 | T-10 | Gates: `scripts/check_site.py`, `tools/verify_site.py`, link check | done | 5a4e180c | `scripts/*`, `tools/*` |
-| T-11 | GitHub Pages deploy + PR to main + merge | in progress | 5a4e180c | `.github/workflows/pages.yml` |
+| T-11 | GitHub Pages deploy + PR to main + merge | done | 5a4e180c | `.github/workflows/pages.yml` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -76,6 +76,7 @@ via direct fetch. Findings (full detail in `data/products.json`):
 
 ## Deploy record
 
-- PR: (to be recorded after creation)
-- Merge result: (to be recorded)
+- PR: https://github.com/wingbangboozle1-lang/Prod3/pull/1 (arena/5a4e180c-prod3 → main)
+- Merge result: merged (merge commit ca9f4f27f77eef5ea6a15421c177b2f57f275427, 2026-11-19 12:43:28Z); verify_site.py and sitemap --check passed before merge
+- Pages: 'Deploy GitHub Pages' workflow success on merge; 'pages build and deployment' success; live page confirmed at the URL below
 - GitHub Pages URL: https://wingbangboozle1-lang.github.io/Prod3/

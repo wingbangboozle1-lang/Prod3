@@ -42,9 +42,11 @@
 
 <div class="callout"><strong>FLG-007 — Prices are not displayed.</strong> Amazon’s Program Policies permit showing price and availability only when Amazon serves the data or it arrives through the Product Advertising API. The site does neither, so no price is rendered; price observations survive only as dated notes in internal data files. Always check the live listing.</div>
 
+<div class="callout"><strong>FLG-008 — No product photography.</strong> The site uses CSS/SVG art, not product photos. Per Operating Agreement §1, Program Content includes images provided by Amazon; using only Amazon-provided images (or none) is the compliant path. Decide whether to license Amazon-provided images.</div>
+
 <div class="callout"><strong>FLG-009 — ThermoMaven accuracy/NIST/NSF wording is seller marketing, not a test.</strong> ±0.5°F, “NIST &amp; NSF Certified,” the 1-second read, IP67, and the included calibration certificate are listing claims. Kitchen Counter has not tested the unit or examined the certificate; NIST certifies traceability only of measurement results it provides, not retail products. Both readings stay visible; no accuracy value is presented as measured. Data: <code>data/products.json</code> P-04 claim-marked specs. Explainer: <a href="articles/meat-thermometer-accuracy.html">What ±0.5°F means</a>.</div>
 
-<div class="callout warn"><strong>FLG-010 — Amazon Associates account status is unverified.</strong> Tracking ID <code>shopnow047c-20</code> was supplied by the site owner, but its assignment to an enrolled account and that account’s eligibility have not been verified. Participation statements were removed from the site; disclosure copy is conditional (“if a qualifying purchase is credited”). <strong>Decision needed:</strong> owner confirms account status and updates <code>disclosure.html</code> accordingly.</div>
+<div class="callout warn"><strong>FLG-010 — Amazon Associates account status is unverified.</strong> Tracking ID <code>shopnow047c-20</code> was supplied by the site owner, but its assignment to an enrolled account and that account’s eligibility have not been verified. The unverified explicit program-membership assertion was removed; disclosure keeps the required earnings statement and adds conditional wording (“if a qualifying purchase is credited”). <strong>Decision needed:</strong> owner confirms account status and updates <code>disclosure.html</code> accordingly.</div>
 
 <div class="callout"><strong>FLG-011 — The /dp/&lt;token&gt; Page-Not-Found check: investigated and dismissed as link evidence.</strong> On 2026-11-19, pasting each 9-character token into <code>amazon.com/dp/&lt;token&gt;</code> returned Page Not Found. <em>Dismissal rationale:</em> a /dp/ URL constructed from a short-link token is not the supplied Special Link; the result neither validates nor invalidates the short links, and repeating it as a compliance conclusion would be wrong. The 9-character length is the only supported finding (tokens are not ASINs). Recorded in <code>data/sources.json</code> S15 as an observation.</div>
 
@@ -56,7 +58,6 @@
 
 <div class="callout"><strong>FLG-015 — Campaign ledger is empty by design.</strong> No clicks, orders, commissions, or revenue have been first-party reported. The ledger accepts rows only from authorized first-party reports; no conversion score or revenue forecast is presented anywhere. Data: <code>data/campaign-ledger.json</code>.</div>
 
-<div class="callout"><strong>FLG-008 — No product photography.</strong> The site uses CSS/SVG art, not product photos. Per Operating Agreement §1, Program Content includes images provided by Amazon; using only Amazon-provided images (or none) is the compliant path. Decide whether to license Amazon-provided images.</div>
 
 <p class="mt"><a href="sources.html">← Back to the source register</a> · <a href="direction.html">Direction &amp; open questions →</a></p>
 </div></main>

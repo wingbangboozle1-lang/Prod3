@@ -32,6 +32,7 @@
 | T-11 | GitHub Pages deploy + PR to main + merge | done | 5a4e180c | `.github/workflows/pages.yml` |
 | T-12 | Post-merge integration audit: correct demonstrable editorial errors, disclosure/capture copy, event schema, analytics readiness, and unresolved compliance gates | done | `arena/5bd92dff-prod3` | all published HTML for disclosure/nav, `assets/app.js`, `assets/style.css`, `analytics.html`, `analytics/*`, `data/campaign-ledger.json`, `data/sources.json`, `sources.html`, `flagged.html`, `direction.html`, `DIRECTION.md`, `sitemap.xml`, `scripts/check_site.py`, `tools/verify_site.py`, `README.md`, `EXECUTIVE_SUMMARY.md` |
 | T-16 | Re-run all release gates, internal-link crawl, feed/sitemap XML check, Pages status check; log remaining external-account blockers | done | arena/7d756ee2-prod3 | `COORDINATION.md` only |
+| T-17 | Mobile-first pass (S-20): size every tap target to ≥48×48px with ≥8px spacing; verify disclosure stays above the first heading at 320px (Q-15); cite Google tap-target guidance | in progress | `arena/65474d4f-prod3` (session 65474d4f) | `assets/style.css`, `data/sources.json`, `DIRECTION.md`, `direction.html`, `docs/verification.md`, `COORDINATION.md` (board rows only) |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 

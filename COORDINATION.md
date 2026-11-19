@@ -31,6 +31,7 @@
 | T-10 | Gates: `scripts/check_site.py`, `tools/verify_site.py`, link check | done | 5a4e180c | `scripts/*`, `tools/*` |
 | T-11 | GitHub Pages deploy + PR to main + merge | done | 5a4e180c | `.github/workflows/pages.yml` |
 | T-12 | Post-merge integration audit: correct demonstrable editorial errors, disclosure/capture copy, event schema, analytics readiness, and unresolved compliance gates | done | `arena/5bd92dff-prod3` | all published HTML for disclosure/nav, `assets/app.js`, `assets/style.css`, `analytics.html`, `analytics/*`, `data/campaign-ledger.json`, `data/sources.json`, `sources.html`, `flagged.html`, `direction.html`, `DIRECTION.md`, `sitemap.xml`, `scripts/check_site.py`, `tools/verify_site.py`, `README.md`, `EXECUTIVE_SUMMARY.md` |
+| T-16 | Re-run all release gates, internal-link crawl, feed/sitemap XML check, Pages status check; log remaining external-account blockers | done | arena/7d756ee2-prod3 | `COORDINATION.md` only |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -267,3 +268,23 @@ Checked against the published site, not against the local tree:
   "Compare all five on capacity, footprint & price", although no price is shown any more. Both should
   be reworded to "…and sourcing" or similar. Logged rather than edited to keep this session's diff to
   the compliance defects.
+
+## Session arena/7d756ee2-prod3 — re-verification (2026-11-19)
+
+- Branch `arena/7d756ee2-prod3` was cut from `main` at `0749909`. No site content was changed.
+- Gates run on the tree: `scripts/check_site.py` passed (21 pages); `tools/verify_site.py` passed;
+  `tools/check_site.py` passed (21 pages, 1604 assertions); `scripts/build_sitemap.py --check` passed.
+- Internal crawl across all 21 HTML files: 0 broken local links, 0 broken anchors. `feed.xml` and
+  `sitemap.xml` parse as well-formed XML; the sitemap lists 20 URLs.
+- Stale copy logged by session b84724ea is already fixed on `main`: the homepage tile, homepage
+  sticky bar and category sticky bars now read "…sourcing", not "…price".
+- Pages: `GET /repos/.../pages` reports `status: built`, source `main:/`. Latest `Deploy GitHub Pages`
+  run on `main` concluded `success`. Live URL not fetched from the sandbox (outbound access is limited
+  to GitHub/npm/PyPI hosts), so the live page was not re-read in this session.
+- Not verified and not changed: Amazon listings and Associates reporting could not be re-fetched from
+  this sandbox (amazon.com unreachable). Remaining blockers are owner actions, not code: FLG-001 (intended
+  ASINs), FLG-006 (Special Link test in the enrolled Associates workflow), FLG-010 (account status),
+  FLG-015 (no first-party reports, ledger empty), and the open items on the Direction page.
+- Event note: the ledger defines five events; `assets/app.js` emits four locally (`reader_signup` only
+  fires after a confirmed provider response, and none is connected). The Analytics page already says so.
+- Cross-scope requests: none. Handoff: none.

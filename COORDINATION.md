@@ -88,7 +88,7 @@ via direct fetch. Findings (full detail in `data/products.json`):
 | T-12 | Independent re-verification of the 5 submitted links vs official Amazon listings | done | arena/9978ab21-prod3 | `data/products.json` (re-fetch confirmed identical observed destinations) |
 | T-13 | Review existing click/conversion measurement (assets/app.js, data/campaign-ledger.json) — covers T-06 scope; no duplicate analytics added | done | arena/9978ab21-prod3 | `assets/app.js`, `data/campaign-ledger.json` |
 | T-14 | Add docs/verification.md, docs/analytics-endpoint.md, 404.html | done | arena/9978ab21-prod3 | `docs/*`, `404.html` |
-| T-15 | Integration PR #2 → main, merge, confirm GitHub Pages redeploy, record result here | in progress | arena/9978ab21-prod3 | all |
+| T-15 | Integration PR #2 → main, merge, confirm GitHub Pages redeploy, record result here | done | arena/9978ab21-prod3 | all |
 
 ### Verification re-fetch (session arena/9978ab21-prod3, 2026-11-19)
 
@@ -109,3 +109,12 @@ Intended ASIN / official listing URL / confirmation date / source remain blank f
 ### Handoff / conflict log
 
 2026-11-19: initial rebase of arena/9978ab21-prod3 onto origin/main conflicted on COORDINATION.md, data/products.json, data/sources.json. Resolved by keeping session 5a4e180c's versions (the mainline record); no other session's work was discarded. Duplicate file additions from the earlier draft of this session (index.html, guides/, categories/, products/index.html, executive-summary.md, flagged-for-review.html) were dropped to avoid duplicate content with the existing mainline site (articles/, air-fryers.html, meat-thermometers.html, compare.html, buying-guide.html, EXECUTIVE_SUMMARY.md, flagged.html, sources.html).
+
+### Integration record
+
+- PR #2: https://github.com/wingbangboozle1-lang/Prod3/pull/2 (arena/9978ab21-prod3 → main)
+- Merge result: merged (merge commit 1056cb4c9a98558e4a5cd7849211c98b70463d17)
+- PR #2 merged into main by gh pr merge --merge; no approval waited on (per instructions)
+- GitHub Pages: source branch main, status built; live at https://wingbangboozle1-lang.github.io/Prod3/ (custom 404 served)
+- Live checks: homepage renders disclosure above the fold (Tracking ID shopnow047c-20), five-product table with source links to official Amazon listings, category pillar pages, 8 question-shaped guides, chooser, compare page, feed.xml, sitemap.xml; /flagged.html live with FLG-001..FLG-008 and sources; none block the merge.
+- Flagged irregularities and unverified items remain published on /flagged.html for owner review.

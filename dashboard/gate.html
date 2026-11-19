@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compliance gate: fourteen checks and where the human steps in · Shopwise Kitchen Desk</title>
+<meta name="description" content="Fourteen checks against Amazon&#x27;s Operating Agreement and Program Policies, FTC disclosure guidance and Google publishing policy, each marked as automated or human-gated.">
+<link rel="canonical" href="https://wingbangboozle1-lang.github.io/Prod3/dashboard/gate.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Compliance gate: fourteen checks and where the human steps in · Shopwise Kitchen Desk">
+<meta property="og:description" content="Fourteen checks against Amazon&#x27;s Operating Agreement and Program Policies, FTC disclosure guidance and Google publishing policy, each marked as automated or human-gated.">
+<meta property="og:url" content="https://wingbangboozle1-lang.github.io/Prod3/dashboard/gate.html">
+<meta property="og:image" content="https://wingbangboozle1-lang.github.io/Prod3/assets/social-card.svg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/style.css">
+<link rel="alternate" type="application/rss+xml" title="Shopwise Kitchen Desk" href="/feed.xml">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">◪</span>
+      <span class="brand-name">Shopwise Kitchen Desk</span>
+    </a>
+    <nav class="nav" aria-label="Primary"><a href="/air-fryers/">Air fryers</a>
+<a href="/thermometers/">Thermometers</a>
+<a href="/guides/">Guides</a>
+<a href="/compare/">Compare</a></nav>
+  </div>
+</div>
+
+<div class="disclosure-strip" role="note">
+  <div class="wrap">
+    <strong>Disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Amazon and the Amazon logo are trademarks of
+    Amazon.com, Inc. or its affiliates. <a href="/about/#disclosure">How we disclose</a>
+  </div>
+</div>
+
+
+<header class="hero">
+  <div class="wrap">
+    <p class="hero-kicker">Compliance</p>
+    <h1>Compliance gate: fourteen checks and where the human steps in</h1>
+    <p class="hero-sub">Fourteen checks against Amazon&#x27;s Operating Agreement and Program Policies, FTC disclosure guidance and Google publishing policy, each marked as automated or human-gated.</p>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+<p class="standfirst">Automate what can be automated, and put a gate in front of what cannot. Each
+check below names the obligation, the primary source it comes from, whether a machine enforces it, and
+what a machine cannot enforce.</p>
+
+<div class="kpis">
+  <div class="kpi"><span class="kpi-n">11</span><span class="kpi-l">fully met, enforced by the build</span></div>
+  <div class="kpi"><span class="kpi-n">2</span><span class="kpi-l">met, subject to human review</span></div>
+  <div class="kpi"><span class="kpi-n">1</span><span class="kpi-l">blocked on account access</span></div>
+</div>
+
+<div class="table-scroll"><table class="reg wide gate"><caption>Fourteen policy checks against Amazon&#x27;s agreement and program policies, the FTC&#x27;s disclosure guidance and Google&#x27;s publishing policies.</caption><thead><tr><th scope="col">Check</th><th scope="col">Obligation</th><th scope="col">Source</th><th scope="col">Status</th><th scope="col">Enforced by</th><th scope="col">Evidence</th><th scope="col">The gate</th></tr></thead><tbody><tr><td><strong>C-01</strong><br><span class="small">Disclosure</span></td><td><strong>State &quot;As an Amazon Associate I earn from qualifying purchases.&quot; clearly and prominently on the site.</strong><br><span class="small">Section 5 names that exact statement and makes a violation of Section 5 a material breach.</span></td><td><a class="src" href="https://affiliate-program.amazon.com/help/operating/agreement" target="_blank" rel="sponsored noopener" title="Associates Program Operating Agreement">S01</a></td><td><span class="status status-ok">met</span></td><td><span class="small">automated</span></td><td><span class="small">The exact sentence appears in a strip directly under the masthead on every generated page, and again in the footer. tools/check_site.py fails the build if any page is missing it.</span></td><td><span class="small">none</span></td></tr><tr><td><strong>C-02</strong><br><span class="small">Disclosure</span></td><td><strong>Put the disclosure where it is hard to miss, next to the endorsement, not only on an about page or at the end.</strong><br><span class="small">&quot;Place it so it&#x27;s hard to miss... Disclosures are likely to be missed if they appear only on an ABOUT ME or profile page, at the end of posts or videos, or anywhere that requires a person to click MORE.&quot;</span></td><td><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener" title="Disclosures 101 for Social Media Influencers">S08</a></td><td><span class="status status-ok">met</span></td><td><span class="small">automated</span></td><td><span class="small">Above-the-fold strip under the masthead on all pages, plus a disclosure line immediately above each outbound product button. The footer repeat is supplementary, not the primary disclosure.</span></td><td><span class="small">none</span></td></tr><tr><td><strong>C-03</strong><br><span class="small">Link integrity</span></td><td><strong>Mark every paid or sponsored outbound link with rel=&quot;sponsored&quot;.</strong><br><span class="small">&quot;Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value.&quot;</span></td><td><a class="src" href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" target="_blank" rel="noopener" title="Qualify your outbound links to Google (last updated 2025-12-10)">S11</a></td><td><span class="status status-ok">met</span></td><td><span class="small">automated</span></td><td><span class="small">Every anchor to an Amazon domain is emitted with rel=&quot;sponsored noopener&quot;. tools/check_site.py walks all generated HTML and fails if any Amazon link lacks it.</span></td><td><span class="small">none</span></td></tr><tr><td><strong>C-04</strong><br><span class="small">Link integrity</span></td><td><strong>Do not obscure that a link goes to an Amazon Site; a shortener used so the destination is unclear is prohibited.</strong><br><span class="small">Section 2(b) prohibits using a link-shortening service or placement in a manner that makes it unclear you are linking to an Amazon Site.</span></td><td><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="sponsored noopener" title="Associates Program Policies (updated April 14, 2026)">S02</a></td><td><span class="status status-ok">met</span></td><td><span class="small">automated</span></td><td><span class="small">Outbound buttons go to https://www.amazon.com/dp/&lt;ASIN&gt; directly, are labelled &quot;View on Amazon&quot;, and sit under a line that names Amazon as the destination. The supplied link.amazon short links are recorded in the data file as provenance but are not used as the user-facing destination.</span></td><td><span class="small">none</span></td></tr><tr><td><strong>C-05</strong><br><span class="small">Pricing</span></td><td><strong>Show price and availability only if Amazon serves that data, or it is obtained through the Product Advertising / Creators API.</strong><br><span class="small">Section 2(b) permits displaying price and availability only in those two cases.</span></td><td><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="sponsored noopener" title="Associates Program Policies (updated April 14, 2026)">S02</a></td><td><span class="status status-ok">met</span></td><td><span class="small">automated</span></td><td><span class="small">The site stores no price and renders none — no price, no discount, no promotional code, no delivery estimate, anywhere. Prices are visible only on the Amazon page after a click. A checker rule fails the build if a currency pattern appears in generated HTML.</span></td><td><span class="small">none</span></td></tr><tr><td><strong>C-06</strong><br><span class="small">Accuracy</span></td><td><strong>Do not make inaccurate, overbroad, deceptive or misleading claims about a product.</strong><br><span class="small">Section 2(b) prohibition on inaccurate or misleading product claims, with the 64 GB / 128 GB example.</span></td><td><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="sponsored noopener" title="Associates Program Policies (updated April 14, 2026)">S02</a></td><td><span class="status status-warn">partial</span></td><td><span class="small">automated</span></td><td><span class="small">Every published specification is copied from the listing and tagged with a source id and a capture date. Where the listing contradicts itself (P1 capacity units, P2 preset count) both readings are shown and the conflict is named rather than resolved silently.</span></td><td><span class="small">Human review of editorial prose before each new guide is published. The automated check can prove a claim is cited; it cannot prove the citation supports the claim.</span></td></tr><tr><td><strong>C-07</strong><br><span class="small">Accuracy</span></td><td><strong>Do not claim first-hand experience with a product that has not been handled.</strong><br><span class="small">&quot;You can&#x27;t talk about your experience with a product you haven&#x27;t tried.&quot;</span></td><td><a class="src" href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" target="_blank" rel="noopener" title="Disclosures 101 for Social Media Influencers">S08</a></td><td><span class="status status-ok">met</span></td><td><span class="small">human gate</span></td><td><span class="small">The voice rules ban first-person use claims, durability claims, and first-person testing phrasing. Every product page says plainly that no unit has been handled and that the numbers come from the listing.</span></td><td><span class="small">Editorial review. See suggestion SG-06: buying one unit per category would let the site make experience claims honestly.</span></td></tr><tr><td><strong>C-08</strong><br><span class="small">Content quality</span></td><td><strong>Affiliate pages must carry original value rather than restating the merchant&#x27;s listing, or they fall under the thin-affiliation and scaled-content-abuse policies.</strong><br><span class="small">Both policies are named explicitly in Google&#x27;s spam policies.</span></td><td><a class="src" href="https://developers.google.com/search/docs/essentials/spam-policies" target="_blank" rel="noopener" title="Spam policies for Google web search — thin affiliation, scaled content abuse, misleading functionality">S12</a></td><td><span class="status status-warn">partial</span></td><td><span class="small">automated</span></td><td><span class="small">Each guide answers a question the listing cannot: how to compare basket against oven form, which specification decides the fit, and how to set up a thermometer against the USDA minimums. The build check enforces a minimum word count and an internal-link requirement on every article.</span></td><td><span class="small">A human must judge whether the writing is actually useful. Word count is a floor, not a defence.</span></td></tr><tr><td><strong>C-09</strong><br><span class="small">Identifiers</span></td><td><strong>Keep the intended ASIN and the observed redirect in separate fields; never merge them.</strong><br><span class="small">Section 2(a) requires Special Links to carry the assigned Associates ID; the ASIN is the checkable product identifier.</span></td><td></td><td><span class="status status-ok">met</span></td><td><span class="small">automated</span></td><td><span class="small">data/products.json stores intended.asin, intended.confirmation_date and intended.source in one object and observed.resolved_asin, observed.resolved_status and observed.captured in another. All five agree today, and the data file records each agreement explicitly rather than assuming it.</span></td><td><span class="small">Re-resolve the five short links with every content release and record the date.</span></td></tr><tr><td><strong>C-10</strong><br><span class="small">Associates ID</span></td><td><strong>Confirm the tracking ID shopnow047c-20 is present on the Special Links actually published.</strong><br><span class="small">Section 2(a): Special Links must use the Associates ID assigned to the account.</span></td><td><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="sponsored noopener" title="Associates Program Policies (updated April 14, 2026)">S02</a></td><td><span class="status status-bad">blocked</span></td><td><span class="small">human gate</span></td><td><span class="small">The resolved URLs served to this session carried query parameters but no visible tag= value, so the ID could not be confirmed from outside the account. Nothing about the supplied links is called invalid; the check simply cannot be completed without the Associates dashboard.</span></td><td><span class="small">Owner action: open SiteStripe or the Associates dashboard and confirm tag=shopnow047c-20 on each of the five links. Tracked as Q-02.</span></td></tr><tr><td><strong>C-11</strong><br><span class="small">Product lists</span></td><td><strong>Links into a product list (search, deal event, department page) require additional original content on the site.</strong><br><span class="small">Section 2(b): when linking to pages with product lists you must have additional original content relevant to the Special Link.</span></td><td><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="sponsored noopener" title="Associates Program Policies (updated April 14, 2026)">S02</a></td><td><span class="status status-ok">met</span></td><td><span class="small">human gate</span></td><td><span class="small">The only category link on the site points at the Air Fryers storefront (S15) and appears inside the comparison guide, which carries its own analysis. No bare list links are published.</span></td><td><span class="small">Review any future category link before it ships.</span></td></tr><tr><td><strong>C-12</strong><br><span class="small">Advertising density</span></td><td><strong>Keep outbound commerce links from crowding out the answer the reader came for.</strong><br><span class="small">The people-first content guidance and the page-experience guidance both penalise interruption over substance.</span></td><td><a class="src" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener" title="Creating helpful, reliable, people-first content">S14</a></td><td><span class="status status-ok">met</span></td><td><span class="small">automated</span></td><td><span class="small">Each guide opens with the answer, then the reasoning, and only then the product cards. Product cards are capped at two per article by the build.</span></td><td><span class="small">none</span></td></tr><tr><td><strong>C-13</strong><br><span class="small">Measurement</span></td><td><strong>Record only privacy-preserving events and never associate a tracking sub-tag with an individual user.</strong><br><span class="small">Section 2(b): no sub-tag, other ID or reporting may be associated with a specific end user, including dynamically assigning sub-tags to arriving users.</span></td><td><a class="src" href="https://affiliate-program.amazon.com/help/operating/policies" target="_blank" rel="sponsored noopener" title="Associates Program Policies (updated April 14, 2026)">S02</a></td><td><span class="status status-ok">met</span></td><td><span class="small">automated</span></td><td><span class="small">The outbound counter runs entirely in the visitor&#x27;s browser, stores a single aggregate count per product in localStorage, and sends nothing. No per-user identifier is created, so no sub-tag could be tied to one. See content/measurement.md.</span></td><td><span class="small">If a self-hosted endpoint is ever enabled, it must not set cookies and must not store IP addresses — see Q-13.</span></td></tr><tr><td><strong>C-14</strong><br><span class="small">Editorial honesty</span></td><td><strong>Do not assert popularity, trending status or superiority without a dated source.</strong><br><span class="small">Self-assessment question: does the content provide insight beyond the obvious, and is the heading free of exaggeration.</span></td><td><a class="src" href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" target="_blank" rel="noopener" title="Creating helpful, reliable, people-first content">S14</a></td><td><span class="status status-ok">met</span></td><td><span class="small">human gate</span></td><td><span class="small">Where the listing itself displays a badge such as Amazon&#x27;s Choice or a sales figure, it is quoted with the capture date and attributed to the listing. No editorial page claims a product is best-selling, trending or better.</span></td><td><span class="small">Editorial review of any new superlative.</span></td></tr></tbody></table></div>
+
+<h2>What the build refuses to ship</h2>
+<ul class="tight">
+  <li>A page without the disclosure strip.</li>
+  <li>An Amazon link without <code>rel="sponsored"</code>.</li>
+  <li>A currency symbol, a price pattern, a promotional discount phrase, or a delivery estimate.</li>
+  <li>A duplicate title or meta description.</li>
+  <li>A page with zero or more than one <code>&lt;h1&gt;</code>.</li>
+  <li>An internal link that does not resolve.</li>
+</ul>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div class="fgroup"><h3>Shop</h3><ul><li><a href="/air-fryers/">Air fryers</a></li>
+<li><a href="/thermometers/">Thermometers</a></li>
+<li><a href="/compare/">Compare all five</a></li>
+<li><a href="/guides/">All guides</a></li></ul></div>
+<div class="fgroup"><h3>The desk</h3><ul><li><a href="/about/">About and how we work</a></li>
+<li><a href="/sources/">Source register</a></li>
+<li><a href="/suggestions/">Suggestions board</a></li>
+<li><a href="/questions/">Open questions</a></li></ul></div>
+<div class="fgroup"><h3>Dashboard</h3><ul><li><a href="/dashboard/">Overview</a></li>
+<li><a href="/dashboard/register.html">Product register</a></li>
+<li><a href="/dashboard/verification.html">Verification record</a></li>
+<li><a href="/dashboard/gate.html">Compliance gate</a></li>
+<li><a href="/dashboard/analysis.html">Counter-space analysis</a></li>
+<li><a href="/dashboard/ledger.html">Campaign ledger</a></li>
+<li><a href="/dashboard/flagged.html">Flagged for review</a></li>
+<li><a href="/dashboard/measurement.html">Measurement policy</a></li></ul></div>
+    </div>
+    <div class="footer-disc">
+      <p><strong>As an Amazon Associate I earn from qualifying purchases.</strong> Shopwise Kitchen Desk is written and published independently
+      and is not owned by, operated by, or endorsed by Amazon.com, Inc. or its affiliates. Prices and
+      availability are shown only on Amazon, never here.</p>
+      <p class="small">Last full verification pass: 2026-11-19. No unit of any product reviewed
+      here has been handled or tested. <a href="/about/#method">Read the method</a>.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/app.js" defer></script>
+</body>
+</html>

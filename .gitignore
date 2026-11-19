@@ -1,0 +1,8 @@
+# Nothing generated should be ignored: GitHub Pages publishes main:/ directly,
+# so the built HTML is deliberately committed. This file exists to keep local
+# scratch directories out of the repository.
+__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+.venv/

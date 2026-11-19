@@ -1,0 +1,394 @@
+{
+  "generated": "2026-11-19",
+  "premise": "The guides. Each one is a question a buyer types, answered from published specifications and government food-safety tables. Each one ends in a recommendation and the condition under which it changes.",
+  "guides": [
+    {
+      "slug": "basket-or-oven-air-fryer",
+      "title": "Basket or oven-style air fryer: what should you compare?",
+      "nav": "Basket or oven?",
+      "kicker": "The buying question",
+      "description": "Basket and oven-style air fryers cook differently and fit differently. Compare the four things that actually separate them, with the numbers from three specific listings.",
+      "reading_time": 6,
+      "cluster": "Choosing the form",
+      "answer": "Compare four things, in this order: how much food you cook at once, how much counter depth you have, whether you need two foods to finish together, and whether you want a drawer you can shake or a door you can see through. Capacity and wattage look like the headline numbers and are the least useful of the four.",
+      "sections": [
+        {
+          "h": "1. Counter depth, because it is the only requirement that cannot be worked around",
+          "body": [
+            "An air fryer that does not fit on your counter does not get used, and this is the first number that disqualifies a machine. The three air fryers on this site publish these depths: 13.38 in for the Chefman dual-basket, 12.75 in for the Chefman TurboFry 8 Qt, and 16.9 in for the Emeril Lagasse 26QT oven.",
+            "Those figures are the body only. Add clearance for a drawer pulling out, or a French door swinging open, and the footprint you need is larger than the footprint listed. On a nominal 24 in deep counter, the oven leaves 7.1 in behind it before you have opened anything.",
+            "This is the least glamorous measurement on the listing and the one most likely to decide whether the purchase was a good idea."
+          ]
+        },
+        {
+          "h": "2. How many foods, and whether they need to finish together",
+          "body": [
+            "A single-basket fryer cooks one thing at a time, or one mixed batch at one temperature. A dual-basket fryer cooks two things at once, and Sync Finish lines up the two timers so they are ready together. An oven-style air fryer uses racks and a larger cavity, so food goes in at different heights rather than in separate drawers.",
+            "These are three genuinely different ways to cook, and the distinction matters more than the quart figure on the box. Six quarts split into two 3 qt drawers holds a different dinner than six quarts in one basket."
+          ]
+        },
+        {
+          "h": "3. Capacity, read sceptically",
+          "body": [
+            "Capacity is where listings are least reliable and most persuasive. The Chefman dual-basket lists its capacity twice, as 6 liters in the specification field and 6 quarts in the title. Those are not the same number: 6 US quarts is about 5.68 litres. Both readings are printed on the page, and this site reproduces both rather than picking the flattering one.",
+            "The Emeril oven is the reverse case. Its title says 26 quarts and its field says 24.6 liters, and those two do agree, because 26 US quarts is about 24.6 litres.",
+            "Treat every nominal capacity as an upper bound declared by the manufacturer, not a measured usable volume. A whole chicken fits in a 6 qt basket and does not fit in a 3 qt drawer, no matter what the two add up to."
+          ]
+        },
+        {
+          "h": "4. What you actually watch while it cooks",
+          "body": [
+            "A basket needs shaking, and all three air fryers here list a reminder or an equivalent. An oven-style machine with an interior light lets you look without opening the door; the Emeril listing names the light explicitly.",
+            "If you cook by eye, that light is worth more than a preset count. If you cook by timer, it is not."
+          ]
+        }
+      ],
+      "recommendation": "If your counter is 15 in deep or less, buy a basket fryer — the two Chefman models fit and the oven does not. Above that, choose the oven if you regularly cook for four to six people or want a second oven, and the dual-basket machine if you mostly cook two components for two people.",
+      "changes_when": "The recommendation flips if you cannot spare the clearance in front of the machine for a door to swing, which rules the oven out regardless of counter depth.",
+      "products": ["P1", "P2", "P3"],
+      "sources": ["S03", "S04", "S05"],
+      "links_to": ["air-fryer-capacity-checklist", "air-fryer-cleanup-and-counter-space"]
+    },
+    {
+      "slug": "air-fryer-capacity-checklist",
+      "title": "A no-hype checklist for comparing air fryer capacity",
+      "nav": "Capacity checklist",
+      "kicker": "The specification question",
+      "description": "Four checks that turn a capacity claim into something you can compare: the unit, the split, the shape, and the number the listing does not give you.",
+      "reading_time": 5,
+      "cluster": "Reading the spec sheet",
+      "answer": "Check four things: whether the number is quarts or litres and whether the listing is consistent about it, whether the capacity is split into drawers or held in one cavity, whether the shape can hold the food you actually cook, and what the usable basket depth is — which most listings never state.",
+      "sections": [
+        {
+          "h": "Check one: the unit, and whether the listing agrees with itself",
+          "body": [
+            "Capacity appears in two places on an Amazon listing: in the title and bullets, which marketing writes, and in the specification field, which is structured. They disagree more often than you would expect.",
+            "The Chefman dual-basket listing says 6 liters in the field and 6 quarts in the title. Six US quarts converts to about 5.68 litres, so the field is not a conversion of the title — one of them is simply wrong, and the listing does not say which.",
+            "The Emeril oven says 26 quarts in the title and 24.6 liters in the field, and that pair does agree. When the two agree, you can move on. When they do not, treat the number as nominal and nothing more."
+          ]
+        },
+        {
+          "h": "Check two: split or single",
+          "body": [
+            "Two 3 qt drawers and one 6 qt basket are both described as six quarts and are not interchangeable. A drawer has to be able to hold the item on its own. A whole chicken that fits a 6 qt basket does not fit a 3 qt drawer.",
+            "Ask what the largest single item you cook is. If the answer is a whole bird or a 12 in pizza, neither dual-basket machine here will do it and the oven will: its listing states it rotisseries a 6 lb chicken and bakes a 12 in pizza."
+          ]
+        },
+        {
+          "h": "Check three: shape, not just volume",
+          "body": [
+            "The Chefman TurboFry 8 Qt is 10 in tall. Eight quarts in a 10 in tall body is a wide, shallow volume, which is excellent for a layer of fries and awkward for anything standing up.",
+            "Height is listed in the product dimensions for all three air fryers. Read it with the capacity, not instead of it."
+          ]
+        },
+        {
+          "h": "Check four: the number the listing leaves out",
+          "body": [
+            "Usable basket depth — the internal measurement from the floor of the basket to the top of the rim — is almost never published. It is the number that decides whether a small chicken fits.",
+            "This site does not estimate it. Where a listing omits a measurement, the site leaves it blank and says so. Blank is a fair answer to a spec sheet that does not have the number."
+          ]
+        }
+      ],
+      "recommendation": "Before comparing two machines, put their capacity into the same unit yourself and write down the split and the height next to it. If a listing disagrees with itself on the unit, assume neither figure is precise.",
+      "changes_when": "If you only ever cook one layer of food at a time, capacity is close to irrelevant and counter depth should decide the purchase instead — see the basket-or-oven guide.",
+      "products": ["P1", "P2", "P3"],
+      "sources": ["S03", "S04", "S05"],
+      "links_to": ["basket-or-oven-air-fryer", "counter-space-per-quart"]
+    },
+    {
+      "slug": "air-fryer-cleanup-and-counter-space",
+      "title": "How to assess cleanup and counter-space trade-offs",
+      "nav": "Cleanup and space",
+      "kicker": "The daily-cost question",
+      "description": "The specification sheet tells you what is dishwasher safe and what the footprint is. It does not tell you how many parts you will wash. Here is how to work that out before buying.",
+      "reading_time": 5,
+      "cluster": "Living with it",
+      "answer": "Count the parts that touch food, check whether each one is listed as dishwasher safe, and measure the counter against the body depth plus the travel of whatever opens. Those three facts are all on the listing; everything else about cleanup is a guess until you own it.",
+      "sections": [
+        {
+          "h": "Count the washable parts, not the features",
+          "body": [
+            "A basket fryer gives you a basket and usually a crisper plate — two pieces. An oven-style machine gives you a rack, a basket, a rotisserie spit, and however many accessories the box includes; the Emeril listing states six cooking accessories are included.",
+            "Six accessories is six things that may need washing, and a larger cavity that needs wiping. That is not a reason to avoid an oven; it is a reason to not be surprised by one."
+          ]
+        },
+        {
+          "h": "Check the dishwasher claim part by part",
+          "body": [
+            "Both Chefman listings describe the basket as nonstick and dishwasher safe. The Emeril listing, as captured, does not state a dishwasher-safe claim in the specifications this site recorded, so no value is published against it here.",
+            "\"Dishwasher safe\" usually refers to specific parts, not the appliance. Read which parts before you rely on it."
+          ]
+        },
+        {
+          "h": "Measure the counter for the thing that moves, not the thing that sits",
+          "body": [
+            "A basket drawer pulls straight out and needs roughly its own depth again in front of the machine. A French door swings outward and needs room on both sides as well as in front.",
+            "The listed depths are 13.38 in, 12.75 in and 16.9 in. On a 24 in counter, the first two leave 10.6 in and 11.3 in in front, which is tighter than a full drawer travel. This is the trade-off that only shows up in the first week of ownership, and it can be computed before purchase."
+          ]
+        },
+        {
+          "h": "Plan for grease, which no listing quantifies",
+          "body": [
+            "Air frying produces spatter and odour. No listing on this site publishes a filter specification or an odour rating, so this site publishes nothing about either.",
+            "The practical mitigation is placement: near a hob extractor if you have one. You can decide that before you buy, and it belongs in the same decision as counter depth."
+          ]
+        }
+      ],
+      "recommendation": "If you will not hand-wash more than two pieces, the dual-basket Chefman is the least work of the three. If you will, and you have the counter, the oven gives you far more cooking for a similar amount of wiping.",
+      "changes_when": "If the machine will live in a cupboard rather than on the counter, footprint stops mattering and weight and handle design start to — neither of which is published on these listings.",
+      "products": ["P1", "P2", "P3"],
+      "sources": ["S03", "S04", "S05"],
+      "links_to": ["basket-or-oven-air-fryer", "counter-space-per-quart"]
+    },
+    {
+      "slug": "questions-before-buying-a-multi-function-appliance",
+      "title": "Questions to ask before buying a multi-function kitchen appliance",
+      "nav": "Multi-function questions",
+      "kicker": "The judgement question",
+      "description": "A multi-function appliance is a set of compromises sold as a set of features. Six questions that separate the functions you will use from the ones you are paying for.",
+      "reading_time": 6,
+      "cluster": "Living with it",
+      "answer": "Ask which single function you will use most, whether that function is the one the machine does best, how many of the extra functions replace something you already own, and what the machine costs you in counter space and washing up. If the answer to the third question is fewer than two, buy the simpler machine.",
+      "sections": [
+        {
+          "h": "Which function will you use most, and is it the one this machine does best?",
+          "body": [
+            "A machine that air fries, bakes, roasts, dehydrates, rotisseries and toasts has one or two functions it was designed around and several it can technically perform. The Emeril oven lists baking, toasting, slow cooking, roasting, reheating, keeping warm, defrosting, ribs, chicken, pizza and pastry among its presets, and its own bullets lead with air frying and toasting.",
+            "Read the order of the listing's own bullets. Manufacturers lead with what they think the machine is for."
+          ]
+        },
+        {
+          "h": "How many functions replace something you already own?",
+          "body": [
+            "If the answer is fewer than two, the multi-function machine is a more expensive way to do one thing. If the answer is three or more, it is freeing up counter space rather than taking it, which changes the arithmetic completely.",
+            "Be strict here. A toaster oven that also air fries only replaces your toaster if it toasts as well as your toaster, which no listing can tell you."
+          ]
+        },
+        {
+          "h": "What does it cost you in counter space?",
+          "body": [
+            "The Emeril oven occupies 267 square inches of counter — 16.9 in by 15.8 in — before clearance for the doors. That is roughly a third of a standard 24 in deep, 36 in wide counter run.",
+            "A single-basket fryer at 12.75 in by 13.5 in occupies 172 square inches. The difference, about 95 square inches, is a permanent cost for as long as the machine lives there."
+          ]
+        },
+        {
+          "h": "Will you actually clean the parts?",
+          "body": [
+            "More functions mean more accessories, and accessories are the parts that get washed. Six included accessories is a reasonable feature list and a real recurring chore.",
+            "A machine you avoid using because of the washing-up has zero functions in practice."
+          ]
+        },
+        {
+          "h": "Does it need anything else to work?",
+          "body": [
+            "Not every appliance is self-contained. The CHEF iQ Sense meat thermometer displays its readings in a phone app, which means a phone and a network are part of using it. A machine that needs your phone is a different proposition from one that does not, and the listing says so only if you read the connectivity line.",
+            "Check the connectivity and the display type before you check the preset count."
+          ]
+        },
+        {
+          "h": "What happens when it breaks?",
+          "body": [
+            "Warranty terms vary by product and are frequently absent from the listing. Of the five products here, only the CHEF iQ lists a term — two years, stated in a bullet. The rest publish none, and this site does not fill that gap with an assumption.",
+            "Where a listing is silent on warranty, treat the warranty as unknown before you buy rather than assuming a default."
+          ]
+        }
+      ],
+      "recommendation": "If two or more of the extra functions replace something you own and would retire, a multi-function oven is worth the counter. If not, buy the smallest machine that does your most-used function well.",
+      "changes_when": "If you have less than 17 in of usable counter depth, the oven-style multi-function machine is out of scope and the question becomes which basket fryer, not which form.",
+      "products": ["P1", "P2", "P3", "P5"],
+      "sources": ["S03", "S04", "S05", "S07"],
+      "links_to": ["basket-or-oven-air-fryer", "thermometer-buying-checklist"]
+    },
+    {
+      "slug": "do-i-need-a-meat-thermometer",
+      "title": "Do you need a meat thermometer if your air fryer has presets?",
+      "nav": "Do I need a thermometer?",
+      "kicker": "The safety question",
+      "description": "Presets guess. A thermometer measures. The USDA minimum internal temperatures, what each type of thermometer is for, and when a preset is good enough.",
+      "reading_time": 5,
+      "cluster": "Proving it is done",
+      "answer": "Yes, if you cook meat, poultry, fish or leftovers. A preset is a guess at the time and temperature needed; the USDA sets minimum internal temperatures specifically to be measured with a food thermometer, and no preset can know the thickness of the piece in your basket.",
+      "sections": [
+        {
+          "h": "What the USDA actually says",
+          "body": [
+            "The USDA Food Safety and Inspection Service publishes minimum internal temperatures to be reached before food is removed from the heat source, measured with a food thermometer. The figures that matter most for air frying: all poultry, including ground poultry, 165 °F (73.9 °C); ground meats 160 °F (71.1 °C); beef, pork, veal and lamb steaks, chops and roasts 145 °F (62.8 °C) with a three-minute rest; fish and shellfish 145 °F (62.8 °C); leftovers and casseroles 165 °F (73.9 °C).",
+            "The FSIS page is explicit that these are minimums measured with a thermometer, and that cooking to higher temperatures is a matter of personal preference. A preset cannot perform that measurement."
+          ]
+        },
+        {
+          "h": "Why a preset is still useful",
+          "body": [
+            "A preset gives you a starting time and temperature that is usually in the right region, which saves you from guessing from zero. It is a starting point, not a completion signal.",
+            "Use it to plan when to start, and the thermometer to decide when to stop."
+          ]
+        },
+        {
+          "h": "Which food genuinely needs the measurement",
+          "body": [
+            "Whole chicken and thick pork are the cases where time-based cooking fails most visibly, because the outer layer overcooks while the centre is still under. Thin items like a burger patty are more forgiving but are exactly where a fast-read thermometer costs the least effort.",
+            "If you only ever cook frozen fries and vegetables, none of this applies to you. Air fryer presets are perfectly adequate for food that does not carry a pathogen risk."
+          ]
+        },
+        {
+          "h": "The instant-read is the cheap version of this decision",
+          "body": [
+            "A handheld instant-read thermometer answers the question in one second and costs a fraction of a wireless probe set. It is the right first purchase if you are unsure whether you will use a thermometer at all.",
+            "The wireless multi-probe replaces it only when you want to monitor without opening the machine — which is a different problem, covered in the thermometer buying guide."
+          ]
+        }
+      ],
+      "recommendation": "Buy a handheld instant-read thermometer before you buy any other accessory. It is the lowest-cost way to make every cook reproducible and to know when food is safe rather than merely browned.",
+      "changes_when": "If you already own an instant-read and cook long, slow cuts where you want to watch the temperature curve, buy a probe instead — see the thermometer buying guide.",
+      "products": ["P4", "P5"],
+      "sources": ["S10", "S06", "S07"],
+      "links_to": ["thermometer-buying-checklist", "thermometer-targets"]
+    },
+    {
+      "slug": "thermometer-buying-checklist",
+      "title": "Instant-read or wireless probe: which thermometer do you actually need?",
+      "nav": "Thermometer checklist",
+      "kicker": "The specification question",
+      "description": "An instant-read answers \"is it done now\". A wireless probe answers \"tell me when it is done\". Compare the two on what they measure, what they need, and what they cost you in attention.",
+      "reading_time": 6,
+      "cluster": "Proving it is done",
+      "answer": "Buy an instant-read if you want to check food and move on. Buy a wireless probe if you want to leave the food and be told. They answer different questions, and an instant-read is the better first purchase.",
+      "sections": [
+        {
+          "h": "The two jobs",
+          "body": [
+            "An instant-read is a handheld probe you insert, read, and remove. Its job is a single measurement at a moment you choose.",
+            "A wireless probe stays in the food and transmits. Its job is to tell you when the food reaches target, so you do not have to be present.",
+            "Everything that separates the two products on this site follows from that difference, not from their accuracy figures."
+          ]
+        },
+        {
+          "h": "What to check on an instant-read listing",
+          "body": [
+            "Reading time, water resistance, and whether the display rotates. The ThermoMaven listing claims one second, IP67 and an auto-rotating LED display, and states a plus-or-minus 0.5 °F accuracy with a NIST certification for it — a claim published by the manufacturer that this site reproduces as a vendor claim, not as a verified measurement.",
+            "It also ships with a calibration certificate, which is worth more than a marketing claim because you can check it against an ice bath yourself."
+          ]
+        },
+        {
+          "h": "What to check on a wireless probe listing",
+          "body": [
+            "How many probes, how the readings reach you, and what powers it. The CHEF iQ Sense listing states three probes, four internal sensors plus one ambient sensor, Wi-Fi and Bluetooth, and up to 50 hours on a charge.",
+            "The ambient sensor is the underrated one: it tells you the temperature of the cooking environment, not just the food, which is what you need to judge whether the cook is running slow."
+          ]
+        },
+        {
+          "h": "The dependency you are taking on",
+          "body": [
+            "A wireless probe with an app display depends on a phone, a network, and a working app. The CHEF iQ listing lists its display type as App, which is honest and worth reading twice.",
+            "An instant-read depends on a battery — a single AAA, according to the ThermoMaven listing.",
+            "Neither is better. They fail differently, and you know which failure is more annoying in your kitchen."
+          ]
+        },
+        {
+          "h": "The measurement neither listing publishes",
+          "body": [
+            "Probe length decides whether a thermometer can reach the centre of a large roast through the side, and whether it can be left in a closed oven. Neither listing on this site publishes a product-dimensions field, so this site publishes no probe length for either.",
+            "That is a real gap in the buying decision, and it is flagged on both product pages rather than filled with an estimate."
+          ]
+        }
+      ],
+      "recommendation": "Start with an instant-read. Add a wireless probe when you start cooking long, slow cuts where you want to leave the kitchen, not when you start cooking meat.",
+      "changes_when": "If you already own an instant-read and regularly smoke or roast for hours, the wireless probe is the next purchase — and the ambient sensor is the reason, not the probe count.",
+      "products": ["P4", "P5"],
+      "sources": ["S06", "S07"],
+      "links_to": ["do-i-need-a-meat-thermometer", "thermometer-targets"]
+    },
+    {
+      "slug": "thermometer-targets",
+      "title": "What temperature should chicken, pork and leftovers actually reach?",
+      "nav": "Temperature targets",
+      "kicker": "The reference",
+      "description": "The USDA minimum internal temperatures in one table, with the rest time, plus what to do with a reading that lands just under the line.",
+      "reading_time": 4,
+      "cluster": "Proving it is done",
+      "answer": "Poultry 165 °F, ground meats 160 °F, steaks chops and roasts 145 °F plus a three-minute rest, fish 145 °F. Use a food thermometer and measure before the food leaves the heat.",
+      "sections": [
+        {
+          "h": "The table",
+          "body": [
+            "From the USDA Food Safety and Inspection Service's safe minimum internal temperature chart: beef, pork, veal and lamb steaks, chops and roasts — 145 °F (62.8 °C) with a rest of at least three minutes. Ground meats — 160 °F (71.1 °C). All poultry, including ground poultry and stuffing — 165 °F (73.9 °C). Eggs — 160 °F (71.1 °C). Fish and shellfish — 145 °F (62.8 °C). Leftovers and casseroles — 165 °F (73.9 °C).",
+            "Reheated fully cooked ham has its own rule on the same page: 140 °F (60 °C) if packaged in a USDA-inspected plant, 165 °F (73.9 °C) otherwise."
+          ]
+        },
+        {
+          "h": "Why the rest time is part of the number",
+          "body": [
+            "The three-minute rest attached to the 145 °F figure is not a serving suggestion. It is part of the safety requirement as the USDA publishes it.",
+            "Practically, it also means the temperature will keep moving after you pull the food. Measure at the point the USDA specifies and honour the rest."
+          ]
+        },
+        {
+          "h": "If the reading lands just under the line",
+          "body": [
+            "Put it back. A thermometer reading below the minimum means the food has not reached the minimum, and the fix is more heat, not more time on the counter.",
+            "Take the reading in the thickest part and away from bone, which conducts heat differently and can mislead a probe."
+          ]
+        },
+        {
+          "h": "What this page does not tell you",
+          "body": [
+            "It does not tell you how long to cook anything. Time depends on thickness, starting temperature, and the machine, and no table can substitute for a measurement.",
+            "It also does not cover every food. The FSIS chart covers the categories above; for anything else, read the chart at the source rather than extrapolating from this page."
+          ]
+        }
+      ],
+      "recommendation": "Tape the five figures to the inside of a cupboard: 165 poultry, 160 ground, 145 whole cuts plus rest, 145 fish, 165 leftovers. They cover almost every cook in a domestic kitchen.",
+      "changes_when": "They do not change. The page will be dated and re-checked against the FSIS chart; the chart is the authority, not this page.",
+      "products": ["P4", "P5"],
+      "sources": ["S10"],
+      "links_to": ["do-i-need-a-meat-thermometer", "thermometer-buying-checklist"]
+    },
+    {
+      "slug": "counter-space-per-quart",
+      "title": "Quarts per square inch: the counter-space arithmetic nobody publishes",
+      "nav": "Quarts per inch",
+      "kicker": "The analysis",
+      "description": "Divide nominal capacity by counter footprint and the three air fryers separate by more than a factor of two. The method, the sums, and why the answer is not the ranking you expect.",
+      "reading_time": 5,
+      "cluster": "Reading the spec sheet",
+      "answer": "The oven-style machine delivers about 2.6 times the nominal capacity per square inch of counter that the dual-basket machine does, because a box fills its footprint and a drawer does not. But capacity per inch is a density measure, not a quality measure.",
+      "sections": [
+        {
+          "h": "The method",
+          "body": [
+            "Take the listed depth and the listed width, multiply them to get the counter area the appliance occupies, and divide the nominal capacity by that area. Every input comes from the product's own listing on the same day; nothing is measured.",
+            "This is arithmetic on published figures. It is not a test, and it says nothing about how well any of them cooks."
+          ]
+        },
+        {
+          "h": "The sums",
+          "body": [
+            "Chefman dual-basket: 13.38 in by 11.81 in is 158.0 square inches; 6 qt divided by 158.0 is 0.038 qt per square inch.",
+            "Chefman TurboFry 8 Qt: 12.75 in by 13.5 in is 172.1 square inches; 8 qt divided by 172.1 is 0.046 qt per square inch.",
+            "Emeril 26QT oven: 16.9 in by 15.8 in is 267.0 square inches; 26 qt divided by 267.0 is 0.097 qt per square inch."
+          ]
+        },
+        {
+          "h": "What the numbers mean, and what they do not",
+          "body": [
+            "The oven wins by a wide margin, and the reason is geometric. A box uses its full footprint for volume; two drawers with walls, handles and gaps between them do not.",
+            "The two basket machines land within about 22 percent of each other, which is close enough that the difference should not decide a purchase. Their real difference is two drawers against one.",
+            "None of these numbers is a ranking. Quarts per square inch says how densely a machine packs nominal volume into counter space. A very dense machine may simply be tall, and tall is its own problem — the oven is 14.8 in tall against 10 in for the single-basket fryer."
+          ]
+        },
+        {
+          "h": "The number to use instead, if you only remember one",
+          "body": [
+            "Depth. It is the measurement that fails first in a real kitchen, and it is the one nobody puts in a comparison table.",
+            "Listed depths: 12.75 in, 13.38 in, 16.9 in. Against a nominal 24 in counter that leaves 11.3 in, 10.6 in and 7.1 in behind the machine, before you open anything."
+          ]
+        }
+      ],
+      "recommendation": "Use depth to exclude machines and capacity per square inch only to compare machines that already fit. If two machines both fit your counter and you cook two components at once, pick the dual-basket despite its lower density.",
+      "changes_when": "If you cook for four or more, the oven's density advantage compounds: you get more usable volume per inch, not just more nominal volume. Below that, the drawers are the better shape.",
+      "products": ["P1", "P2", "P3"],
+      "sources": ["S03", "S04", "S05"],
+      "links_to": ["air-fryer-capacity-checklist", "basket-or-oven-air-fryer"]
+    }
+  ]
+}

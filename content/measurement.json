@@ -1,0 +1,45 @@
+{
+  "generated": "2026-11-19",
+  "title": "How this site measures clicks without measuring you",
+  "description": "What the outbound-click counter records, what it deliberately does not record, why there is no cookie, and what has to happen before any performance number appears on this site.",
+  "sections": [
+    {
+      "h": "The counter records one integer, on your device",
+      "body": [
+        "When you press an outbound product button, the page increments a single whole number in your browser's local storage, keyed by product. That is the entire mechanism. It is a tally of how many times this browser followed a link, and it never leaves your device.",
+        "There is no identifier attached to that tally, no timestamp, no page path, and no network request. Clear your browser storage and it is gone, permanently, with no copy anywhere else."
+      ]
+    },
+    {
+      "h": "Why there is no cookie and no third-party script",
+      "body": [
+        "Amazon's Program Policies forbid associating a sub-tag or other tracking identifier with a specific end user, including by dynamically assigning sub-tags to people as they arrive. A cookie-based analytics script is precisely the machinery that makes that association possible.",
+        "Rather than rely on a policy promise, this site has no cookie, no session identifier and no analytics script loaded from anywhere. A page here cannot follow you to another page on another site because it does not know who you are."
+      ]
+    },
+    {
+      "h": "The five events, and where each one is recorded",
+      "body": [
+        "One: page view. Not recorded by this site. Two: guide read. Not recorded. Three: outbound product click. Recorded as a single aggregate integer per product in your browser only. Four: disclosed-link view, meaning the disclosure strip rendered on a page. Not recorded; it is guaranteed by the page template instead. Five: order placed on Amazon. Never visible to this site; it arrives only in the Associates reporting you control.",
+        "That split is deliberate. The events this site can observe without identifying anyone are counted; the events it cannot observe are not simulated with estimates."
+      ]
+    },
+    {
+      "h": "What would have to be true before a conversion rate appears on this site",
+      "body": [
+        "A conversion rate needs a denominator and a numerator from the same population. The denominator would have to come from an analytics source and the numerator from the Associates Orders Report, and the two do not count the same thing.",
+        "So the site publishes no conversion rate, no revenue forecast, and no modelled figure. The campaign ledger at /dashboard/ledger.html starts with zero rows and fixed columns, and it will only ever hold rows transcribed from an authorized first-party report with the date the report was read.",
+        "If you want a number that means something, it has to be measured. A plausible-looking number is worse than a blank, because it survives longer."
+      ]
+    },
+    {
+      "h": "How to turn on real measurement, if you own this site",
+      "body": [
+        "Step one: verify the site in Google Search Console. That gives you the queries the site is being shown for, which is the only information that should decide the next article.",
+        "Step two, optional: point the outbound counter at a self-hosted endpoint that logs a path and a product id only, discards the IP address before writing, and sets no cookie. Anything more than that recreates the per-user association the Program Policies prohibit.",
+        "Step three: read the Associates Click Reports and Orders Report on a fixed schedule, and transcribe one row into the ledger each time. Never estimate a gap between two reports; leave the gap visible."
+      ]
+    }
+  ],
+  "sources": ["S02"]
+}

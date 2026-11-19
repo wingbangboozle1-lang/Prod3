@@ -1,0 +1,37 @@
+{
+  "generated": "2026-11-19",
+  "premise": "Two category hubs. Each is a way in for a reader who arrived on a search for the category rather than a specific question.",
+  "categories": [
+    {
+      "slug": "air-fryers",
+      "name": "Air fryers",
+      "strapline": "Three machines, three different shapes. The measurement that decides which one is counter depth, not capacity.",
+      "intro": "These are the same category in Amazon's taxonomy and three different appliances in practice: a two-drawer machine, a single wide basket, and a countertop oven that also air fries. This hub lets you choose the shape first, because the shape determines everything after it.",
+      "chooser": {
+        "question": "Which of these sounds most like your kitchen?",
+        "options": [
+          { "label": "I cook two things at once and want them ready together", "product": "P1", "why": "Two independent 3 qt drawers with Sync Finish." },
+          { "label": "I want one basket, high heat, and the smallest footprint", "product": "P3", "why": "Single 8 qt basket, 12.75 in deep, 450 °F Hi-Fry." },
+          { "label": "I am really buying a second oven that also air fries", "product": "P2", "why": "26 qt oven with French doors, fits a 12 in pizza." }
+        ]
+      },
+      "guides": ["basket-or-oven-air-fryer", "air-fryer-capacity-checklist", "air-fryer-cleanup-and-counter-space", "counter-space-per-quart"],
+      "sources": ["S03", "S04", "S05", "S15"]
+    },
+    {
+      "slug": "thermometers",
+      "name": "Thermometers",
+      "strapline": "One answers 'is it done now'. The other answers 'tell me when it is done'. They are not competing products.",
+      "intro": "A handheld instant-read and a wireless multi-probe thermometer solve different problems, and the cheaper one is usually the one to buy first. This hub starts with the USDA targets that make a thermometer worth owning at all.",
+      "chooser": {
+        "question": "What do you want from a thermometer?",
+        "options": [
+          { "label": "A reading, right now, and then I am done", "product": "P4", "why": "One second, IP67, ships with a calibration certificate." },
+          { "label": "To leave the food and be told when it hits target", "product": "P5", "why": "Three wireless probes, five sensors, app readings over Wi-Fi." }
+        ]
+      },
+      "guides": ["do-i-need-a-meat-thermometer", "thermometer-buying-checklist", "thermometer-targets"],
+      "sources": ["S06", "S07", "S10"]
+    }
+  ]
+}

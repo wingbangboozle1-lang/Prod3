@@ -1,0 +1,82 @@
+{
+  "generated": "2026-11-19",
+  "premise": "One page per product. Not a review in the ordinary sense — no unit has been handled — but a specification reading with a verdict attached to a stated use case, and the listing's own inconsistencies surfaced rather than smoothed over.",
+  "verdict_scale": "A verdict here means 'this listing, read carefully, suits this use'. It is not a quality ranking and it is not a test result.",
+  "reviews": [
+    {
+      "product": "P1",
+      "verdict": "The right machine for cooking two components for two or three people, provided your counter is at least 14 in deep and you can live with two 3 qt drawers.",
+      "best_for": "Two-part dinners for two or three people, where the protein and the side need different times and you want them to land together.",
+      "not_for": "A whole chicken, a 12 in pizza, or anyone with less than about 14 in of counter depth.",
+      "what_the_listing_says": [
+        "Two independent 3 qt baskets with a combined 6 qt capacity, and Sync Finish to align the two timers.",
+        "13.38 in deep by 11.81 in wide by 10.63 in tall; black and grey; metal and plastic construction.",
+        "Features listed: Hi-Fry, a 2-minute button, automatic shut-off and a mute option.",
+        "At capture the listing showed 4.2 out of 5 stars from 4,876 ratings and an Amazon's Choice badge."
+      ],
+      "where_it_is_weak": "The capacity is stated twice and the two do not agree: 6 quarts in the title, 6 liters in the specification field. Ambiguity in the headline number of a listing is worth knowing about before you buy, not after.",
+      "fit_test": "If the largest single item you cook is a whole bird, this is the wrong machine. If you cook two things at once most nights, it is the right one.",
+      "sources": ["S03"]
+    },
+    {
+      "product": "P2",
+      "verdict": "The right machine if you are really buying a second oven that also air fries, and you have 17 in of counter depth and the clearance for two doors.",
+      "best_for": "Four to six people, a 12 in pizza, a 6 lb chicken on a rotisserie, or replacing a toaster oven rather than adding to one.",
+      "not_for": "A small kitchen, a tight counter, or anyone who wants a drawer to shake.",
+      "what_the_listing_says": [
+        "26 qt oven-style air fryer with French doors and an interior light, described as suitable for four to six people.",
+        "16.9 in deep by 15.8 in wide by 14.8 in tall; stainless steel; six cooking accessories included.",
+        "Presets named in a bullet include ribs, defrost, bake, toast, chicken, pizza, pastry, slow cook, roast, reheat and keep warm.",
+        "A dual-speed fan and automatic shut-off are listed among its features."
+      ],
+      "where_it_is_weak": "The preset count disagrees inside the same listing — 24 in the title, 25 in a bullet. Also: no star rating was present on the page at capture, so this site publishes none.",
+      "fit_test": "Measure the depth of your counter and the swing of the nearest cabinet. If either fails, this machine fails, regardless of how good the capacity looks.",
+      "sources": ["S04"]
+    },
+    {
+      "product": "P3",
+      "verdict": "The right machine for one thing at a time, crisply, with the shallowest footprint of the three air fryers here.",
+      "best_for": "A single layer of fries, wings or vegetables, and anyone who wants the simplest machine that still has a high-heat mode.",
+      "not_for": "Cooking two components at once, or anything tall.",
+      "what_the_listing_says": [
+        "Single basket, 8 qt, with a 450 °F Hi-Fry option and four presets for fries, chicken, meat and fish.",
+        "Modes listed: air fry, bake, dehydrate and frozen. Automatic shut-off, an LED shake reminder and programmable control.",
+        "12.75 in deep by 13.5 in wide by 10 in tall; stainless steel, with a black variant also listed.",
+        "At capture the listing showed 4.4 out of 5 stars from 16,890 ratings and an Amazon's Choice badge."
+      ],
+      "where_it_is_weak": "It is a multi-size listing — the same ASIN family offers 6 qt and 9 qt — so confirm which size you are buying. And 10 in tall is shallow for 8 qt, which is good for a single layer and bad for anything standing up.",
+      "fit_test": "If you want one basket and a high-heat finish, this fits. If you regularly cook two things at different temperatures, a single basket will cost you a second batch every night.",
+      "sources": ["S05"]
+    },
+    {
+      "product": "P4",
+      "verdict": "The right thermometer to buy first, if you want one measurement you can trust and a certificate you can check yourself.",
+      "best_for": "Checking whether food has reached a USDA minimum, on any appliance, in one second.",
+      "not_for": "Leaving in the food while it cooks, or checking a reading from another room.",
+      "what_the_listing_says": [
+        "Handheld instant-read probe, one-second reading claimed via a thermocouple sensor, plus or minus 0.5 °F claimed.",
+        "IP67 in the title, described as waterproof and rinse-clean, with an auto-rotating digital LED display and motion-activated wake.",
+        "Ships with an AAA battery, a user manual and a calibration certificate.",
+        "Specification field lists NIST and NSF as seller-declared standards."
+      ],
+      "where_it_is_weak": "The listing itself says a newer model exists, at ASIN B0GL7Z4KP4 — the supplied link points at this older one. And no product dimensions are published, so probe length, which decides whether it reaches a large roast's centre, is unknown.",
+      "fit_test": "If you do not own a thermometer, buy this class of product before any other accessory. If you already own an instant-read, the upgrade is a probe, not a faster instant-read.",
+      "sources": ["S06"]
+    },
+    {
+      "product": "P5",
+      "verdict": "The right thermometer if you want to leave the food alone and be told when it is done, and you are content to run it from a phone.",
+      "best_for": "Smoking, long roasts and any cook where you want to watch the curve rather than take a single reading.",
+      "not_for": "Anyone who wants a thermometer that works without a phone, a network and an app.",
+      "what_the_listing_says": [
+        "Three ultra-thin wireless probes with four internal sensors plus one ambient sensor.",
+        "Wi-Fi and Bluetooth connectivity, readings in the CHEF iQ app, up to 50 hours on a charge.",
+        "Probes described as heat-safe to 1000 °F, waterproof and dishwasher safe.",
+        "A two-year assurance from CHEF iQ, stated in a bullet. At capture the listing showed 4.2 out of 5 stars from 2,178 ratings."
+      ],
+      "where_it_is_weak": "The specification field lists around twenty standards including FDA, ISO 13485 and HACCP. That is a seller-populated attribute, not a certificate this site has seen. Physical dimensions are not published either.",
+      "fit_test": "If the appeal of a thermometer is 'I do not have to stand there', this is the product. If the appeal is 'I want to know right now', the instant-read is cheaper and simpler.",
+      "sources": ["S07"]
+    }
+  ]
+}

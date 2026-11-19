@@ -1,0 +1,224 @@
+{
+  "generated": "2026-11-19",
+  "note": "Every claim published on this site points at one of these. 'tier' records how strong the source is: primary = the authoritative body itself (Amazon's own agreement/policies, a .gov agency, Google Search Central, the product listing itself); supplied = provided by the site owner and not independently corroborated.",
+  "sources": [
+    {
+      "id": "S01",
+      "tier": "primary",
+      "publisher": "Amazon.com Associates Central",
+      "title": "Associates Program Operating Agreement",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "supports": [
+        "Section 5 requires the exact or substantially similar statement: \"As an Amazon Associate I earn from qualifying purchases.\" and forbids implying Amazon endorses you.",
+        "A violation of Section 5 is a material breach (Section 6)."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S02",
+      "tier": "primary",
+      "publisher": "Amazon.com Associates Central",
+      "title": "Associates Program Policies (updated April 14, 2026)",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "supports": [
+        "Section 2(a): Special Links must use the assigned Associates ID.",
+        "Section 2(b): links must not obscure that the destination is an Amazon Site; a link-shortening service used so the destination is unclear is prohibited.",
+        "Section 2(b): prices and availability may be shown only if Amazon serves that data or it comes via the Product Advertising / Creators API.",
+        "Section 2(b): no inaccurate, overbroad or misleading claims about a Product.",
+        "Section 2(b): Product lists (search results, department pages) require additional original content on the site."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S03",
+      "tier": "primary",
+      "publisher": "Amazon.com",
+      "title": "Listing: CHEFMAN 6 Quart Dual Basket Air Fryer Oven — ASIN B0CDY277D3",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "supports": [
+        "Title, 4.2 of 5 stars from 4,876 ratings, \"Amazon's Choice\", \"1K+ bought in past month\".",
+        "Capacity field \"6 liters\"; title and bullets \"6-quart\" / two 3-quart baskets.",
+        "Product dimensions 13.38\\\"D x 11.81\\\"W x 10.63\\\"H; colour Black, Grey; material Metal, Plastic.",
+        "Features: Sync Finish, Hi-Fry, 2-minute button, automatic shut-off, mute.",
+        "Included: 3-Year Kitchen Protection Plan offered by Asurion (a paid add-on, not included)."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S04",
+      "tier": "primary",
+      "publisher": "Amazon.com",
+      "title": "Listing: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven — ASIN B09B7SB46R",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "supports": [
+        "Title says \"24 One-Touch Preset Options\"; a bullet says \"25 COOKING PRE-SETS\" (count differs between the two).",
+        "Bullet: \"26-QUART CAPACITY ... suitable for preparing food for 4-6 people with capacity to rotisserie a 6-lb chicken, bake a 12 inch pizza\".",
+        "Product dimensions 16.9\\\"D x 15.8\\\"W x 14.8\\\"H; capacity field 24.6 liters; colour Stainless Steel; material Stainless Steel.",
+        "Features: automatic shut-off, programmable, temperature control, timer. Six cooking accessories included."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S05",
+      "tier": "primary",
+      "publisher": "Amazon.com",
+      "title": "Listing: Chefman Air Fryer 8 Qt TurboFry 4-in-1 — ASIN B08DKYBTPH",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "supports": [
+        "Title, 4.4 of 5 stars from 16,890 ratings, \"Amazon's Choice\", \"3K+ bought in past month\".",
+        "Product dimensions 12.75\\\"D x 13.5\\\"W x 10\\\"H; capacity 8 quarts; colour Stainless steel.",
+        "Features: 450 °F Hi-Fry, bake, dehydrate, frozen; automatic shut-off, LED shake reminder, programmable.",
+        "Size variants listed as 6 quarts, 8 quarts, 9 quarts; colour variants stainless steel and black."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S06",
+      "tier": "primary",
+      "publisher": "Amazon.com",
+      "title": "Listing: ThermoMaven 1 Sec Professional Digital Meat Thermometer — ASIN B0DHZTCNR5",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "supports": [
+        "Specification Met: NIST, NSF. Display type Digital. Included: thermometer, AAA battery, user manual, calibration certificate.",
+        "Bullets claim ±0.5 °F accuracy with a NIST certification, 1-second thermocouple reading, IP67 waterproof body, auto-rotating display.",
+        "The listing displays \"There is a newer model of this item\" pointing to ASIN B0GL7Z4KP4.",
+        "No star rating and no product-dimensions field were present on the page at capture."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S07",
+      "tier": "primary",
+      "publisher": "Amazon.com",
+      "title": "Listing: CHEF iQ Sense Smart Wireless Meat Thermometer, 3 probes — ASIN B0DZFD6R9Z",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "supports": [
+        "Title and bullet: three ultra-thin probes, five sensors (four internal plus one ambient), 1000 °F heat-safe probes, up to 50 hours on a charge.",
+        "Wi-Fi plus Bluetooth connectivity; app display; probes dishwasher safe; two-year assurance from CHEF iQ.",
+        "Size variants: 1 probe, 2 probes, 3 probes, 4 probes.",
+        "Specification Met field lists roughly twenty schemes (ANSI, ASME, ASTM, CCC, CE, CSA, EMC, ETL, FCC, FDA, FE, HACCP, ISO 13485, ISO 9000, ISO 9001, NIST, NSF, RoHS, UL, WEEE) as a seller-declared attribute."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S08",
+      "tier": "primary",
+      "publisher": "U.S. Federal Trade Commission",
+      "title": "Disclosures 101 for Social Media Influencers",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "supports": [
+        "Disclose any financial, employment, personal or family relationship with a brand.",
+        "The disclosure must be hard to miss and placed with the endorsement itself, not only on an about page or at the end.",
+        "\"advertisement\", \"ad\" and \"sponsored\" are acceptable plain terms.",
+        "\"You can't talk about your experience with a product you haven't tried.\""
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S09",
+      "tier": "primary",
+      "publisher": "U.S. Federal Trade Commission",
+      "title": "Endorsements, Influencers, and Reviews (guidance hub)",
+      "url": "https://www.ftc.gov/business-guidance/advertising-marketing/endorsements-influencers-reviews",
+      "supports": [
+        "The Endorsement Guides apply to reviews and endorsements; the hub links the Guides, staff FAQs and business guidance."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S10",
+      "tier": "primary",
+      "publisher": "USDA Food Safety and Inspection Service",
+      "title": "Safe Minimum Internal Temperature Chart (last updated April 14, 2025)",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+      "supports": [
+        "Beef, pork, veal and lamb steaks, chops and roasts: 145 °F (62.8 °C) and rest at least 3 minutes.",
+        "Ground meats: 160 °F (71.1 °C). All poultry: 165 °F (73.9 °C). Fish and shellfish: 145 °F (62.8 °C). Leftovers and casseroles: 165 °F (73.9 °C).",
+        "\"Cook all food to these minimum internal temperatures, as measured with a food thermometer, before removing food from the heat source.\""
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S11",
+      "tier": "primary",
+      "publisher": "Google Search Central",
+      "title": "Qualify your outbound links to Google (last updated 2025-12-10)",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "supports": [
+        "Mark links that are advertisements or paid placements with rel=\"sponsored\".",
+        "Multiple rel values may be supplied as a space- or comma-separated list."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S12",
+      "tier": "primary",
+      "publisher": "Google Search Central",
+      "title": "Spam policies for Google web search — thin affiliation, scaled content abuse, misleading functionality",
+      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+      "supports": [
+        "\"Thin affiliation\" is listed as a spam policy: affiliate pages that lack original value can be demoted or removed.",
+        "\"Scaled content abuse\" covers producing content at scale primarily to manipulate rankings."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S13",
+      "tier": "primary",
+      "publisher": "Google Search Central",
+      "title": "Control your snippets in search results — best practices for meta descriptions",
+      "url": "https://developers.google.com/search/docs/appearance/snippet",
+      "supports": [
+        "\"Create unique descriptions for each page on your site\"; identical descriptions on every page are called out as a problem.",
+        "A meta description is used when it describes the page better than on-page text."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S14",
+      "tier": "primary",
+      "publisher": "Google Search Central",
+      "title": "Creating helpful, reliable, people-first content",
+      "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+      "supports": [
+        "The content and quality self-assessment questions (original analysis, completeness, insight beyond the obvious, descriptive headings).",
+        "E-E-A-T and the \"Who, How, Why\" test for authorship and purpose."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S15",
+      "tier": "primary",
+      "publisher": "Amazon.com",
+      "title": "Air Fryers storefront category (node 17659096011)",
+      "url": "https://www.amazon.com/Air-Fryers/b?node=17659096011",
+      "supports": [
+        "Category placement used in the breadcrumb of the three air-fryer listings: Home & Kitchen > Kitchen & Dining > Small Appliances > Fryers > Air Fryers."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S16",
+      "tier": "supplied",
+      "publisher": "Site owner (project brief)",
+      "title": "Five link.amazon short links — resolution record (this repository)",
+      "url": "https://github.com/wingbangboozle1-lang/Prod3/blob/main/data/products.json",
+      "supports": [
+        "The five short links are the source of the product set. They were resolved by fetching each one on 2026-11-19 and recording the Amazon /dp/ URL actually served. The intended ASIN per link is stored next to the observed redirect, never merged into it."
+      ],
+      "captured": "2026-11-19"
+    },
+    {
+      "id": "S17",
+      "tier": "primary",
+      "publisher": "Amazon.com",
+      "title": "Amazon product ASIN documentation",
+      "url": "https://www.amazon.com/gp/help/customer/display.html?nodeId=G5WYD9SAF7PGXRNA",
+      "supports": [
+        "The ASIN is the checkable identifier this site uses to tie a written page to one exact listing.",
+        "Status: link published for review, page text not quoted anywhere on this site."
+      ],
+      "captured": "2026-11-19"
+    }
+  ]
+}

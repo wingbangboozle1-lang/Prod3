@@ -1,0 +1,21 @@
+{
+  "generated": "2026-11-19",
+  "premise": "This ledger starts empty on purpose. A column is filled only from an authorized first-party report, and every filled row carries the date the report was read. No estimate, projection or modelled figure belongs in this file.",
+  "definitions": {
+    "timestamp": "ISO 8601 UTC instant at which the row was recorded.",
+    "source": "Where the numbers came from, naming the exact report — for example \"Associates Click Reports\" or \"Associates Orders Report\".",
+    "channel": "Where the traffic was referred from. Must be a channel declared in the Associates account (S02).",
+    "eligible_sessions": "Sessions as Amazon defines them: the session begins at the click-through and ends at 24 hours, an order, or another Special Link click (S02).",
+    "clicks": "Outbound clicks reported by the Associates Click Reports for that channel and period.",
+    "reported_orders": "Orders reported in the Associates Orders Report. Not inferred from clicks.",
+    "provenance": "The document, export filename or screenshot the row was transcribed from, plus who read it.",
+    "frozen_rules": [
+      "Never enter an estimated or modelled conversion rate.",
+      "Never reconcile a row that mixes an Associates figure with a site-side figure in one column.",
+      "Never backfill a date you did not actually read the report on."
+    ]
+  },
+  "columns": ["timestamp", "source", "channel", "eligible_sessions", "clicks", "reported_orders", "provenance"],
+  "rows": [],
+  "note_for_reader": "There are zero rows because the first report has not been read yet. That is the whole of what is known about this site's performance."
+}

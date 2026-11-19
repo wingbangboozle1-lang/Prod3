@@ -1,0 +1,93 @@
+{
+  "generated": "2026-11-19",
+  "premise": "The one piece of analysis on this site that no listing can supply, and that is derived entirely from published dimensions. Capacity per square inch of counter footprint. It is arithmetic, not testing, and it is labelled as arithmetic.",
+  "method": "For each appliance with a published footprint, multiply the listed depth by the listed width in inches to get counter area, then divide the listed nominal capacity by that area. The result is quarts of nominal capacity per square inch of counter. Every input is copied from the product's own listing on 2026-11-19; no input is estimated.",
+  "caveats": [
+    "Nominal capacity is the manufacturer's headline figure, not a measured usable volume. A basket and an oven of the same nominal capacity do not hold the same food.",
+    "Counter area is the footprint as listed. It excludes clearance for opening a door, pulling a basket out, or a wall behind the unit. Real clearance needs are larger, and the oven-style machine needs far more front clearance than a basket drawer.",
+    "Two of the five products have no published dimensions and are excluded rather than estimated (F-04).",
+    "A higher number is not better. It means more nominal capacity per inch of counter, which may mean a taller unit, not a better one."
+  ],
+  "products": [
+    {
+      "id": "P1",
+      "label": "Chefman 6 Qt Dual Basket",
+      "depth_in": 13.38,
+      "width_in": 11.81,
+      "height_in": 10.63,
+      "capacity_quarts": 6,
+      "capacity_basis": "6 qt from the title. The listing's Capacity field says 6 liters and the two do not agree (F-01).",
+      "footprint_sq_in": 158.02,
+      "quarts_per_sq_in": 0.03797,
+      "sources": [
+        "S03"
+      ]
+    },
+    {
+      "id": "P2",
+      "label": "Emeril Lagasse 26QT French Door",
+      "depth_in": 16.9,
+      "width_in": 15.8,
+      "height_in": 14.8,
+      "capacity_quarts": 26,
+      "capacity_basis": "26 qt from the title. The Capacity field says 24.6 liters, which is 26 US quarts converted at 0.9464 litres per quart, so these agree.",
+      "footprint_sq_in": 267.02,
+      "quarts_per_sq_in": 0.09737,
+      "sources": [
+        "S04"
+      ]
+    },
+    {
+      "id": "P3",
+      "label": "Chefman TurboFry 8 Qt",
+      "depth_in": 12.75,
+      "width_in": 13.5,
+      "height_in": 10.0,
+      "capacity_quarts": 8,
+      "capacity_basis": "8 quarts from both the title and the Capacity field. They agree.",
+      "footprint_sq_in": 172.13,
+      "quarts_per_sq_in": 0.04648,
+      "sources": [
+        "S05"
+      ]
+    },
+    {
+      "id": "P4",
+      "label": "ThermoMaven 1 Sec Thermometer",
+      "depth_in": null,
+      "width_in": null,
+      "height_in": null,
+      "capacity_quarts": null,
+      "footprint_sq_in": null,
+      "quarts_per_sq_in": null,
+      "excluded_reason": "No product dimensions on the listing. This is a handheld thermometer, so capacity per counter area is not a meaningful comparison for it anyway (F-04).",
+      "sources": [
+        "S06"
+      ]
+    },
+    {
+      "id": "P5",
+      "label": "CHEF iQ Sense",
+      "depth_in": null,
+      "width_in": null,
+      "height_in": null,
+      "capacity_quarts": null,
+      "footprint_sq_in": null,
+      "quarts_per_sq_in": null,
+      "excluded_reason": "No product dimensions on the listing (F-04).",
+      "sources": [
+        "S07"
+      ]
+    }
+  ],
+  "findings": [
+    "The oven-style machine (P2) delivers about 2.6 times the nominal capacity per square inch of counter that P1 does, and about 2.1 times what P3 does. That is the arithmetic behind the intuition that an oven-style air fryer uses counter space efficiently: it is a box, and a box fills its footprint.",
+    "P1 and P3 are within 22 percent of each other on capacity per square inch, despite P3 holding two quarts more nominal capacity. P1's two-drawer design spreads the same kind of volume across a wider, shallower body.",
+    "Depth, not area, is the number that usually decides the purchase. P2 needs 16.9 in of front-to-back counter depth; P3 needs 12.75 in. On a standard 24 in deep counter, P2 leaves about 7 in behind it and P1 about 10.6 in.",
+    "Depth, not area, is the number that usually decides the purchase. P2 needs 16.9 in of front-to-back counter depth; P3 needs 12.75 in. On a nominal 24 in deep counter, P2 leaves about 7.1 in behind it and P1 about 10.6 in."
+  ],
+  "corrections": [
+    "The counter-depth arithmetic compares each unit's listed depth against a nominal 24 in counter. 24 in is a common North American base-cabinet depth quoted as a reference point here, not a measured standard for any particular kitchen.",
+    "No measurement, timing or durability claim on this page comes from handling a unit. It is arithmetic on published figures."
+  ]
+}

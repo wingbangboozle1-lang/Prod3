@@ -1,0 +1,505 @@
+{
+  "generated": "2026-11-19",
+  "captured": "2026-11-19",
+  "rules": [
+    "Every value below is copied from the product's own Amazon listing page on the capture date, or left blank.",
+    "A blank value is never inferred from a sibling product, a review widget, or a competitor.",
+    "No price, availability, delivery date, deal, or coupon is stored or published anywhere on this site. Amazon's Program Policies section 2(b) permits showing price and availability only when Amazon serves that data; this site does not, so it shows none.",
+    "intended.* is the confirmation record: the ASIN this site intends to link to and the date that intent was recorded. observed.* is what the short link actually did when fetched. They are never merged."
+  ],
+  "products": [
+    {
+      "id": "P1",
+      "handle": "chefman-6-quart-dual-basket-air-fryer",
+      "brand": "Chefman",
+      "name": "CHEFMAN 6 Quart Dual Basket Air Fryer Oven",
+      "short_name": "Chefman 6 Qt Dual Basket",
+      "family": "Dual-basket air fryer",
+      "category": "air-fryers",
+      "intended": {
+        "asin": "B0CDY277D3",
+        "listing_url": "https://www.amazon.com/dp/B0CDY277D3",
+        "confirmation_date": "2026-11-19",
+        "source": "Supplied short link link.amazon/B04G1MEwY (S16). The destination was resolved by fetching the link; the intent was recorded from the link the site owner supplied."
+      },
+      "observed": {
+        "short_link": "https://link.amazon/B04G1MEwY",
+        "resolved_asin": "B0CDY277D3",
+        "resolved_status": "HTTP 200, Amazon product page for ASIN B0CDY277D3",
+        "captured": "2026-11-19",
+        "agrees_with_intended": true,
+        "note": "The resolved URL carried query parameters (lv, btn_type, btn_ref, channelId, plpRedirect) but no visible tag= parameter in what was served to this session. Whether an Associates ID is attached is unverified — see Q-02."
+      },
+      "specs": {
+        "type": {
+          "value": "Dual-basket (two independent drawers)",
+          "src": "S03"
+        },
+        "capacity_title": {
+          "value": "6 qt total, described as two independent 3 qt baskets",
+          "src": "S03"
+        },
+        "capacity_field": {
+          "value": "6 liters (as printed in the listing's Capacity field)",
+          "src": "S03"
+        },
+        "dimensions": {
+          "value": "13.38 in D x 11.81 in W x 10.63 in H",
+          "src": "S03"
+        },
+        "colour": {
+          "value": "Black, Grey",
+          "src": "S03"
+        },
+        "material": {
+          "value": "Metal, Plastic",
+          "src": "S03"
+        },
+        "features": {
+          "value": "Sync Finish, Hi-Fry, 2-minute button, automatic shut-off, mute",
+          "src": "S03"
+        },
+        "temperature_range": {
+          "value": "",
+          "src": "",
+          "flag": "F-12",
+          "note": "The bullets begin a 'WIDE TEMPERATURE RANGE' claim but the numbers did not render in the captured page. Not published."
+        },
+        "presets": {
+          "value": "",
+          "src": "",
+          "flag": "F-12",
+          "note": "No preset count stated on the listing."
+        },
+        "dishwasher_safe_parts": {
+          "value": "Baskets described as nonstick and dishwasher safe",
+          "src": "S03"
+        },
+        "warranty": {
+          "value": "",
+          "src": "",
+          "note": "No manufacturer warranty period stated on the listing.",
+          "flag": "F-20"
+        },
+        "rating_at_capture": {
+          "value": "4.2 out of 5 stars from 4,876 ratings",
+          "src": "S03"
+        },
+        "badges_at_capture": {
+          "value": "Amazon's Choice; 1K+ bought in past month",
+          "src": "S03"
+        },
+        "price": {
+          "value": "",
+          "src": "",
+          "note": "Deliberately not stored or shown (Program Policies 2(b), S02)."
+        }
+      },
+      "highlights": [
+        "Two independent baskets, so a protein and a side can cook at once instead of in sequence.",
+        "Sync Finish is the feature that matters for two-basket cooking: it lines up the two timers to end together.",
+        "The footprint, 13.38 in deep by 11.81 in wide, is the number to measure your counter against before anything else."
+      ],
+      "watch_outs": [
+        "The Capacity field says 6 liters while the title says 6 quarts. 6 US quarts is about 5.68 litres, so the field is not a straight conversion. Both are printed on the listing; neither is corrected here (F-01).",
+        "Two 3 qt baskets do not behave like one 6 qt basket. A 6 qt single-basket machine holds a whole chicken; two 3 qt drawers hold pieces.",
+        "The listing puts a paid Asurion protection plan next to the buy box. It is an add-on, not part of the product."
+      ],
+      "signal_summary": "Published spec sheet, dated: dual-basket, 6 qt nominal capacity, 13.38 in counter depth. The listing's own capacity unit is inconsistent, so treat '6 qt' as nominal rather than measured."
+    },
+    {
+      "id": "P2",
+      "handle": "emeril-lagasse-26qt-french-door-air-fryer-oven",
+      "brand": "Emeril Lagasse",
+      "name": "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven",
+      "short_name": "Emeril Lagasse 26QT",
+      "family": "Oven-style air fryer",
+      "category": "air-fryers",
+      "intended": {
+        "asin": "B09B7SB46R",
+        "listing_url": "https://www.amazon.com/dp/B09B7SB46R",
+        "confirmation_date": "2026-11-19",
+        "source": "Supplied short link link.amazon/B02NbDxp3 (S16)."
+      },
+      "observed": {
+        "short_link": "https://link.amazon/B02NbDxp3",
+        "resolved_asin": "B09B7SB46R",
+        "resolved_status": "HTTP 200, Amazon product page for ASIN B09B7SB46R",
+        "captured": "2026-11-19",
+        "agrees_with_intended": true,
+        "note": "Resolved URL carried query parameters but no visible tag= parameter in what was served to this session. See Q-02."
+      },
+      "specs": {
+        "type": {
+          "value": "Oven-style air fryer with French doors",
+          "src": "S04"
+        },
+        "capacity_title": {
+          "value": "26 qt, described as suitable for 4-6 people, a 6 lb chicken or a 12 in pizza",
+          "src": "S04"
+        },
+        "capacity_field": {
+          "value": "24.6 liters (as printed in the listing's Capacity field)",
+          "src": "S04"
+        },
+        "dimensions": {
+          "value": "16.9 in D x 15.8 in W x 14.8 in H",
+          "src": "S04"
+        },
+        "colour": {
+          "value": "Stainless Steel",
+          "src": "S04"
+        },
+        "material": {
+          "value": "Stainless Steel",
+          "src": "S04"
+        },
+        "features": {
+          "value": "Automatic shut-off, programmable, temperature control, timer; dual-speed fan; interior light; six cooking accessories included",
+          "src": "S04"
+        },
+        "preset_count": {
+          "value": "Conflicting: the title says 24 one-touch presets, a bullet says 25 cooking presets",
+          "src": "S04",
+          "flag": "F-02"
+        },
+        "temperature_range": {
+          "value": "",
+          "src": "",
+          "flag": "F-12",
+          "note": "No maximum temperature stated on the listing."
+        },
+        "dishwasher_safe_parts": {
+          "value": "",
+          "src": "",
+          "flag": "F-12",
+          "note": "Not stated on the listing as captured."
+        },
+        "warranty": {
+          "value": "",
+          "src": "",
+          "note": "No manufacturer warranty period stated on the listing.",
+          "flag": "F-20"
+        },
+        "rating_at_capture": {
+          "value": "",
+          "src": "",
+          "flag": "F-05",
+          "note": "No star rating was present on the page at capture. Not inferred."
+        },
+        "badges_at_capture": {
+          "value": "",
+          "src": "",
+          "flag": "F-05",
+          "note": "No badge shown at capture."
+        },
+        "price": {
+          "value": "",
+          "src": "",
+          "note": "Deliberately not stored or shown (S02)."
+        }
+      },
+      "highlights": [
+        "26 qt is a different class of machine from a 6 qt basket fryer; it is a countertop oven that also air fries.",
+        "French doors open outward instead of a drop-down door, which changes how much clearance you need in front of it and how you reach in.",
+        "The listing states it fits a 12 in pizza and rotisseries a 6 lb chicken — two concrete tests that a basket fryer at this price will not pass."
+      ],
+      "watch_outs": [
+        "The preset count differs inside the same listing: 24 in the title, 25 in a bullet. It is not published here as a spec (F-02).",
+        "26 qt in the title against 24.6 liters in the field: 26 US quarts is about 24.6 litres, so these two do agree. Unlike P1, there is no unit conflict here.",
+        "17 in of counter depth is roughly half a metre. That is the largest footprint of the five products and the first thing to check."
+      ],
+      "signal_summary": "Published spec sheet, dated: oven-style, 26 qt nominal, 16.9 in counter depth, six accessories. Preset count is inconsistent on the listing itself."
+    },
+    {
+      "id": "P3",
+      "handle": "chefman-turbofry-8-quart-air-fryer",
+      "brand": "Chefman",
+      "name": "Chefman Air Fryer 8 Qt TurboFry 4-in-1",
+      "short_name": "Chefman TurboFry 8 Qt",
+      "family": "Single-basket air fryer",
+      "category": "air-fryers",
+      "intended": {
+        "asin": "B08DKYBTPH",
+        "listing_url": "https://www.amazon.com/dp/B08DKYBTPH",
+        "confirmation_date": "2026-11-19",
+        "source": "Supplied short link link.amazon/B00hJ57DV (S16)."
+      },
+      "observed": {
+        "short_link": "https://link.amazon/B00hJ57DV",
+        "resolved_asin": "B08DKYBTPH",
+        "resolved_status": "HTTP 200, Amazon product page for ASIN B08DKYBTPH (the 8-quart size variant)",
+        "captured": "2026-11-19",
+        "agrees_with_intended": true,
+        "note": "The listing offers 6 qt, 8 qt and 9 qt variants. The resolved page is the 8 qt variant. Resolved URL carried query parameters but no visible tag= parameter. See Q-02."
+      },
+      "specs": {
+        "type": {
+          "value": "Single-basket air fryer",
+          "src": "S05"
+        },
+        "capacity_title": {
+          "value": "8 qt (size variants also listed at 6 qt and 9 qt)",
+          "src": "S05"
+        },
+        "capacity_field": {
+          "value": "8 quarts",
+          "src": "S05"
+        },
+        "dimensions": {
+          "value": "12.75 in D x 13.5 in W x 10 in H",
+          "src": "S05"
+        },
+        "colour": {
+          "value": "Stainless steel (a black variant is also listed)",
+          "src": "S05"
+        },
+        "material": {
+          "value": "Plastic, Stainless Steel",
+          "src": "S05"
+        },
+        "features": {
+          "value": "TurboFry 4-in-1: air fry, bake, dehydrate, frozen; 450 F Hi-Fry option; automatic shut-off, LED shake reminder, programmable",
+          "src": "S05"
+        },
+        "presets": {
+          "value": "Four presets (French fries, chicken, meat, fish)",
+          "src": "S05"
+        },
+        "temperature_range": {
+          "value": "Hi-Fry option at 450 F described; full range not stated",
+          "src": "S05"
+        },
+        "dishwasher_safe_parts": {
+          "value": "Basket described as nonstick and dishwasher safe",
+          "src": "S05"
+        },
+        "warranty": {
+          "value": "",
+          "src": "",
+          "note": "No manufacturer warranty period stated on the listing.",
+          "flag": "F-20"
+        },
+        "rating_at_capture": {
+          "value": "4.4 out of 5 stars from 16,890 ratings",
+          "src": "S05"
+        },
+        "badges_at_capture": {
+          "value": "Amazon's Choice; 3K+ bought in past month",
+          "src": "S05"
+        },
+        "price": {
+          "value": "",
+          "src": "",
+          "note": "Deliberately not stored or shown (S02)."
+        }
+      },
+      "highlights": [
+        "One basket, 8 qt, 12.75 in deep — the simplest and shallowest of the three air fryers here.",
+        "Dehydrate is a real mode, not a preset label, so it can do jerky and dried fruit as well as frying.",
+        "A shake reminder and a 450 F Hi-Fry option cover the two things single-basket cooking usually gets wrong: uneven crisping and a ceiling too low to finish food."
+      ],
+      "watch_outs": [
+        "The basket is one compartment. Two foods need either two batches or one mixed batch that cooks at the same rate.",
+        "8 qt is generous but shallow: 10 in tall, so a tall roast will not fit even though the volume looks large.",
+        "This ASIN is a multi-size listing. Confirm the size you receive; the link resolves to the 8 qt variant."
+      ],
+      "signal_summary": "Published spec sheet, dated: single-basket, 8 qt, 12.75 in counter depth, four presets plus dehydrate and a 450 F Hi-Fry mode."
+    },
+    {
+      "id": "P4",
+      "handle": "thermomaven-1-sec-instant-read-thermometer",
+      "brand": "ThermoMaven",
+      "name": "ThermoMaven 1 Sec Professional Digital Meat Thermometer",
+      "short_name": "ThermoMaven 1 Sec Thermometer",
+      "family": "Handheld instant-read thermometer",
+      "category": "thermometers",
+      "intended": {
+        "asin": "B0DHZTCNR5",
+        "listing_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+        "confirmation_date": "2026-11-19",
+        "source": "Supplied short link link.amazon/B0c8moW59 (S16)."
+      },
+      "observed": {
+        "short_link": "https://link.amazon/B0c8moW59",
+        "resolved_asin": "B0DHZTCNR5",
+        "resolved_status": "HTTP 200, Amazon product page for ASIN B0DHZTCNR5",
+        "captured": "2026-11-19",
+        "agrees_with_intended": true,
+        "note": "The listing itself shows 'There is a newer model of this item' pointing to ASIN B0GL7Z4KP4 (F-03). Resolved URL carried query parameters but no visible tag= parameter. See Q-02."
+      },
+      "specs": {
+        "type": {
+          "value": "Handheld instant-read probe thermometer",
+          "src": "S06"
+        },
+        "reading_time": {
+          "value": "1 second claimed (thermocouple sensor)",
+          "src": "S06"
+        },
+        "accuracy_claim": {
+          "value": "plus or minus 0.5 F claimed; the listing states a NIST certification for that figure",
+          "src": "S06",
+          "flag": "F-07"
+        },
+        "certifications_listed": {
+          "value": "Specification Met field: NIST, NSF (seller-declared attribute)",
+          "src": "S06",
+          "flag": "F-06"
+        },
+        "water_resistance": {
+          "value": "IP67 stated in the title; body described as waterproof and rinse-clean",
+          "src": "S06"
+        },
+        "display": {
+          "value": "Digital LED, auto-rotating; movement-activated wake and sleep",
+          "src": "S06"
+        },
+        "dimensions": {
+          "value": "",
+          "src": "",
+          "flag": "F-04",
+          "note": "No product-dimensions field on the listing. Not published."
+        },
+        "power": {
+          "value": "AAA battery included",
+          "src": "S06"
+        },
+        "included": {
+          "value": "Thermometer, AAA battery, user manual, calibration certificate",
+          "src": "S06"
+        },
+        "care": {
+          "value": "Wipe clean",
+          "src": "S06"
+        },
+        "rating_at_capture": {
+          "value": "",
+          "src": "",
+          "flag": "F-05",
+          "note": "No star rating was present on the page at capture."
+        },
+        "badges_at_capture": {
+          "value": "",
+          "src": "",
+          "flag": "F-05",
+          "note": "No badge shown at capture."
+        },
+        "price": {
+          "value": "",
+          "src": "",
+          "note": "Deliberately not stored or shown (S02)."
+        }
+      },
+      "highlights": [
+        "One-second reading matters for thin food: a slow thermometer keeps the probe in long enough that the reading drifts.",
+        "IP67 and a wipe-clean body mean it can be rinsed rather than scrubbed around the screen.",
+        "It ships with a calibration certificate and an AAA battery, so it is usable the day it arrives — useful for checking against an ice bath."
+      ],
+      "watch_outs": [
+        "The listing shows a newer model (B0GL7Z4KP4) in a same-colour family. The supplied link points at this ASIN, not the newer one (F-03).",
+        "There is no product-dimensions field, so probe length — the specification that decides whether it reaches the centre of a large roast — is unpublished here (F-04).",
+        "NIST and NSF appear in the seller's specification field. A certification body's mark was not independently verified (F-06, F-07)."
+      ],
+      "signal_summary": "Published spec sheet, dated: handheld instant-read, 1 s claimed, IP67, AAA. Probe length and physical size are absent from the listing."
+    },
+    {
+      "id": "P5",
+      "handle": "chef-iq-sense-wireless-thermometer",
+      "brand": "CHEF iQ",
+      "name": "CHEF iQ Sense Smart Wireless Meat Thermometer, 3 Probes",
+      "short_name": "CHEF iQ Sense (3 probes)",
+      "family": "Wireless multi-probe thermometer",
+      "category": "thermometers",
+      "intended": {
+        "asin": "B0DZFD6R9Z",
+        "listing_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "confirmation_date": "2026-11-19",
+        "source": "Supplied short link link.amazon/B0f3GKalj (S16)."
+      },
+      "observed": {
+        "short_link": "https://link.amazon/B0f3GKalj",
+        "resolved_asin": "B0DZFD6R9Z",
+        "resolved_status": "HTTP 200, Amazon product page for ASIN B0DZFD6R9Z (3-probe size variant)",
+        "captured": "2026-11-19",
+        "agrees_with_intended": true,
+        "note": "The listing offers 1, 2, 3 and 4-probe variants. The resolved page is the 3-probe variant. Resolved URL carried query parameters but no visible tag= parameter. See Q-02."
+      },
+      "specs": {
+        "type": {
+          "value": "Wireless multi-probe thermometer with a charging hub",
+          "src": "S07"
+        },
+        "probes": {
+          "value": "Three ultra-thin probes included; variants listed with 1, 2, 3 and 4 probes",
+          "src": "S07"
+        },
+        "sensors": {
+          "value": "Five sensors: four internal temperature sensors plus one ambient sensor",
+          "src": "S07"
+        },
+        "heat_resistance": {
+          "value": "Probes described as built to endure 1000 F",
+          "src": "S07"
+        },
+        "connectivity": {
+          "value": "Wi-Fi and Bluetooth; readings displayed in the CHEF iQ app",
+          "src": "S07"
+        },
+        "battery": {
+          "value": "Up to 50 hours on a full charge (stated)",
+          "src": "S07"
+        },
+        "certifications_listed": {
+          "value": "Specification Met field lists about twenty schemes including FDA, ISO 13485, HACCP (seller-declared attribute)",
+          "src": "S07",
+          "flag": "F-06"
+        },
+        "water_resistance": {
+          "value": "Probes described as waterproof and dishwasher safe",
+          "src": "S07"
+        },
+        "dimensions": {
+          "value": "",
+          "src": "",
+          "flag": "F-04",
+          "note": "No product-dimensions field on the listing. Not published."
+        },
+        "warranty": {
+          "value": "Two-year assurance from CHEF iQ, stated in a bullet",
+          "src": "S07"
+        },
+        "included": {
+          "value": "Three probes and a smart hub",
+          "src": "S07"
+        },
+        "rating_at_capture": {
+          "value": "4.2 out of 5 stars from 2,178 ratings",
+          "src": "S07"
+        },
+        "badges_at_capture": {
+          "value": "1K+ bought in past month",
+          "src": "S07"
+        },
+        "price": {
+          "value": "",
+          "src": "",
+          "note": "Deliberately not stored or shown (S02)."
+        }
+      },
+      "highlights": [
+        "Three probes means three different proteins can be tracked to three different targets in the same cook.",
+        "The ambient sensor reads oven or grill temperature alongside the food, which is the difference between 'cook 20 minutes' and 'cook until the food is at target'.",
+        "App-based readings with a stated unlimited range over Wi-Fi are what you want if the smoker is outside and you are not.",
+        "A stated two-year assurance and dishwasher-safe probes lower the running cost of owning it."
+      ],
+      "watch_outs": [
+        "It is app-dependent. The listing's display type is 'App', so a phone and a Wi-Fi network are part of the product, not accessories.",
+        "The specification field lists about twenty certification schemes; that is a seller-populated attribute and not a substitute for a certificate you can read (F-06).",
+        "Probe length and hub size are not published on the listing (F-04).",
+        "This is the priciest class of product in the set; the extra cost buys connectivity and probes, not accuracy versus a good instant-read."
+      ],
+      "signal_summary": "Published spec sheet, dated: wireless, three probes, five sensors, Wi-Fi and Bluetooth, 1000 F heat-safe probes, two-year assurance. Physical size not published."
+    }
+  ]
+}

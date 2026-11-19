@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analytics &amp; Privacy Status | Kitchen Counter</title>
+<meta name="description" content="What Kitchen Counter measures, what stays in your browser, and which analytics and email features are not connected.">
+<meta property="og:title" content="Analytics &amp; Privacy Status | Kitchen Counter">
+<meta property="og:description" content="Local event counters only; no server endpoint or email signup is connected.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="assets/og-image.svg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://wingbangboozle1-lang.github.io/Prod3/analytics.html">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><div class="wrap">
+  <a class="brand" href="index.html">Kitchen Counter<small>Listed specs, plainly told</small></a>
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html">Front page</a><a href="air-fryers.html">Air fryers</a><a href="meat-thermometers.html">Thermometers</a><a href="compare.html">Compare</a><a href="buying-guide.html">Buying guide</a><a href="direction.html">Direction</a>
+  </nav>
+</div></header>
+<div class="disclosure" role="note"><div class="wrap"><strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. If a qualifying purchase is credited, Kitchen Counter may earn a commission at no extra cost to you. Tracking ID: <strong>shopnow047c-20</strong>. Prices change — confirm on Amazon. <a href="flagged.html">Flagged for Review</a> · <a href="disclosure.html">Full disclosure</a>.</div></div>
+
+<main id="main"><div class="article">
+<p class="kicker">Trust · Analytics &amp; privacy</p>
+<h1>Analytics and email: current status</h1>
+<p class="byline">Kitchen Counter · Status checked 2026-11-19 · No server-side collection is enabled</p>
+
+<div class="callout"><strong>In plain language:</strong> the site currently keeps a few event counts in your browser's local storage. It does not send analytics events to a server, so there are no site-wide click or readership totals. There is no working email signup.</div>
+
+<h2>What the page script counts locally</h2>
+<ul>
+<li><strong><code>page_view</code></strong> — a page load in this browser.</li>
+<li><strong><code>outbound_click</code></strong> — activation of a supplied product link; the local counter does not identify a person.</li>
+<li><strong><code>article_read</code></strong> — reaching the halfway point of an article in this browser.</li>
+<li><strong><code>chooser_complete</code></strong> — completing the three-question chooser. Changing an answer after completion is counted as a new completed set of choices.</li>
+<li><strong><code>reader_signup</code></strong> — reserved for an email provider's confirmed signup response. No signup form or email provider is connected, so this event is not currently emitted.</li>
+</ul>
+
+<h2>What is not configured</h2>
+<ul>
+<li><strong>No self-hosted analytics endpoint:</strong> the endpoint setting in <code>assets/app.js</code> is blank. GitHub Pages serves static files and does not receive the site's event POSTs.</li>
+<li><strong>No aggregate event data:</strong> localStorage counts stay in the visitor's browser. They are not uploaded or shared with Kitchen Counter.</li>
+<li><strong>No email collection:</strong> the earlier demo form has been removed so it cannot suggest an address was saved when it was not. For new articles, use the <a href="feed.xml">RSS feed</a> in a feed reader.</li>
+</ul>
+
+<h2>Local storage and control</h2>
+<p>The event counters are stored by this browser for this site and persist until browser storage is cleared. They are not cookies and do not contain an email address, name, account, or cross-site identifier. You can clear them using your browser's site-data controls. The small counter shown in the footer is a local-device counter, not a visitor total.</p>
+
+<h2>Before any server collection is enabled</h2>
+<p>A hosting endpoint, origin policy, retention period, access controls, and privacy notice must be selected and tested. The current static site cannot implement that service by itself. No analytics endpoint, email provider, or Search Console property has been configured in this repository; the Amazon account's assignment and eligibility remain unverified. Until those prerequisites are deliberately configured, this page's local-only description remains the source of truth.</p>
+
+<p class="mt"><a href="about.html">← About</a> · <a href="direction.html">Direction &amp; open questions →</a></p>
+</div></main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><h4>Kitchen Counter</h4><p>Listed specs, plainly told.</p><p id="local-counts" class="small">Local counts: loading…</p></div>
+    <div><h4>Shop</h4><ul><li><a href="air-fryers.html">Air fryers</a></li><li><a href="meat-thermometers.html">Meat thermometers</a></li><li><a href="compare.html">Compare all five</a></li><li><a href="buying-guide.html">Buying guide</a></li></ul></div>
+    <div><h4>Guides</h4><ul><li><a href="articles/basket-or-oven-air-fryer.html">Basket or oven?</a></li><li><a href="articles/air-fryer-capacity-checklist.html">Capacity checklist</a></li><li><a href="articles/cleanup-counter-space.html">Cleanup &amp; space</a></li><li><a href="articles/questions-before-multi-function.html">Before you buy</a></li></ul></div>
+    <div><h4>Trust</h4><ul><li><a href="disclosure.html">Disclosure</a></li><li><a href="sources.html">Source register</a></li><li><a href="flagged.html">Flagged for review</a></li><li><a href="analytics.html">Analytics &amp; privacy</a></li><li><a href="direction.html">Direction</a></li><li><a href="executive-summary.html">Executive summary</a></li><li><a href="about.html">About</a></li></ul></div>
+  </div>
+  <p class="foot-disclosure"><strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Tracking ID: shopnow047c-20. If a qualifying purchase is credited, Kitchen Counter may earn a commission at no extra cost to you. Account status and short-link compliance remain unverified (FLG-006/010) — details in Flagged for Review. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.</p>
+</div></footer>
+<script src="assets/app.js" defer></script>
+</body></html>

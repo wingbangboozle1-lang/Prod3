@@ -9,6 +9,13 @@ Checks:
  3. Every outbound link to link.amazon carries rel="sponsored".
  4. Every internal href/src target exists on disk.
  5. sitemap.xml lists every HTML page.
+ 6. Banned accuracy/compliance phrases do not appear (unverified participation
+    claims, "Verified picks", undated "Observed" prices, capacity-ratio claims,
+    unattributed NIST-certification claims).
+ 7. Every table marked data-source-required has an https source link in every
+    body row.
+ 8. Every <p class="price"> block carries a snapshot date.
+ 9. Article JSON-LD blocks carry dateModified.
 """
 import json, re, sys
 from pathlib import Path
@@ -97,6 +104,63 @@ for f in html_files:
     if rel not in sitemap:
         errors.append(f"sitemap.xml: missing {rel}")
 print("OK sitemap coverage checked")
+
+# 6. banned phrases: unverified claims the audit removed must not return
+BANNED = [
+    "is a participant in the Amazon Services LLC Associates Program",
+    "Verified picks",
+    "verified line-by-line",
+    "read line-by-line",
+    "verified specs",
+    "verified models",
+    "Verified Air",
+    "Observed 2026-11-19",
+    "qt/in",
+    "capacity per inch",
+    "whole-chicken test",
+    "±0.5°F NIST-certified",
+    "NIST-certified accuracy",
+    "NIST-certified,",
+    "suits two people",
+    "wins on",
+    "the winner",
+    "Winner",
+]
+for f in html_files:
+    html = f.read_text()
+    rel = f.relative_to(ROOT)
+    for phrase in BANNED:
+        if phrase in html:
+            errors.append(f"{rel}: banned phrase present: {phrase!r}")
+print("OK banned-phrase scan")
+
+# 7. data-source-required tables: every body row must cite an https source
+for f in html_files:
+    html = f.read_text()
+    rel = f.relative_to(ROOT)
+    for tbl in re.findall(r"<table[^>]*data-source-required[^>]*>.*?</table>", html, re.S):
+        rows = re.findall(r"<tr>(.*?)</tr>", tbl, re.S)
+        for row in rows[1:]:  # skip header row
+            if "https://" not in row:
+                errors.append(f"{rel}: data-source-required row without https source link")
+print("OK data-source-required tables")
+
+# 8. price blocks must be dated
+for f in html_files:
+    html = f.read_text()
+    rel = f.relative_to(ROOT)
+    for block in re.findall(r'<p class="price">(.*?)</p>', html, re.S):
+        if not re.search(r"20\d{2}-\d{2}-\d{2}", block):
+            errors.append(f"{rel}: <p class=\"price\"> without snapshot date")
+print("OK price dating")
+
+# 9. articles must carry JSON-LD dateModified
+for f in sorted((ROOT / "articles").glob("*.html")):
+    html = f.read_text()
+    rel = f.relative_to(ROOT)
+    if '"dateModified"' not in html:
+        errors.append(f"{rel}: JSON-LD missing dateModified")
+print("OK article dateModified")
 
 if errors:
     print("\nFAIL:")

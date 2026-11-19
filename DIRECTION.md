@@ -13,9 +13,9 @@ at the bottom. Suggestions are proposals; open questions are unknowns.
 | SG-01 | Weekly price re-check: re-fetch the five listings, update dated prices | Fresh prices convert better than stale ones | Low (script exists) |
 | SG-02 | One new question-shaped guide per week, added to sitemap + RSS | Steady organic surface area | Medium |
 | SG-03 | Amazon-provided product images (Program Content) on product cards | Visual trust without copyright risk | Low |
-| SG-04 | Self-hosted analytics endpoint (wire `ENDPOINT` in `assets/app.js`) | Real click/conversion data for topic choices | Medium |
+| SG-04 | Self-hosted analytics endpoint (choose service + retention + privacy notice first, then wire `ENDPOINT` in `assets/app.js`) | Real click data for topic choices | Medium |
 | SG-05 | Search Console verification + sitemap submission | Measure whether search traffic arrives | Low |
-| SG-06 | Email reader capture (wire the form to a provider) | Return visits independent of search | Medium |
+| SG-06 | Email reader capture (choose a provider + consent copy first, then add a real signup — the demo form was removed) | Return visits independent of search | Medium |
 | SG-07 | Seasonal clusters: holiday, grilling season, back-to-school dorm | Match content to buying moments | Medium |
 | SG-08 | Replace the two "newer model" picks (FLG-004/005) after review | Promote current models, not superseded ones | Low |
 
@@ -30,6 +30,8 @@ at the bottom. Suggestions are proposals; open questions are unknowns.
 | Q-05 | Which product converts best? | Associates reports + outbound-click counts (SG-04); never forecast |
 | Q-06 | Which listing conflict is correct (FLG-002/003)? | Seller clarification or manufacturer spec sheet |
 | Q-07 | Should the site cover more categories? | Measure the two current pillars first; expand only on evidence |
+| Q-08 | Is tracking ID shopnow047c-20 assigned to an enrolled, eligible Associates account? | Owner checks Associates Central; then update disclosure copy (FLG-010) |
+| Q-09 | What does the ThermoMaven calibration certificate actually certify? | Owner obtains the certificate; record lab, date, range, uncertainty, reference chain (FLG-009) |
 
 ## Path chooser
 

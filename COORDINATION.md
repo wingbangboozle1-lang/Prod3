@@ -30,6 +30,7 @@
 | T-09 | Executive summary | done | 5a4e180c | `executive-summary.html`, `EXECUTIVE_SUMMARY.md` |
 | T-10 | Gates: `scripts/check_site.py`, `tools/verify_site.py`, link check | done | 5a4e180c | `scripts/*`, `tools/*` |
 | T-11 | GitHub Pages deploy + PR to main + merge | done | 5a4e180c | `.github/workflows/pages.yml` |
+| T-12 | Post-merge integration audit: correct demonstrable editorial errors, disclosure/capture copy, event schema, analytics readiness, and unresolved compliance gates | done | `arena/5bd92dff-prod3` | all published HTML for disclosure/nav, `assets/app.js`, `assets/style.css`, `analytics.html`, `analytics/*`, `data/campaign-ledger.json`, `data/sources.json`, `sources.html`, `flagged.html`, `direction.html`, `DIRECTION.md`, `sitemap.xml`, `scripts/check_site.py`, `tools/verify_site.py`, `README.md`, `EXECUTIVE_SUMMARY.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -65,6 +66,16 @@ via direct fetch. Findings (full detail in `data/products.json`):
 - FLG-007 — Prices observed 2026-11-19 will drift; always verify on Amazon before purchase.
 - FLG-008 — No product photography used (Operating Agreement §1: Program Content
   includes images; only Amazon-provided images may be used). Site uses CSS/SVG art.
+- FLG-009 — ThermoMaven ±0.5°F / "NIST & NSF Certified" / 1-sec / IP67 wording is seller
+  claim, not test; certificate unexamined; NIST traceability applies to measurement results.
+- FLG-010 — Amazon Associates account status unverified (tracking ID owner-supplied);
+  participation claims removed, disclosure copy conditional.
+- FLG-011 — /dp/<token> Page-Not-Found check investigated and dismissed as link evidence
+  (constructed /dp/ URLs are not the supplied short links; only the 9-char length is a finding).
+- FLG-012 — Price/rating snapshots are date-only (no observation time or delivery location).
+- FLG-013 — Emeril accessories count: six named in title/About vs "7 Accessories" config string.
+- FLG-014 — Reader email signup not connected (demo form with fake confirmation removed).
+- FLG-015 — Campaign ledger empty by design; no first-party reports yet.
 
 ## Cross-scope requests
 
@@ -72,7 +83,16 @@ via direct fetch. Findings (full detail in `data/products.json`):
 
 ## Handoff / conflict log
 
-(none)
+- 2026-11-19 T-12 audit (`arena/5bd92dff-prod3`): claim policy rewritten across the site —
+  seller-stated specs attributed, capacity-ratio/serving-size/winner claims removed,
+  NIST/USDA sources added to the register, FLG-009..015 opened, demo signup removed
+  (matching `analytics.html`), and the b84724ea price-policy pass merged in (no currency
+  rendered anywhere; §2(b) stated where prices used to be). Disclosure carries the required
+  “As an Amazon Associate…” statement plus conditional commission wording and the
+  unverified-account caveats (FLG-010). Release gates enforce banned phrases, the
+  currency ban, claim markers, sponsored coverage, and source-linked data tables.
+  Intended ASINs remain unconfirmed (FLG-001) and short-link compliance unresolved
+  (FLG-006) — do not conclude the supplied links are invalid.
 
 ## Deploy record
 

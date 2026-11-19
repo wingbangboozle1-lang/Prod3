@@ -2,13 +2,16 @@
 """Whole-tree release gate for Kitchen Counter. Exit 3 on violation.
 
 Runs scripts/check_site.py, then verifies:
- - data/sources.json parses and every source URL is well-formed
+ - data/sources.json parses, every source URL is well-formed, and the
+   verification-semantics note is present
+ - data/products.json carries claim markers, dated prices, and only flags
+   documented in flagged.html
  - data/campaign-ledger.json has no fabricated rows (rows must be empty
    until first-party reports exist; provenance must be dated)
  - feed.xml is well-formed XML with 8 items
  - robots.txt references the sitemap
 """
-import json, subprocess, sys
+import json, re, subprocess, sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -25,9 +28,27 @@ try:
     sources = json.loads((ROOT / "data/sources.json").read_text())
     for s in sources["sources"]:
         assert s["url"].startswith("https://"), f"{s['id']}: url not https"
+        assert s.get("used_for"), f"{s['id']}: missing used_for"
+    assert sources.get("note"), "sources.json missing verification-semantics note"
     print(f"OK sources.json: {len(sources['sources'])} sources")
 except Exception as e:
     errors.append(f"sources.json: {e}")
+
+try:
+    products = json.loads((ROOT / "data/products.json").read_text())
+    assert products.get("claim_basis"), "products.json missing claim_basis"
+    assert products.get("price_snapshot_note"), "products.json missing price_snapshot_note"
+    for p in products["products"]:
+        assert re.search(r"20\d{2}-\d{2}-\d{2}", p["price_observed"]), f"{p['id']}: undated price"
+        for f_id in p["flags"]:
+            assert f_id in (ROOT / "flagged.html").read_text(), f"{p['id']}: flag {f_id} not documented in flagged.html"
+    p4 = next(x for x in products["products"] if x["id"] == "P-04")
+    for k in ("accuracy", "certification", "response_time"):
+        v = p4["specs"][k]
+        assert "claim" in v.lower() or "seller" in v.lower(), f"P-04 specs.{k} not marked as seller claim"
+    print("OK products.json: dated prices, claim markers, flags documented")
+except Exception as e:
+    errors.append(f"products.json claims: {e}")
 
 try:
     ledger = json.loads((ROOT / "data/campaign-ledger.json").read_text())

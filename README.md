@@ -1,8 +1,18 @@
 # Prod3 — Kitchen Counter
 
-**Kitchen Counter — Verified picks, plainly told.** A publication-style Amazon
+**Kitchen Counter — Listed specs, plainly told.** A publication-style Amazon
 affiliate site covering air fryers and meat thermometers. Tracking ID:
-`shopnow047c-20`. Published to GitHub Pages on merge to `main` (project site: https://wingbangboozle1-lang.github.io/Prod3/)
+`shopnow047c-20` (owner-supplied; account eligibility unverified — FLG-010).
+Published to GitHub Pages on merge to `main` (project site: https://wingbangboozle1-lang.github.io/Prod3/)
+
+The 2026-11-19 audits (T-12 and the b84724ea compliance pass) set the claim
+policy: specs and ratings are **seller statements from dated listing snapshots**,
+attributed as such; accuracy/NIST wording is quoted as claim, never as test
+result; **no prices are displayed at all** (Program Policies §2(b): price and
+availability may be shown only from Amazon-served or PA-API data); the demo
+email signup was removed. Release gates enforce these rules (banned phrases,
+currency-amount ban, claim markers, sponsored coverage, canonicals, source-linked
+data tables).
 
 ## Status at a glance
 
@@ -11,8 +21,8 @@ affiliate site covering air fryers and meat thermometers. Tracking ID:
 | Submitted tokens that are ASINs | 0 of 5 (they are 9-char short-link tokens; an ASIN is 10 chars) |
 | Observed destinations | B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z |
 | Intended ASINs confirmed | 0 of 5 (blank until owner confirms — see FLG-001) |
-| Pages | 19 HTML (front page, 2 pillars, compare, guide, 8 articles, 6 trust pages) |
-| Gates | `tools/verify_site.py` (exit 3 on violation) |
+| Pages | 21 HTML (front page, 2 pillars, compare, guide, 8 articles, 7 trust pages incl. analytics, 404 page — not in sitemap) |
+| Gates | `tools/check_site.py`, `scripts/check_site.py`, `tools/verify_site.py` (non-zero exit on violation) |
 
 ## Working with it
 
@@ -33,7 +43,7 @@ No third-party dependencies: the standard library only.
 - `air-fryers.html`, `meat-thermometers.html` — category pillars
 - `compare.html`, `buying-guide.html` — comparison + decision framework
 - `articles/` — 8 question-shaped guides (also in `feed.xml` + `sitemap.xml`)
-- `disclosure.html`, `sources.html`, `flagged.html`, `direction.html`, `executive-summary.html`, `about.html` — trust surfaces
+- `disclosure.html`, `sources.html`, `flagged.html`, `direction.html`, `executive-summary.html`, `about.html`, `analytics.html` — trust surfaces
 - `data/` — `products.json` (intent vs observed, never merged), `sources.json`, `campaign-ledger.json` (empty until first-party reports)
 - `assets/` — `style.css`, `app.js` (privacy-preserving measurement), `og-image.svg`, `favicon.svg`
 - `COORDINATION.md` — shared task board · `DIRECTION.md` — suggestions + open questions + path chooser

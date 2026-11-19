@@ -9,6 +9,7 @@ DATE = "2026-11-19"
 
 def pages():
     files = sorted(ROOT.glob("*.html")) + sorted((ROOT / "articles").glob("*.html"))
+    files = [f for f in files if f.name != "404.html"]  # error page: never in the sitemap
     return [f.relative_to(ROOT).as_posix() for f in files]
 
 def render():

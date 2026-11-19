@@ -288,3 +288,4 @@ Checked against the published site, not against the local tree:
 - Event note: the ledger defines five events; `assets/app.js` emits four locally (`reader_signup` only
   fires after a confirmed provider response, and none is connected). The Analytics page already says so.
 - Cross-scope requests: none. Handoff: none.
+- PR #8: https://github.com/wingbangboozle1-lang/Prod3/pull/8 (arena/7d756ee2-prod3 → main), merged with `gh pr merge --merge`, merge commit 452406b11f358668b3e4d9181f68ddfb3f6fcf47. Deploy GitHub Pages: success.

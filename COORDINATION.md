@@ -775,3 +775,16 @@ regenerated; all gates green.
   properly (FLG-015 keeps the polish's Basis line; FLG-016 keeps the corrected PNG wording) and
   `scripts/check_site.py` gained check #10 — a repo-wide conflict-marker scan over every
   non-binary file (negative-tested: exit 1 with a marker file, exit 0 clean).
+
+### PR #20 record (2026-11-19)
+
+- **PR #20:** https://github.com/wingbangboozle1-lang/Prod3/pull/20 — merged, merge commit
+  `1e0326a` (conflict-marker fix + check #10 + this board's incident log).
+- **Pages deploy:** `Deploy GitHub Pages` run `44628186981` — **success**;
+  `pages build and deployment` run `44628185796` — **success**; Pages status `built`.
+- **Live re-check (cache-busted fetch):** `/flagged.html` renders FLG-015 with its Basis line and
+  the corrected FLG-016, with **no conflict markers**. Earlier post-deploy fetches returned a
+  cached copy of the pre-fix page; the cache-busted request confirmed the deployed bytes.
+- This closes T-23 for session `arena/28d2d6c0-prod3`. Residual open items are unchanged and
+  owner-side: FLG-001, FLG-006, FLG-010, FLG-015 (ledger), FLG-016/Q-21 (share debugger),
+  and the open questions on `questions.html`.

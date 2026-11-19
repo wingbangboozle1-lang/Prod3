@@ -2,7 +2,7 @@
 
 **Site:** Kitchen Counter — Listed specs, plainly told
 **Tracking ID:** shopnow047c-20 (owner-supplied; account eligibility unverified — FLG-010)
-**Date:** 2026-11-19 (T-12 audit revision) · **HTML mirror:** `executive-summary.html`
+**Date:** 2026-11-19 (T-12 audit revision; shop-polish pass T-17/T-18 same day) · **HTML mirror:** `executive-summary.html`
 
 ## What it is
 
@@ -53,14 +53,35 @@ decide.
 - FLG-009: ThermoMaven accuracy/NIST wording is seller claim, not test.
 - FLG-010: Associates account status unverified.
 - FLG-014: email signup not connected. FLG-015: campaign ledger empty by design.
+- FLG-016: SVG social-preview image unverified in share previewers (F-21).
 
 ## What happens next
 
 Choose a path in `DIRECTION.md` / `direction.html`: steady publication
-(weekly guides + price checks), conversion focus (images + a real analytics
-endpoint + a real email provider), or hold until FLG-001/006/010 are
-resolved. Measurement is privacy-preserving (four events counted locally;
-`reader_signup` reserved for a confirmed provider response; no endpoint
-configured) and the campaign ledger stays empty — rows are added only from
-authorized first-party reports. No conversion score or revenue forecast is
-presented.
+(weekly question-shaped guides, next topic chosen from measured Search Console
+queries — SG-18), conversion focus (raster preview image, a real analytics
+endpoint, a real email provider — SG-16/SG-04/SG-06), or hold until
+FLG-001/006/010 are resolved. The retired “weekly price re-check” idea now
+appears only as SG-17, which makes the Product Advertising API the single
+compliant path to displayed prices. Measurement is privacy-preserving (four
+events counted locally; `reader_signup` reserved for a confirmed provider
+response; no endpoint configured) and the campaign ledger stays empty — rows
+are added only from authorized first-party reports. No conversion score or
+revenue forecast is presented.
+
+## Shop-polish pass (T-17/T-18, 2026-11-19)
+
+The reader-facing surface now leads with the shop, not the audit. The front
+page opens on a buyer question (“Basket or oven? Instant-read or wireless?”),
+followed by five product cards — seller-listed spec chips, an honest
+“consider if” line, ratings dated at capture, a “Check price on Amazon” CTA,
+and a source link under every card — then the chooser, seasonal guide row,
+and the data table. Stylesheet: 44 px tap targets, visible focus states, card
+lift on hover (mobile-first pass S-20 in effect). The RSS feed no longer
+advertises a price range in the gift-guide description, and its channel title
+drops the overstated channel title the audit flagged. The
+Direction desk was rebuilt as a full ledger (SG-01…18 with statuses, Q-01…21
+with discovery paths) and now matches `data/suggestions.json` /
+`data/open-questions.json` exactly. New open item: FLG-016 / F-21 — the SVG
+social-preview image is unverified in share previewers. All four release gates
+pass on the rebuilt tree.

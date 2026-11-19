@@ -32,7 +32,7 @@
 
 <h2>What is sourced — and what is not (audit 2026-11-19)</h2>
 <ul>
-<li>Specs, ratings, and prices are transcribed from dated official listing snapshots and cited to them. They are <em>seller statements</em>, not independent Kitchen Counter tests; price snapshots lack observation time and delivery location (FLG-012).</li>
+<li>Specs and ratings are transcribed from dated official listing snapshots and cited to them. They are <em>seller statements</em>, not independent Kitchen Counter tests. No price appears anywhere on the site (Program Policies §2(b)); any price observations live solely in internal data files with date-only metadata (FLG-007/012).</li>
 <li>The five supplied <code>link.amazon</code> links were recorded as supplied. During the audit they resolved to listings B0CDY277D3, B09B7SB46R, B08DKYBTPH (Air Fryers) and B0DHZTCNR5, B0DZFD6R9Z (Meat Thermometers); observed destinations are kept separate from blank intended-ASIN fields (FLG-001).</li>
 <li>Policy and guidance pages cited: Amazon Operating Agreement and Program Policies, FTC Disclosures 101, Google <code>rel="sponsored"</code>, GitHub Pages docs, plus NIST traceability and USDA FSIS temperature/placement guidance.</li>
 <li>Disclosure strip above the fold on every page with the required “As an Amazon Associate I earn from qualifying purchases.” statement plus conditional commission wording; <code>rel="sponsored"</code> on every Amazon link (FLG-010 documents that account status is unverified).</li>
@@ -50,10 +50,14 @@
 <li>FLG-009: ThermoMaven accuracy/NIST wording is seller claim, not test.</li>
 <li>FLG-010: Associates account status unverified.</li>
 <li>FLG-014: email signup not connected. FLG-015: campaign ledger empty by design.</li>
+<li>FLG-016: SVG social-preview image unverified in share previewers (F-21).</li>
 </ul>
 
 <h2>What happens next</h2>
-<p>Choose a path on the <a href="direction.html">Direction</a> page: steady publication (weekly guides + price checks), conversion focus (images + a real analytics endpoint + a real email provider), or hold until FLG-001/006/010 are resolved. Measurement is privacy-preserving (four events counted locally; reader_signup reserved for a confirmed provider response; no endpoint configured) and the campaign ledger stays empty — rows are added only from authorized first-party reports. No conversion score or revenue forecast is presented.</p>
+<p>Choose a path on the <a href="direction.html">Direction</a> page: steady publication (weekly question-shaped guides, next topic chosen from measured Search Console queries — SG-18), conversion focus (raster preview image + a real analytics endpoint + a real email provider — SG-16/SG-04/SG-06), or hold until FLG-001/006/010 are resolved. The retired “weekly price re-check” idea now appears only as SG-17, which makes the Product Advertising API the single compliant path to displayed prices. Measurement is privacy-preserving (four events counted locally; reader_signup reserved for a confirmed provider response; no endpoint configured) and the campaign ledger stays empty — rows are added only from authorized first-party reports. No conversion score or revenue forecast is presented.</p>
+
+<h2>Shop-polish pass (T-17/T-18, 2026-11-19)</h2>
+<p>The reader-facing surface now leads with the shop, not the audit. The front page opens on a buyer question, followed by five product cards — seller-listed spec chips, a “consider if” line, ratings dated at capture, a “Check price on Amazon” CTA, and a source link under every card — then the chooser, a seasonal guide row, and the data table. The stylesheet adds 44&nbsp;px tap targets, visible focus states, and card lift on hover. The RSS feed no longer advertises a price range and drops the overstated channel title the audit flagged. The Direction desk was rebuilt as a full ledger (SG-01…18 with statuses; Q-01…21 with discovery paths) that now matches the machine registries exactly. All four release gates pass on the rebuilt tree.</p>
 
 <p class="mt"><a href="index.html">← Front page</a> · <a href="sources.html">Source register →</a></p>
 </div></main>

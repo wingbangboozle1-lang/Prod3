@@ -17,7 +17,6 @@
       "action": "Both readings are published verbatim and the conflict is named on the product page. Not resolved by inference.",
       "status": "open — needs a measurement or a retailer clarification",
       "sources": [
-        "S03",
         "S10"
       ],
       "sources_checked": "2026-11-19"
@@ -32,7 +31,6 @@
       "action": "Neither number is used as a selling point. The conflict is shown on the product page.",
       "status": "open",
       "sources": [
-        "S04",
         "S11"
       ],
       "sources_checked": "2026-11-19"
@@ -47,7 +45,6 @@
       "action": "Disclosed on the product page. The site does not silently switch to the newer ASIN, because the supplied link is the owner's stated intent.",
       "status": "needs review — owner decision on whether to point at B0GL7Z4KP4",
       "sources": [
-        "S06",
         "S13"
       ],
       "sources_checked": "2026-11-19"
@@ -62,7 +59,6 @@
       "action": "Left blank and marked unverified on both product pages. No value guessed.",
       "status": "open — check the manufacturer's own specification sheet",
       "sources": [
-        "S06",
         "S13",
         "S14"
       ],
@@ -78,8 +74,6 @@
       "action": "Ratings left blank. Only ratings rendered in the page's own rating block are stored.",
       "status": "open — re-capture; the rating may be region- or session-dependent",
       "sources": [
-        "S04",
-        "S06",
         "S11",
         "S13"
       ],
@@ -95,7 +89,6 @@
       "action": "Shown as a seller-declared attribute, never as verified certification. See F-07 for the accuracy figure.",
       "status": "open — request certificates from the manufacturer",
       "sources": [
-        "S06",
         "S13",
         "S14"
       ],
@@ -111,7 +104,6 @@
       "action": "Published as a vendor claim, labelled as such, with the listing cited. Not repeated in editorial voice.",
       "status": "open — verify with NIST's own certification database or the manufacturer",
       "sources": [
-        "S06",
         "S13"
       ],
       "sources_checked": "2026-11-19"
@@ -126,10 +118,11 @@
       "action": "Built the site around that pairing rather than hiding the span. Whether to narrow to air fryers only is a decision for the owner.",
       "status": "needs review",
       "sources": [
-        "S03",
-        "S04",
-        "S05",
-        "S06"
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14"
       ],
       "sources_checked": "2026-11-19"
     },
@@ -143,8 +136,8 @@
       "action": "Nothing is called invalid. The observation is recorded and the verification is routed to the owner's dashboard.",
       "status": "blocked — requires the Associates account",
       "sources": [
-        "S02",
-        "S16"
+        "S01",
+        "S02"
       ],
       "sources_checked": "2026-11-19"
     },
@@ -171,7 +164,7 @@
       "status": "controlled by rule",
       "sources": [
         "S02",
-        "S14"
+        "S21"
       ],
       "sources_checked": "2026-11-19"
     },
@@ -185,9 +178,6 @@
       "action": "Blank and flagged. No number inferred from a similar model.",
       "status": "open",
       "sources": [
-        "S03",
-        "S04",
-        "S06",
         "S10",
         "S11",
         "S13"
@@ -204,8 +194,8 @@
       "action": "The site publishes direct amazon.com/dp/ destinations so clarity is not in question. The short links remain the recorded provenance. Test one link in the enrolled Associates workflow and confirm destination and reporting before relying on the short form. This is a test to run, not a verdict on the links.",
       "status": "unresolved — needs the enrolled Associates workflow",
       "sources": [
-        "S02",
-        "S16"
+        "S01",
+        "S02"
       ],
       "sources_checked": "2026-11-19"
     },
@@ -219,7 +209,6 @@
       "action": "Variant span stated in the table and on each product page, with the captured variant named.",
       "status": "open — will drift as Amazon changes defaults",
       "sources": [
-        "S05",
         "S12",
         "S14"
       ],
@@ -248,7 +237,9 @@
       "why_it_matters": "Search engines can index it, but a project path shares a hostname with every other project on the account, and the URL is harder to say out loud than a domain.",
       "action": "Canonicals, sitemap and feed all use the absolute project-path URLs so nothing resolves relatively. A custom domain is a decision for the owner.",
       "status": "open",
-      "sources": [],
+      "sources": [
+        "S05"
+      ],
       "sources_checked": "2026-11-19"
     },
     {
@@ -273,8 +264,6 @@
       "action": "Every such figure carries the capture date and the listing as its source. Nothing is presented as current.",
       "status": "accepted — refresh on each release",
       "sources": [
-        "S03",
-        "S05",
         "S10",
         "S12",
         "S14"
@@ -305,9 +294,6 @@
       "action": "Left blank in the register and on every product page. Only the CHEF iQ listing states a term (two years); it is the only warranty published anywhere on this site.",
       "status": "open — check the manufacturer's own product page",
       "sources": [
-        "S03",
-        "S04",
-        "S05",
         "S10",
         "S11",
         "S12"

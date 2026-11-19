@@ -34,8 +34,9 @@ options, and recommendations live there.
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
-policy (SG-03). It is replaced by SG-17. The old rows SG-02…SG-08 in that table map to the
-canonical ledger above; the ledger is the single source of truth.
+policy (SG-03). It is replaced by SG-17. The old reader-table rows SG-02…SG-08 map to the canonical
+ledger above; the mobile-first row that session 65474d4f added as “SG-09” is registered here as
+SG-19. The ledger is the single source of truth.
 
 ## Open questions — what must be answered before deciding
 

@@ -46,7 +46,19 @@
         "FLG-011",
         "FLG-012"
       ],
-      "newer_model_note": null
+      "newer_model_note": null,
+      "citation": {
+        "observed_on": "2026-11-19",
+        "observed_value": "redirect target https://www.amazon.com/dp/B0CDY277D3",
+        "observed_from": "https://link.amazon/B04G1MEwY",
+        "method": "direct fetch of the supplied link.amazon URL; the final URL on amazon.com carried the ASIN",
+        "page_field": "observed_asin, observed_redirect_target",
+        "reverifiable": true,
+        "reverify_how": "fetch https://link.amazon/B04G1MEwY and read the /dp/<ASIN> in the final URL",
+        "intended_value": null,
+        "intended_confirmed_by": null,
+        "note": "Observed and intended stay in separate fields. Nothing here confirms that the owner intended this product."
+      }
     },
     {
       "id": "P-02",
@@ -92,7 +104,19 @@
         "FLG-012",
         "FLG-013"
       ],
-      "newer_model_note": null
+      "newer_model_note": null,
+      "citation": {
+        "observed_on": "2026-11-19",
+        "observed_value": "redirect target https://www.amazon.com/dp/B09B7SB46R",
+        "observed_from": "https://link.amazon/B02NbDxp3",
+        "method": "direct fetch of the supplied link.amazon URL; the final URL on amazon.com carried the ASIN",
+        "page_field": "observed_asin, observed_redirect_target",
+        "reverifiable": true,
+        "reverify_how": "fetch https://link.amazon/B02NbDxp3 and read the /dp/<ASIN> in the final URL",
+        "intended_value": null,
+        "intended_confirmed_by": null,
+        "note": "Observed and intended stay in separate fields. Nothing here confirms that the owner intended this product."
+      }
     },
     {
       "id": "P-03",
@@ -136,7 +160,19 @@
         "FLG-011",
         "FLG-012"
       ],
-      "newer_model_note": "B0CNY1YVDD (Chefman 6 QT Compact) — listed on the product page — cross-promotion wording on the seller page, not an obsolescence statement"
+      "newer_model_note": "B0CNY1YVDD (Chefman 6 QT Compact) — listed on the product page — cross-promotion wording on the seller page, not an obsolescence statement",
+      "citation": {
+        "observed_on": "2026-11-19",
+        "observed_value": "redirect target https://www.amazon.com/dp/B08DKYBTPH",
+        "observed_from": "https://link.amazon/B00hJ57DV",
+        "method": "direct fetch of the supplied link.amazon URL; the final URL on amazon.com carried the ASIN",
+        "page_field": "observed_asin, observed_redirect_target",
+        "reverifiable": true,
+        "reverify_how": "fetch https://link.amazon/B00hJ57DV and read the /dp/<ASIN> in the final URL",
+        "intended_value": null,
+        "intended_confirmed_by": null,
+        "note": "Observed and intended stay in separate fields. Nothing here confirms that the owner intended this product."
+      }
     },
     {
       "id": "P-04",
@@ -178,7 +214,19 @@
         "FLG-011",
         "FLG-012"
       ],
-      "newer_model_note": "B0GL7Z4KP4 (ThermoMaven, orange) — listed on the product page — cross-promotion wording on the seller page, not an obsolescence statement"
+      "newer_model_note": "B0GL7Z4KP4 (ThermoMaven, orange) — listed on the product page — cross-promotion wording on the seller page, not an obsolescence statement",
+      "citation": {
+        "observed_on": "2026-11-19",
+        "observed_value": "redirect target https://www.amazon.com/dp/B0DHZTCNR5",
+        "observed_from": "https://link.amazon/B0c8moW59",
+        "method": "direct fetch of the supplied link.amazon URL; the final URL on amazon.com carried the ASIN",
+        "page_field": "observed_asin, observed_redirect_target",
+        "reverifiable": true,
+        "reverify_how": "fetch https://link.amazon/B0c8moW59 and read the /dp/<ASIN> in the final URL",
+        "intended_value": null,
+        "intended_confirmed_by": null,
+        "note": "Observed and intended stay in separate fields. Nothing here confirms that the owner intended this product."
+      }
     },
     {
       "id": "P-05",
@@ -221,9 +269,22 @@
         "FLG-011",
         "FLG-012"
       ],
-      "newer_model_note": null
+      "newer_model_note": null,
+      "citation": {
+        "observed_on": "2026-11-19",
+        "observed_value": "redirect target https://www.amazon.com/dp/B0DZFD6R9Z",
+        "observed_from": "https://link.amazon/B0f3GKalj",
+        "method": "direct fetch of the supplied link.amazon URL; the final URL on amazon.com carried the ASIN",
+        "page_field": "observed_asin, observed_redirect_target",
+        "reverifiable": true,
+        "reverify_how": "fetch https://link.amazon/B0f3GKalj and read the /dp/<ASIN> in the final URL",
+        "intended_value": null,
+        "intended_confirmed_by": null,
+        "note": "Observed and intended stay in separate fields. Nothing here confirms that the owner intended this product."
+      }
     }
   ],
   "price_snapshot_note": "price_observed fields are archival snapshots dated 2026-11-19. Observation time and delivery location were not recorded; prices are not current offers. See FLG-012.",
-  "claim_basis": "Specs, ratings, and prices are seller/listing statements from the snapshot. Claim-marked fields (accuracy, certification, response time, heat-safe ratings, function names) are marketing claims the site has not tested. See FLG-009."
+  "claim_basis": "Specs, ratings, and prices are seller/listing statements from the snapshot. Claim-marked fields (accuracy, certification, response time, heat-safe ratings, function names) are marketing claims the site has not tested. See FLG-009.",
+  "citation_policy": "Every value rendered on the site must trace to one of: (a) a dated fetch of the official listing, (b) a dated fetch of an official policy page, or (c) arithmetic over (a) that states its inputs. Values with no such trace are left blank and published on flagged.html. See data/citations.json."
 }

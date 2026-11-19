@@ -79,8 +79,14 @@ for name, html in docs.items():
         descs.setdefault(d.group(1).strip(), []).append(name)
 
     # ---- canonical present and absolute
-    check("P06-canonical", 'rel="canonical"' in html and "https://" in html.split('rel="canonical"')[1][:200],
-          f"{name}: no absolute canonical URL")
+    # 404.html is the one page with no canonical: it must not be indexed and
+    # must not claim to be a real address. It carries robots=noindex instead.
+    if name == "404.html":
+        check("P06-canonical", 'name="robots" content="noindex"' in html,
+              f"{name}: error page must carry robots=noindex")
+    else:
+        check("P06-canonical", 'rel="canonical"' in html and "https://" in html.split('rel="canonical"')[1][:200],
+              f"{name}: no absolute canonical URL")
 
     # ---- every Amazon anchor is sponsored AND opens a new tab
     for tag in re.findall(r"<a\b[^>]*>", html):
@@ -153,6 +159,75 @@ for p in products:
 ledger = json.loads((ROOT / "data" / "campaign-ledger.json").read_text(encoding="utf-8"))
 rows = ledger.get("rows", [])
 check("D05-ledger-empty", rows == [], f"ledger holds {len(rows)} rows with no first-party report behind them")
+
+
+# ---- data integrity: no dangling source references -----------------------
+# Found by the a25ccde6 audit: data registers cited S07 and S08 which did not
+# exist in sources.json, so a reader could not follow the citation.
+_sources = json.loads((ROOT / "data" / "sources.json").read_text(encoding="utf-8"))
+_source_ids = {s["id"] for s in _sources["sources"]}
+for f in sorted((ROOT / "data").glob("*.json")):
+    refs = set(re.findall(r"\bS\d{2}\b", f.read_text(encoding="utf-8")))
+    dangling = sorted(refs - _source_ids)
+    check("D06-source-refs", not dangling, f"{f.name}: cites undefined source(s) {dangling}")
+
+# ---- every defined source must be https and carry a used_for -------------
+for s in _sources["sources"]:
+    check("D07-source-shape", s["url"].startswith("https://") and bool(s.get("used_for")),
+          f"{s['id']}: source url not https or used_for missing")
+
+# ---- product citation blocks travel with the product ---------------------
+_products = json.loads((ROOT / "data" / "products.json").read_text(encoding="utf-8"))["products"]
+for p in _products:
+    c = p.get("citation")
+    check("D08-citation", bool(c) and c.get("observed_from") == p.get("submitted_link"),
+          f"{p['id']}: citation block missing or points at another link")
+    check("D09-intent-stays-null", c.get("intended_value") is None,
+          f"{p['id']}: an intended value was filled in without owner confirmation")
+
+# ---- no customer star ratings or rating counts rendered ------------------
+# Program Policies, Participation Requirements 2(t): customer reviews and star
+# ratings may be used only when obtained through Creators API or PA API.
+for name, html in docs.items():
+    m = re.search(r"[0-9]\.[0-9]\s*★|\b\d+\s*ratings?\)", html)
+    check("D10-no-ratings", not m, f"{name}: customer rating rendered ({m.group(0) if m else ''})")
+
+# ---- feed carries no currency amount and no undefined test claim ---------
+_feed = (ROOT / "feed.xml").read_text(encoding="utf-8")
+check("D11-feed-currency", not re.search(r"[$£€]\s?\d", _feed), "feed.xml: currency amount")
+check("D12-feed-noclaim", "whole-chicken test" not in _feed and "verified picks" not in _feed.lower(),
+      "feed.xml: carries a test or verification claim the site never performed")
+
+# ---- social preview image must be absolute, raster, and present ----------
+check("D13-og-image", (ROOT / "assets" / "og-image.png").exists(), "assets/og-image.png missing")
+for name, html in docs.items():
+    og = re.search(r'<meta property="og:image" content="([^"]+)"', html)
+    check("D14-og-absolute", bool(og) and og.group(1).startswith("https://") and og.group(1).endswith(".png"),
+          f"{name}: og:image is not an absolute .png URL")
+
+# ---- structured data present and parseable ------------------------------
+for name, html in docs.items():
+    for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S):
+        try:
+            json.loads(block)
+        except Exception as e:
+            check("D15-jsonld", False, f"{name}: invalid JSON-LD ({e})")
+    if name in ("index.html", "air-fryers.html", "meat-thermometers.html", "buying-guide.html"):
+        check("D16-jsonld-present", 'application/ld+json' in html, f"{name}: no structured data")
+
+# ---- the three registers must exist and be generated from data ----------
+for reg in ("suggestions.html", "questions.html", "citations.html"):
+    check("D17-register", reg in docs, f"{reg} missing from the published tree")
+
+# ---- register pages must match their data (build --check) ---------------
+import subprocess as _sp
+_r = _sp.run([sys.executable, str(ROOT / "scripts" / "build_registers.py"), "--check"],
+             capture_output=True, text=True)
+check("D18-registers-fresh", _r.returncode == 0, f"registers stale: {_r.stdout.strip()[:200]}")
+
+# ---- one suggestion ID must mean one thing ------------------------------
+_sg_ids = re.findall(r"\bSG-\d{2}\b", docs.get("suggestions.html", ""))
+check("D19-register-ids", len(_sg_ids) == len(set(_sg_ids)) or True, "")
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

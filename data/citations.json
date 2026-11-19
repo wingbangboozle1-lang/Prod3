@@ -1,0 +1,177 @@
+{
+  "generated": "2026-11-19",
+  "session": "arena/a25ccde6-prod3",
+  "premise": "One row per figure the site renders. Each row names the observation, its date, and the official source. A reader can re-run any row.",
+  "rules": [
+    "A figure with no row here does not belong on the site.",
+    "Dated observations are seller statements, not independent measurements.",
+    "No price or availability value is rendered, so none appears here (Program Policies 2(b), S02)."
+  ],
+  "citations": [
+    {
+      "product": "P-01",
+      "brand": "Chefman",
+      "asin": "B0CDY277D3",
+      "observed": "https://link.amazon/B04G1MEwY resolves to https://www.amazon.com/dp/B0CDY277D3",
+      "observed_on": "2026-11-19",
+      "source": "S10",
+      "source_url": "https://www.amazon.com/dp/B0CDY277D3",
+      "used_for": "product identity, title, listed specs, dimensions",
+      "claim_status": "seller statements transcribed from the listing; not independently tested"
+    },
+    {
+      "product": "P-02",
+      "brand": "Emeril",
+      "asin": "B09B7SB46R",
+      "observed": "https://link.amazon/B02NbDxp3 resolves to https://www.amazon.com/dp/B09B7SB46R",
+      "observed_on": "2026-11-19",
+      "source": "S11",
+      "source_url": "https://www.amazon.com/dp/B09B7SB46R",
+      "used_for": "product identity, title, listed specs, dimensions",
+      "claim_status": "seller statements transcribed from the listing; not independently tested"
+    },
+    {
+      "product": "P-03",
+      "brand": "Chefman",
+      "asin": "B08DKYBTPH",
+      "observed": "https://link.amazon/B00hJ57DV resolves to https://www.amazon.com/dp/B08DKYBTPH",
+      "observed_on": "2026-11-19",
+      "source": "S12",
+      "source_url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "used_for": "product identity, title, listed specs, dimensions",
+      "claim_status": "seller statements transcribed from the listing; not independently tested"
+    },
+    {
+      "product": "P-04",
+      "brand": "ThermoMaven",
+      "asin": "B0DHZTCNR5",
+      "observed": "https://link.amazon/B0c8moW59 resolves to https://www.amazon.com/dp/B0DHZTCNR5",
+      "observed_on": "2026-11-19",
+      "source": "S13",
+      "source_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "used_for": "product identity, title, listed specs, dimensions",
+      "claim_status": "seller statements transcribed from the listing; not independently tested"
+    },
+    {
+      "product": "P-05",
+      "brand": "CHEF iQ",
+      "asin": "B0DZFD6R9Z",
+      "observed": "https://link.amazon/B0f3GKalj resolves to https://www.amazon.com/dp/B0DZFD6R9Z",
+      "observed_on": "2026-11-19",
+      "source": "S14",
+      "source_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "used_for": "product identity, title, listed specs, dimensions",
+      "claim_status": "seller statements transcribed from the listing; not independently tested"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Operating Agreement §1 Special Links; §5 the required statement; §6 material breach",
+      "observed_on": "2026-11-19",
+      "source": "S01",
+      "used_for": "Operating Agreement §1 Special Links; §5 the required statement; §6 material breach",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Program Policies: 2(a) tag in every link; 2(b) no unclear shortening, no price display without Amazon-served data; 2(t) customer reviews and star ratings only via Creators/PA API; 2(v) no obscuring the URL",
+      "observed_on": "2026-11-19",
+      "source": "S02",
+      "used_for": "Program Policies: 2(a) tag in every link; 2(b) no unclear shortening, no price display without Amazon-served data; 2(t) customer reviews and star ratings only via Creators/PA API; 2(v) no obscuring the URL",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "FTC Disclosures 101: hard to miss, next to the endorsement, clear language",
+      "observed_on": "2026-11-19",
+      "source": "S03",
+      "used_for": "FTC Disclosures 101: hard to miss, next to the endorsement, clear language",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Google: mark paid links rel=\"sponsored\"",
+      "observed_on": "2026-11-19",
+      "source": "S04",
+      "used_for": "Google: mark paid links rel=\"sponsored\"",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Google: people-first content and E-E-A-T questions",
+      "observed_on": "2026-11-19",
+      "source": "S07",
+      "used_for": "Google: people-first content and E-E-A-T questions",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Google: thin-affiliation policy",
+      "observed_on": "2026-11-19",
+      "source": "S08",
+      "used_for": "Google: thin-affiliation policy",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "NIST: traceability applies to measurement results, not products",
+      "observed_on": "2026-11-19",
+      "source": "S16",
+      "used_for": "NIST: traceability applies to measurement results, not products",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "USDA FSIS: safe minimum internal temperatures",
+      "observed_on": "2026-11-19",
+      "source": "S17",
+      "used_for": "USDA FSIS: safe minimum internal temperatures",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "USDA FSIS: correct thermometer placement",
+      "observed_on": "2026-11-19",
+      "source": "S18",
+      "used_for": "USDA FSIS: correct thermometer placement",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Google: unique meta descriptions",
+      "observed_on": "2026-11-19",
+      "source": "S20",
+      "used_for": "Google: unique meta descriptions",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Google: page-experience guidance",
+      "observed_on": "2026-11-19",
+      "source": "S21",
+      "used_for": "Google: page-experience guidance",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    }
+  ]
+}

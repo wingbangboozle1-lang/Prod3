@@ -35,7 +35,7 @@
 
 <p>This is the review desk. Every proposal carries its problem, the evidence behind it, the options considered, a recommendation, and the person who decides. Machine-readable copy: <code>data/suggestions.json</code>. The questions that block these proposals live on <a href="questions.html">Open questions</a>; what was actually decided is on the <a href="direction.html">decision log</a>.</p>
 
-<div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
+<div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
 <h2>Waiting on a decision (10)</h2>
 <div class="grid mt"><article class="card">
@@ -68,11 +68,11 @@
     </article><article class="card">
       <div class="meta">SG-16 · editorial decides</div>
       <h3>Replace the SVG social preview with a raster card, and verify it before relying on it</h3>
-      <p><strong>Problem.</strong> assets/og-image.svg is referenced as og:image on every page. SVG is not the format social preview tools typically render, so shared links may show no card at all.</p>
-      <p><strong>Evidence.</strong> Meta&#x27;s sharing best-practices documentation asks for JPG or PNG preview images (https://developers.facebook.com/docs/sharing/best-practices — recorded as a to-verify reference; not re-fetched from this network, see F-21).</p>
+      <p><strong>Problem.</strong> Every page referenced assets/og-image.svg as og:image until the publication-polish pass replaced it with a 1200×630 raster card (assets/og-image.png). SVG is not the format social preview tools typically render, so the format risk is resolved; what remains is confirming the card actually renders in a share debugger.</p>
+      <p><strong>Evidence.</strong> Meta&#x27;s sharing best-practices documentation asks for JPG or PNG preview images (https://developers.facebook.com/docs/sharing/best-practices — recorded as a to-verify reference; not re-fetched from this network, see F-21). The PNG is now shipped on all 24 pages; the debugger check (Q-21) has not been run.</p>
       <p><strong>Options.</strong></p><ul><li>A. Produce one 1200×637 PNG card from the existing brand type, swap the og:image hrefs, and confirm with a share debugger.</li><li>B. Keep SVG and accept that some previews show nothing.</li><li>C. Drop og:image entirely.</li></ul>
       <p><strong>Recommendation.</strong> A, once someone with a browser can run the share-preview check. The change is one file and nine href lines; the fallback today (a plain-text link preview) is honest but costs the click.</p>
-      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <p><span class="badge grey">partly implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
       <p class="small muted">Blocks: nothing — flagged as F-21 for review</p>
     </article><article class="card">
       <div class="meta">SG-17 · owner decides</div>

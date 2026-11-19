@@ -760,3 +760,18 @@ the share-debugger check (no debugger could be run from this environment), so SG
 outstanding, and `scripts/build_registers.py`'s status callout gained a
 "partly implemented" definition so the three-state vocabulary stays honest. Registers
 regenerated; all gates green.
+
+### PR #19 record and conflict-marker incident (2026-11-19)
+
+- **PR #19:** https://github.com/wingbangboozle1-lang/Prod3/pull/19 — merged, merge commit
+  `f0c4eb0`. `Deploy GitHub Pages` run `44627207634` — **success**; `pages build and
+  deployment` run `44627207005` — **success**; Pages status `built`.
+- **Incident found in the live render (fixed in this PR):** `flagged.html` was shipping literal
+  git conflict markers (`<<<<<<< HEAD` … `=======` … `>>>>>>> 338d1e6 (polish: …)`) around the
+  FLG-015/FLG-016 block. The markers entered `main` with commit `de5592a` inside PR #17
+  (session `arena/a25ccde6-prod3`) — a conflict resolution was committed mid-flight. Every gate
+  run since then passed because no gate scanned for markers, and this session's earlier live read
+  of `flagged.html` stopped one chunk short of the block. **Fixed:** the two sides were merged
+  properly (FLG-015 keeps the polish's Basis line; FLG-016 keeps the corrected PNG wording) and
+  `scripts/check_site.py` gained check #10 — a repo-wide conflict-marker scan over every
+  non-binary file (negative-tested: exit 1 with a marker file, exit 0 clean).

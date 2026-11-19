@@ -162,6 +162,25 @@ for f in sorted((ROOT / "articles").glob("*.html")):
         errors.append(f"{rel}: JSON-LD missing dateModified")
 print("OK article dateModified")
 
+# 10. no committed merge-conflict markers anywhere in the tree
+# (a botched resolution once shipped literal <<<<<<< / >>>>>>> lines to readers)
+BINARY_SUFFIXES = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".woff",
+                   ".woff2", ".ttf", ".eot", ".pdf", ".zip", ".gz", ".pack"}
+marker_hits = 0
+for f in sorted(ROOT.rglob("*")):
+    if not f.is_file() or ".git" in f.parts or f.suffix.lower() in BINARY_SUFFIXES:
+        continue
+    try:
+        lines = f.read_text(encoding="utf-8").splitlines()
+    except (UnicodeDecodeError, OSError):
+        continue
+    for i, line in enumerate(lines, 1):
+        if line.startswith("<<<<<<< ") or line.startswith(">>>>>>> ") or line == "=======":
+            errors.append(f"{f.relative_to(ROOT)}:{i}: committed conflict marker")
+            marker_hits += 1
+print(f"OK conflict-marker scan ({marker_hits} markers found)" if marker_hits == 0
+      else f"conflict-marker scan: {marker_hits} markers found")
+
 if errors:
     print("\nFAIL:")
     for e in errors:

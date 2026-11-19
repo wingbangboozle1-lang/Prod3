@@ -512,3 +512,18 @@ papered over. Gates on the rebased, merged tree: `tools/verify_site.py` **pass**
 rule), `scripts/check_site.py` **pass**, `scripts/build_sitemap.py --check` **pass**.
 Crawled the built tree: 21 pages, 637 local hrefs, **0 broken**; **123/123** Amazon anchors
 `rel="sponsored"`; **zero** currency strings in any HTML.
+### T-22 — PR, merge, and deploy record (session arena/33e3e80f-prod3)
+
+- **PR #14:** https://github.com/wingbangboozle1-lang/Prod3/pull/14 (`arena/33e3e80f-prod3` → `main`)
+- **Merge:** merged without waiting for approval at `32b3cddec83cfe8c3ac8e262a72bad8905052ed9`, 2026-11-19 21:45:38Z.
+- **Pre-merge gates on the rebased tree:** all four pass (21 pages, 1614 assertions).
+- **Deploy:** `Deploy GitHub Pages` run for the merge **success** (19s); `pages build and deployment` **success** (38s).
+  Pages API: `status: built`, latest build commit = `32b3cdd`.
+- **Live verification after deploy (served pages, not the local tree):** front page serves the new
+  hero (“Basket or oven? Instant-read or wireless?”), five product cards with spec chips,
+  consider-if lines, “Check price on Amazon” CTAs and per-card source links; direction page serves
+  the SG-01…19 / Q-01…21 ledger with the corrected Path-A copy; top disclosure strip present on
+  every checked page. Note: Pages CDN serves stale copies briefly — verify with a cache-busting
+  query if a fetch shows the previous build.
+- **T-20/T-21/T-22 marked done** in the task board. FLG-016 (og:image SVG) remains needs-review
+  and is published on `flagged.html`; it does not block anything.

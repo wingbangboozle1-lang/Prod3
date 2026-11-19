@@ -4,6 +4,8 @@
 Runs scripts/check_site.py, then verifies:
  - data/sources.json parses, every source URL is well-formed, and the
    verification-semantics note is present
+ - every source ID referenced from data/*.json resolves to sources.json,
+   and every registered source is published on sources.html
  - data/products.json carries claim markers, dated prices, and only flags
    documented in flagged.html
  - data/campaign-ledger.json has no fabricated rows (rows must be empty
@@ -33,6 +35,25 @@ try:
     print(f"OK sources.json: {len(sources['sources'])} sources")
 except Exception as e:
     errors.append(f"sources.json: {e}")
+
+# Every source ID referenced from any data/*.json record must resolve to an
+# entry in data/sources.json, and every registered source must be published
+# on sources.html. (Catches stale/dangling cross-references like S07/S08.)
+try:
+    reg_ids = {s["id"] for s in sources["sources"]}
+    referenced = set()
+    for path in sorted((ROOT / "data").glob("*.json")):
+        text = path.read_text()
+        for m in re.finditer(r'"(?:source|sources)"\s*:\s*(\[[^\]]*\]|"[^"]*")', text):
+            for sid in re.findall(r"S\d{2}", m.group(1)):
+                referenced.add(sid)
+                assert sid in reg_ids, f"{path.name}: references undefined source {sid}"
+    html = (ROOT / "sources.html").read_text()
+    for sid in sorted(reg_ids):
+        assert re.search(rf"<td>{sid}</td>", html), f"sources.html: missing row for {sid}"
+    print(f"OK source cross-references: {len(referenced)} referenced ids all resolve; {len(reg_ids)} registered ids all published")
+except Exception as e:
+    errors.append(f"source cross-references: {e}")
 
 try:
     products = json.loads((ROOT / "data/products.json").read_text())

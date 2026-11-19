@@ -43,12 +43,12 @@
     },
     {
       "id": "S06",
-      "title": "Amazon ASIN definition (10-character identifier)",
-      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "title": "Amazon Associates Creators API — GetItems, ItemIdType parameter (ASIN definition)",
+      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
       "used_for": "Why a 9-character short-link token cannot be an ASIN",
-      "quote": "ASIN is a 10-character alphanumeric code (see Associates/Creators API ItemIdType)",
-      "updated": "2026-11-19",
-      "note": "Same URL as S02, cited for a specific definition of ASIN as a 10-character code; kept separate so references stay explicit (audit I-06)."
+      "quote": "ASIN — Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.",
+      "updated": "fetched 2026-11-19",
+      "note": "Verified live 2026-11-19: the ItemIdType table on this page carries the exact 10-character wording. The earlier citation pointed at the Program Policies page, which does not carry that definition (corrected by session 28d2d6c0, T-23)."
     },
     {
       "id": "S10",
@@ -126,16 +126,18 @@
       "title": "Google Search Central — Creating helpful, reliable, people-first content",
       "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
       "used_for": "E-E-A-T questions (who, how, why), originality and insight beyond the obvious, descriptive non-exaggerated headings",
-      "quote": "Ask yourself: is the content original, does it provide insight beyond the obvious, and does the title avoid being exaggerated or shocking?",
-      "updated": "fetched 2026-11-19"
+      "quote": "Does the content provide insightful analysis or interesting information that is beyond the obvious? … Does the main heading or page title avoid exaggerating or being shocking in nature?",
+      "updated": "fetched 2026-11-19",
+      "note": "Quote corrected to the page's verbatim self-assessment questions (session 28d2d6c0, T-23)."
     },
     {
       "id": "S22",
-      "title": "Google Search Central — Guidance on reviews and thin affiliations",
+      "title": "Google Search Central — Spam policies for Google web search (thin affiliation, scaled content abuse)",
       "url": "https://developers.google.com/search/docs/essentials/spam-policies",
       "used_for": "Thin-affiliation problem: affiliate pages with little original value beyond the links",
-      "quote": "Thin affiliation: good affiliate pages offer meaningful content such as original reviews, rigorous testing, navigation and comparisons.",
-      "updated": "fetched 2026-11-19"
+      "quote": "Thin affiliation is the practice of publishing content with product affiliate links where the product descriptions and reviews are copied directly from the original merchant without any original content or added value. … Examples of good affiliate pages include offering additional information about price, original product reviews, rigorous testing and ratings, navigation of products or categories, and product comparisons.",
+      "updated": "fetched 2026-11-19",
+      "note": "Quote and title corrected to the page's verbatim section text (session 28d2d6c0, T-23)."
     },
     {
       "id": "S23",

@@ -169,9 +169,59 @@
       "asin": "—",
       "observed": "Google: page-experience guidance",
       "observed_on": "2026-11-19",
-      "source": "S21",
+      "source": "S25",
       "used_for": "Google: page-experience guidance",
       "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Live site served at https://wingbangboozle1-lang.github.io/Prod3/ (GitHub Pages project path, not an apex domain)",
+      "observed_on": "2026-11-19",
+      "source": "S05",
+      "used_for": "Hosting model and project-site URL pattern stated on the trust pages",
+      "claim_status": "official documentation, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Submitted tokens are 9 characters; Amazon's ItemIdType table defines an ASIN as a 10-Character alphanumeric identifier, so a 9-character token cannot be an ASIN",
+      "observed_on": "2026-11-19",
+      "source": "S06",
+      "used_for": "Token-length figure in the submitted-links table and FLG-001",
+      "claim_status": "official API documentation, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Constructing https://www.amazon.com/dp/<9-char token> returned Page Not Found (observation only; does not test the supplied short links)",
+      "observed_on": "2026-11-19",
+      "source": "S15",
+      "used_for": "Observation row in the source register and FLG-011",
+      "claim_status": "dated observation recorded as such; not a test of the supplied links"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Lighthouse tap-target rule: 48×48px minimum, ~8px spacing between tappable controls",
+      "observed_on": "2026-11-19",
+      "source": "S19",
+      "used_for": "Mobile-first pass figures on the direction and suggestions pages",
+      "claim_status": "official documentation, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "GitHub Pages serves a custom 404 page from the repository's 404.html",
+      "observed_on": "2026-11-19",
+      "source": "S23",
+      "used_for": "Custom 404 behaviour on the project site",
+      "claim_status": "official documentation, quoted not paraphrased as fact"
     }
   ]
 }

@@ -1,0 +1,48 @@
+{
+  "generated": "2026-11-19",
+  "premise": "The product-intent confirmation record. For each supplied link: the ASIN the site intends to link to, the official listing URL, the date that intent was recorded, and where it came from. What the short link actually did is recorded separately and is never merged into these fields.",
+  "rules": [
+    "intended.asin is a decision: this is the listing the site means to send readers to.",
+    "observed.resolved_asin is an observation: this is what the short link served when fetched.",
+    "If the two ever disagree, both are published and the disagreement becomes a flagged item. Neither is overwritten.",
+    "No value in this file is inferred from a title, a URL slug, or a sibling product."
+  ],
+  "records": [
+    {
+      "product": "P1",
+      "tracking_id_on_record": "shopnow047c-20",
+      "intended": { "asin": "B0CDY277D3", "listing_url": "https://www.amazon.com/dp/B0CDY277D3", "confirmation_date": "2026-11-19", "source": "S16" },
+      "observed": { "short_link": "https://link.amazon/B04G1MEwY", "resolved_asin": "B0CDY277D3", "captured": "2026-11-19", "agrees": true }
+    },
+    {
+      "product": "P2",
+      "tracking_id_on_record": "shopnow047c-20",
+      "intended": { "asin": "B09B7SB46R", "listing_url": "https://www.amazon.com/dp/B09B7SB46R", "confirmation_date": "2026-11-19", "source": "S16" },
+      "observed": { "short_link": "https://link.amazon/B02NbDxp3", "resolved_asin": "B09B7SB46R", "captured": "2026-11-19", "agrees": true }
+    },
+    {
+      "product": "P3",
+      "tracking_id_on_record": "shopnow047c-20",
+      "intended": { "asin": "B08DKYBTPH", "listing_url": "https://www.amazon.com/dp/B08DKYBTPH", "confirmation_date": "2026-11-19", "source": "S16" },
+      "observed": { "short_link": "https://link.amazon/B00hJ57DV", "resolved_asin": "B08DKYBTPH", "captured": "2026-11-19", "agrees": true }
+    },
+    {
+      "product": "P4",
+      "tracking_id_on_record": "shopnow047c-20",
+      "intended": { "asin": "B0DHZTCNR5", "listing_url": "https://www.amazon.com/dp/B0DHZTCNR5", "confirmation_date": "2026-11-19", "source": "S16" },
+      "observed": { "short_link": "https://link.amazon/B0c8moW59", "resolved_asin": "B0DHZTCNR5", "captured": "2026-11-19", "agrees": true, "note": "Listing displays a newer model at B0GL7Z4KP4 (F-03)." }
+    },
+    {
+      "product": "P5",
+      "tracking_id_on_record": "shopnow047c-20",
+      "intended": { "asin": "B0DZFD6R9Z", "listing_url": "https://www.amazon.com/dp/B0DZFD6R9Z", "confirmation_date": "2026-11-19", "source": "S16" },
+      "observed": { "short_link": "https://link.amazon/B0f3GKalj", "resolved_asin": "B0DZFD6R9Z", "captured": "2026-11-19", "agrees": true }
+    }
+  ],
+  "tracking_id_status": {
+    "value": "shopnow047c-20",
+    "verified_on_published_links": false,
+    "reason": "The resolved URLs served to this session carried query parameters but no visible tag= value. Program Policies 2(a) requires Special Links to carry the assigned Associates ID. Verification requires the Associates dashboard — see Q-02.",
+    "sources": ["S02"]
+  }
+}

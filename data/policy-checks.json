@@ -1,0 +1,160 @@
+{
+  "generated": "2026-11-19",
+  "premise": "Automate what can be automated and put a gate in front of what cannot. Every check below states which side of that line it sits on.",
+  "checks": [
+    {
+      "id": "C-01",
+      "area": "Disclosure",
+      "requirement": "State \"As an Amazon Associate I earn from qualifying purchases.\" clearly and prominently on the site.",
+      "source": "S01",
+      "quote_basis": "Section 5 names that exact statement and makes a violation of Section 5 a material breach.",
+      "status": "met",
+      "automated": true,
+      "evidence": "The exact sentence appears in a strip directly under the masthead on every generated page, and again in the footer. tools/check_site.py fails the build if any page is missing it.",
+      "gate": "none"
+    },
+    {
+      "id": "C-02",
+      "area": "Disclosure",
+      "requirement": "Put the disclosure where it is hard to miss, next to the endorsement, not only on an about page or at the end.",
+      "source": "S08",
+      "quote_basis": "\"Place it so it's hard to miss... Disclosures are likely to be missed if they appear only on an ABOUT ME or profile page, at the end of posts or videos, or anywhere that requires a person to click MORE.\"",
+      "status": "met",
+      "automated": true,
+      "evidence": "Above-the-fold strip under the masthead on all pages, plus a disclosure line immediately above each outbound product button. The footer repeat is supplementary, not the primary disclosure.",
+      "gate": "none"
+    },
+    {
+      "id": "C-03",
+      "area": "Link integrity",
+      "requirement": "Mark every paid or sponsored outbound link with rel=\"sponsored\".",
+      "source": "S11",
+      "quote_basis": "\"Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value.\"",
+      "status": "met",
+      "automated": true,
+      "evidence": "Every anchor to an Amazon domain is emitted with rel=\"sponsored noopener\". tools/check_site.py walks all generated HTML and fails if any Amazon link lacks it.",
+      "gate": "none"
+    },
+    {
+      "id": "C-04",
+      "area": "Link integrity",
+      "requirement": "Do not obscure that a link goes to an Amazon Site; a shortener used so the destination is unclear is prohibited.",
+      "source": "S02",
+      "quote_basis": "Section 2(b) prohibits using a link-shortening service or placement in a manner that makes it unclear you are linking to an Amazon Site.",
+      "status": "met",
+      "automated": true,
+      "evidence": "Outbound buttons go to https://www.amazon.com/dp/<ASIN> directly, are labelled \"View on Amazon\", and sit under a line that names Amazon as the destination. The supplied link.amazon short links are recorded in the data file as provenance but are not used as the user-facing destination.",
+      "gate": "none"
+    },
+    {
+      "id": "C-05",
+      "area": "Pricing",
+      "requirement": "Show price and availability only if Amazon serves that data, or it is obtained through the Product Advertising / Creators API.",
+      "source": "S02",
+      "quote_basis": "Section 2(b) permits displaying price and availability only in those two cases.",
+      "status": "met",
+      "automated": true,
+      "evidence": "The site stores no price and renders none — no price, no discount, no promotional code, no delivery estimate, anywhere. Prices are visible only on the Amazon page after a click. A checker rule fails the build if a currency pattern appears in generated HTML.",
+      "gate": "none"
+    },
+    {
+      "id": "C-06",
+      "area": "Accuracy",
+      "requirement": "Do not make inaccurate, overbroad, deceptive or misleading claims about a product.",
+      "source": "S02",
+      "quote_basis": "Section 2(b) prohibition on inaccurate or misleading product claims, with the 64 GB / 128 GB example.",
+      "status": "partial",
+      "automated": true,
+      "evidence": "Every published specification is copied from the listing and tagged with a source id and a capture date. Where the listing contradicts itself (P1 capacity units, P2 preset count) both readings are shown and the conflict is named rather than resolved silently.",
+      "gate": "Human review of editorial prose before each new guide is published. The automated check can prove a claim is cited; it cannot prove the citation supports the claim."
+    },
+    {
+      "id": "C-07",
+      "area": "Accuracy",
+      "requirement": "Do not claim first-hand experience with a product that has not been handled.",
+      "source": "S08",
+      "quote_basis": "\"You can't talk about your experience with a product you haven't tried.\"",
+      "status": "met",
+      "automated": false,
+      "evidence": "The voice rules ban first-person use claims, durability claims, and first-person testing phrasing. Every product page says plainly that no unit has been handled and that the numbers come from the listing.",
+      "gate": "Editorial review. See suggestion SG-06: buying one unit per category would let the site make experience claims honestly."
+    },
+    {
+      "id": "C-08",
+      "area": "Content quality",
+      "requirement": "Affiliate pages must carry original value rather than restating the merchant's listing, or they fall under the thin-affiliation and scaled-content-abuse policies.",
+      "source": "S12",
+      "quote_basis": "Both policies are named explicitly in Google's spam policies.",
+      "status": "partial",
+      "automated": true,
+      "evidence": "Each guide answers a question the listing cannot: how to compare basket against oven form, which specification decides the fit, and how to set up a thermometer against the USDA minimums. The build check enforces a minimum word count and an internal-link requirement on every article.",
+      "gate": "A human must judge whether the writing is actually useful. Word count is a floor, not a defence."
+    },
+    {
+      "id": "C-09",
+      "area": "Identifiers",
+      "requirement": "Keep the intended ASIN and the observed redirect in separate fields; never merge them.",
+      "source": "S02, S17",
+      "quote_basis": "Section 2(a) requires Special Links to carry the assigned Associates ID; the ASIN is the checkable product identifier.",
+      "status": "met",
+      "automated": true,
+      "evidence": "data/products.json stores intended.asin, intended.confirmation_date and intended.source in one object and observed.resolved_asin, observed.resolved_status and observed.captured in another. All five agree today, and the data file records each agreement explicitly rather than assuming it.",
+      "gate": "Re-resolve the five short links with every content release and record the date."
+    },
+    {
+      "id": "C-10",
+      "area": "Associates ID",
+      "requirement": "Confirm the tracking ID shopnow047c-20 is present on the Special Links actually published.",
+      "source": "S02",
+      "quote_basis": "Section 2(a): Special Links must use the Associates ID assigned to the account.",
+      "status": "blocked",
+      "automated": false,
+      "evidence": "The resolved URLs served to this session carried query parameters but no visible tag= value, so the ID could not be confirmed from outside the account. Nothing about the supplied links is called invalid; the check simply cannot be completed without the Associates dashboard.",
+      "gate": "Owner action: open SiteStripe or the Associates dashboard and confirm tag=shopnow047c-20 on each of the five links. Tracked as Q-02."
+    },
+    {
+      "id": "C-11",
+      "area": "Product lists",
+      "requirement": "Links into a product list (search, deal event, department page) require additional original content on the site.",
+      "source": "S02",
+      "quote_basis": "Section 2(b): when linking to pages with product lists you must have additional original content relevant to the Special Link.",
+      "status": "met",
+      "automated": false,
+      "evidence": "The only category link on the site points at the Air Fryers storefront (S15) and appears inside the comparison guide, which carries its own analysis. No bare list links are published.",
+      "gate": "Review any future category link before it ships."
+    },
+    {
+      "id": "C-12",
+      "area": "Advertising density",
+      "requirement": "Keep outbound commerce links from crowding out the answer the reader came for.",
+      "source": "S14",
+      "quote_basis": "The people-first content guidance and the page-experience guidance both penalise interruption over substance.",
+      "status": "met",
+      "automated": true,
+      "evidence": "Each guide opens with the answer, then the reasoning, and only then the product cards. Product cards are capped at two per article by the build.",
+      "gate": "none"
+    },
+    {
+      "id": "C-13",
+      "area": "Measurement",
+      "requirement": "Record only privacy-preserving events and never associate a tracking sub-tag with an individual user.",
+      "source": "S02",
+      "quote_basis": "Section 2(b): no sub-tag, other ID or reporting may be associated with a specific end user, including dynamically assigning sub-tags to arriving users.",
+      "status": "met",
+      "automated": true,
+      "evidence": "The outbound counter runs entirely in the visitor's browser, stores a single aggregate count per product in localStorage, and sends nothing. No per-user identifier is created, so no sub-tag could be tied to one. See content/measurement.md.",
+      "gate": "If a self-hosted endpoint is ever enabled, it must not set cookies and must not store IP addresses — see Q-13."
+    },
+    {
+      "id": "C-14",
+      "area": "Editorial honesty",
+      "requirement": "Do not assert popularity, trending status or superiority without a dated source.",
+      "source": "S14",
+      "quote_basis": "Self-assessment question: does the content provide insight beyond the obvious, and is the heading free of exaggeration.",
+      "status": "met",
+      "automated": false,
+      "evidence": "Where the listing itself displays a badge such as Amazon's Choice or a sales figure, it is quoted with the capture date and attributed to the listing. No editorial page claims a product is best-selling, trending or better.",
+      "gate": "Editorial review of any new superlative."
+    }
+  ]
+}

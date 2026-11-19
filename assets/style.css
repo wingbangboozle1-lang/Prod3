@@ -114,3 +114,23 @@ hr.sep{border:none;border-top:1px solid var(--line);margin:26px 0}
 .skip{position:absolute;left:-9999px}
 .skip:focus{left:12px;top:12px;background:#fff;padding:8px 12px;z-index:99}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ------------------------------------------------------------------
+   Price policy
+   Program Policies §2(b) permits displaying price and availability only
+   when Amazon serves the data or it arrives via the Product Advertising
+   API. This site does neither, so no price is ever rendered. The class
+   below is what occupies a former price slot: a plain statement that the
+   number lives on Amazon. scripts/check_site.py fails the release if any
+   currency amount reappears in the HTML.
+   ------------------------------------------------------------------ */
+.novalue {
+  font-size: .92em;
+  font-style: italic;
+  color: var(--muted, #6b6459);
+  letter-spacing: .01em;
+}
+
+/* Former price slot. Kept as a distinct class name so nothing in the HTML
+   suggests a price is present. */
+.pricenote { margin: .35rem 0 .6rem; font-size: .95rem; }

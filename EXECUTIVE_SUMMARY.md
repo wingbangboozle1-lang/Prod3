@@ -15,21 +15,27 @@ decide.
 
 ## What is sourced — and what is not (audit 2026-11-19)
 
-- Specs, ratings, and prices are transcribed from dated official listing
-  snapshots and cited to them (`data/sources.json`). They are **seller
-  statements**, not independent Kitchen Counter tests; price snapshots are
-  date-only (no observation time or delivery location — FLG-012).
+- Specs and ratings are transcribed from dated official listing snapshots and
+  cited to them (`data/sources.json`). They are **seller statements**, not
+  independent Kitchen Counter tests. Prices are not displayed anywhere
+  (Program Policies §2(b) — Amazon-served or PA-API data only); any price
+  observations live solely in internal data files with date-only metadata
+  (FLG-007/012).
 - The five supplied `link.amazon` links were recorded as supplied. During the
   audit they resolved to listings B0CDY277D3, B09B7SB46R, B08DKYBTPH (Air
   Fryers) and B0DHZTCNR5, B0DZFD6R9Z (Meat Thermometers); observed
   destinations are kept separate from blank intended-ASIN fields (FLG-001).
+  The `/dp/<token>` Page-Not-Found check was investigated and dismissed as
+  link evidence (FLG-011).
 - Policy and guidance pages cited: Amazon Operating Agreement (2025-10-15),
   Program Policies (2026-04-14), FTC Disclosures 101, Google
   `rel="sponsored"`, GitHub Pages docs, NIST metrological-traceability FAQ,
   USDA FSIS temperature and thermometer-placement guidance.
-- Disclosure strip above the fold on every page; `rel="sponsored"` on every
-  outbound product link; conditional commission wording only (account status
-  unverified — FLG-010).
+- Disclosure strip above the fold on every page with the required “As an
+  Amazon Associate I earn from qualifying purchases.” statement plus
+  conditional commission wording; `rel="sponsored"` + `noopener` on every
+  Amazon link; absolute canonical URLs on every page (FLG-010 documents that
+  account status is unverified).
 - The demo email signup (fake confirmation) was removed; measurement is
   local-count only with no endpoint configured (FLG-014, `analytics.html`).
 

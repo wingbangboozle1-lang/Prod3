@@ -69,7 +69,7 @@ via direct fetch. Findings (full detail in `data/products.json`):
 - FLG-009 — ThermoMaven ±0.5°F / "NIST & NSF Certified" / 1-sec / IP67 wording is seller
   claim, not test; certificate unexamined; NIST traceability applies to measurement results.
 - FLG-010 — Amazon Associates account status unverified (tracking ID owner-supplied);
-  participation claims removed, disclosure copy conditional.
+  membership assertion removed, required earnings statement + conditional copy kept.
 - FLG-011 — /dp/<token> Page-Not-Found check investigated and dismissed as link evidence
   (constructed /dp/ URLs are not the supplied short links; only the 9-char length is a finding).
 - FLG-012 — Price/rating snapshots are date-only (no observation time or delivery location).

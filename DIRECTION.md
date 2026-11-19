@@ -18,6 +18,7 @@ at the bottom. Suggestions are proposals; open questions are unknowns.
 | SG-06 | Email reader capture (choose a provider + consent copy first, then add a real signup — the demo form was removed) | Return visits independent of search | Medium |
 | SG-07 | Seasonal clusters: holiday, grilling season, back-to-school dorm | Match content to buying moments | Medium |
 | SG-08 | Replace the two "newer model" picks (FLG-004/005) after review | Promote current models, not superseded ones | Low |
+| SG-09 | Mobile-first tap-target pass (S-20): grow every tappable control to ≥44px (48px at touch widths) per Google's Lighthouse tap-target guidance | Fewer mis-taps and a cleaner mobile experience, which mobile-first indexing reads | Done 2026-11-19 (low) |
 
 ## Open questions (information we do not have)
 

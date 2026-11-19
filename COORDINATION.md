@@ -138,7 +138,7 @@ merged site, and every one of its own parallel duplicates was deleted.
 | A-05 | Put the exact §5 disclosure sentence on every page, top and footer; add canonical URLs | done | arena/b84724ea-prod3 | `*.html`, `articles/*.html` |
 | A-06 | Fix `404.html` root-absolute URLs that 404 under the `/Prod3/` project path | done | arena/b84724ea-prod3 | `404.html` |
 | A-07 | Add a complementary zero-dependency gate for the rules the existing gates missed | done | arena/b84724ea-prod3 | `tools/check_site.py`, `.github/workflows/pages.yml`, `scripts/check_site.py` |
-| A-08 | Integration PR → main, merge, confirm Pages deploy, record result here | in progress | arena/b84724ea-prod3 | all |
+| A-08 | Integration PR → main, merge, confirm Pages deploy, record result here | done | arena/b84724ea-prod3 | all |
 
 ### A-01 — independent re-resolution (no discrepancy with the mainline)
 
@@ -207,3 +207,43 @@ conflict was resolved in favour of the mainline version** (`index.html`, `assets
 `thermometers/`, `build.py`, `content/`) was deleted, and its duplicate CI workflow
 (`.github/workflows/checks.yml`) was removed because it asserted pages that do not exist in this
 site. No other session's work was discarded.
+
+### A-08 — integration record
+
+- **PR #4:** https://github.com/wingbangboozle1-lang/Prod3/pull/4 (`arena/b84724ea-prod3` → `main`)
+- **Merge result:** merged, merge commit `0449d9415dd6287d1fee7344d8c57d8666a417b7`, 2026-11-19 13:01:11Z.
+  Merged without waiting for approval, per the project instructions.
+- **Pre-merge gate:** `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` and
+  `scripts/build_sitemap.py --check` all passed on the merged tree. Nothing was merged broken.
+- **Pages deploy:** `Deploy GitHub Pages` — **success**. `pages build and deployment` — **success**.
+  Pages status `built`, source `main:/`, URL https://wingbangboozle1-lang.github.io/Prod3/.
+- **Note on the previous deploy:** the immediately preceding `Deploy GitHub Pages` run on `main` had
+  concluded **failure**. It failed at the release-gate step because of the broken `404.html` recorded
+  in A-02 item 4. The run triggered by this merge succeeds, which is the direct evidence that the 404
+  repair fixed the deploy pipeline and not just the page.
+
+### A-09 — live verification after deploy
+
+Checked against the published site, not against the local tree:
+
+| Claim | Verified on the live URL |
+| --- | --- |
+| Exact §5 sentence in the top strip | ✔ `Prod3/` renders "As an Amazon Associate I earn from qualifying purchases." before any product content |
+| No prices rendered | ✔ the price slot reads "Current price on Amazon", the table cell reads "See Amazon", and the footnote states the §2(b) policy |
+| Price policy stated honestly | ✔ `disclosure.html` now says no price appears anywhere, and records that dated prices were removed on 2026-11-19 |
+| Canonical URLs | ✔ present in the served markup |
+| Disclosure page still accurate | ✔ the "Where the disclosure appears" list no longer claims prices are dated and shown |
+
+### Residual issues for the owner (not blocking, published on `/flagged.html`)
+
+- **FLG-001 / Q-02** — the Associates ID `shopnow047c-20` still cannot be confirmed from outside the
+  account; the served short-link URLs carry no visible `tag=`. Verify in SiteStripe before driving
+  traffic.
+- **FLG-006** — the `link.amazon` short-link format remains unresolved in the enrolled workflow; the
+  live site still sends product buttons through `link.amazon`, so this is the highest-value
+  five-minute task on the board.
+- Live copy still contains two stale claims outside this session's scope: the `air-fryers.html` card
+  reads "compared on capacity, footprint, wattage, and price" and the homepage call-to-action reads
+  "Compare all five on capacity, footprint & price", although no price is shown any more. Both should
+  be reworded to "…and sourcing" or similar. Logged rather than edited to keep this session's diff to
+  the compliance defects.

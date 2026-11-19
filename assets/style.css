@@ -1,15 +1,21 @@
-/* Kitchen Counter — publication stylesheet. Mobile-first, no build step. */
+/* Kitchen Counter — publication stylesheet. Mobile-first, no build step.
+   Shop-polish pass (2026-11-19, T-17): buyer-first hero, product cards with
+   spec chips, seasonal guide tiles, 44px tap targets, focus states.
+   Compliance preserved: disclosure strip, sponsored links, no prices. */
 :root{
   --paper:#fdf8f0; --paper-2:#f7efe2; --ink:#1c1917; --ink-soft:#57534e;
-  --accent:#c2410c; --accent-2:#b45309; --line:#e7ddd0; --card:#ffffff;
-  --good:#15803d; --warn:#b45309; --radius:14px; --max:1120px;
+  --accent:#c2410c; --accent-2:#b45309; --accent-dark:#9a3412;
+  --line:#e7ddd0; --card:#ffffff; --good:#15803d; --warn:#b45309;
+  --radius:14px; --max:1120px;
   --shadow:0 1px 2px rgba(28,25,23,.06),0 8px 24px rgba(28,25,23,.08);
+  --shadow-lift:0 2px 4px rgba(28,25,23,.08),0 16px 36px rgba(28,25,23,.12);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;font-family:Georgia,'Times New Roman',serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px}
 h1,h2,h3,h4{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;line-height:1.2;margin:0 0 .5em}
 a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid #f59e0b;outline-offset:2px;border-radius:6px}
 img,svg{max-width:100%;display:block}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 18px}
 .sans{font-family:'Segoe UI',system-ui,-apple-system,sans-serif}
@@ -20,7 +26,7 @@ img,svg{max-width:100%;display:block}
 .brand{font-family:'Segoe UI',system-ui,sans-serif;font-weight:800;font-size:1.35rem;letter-spacing:-.02em;color:#fff;text-decoration:none}
 .brand small{display:block;font-weight:500;font-size:.72rem;color:#d6d3d1;letter-spacing:.08em;text-transform:uppercase}
 .nav{display:flex;gap:4px;flex-wrap:wrap}
-.nav a{color:#e7e5e4;text-decoration:none;font-family:'Segoe UI',system-ui,sans-serif;font-size:.85rem;font-weight:600;padding:8px 10px;border-radius:8px}
+.nav a{color:#e7e5e4;text-decoration:none;font-family:'Segoe UI',system-ui,sans-serif;font-size:.85rem;font-weight:600;padding:10px 12px;border-radius:8px;min-height:44px;display:inline-flex;align-items:center}
 .nav a:hover,.nav a[aria-current="page"]{background:#292524;color:#fff}
 
 /* Disclosure strip — above the fold on every page */
@@ -28,39 +34,60 @@ img,svg{max-width:100%;display:block}
 .disclosure strong{color:#92400e}
 .disclosure a{color:#92400e;font-weight:700}
 
-/* Hero */
-.hero{padding:38px 0 26px;background:linear-gradient(180deg,var(--paper-2),var(--paper))}
-.kicker{font-family:'Segoe UI',system-ui,sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
-.hero h1{font-size:clamp(2rem,5.2vw,3.4rem);letter-spacing:-.02em;margin:.2em 0 .3em}
-.hero p.lede{font-size:1.12rem;color:var(--ink-soft);max-width:62ch}
+/* Hero — buyer-first, product-led */
+.hero{padding:44px 0 30px;background:linear-gradient(135deg,#1c1917 0%,#431407 55%,#9a3412 100%);color:#fff}
+.hero .kicker{color:#fdba74}
+.hero h1{font-size:clamp(2rem,5.2vw,3.4rem);letter-spacing:-.02em;margin:.2em 0 .3em;color:#fff;max-width:20ch}
+.hero p.lede{font-size:1.12rem;color:#e7e5e4;max-width:62ch}
 .hero-cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.btn{display:inline-block;font-family:'Segoe UI',system-ui,sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:12px 20px;border-radius:10px;border:2px solid var(--ink)}
+.hero .btn.primary{background:#ea580c;border-color:#ea580c;color:#fff}
+.hero .btn.ghost{background:transparent;color:#fff;border-color:#fdba74}
+.hero .btn{min-height:48px;display:inline-flex;align-items:center}
+.trustbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px;font-family:'Segoe UI',system-ui,sans-serif;font-size:.8rem}
+.trustbar span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:6px 12px;color:#fef3c7}
+.kicker{font-family:'Segoe UI',system-ui,sans-serif;font-size:.75rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.btn{display:inline-block;font-family:'Segoe UI',system-ui,sans-serif;font-weight:700;font-size:.95rem;text-decoration:none;padding:12px 20px;border-radius:10px;border:2px solid var(--ink);min-height:44px}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
 .btn.ghost{background:transparent;color:var(--ink)}
 .btn:hover{filter:brightness(1.06)}
+.btn:active{transform:translateY(1px)}
 
 /* Sections */
 section.block{padding:30px 0}
 section.block h2{font-size:1.55rem;letter-spacing:-.01em}
+.section-sub{color:var(--ink-soft);max-width:70ch;margin:.2em 0 0}
 .grid{display:grid;gap:16px}
 @media(min-width:720px){.grid.cols-2{grid-template-columns:1fr 1fr}.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:1020px){.grid.cols-4{grid-template-columns:repeat(4,1fr)}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column}
 .card h3{font-size:1.08rem}
 .card .meta{font-family:'Segoe UI',system-ui,sans-serif;font-size:.78rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em}
 .card p{font-size:.95rem;color:#44403c}
+.card .spacer{flex:1}
 .price{font-family:'Segoe UI',system-ui,sans-serif;font-weight:800;font-size:1.25rem}
 .price small{display:block;font-weight:500;font-size:.75rem;color:var(--ink-soft)}
-.badge{display:inline-block;font-family:'Segoe UI',system-ui,sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:#ffedd5;color:#9a3412;margin-bottom:8px}
+.badge{display:inline-block;font-family:'Segoe UI',system-ui,sans-serif;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px;background:#ffedd5;color:#9a3412;margin-bottom:8px}
 .badge.green{background:#dcfce7;color:#166534}
 .badge.grey{background:#f5f5f4;color:#57534e}
+.badge.season{background:#fee2e2;color:#991b1b}
 .tile{display:block;text-decoration:none;color:inherit}
-.tile:hover{transform:translateY(-2px);transition:transform .15s ease}
+.tile:hover{transform:translateY(-2px);transition:transform .15s ease;box-shadow:var(--shadow-lift)}
 .tile .art{height:120px;border-radius:10px;margin-bottom:12px;display:flex;align-items:flex-end;padding:12px;color:#fff;font-family:'Segoe UI',system-ui,sans-serif;font-weight:800;font-size:1.05rem}
 .art.air{background:linear-gradient(135deg,#ea580c,#f59e0b)}
 .art.therm{background:linear-gradient(135deg,#0f766e,#14b8a6)}
 .art.guide{background:linear-gradient(135deg,#7c3aed,#db2777)}
 .art.season{background:linear-gradient(135deg,#b91c1c,#ea580c)}
+
+/* Product visual header — CSS/SVG art only, never generated or copied photos */
+.product-art{height:110px;border-radius:10px;margin-bottom:14px;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Segoe UI',system-ui,sans-serif;font-weight:800;font-size:1.6rem;letter-spacing:-.02em;position:relative;overflow:hidden}
+.product-art::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.25),transparent 55%)}
+.product-art small{position:absolute;bottom:10px;left:12px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.92}
+.product-art.air{background:linear-gradient(135deg,#9a3412,#ea580c 60%,#f59e0b)}
+.product-art.therm{background:linear-gradient(135deg,#134e4a,#0f766e 60%,#14b8a6)}
+.spec-chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.spec-chips span{font-family:'Segoe UI',system-ui,sans-serif;font-size:.75rem;font-weight:700;background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:var(--ink)}
+.stars{font-family:'Segoe UI',system-ui,sans-serif;font-size:.82rem;color:var(--accent-2);font-weight:700}
+.bestfor{font-family:'Segoe UI',system-ui,sans-serif;font-size:.85rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:8px 10px;margin:8px 0}
 
 /* Tables */
 .table-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
@@ -75,7 +102,7 @@ td a{font-weight:600}
 .chooser h2{color:#fff}
 .chooser .q{margin:14px 0}
 .chooser .opts{display:flex;gap:8px;flex-wrap:wrap}
-.chooser button{font-family:'Segoe UI',system-ui,sans-serif;font-weight:700;padding:10px 16px;border-radius:999px;border:2px solid #78716c;background:transparent;color:#fff;cursor:pointer}
+.chooser button{font-family:'Segoe UI',system-ui,sans-serif;font-weight:700;padding:12px 18px;border-radius:999px;border:2px solid #78716c;background:transparent;color:#fff;cursor:pointer;min-height:44px}
 .chooser button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
 .chooser .result{margin-top:16px;background:#292524;border-radius:10px;padding:16px;font-family:'Segoe UI',system-ui,sans-serif;font-size:.95rem}
 
@@ -87,7 +114,7 @@ td a{font-weight:600}
 .callout{background:#fff7ed;border:1px solid #fed7aa;border-left:5px solid var(--accent);border-radius:8px;padding:14px 16px;margin:18px 0;font-family:'Segoe UI',system-ui,sans-serif;font-size:.92rem}
 .callout.warn{background:#fef2f2;border-color:#fecaca;border-left-color:#dc2626}
 .faq details{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:10px 0}
-.faq summary{font-family:'Segoe UI',system-ui,sans-serif;font-weight:700;cursor:pointer}
+.faq summary{font-family:'Segoe UI',system-ui,sans-serif;font-weight:700;cursor:pointer;min-height:44px;display:flex;align-items:center}
 
 /* Footer */
 footer{background:var(--ink);color:#d6d3d1;margin-top:40px;padding:34px 0 20px;font-family:'Segoe UI',system-ui,sans-serif;font-size:.88rem}
@@ -103,7 +130,7 @@ footer li{margin:6px 0}
 /* Sticky compare bar */
 .sticky-bar{position:sticky;bottom:0;background:var(--ink);color:#fff;padding:10px 0;font-family:'Segoe UI',system-ui,sans-serif;font-size:.85rem;z-index:20}
 .sticky-bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.sticky-bar a{color:#fdba74;font-weight:700}
+.sticky-bar a{color:#fdba74;font-weight:700;min-height:44px;display:inline-flex;align-items:center}
 
 /* Utility */
 .muted{color:var(--ink-soft);font-size:.9rem}

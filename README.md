@@ -39,7 +39,7 @@ No third-party dependencies: the standard library only.
 
 ## Layout
 
-- `index.html` — publication front page (hero, picks, chooser, categories, guides, data table)
+- `index.html` — publication front page, buyer-first (question hero, five product cards with CTAs and source links, 3-question chooser, category tiles, seasonal guides, data table, RSS capture)
 - `air-fryers.html`, `meat-thermometers.html` — category pillars
 - `compare.html`, `buying-guide.html` — comparison + decision framework
 - `articles/` — 8 question-shaped guides (also in `feed.xml` + `sitemap.xml`)

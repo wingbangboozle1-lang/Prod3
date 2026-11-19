@@ -36,7 +36,9 @@
 | T-20 | Shop-polish redesign: buyer-first front page, product cards, seasonal/trendy guides, mobile-first polish (compliance gates preserved) | in progress | `arena/33e3e80f-prod3` | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/app.js`, `feed.xml` |
 | T-21 | Expand Direction section: suggestions, open questions, missing-info discovery, path chooser | in progress | `arena/33e3e80f-prod3` | `direction.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json` |
 | T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | in progress | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
-
+| T-20 | Shop-polish redesign: buyer-first front page, product cards, seasonal/trendy guides, mobile-first polish (compliance gates preserved) | done | `arena/33e3e80f-prod3` | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/app.js`, `feed.xml` |
+| T-21 | Expand Direction section: suggestions, open questions, missing-info discovery, path chooser | done | `arena/33e3e80f-prod3` | `direction.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json` |
+| T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | needs review (awaiting merge+deploy record) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
 ## Verification log (2026-11-19, session 5a4e180c)
 
 All five submitted `link.amazon` tokens were checked against official Amazon pages
@@ -456,3 +458,57 @@ Gates run on the rebased tree (all pass): `scripts/check_site.py` OK; `tools/che
 
 Cross-scope requests: none. Handoff/conflict: resolved one COORDINATION.md rebase conflict with session
 7d756ee2 (kept both sessions' board rows; renumbered my row T-17 since 7d756ee2 held T-16).
+
+## Session arena/33e3e80f-prod3 (T-20/T-21/T-22) — 2026-11-19
+
+### Claim-collision note (coordination record, no work discarded)
+
+This session's original claim row used **T-17** (commit `b60a2e8`, pushed 21:5xZ). Session
+`arena/65474d4f-prod3` claimed **T-17** concurrently (commit `67811f9`) for the S-20 mobile-first
+pass and merged first (PR #12, `ce7aee3`). On rebase, this session's rows were renumbered
+**T-20/T-21/T-22**; the mobile pass is preserved on `main` and registered in the canonical
+suggestion ledger as **SG-19** (with its S19 source note). `assets/style.css` keeps both passes:
+their 44/48px tap-target block and this session's focus-visible/card-lift rules coexist.
+`feed.xml` was merged to this session's item copy, which also removes the two phrases the HTML
+gate bans elsewhere ("whole-chicken test", "capacity per inch"). Q-15 keeps 65474d4f's
+`verification_2026-11-19` field verbatim.
+
+### T-20 — shop-polish (what changed, line-by-line)
+
+- `index.html` rebuilt: buyer question hero; five product cards (spec chips, "consider if" line,
+  capture-dated rating, "Check price on Amazon" CTA → supplied `link.amazon` URL with
+  `rel="sponsored noopener"` + `data-asin`, source link under each card); chooser; category tiles;
+  seasonal guides row; the same five-row source-linked data table; RSS capture card (no fake
+  signup form); dashboard surfaces unchanged in the footer group. Every number on the page was
+  re-checked against `data/products.json` by script: **25/25** (ASINs, links, dims, temps,
+  ratings) pass. No prices rendered; no invented claims; disclosure strip untouched.
+- `feed.xml`: gift-guide description no longer advertises a price range; basket-or-oven item
+  says "seller-listed specs"; channel description says "each claim linked" (no "verified"
+  overstatement). Feed title already migrated to "Sourced Picks" by 65474d4f — kept.
+- `buying-guide.html`: "price snapshots do not establish value" → accurate statement that no
+  price is displayed and value must be checked live.
+- `EXECUTIVE_SUMMARY.md` / `executive-summary.html`: dated shop-polish section; "What happens
+  next" path A no longer mentions price re-checks; flag list gains FLG-016.
+
+### T-21 — direction desk
+
+`direction.html` and `DIRECTION.md` now mirror the machine registries instead of an ad-hoc table:
+full ledger **SG-01…SG-19** with status/effort/confidence/owner, open questions **Q-01…Q-21**
+with who/status/how-to-find-out. The retired "weekly price re-check" row is explicitly superseded
+by SG-17 (PA-API as the only compliant price path). New registered items: SG-15 (implemented),
+SG-16, SG-17, SG-18 (proposed); Q-18 (blocking: Search Console), Q-19 (owner: PA-API
+eligibility), Q-20 (email provider), Q-21 (SVG preview test). New flag F-21/FLG-016
+(og:image SVG unverified in share previewers; reference cited as to-verify, not quoted).
+
+### Verification performed and its boundary
+
+Values presented are the ones already registered in `data/products.json` from the dated
+2026-11-19 official-listing snapshots; this pass changed presentation and copy only, and no
+value was altered, inferred, or filled. Outbound network access from this sandbox cannot reach
+`amazon.com` or `link.amazon` (TLS connections blocked), so no live re-fetch was possible — the
+snapshot registry remains the verification record, and that boundary is stated here rather than
+papered over. Gates on the rebased, merged tree: `tools/verify_site.py` **pass**,
+`tools/check_site.py` **pass** (21 pages, 1614 assertions, incl. their P01 disclosure-position
+rule), `scripts/check_site.py` **pass**, `scripts/build_sitemap.py --check` **pass**.
+Crawled the built tree: 21 pages, 637 local hrefs, **0 broken**; **123/123** Amazon anchors
+`rel="sponsored"`; **zero** currency strings in any HTML.

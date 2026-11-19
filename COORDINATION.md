@@ -288,3 +288,59 @@ Checked against the published site, not against the local tree:
 - Event note: the ledger defines five events; `assets/app.js` emits four locally (`reader_signup` only
   fires after a confirmed provider response, and none is connected). The Analytics page already says so.
 - Cross-scope requests: none. Handoff: none.
+
+## Session arena/8eac4288-prod3 — re-verification and analytics-doc reconciliation (2026-11-19)
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-17 | Re-fetch the five supplied short links from the live Amazon listings; compare with the mainline record | done | arena/8eac4288-prod3 | read-only |
+| T-18 | Reconcile `docs/analytics-endpoint.md` with the shipped measurement code (`assets/app.js`) | done | arena/8eac4288-prod3 | `docs/analytics-endpoint.md`, `COORDINATION.md` |
+| T-19 | Re-run all release gates on the rebased branch; confirm the live site | done | arena/8eac4288-prod3 | read-only |
+
+Branch note: this clone was shallow; `git fetch --unshallow` was required before the branch could be fast-forwarded to `origin/main` (`452406b`). No history was rewritten.
+
+### T-17 — live listing re-fetch (2026-11-19)
+
+Each `link.amazon` short link was fetched and its redirect followed. Each final URL and the listing title were read directly:
+
+| Supplied link | Final destination | Listing title (as shown) | Matches mainline record |
+|---|---|---|---|
+| link.amazon/B04G1MEwY | amazon.com/dp/B0CDY277D3 | CHEFMAN 6 Quart Dual Basket Air Fryer Oven … | ✔ |
+| link.amazon/B02NbDxp3 | amazon.com/dp/B09B7SB46R | Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven … | ✔ |
+| link.amazon/B00hJ57DV | amazon.com/dp/B08DKYBTPH | Chefman Air Fryer 8 Qt … | ✔ |
+| link.amazon/B0c8moW59 | amazon.com/dp/B0DHZTCNR5 | ThermoMaven 1 Sec Professional Digital Meat Thermometer … | ✔ |
+| link.amazon/B0f3GKalj | amazon.com/dp/B0DZFD6R9Z | CHEF iQ Sense … Gen3 | ✔ |
+
+Observed destinations are recorded only in the observed field. Intended ASINs, listing URLs, confirmation dates and sources remain blank (FLG-001). The short-link compliance status is still unresolved (FLG-006). Nothing here shows that the supplied links are invalid.
+
+The listing pages also show "Sponsored" labels on some related-product ads. That is Amazon page content, not a site claim, and no price was copied.
+
+### T-18 — analytics doc reconciliation
+
+`docs/analytics-endpoint.md` described a file (`assets/js/analytics.js`), a storage key (`shopnow_events_v1`), a two-event schema and a `/analytics/collect` route that do not exist in the repository. It now describes what `assets/app.js` actually does: five defined events, four emitted locally, `reader_signup` gated on provider confirmation, the endpoint blank, and the decisions still needed before any server collection.
+
+### T-19 — gates and live site
+
+- `scripts/check_site.py` — all checks passed (21 pages).
+- `tools/check_site.py` — 21 pages, 1604 assertions, all passed.
+- `tools/verify_site.py` — release gate passed.
+- `scripts/build_sitemap.py --check` — up to date.
+- Live `analytics.html` read from `https://wingbangboozle1-lang.github.io/Prod3/analytics.html`: disclosure above the fold, endpoint described as not configured.
+
+### Items that cannot be completed from this sandbox (owner action; not blocking)
+
+These need access to accounts or decisions this session does not have. They are recorded here and on `direction.html`, not filled in:
+
+- **Self-hosted analytics endpoint** (requested): GitHub Pages cannot receive POSTs. A backend or relay must be chosen first (`docs/analytics-endpoint.md`).
+- **Search Console property and sitemap submission** (requested): requires the owner's Google Search Console account.
+- **Associates Special Link test, intended-ASIN confirmation, account eligibility** (FLG-001, FLG-006, FLG-010): require the owner's Associates account.
+- **Real product photography** (S-18): requires an Amazon-served image source decision; currently none used (FLG-008).
+- **Publishing cadence, email signup, reader capture** (S-25, SG-27..30): need an owner decision and provider; the email form remains removed (FLG-014).
+
+### Cross-scope requests
+
+(none)
+
+### Handoff / conflict log
+
+- Rebase: none needed beyond the fast-forward to `origin/main` after unshallowing; no conflicts.

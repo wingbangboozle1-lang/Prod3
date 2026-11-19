@@ -38,7 +38,7 @@
 | T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | in progress | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
 | T-20 | Shop-polish redesign: buyer-first front page, product cards, seasonal/trendy guides, mobile-first polish (compliance gates preserved) | done | `arena/33e3e80f-prod3` | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/app.js`, `feed.xml` |
 | T-21 | Expand Direction section: suggestions, open questions, missing-info discovery, path chooser | done | `arena/33e3e80f-prod3` | `direction.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json` |
-| T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | needs review (awaiting merge+deploy record) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
+| T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | done (PR #14 + #15, live-verified at `bb7d3d2`) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
 ## Verification log (2026-11-19, session 5a4e180c)
 
 All five submitted `link.amazon` tokens were checked against official Amazon pages

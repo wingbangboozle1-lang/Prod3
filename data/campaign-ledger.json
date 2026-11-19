@@ -1,0 +1,9 @@
+{
+  "tracking_id": "shopnow047c-20",
+  "note": "Empty but well-defined campaign ledger. Rows are added ONLY from authorized first-party reports (Amazon Associates reports, site analytics). No conversion score or revenue forecast is presented. Provenance trail is dated.",
+  "events_defined": ["page_view", "outbound_click", "article_read", "chooser_complete", "reader_signup"],
+  "rows": [],
+  "provenance": [
+    {"date": "2026-11-19", "event": "ledger_created", "detail": "Ledger initialized empty by session 5a4e180c. No sessions, clicks, or orders reported yet."}
+  ]
+}

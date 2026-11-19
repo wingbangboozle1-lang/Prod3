@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction — Suggestions, Open Questions & Path Chooser | Kitchen Counter</title>
+<meta name="description" content="Kitchen Counter's direction section: improvement suggestions, open questions, missing information, and a path chooser for review before implementation.">
+<meta property="og:title" content="Direction — Suggestions, Open Questions & Path Chooser">
+<meta property="og:description" content="Suggestions and open questions, reviewed before anything is implemented.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="assets/og-image.svg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead"><div class="wrap">
+  <a class="brand" href="index.html">Kitchen Counter<small>Verified picks, plainly told</small></a>
+  <nav class="nav" aria-label="Primary">
+    <a href="index.html">Front page</a><a href="air-fryers.html">Air fryers</a><a href="meat-thermometers.html">Thermometers</a><a href="compare.html">Compare</a><a href="buying-guide.html">Buying guide</a><a href="direction.html" aria-current="page">Direction</a>
+  </nav>
+</div></header>
+<div class="disclosure" role="note"><div class="wrap"><strong>Affiliate disclosure:</strong> Kitchen Counter is a participant in the Amazon Services LLC Associates Program. Tracking ID: <strong>shopnow047c-20</strong>. Prices change — confirm on Amazon. <a href="disclosure.html">How we disclose</a></div></div>
+
+<main id="main"><div class="article">
+<p class="kicker">Direction · Review before implementing</p>
+<h1>Direction: suggestions, open questions, and the path chooser</h1>
+<p class="byline">Kitchen Counter · 2026-11-19 · Nothing below is implemented until a path is chosen here</p>
+
+<p>This page is the decision desk. Suggestions are proposals, not promises. Open questions list what we do not know. The path chooser records which direction to take. Machine-readable copy: <code>DIRECTION.md</code>.</p>
+
+<h2>Suggestions (proposals, not yet implemented)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Suggestion</th><th>Why it might help</th><th>Effort</th></tr></thead>
+<tbody>
+<tr><td>SG-01</td><td>Weekly price re-check: re-fetch the five listings and update dated prices</td><td>Fresh prices convert better than stale ones</td><td>Low (script exists)</td></tr>
+<tr><td>SG-02</td><td>One new question-shaped guide per week, added to sitemap + RSS</td><td>Steady organic surface area</td><td>Medium</td></tr>
+<tr><td>SG-03</td><td>Amazon-provided product images (Program Content) on product cards</td><td>Visual trust without copyright risk</td><td>Low</td></tr>
+<tr><td>SG-04</td><td>Self-hosted analytics endpoint (wire <code>ENDPOINT</code> in app.js)</td><td>Real click/conversion data for topic choices</td><td>Medium</td></tr>
+<tr><td>SG-05</td><td>Search Console verification + sitemap submission</td><td>Measure whether search traffic arrives</td><td>Low</td></tr>
+<tr><td>SG-06</td><td>Email reader capture (wire the form to a provider)</td><td>Return visits independent of search</td><td>Medium</td></tr>
+<tr><td>SG-07</td><td>Seasonal clusters: holiday, grilling season, back-to-school dorm</td><td>Match content to buying moments</td><td>Medium</td></tr>
+<tr><td>SG-08</td><td>Replace the two "newer model" picks (FLG-004/005) after review</td><td>Promote current models, not superseded ones</td><td>Low</td></tr>
+</tbody></table></div>
+
+<h2>Open questions (information we do not have)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Question</th><th>How to discover the answer</th></tr></thead>
+<tbody>
+<tr><td>Q-01</td><td>What product did the owner intend for each short link?</td><td>Owner confirms intended ASIN per link in the Associates workflow (FLG-001)</td></tr>
+<tr><td>Q-02</td><td>Are the supplied short links compliant Special Links?</td><td>Test one per product; check destination + tracking report (FLG-006)</td></tr>
+<tr><td>Q-03</td><td>What are current commission rates for these categories?</td><td>Associates Central → Commission Income Statement (first-party report only)</td></tr>
+<tr><td>Q-04</td><td>Which queries bring real search traffic?</td><td>Search Console after 30 days of indexing (SG-05)</td></tr>
+<tr><td>Q-05</td><td>Which product converts best?</td><td>Associates reports + outbound-click counts (SG-04); never forecast</td></tr>
+<tr><td>Q-06</td><td>Which listing conflict is correct (FLG-002/003)?</td><td>Seller clarification or manufacturer spec sheet</td></tr>
+<tr><td>Q-07</td><td>Should the site cover more categories?</td><td>Measure the two current pillars first; expand only on evidence</td></tr>
+</tbody></table></div>
+
+<h2>Path chooser</h2>
+<p>Choose one path. The chosen path is recorded here and in <code>DIRECTION.md</code>; unchosen suggestions stay proposals.</p>
+<div class="chooser">
+  <div class="opts" id="path-opts">
+    <button type="button" data-path="A">A — Steady publication (weekly guide + price checks)</button>
+    <button type="button" data-path="B">B — Conversion focus (images + analytics + email first)</button>
+    <button type="button" data-path="C">C — Hold (fix FLG-001/006 first, then decide)</button>
+  </div>
+  <div class="result" id="path-result">No path chosen yet.</div>
+</div>
+
+<p class="mt"><a href="flagged.html">← Flagged for Review</a> · <a href="executive-summary.html">Executive summary →</a></p>
+</div></main>
+
+<footer><div class="wrap">
+  <div class="cols">
+    <div><h4>Kitchen Counter</h4><p>Verified picks, plainly told.</p><p id="local-counts" class="small">Local counts: loading…</p></div>
+    <div><h4>Shop</h4><ul><li><a href="air-fryers.html">Air fryers</a></li><li><a href="meat-thermometers.html">Meat thermometers</a></li><li><a href="compare.html">Compare all five</a></li><li><a href="buying-guide.html">Buying guide</a></li></ul></div>
+    <div><h4>Guides</h4><ul><li><a href="articles/basket-or-oven-air-fryer.html">Basket or oven?</a></li><li><a href="articles/air-fryer-capacity-checklist.html">Capacity checklist</a></li><li><a href="articles/cleanup-counter-space.html">Cleanup &amp; space</a></li><li><a href="articles/questions-before-multi-function.html">Before you buy</a></li></ul></div>
+    <div><h4>Trust</h4><ul><li><a href="disclosure.html">Disclosure</a></li><li><a href="sources.html">Source register</a></li><li><a href="flagged.html">Flagged for review</a></li><li><a href="direction.html">Direction</a></li><li><a href="executive-summary.html">Executive summary</a></li><li><a href="about.html">About</a></li></ul></div>
+  </div>
+  <p class="foot-disclosure"><strong>Affiliate disclosure:</strong> As an Amazon Associate, Kitchen Counter earns from qualifying purchases. Tracking ID: shopnow047c-20. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.</p>
+</div></footer>
+<script src="assets/app.js" defer></script>
+<script>
+document.querySelectorAll('#path-opts button').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('#path-opts button').forEach(function(b){ b.setAttribute('aria-pressed','false'); });
+    btn.setAttribute('aria-pressed','true');
+    var p = btn.getAttribute('data-path');
+    var labels = { A: 'Path A — Steady publication: one guide per week, weekly price re-checks, sitemap + RSS updated each time.', B: 'Path B — Conversion focus: Amazon-provided images, self-hosted analytics, and email capture before new content.', C: 'Path C — Hold: resolve FLG-001 (intended ASINs) and FLG-006 (Special Link test) first, then choose A or B.' };
+    document.getElementById('path-result').textContent = 'Chosen: ' + labels[p] + ' (recorded locally; update DIRECTION.md to make it official).';
+  });
+});
+</script>
+</body></html>

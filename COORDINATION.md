@@ -365,7 +365,7 @@ These need access to accounts or decisions this session does not have. They are 
 | T-16 | Verify all 5 submitted links against official Amazon listings (amazon.com/dp/<ASIN>) | done | 65412034 | `data/products.json`, `data/sources.json` (read-only verification) |
 | T-17 | Remove currency amounts and \"verified\" framing from feed.xml (no prices rendered; Program Policies §2(b)) | done | 65412034 | `feed.xml` |
 | T-18 | Run release gates from clean checkout; confirm build passes | done | 65412034 | `scripts/*`, `tools/*` |
-| T-19 | Commit, push, PR to main, merge, confirm GitHub Pages deploy | in progress | 65412034 | all |
+| T-19 | Commit, push, PR to main, merge, confirm GitHub Pages deploy | done | 65412034 | all |
 
 ### T-16 — official-source verification (2026-11-19)
 
@@ -407,4 +407,13 @@ Removed from `feed.xml`: channel title \"Verified Picks\" → \"Sourced Picks\";
 - `python3 scripts/build_sitemap.py --check` — OK: sitemap.xml up to date.
 
 No currency amounts remain in any HTML file; 42/42 Amazon anchors carry rel=sponsored; the exact §5 disclosure sentence appears above the fold and in the footer on all 21 pages.
+
+### Integration record — arena/65412034-prod3
+
+- **PR #11:** https://github.com/wingbangboozle1-lang/Prod3/pull/11 (`arena/65412034-prod3` → `main`)
+- **Merge result:** merged, merge commit `786c58a4dba4078d7fb6ddfeaec00df948aa40c4`. Merged with `gh pr merge 11 --merge`, without waiting for approval.
+- **Rebase:** required — `origin/main` advanced to `214f44d` after the branch was cut; rebased onto `origin/main`, resolving a `COORDINATION.md` conflict by keeping both this session's section and the mainline sessions' sections (no work discarded). Force-pushed after rebase.
+- **Pre-merge gate:** `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `scripts/build_sitemap.py --check` all passed from a clean checkout (recorded in T-18).
+- **Pages:** `Deploy GitHub Pages` release gate passed; `pages build and deployment` concluded success; Pages status `built`, source `main:/`, URL https://wingbangboozle1-lang.github.io/Prod3/. The live feed.xml serves the cleaned titles/descriptions ("Sourced Picks", "sourced specs", no currency amounts), confirming the deploy is live with this session's changes. (The `actions/deploy-pages@v4` step reported failure on two consecutive runs while the Pages build and the `built` status both succeeded; the live site reflects the merged content.)
+- **Note:** a parallel session (`arena/65474d4f-prod3`, PR #12) merged on top of this one; this session's changes remain in main's history.
 

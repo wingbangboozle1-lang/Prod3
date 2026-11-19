@@ -1,46 +1,78 @@
 # DIRECTION.md — Suggestions, open questions, and the path chooser
 
-**Site:** Kitchen Counter · **Tracking ID:** shopnow047c-20 · **Date:** 2026-11-19
-**HTML mirror:** `direction.html` (same content, reader-facing)
+**Site:** Kitchen Counter · **Tracking ID:** shopnow047c-20 · **Date:** 2026-11-19 (shop-polish revision)
+**Reader-facing mirror:** `direction.html` · **Machine registries:** `data/suggestions.json`, `data/open-questions.json`
 
 Nothing in this file is implemented until a path is chosen in the Path chooser
-at the bottom. Suggestions are proposals; open questions are unknowns.
+at the bottom. Suggestions are proposals; open questions are unknowns. The
+ledger index below mirrors `data/suggestions.json` — full problem statements,
+options, and recommendations live there.
 
-## Suggestions (proposals, not yet implemented)
+## Suggestion ledger (index)
 
-| # | Suggestion | Why it might help | Effort |
-|---|-----------|-------------------|--------|
-| SG-01 | Weekly price re-check: re-fetch the five listings, update dated prices | Fresh prices convert better than stale ones | Low (script exists) |
-| SG-02 | One new question-shaped guide per week, added to sitemap + RSS | Steady organic surface area | Medium |
-| SG-03 | Amazon-provided product images (Program Content) on product cards | Visual trust without copyright risk | Low |
-| SG-04 | Self-hosted analytics endpoint (choose service + retention + privacy notice first, then wire `ENDPOINT` in `assets/app.js`) | Real click data for topic choices | Medium |
-| SG-05 | Search Console verification + sitemap submission | Measure whether search traffic arrives | Low |
-| SG-06 | Email reader capture (choose a provider + consent copy first, then add a real signup — the demo form was removed) | Return visits independent of search | Medium |
-| SG-07 | Seasonal clusters: holiday, grilling season, back-to-school dorm | Match content to buying moments | Medium |
-| SG-08 | Replace the two "newer model" picks (FLG-004/005) after review | Promote current models, not superseded ones | Low |
-| SG-09 | Mobile-first tap-target pass (S-20): grow every tappable control to ≥44px (48px at touch widths) per Google's Lighthouse tap-target guidance | Fewer mis-taps and a cleaner mobile experience, which mobile-first indexing reads | Done 2026-11-19 (low) |
+| # | Suggestion | Status | Decided by |
+|---|-----------|--------|------------|
+| SG-01 | One beat: cooking to a target temperature — both families in one sentence | implemented | owner |
+| SG-02 | Publish the two spec conflicts instead of picking a winner | implemented | editorial |
+| SG-03 | No prices anywhere, with the policy explained on its own page | implemented | editorial |
+| SG-04 | Eight question-shaped guides instead of eight product reviews | implemented | editorial |
+| SG-05 | Compliance gate inside the build, not a checklist promise | implemented | editorial |
+| SG-06 | Buy one air fryer and one thermometer to earn original testing | proposed | owner |
+| SG-07 | Search Console verification + sitemap submission before guide nine | proposed | owner |
+| SG-08 | Privacy-preserving outbound-click counter, local counts only | implemented | editorial |
+| SG-09 | Unique title + meta description on every page | implemented | editorial |
+| SG-10 | Publication front page; dashboard surfaces one click away in the footer | implemented | editorial |
+| SG-11 | Typographic hero art and labelled placeholders; never generated or copied photos | implemented | editorial |
+| SG-12 | Three-question chooser above the comparison | implemented | editorial |
+| SG-13 | Test one short link inside the enrolled Associates workflow before trusting the format | proposed | owner |
+| SG-14 | Empty campaign ledger with defined columns, filled only from first-party reports | implemented | owner |
+| SG-15 | Every shop page leads with products; verification record one click away | implemented 2026-11-19 | editorial |
+| SG-16 | Raster (PNG) social preview card replacing the SVG; verify in a share debugger | proposed | editorial |
+| SG-17 | Product Advertising API as the only path to displayed prices (retires the old price-re-check idea) | proposed | owner |
+| SG-18 | Guide nine chosen from measured queries, not instinct | proposed | editorial |
+| SG-19 | Mobile-first tap-target pass ≥44/48px, ≥8px spacing (S-20, session 65474d4f; Google Lighthouse guidance, source S19) | implemented 2026-11-19 | engineering |
 
-## Open questions (information we do not have)
+Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
+listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
+policy (SG-03). It is replaced by SG-17. The old reader-table rows SG-02…SG-08 map to the canonical
+ledger above; the mobile-first row that session 65474d4f added as “SG-09” is registered here as
+SG-19. The ledger is the single source of truth.
 
-| # | Question | How to discover the answer |
-|---|----------|----------------------------|
-| Q-01 | What product did the owner intend for each short link? | Owner confirms intended ASIN per link in the Associates workflow (FLG-001) |
-| Q-02 | Are the supplied short links compliant Special Links? | Test one per product; check destination + tracking report (FLG-006) |
-| Q-03 | What are current commission rates for these categories? | Associates Central → Commission Income Statement (first-party report only) |
-| Q-04 | Which queries bring real search traffic? | Search Console after 30 days of indexing (SG-05) |
-| Q-05 | Which product converts best? | Associates reports + outbound-click counts (SG-04); never forecast |
-| Q-06 | Which listing conflict is correct (FLG-002/003)? | Seller clarification or manufacturer spec sheet |
-| Q-07 | Should the site cover more categories? | Measure the two current pillars first; expand only on evidence |
-| Q-08 | Is tracking ID shopnow047c-20 assigned to an enrolled, eligible Associates account? | Owner checks Associates Central; then update disclosure copy (FLG-010) |
-| Q-09 | What does the ThermoMaven calibration certificate actually certify? | Owner obtains the certificate; record lab, date, range, uncertainty, reference chain (FLG-009) |
+## Open questions — what must be answered before deciding
+
+Twenty-one questions are registered in `data/open-questions.json`. Each carries
+`known`, `unknown`, `how_to_find_out`, `who`, and a status
+(`blocking` / `queued` / `watch` / `owner-only`).
+
+Owner-only, cheapest first — these unblock the most:
+
+| # | Question | Cost |
+|---|----------|------|
+| Q-08 | Is tracking ID `shopnow047c-20` on an enrolled, eligible Associates account? | 5 min in Associates Central |
+| Q-19 | Is the account eligible for the Product Advertising API? | 5 min in Associates Central |
+| Q-02 | Do the five Special Links carry `tag=shopnow047c-20`? | One signed-in click each |
+| Q-04 | Is the `link.amazon` short-link format acceptable in this account’s enrollment? | Same session as Q-02 (FLG-006) |
+| Q-18 | Will the owner verify the site in Search Console this month? | 10 min |
+| Q-01 | What product did the owner intend for each short link? (FLG-001) | One confirmation per link |
+
+Queued / watch (full text in the JSON and on `direction.html`): Q-03 (commission rates),
+Q-05 (which query set converts — data required), Q-06 (test purchases), Q-07 (which analytics
+endpoint and retention), Q-09 (90-day target), Q-10 (newer ASIN swap for P4), Q-11 (P1 litres),
+Q-12 (brand/visual sign-off), Q-13 (endpoint storage schema), Q-14 (cadence owner), Q-15
+(disclosure reach), Q-16 (custom domain), Q-17 (retire zero-impression guides), Q-20 (email
+provider + consent), Q-21 (does the SVG preview render anywhere).
 
 ## Path chooser
 
 Choose one path. Record the choice here (date + path) and on `direction.html`.
 Unchosen suggestions stay proposals.
 
-- [ ] **Path A — Steady publication:** one guide per week, weekly price re-checks, sitemap + RSS updated each time.
-- [ ] **Path B — Conversion focus:** Amazon-provided images, self-hosted analytics, and email capture before new content.
-- [ ] **Path C — Hold:** resolve FLG-001 (intended ASINs) and FLG-006 (Special Link test) first, then choose A or B.
+- [ ] **Path A — Steady publication:** one question-shaped guide per week, sitemap + RSS
+      updated each time; from guide nine onward, topics chosen from Search Console queries
+      (SG-18). No price re-checks — SG-03/SG-17 forbid it without the API.
+- [ ] **Path B — Conversion focus:** raster preview image (SG-16), self-hosted analytics
+      endpoint (SG-04), and email capture (SG-06) before any new content.
+- [ ] **Path C — Hold:** resolve FLG-001 (intended ASINs) and FLG-006 (Special Link test)
+      first, then choose A or B.
 
 **Chosen path:** _(none yet — 2026-11-19)_

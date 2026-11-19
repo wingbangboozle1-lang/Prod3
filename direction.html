@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://wingbangboozle1-lang.github.io/Prod3/direction.html">
-<title>Direction — Suggestions, Open Questions & Path Chooser | Kitchen Counter</title>
-<meta name="description" content="Kitchen Counter's direction section: improvement suggestions, open questions, missing information, and a path chooser for review before implementation.">
-<meta property="og:title" content="Direction — Suggestions, Open Questions & Path Chooser">
-<meta property="og:description" content="Suggestions and open questions, reviewed before anything is implemented.">
+<title>Direction — Suggestion Ledger, Open Questions &amp; Path Chooser | Kitchen Counter</title>
+<meta name="description" content="Kitchen Counter's decision desk: the full suggestion ledger with status, every open question with how to find its answer, and the path chooser to settle before the next change.">
+<meta property="og:title" content="Direction — Suggestion Ledger, Open Questions &amp; Path Chooser">
+<meta property="og:description" content="Suggestions with statuses, questions with discovery paths, and a path chooser. Review here before anything is implemented.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="assets/og-image.svg">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -23,54 +23,82 @@
 </div></header>
 <div class="disclosure" role="note"><div class="wrap"><strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. If a qualifying purchase is credited, Kitchen Counter may earn a commission at no extra cost to you. Tracking ID: <strong>shopnow047c-20</strong>. Prices change — confirm on Amazon. <a href="flagged.html">Flagged for Review</a> · <a href="disclosure.html">Full disclosure</a>.</div></div>
 <main id="main"><div class="article">
-<p class="kicker">Direction · Review before implementing</p>
-<h1>Direction: suggestions, open questions, and the path chooser</h1>
-<p class="byline">Kitchen Counter · Updated 2026-11-19 · Nothing below is implemented until a path is chosen here</p>
+<p class="kicker">Direction · The decision desk · Updated 2026-11-19</p>
+<h1>Every suggestion, its status, and what still has to be answered</h1>
+<p class="byline">Kitchen Counter · Generated from <code>data/suggestions.json</code> and <code>data/open-questions.json</code> · Mirror: <code>DIRECTION.md</code></p>
 
-<p>This page is the decision desk. Suggestions are proposals, not promises. Open questions list what we do not know. The path chooser records which direction to take. Machine-readable copy: <code>DIRECTION.md</code>.</p>
+<p>This page is where the site's next moves are chosen. Each suggestion carries a status: <strong>implemented</strong> means it shipped and you can inspect it; <strong>proposed</strong> means it waits for a path. Each open question carries the concrete action that would answer it — and who can take that action. Nothing here is a claim about popularity, traffic, or product superiority.</p>
 
-<h2>Suggestions (proposals, not yet implemented)</h2>
+<div class="callout"><strong>Changed in this pass (2026-11-19, shop-polish):</strong> the front page now leads with the five product cards, CTAs, chooser, seasonal guides, and the data table — SG-15 is implemented. The old “weekly price re-check” row contradicted the no-prices policy (Program Policies 2(b)); it is retired and replaced by SG-17, which makes the Product Advertising API the only compliant path to displayed prices. A new open item, <a href="flagged.html">F-21</a>, records that the SVG social-preview image is unverified in share previewers (SG-16 / Q-21).</div>
+
+<h2>Suggestion ledger (SG-01 … SG-18)</h2>
 <div class="table-wrap"><table>
-<thead><tr><th>#</th><th>Suggestion</th><th>Why it might help</th><th>Effort</th></tr></thead>
+<thead><tr><th>#</th><th>Suggestion</th><th>Status</th><th>Effort</th><th>Confidence</th><th>Decided by</th></tr></thead>
 <tbody>
-<tr><td>SG-01</td><td>Weekly price re-check: re-fetch the five listings and update dated prices</td><td>Fresh prices convert better than stale ones</td><td>Low (script exists)</td></tr>
-<tr><td>SG-02</td><td>One new question-shaped guide per week, added to sitemap + RSS</td><td>Steady organic surface area</td><td>Medium</td></tr>
-<tr><td>SG-03</td><td>Amazon-provided product images (Program Content) on product cards</td><td>Visual trust without copyright risk</td><td>Low</td></tr>
-<tr><td>SG-04</td><td>Self-hosted analytics endpoint (choose service + retention + privacy notice first, then wire <code>ENDPOINT</code> in app.js)</td><td>Real click data for topic choices</td><td>Medium</td></tr>
-<tr><td>SG-05</td><td>Search Console verification + sitemap submission</td><td>Measure whether search traffic arrives</td><td>Low</td></tr>
-<tr><td>SG-06</td><td>Email reader capture (choose a provider + consent copy first, then add a real signup — the demo form was removed)</td><td>Return visits independent of search</td><td>Medium</td></tr>
-<tr><td>SG-07</td><td>Seasonal clusters: holiday, grilling season, back-to-school dorm</td><td>Match content to buying moments</td><td>Medium</td></tr>
-<tr><td>SG-08</td><td>Replace the two "newer model" picks (FLG-004/005) after review</td><td>Promote current models, not superseded ones</td><td>Low</td></tr>
-<tr><td>SG-09</td><td>Mobile-first tap-target pass (S-20): every tappable control grows to ≥44px, 48px at touch widths, per Google's Lighthouse tap-target guidance</td><td>Fewer mis-taps; mobile usability is read by mobile-first indexing</td><td>Done 2026-11-19 · Low</td></tr>
+<tr><td><strong>SG-01</strong></td><td>Narrow the site to one question: air fryer, or thermometer — not both<br><span class="muted small">Five products across two families read as a list of things someone had links for, not a publication with a beat.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>medium</td><td>owner</td></tr>
+<tr><td><strong>SG-02</strong></td><td>Publish the two spec conflicts instead of picking a winner<br><span class="muted small">P1's capacity is stated as both 6 liters and 6 quarts; P2's preset count is both 24 and 25.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>high</td><td>editorial</td></tr>
+<tr><td><strong>SG-03</strong></td><td>Publish no prices, anywhere, and say why on a dedicated page<br><span class="muted small">Affiliate sites show prices to feel current. Amazon's policies restrict that sharply.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>high</td><td>owner</td></tr>
+<tr><td><strong>SG-04</strong></td><td>Answer eight buyer questions, not eight product reviews<br><span class="muted small">Product pages answer "what is it"; buyers arrive with "which one, and will it fit".</span></td><td><span class="badge green">implemented</span></td><td>M</td><td>high</td><td>editorial</td></tr>
+<tr><td><strong>SG-05</strong></td><td>Build the compliance gate into the build, not into a checklist<br><span class="muted small">Disclosure placement and rel="sponsored" are the two things that are easy to forget on page fourteen.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>high</td><td>engineering</td></tr>
+<tr><td><strong>SG-06</strong></td><td>Buy one air fryer and one thermometer, and earn the right to say "we used it"<br><span class="muted small">The highest-value content in this niche — what the thing is like to live with — cannot be written honestly without the thing.</span></td><td><span class="badge grey">proposed</span></td><td>M</td><td>low</td><td>owner</td></tr>
+<tr><td><strong>SG-07</strong></td><td>Turn on Search Console before writing guide nine<br><span class="muted small">The next topic is currently chosen by instinct.</span></td><td><span class="badge grey">proposed</span></td><td>S</td><td>high</td><td>owner</td></tr>
+<tr><td><strong>SG-08</strong></td><td>Add a working outbound-click counter that stores nothing about the reader<br><span class="muted small">There is no way to tell whether a guide is read or merely visited.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>high</td><td>engineering</td></tr>
+<tr><td><strong>SG-09</strong></td><td>Give every page a unique title and description, and test that the build rejects duplicates<br><span class="muted small">Duplicate titles and descriptions are the most common self-inflicted indexing problem for generated sites.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>high</td><td>engineering</td></tr>
+<tr><td><strong>SG-10</strong></td><td>Make the front page a publication front page, and keep the dashboards one click away in the footer<br><span class="muted small">The verification machinery is genuinely interesting to the owner and irrelevant to a buyer.</span></td><td><span class="badge green">implemented</span></td><td>M</td><td>medium</td><td>design</td></tr>
+<tr><td><strong>SG-11</strong></td><td>Use typographic hero art and labelled placeholders, and never a generated photograph of a product<br><span class="muted small">The site needs to look published; it has no rights to product photography.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>high</td><td>design</td></tr>
+<tr><td><strong>SG-12</strong></td><td>Put a three-question chooser above the comparison table<br><span class="muted small">A comparison table asks the reader to hold eleven columns in their head and decide.</span></td><td><span class="badge green">implemented</span></td><td>M</td><td>medium</td><td>design</td></tr>
+<tr><td><strong>SG-13</strong></td><td>Test one short link inside the enrolled Associates workflow before trusting the format<br><span class="muted small">The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.</span></td><td><span class="badge grey">proposed</span></td><td>S</td><td>high</td><td>owner</td></tr>
+<tr><td><strong>SG-14</strong></td><td>Start the campaign ledger empty, with defined columns, and fill it only from first-party reports<br><span class="muted small">Every affiliate dashboard invites a fabricated conversion rate on day one.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>high</td><td>owner</td></tr>
+<tr><td><strong>SG-15</strong></td><td>Lead every shop page with the products, and keep the verification record one click away<br><span class="muted small">The front page opened with the process (verification framing) instead of the picks, so a first-time buyer landed on an audit rather than a shop.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>high</td><td>editorial</td></tr>
+<tr><td><strong>SG-16</strong></td><td>Replace the SVG social preview with a raster card, and verify it before relying on it<br><span class="muted small">assets/og-image.svg is referenced as og:image on every page. SVG is not the format social preview tools typically render, so shared links may show no card at all.</span></td><td><span class="badge grey">proposed</span></td><td>S</td><td>medium</td><td>editorial</td></tr>
+<tr><td><strong>SG-17</strong></td><td>Make the Product Advertising API the only path to displayed prices<br><span class="muted small">An earlier draft suggestion proposed a weekly re-check that updated dated prices on the pages. That is exactly what Program Policies 2(b) restricts, and the audit removed the prices; the proposal is retired and replaced by this one.</span></td><td><span class="badge grey">proposed</span></td><td>M</td><td>high</td><td>owner</td></tr>
+<tr><td><strong>SG-18</strong></td><td>Choose guide nine from measured queries, not instinct<br><span class="muted small">Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.</span></td><td><span class="badge grey">proposed</span></td><td>S</td><td>medium</td><td>editorial</td></tr>
+<tr><td><strong>SG-19</strong></td><td>Mobile-first tap-target pass: every control ≥44px, 48px at touch widths, ≥8px spacing<br><span class="muted small">Affiliate traffic is majority mobile; small overlapping targets are a mis-tap generator. Shipped by session 65474d4f (S-20), recorded as SG-19.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>high</td><td>engineering</td></tr>
+<p class="small muted">Source for SG-19: Google, <em>Tap targets are not sized appropriately</em> — targets below 48×48px that overlap a neighbour fail the audit; ~8px spacing recommended. Recorded as <a href="sources.html">S19 in the source register</a>.</p>
+
 </tbody></table></div>
+<p class="small muted">Full problem statements, options, and recommendations for every row live in <code>data/suggestions.json</code> — the ledger above is the index, not the argument.</p>
 
 <p class="small muted">Source for SG-09: Google, <em>Tap targets are not sized appropriately</em> — targets below 48×48px that overlap a neighbour fail the audit; ~8px spacing recommended. Recorded as <a href="sources.html">S19 in the source register</a>.</p>
 
-<h2>Open questions (information we do not have)</h2>
-<div class="table-wrap"><table>
-<thead><tr><th>#</th><th>Question</th><th>How to discover the answer</th></tr></thead>
+<h2>Open questions (information we do not have)</h2><h2>Open questions — what must be answered before deciding (Q-01 … Q-21)</h2><div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Question</th><th>Who can answer</th><th>Status</th><th>How to find out</th></tr></thead>
 <tbody>
-<tr><td>Q-01</td><td>What product did the owner intend for each short link?</td><td>Owner confirms intended ASIN per link in the Associates workflow (FLG-001)</td></tr>
-<tr><td>Q-02</td><td>Are the supplied short links compliant Special Links?</td><td>Test one per product; check destination + tracking report (FLG-006)</td></tr>
-<tr><td>Q-03</td><td>What are current commission rates for these categories?</td><td>Associates Central → Commission Income Statement (first-party report only)</td></tr>
-<tr><td>Q-04</td><td>Which queries bring real search traffic?</td><td>Search Console after 30 days of indexing (SG-05)</td></tr>
-<tr><td>Q-05</td><td>Which product converts best?</td><td>Associates reports + outbound-click counts (SG-04); never forecast</td></tr>
-<tr><td>Q-06</td><td>Which listing conflict is correct (FLG-002/003)?</td><td>Seller clarification or manufacturer spec sheet</td></tr>
-<tr><td>Q-07</td><td>Should the site cover more categories?</td><td>Measure the two current pillars first; expand only on evidence</td></tr>
-<tr><td>Q-08</td><td>Is tracking ID shopnow047c-20 assigned to an enrolled, eligible Associates account?</td><td>Owner checks Associates Central; then update disclosure copy (FLG-010)</td></tr>
-<tr><td>Q-09</td><td>What does the ThermoMaven calibration certificate actually certify?</td><td>Owner obtains the certificate; record lab, date, range, uncertainty, reference chain (FLG-009)</td></tr>
+<tr><td><strong>Q-01</strong></td><td>Is this one publication about cooking to a target temperature, or two sites — air fryers and thermometers?</td><td><span class="pill">owner</span></td><td>watch</td><td>Look at the Associates dashboard's ordered-items report after 30 days of traffic. If one family produces under 10% of orders, narrow.</td></tr>
+<tr><td><strong>Q-02</strong></td><td>Do the five Special Links actually carry tag=shopnow047c-20?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>Sign in to Associates, open a product page with SiteStripe active, and read the Get Link panel for one of the five. Confirm the tag field. Then make one test click and confirm it appears in the Click Reports within 24 hours.</td></tr>
+<tr><td><strong>Q-03</strong></td><td>What commission rate applies to each of the five products, under the account's current rate card?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>Read the current Commission Income Statement in the Associates dashboard and record the fixed and variable rates for the categories the five ASINs sit in.</td></tr>
+<tr><td><strong>Q-04</strong></td><td>Is the link.amazon short-link format acceptable in this account's enrolled workflow?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>Run SG-13: click one link while signed in, confirm the destination and confirm the click is reported. Repeat if it passes.</td></tr>
+<tr><td><strong>Q-05</strong></td><td>Who is the named author, and what is their actual experience?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>The owner decides: either publish a named author with a truthful one-paragraph background, or keep the desk byline and accept slower trust-building.</td></tr>
+<tr><td><strong>Q-06</strong></td><td>Will the site ever buy or receive units to test?</td><td><span class="pill">owner</span></td><td>queued</td><td>Set a rule before the first offer arrives: buy everything, or accept gifts only with a visible line on the page, or decline.</td></tr>
+<tr><td><strong>Q-07</strong></td><td>Which analytics will actually be installed, given no cookies and no personal data?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>Decide between: Search Console only (zero cost, query data, no page-level behaviour); a self-hosted endpoint (needs a host); or nothing.</td></tr>
+<tr><td><strong>Q-08</strong></td><td>What counts as "a session" for the site's own ledger?</td><td><span class="pill">engineering</span></td><td>queued</td><td>Adopt Amazon's definition verbatim for any column that will be reconciled against Associates reporting; use a separate, clearly named column otherwise.</td></tr>
+<tr><td><strong>Q-09</strong></td><td>What is the target outcome for the first 90 days?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>Write the number down before looking at any dashboard. "First order" and "first 100 clicks" imply very different content plans.</td></tr>
+<tr><td><strong>Q-10</strong></td><td>Should P4 point at the newer ASIN the listing itself recommends?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>Compare the two listings directly and decide. If the newer one is chosen, update intended.asin and record the change with a date — never edit observed.</td></tr>
+<tr><td><strong>Q-11</strong></td><td>What is the real capacity of P1 in litres?</td><td><span class="pill">owner or manufacturer</span></td><td>queued</td><td>Ask the manufacturer, or measure a unit. Until then, publish the nominal figure with the conflict named, as the site does now.</td></tr>
+<tr><td><strong>Q-12</strong></td><td>Is the brand name and visual direction settled?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>Decide the name first, because it constrains the domain, which constrains the canonical URLs. Changing it later means changing every canonical, the sitemap and the feed together.</td></tr>
+<tr><td><strong>Q-13</strong></td><td>If a self-hosted analytics endpoint is added, what exactly will it store?</td><td><span class="pill">engineering</span></td><td>queued</td><td>Write the retention rule first: path, product id, timestamp, nothing else; no cookies; IP discarded before write. Then configure the host to match.</td></tr>
+<tr><td><strong>Q-14</strong></td><td>What is the publishing cadence, and who writes the next guide?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>Pick a cadence the owner will actually keep — one a fortnight beats three a week followed by silence. Write it in the repository so the next session honours it.</td></tr>
+<tr><td><strong>Q-15</strong></td><td>Does the disclosure placement satisfy the standard if a reader never scrolls?</td><td><span class="pill">engineering</span></td><td>queued</td><td>Open any page at 320 px width with text scaled up and confirm the disclosure is still visible before the first product button.</td></tr>
+<tr><td><strong>Q-16</strong></td><td>Is a custom domain worth it, and if so which one?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>Answer Q-12 first, then decide the domain. Note that a domain must not contain an Amazon trademark or a variant of one (S02).</td></tr>
+<tr><td><strong>Q-17</strong></td><td>Which of the eight guides should be retired if Search Console shows no impressions after 60 days?</td><td><span class="pill">owner</span></td><td>watch</td><td>After 60 days, sort the Pages report by impressions. Any page with zero impressions earns a rewrite, a merge, or a removal — decided with data, not taste.</td></tr>
+<tr><td><strong>Q-18</strong></td><td>Does the owner have Search Console access for this GitHub Pages site, and will they verify it this month?</td><td><span class="pill">owner</span></td><td>blocking</td><td>Owner adds the property in Search Console, verifies via DNS or file upload, submits sitemap.xml, and reports back. Ten minutes, once.</td></tr>
+<tr><td><strong>Q-19</strong></td><td>Is the Associates account eligible for Product Advertising API access today?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>Associates Central → Account Settings → Product Advertising API. If the tab is missing, the account is not yet eligible; record the date checked.</td></tr>
+<tr><td><strong>Q-20</strong></td><td>Which email provider, consent language, and retention period will the owner accept for reader capture?</td><td><span class="pill">owner</span></td><td>queued</td><td>Owner picks a provider (or declines); editorial drafts the consent line and privacy note; the form ships only after the endpoint responds. analytics.html gets an update in the same commit.</td></tr>
+<tr><td><strong>Q-21</strong></td><td>Does the SVG og-image actually render in the share previewers the site cares about?</td><td><span class="pill">editorial</span></td><td>queued</td><td>Run any public share debugger on the live URL and screenshot the result; if no card appears, ship the 1200×637 PNG per SG-16 and re-check.</td></tr>
 </tbody></table></div>
+<p class="small muted"><strong>owner-only</strong> questions cannot be answered from outside your Amazon Associates and Search Console accounts — those five are the shortest path to unblocking the board. <strong>blocking</strong> means a real decision waits on it; <strong>queued</strong> means before the next release; <strong>watch</strong> means traffic will answer it.</p>
 
 <h2>Path chooser</h2>
-<p>Choose one path. The chosen path is recorded here and in <code>DIRECTION.md</code>; unchosen suggestions stay proposals.</p>
+<p>Choose one path. Record the choice here and in <code>DIRECTION.md</code>; unchosen suggestions stay proposals.</p>
 <div class="chooser">
   <div class="opts" id="path-opts">
-    <button type="button" data-path="A">A — Steady publication (weekly guide + price checks)</button>
-    <button type="button" data-path="B">B — Conversion focus (images + analytics + email first)</button>
+    <button type="button" data-path="A">A — Steady publication (weekly guide; next topic from measured queries)</button>
+    <button type="button" data-path="B">B — Conversion focus (raster preview image + analytics endpoint + email capture before new content)</button>
     <button type="button" data-path="C">C — Hold (fix FLG-001/006 first, then decide)</button>
   </div>
-  <div class="result" id="path-result">No path chosen yet.</div>
+  <div class="result" id="path-result">No path chosen yet. Chosen path as of 2026-11-19: none recorded in DIRECTION.md.</div>
 </div>
+<div class="callout warn"><strong>Path notes, honestly labeled:</strong> A is now compatible with the no-prices policy — it no longer promises price re-checks, only guide cadence gated on Search Console data (SG-18). B ships the preview image (SG-16), endpoint (SG-04), and capture (SG-06) before any ninth article. C remains the compliance-first option: Q-01, Q-02, Q-08 are all owner-only, and all three are cheap in minutes.</div>
 
 <p class="mt"><a href="flagged.html">← Flagged for Review</a> · <a href="executive-summary.html">Executive summary →</a></p>
 </div></main>
@@ -90,7 +118,7 @@ document.querySelectorAll('#path-opts button').forEach(function(btn){
     document.querySelectorAll('#path-opts button').forEach(function(b){ b.setAttribute('aria-pressed','false'); });
     btn.setAttribute('aria-pressed','true');
     var p = btn.getAttribute('data-path');
-    var labels = { A: 'Path A — Steady publication: one guide per week, weekly price re-checks, sitemap + RSS updated each time.', B: 'Path B — Conversion focus: Amazon-provided images, self-hosted analytics, and email capture before new content.', C: 'Path C — Hold: resolve FLG-001 (intended ASINs) and FLG-006 (Special Link test) first, then choose A or B.' };
+    var labels = { A: 'Path A — Steady publication: one guide per week, chosen from measured queries once Search Console has 30 days of data; sitemap + RSS updated each time.', B: 'Path B — Conversion focus: raster social preview (SG-16), self-hosted analytics endpoint (SG-04), and email capture (SG-06) before any new content.', C: 'Path C — Hold: resolve FLG-001 (intended ASINs) and FLG-006 (Special Link test) first, then choose A or B.' };
     document.getElementById('path-result').textContent = 'Chosen: ' + labels[p] + ' (recorded locally; update DIRECTION.md to make it official).';
   });
 });

@@ -57,6 +57,7 @@
 <div class="callout"><strong>FLG-014 — Reader email signup is not connected.</strong> The demo signup form (which showed a fake confirmation) was removed in the 2026-11-19 audit. No email provider, endpoint, or consent flow exists; <code>reader_signup</code> is a reserved event that fires only on a confirmed provider response. Subscription path today: RSS. Data: <code>assets/app.js</code> · <a href="analytics.html">Analytics &amp; privacy</a>.</div>
 
 <div class="callout"><strong>FLG-015 — Campaign ledger is empty by design.</strong> No clicks, orders, commissions, or revenue have been first-party reported. The ledger accepts rows only from authorized first-party reports; no conversion score or revenue forecast is presented anywhere. Data: <code>data/campaign-ledger.json</code>.</div>
+<div class="callout"><strong>FLG-016 — Social preview image format is unverified (F-21).</strong> Every page references <code>assets/og-image.svg</code> as its <code>og:image</code>. Share-preview tools typically render raster formats; no debugger check has been run from the build environment, and the reference documentation is cited as to-verify rather than quoted. If shared links show no card, adopt SG-16 (a 1200×637 PNG) and re-test. Discovery path: Q-21 on the <a href="direction.html">Direction page</a>.</div>
 
 
 <p class="mt"><a href="sources.html">← Back to the source register</a> · <a href="direction.html">Direction &amp; open questions →</a></p>

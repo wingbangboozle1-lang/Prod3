@@ -1,13 +1,13 @@
 /* Kitchen Counter — privacy-preserving measurement.
-   No cookies, no fingerprinting, no PII. Events are counted locally in
-   localStorage and (optionally) beaconed to a self-hosted endpoint the
-   owner configures. Five defined events: page_view, outbound_click,
-   article_read, chooser_complete, reader_signup. */
+   No cookies, no fingerprinting, no email or user ID. Four events are
+   counted locally in localStorage. reader_signup is reserved for a confirmed
+   email-provider response and is not emitted unless an integration dispatches
+   kc:reader-signup-confirmed. The self-hosted endpoint is intentionally blank. */
 (function () {
   'use strict';
   var LS_KEY = 'kc-events-v1';
-  // Owner: set to your self-hosted analytics endpoint to enable server-side
-  // collection, e.g. 'https://analytics.example.com/collect'. Empty = local only.
+  // No server-side analytics endpoint is configured. Do not fill this in until
+  // a self-hosted service, origin policy, retention, and privacy notice are ready.
   var ENDPOINT = '';
 
   function load() {
@@ -18,12 +18,18 @@
     try { localStorage.setItem(LS_KEY, JSON.stringify(events)); } catch (e) { /* private mode */ }
   }
   function track(event, data) {
+    var allowed = ['page_view', 'outbound_click', 'article_read', 'chooser_complete', 'reader_signup'];
+    if (allowed.indexOf(event) === -1) return;
     var events = load();
     events[event] = (events[event] || 0) + 1;
     save(events);
     if (ENDPOINT && navigator.sendBeacon) {
-      var payload = JSON.stringify({ event: event, page: location.pathname, ts: new Date().toISOString(), data: data || {} });
-      navigator.sendBeacon(ENDPOINT, new Blob([payload], { type: 'application/json' }));
+      var payload = { event: event, page: location.pathname };
+      if (event === 'outbound_click' && data && /^[A-Z0-9]{10}$/.test(data.asin || '')) {
+        payload.asin = data.asin;
+      }
+      // Deliberately omit email, link URL, referrer, client timestamp, and user ID.
+      navigator.sendBeacon(ENDPOINT, new Blob([JSON.stringify(payload)], { type: 'text/plain;charset=UTF-8' }));
     }
   }
 
@@ -33,7 +39,7 @@
   // outbound_click — every sponsored Amazon link
   document.querySelectorAll('a[data-event="outbound_click"]').forEach(function (a) {
     a.addEventListener('click', function () {
-      track('outbound_click', { asin: a.getAttribute('data-asin') || '', href: a.href });
+      track('outbound_click', { asin: a.getAttribute('data-asin') || '' });
     });
   });
 
@@ -51,23 +57,17 @@
   // chooser_complete — fires when the 3-question chooser produces a result
   window.addEventListener('kc:chooser-complete', function () { track('chooser_complete', {}); });
 
-  // reader_signup — newsletter form (stores nothing; owner wires the endpoint)
-  var form = document.getElementById('reader-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      track('reader_signup', {});
-      var msg = document.getElementById('reader-msg');
-      if (msg) msg.textContent = 'Thanks — you are on the list. (Demo form: wire your email provider to finish setup.)';
-      form.reset();
-    });
-  }
+  // reader_signup — an email integration may dispatch this only after the
+  // provider confirms enrollment. The static publication has no such provider.
+  window.addEventListener('kc:reader-signup-confirmed', function () {
+    track('reader_signup', {});
+  });
 
   // Dashboard counter in the footer (local counts only)
   var el = document.getElementById('local-counts');
   if (el) {
     var e = load();
-    el.textContent = 'Local counts on this device: ' +
-      Object.keys(e).map(function (k) { return k + ' × ' + e[k]; }).join(' · ') || 'Local counts on this device: none yet.';
+    var summary = Object.keys(e).map(function (k) { return k + ' × ' + e[k]; }).join(' · ');
+    el.textContent = summary ? 'Local counts on this device: ' + summary : 'Local counts on this device: none yet.';
   }
 })();

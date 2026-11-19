@@ -1,8 +1,8 @@
 {
   "tracking_id": "shopnow047c-20",
   "verified_on": "2026-11-19",
-  "verification_method": "Direct fetch of each official Amazon listing page (amazon.com/dp/<ASIN>) plus dp/<token> Page-Not-Found check, 2026-11-19. Values below are quoted from those pages; anything not readable on the official page is null and flagged.",
-  "note": "intended_* fields are the product-intent confirmation record. observed_* fields are the measured redirect target. The two are never merged. intended_* stay null until the owner confirms in the Associates workflow.",
+  "verification_method": "Snapshot method: values transcribed from dated official Amazon listing snapshots (amazon.com/dp/<ASIN>) supplied for this project on 2026-11-19. A 2026-11-19 re-fetch returned dynamic, option-dependent content and was not used to overwrite values. Seller statements are recorded as claims, not as independently verified measurements. Anything not readable on the snapshot is null and flagged.",
+  "note": "intended_* fields are the product-intent confirmation record. observed_* fields are the measured redirect target. The two are never merged. intended_* stay null until the owner confirms in the Associates workflow. dp_token_result records an observation only: constructing /dp/<token> from a 9-character token returned Page Not Found on 2026-11-19; that does not test or establish the status of the supplied link.amazon short links (FLG-011).",
   "products": [
     {
       "id": "P-01",
@@ -10,7 +10,7 @@
       "submitted_token": "B04G1MEwY",
       "token_length": 9,
       "token_is_asin": false,
-      "dp_token_result": "Page Not Found (verified 2026-11-19)",
+      "dp_token_result": "Page Not Found when the 9-char token was pasted as /dp/<token> (observed 2026-11-19; not a test of the supplied short link — see FLG-011)",
       "intended_asin": null,
       "intended_listing_url": null,
       "confirmation_date": null,
@@ -30,16 +30,23 @@
         "temperature_range": "200-450°F",
         "power": "120 Volts / 1700 Watts",
         "certification": "cETL approved",
-        "warranty": "1-year assurance (Chefman)",
+        "warranty": "\"1-year assurance\" (Chefman wording on listing)",
         "model_number": "RJ38-SQPF-3TDB-2W",
         "upc": "810087845025",
         "configuration": "Dual Basket"
       },
-      "rating": "4.2 out of 5 stars (4,876 ratings)",
-      "price_observed": "$79.93 (List Price $99.99) — observed 2026-11-19, verify on Amazon",
+      "rating": "4.2 out of 5 stars (4,876 ratings) — snapshot 2026-11-19",
+      "price_observed": "$79.93 (List Price $99.99) — snapshot 2026-11-19 (time and delivery location not recorded); verify current price on Amazon",
       "best_sellers_rank": "#5,322 in Kitchen & Dining; #37 in Air Fryers",
       "source_url": "https://www.amazon.com/dp/B0CDY277D3",
-      "flags": ["FLG-001", "FLG-006", "FLG-007"]
+      "flags": [
+        "FLG-001",
+        "FLG-006",
+        "FLG-007",
+        "FLG-011",
+        "FLG-012"
+      ],
+      "newer_model_note": null
     },
     {
       "id": "P-02",
@@ -47,7 +54,7 @@
       "submitted_token": "B02NbDxp3",
       "token_length": 9,
       "token_is_asin": false,
-      "dp_token_result": "Page Not Found (verified 2026-11-19)",
+      "dp_token_result": "Page Not Found when the 9-char token was pasted as /dp/<token> (observed 2026-11-19; not a test of the supplied short link — see FLG-011)",
       "intended_asin": null,
       "intended_listing_url": null,
       "confirmation_date": null,
@@ -69,14 +76,23 @@
         "presets": "24 (title) vs 25 (About this item) — CONFLICT, see FLG-002",
         "model_number": "4-00675-02X-VN",
         "upc": "752356835682",
-        "included_components": "Rack, Bake Pan, Drip Tray, Crisper Basket, Rotisserie Spit, Fetch Tool",
+        "included_components": "Rack, Bake Pan, Drip Tray, Crisper Basket, Rotisserie Spit, Fetch Tool (six named; configuration string says \"7 Accessories\" — CONFLICT, see FLG-013)",
         "configuration": "Air Fryer Toaster Oven Combo with 24 Functions and 7 Accessories"
       },
-      "rating": "4.3 out of 5 stars (18,371 ratings)",
-      "price_observed": "$149.99 — observed 2026-11-19, verify on Amazon",
+      "rating": "4.3 out of 5 stars (18,371 ratings) — snapshot 2026-11-19",
+      "price_observed": "$149.99 — snapshot 2026-11-19 (time and delivery location not recorded); verify current price on Amazon",
       "best_sellers_rank": "#168 in Kitchen & Dining; #5 in Air Fryers",
       "source_url": "https://www.amazon.com/dp/B09B7SB46R",
-      "flags": ["FLG-001", "FLG-002", "FLG-006", "FLG-007"]
+      "flags": [
+        "FLG-001",
+        "FLG-002",
+        "FLG-006",
+        "FLG-007",
+        "FLG-011",
+        "FLG-012",
+        "FLG-013"
+      ],
+      "newer_model_note": null
     },
     {
       "id": "P-03",
@@ -84,7 +100,7 @@
       "submitted_token": "B00hJ57DV",
       "token_length": 9,
       "token_is_asin": false,
-      "dp_token_result": "Page Not Found (verified 2026-11-19)",
+      "dp_token_result": "Page Not Found when the 9-char token was pasted as /dp/<token> (observed 2026-11-19; not a test of the supplied short link — see FLG-011)",
       "intended_asin": null,
       "intended_listing_url": null,
       "confirmation_date": null,
@@ -102,18 +118,25 @@
         "color": "Stainless steel",
         "material": "Plastic, Stainless Steel",
         "special_features": "Automatic Shut-Off, LED Shake Reminder, Programmable",
-        "temperature_range": "200-400°F (Product Information); 450°F Hi-Fry (title)",
+        "temperature_range": "200-400°F (Product Information); 450°F Hi-Fry (title claim)",
         "power": "120 Volts / 1700 Watts",
         "model_number": "RJ38-SQSS-8T",
         "upc": "816458024518",
-        "warranty": "1-Year Limited Warranty"
+        "warranty": "\"1-Year Limited Warranty\" (listing wording)"
       },
-      "rating": "4.4 out of 5 stars (16,890 ratings)",
-      "price_observed": "$69.99 (List Price $119.99) — observed 2026-11-19, verify on Amazon",
+      "rating": "4.4 out of 5 stars (16,890 ratings) — snapshot 2026-11-19",
+      "price_observed": "$69.99 (List Price $119.99) — snapshot 2026-11-19 (time and delivery location not recorded); verify current price on Amazon",
       "best_sellers_rank": "#395 in Kitchen & Dining; #9 in Air Fryers",
-      "newer_model": "B0CNY1YVDD (Chefman 6 QT Compact) — listed on the product page",
       "source_url": "https://www.amazon.com/dp/B08DKYBTPH",
-      "flags": ["FLG-001", "FLG-004", "FLG-006", "FLG-007"]
+      "flags": [
+        "FLG-001",
+        "FLG-004",
+        "FLG-006",
+        "FLG-007",
+        "FLG-011",
+        "FLG-012"
+      ],
+      "newer_model_note": "B0CNY1YVDD (Chefman 6 QT Compact) — listed on the product page — cross-promotion wording on the seller page, not an obsolescence statement"
     },
     {
       "id": "P-04",
@@ -121,7 +144,7 @@
       "submitted_token": "B0c8moW59",
       "token_length": 9,
       "token_is_asin": false,
-      "dp_token_result": "Page Not Found (verified 2026-11-19)",
+      "dp_token_result": "Page Not Found when the 9-char token was pasted as /dp/<token> (observed 2026-11-19; not a test of the supplied short link — see FLG-011)",
       "intended_asin": null,
       "intended_listing_url": null,
       "confirmation_date": null,
@@ -133,21 +156,29 @@
       "category": "Meat Thermometers",
       "browse_node": "289810",
       "specs": {
-        "accuracy": "±0.5°F (NIST certified)",
-        "response_time": "1 second",
-        "waterproof": "IP67",
+        "accuracy": "±0.5°F (seller claim on listing; not independently tested — FLG-009)",
+        "response_time": "1 second (seller claim; not timed by Kitchen Counter — FLG-009)",
+        "waterproof": "IP67 (seller claim; not tested — FLG-009)",
         "display": "Auto-rotate bright LED screen",
-        "certification": "NIST, NSF",
+        "certification": "\"NIST, NSF\" (listing wording; not verified, and NIST does not certify retail product claims — FLG-009)",
         "special_features": "Auto Off, Fast Reading System, High Accuracy, Ultra Clear Screen, Waterproof",
         "included_components": "1 Meat Thermometer, 1 AAA Battery, 1 User Manual, 1 Calibration Certificate",
         "unit_count": "1 Count"
       },
       "rating": null,
-      "price_observed": "$16.99 — observed 2026-11-19, verify on Amazon",
+      "price_observed": "$16.99 — snapshot 2026-11-19 (time and delivery location not recorded); verify current price on Amazon",
       "best_sellers_rank": null,
-      "newer_model": "B0GL7Z4KP4 (ThermoMaven, orange) — listed on the product page",
       "source_url": "https://www.amazon.com/dp/B0DHZTCNR5",
-      "flags": ["FLG-001", "FLG-005", "FLG-006", "FLG-007"]
+      "flags": [
+        "FLG-001",
+        "FLG-005",
+        "FLG-006",
+        "FLG-007",
+        "FLG-009",
+        "FLG-011",
+        "FLG-012"
+      ],
+      "newer_model_note": "B0GL7Z4KP4 (ThermoMaven, orange) — listed on the product page — cross-promotion wording on the seller page, not an obsolescence statement"
     },
     {
       "id": "P-05",
@@ -155,7 +186,7 @@
       "submitted_token": "B0f3GKalj",
       "token_length": 9,
       "token_is_asin": false,
-      "dp_token_result": "Page Not Found (verified 2026-11-19)",
+      "dp_token_result": "Page Not Found when the 9-char token was pasted as /dp/<token> (observed 2026-11-19; not a test of the supplied short link — see FLG-011)",
       "intended_asin": null,
       "intended_listing_url": null,
       "confirmation_date": null,
@@ -169,8 +200,8 @@
       "specs": {
         "probes": "3 ultra-thin probes + Smart Hub",
         "sensors": "5 sensors (4 internal + 1 ambient)",
-        "heat_safe": "1000°F",
-        "connectivity": "WiFi (unlimited range) + Bluetooth",
+        "heat_safe": "1000°F (seller claim; not tested)",
+        "connectivity": "WiFi (\"unlimited range\" is seller wording) + Bluetooth",
         "battery_life": "50 hours (About this item) vs 70 hours (Product Description) — CONFLICT, see FLG-003",
         "warranty": "3 Year (Item details) vs 2-year assurance (About this item) — CONFLICT, see FLG-003",
         "model_number": "CQ60-3C-Z1-E",
@@ -178,11 +209,21 @@
         "included_components": "3 Probes, Hub",
         "display_type": "App"
       },
-      "rating": "4.2 out of 5 stars (2,178 ratings)",
-      "price_observed": "$119.99 (List Price $219.99) — observed 2026-11-19, verify on Amazon",
+      "rating": "4.2 out of 5 stars (2,178 ratings) — snapshot 2026-11-19",
+      "price_observed": "$119.99 (List Price $219.99) — snapshot 2026-11-19 (time and delivery location not recorded); verify current price on Amazon",
       "best_sellers_rank": "#375 in Kitchen & Dining; #4 in Meat Thermometers & Timers",
       "source_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
-      "flags": ["FLG-001", "FLG-003", "FLG-006", "FLG-007"]
+      "flags": [
+        "FLG-001",
+        "FLG-003",
+        "FLG-006",
+        "FLG-007",
+        "FLG-011",
+        "FLG-012"
+      ],
+      "newer_model_note": null
     }
-  ]
+  ],
+  "price_snapshot_note": "price_observed fields are archival snapshots dated 2026-11-19. Observation time and delivery location were not recorded; prices are not current offers. See FLG-012.",
+  "claim_basis": "Specs, ratings, and prices are seller/listing statements from the snapshot. Claim-marked fields (accuracy, certification, response time, heat-safe ratings, function names) are marketing claims the site has not tested. See FLG-009."
 }

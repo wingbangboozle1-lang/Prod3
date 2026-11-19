@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Executive Summary — Kitchen Counter | Kitchen Counter</title>
-<meta name="description" content="Executive summary: what Kitchen Counter is, what was verified, what is flagged, and what happens next.">
+<meta name="description" content="Executive summary: what Kitchen Counter is, what is sourced, what remains unverified or flagged, and what happens next.">
 <meta property="og:title" content="Executive Summary — Kitchen Counter">
-<meta property="og:description" content="What the site is, what was verified, what is flagged, what happens next.">
+<meta property="og:description" content="What the site is, what is sourced, what is flagged, what happens next.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="assets/og-image.svg">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -15,52 +15,57 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="masthead"><div class="wrap">
-  <a class="brand" href="index.html">Kitchen Counter<small>Verified picks, plainly told</small></a>
+  <a class="brand" href="index.html">Kitchen Counter<small>Listed specs, plainly told</small></a>
   <nav class="nav" aria-label="Primary">
     <a href="index.html">Front page</a><a href="air-fryers.html">Air fryers</a><a href="meat-thermometers.html">Thermometers</a><a href="compare.html">Compare</a><a href="buying-guide.html">Buying guide</a><a href="direction.html">Direction</a>
   </nav>
 </div></header>
-<div class="disclosure" role="note"><div class="wrap"><strong>Affiliate disclosure:</strong> Kitchen Counter is a participant in the Amazon Services LLC Associates Program. Tracking ID: <strong>shopnow047c-20</strong>. Prices change — confirm on Amazon. <a href="disclosure.html">How we disclose</a></div></div>
+<div class="disclosure" role="note"><div class="wrap"><strong>Affiliate disclosure:</strong> Product links were supplied for affiliate use. If a qualifying purchase is credited, Kitchen Counter may earn a commission at no extra cost to you. Owner-supplied tracking ID: <strong>shopnow047c-20</strong>; account eligibility and short-link compliance are unverified. <a href="flagged.html">Flagged for Review</a> · <a href="disclosure.html">Full disclosure</a>.</div></div>
 
 <main id="main"><div class="article">
 <p class="kicker">Executive summary</p>
-<h1>Kitchen Counter: verified picks, plainly told</h1>
+<h1>Kitchen Counter: listed specs, plainly told</h1>
 <p class="byline">Kitchen Counter · 2026-11-19 · Tracking ID shopnow047c-20</p>
 
 <h2>What it is</h2>
 <p>A publication-style Amazon affiliate site covering two kitchen categories — air fryers (3 products) and meat thermometers (2 products). The front page leads with products, not process; every dashboard surface is reachable from the footer and one navigation group. Eight question-shaped guides, a comparison table, a buying guide, and a 3-question chooser help visitors decide.</p>
 
-<h2>What was verified (2026-11-19)</h2>
+<h2>What is sourced — and what is not (audit 2026-11-19)</h2>
 <ul>
-<li>All five supplied <code>link.amazon</code> links resolve to official listings: B0CDY277D3, B09B7SB46R, B08DKYBTPH (Air Fryers) and B0DHZTCNR5, B0DZFD6R9Z (Meat Thermometers).</li>
-<li>Every spec, rating, price, and rank on the site was read line-by-line from the official listing pages and links to its source.</li>
-<li>Official policy pages re-read: Operating Agreement, Program Policies, FTC Disclosures 101, Google <code>rel="sponsored"</code>, GitHub Pages docs.</li>
-<li>Disclosure strip above the fold on every page; <code>rel="sponsored"</code> on every outbound product link.</li>
+<li>Specs, ratings, and prices are transcribed from dated official listing snapshots and cited to them. They are <em>seller statements</em>, not independent Kitchen Counter tests; price snapshots lack observation time and delivery location (FLG-012).</li>
+<li>The five supplied <code>link.amazon</code> links were recorded as supplied. During the audit they resolved to listings B0CDY277D3, B09B7SB46R, B08DKYBTPH (Air Fryers) and B0DHZTCNR5, B0DZFD6R9Z (Meat Thermometers); observed destinations are kept separate from blank intended-ASIN fields (FLG-001).</li>
+<li>Policy and guidance pages cited: Amazon Operating Agreement and Program Policies, FTC Disclosures 101, Google <code>rel="sponsored"</code>, GitHub Pages docs, plus NIST traceability and USDA FSIS temperature/placement guidance.</li>
+<li>Disclosure strip above the fold on every page; <code>rel="sponsored"</code> on every outbound product link; conditional commission wording only (account status unverified — FLG-010).</li>
+<li>The demo email signup with a fake confirmation was removed; measurement is local-count only with no endpoint (FLG-014, <a href="analytics.html">Analytics &amp; privacy</a>).</li>
 </ul>
 
 <h2>What is flagged (does not block)</h2>
 <ul>
 <li>FLG-001: intended ASIN per short link unconfirmed (owner confirmation needed).</li>
-<li>FLG-002/003: two listings contradict themselves (preset count; battery life + warranty).</li>
-<li>FLG-004/005: two picks have newer models listed on their pages.</li>
-<li>FLG-006: short-link compliance unresolved — test one Special Link per product before scaling.</li>
-<li>FLG-007/008: prices drift; no product photography used (compliant path).</li>
+<li>FLG-002/003/013: three listing-internal conflicts (preset count; battery life + warranty; accessories count).</li>
+<li>FLG-004/005: two listings cross-promote other models.</li>
+<li>FLG-006: short-link compliance unresolved — test one Special Link per product before scaling. FLG-011: the /dp/&lt;token&gt; Page-Not-Found check was investigated and dismissed as link evidence.</li>
+<li>FLG-007/012: prices drift; snapshot metadata is date-only.</li>
+<li>FLG-008: no product photography used (compliant path).</li>
+<li>FLG-009: ThermoMaven accuracy/NIST wording is seller claim, not test.</li>
+<li>FLG-010: Associates account status unverified.</li>
+<li>FLG-014: email signup not connected. FLG-015: campaign ledger empty by design.</li>
 </ul>
 
 <h2>What happens next</h2>
-<p>Choose a path on the <a href="direction.html">Direction</a> page: steady publication (weekly guides + price checks), conversion focus (images + analytics + email), or hold until FLG-001/006 are resolved. Measurement is privacy-preserving (five defined events, local counts) and the campaign ledger starts empty — rows are added only from authorized first-party reports. No conversion score or revenue forecast is presented.</p>
+<p>Choose a path on the <a href="direction.html">Direction</a> page: steady publication (weekly guides + price checks), conversion focus (images + a real analytics endpoint + a real email provider), or hold until FLG-001/006/010 are resolved. Measurement is privacy-preserving (four events counted locally; reader_signup reserved for a confirmed provider response; no endpoint configured) and the campaign ledger stays empty — rows are added only from authorized first-party reports. No conversion score or revenue forecast is presented.</p>
 
 <p class="mt"><a href="index.html">← Front page</a> · <a href="sources.html">Source register →</a></p>
 </div></main>
 
 <footer><div class="wrap">
   <div class="cols">
-    <div><h4>Kitchen Counter</h4><p>Verified picks, plainly told.</p><p id="local-counts" class="small">Local counts: loading…</p></div>
+    <div><h4>Kitchen Counter</h4><p>Listed specs, plainly told.</p><p id="local-counts" class="small">Local counts: loading…</p></div>
     <div><h4>Shop</h4><ul><li><a href="air-fryers.html">Air fryers</a></li><li><a href="meat-thermometers.html">Meat thermometers</a></li><li><a href="compare.html">Compare all five</a></li><li><a href="buying-guide.html">Buying guide</a></li></ul></div>
     <div><h4>Guides</h4><ul><li><a href="articles/basket-or-oven-air-fryer.html">Basket or oven?</a></li><li><a href="articles/air-fryer-capacity-checklist.html">Capacity checklist</a></li><li><a href="articles/cleanup-counter-space.html">Cleanup &amp; space</a></li><li><a href="articles/questions-before-multi-function.html">Before you buy</a></li></ul></div>
-    <div><h4>Trust</h4><ul><li><a href="disclosure.html">Disclosure</a></li><li><a href="sources.html">Source register</a></li><li><a href="flagged.html">Flagged for review</a></li><li><a href="direction.html">Direction</a></li><li><a href="executive-summary.html">Executive summary</a></li><li><a href="about.html">About</a></li></ul></div>
+    <div><h4>Trust</h4><ul><li><a href="disclosure.html">Disclosure</a></li><li><a href="sources.html">Source register</a></li><li><a href="flagged.html">Flagged for review</a></li><li><a href="analytics.html">Analytics &amp; privacy</a></li><li><a href="direction.html">Direction</a></li><li><a href="executive-summary.html">Executive summary</a></li><li><a href="about.html">About</a></li></ul></div>
   </div>
-  <p class="foot-disclosure"><strong>Affiliate disclosure:</strong> As an Amazon Associate, Kitchen Counter earns from qualifying purchases. Tracking ID: shopnow047c-20. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.</p>
+  <p class="foot-disclosure"><strong>Affiliate disclosure:</strong> Product links were supplied for affiliate use. If a qualifying purchase is credited, Kitchen Counter may earn a commission at no extra cost to you. Owner-supplied tracking ID: shopnow047c-20; Amazon Associates account eligibility and short-link compliance are unverified. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.</p>
 </div></footer>
 <script src="assets/app.js" defer></script>
 </body></html>

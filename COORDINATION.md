@@ -269,6 +269,7 @@ Checked against the published site, not against the local tree:
   be reworded to "…and sourcing" or similar. Logged rather than edited to keep this session's diff to
   the compliance defects.
 
+
 ## Session arena/7d756ee2-prod3 — re-verification (2026-11-19)
 
 - Branch `arena/7d756ee2-prod3` was cut from `main` at `0749909`. No site content was changed.
@@ -351,3 +352,59 @@ These need access to accounts or decisions this session does not have. They are 
 - Merge result: merged, merge commit `d9323de9213bf5c02ba2e36802597e2ebd48a829`. Merged with `gh pr merge 9 --merge`, without waiting for approval.
 - Pages: `Deploy GitHub Pages` — success; `pages build and deployment` — success (both on `d9323de`).
 - Live check: `https://wingbangboozle1-lang.github.io/Prod3/docs/analytics-endpoint.md` serves the reconciled text.
+
+---
+
+## Session arena/65412034-prod3 — verification and feed hygiene (2026-11-19)
+
+**Branch:** `arena/65412034-prod3` (from `0749909bee7ffcd821655cc17ff1b59df0c8acbe`)
+**Tracking ID:** `shopnow047c-20`
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-16 | Verify all 5 submitted links against official Amazon listings (amazon.com/dp/<ASIN>) | done | 65412034 | `data/products.json`, `data/sources.json` (read-only verification) |
+| T-17 | Remove currency amounts and \"verified\" framing from feed.xml (no prices rendered; Program Policies §2(b)) | done | 65412034 | `feed.xml` |
+| T-18 | Run release gates from clean checkout; confirm build passes | done | 65412034 | `scripts/*`, `tools/*` |
+| T-19 | Commit, push, PR to main, merge, confirm GitHub Pages deploy | in progress | 65412034 | all |
+
+### T-16 — official-source verification (2026-11-19)
+
+Each submitted link's observed destination was re-fetched from the official Amazon domain and compared with the register:
+
+| Supplied link | Official listing (fetched) | Observed ASIN | Register agrees | Category node |
+|---|---|---|---|---|
+| link.amazon/B04G1MEwY | https://www.amazon.com/dp/B0CDY277D3 | B0CDY277D3 | ✔ | Air Fryers 17659096011 |
+| link.amazon/B02NbDxp3 | https://www.amazon.com/dp/B09B7SB46R | B09B7SB46R | ✔ | Air Fryers 17659096011 |
+| link.amazon/B00hJ57DV | https://www.amazon.com/dp/B08DKYBTPH | B08DKYBTPH | ✔ | Air Fryers 17659096011 |
+| link.amazon/B0c8moW59 | https://www.amazon.com/dp/B0DHZTCNR5 | B0DHZTCNR5 | ✔ | Meat Thermometers 289810 |
+| link.amazon/B0f3GKalj | https://www.amazon.com/dp/B0DZFD6R9Z | B0DZFD6R9Z | ✔ | Meat Thermometers 289810 |
+
+Titles observed on the official pages match the register (Chefman 6 Qt Dual Basket; Emeril Lagasse 26QT French Door with \"24 One-Touch Preset Options\" / \"Six Cooking Accessories Included\"; Chefman Air Fryer 8 Qt TurboFry; ThermoMaven 1 Sec \"±0.5℉ Accuracy | NIST&NSF Certified | ... IP67\"; CHEF iQ Sense \"3 Ultra-Thin Probes | WiFi Unlimited Range | 1000°F Heat Safe | 5 Sensors | Gen3\").
+
+Price drift confirmed vs the 2026-11-19 snapshots (B0CDY277D3 now $74.99 vs $79.93; B09B7SB46R now $229.99 vs $149.99; B0DZFD6R9Z now $139.99 vs $119.99) — prices are not rendered on the site, consistent with FLG-007/012.
+Newer-model cross-promotion confirmed on B08DKYBTPH (B0CNY1YVDD) and B0DHZTCNR5 (B0GL7Z4KP4) — consistent with FLG-004/005.
+
+Sources used (official):
+- https://www.amazon.com/dp/B0CDY277D3 (official listing S10)
+- https://www.amazon.com/dp/B09B7SB46R (official listing S11)
+- https://www.amazon.com/dp/B08DKYBTPH (official listing S12)
+- https://www.amazon.com/dp/B0DHZTCNR5 (official listing S13)
+- https://www.amazon.com/dp/B0DZFD6R9Z (official listing S14)
+- https://affiliate-program.amazon.com/help/operating/agreement (Operating Agreement S01)
+- https://affiliate-program.amazon.com/help/operating/policies (Program Policies S02)
+
+Intended ASIN fields remain blank (FLG-001); observed destinations kept separate and never merged (FLG-011).
+
+### T-17 — feed hygiene
+
+Removed from `feed.xml`: channel title \"Verified Picks\" → \"Sourced Picks\"; channel description \"verified against official Amazon listings\" → \"sourced from official Amazon listings\"; item descriptions containing \"verified specs\" and \"and price\"; holiday gift guide description containing \"$16.99–$149.99\" and \"five verified kitchen gifts\". No currency amount or unverified \"verified\" claim remains in the feed.
+
+### T-18 — gate results (clean checkout)
+
+- `python3 scripts/check_site.py` — All checks passed.
+- `python3 tools/check_site.py` — 21 pages checked, 1604 assertions run, all additional rules passed.
+- `python3 tools/verify_site.py` — Release gate passed.
+- `python3 scripts/build_sitemap.py --check` — OK: sitemap.xml up to date.
+
+No currency amounts remain in any HTML file; 42/42 Amazon anchors carry rel=sponsored; the exact §5 disclosure sentence appears above the fold and in the footer on all 21 pages.
+

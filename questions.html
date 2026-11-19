@@ -31,7 +31,7 @@
 <main id="main"><div class="article" style="max-width:1100px">
 <p class="kicker">Direction · Open questions</p>
 <h1>The questions that have to be answered before the next decision</h1>
-<p class="byline">Kitchen Counter · Register updated 2026-11-19 · 17 open questions, grouped by what they block</p>
+<p class="byline">Kitchen Counter · Register updated 2026-11-19 · 21 open questions, grouped by what they block</p>
 
 <p>A decision made on missing information is a guess with better manners. Each row states what is known, what is not, why it matters, and the cheapest concrete action that would settle it. Machine-readable copy: <code>data/open-questions.json</code>.</p>
 
@@ -44,7 +44,7 @@
 <tr>
   <td><strong>Q-01</strong></td>
   <td><strong>Is this one publication about cooking to a target temperature, or two sites — air fryers and thermometers?</strong><br><span class="small muted">Blocks: Every content, navigation and brand decision that follows.</span></td>
-  <td><span class="small">The five products are three air fryers and two thermometers across four brands (S10-S14). The current site treats &quot;food hot, then food proven done&quot; as the unifying beat.</span></td>
+  <td><span class="small">The five products are three air fryers and two thermometers across four brands (S03-S21). The current site treats &quot;food hot, then food proven done&quot; as the unifying beat.</span></td>
   <td><span class="small">Whether the owner intends to sell more of one family than the other, which would settle it commercially rather than editorially.</span></td>
   <td><span class="small">Look at the Associates dashboard&#x27;s ordered-items report after 30 days of traffic. If one family produces under 10% of orders, narrow.</span></td>
   <td><span class="small">owner · 30 days of waiting</span><br><span class="badge grey">watch</span></td>
@@ -56,7 +56,7 @@
 <tr>
   <td><strong>Q-02</strong></td>
   <td><strong>Do the five Special Links actually carry tag=shopnow047c-20?</strong><br><span class="small muted">Blocks: Any claim that the site earns anything. If the tag is missing, clicks earn nothing.</span></td>
-  <td><span class="small">The links resolve correctly to five ASINs (S15). The resolved URLs carried query parameters but no visible tag= value in what was served to this session (F-09).</span></td>
+  <td><span class="small">The links resolve correctly to five ASINs (S16). The resolved URLs carried query parameters but no visible tag= value in what was served to this session (F-09).</span></td>
   <td><span class="small">Whether the Associates ID is attached server-side, which is invisible from outside the account.</span></td>
   <td><span class="small">Sign in to Associates, open a product page with SiteStripe active, and read the Get Link panel for one of the five. Confirm the tag field. Then make one test click and confirm it appears in the Click Reports within 24 hours.</span></td>
   <td><span class="small">owner · 5 minutes</span><br><span class="badge grey">owner-only</span></td>
@@ -85,7 +85,7 @@
   <td><span class="small">Answer Q-12 first, then decide the domain. Note that a domain must not contain an Amazon trademark or a variant of one (S02).</span></td>
   <td><span class="small">owner · the price of a domain</span><br><span class="badge grey">owner-only</span></td>
 </tr>
-</tbody></table></div><h2>Compliance (2)</h2>
+</tbody></table></div><h2>Compliance (3)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th></tr></thead>
 <tbody>
@@ -100,10 +100,18 @@
 <tr>
   <td><strong>Q-15</strong></td>
   <td><strong>Does the disclosure placement satisfy the standard if a reader never scrolls?</strong><br><span class="small muted">Blocks: Nothing — but it should be re-checked, not assumed.</span></td>
-  <td><span class="small">The disclosure sits in a strip immediately under the masthead, above the first heading, on every page, and again in the footer (C-01, C-02). The FTC test is that it is hard to miss and placed with the endorsement (S08).</span></td>
+  <td><span class="small">The disclosure sits in a strip immediately under the masthead, above the first heading, on every page, and again in the footer (C-01, C-02). The FTC test is that it is hard to miss and placed with the endorsement (S22).</span></td>
   <td><span class="small">How the strip renders on a narrow screen with a large system font size, which is the case where &quot;above the fold&quot; gets squeezed.</span></td>
   <td><span class="small">Open any page at 320 px width with text scaled up and confirm the disclosure is still visible before the first product button.</span></td>
   <td><span class="small">engineering · 5 minutes</span><br><span class="badge grey">queued</span></td>
+</tr>
+<tr>
+  <td><strong>Q-19</strong></td>
+  <td><strong>Is the Associates account eligible for Product Advertising API access today?</strong><br><span class="small muted">Blocks: Any future price display (SG-17) and any automation that reads live listing data.</span></td>
+  <td><span class="small">PA-API eligibility depends on account standing and qualifying sales, visible only inside the account.</span></td>
+  <td><span class="small">Whether the account has ever generated the sales required.</span></td>
+  <td><span class="small">Associates Central → Account Settings → Product Advertising API. If the tab is missing, the account is not yet eligible; record the date checked.</span></td>
+  <td><span class="small">owner · 5 minutes</span><br><span class="badge grey">owner-only</span></td>
 </tr>
 </tbody></table></div><h2>Content (4)</h2>
 <div class="table-wrap"><table>
@@ -112,7 +120,7 @@
 <tr>
   <td><strong>Q-05</strong></td>
   <td><strong>Who is the named author, and what is their actual experience?</strong><br><span class="small muted">Blocks: Any byline, any &quot;about&quot; page, and any statement of expertise. Right now authorship is stated as what it is — an editorial desk with no hands-on testing.</span></td>
-  <td><span class="small">Google&#x27;s guidance asks who created the content and rewards demonstrated experience (S14). The FTC prohibits claiming experience you do not have (S03).</span></td>
+  <td><span class="small">Google&#x27;s guidance asks who created the content and rewards demonstrated experience (S14). The FTC prohibits claiming experience you do not have (S22).</span></td>
   <td><span class="small">The owner&#x27;s real name, whether they have used any of these appliances, and whether they are willing to be named.</span></td>
   <td><span class="small">The owner decides: either publish a named author with a truthful one-paragraph background, or keep the desk byline and accept slower trust-building.</span></td>
   <td><span class="small">owner · one decision</span><br><span class="badge grey">owner-only</span></td>
@@ -120,7 +128,7 @@
 <tr>
   <td><strong>Q-06</strong></td>
   <td><strong>Will the site ever buy or receive units to test?</strong><br><span class="small muted">Blocks: The highest-value article type in this niche — what the appliance is like to live with.</span></td>
-  <td><span class="small">No unit has been handled (C-07), so no such page can be written honestly today (S08). SG-06 sets out the three options.</span></td>
+  <td><span class="small">No unit has been handled (C-07), so no such page can be written honestly today (S22). SG-06 sets out the three options.</span></td>
   <td><span class="small">Whether there is a budget for one unit per family, and whether the owner would accept gifted units with disclosure.</span></td>
   <td><span class="small">Set a rule before the first offer arrives: buy everything, or accept gifts only with a visible line on the page, or decline.</span></td>
   <td><span class="small">owner · the price of one air fryer and one thermometer</span><br><span class="badge grey">queued</span></td>
@@ -141,7 +149,7 @@
   <td><span class="small">After 60 days, sort the Pages report by impressions. Any page with zero impressions earns a rewrite, a merge, or a removal — decided with data, not taste.</span></td>
   <td><span class="small">owner · 60 days and one report</span><br><span class="badge grey">watch</span></td>
 </tr>
-</tbody></table></div><h2>Measurement (2)</h2>
+</tbody></table></div><h2>Measurement (3)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th></tr></thead>
 <tbody>
@@ -161,6 +169,14 @@
   <td><span class="small">Adopt Amazon&#x27;s definition verbatim for any column that will be reconciled against Associates reporting; use a separate, clearly named column otherwise.</span></td>
   <td><span class="small">engineering · one decision</span><br><span class="badge grey">queued</span></td>
 </tr>
+<tr>
+  <td><strong>Q-18</strong></td>
+  <td><strong>Does the owner have Search Console access for this GitHub Pages site, and will they verify it this month?</strong><br><span class="small muted">Blocks: Every measured-topic decision (SG-07, SG-18, Q-04, Q-17).</span></td>
+  <td><span class="small">The site emits sitemap.xml and robots.txt pointing at it; verification is an account action, not a code action.</span></td>
+  <td><span class="small">Whether anyone will actually open the property. Without it the site publishes blind.</span></td>
+  <td><span class="small">Owner adds the property in Search Console, verifies via DNS or file upload, submits sitemap.xml, and reports back. Ten minutes, once.</span></td>
+  <td><span class="small">owner · 10 minutes</span><br><span class="badge grey">blocking</span></td>
+</tr>
 </tbody></table></div><h2>Product (2)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th></tr></thead>
@@ -168,7 +184,7 @@
 <tr>
   <td><strong>Q-10</strong></td>
   <td><strong>Should P4 point at the newer ASIN the listing itself recommends?</strong><br><span class="small muted">Blocks: Whether the site sends readers to a superseded model.</span></td>
-  <td><span class="small">The P4 listing displays &quot;There is a newer model of this item&quot; and links ASIN B0GL7Z4KP4 (S13). The supplied short link resolves to B0DHZTCNR5 (F-03).</span></td>
+  <td><span class="small">The P4 listing displays &quot;There is a newer model of this item&quot; and links ASIN B0GL7Z4KP4 (S06). The supplied short link resolves to B0DHZTCNR5 (F-03).</span></td>
   <td><span class="small">Whether the owner deliberately chose the older ASIN, or supplied a stale link.</span></td>
   <td><span class="small">Compare the two listings directly and decide. If the newer one is chosen, update intended.asin and record the change with a date — never edit observed.</span></td>
   <td><span class="small">owner · 10 minutes</span><br><span class="badge grey">owner-only</span></td>
@@ -204,6 +220,30 @@
   <td><span class="small">What the owner&#x27;s host logs by default — most log IP addresses unless told not to.</span></td>
   <td><span class="small">Write the retention rule first: path, product id, timestamp, nothing else; no cookies; IP discarded before write. Then configure the host to match.</span></td>
   <td><span class="small">engineering · one configuration change</span><br><span class="badge grey">queued</span></td>
+</tr>
+</tbody></table></div><h2>Audience (1)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>Q-20</strong></td>
+  <td><strong>Which email provider, consent language, and retention period will the owner accept for reader capture?</strong><br><span class="small muted">Blocks: FLG-014 / reader_signup staying a reserved event; any return-visit channel other than RSS.</span></td>
+  <td><span class="small">The demo form was removed because it faked a confirmation. No provider, endpoint, or consent copy exists.</span></td>
+  <td><span class="small">Which provider the owner will pay for and what their consent text must say.</span></td>
+  <td><span class="small">Owner picks a provider (or declines); editorial drafts the consent line and privacy note; the form ships only after the endpoint responds. analytics.html gets an update in the same commit.</span></td>
+  <td><span class="small">owner · One decision + one half-day</span><br><span class="badge grey">queued</span></td>
+</tr>
+</tbody></table></div><h2>Distribution (1)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>Q-21</strong></td>
+  <td><strong>Does the SVG og-image actually render in the share previewers the site cares about?</strong><br><span class="small muted">Blocks: Nothing; it is a quality-of-preview question with a cheap answer.</span></td>
+  <td><span class="small">The markup references assets/og-image.svg on every page (F-21 records the unverified-format question).</span></td>
+  <td><span class="small">Whether Facebook, X, LinkedIn, or messaging apps draw the card from an SVG reference.</span></td>
+  <td><span class="small">Run any public share debugger on the live URL and screenshot the result; if no card appears, ship the 1200×637 PNG per SG-16 and re-check.</span></td>
+  <td><span class="small">editorial · 10 minutes with a browser</span><br><span class="badge grey">queued</span></td>
 </tr>
 </tbody></table></div>
 

@@ -527,3 +527,25 @@ Crawled the built tree: 21 pages, 637 local hrefs, **0 broken**; **123/123** Ama
   query if a fetch shows the previous build.
 - **T-20/T-21/T-22 marked done** in the task board. FLG-016 (og:image SVG) remains needs-review
   and is published on `flagged.html`; it does not block anything.
+
+---
+
+## Session `arena/a25ccde6-prod3` — independent audit, suggestions register, and publication polish
+
+**Session ID:** `a25ccde6` · **Branch:** `arena/a25ccde6-prod3` · **Claimed:** 2026-11-19
+**Base commit:** 0749909 (main after PR #7)
+
+### Claim
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-13 | Line-by-line audit of data registers: source-ID integrity, intent/observation separation, dangling references | in progress | a25ccde6 | `data/*.json` |
+| T-14 | Dedicated suggestions register (`suggestions.html`) + open-questions register (`questions.html`) with non-colliding IDs and a decision log | in progress | a25ccde6 | `suggestions.html`, `questions.html`, `direction.html`, `data/suggestions.json`, `data/open-questions.json` |
+| T-15 | Structured data + absolute social preview image + SEO furniture | in progress | a25ccde6 | `assets/og-image.png`, `assets/*.svg`, `index.html`, pillar/compare/guide pages |
+| T-16 | Editorial/design pass: shop-like product cards, section rhythm, table polish, accessibility | in progress | a25ccde6 | `assets/style.css`, `assets/app.js`, published HTML |
+| T-17 | Extend release gates to cover the defects T-13 found (source-ID existence, register consistency) | in progress | a25ccde6 | `tools/check_site.py`, `scripts/check_site.py` |
+| T-18 | Integration PR → main, merge, verify Pages deploy, record result | unclaimed | — | all |
+
+**Scope note.** No other session is active on this branch. Files outside this session's claim
+(published HTML other than the pages named above) are edited only where a defect found in T-13
+requires it; each such edit is listed in the final record below.

@@ -1,6 +1,6 @@
 # Verification record
 
-Sessions: `arena/5a4e180c-prod3` (build, merged via PR #1) and `arena/9978ab21-prod3` (integration, in progress) · Date: 2026-11-19
+Sessions: `arena/5a4e180c-prod3` (build, merged via PR #1), `arena/9978ab21-prod3` (integration, merged via PR #2), and `arena/28d2d6c0-prod3` (T-23 line-by-line re-verification, 2026-11-19) · Date: 2026-11-19
 
 ## Method
 
@@ -30,11 +30,11 @@ See `data/products.json`. Each submitted short link was fetched and its redirect
 - https://link.amazon/B0c8moW59 → https://www.amazon.com/dp/B0DHZTCNR5
 - https://link.amazon/B0f3GKalj → https://www.amazon.com/dp/B0DZFD6R9Z
 
-The intended ASIN (short-link path code) and confirmed/observed ASIN (redirect destination) are stored in separate fields and never merged. Intended fields stay null until the owner confirms in the Associates workflow. Short-link compliance status is unresolved; no claim is made that the supplied short links are invalid (see ++FLG-003++ context).
+The intended ASIN (short-link path code) and confirmed/observed ASIN (redirect destination) are stored in separate fields and never merged. Intended fields stay null until the owner confirms in the Associates workflow. Short-link compliance status is unresolved; no claim is made that the supplied short links are invalid (see FLG-006).
 
 ## Flagged irregularities
 
-See `data/sources.json` (flaggedIrregularities) and `/flagged.html`. None block the merge.
+See `data/flagged.json` (F-series), `flagged.html` (FLG-series) and `/flagged.html`. None block the merge.
 
 ## Mobile-first tap-target pass (S-20, session 65474d4f, 2026-11-19)
 
@@ -56,9 +56,43 @@ What was done, against the Google rule ("Tap targets that are 48 px by 48 px nev
 ### Q-15 — disclosure above the fold at 320px
 
 Verified **structurally**, not in a browser: `tools/check_site.py` `P01-disclosure-position` fails any
-page where the disclosure marker does not occur before the first `<h1>`, so on all 21 pages the strip
+page where the disclosure marker does not occur before the first `<h1>`, so on all 24 pages the strip
 precedes every heading and product button in reading order, and it is a normal full-width block (not
 positioned after the hero), so it is not reordered on a narrow screen. The S-20 pass keeps the strip
 compact at `<=600px` (`.disclosure` 0.8rem) so it cannot grow past the fold. A physical pixel measurement
 in a real browser at 320px with an enlarged system font was **not** run from this sandbox (see the
 matching note on Q-15 in `data/open-questions.json`); that remains a one-time owner/browser check.
+
+## T-23 line-by-line re-verification (session `arena/28d2d6c0-prod3`, 2026-11-19)
+
+Every official source in `data/sources.json` was re-fetched and read on 2026-11-19:
+
+| Checked | Result |
+|---|---|
+| All five `link.amazon` short links | Resolve to B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z; all five live page titles match `observed_title` in `data/products.json` exactly |
+| Browse nodes | Air Fryers `17659096011` and Meat Thermometers `289810` confirmed in the live breadcrumbs |
+| FLG-002 (Emeril presets) | Confirmed live: title reads "24 One-Touch Preset Options"; the About-this-item bullet reads "25 COOKING PRE-SETS" |
+| FLG-004 / FLG-005 (newer models) | B0CNY1YVDD visible on the Chefman 8 Qt page; B0GL7Z4KP4 visible on the ThermoMaven page |
+| P-02 listed specs | Dimensions 16.9"D x 15.8"W x 14.8"H, capacity 24.6 L, special features, material and color match the live product table |
+| Operating Agreement | "Updated: October 15, 2025"; §1 Special Links quote, §5 exact statement ("As an Amazon Associate I earn from qualifying purchases." or any substantially similar statement) and §6 material-breach clause verified verbatim |
+| Program Policies | "Updated: April 14, 2026"; Qualifying-Purchase quote verified verbatim |
+| FTC Disclosures 101 | "Place it so it's hard to miss…" verified verbatim; page dated November 2019 |
+| Google rel="sponsored" guidance | Quote verified verbatim; "Last updated 2025-12-10 UTC" |
+| Google people-first content | Self-assessment questions verified verbatim |
+| Google spam policies | "Thin affiliation" section verified verbatim (including the good-affiliate-pages sentence) |
+| Amazon Creators API `ItemIdType` | "Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon" — the official basis for the 10-character ASIN figure |
+
+Corrections made under T-23 (all gates re-run green afterwards):
+
+- `data/sources.json` S06 now cites the Creators API `ItemIdType` table (the old citation pointed at
+  the Program Policies page, which does not carry the definition); S21/S22 quotes corrected to
+  verbatim page text.
+- Stale pre-revision source IDs removed/remapped across `data/analysis.json`, `data/flagged.json`
+  and `data/policy-checks.json` (including C-08 → S22, C-09 → S02+S06, C-12 → S21+S25,
+  C-14 → S21, which had been cited to Amazon listing pages).
+- `sources.html` now publishes every registered source (S06, S21–S25 rows added).
+- `data/citations.json` gained rows for the rendered S05/S06/S15/S19/S23 figures; the
+  page-experience row re-attributed from S21 to S25.
+- New release gate in `tools/verify_site.py`: every source ID referenced from `data/*.json` must
+  resolve to `data/sources.json`, and every registered source must appear on `sources.html`
+  (negative-tested: exit 3 on an undefined ID).

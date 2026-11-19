@@ -1,66 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Shopwise Kitchen Desk</title>
-    <link>https://wingbangboozle1-lang.github.io/Prod3/</link>
-    <description>Air fryers and thermometers, read the way a spec sheet should be.</description>
+    <title>Kitchen Counter — Verified Picks, Plainly Told</title>
+    <link>https://wingbangboozle1-lang.github.io/Prod3/index.html</link>
+    <description>Spec-backed, source-linked picks for air fryers and meat thermometers. Question-shaped guides, verified against official Amazon listings.</description>
     <language>en-us</language>
-    <lastBuildDate>Wed, 19 Nov 2026 09:00:00 +0000</lastBuildDate>
-    <item>
-      <title>Basket or oven-style air fryer: what should you compare?</title>
-      <link>https://wingbangboozle1-lang.github.io/Prod3/guides/basket-or-oven-air-fryer.html</link>
-      <guid>https://wingbangboozle1-lang.github.io/Prod3/guides/basket-or-oven-air-fryer.html</guid>
-      <pubDate>Wed, 19 Nov 2026 09:00:00 +0000</pubDate>
-      <description>Basket and oven-style air fryers cook differently and fit differently. Compare the four things that actually separate them, with the numbers from three specific listings.</description>
-    </item>
-    <item>
-      <title>A no-hype checklist for comparing air fryer capacity</title>
-      <link>https://wingbangboozle1-lang.github.io/Prod3/guides/air-fryer-capacity-checklist.html</link>
-      <guid>https://wingbangboozle1-lang.github.io/Prod3/guides/air-fryer-capacity-checklist.html</guid>
-      <pubDate>Wed, 19 Nov 2026 09:00:00 +0000</pubDate>
-      <description>Four checks that turn a capacity claim into something you can compare: the unit, the split, the shape, and the number the listing does not give you.</description>
-    </item>
-    <item>
-      <title>How to assess cleanup and counter-space trade-offs</title>
-      <link>https://wingbangboozle1-lang.github.io/Prod3/guides/air-fryer-cleanup-and-counter-space.html</link>
-      <guid>https://wingbangboozle1-lang.github.io/Prod3/guides/air-fryer-cleanup-and-counter-space.html</guid>
-      <pubDate>Wed, 19 Nov 2026 09:00:00 +0000</pubDate>
-      <description>The specification sheet tells you what is dishwasher safe and what the footprint is. It does not tell you how many parts you will wash. Here is how to work that out before buying.</description>
-    </item>
-    <item>
-      <title>Questions to ask before buying a multi-function kitchen appliance</title>
-      <link>https://wingbangboozle1-lang.github.io/Prod3/guides/questions-before-buying-a-multi-function-appliance.html</link>
-      <guid>https://wingbangboozle1-lang.github.io/Prod3/guides/questions-before-buying-a-multi-function-appliance.html</guid>
-      <pubDate>Wed, 19 Nov 2026 09:00:00 +0000</pubDate>
-      <description>A multi-function appliance is a set of compromises sold as a set of features. Six questions that separate the functions you will use from the ones you are paying for.</description>
-    </item>
-    <item>
-      <title>Do you need a meat thermometer if your air fryer has presets?</title>
-      <link>https://wingbangboozle1-lang.github.io/Prod3/guides/do-i-need-a-meat-thermometer.html</link>
-      <guid>https://wingbangboozle1-lang.github.io/Prod3/guides/do-i-need-a-meat-thermometer.html</guid>
-      <pubDate>Wed, 19 Nov 2026 09:00:00 +0000</pubDate>
-      <description>Presets guess. A thermometer measures. The USDA minimum internal temperatures, what each type of thermometer is for, and when a preset is good enough.</description>
-    </item>
-    <item>
-      <title>Instant-read or wireless probe: which thermometer do you actually need?</title>
-      <link>https://wingbangboozle1-lang.github.io/Prod3/guides/thermometer-buying-checklist.html</link>
-      <guid>https://wingbangboozle1-lang.github.io/Prod3/guides/thermometer-buying-checklist.html</guid>
-      <pubDate>Wed, 19 Nov 2026 09:00:00 +0000</pubDate>
-      <description>An instant-read answers &quot;is it done now&quot;. A wireless probe answers &quot;tell me when it is done&quot;. Compare the two on what they measure, what they need, and what they cost you in attention.</description>
-    </item>
-    <item>
-      <title>What temperature should chicken, pork and leftovers actually reach?</title>
-      <link>https://wingbangboozle1-lang.github.io/Prod3/guides/thermometer-targets.html</link>
-      <guid>https://wingbangboozle1-lang.github.io/Prod3/guides/thermometer-targets.html</guid>
-      <pubDate>Wed, 19 Nov 2026 09:00:00 +0000</pubDate>
-      <description>The USDA minimum internal temperatures in one table, with the rest time, plus what to do with a reading that lands just under the line.</description>
-    </item>
-    <item>
-      <title>Quarts per square inch: the counter-space arithmetic nobody publishes</title>
-      <link>https://wingbangboozle1-lang.github.io/Prod3/guides/counter-space-per-quart.html</link>
-      <guid>https://wingbangboozle1-lang.github.io/Prod3/guides/counter-space-per-quart.html</guid>
-      <pubDate>Wed, 19 Nov 2026 09:00:00 +0000</pubDate>
-      <description>Divide nominal capacity by counter footprint and the three air fryers separate by more than a factor of two. The method, the sums, and why the answer is not the ranking you expect.</description>
-    </item>
+    <atom:link href="https://wingbangboozle1-lang.github.io/Prod3/feed.xml" rel="self" type="application/rss+xml"/>
+    <item><title>Basket or oven-style air fryer: what should you compare?</title><link>https://wingbangboozle1-lang.github.io/Prod3/articles/basket-or-oven-air-fryer.html</link><description>Dual-basket vs oven combo compared on verified specs: capacity, footprint, temperature range, and price.</description><pubDate>Thu, 19 Nov 2026 12:00:00 GMT</pubDate><guid>https://wingbangboozle1-lang.github.io/Prod3/articles/basket-or-oven-air-fryer.html</guid></item>
+    <item><title>A no-hype checklist for comparing air fryer capacity</title><link>https://wingbangboozle1-lang.github.io/Prod3/articles/air-fryer-capacity-checklist.html</link><description>Quarts vs liters, basket count, and the whole-chicken test — no hype.</description><pubDate>Thu, 19 Nov 2026 12:00:00 GMT</pubDate><guid>https://wingbangboozle1-lang.github.io/Prod3/articles/air-fryer-capacity-checklist.html</guid></item>
+    <item><title>How to assess cleanup and counter-space trade-offs</title><link>https://wingbangboozle1-lang.github.io/Prod3/articles/cleanup-counter-space.html</link><description>Dishwasher-safe parts, footprint, and capacity per inch of depth, measured.</description><pubDate>Thu, 19 Nov 2026 12:00:00 GMT</pubDate><guid>https://wingbangboozle1-lang.github.io/Prod3/articles/cleanup-counter-space.html</guid></item>
+    <item><title>Questions to ask before buying a multi-function kitchen appliance</title><link>https://wingbangboozle1-lang.github.io/Prod3/articles/questions-before-multi-function.html</link><description>Six questions that separate a daily tool from a closet ornament.</description><pubDate>Thu, 19 Nov 2026 12:00:00 GMT</pubDate><guid>https://wingbangboozle1-lang.github.io/Prod3/articles/questions-before-multi-function.html</guid></item>
+    <item><title>Instant-read or wireless thermometer: which fits your grill?</title><link>https://wingbangboozle1-lang.github.io/Prod3/articles/instant-read-vs-wireless-thermometer.html</link><description>Accuracy, read time, probes, connectivity, and price — compared on verified specs.</description><pubDate>Thu, 19 Nov 2026 12:00:00 GMT</pubDate><guid>https://wingbangboozle1-lang.github.io/Prod3/articles/instant-read-vs-wireless-thermometer.html</guid></item>
+    <item><title>What ±0.5°F actually means (and what NIST certification covers)</title><link>https://wingbangboozle1-lang.github.io/Prod3/articles/meat-thermometer-accuracy.html</link><description>Accuracy claims, decoded. What the number covers — and what it does not.</description><pubDate>Thu, 19 Nov 2026 12:00:00 GMT</pubDate><guid>https://wingbangboozle1-lang.github.io/Prod3/articles/meat-thermometer-accuracy.html</guid></item>
+    <item><title>Air fryer oven vs toaster oven: the footprint test</title><link>https://wingbangboozle1-lang.github.io/Prod3/articles/air-fryer-oven-vs-toaster-oven.html</link><description>Depth, width, and capacity per inch — the footprint test.</description><pubDate>Thu, 19 Nov 2026 12:00:00 GMT</pubDate><guid>https://wingbangboozle1-lang.github.io/Prod3/articles/air-fryer-oven-vs-toaster-oven.html</guid></item>
+    <item><title>The holiday kitchen gift guide: five verified picks</title><link>https://wingbangboozle1-lang.github.io/Prod3/articles/holiday-kitchen-gift-guide.html</link><description>Five verified kitchen gifts, $16.99–$149.99. Every pick sourced.</description><pubDate>Thu, 19 Nov 2026 12:00:00 GMT</pubDate><guid>https://wingbangboozle1-lang.github.io/Prod3/articles/holiday-kitchen-gift-guide.html</guid></item>
   </channel>
 </rss>

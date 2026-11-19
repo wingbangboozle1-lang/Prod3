@@ -544,7 +544,7 @@ Crawled the built tree: 21 pages, 637 local hrefs, **0 broken**; **123/123** Ama
 | T-15 | Structured data + absolute social preview image + SEO furniture | done | a25ccde6 | `assets/og-image.png`, `index.html`, pillar/compare/guide pages, `404.html` |
 | T-16 | Editorial/design pass: shop-like product cards, section rhythm, table polish, accessibility | done | a25ccde6 | `assets/style.css`, `assets/app.js`, `assets/product-art/*`, published HTML |
 | T-17 | Extend release gates to cover the defects T-13 found (source-ID existence, register consistency, ratings, social image, accessibility) | done | a25ccde6 | `tools/check_site.py` |
-| T-18 | Integration PR → main, merge, verify Pages deploy, record result | in progress | a25ccde6 | all |
+| T-18 | Integration PR → main, merge, verify Pages deploy, record result | done | a25ccde6 | all |
 
 **Scope note.** No other session is active on this branch. Files outside this session's claim
 (published HTML other than the pages named above) are edited only where a defect found in T-13
@@ -604,3 +604,41 @@ Crawled the served tree at the real `/Prod3/` prefix: **33 URLs, 33 resolved, 0 
 Programmatic HTML parse of all 24 pages: **0 unclosed elements, 0 duplicate IDs, 0 images without alt**.
 Disclosure present twice on 24/24 pages · 203 sponsored anchor instances · 0 currency amounts ·
 0 customer ratings.
+
+0 customer ratings.
+
+### Merge reconciliation with upstream (PRs #8-#14)
+
+Upstream merged six sessions while this branch was open, including a shop-polish redesign of the
+front page and an expansion of the Direction page to SG-01..SG-19 / Q-01..Q-21. Rebase and cherry-pick
+both conflicted, so the work was replayed commit by commit onto `origin/main` (`32b3cdd`) and every
+conflict was resolved by hand. What changed in the resolution:
+
+| Collision | Resolution |
+|---|---|
+| `SG-15..SG-19` — upstream used all five for different proposals | my six proposals renumbered to **SG-20..SG-25**; **SG-21** was restored after a `=======` marker was mis-read and deleted it |
+| `S07`, `S08` — my source additions | upstream never defined them either, so they were re-added as **S21/S22**; my other additions became **S23/S24/S25** |
+| `S19` — upstream used it for the Lighthouse tap-target source | mine renumbered away from S19 entirely |
+| `Q-18..Q-21` — upstream added four questions | upstream's `open-questions.json` taken wholesale; my register renders all 21 |
+| `flagged.json` — upstream re-verified with F-01..F-21 | upstream taken wholesale, then its six dangling `S07` references remapped to the listing pages |
+| `index.html` — upstream rebuilt the front page as a shop | upstream layout kept; its four re-introduced star-rating blocks removed (§2(t)), product-art cards upgraded to the rendered PNGs, citations/suggestions/questions added to the footer |
+| `DIRECTION.md` / `direction.html` — upstream turned Direction into the full ledger | upstream ledger kept and my dated decision log appended; a duplicated document fragment produced by the conflict resolution was removed |
+| `feed.xml` — the resolved file lost its XML prologue | rebuilt from upstream's body with prologue and closing tags; currency and "whole-chicken test" corrections re-applied |
+
+Deliberate non-resolution: upstream's `SG-16` ("replace the SVG social preview with a raster card")
+and `SG-02`-adjacent rows are left exactly as upstream wrote them. This branch **implements** SG-16
+(`assets/og-image.png`, absolute on all 24 pages) but does not mark it implemented in the register,
+because changing another session's status row is their call, not mine — recorded for the owner.
+
+Verification after the merge, on the merged tree:
+
+```
+python3 scripts/check_site.py              All checks passed.
+python3 tools/check_site.py                24 pages, 2496 assertions — all passed
+python3 tools/verify_site.py               Release gate passed.
+python3 scripts/build_sitemap.py --check    OK: up to date
+python3 scripts/build_registers.py --check  OK: register pages match data/*.json
+```
+
+Served crawl at the real `/Prod3/` prefix: **33 URLs, 33 resolved, 0 broken**. HTML parse of all 24
+pages: 0 unclosed elements, 0 duplicate IDs, 0 images without alt text.

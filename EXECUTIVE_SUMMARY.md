@@ -39,6 +39,21 @@ decide.
 - The demo email signup (fake confirmation) was removed; measurement is
   local-count only with no endpoint configured (FLG-014, `analytics.html`).
 
+## What changed on 2026-11-19 (session a25ccde6)
+
+- **Customer star ratings removed from every page.** Program Policies Participation
+  Requirements §2(t) permits customer reviews and star ratings only when obtained
+  through Creators API or PA API; the site uses neither. The comparison table now
+  states the rule in the row where ratings used to be.
+- **Eight dangling source citations repaired.** Data registers cited S07 and S08,
+  which were never defined, so a reader could follow a citation to nothing.
+- **Three registers replaced one ambiguous page.** `direction.html` carried SG-01..SG-08
+  with meanings different from `data/suggestions.json`. Suggestions, open questions and
+  decisions are now separate, generated pages with non-overlapping ID prefixes.
+- **A citation log now backs every displayed figure** (`citations.html`).
+- **Front page rebuilt** around product cards with typographic listing art, and a
+  raster 1200×630 social preview; structured data added where it was missing.
+
 ## What is flagged (does not block)
 
 - FLG-001: intended ASIN per short link unconfirmed (owner confirmation needed).

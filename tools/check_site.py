@@ -229,6 +229,53 @@ check("D18-registers-fresh", _r.returncode == 0, f"registers stale: {_r.stdout.s
 _sg_ids = re.findall(r"\bSG-\d{2}\b", docs.get("suggestions.html", ""))
 check("D19-register-ids", len(_sg_ids) == len(set(_sg_ids)) or True, "")
 
+
+# ---- accessibility basics ------------------------------------------------
+# A missing lang, an image without alt, or an empty link name is the kind of
+# defect that makes a page unusable with a screen reader and is cheap to gate.
+for name, html in docs.items():
+    check("A01-lang", re.search(r'<html[^>]+lang="[a-z]{2}', html) is not None, f"{name}: <html> without lang")
+    for img in re.findall(r"<img\b[^>]*>", html):
+        check("A02-img-alt", 'alt="' in img, f"{name}: <img> without alt → {img[:70]}")
+        check("A03-img-dims", 'width=' in img and 'height=' in img, f"{name}: <img> without width/height (layout shift)")
+    for tag in re.findall(r"<a\b[^>]*>(?:\s|&nbsp;)*</a>", html):
+        check("A04-empty-link", False, f"{name}: empty anchor → {tag[:70]}")
+    for btn in re.findall(r"<button\b(?![^>]*type=)[^>]*>", html):
+        check("A05-button-type", False, f"{name}: <button> without type")
+    # exactly one <main> and it is the skip target
+    check("A06-single-main", html.count("<main") == 1, f"{name}: {html.count('<main')} <main> elements")
+    check("A07-skip", 'class="skip"' in html and 'href="#main"' in html, f"{name}: no skip link")
+
+# ---- social + feed hygiene ----------------------------------------------
+for name, html in docs.items():
+    check("A08-og-title", 'property="og:title"' in html, f"{name}: no og:title")
+    check("A09-og-desc", 'property="og:description"' in html, f"{name}: no og:description")
+    check("A10-twitter", 'name="twitter:card"' in html, f"{name}: no twitter:card")
+    # description length: too short to be useful, too long is truncated by search
+    d = re.search(r'<meta name="description" content="(.*?)"', html, re.S)
+    if d:
+        ln = len(d.group(1))
+        check("A11-desc-length", 50 < ln <= 320, f"{name}: meta description {ln} chars")
+
+# ---- no render-blocking third-party assets ------------------------------
+for name, html in docs.items():
+    for m in re.finditer(r'<(?:script\s+[^>]*src|link\s+[^>]*rel="stylesheet"[^>]*href)="(https?://[^"]+)"', html):
+        url = m.group(1)
+        if url.startswith("https://wingbangboozle1-lang.github.io/Prod3/"):
+            continue  # own canonical / social URLs, not loaded assets
+        check("A12-no-third-party", False, f"{name}: third-party asset {url[:70]}")
+    # a rel=canonical pointing at someone else's host is also a mistake
+    canon = re.search(r'<link rel="canonical" href="(https?://[^"]+)"', html)
+    if canon:
+        check("A14-canonical-host", canon.group(1).startswith("https://wingbangboozle1-lang.github.io/Prod3/"),
+              f"{name}: canonical points off-site → {canon.group(1)}")
+
+# ---- images must be reasonably sized -----------------------------------
+import os
+for img in (ROOT / "assets").rglob("*.png"):
+    kb = os.path.getsize(img) / 1024
+    check("A13-img-weight", kb < 400, f"{img.name}: {kb:.0f} KB (over 400 KB)")
+
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")
 if failures:

@@ -28,6 +28,7 @@ jobs:
           python3 tools/verify_site.py
           python3 tools/check_site.py
           python3 scripts/build_sitemap.py --check
+          python3 scripts/build_registers.py --check
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

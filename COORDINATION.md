@@ -32,7 +32,7 @@
 | T-11 | GitHub Pages deploy + PR to main + merge | done | 5a4e180c | `.github/workflows/pages.yml` |
 | T-12 | Post-merge integration audit: correct demonstrable editorial errors, disclosure/capture copy, event schema, analytics readiness, and unresolved compliance gates | done | `arena/5bd92dff-prod3` | all published HTML for disclosure/nav, `assets/app.js`, `assets/style.css`, `analytics.html`, `analytics/*`, `data/campaign-ledger.json`, `data/sources.json`, `sources.html`, `flagged.html`, `direction.html`, `DIRECTION.md`, `sitemap.xml`, `scripts/check_site.py`, `tools/verify_site.py`, `README.md`, `EXECUTIVE_SUMMARY.md` |
 | T-16 | Re-run all release gates, internal-link crawl, feed/sitemap XML check, Pages status check; log remaining external-account blockers | done | arena/7d756ee2-prod3 | `COORDINATION.md` only |
-| T-17 | Mobile-first pass (S-20): size every tap target to ≥48×48px with ≥8px spacing; verify disclosure stays above the first heading at 320px (Q-15); cite Google tap-target guidance | in progress | `arena/65474d4f-prod3` (session 65474d4f) | `assets/style.css`, `data/sources.json`, `DIRECTION.md`, `direction.html`, `docs/verification.md`, `COORDINATION.md` (board rows only) |
+| T-17 | Mobile-first pass (S-20): size every tap target to ≥48×48px with ≥8px spacing; verify disclosure stays above the first heading at 320px (Q-15); cite Google tap-target guidance | done (PR #12, merged `ce7aee3`) | `arena/65474d4f-prod3` (session 65474d4f) | `assets/style.css`, `data/sources.json`, `DIRECTION.md`, `direction.html`, `docs/verification.md`, `COORDINATION.md` (board rows only) |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -409,3 +409,47 @@ Removed from `feed.xml`: channel title \"Verified Picks\" → \"Sourced Picks\";
 
 No currency amounts remain in any HTML file; 42/42 Amazon anchors carry rel=sponsored; the exact §5 disclosure sentence appears above the fold and in the footer on all 21 pages.
 
+---
+
+## Session arena/65474d4f-prod3 — mobile-first pass + deploy diagnosis (2026-11-19)
+
+**T-17 done.** Implemented audit item **S-20** (mobile-first), the last actionable blank-status row.
+Scope kept non-overlapping (verified: `git log 452406b..origin/main` touched none of my files; rebase onto
+origin/main at PR #11 was clean, net diff = exactly my 8 files).
+
+- `assets/style.css`: every tappable control (.nav a, .btn, chooser buttons, sticky-bar link, skip link)
+  gets `min-height:44px` on wide screens and `48px` at `max-width:600px`; full-width product CTAs and a
+  16px text floor on small screens. Padding-only — appearance, copy, links and data unchanged. Existing
+  8–18px flex gaps already meet Google's ≥8px spacing rule.
+- Source for the change recorded honestly as **S19** in `data/sources.json`, `sources.html`,
+  `docs/verification.md`: Google (Chrome for Developers) "Tap targets are not sized appropriately" —
+  fetched from `developer.chrome.com`, confirming the 48×48px / ~8px rule. No product-source check was
+  needed because no product value changed.
+- Q-15 (disclosure at 320px) verified **structurally**: gate `tools/check_site.py P01-disclosure-position`
+  already fails any page where the disclosure marker does not precede the first `<h1>` (holds on all 21
+  pages), and the strip is a normal full-width block kept compact at ≤600px. A real-browser pixel check at
+  320px with an enlarged system font was NOT run from the sandbox — left as a one-time owner task.
+- `DIRECTION.md` / `direction.html`: SG-09 mobile-first row marked Done 2026-11-19.
+
+Gates run on the rebased tree (all pass): `scripts/check_site.py` OK; `tools/check_site.py` 21 pages /
+1606 assertions; `tools/verify_site.py` Release gate passed; `scripts/build_sitemap.py --check` up to date.
+
+### Deploy record + a Pages-config finding for the owner (not caused by, and not blocking, this work)
+
+- **PR #12** → merged to `main` at `ce7aee3` (merge commit), no approval waited on, per instructions.
+- **Site is live with this change — verified on the served file**, not just the local tree:
+  `https://wingbangboozle1-lang.github.io/Prod3/assets/style.css` returns the S-20 block. Latest Pages
+  build = commit `ce7aee3`, `status: built`, `error: null`. The `pages build and deployment` run succeeded.
+- **Finding:** the `Deploy GitHub Pages` workflow run for this merge concluded **failure at the
+  `actions/deploy-pages@v4` "Deploy to GitHub Pages" step only** — every earlier step (incl. the release
+  gate) succeeded. Cause: Pages `build_type` is **legacy** (GitHub publishes automatically from `main`
+  `:/`), which is mutually exclusive with the `deploy-pages` action, so that action errors while the
+  legacy pipeline still publishes. Same symptom on PR #11 (which also deployed). The red badge is a
+  workflow/config mismatch, **not** a broken site.
+- **Remedy (owner, one of two — not applied here, as it is outside this task's scope and the site publishes correctly):**
+  (a) flip Pages source to **GitHub Actions** so `deploy-pages` succeeds and drop the redundant legacy
+  path, or (b) delete the Setup-Pages/Upload/Deploy steps from `pages.yml` and keep it as a gate-only
+  workflow, letting the legacy build publish. Either makes CI green without touching content.
+
+Cross-scope requests: none. Handoff/conflict: resolved one COORDINATION.md rebase conflict with session
+7d756ee2 (kept both sessions' board rows; renumbered my row T-17 since 7d756ee2 held T-16).

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://wingbangboozle1-lang.github.io/Prod3/sitemap.xml

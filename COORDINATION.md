@@ -30,6 +30,7 @@
 | T-09 | Executive summary | done | 5a4e180c | `executive-summary.html`, `EXECUTIVE_SUMMARY.md` |
 | T-10 | Gates: `scripts/check_site.py`, `tools/verify_site.py`, link check | done | 5a4e180c | `scripts/*`, `tools/*` |
 | T-11 | GitHub Pages deploy + PR to main + merge | done | 5a4e180c | `.github/workflows/pages.yml` |
+| T-12 | Post-merge integration audit: correct demonstrable editorial errors, disclosure/capture copy, event schema, analytics readiness, and unresolved compliance gates | in progress | `arena/5bd92dff-prod3` | all published HTML for disclosure/nav, `assets/app.js`, `assets/style.css`, `analytics.html`, `analytics/*`, `data/campaign-ledger.json`, `data/sources.json`, `sources.html`, `flagged.html`, `direction.html`, `DIRECTION.md`, `sitemap.xml`, `scripts/check_site.py`, `tools/verify_site.py`, `README.md`, `EXECUTIVE_SUMMARY.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 

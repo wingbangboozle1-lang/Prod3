@@ -539,13 +539,68 @@ Crawled the built tree: 21 pages, 637 local hrefs, **0 broken**; **123/123** Ama
 
 | ID | Task | Status | Owner | File scope |
 |----|------|--------|-------|------------|
-| T-13 | Line-by-line audit of data registers: source-ID integrity, intent/observation separation, dangling references | in progress | a25ccde6 | `data/*.json` |
-| T-14 | Dedicated suggestions register (`suggestions.html`) + open-questions register (`questions.html`) with non-colliding IDs and a decision log | in progress | a25ccde6 | `suggestions.html`, `questions.html`, `direction.html`, `data/suggestions.json`, `data/open-questions.json` |
-| T-15 | Structured data + absolute social preview image + SEO furniture | in progress | a25ccde6 | `assets/og-image.png`, `assets/*.svg`, `index.html`, pillar/compare/guide pages |
-| T-16 | Editorial/design pass: shop-like product cards, section rhythm, table polish, accessibility | in progress | a25ccde6 | `assets/style.css`, `assets/app.js`, published HTML |
-| T-17 | Extend release gates to cover the defects T-13 found (source-ID existence, register consistency) | in progress | a25ccde6 | `tools/check_site.py`, `scripts/check_site.py` |
-| T-18 | Integration PR → main, merge, verify Pages deploy, record result | unclaimed | — | all |
+| T-13 | Line-by-line audit of data registers: source-ID integrity, intent/observation separation, dangling references | done | a25ccde6 | `data/*.json` |
+| T-14 | Dedicated suggestions register (`suggestions.html`) + open-questions register (`questions.html`) with non-colliding IDs and a decision log | done | a25ccde6 | `suggestions.html`, `questions.html`, `direction.html`, `data/suggestions.json`, `data/open-questions.json`, `scripts/build_registers.py` |
+| T-15 | Structured data + absolute social preview image + SEO furniture | done | a25ccde6 | `assets/og-image.png`, `index.html`, pillar/compare/guide pages, `404.html` |
+| T-16 | Editorial/design pass: shop-like product cards, section rhythm, table polish, accessibility | done | a25ccde6 | `assets/style.css`, `assets/app.js`, `assets/product-art/*`, published HTML |
+| T-17 | Extend release gates to cover the defects T-13 found (source-ID existence, register consistency, ratings, social image, accessibility) | done | a25ccde6 | `tools/check_site.py` |
+| T-18 | Integration PR → main, merge, verify Pages deploy, record result | in progress | a25ccde6 | all |
 
 **Scope note.** No other session is active on this branch. Files outside this session's claim
 (published HTML other than the pages named above) are edited only where a defect found in T-13
 requires it; each such edit is listed in the final record below.
+
+requires it; each such edit is listed in the final record below.
+
+### T-13 — audit result (verify line by line, session a25ccde6)
+
+Re-verified against the live official sources on 2026-11-19, not against the repo's own claims:
+
+| Check | Method | Result |
+|---|---|---|
+| `link.amazon/B04G1MEwY` → B0CDY277D3 | direct fetch, read final URL | confirmed, unchanged from the existing record |
+| Operating Agreement §1 / §5 / §6 | fetched affiliate-program.amazon.com | §5 quote and "material breach" wording confirmed verbatim; updated 2025-10-15 |
+| Program Policies §2(a) tag, §2(b) price + unclear shortening, §2(t) customer reviews, §2(v) obscuring the URL | fetched affiliate-program.amazon.com | all four confirmed; §2(t) reads "unless you have obtained a link to that customer review or star rating through Creators API or PA API" |
+| FTC Disclosures 101 placement language | fetched ftc.gov | "place it so it's hard to miss", "should be placed with the endorsement message itself" confirmed |
+| Google `rel="sponsored"` guidance | fetched developers.google.com | confirmed |
+
+Defects found and fixed: I-01 (duplicate SG identifiers across two pages), I-02 (customer star ratings
+rendered on 4 pages, contrary to §2(t)), I-03 (S07/S08 cited but undefined), I-04 (feed claimed a
+"whole-chicken test" and a price range), I-05 (relative SVG og:image), I-07 (no structured data),
+I-08 (404 on the old design), I-09 (stale "& price" copy), I-10 (no suggestions/questions page).
+Recorded but deliberately not changed: I-11..I-14. Full list in `DIRECTION.md`.
+
+### T-14 — three registers, one source of truth
+
+`suggestions.html` (SG-01..SG-20), `questions.html` (Q-01..Q-17) and `citations.html` are generated
+from `data/*.json` by `scripts/build_registers.py`. `--check` fails the build when a page drifts from
+its data, and the Pages workflow now runs it. `direction.html` keeps only dated decisions and the path
+chooser.
+
+### T-15/T-16 — presentation
+
+24 pages, all with a 1200×630 PNG social card, structured data, and typographic listing art rendered
+from each product's own numbers (no photography, per Operating Agreement §1). Stylesheet rewritten;
+every class the pages use is defined (checked programmatically).
+
+### T-17 — gate strength
+
+`python3 tools/check_site.py` → **24 pages, 2,496 assertions, all passed**. New rule groups:
+`D06-D19` (source-reference integrity, citation blocks, no ratings, feed hygiene, social image,
+JSON-LD, register freshness) and `A01-A14` (lang, alt text, image dimensions, empty links, single
+`<main>`, skip link, social meta, description length, no third-party assets, image weight).
+
+### T-13 verification commands and results
+
+```
+python3 scripts/check_site.py        All checks passed.
+python3 tools/check_site.py          24 pages checked, 2496 assertions run — all passed
+python3 tools/verify_site.py         Release gate passed.
+python3 scripts/build_sitemap.py --check    OK: up to date
+python3 scripts/build_registers.py --check  OK: register pages match data/*.json
+```
+
+Crawled the served tree at the real `/Prod3/` prefix: **33 URLs, 33 resolved, 0 broken**.
+Programmatic HTML parse of all 24 pages: **0 unclosed elements, 0 duplicate IDs, 0 images without alt**.
+Disclosure present twice on 24/24 pages · 203 sponsored anchor instances · 0 currency amounts ·
+0 customer ratings.

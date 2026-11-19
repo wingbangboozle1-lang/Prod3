@@ -80,3 +80,32 @@ via direct fetch. Findings (full detail in `data/products.json`):
 - Merge result: merged (merge commit ca9f4f27f77eef5ea6a15421c177b2f57f275427, 2026-11-19 12:43:28Z); verify_site.py and sitemap --check passed before merge
 - Pages: 'Deploy GitHub Pages' workflow success on merge; 'pages build and deployment' success; live page confirmed at the URL below
 - GitHub Pages URL: https://wingbangboozle1-lang.github.io/Prod3/
+
+## Session arena/9978ab21-prod3 — integration (2026-11-19)
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-12 | Independent re-verification of the 5 submitted links vs official Amazon listings | done | arena/9978ab21-prod3 | `data/products.json` (re-fetch confirmed identical observed destinations) |
+| T-13 | Review existing click/conversion measurement (assets/app.js, data/campaign-ledger.json) — covers T-06 scope; no duplicate analytics added | done | arena/9978ab21-prod3 | `assets/app.js`, `data/campaign-ledger.json` |
+| T-14 | Add docs/verification.md, docs/analytics-endpoint.md, 404.html | done | arena/9978ab21-prod3 | `docs/*`, `404.html` |
+| T-15 | Integration PR #2 → main, merge, confirm GitHub Pages redeploy, record result here | in progress | arena/9978ab21-prod3 | all |
+
+### Verification re-fetch (session arena/9978ab21-prod3, 2026-11-19)
+
+Each submitted link was fetched again and its HTTP redirect followed to the official Amazon domain. Observed destinations match session 5a4e180c exactly:
+
+- link.amazon/B04G1MEwY → https://www.amazon.com/dp/B0CDY277D3
+- link.amazon/B02NbDxp3 → https://www.amazon.com/dp/B09B7SB46R
+- link.amazon/B00hJ57DV → https://www.amazon.com/dp/B08DKYBTPH
+- link.amazon/B0c8moW59 → https://www.amazon.com/dp/B0DHZTCNR5
+- link.amazon/B0f3GKalj → https://www.amazon.com/dp/B0DZFD6R9Z
+
+Intended ASIN / official listing URL / confirmation date / source remain blank for all five (short-link compliance status unresolved; no claim that the short links are invalid). Observed redirect targets are recorded separately and never merged with intended fields.
+
+### Cross-scope requests
+
+(none)
+
+### Handoff / conflict log
+
+2026-11-19: initial rebase of arena/9978ab21-prod3 onto origin/main conflicted on COORDINATION.md, data/products.json, data/sources.json. Resolved by keeping session 5a4e180c's versions (the mainline record); no other session's work was discarded. Duplicate file additions from the earlier draft of this session (index.html, guides/, categories/, products/index.html, executive-summary.md, flagged-for-review.html) were dropped to avoid duplicate content with the existing mainline site (articles/, air-fryers.html, meat-thermometers.html, compare.html, buying-guide.html, EXECUTIVE_SUMMARY.md, flagged.html, sources.html).

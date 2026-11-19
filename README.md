@@ -37,3 +37,27 @@ No third-party dependencies: the standard library only.
 - `data/` — `products.json` (intent vs observed, never merged), `sources.json`, `campaign-ledger.json` (empty until first-party reports)
 - `assets/` — `style.css`, `app.js` (privacy-preserving measurement), `og-image.svg`, `favicon.svg`
 - `COORDINATION.md` — shared task board · `DIRECTION.md` — suggestions + open questions + path chooser
+
+## Release gates
+
+Three checks run in `.github/workflows/pages.yml` before anything is deployed:
+
+```bash
+python3 scripts/check_site.py          # structure, disclosure presence, sitemap coverage
+python3 tools/verify_site.py           # runs the above + feed, robots, ledger provenance
+python3 tools/check_site.py            # complementary rules (see below)
+python3 scripts/build_sitemap.py --check
+```
+
+`tools/check_site.py` exists because three defects reached the published site in its first
+version and the earlier gates did not catch them:
+
+| Rule | Defect it caught |
+| --- | --- |
+| `P10-no-price` | 40 currency amounts rendered on 8 pages while `disclosure.html` claimed the site stores no prices. Program Policies §2(b) permits price display only when Amazon serves the data. |
+| `P07-sponsored` | The old check inspected only `link.amazon` hrefs, so 35 evidence links to `amazon.com/dp/<ASIN>` and 7 to the Associates help pages were unqualified. |
+| `P01-disclosure` / `P02-disclosure-footer` | The exact Agreement §5 sentence was missing from all 20 pages; only paraphrases were present. |
+
+It also enforces one `<h1>`, unique titles and descriptions, absolute canonicals, no first-hand
+experience claims, no placeholders, descriptive link text, and that the campaign ledger stays empty
+until a real first-party report exists.

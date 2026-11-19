@@ -52,11 +52,31 @@ for f in html_files:
         errors.append(f"{rel}: missing footer affiliate disclosure")
     if "shopnow047c-20" not in html:
         errors.append(f"{rel}: missing tracking ID shopnow047c-20")
-    # sponsored check: every link.amazon <a> tag must carry rel="sponsored"
+    # 3a. sponsored check: EVERY outbound Amazon anchor must carry
+    #     rel="sponsored", not just the link.amazon ones. Evidence links to
+    #     amazon.com/dp/<ASIN> and to the Associates help pages earn no
+    #     commission but still point at Amazon, and Google's guidance on paid
+    #     links applies to the commerce destinations.
     for tag in re.findall(r"<a\b[^>]*>", html):
-        m = re.search(r'href="(https://link\.amazon/[^"]*)"', tag)
-        if m and "sponsored" not in tag:
-            errors.append(f"{rel}: link.amazon link without rel=sponsored: {m.group(1)}")
+        if not re.search(r'href="[^"]*amazon\.com', tag):
+            continue
+        if "sponsored" not in tag:
+            href = re.search(r'href="([^"]*)"', tag).group(1)
+            errors.append(f"{rel}: Amazon link without rel=sponsored: {href}")
+
+    # 3b. price policy: no currency amount may be rendered anywhere.
+    #     Program Policies section 2(b) permits displaying price and
+    #     availability only when Amazon serves the data or it arrives via the
+    #     Product Advertising API. This site does neither, so the rule is that
+    #     no price appears at all.
+    for m in re.finditer(r"[$£€]\s?\d", html):
+        snippet = html[max(0, m.start() - 40):m.end() + 20].replace("\n", " ")
+        errors.append(f"{rel}: currency amount rendered ({m.group(0)!r}): ...{snippet}...")
+    for pat in (r"\b\d+%\s*(?:off|savings)\b", r"\bBlack Friday\b", r"\bPrime Day\b",
+                r"\b(?:free delivery|delivery by|arrives by)\b"):
+        m = re.search(pat, html, re.I)
+        if m:
+            errors.append(f"{rel}: promotional or availability claim: {m.group(0)!r}")
     # internal targets exist
     for target in re.findall(r'(?:href|src)="([^"#]+)(?:#[^"]*)?"', html):
         if target.startswith(("http", "mailto:", "data:")):
@@ -70,6 +90,10 @@ print(f"OK html: {len(html_files)} pages checked")
 sitemap = (ROOT / "sitemap.xml").read_text()
 for f in html_files:
     rel = f.relative_to(ROOT).as_posix()
+    # 404.html is deliberately excluded: an error page has no canonical URL to
+    # offer a crawler, and listing it in the sitemap invites it to be indexed.
+    if rel == "404.html":
+        continue
     if rel not in sitemap:
         errors.append(f"sitemap.xml: missing {rel}")
 print("OK sitemap coverage checked")

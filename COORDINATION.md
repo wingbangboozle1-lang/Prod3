@@ -46,6 +46,7 @@
 | T-26 | Final integration integrity pass: reconcile product-intent evidence, link/policy copy, automation claims, and flags; strengthen gates; re-run site and Pages release checks | done (2026-11-20, PR and Pages result below) | `arena/e83cdf55-prod3` | `data/verification.json`, `data/policy-checks.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `flagged.html`, `suggestions.html`, `questions.html`, `docs/verification.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `COORDINATION.md` |
 | T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (stale DIRECTION cross-references and SG-22..30 index vs register, nine-article counts), flag the dual Pages deploy paths as FLG-024, re-run all gates, PR → main, merge, confirm live deploy | done (PR #36, merge commit `a861ed7`; deploy + live check recorded below) | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, Pages repo settings (build_type) |
 | T-46 | Final integration round (session 59a087a1): live line-by-line re-verification of the five published listings against the official Amazon pages (specs only — no prices, ratings or offers recorded), register the official sources that are missing so no register row is left "No official source" where a genuine official source exists, publication-polish fixes, re-run every gate, PR → main, merge, confirm Pages deploy | in progress | `arena/59a087a1-prod3` | `data/products.json`, `data/sources.json`, `data/citations.json`, `data/decisions.json`, `data/open-questions.json`, `data/flagged.json`, `data/verification.json`, `articles/*`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `tools/check_site.py`, `tools/verify_site.py`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
+| T-47 | Integration pass after PR #38 (T-46, session 59a087a1) landed first: re-run all gates on the merged tree; re-check the Pages deploy and live pages; record the duplicate `FLG-021` callout on `flagged.html` as an owner decision (not renumbered); no site content change; PR → main, merge, confirm live deploy | done (PR and merge record below) | `arena/cafc55da-prod3` | `COORDINATION.md` only |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -1307,3 +1308,34 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 - Gates on the rebuilt tree: build_chrome/build_registers freshness OK; check_site.py, verify_site.py, crawl_links.py (31 pages, 30 reachable, no broken links/anchors/orphans), tools/check_site.py all pass.
 - Irregularity logged: flagged.html contains duplicate FLG-020 and FLG-021 identifiers (different subjects, pre-existing); not renumbered in this round — owner to decide.
 - PR #37 Pages runs 44689292593 / 44689291961: outcomes to be confirmed by exact run ID after this push.
+
+## Session arena/cafc55da-prod3 — T-47 integration check (2026-11-20)
+
+**Claim collision, handled.** This session first claimed `T-46`, then found `T-46` already claimed and merged by `arena/59a087a1-prod3` (PR #38) while this branch was being rebased. Nothing was overwritten: this session's claim was moved to `T-47`, its duplicate T-46 claim commit was dropped in the merge with `origin/main`, and the other session's record stands as written. Board hygiene: the stale `in progress` duplicates for T-20/T-21/T-22 (superseded by the authoritative `done` rows) and the stale T-19 claim from session 65412034 were marked superseded, not deleted.
+
+**No site content changed in this pass.** The only file in scope is this board.
+
+### Verification on the merged tree (`origin/main` at `372afb0`, 2026-11-20)
+
+| Check | Result |
+|---|---|
+| `build_chrome --check`, `build_registers --check`, `build_decisions --check`, `build_sitemap --check` | all current |
+| `scripts/check_site.py` | all checks passed |
+| `tools/verify_site.py` | release gate passed |
+| `tools/check_site.py` | all additional rules passed |
+| `tools/crawl_links.py` | 31 pages crawled; no broken links, no dead anchors, no orphans |
+| Amazon anchors on all HTML pages | counted and checked for `rel="sponsored"` (see the run record in this session's final report) |
+| Exact Associates disclosure sentence | present on every page |
+| `data/products.json` after PR #38 | intended-ASIN fields unchanged and still owner-unconfirmed (FLG-001); the new 2026-11-20 official listing checks are recorded separately under `official_listing_check_2026_11_20` |
+| Pages | `Deploy GitHub Pages` run `44690171472` (PR #38 merge) **success**; companion `pages build and deployment` was in progress at the time of this check |
+
+### Irregularities (for owner review; not blocking)
+
+1. **Duplicate `FLG-021` on `flagged.html`.** Two different findings are both headed `FLG-021`: (a) *"Source register gaps and one listing quotation (2026-11-20)"* — this is the item in `data/flagged.json` and the matching row on `decisions.html`; (b) *"A suggestion id cited by the digest does not exist, and the register skips a number"* — this is the SG-21/SG-25→SG-27 gap note that `README.md` and `DIRECTION.md` cite as FLG-021. The two are not merged or renumbered here because all of those files are shared outputs and the owner should choose the new ID (the PR #38 record already left this to the owner).
+2. **FLG-017 still open.** `link.amazon/B04G1MEwY` ended at the Amazon homepage on the 2026-11-20 fetch in this session as well.
+3. **Pages build type** (FLG-024) still `legacy`; the owner-side one-click fix is still required.
+
+### Still not verifiable from this sandbox (owner action)
+
+FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled Associates workflow · FLG-010 Associates account status · FLG-015 empty campaign ledger (no first-party reports) · DT-03 Search Console · DT-07 analytics endpoint · DT-10 / Q-14 publishing cadence (owner decision) · F-21 / Q-21 share-debugger check.
+

@@ -8,7 +8,7 @@
 
 ## Bottom line
 
-The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and nine question-shaped articles (eight evergreen guides plus the dated Thanksgiving temperature plan). Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
+The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and nine question-shaped articles (seven evergreen guides plus two seasonal pieces — the holiday gift guide and the dated Thanksgiving temperature plan). Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
 
 **Recommendation:** keep the current editorial publication, but do not scale links or claim revenue performance until the owner-side Associates workflow confirms the intended products, link compliance, and tracking. The site does not have aggregate analytics, verified Search Console data, or conversion reports. Consequently, there is no evidence here for product superiority, demand, conversion rate, commission potential, or revenue forecasts.
 
@@ -32,7 +32,7 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 | Area | Current state | What is not established | Official source |
 |---|---|---|---|
-| Publication | Buyer-first front page; two category pillars; comparison and buying guide; nine articles (eight evergreen plus the dated Thanksgiving plan); three decision tools; RSS feed and sitemap | Organic impressions, rankings, readership, or topic popularity | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
+| Publication | Buyer-first front page; two category pillars; comparison and buying guide; nine articles (seven evergreen plus two seasonal pieces: the holiday gift guide and the dated Thanksgiving plan); three decision tools; RSS feed and sitemap | Organic impressions, rankings, readership, or topic popularity | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 | Product facts | Seller-listed specifications linked to dated listing snapshots; conflicts are flagged, not silently resolved | Independent product testing or a current listing re-check after the 2026-11-19 snapshot | [Chefman listing](https://www.amazon.com/dp/B0CDY277D3) · [Emeril listing](https://www.amazon.com/dp/B09B7SB46R) · [Chefman listing](https://www.amazon.com/dp/B08DKYBTPH) · [ThermoMaven listing](https://www.amazon.com/dp/B0DHZTCNR5) · [CHEF iQ listing](https://www.amazon.com/dp/B0DZFD6R9Z) |
 | Pricing and ratings | No price or customer-rating claims are rendered on the site | Current prices, availability, ratings, or commission rates | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | Affiliate links | All Amazon anchors use `rel="sponsored"`; supplied links and observed targets are separately recorded | Associates account eligibility, intended products, Special Link compliance, or reporting attribution | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Google sponsored links guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) |
@@ -50,11 +50,13 @@ and the data table. Stylesheet: 44 px tap targets, visible focus states, card
 lift on hover (mobile-first pass S-20 in effect). The RSS feed no longer
 advertises a price range in the gift-guide description, and its channel title
 drops the overstated channel title the audit flagged. The
-Direction desk was rebuilt as a full ledger (SG-01…18 with statuses, Q-01…21
-with discovery paths) and now matches `data/suggestions.json` /
-`data/open-questions.json` exactly. New open item: FLG-016 / F-21 — the SVG
-social-preview image is unverified in share previewers. All four release gates
-pass on the rebuilt tree.
+Direction desk was rebuilt as a full ledger with statuses and discovery paths; the
+registers have since grown to SG-01..SG-31 (30 registered rows — SG-21 retired in
+place, SG-26 unoccupied) and Q-01..Q-23, and `scripts/build_registers.py --check`
+fails if the generated pages drift from `data/suggestions.json` /
+`data/open-questions.json`. Open item: FLG-016 / F-21 — the shipped 1200×630 PNG
+social-preview image is unverified in external share debuggers (the earlier SVG
+format issue is resolved). All release gates pass on the current tree.
 
 
 ---
@@ -89,7 +91,7 @@ gate rule `D20` now fails the build if any two live suggestions share a title.
 
 **Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
 `rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
-30 pages. Every new table row carries a source link or an explicit "No official source" marker,
+31 pages. Every new table row carries a source link or an explicit "No official source" marker,
 and the gate fails a row that has neither — so "unverified" can never hide.
 
 **Still true, still not this session's to fix.** The five short links carry no visible
@@ -101,7 +103,8 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 
 **Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
-(30 pages, 3541 assertions) and `tools/crawl_links.py` (30 pages, 0 broken links, 0 dead
+(30 pages, 3541 assertions — the historical close of that pass; the current tree reports
+31 pages, 3,938 assertions) and `tools/crawl_links.py` (30 pages, 0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.
@@ -126,7 +129,7 @@ The editorial hypotheses already in the guide plan include “Basket or oven-sty
 | What product was intended for each submitted link? | Five observed destinations are documented separately | Intended ASIN and listing remain blank; product matching cannot be assumed | Confirm each in the Associates account and record date, official listing URL, and source | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
 | Is `shopnow047c-20` enrolled and eligible for the intended activity? | Tracking ID was supplied | Account state, eligibility, and API access are not visible to this repository | Check Associates Central; save only non-sensitive confirmation/status and date | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
 | Do the Special Links work as intended and report under this ID? | Outbound links are marked sponsored in the site | Account-side link compliance and report attribution are untested | Test one product link in the enrolled workflow; confirm destination and report before scaling | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
-| Which topics attract qualified visitors? | Eight guides and the technical SEO files exist | No Search Console impressions, clicks, or query export | Verify Search Console and review dated query reports after sufficient data accrues | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
+| Which topics attract qualified visitors? | Nine guides and the technical SEO files exist | No Search Console impressions, clicks, or query export | Verify Search Console and review dated query reports after sufficient data accrues | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 | Are visits turning into outbound clicks or orders? | Event definitions exist; browser-local counters are not aggregate | No endpoint or first-party click/order reports | Configure privacy-reviewed analytics; obtain authorized Associates reports; add provenance to the ledger | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | What commissions or revenue are realistic? | No qualifying order or commission evidence is recorded | Current rates, attribution, conversion, and order data are unavailable | Obtain current account reports and applicable program terms; do not forecast beforehand | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | What analytics and email data handling is acceptable? | No endpoint or email provider is connected | Hosting, retention, consent/notice, access, and data subject process are undecided | Select a provider and document the full data lifecycle before enabling collection | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) |
@@ -137,7 +140,7 @@ The proposal ledger, open-question register, and decision log are available on t
 
 ## Release and review status
 
-The repository's current release checks pass on the reviewed tree: `python3 scripts/check_site.py`, `python3 tools/verify_site.py`, `python3 scripts/build_registers.py --check`, and `python3 scripts/build_sitemap.py --check`. The coordination history records a successful GitHub Pages deployment at the project URL. These checks validate repository structure and registered content; they do not verify the Associates account, live traffic, external search indexing, or link-report conversion.
+The repository's current release checks pass on the reviewed tree: `python3 scripts/build_registers.py --check`, `python3 scripts/build_decisions.py --check`, `python3 scripts/build_chrome.py --check`, `python3 scripts/build_sitemap.py --check`, `python3 scripts/check_site.py`, `python3 tools/verify_site.py`, `python3 tools/check_site.py` (31 pages, 3,938 assertions), and `python3 tools/crawl_links.py` (31 pages crawled, 0 broken links, 0 dead anchors, 0 orphans). The coordination history records a successful GitHub Pages deployment at the project URL. These checks validate repository structure and registered content; they do not verify the Associates account, live traffic, external search indexing, or link-report conversion.
 
 - [Open the publication](https://wingbangboozle1-lang.github.io/Prod3/)
 - [Suggestions and path chooser](direction.html)

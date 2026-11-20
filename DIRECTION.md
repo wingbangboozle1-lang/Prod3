@@ -97,8 +97,10 @@ the byte-for-byte comparison. Deleted rows cannot be audited; retired rows can. 
 `D20` now fails the build if any two live suggestions share a title.
 
 **What is still open:** only the owner knows whether a second, different proposal was ever
-meant to occupy SG-21. If so, the duplicate displaced it and it needs re-entering. That is
-DT-11 territory and is recorded on `decisions.html`.
+meant to occupy SG-21. If so, the duplicate displaced it and it needs re-entering. That would
+need a new decision row once the owner answers: DT-01..DT-10 are the registered decisions and
+none of them covers it. The possibility is recorded in the SG-21 retired row
+(`data/suggestions.json`) and here.
 
 ## Path chooser
 

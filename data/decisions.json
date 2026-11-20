@@ -177,6 +177,18 @@
         "S21"
       ],
       "evidence_status": "observed"
+    },
+    {
+      "id": "DT-13",
+      "title": "Was SG-21 meant to hold a different proposal, or was the duplicate all there ever was?",
+      "why": "SG-20 and SG-21 shipped byte-identical before SG-21 was retired in place, and a merge can displace a row. Only the owner's master requirements list can say whether a second, different proposal ever occupied that number (FLG-027, FLG-029).",
+      "recommendation": "Owner checks the master requirements list once. If a different proposal occupied SG-21, re-enter it under the next free SG id; if not, record that the duplicate was all there was and close this row.",
+      "effort": "S",
+      "who": "owner",
+      "blocks": "Nothing on the site; it blocks calling the suggestion register complete.",
+      "status": "open",
+      "sources": [],
+      "evidence_status": "unverified"
     }
   ],
   "paths": [

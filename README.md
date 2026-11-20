@@ -71,9 +71,9 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 <!-- build-registers-table:start -->
 | Register | Page | Data | IDs | Count |
 |---|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-53 (SG-21 retired in place); unoccupied: SG-26 | 52 rows |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-53 (SG-21 retired in place); unoccupied: SG-26 (see FLG-029) | 52 rows |
 | Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-30 | 30 |
-| Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
+| Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-13 | 13 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | - |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | dated proposals | 12 |
 | Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-041, F-01..F-21 | 57 in the data file |

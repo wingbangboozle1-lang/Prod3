@@ -136,8 +136,7 @@ Corrections made under T-23 (all gates re-run green afterwards):
     `rss-once`, duplicating it fails `rss-once`, and both were restored to green.
   - `D42-sg-refs-resolve` + `D42-q-refs-resolve` — every `SG-nn`/`Q-nn` token on any
     page must exist in its register (D28/D29 covered only `DIRECTION.md`). Its first
-    run caught the two direction-surface citations above. Negative-tested with a
-    dangling `SG-88`, restored to green.
+    run caught the two direction-surface citations above. Negative-tested with a dangling unregistered suggestion id, restored to green.
 - **One cross-scope edit, logged per the board rule:** `data/flagged.json`, FLG-029's
   `detail` field said "the register itself skips the SG-26 slot" — the same token the
   new gate rightly rejects, and `decisions.html` renders the field verbatim. Reworded

@@ -52,7 +52,7 @@ advertises a price range in the gift-guide description, and its channel title
 drops the overstated channel title the audit flagged. The
 Direction desk was rebuilt as a ledger and now matches `data/suggestions.json` /
 `data/open-questions.json` exactly: 46 suggestion rows (SG-01..SG-47; SG-21 retired
-in place, SG-26 unoccupied) and 29 open questions (Q-01..Q-29). That paragraph was
+in place, SG-26 unoccupied — FLG-029) and 29 open questions (Q-01..Q-29). That paragraph was
 written when the registers held 18 and 21 rows; the counts here were re-read from the
 JSON on 2026-11-20 rather than copied forward. Still open: FLG-016 / F-21 — the
 social-preview image has never been run through a share debugger. All release

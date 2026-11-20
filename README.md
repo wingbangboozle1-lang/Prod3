@@ -41,11 +41,11 @@ The tools use Python's standard library; no third-party Python dependencies are 
 ## Site map
 
 - `index.html` — shop front: a named starting pick with a "look elsewhere if", the rest of the short list, the chooser, the seasonal block, all guides, the full data table
-- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-10), every unanswered question (Q-01..Q-21) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
+- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-10), every unanswered question (Q-01..Q-25) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
 - `tools/` — comparison builder, oven-to-air-fryer converter, USDA cook-to-temperature card
 - `air-fryers.html`, `meat-thermometers.html` — category hubs
 - `compare.html`, `buying-guide.html` — comparison and decision framework
-- `articles/` — nine question-shaped guides, included in `feed.xml` and `sitemap.xml`
+- `articles/` — eleven question-shaped guides, included in `feed.xml` and `sitemap.xml`
 - `suggestions.html`, `questions.html`, `direction.html` — proposals, missing-information questions, and decisions
 - `sources.html`, `citations.html`, `flagged.html`, `disclosure.html`, `analytics.html`, `executive-summary.html`, `about.html` — source, disclosure, analytics, and trust pages
 - `suggestions.html`, `questions.html`, and `citations.html` are generated from JSON by `scripts/build_registers.py`; `decisions.html` by `scripts/build_decisions.py`; the masthead/disclosure/footer of every page by `scripts/build_chrome.py`. Do not hand-edit any of them.
@@ -65,8 +65,9 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 
 | Register | Page | Data | IDs |
 |---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-31 (SG-21 retired in place; the ID slot between SG-25 and SG-27 is unoccupied — FLG-026) |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-35 (SG-21 retired in place; the ID slot between SG-25 and SG-27 is unoccupied — FLG-026) |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-25 |
+| Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-10 |
 | Decisions | `direction.html` | `DIRECTION.md` | dated rows |
 | Flagged findings | `flagged.html` | `data/flagged.json` | F-01..F-21 |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
@@ -75,11 +76,11 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 
 | Register | Page | Data | IDs |
 |---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-30 (SG-21 retired) |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-35 (SG-21 retired; SG-26 unoccupied) |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-25 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-10 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows |
-| Flagged findings | `flagged.html` | `data/flagged.json` | FLG-001..FLG-017, F-01..F-21 |
+| Flagged findings | `flagged.html` | `data/flagged.json` | FLG-001..FLG-028, F-01..F-21 |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
 
 An ID prefix belongs to exactly one register. A proposal, a question and a decision

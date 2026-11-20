@@ -8,7 +8,7 @@
 
 ## Bottom line
 
-The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and nine question-shaped articles (eight evergreen guides plus the dated Thanksgiving temperature plan). Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
+The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and eleven question-shaped articles (ten evergreen guides plus the dated Thanksgiving temperature plan). Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
 
 **Recommendation:** keep the current editorial publication, but do not scale links or claim revenue performance until the owner-side Associates workflow confirms the intended products, link compliance, and tracking. The site does not have aggregate analytics, verified Search Console data, or conversion reports. Consequently, there is no evidence here for product superiority, demand, conversion rate, commission potential, or revenue forecasts.
 
@@ -32,7 +32,7 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 | Area | Current state | What is not established | Official source |
 |---|---|---|---|
-| Publication | Buyer-first front page; two category pillars; comparison and buying guide; nine articles (eight evergreen plus the dated Thanksgiving plan); three decision tools; RSS feed and sitemap | Organic impressions, rankings, readership, or topic popularity | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
+| Publication | Buyer-first front page; two category pillars; comparison and buying guide; eleven articles (ten evergreen plus the dated Thanksgiving plan); three decision tools; RSS feed and sitemap | Organic impressions, rankings, readership, or topic popularity | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 | Product facts | Seller-listed specifications linked to dated listing snapshots; conflicts are flagged, not silently resolved | Independent product testing or a current listing re-check after the 2026-11-19 snapshot | [Chefman listing](https://www.amazon.com/dp/B0CDY277D3) · [Emeril listing](https://www.amazon.com/dp/B09B7SB46R) · [Chefman listing](https://www.amazon.com/dp/B08DKYBTPH) · [ThermoMaven listing](https://www.amazon.com/dp/B0DHZTCNR5) · [CHEF iQ listing](https://www.amazon.com/dp/B0DZFD6R9Z) |
 | Pricing and ratings | No price or customer-rating claims are rendered on the site | Current prices, availability, ratings, or commission rates | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | Affiliate links | All Amazon anchors use `rel="sponsored"`; supplied links and observed targets are separately recorded | Associates account eligibility, intended products, Special Link compliance, or reporting attribution | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Google sponsored links guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) |
@@ -126,7 +126,7 @@ The editorial hypotheses already in the guide plan include “Basket or oven-sty
 | What product was intended for each submitted link? | Five observed destinations are documented separately | Intended ASIN and listing remain blank; product matching cannot be assumed | Confirm each in the Associates account and record date, official listing URL, and source | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
 | Is `shopnow047c-20` enrolled and eligible for the intended activity? | Tracking ID was supplied | Account state, eligibility, and API access are not visible to this repository | Check Associates Central; save only non-sensitive confirmation/status and date | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
 | Do the Special Links work as intended and report under this ID? | Outbound links are marked sponsored in the site | Account-side link compliance and report attribution are untested | Test one product link in the enrolled workflow; confirm destination and report before scaling | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
-| Which topics attract qualified visitors? | Eight guides and the technical SEO files exist | No Search Console impressions, clicks, or query export | Verify Search Console and review dated query reports after sufficient data accrues | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
+| Which topics attract qualified visitors? | Eleven guides and the technical SEO files exist | No Search Console impressions, clicks, or query export | Verify Search Console and review dated query reports after sufficient data accrues | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 | Are visits turning into outbound clicks or orders? | Event definitions exist; browser-local counters are not aggregate | No endpoint or first-party click/order reports | Configure privacy-reviewed analytics; obtain authorized Associates reports; add provenance to the ledger | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | What commissions or revenue are realistic? | No qualifying order or commission evidence is recorded | Current rates, attribution, conversion, and order data are unavailable | Obtain current account reports and applicable program terms; do not forecast beforehand | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | What analytics and email data handling is acceptable? | No endpoint or email provider is connected | Hosting, retention, consent/notice, access, and data subject process are undecided | Select a provider and document the full data lifecycle before enabling collection | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) |
@@ -145,3 +145,32 @@ The repository's current release checks pass on the reviewed tree: `python3 scri
 - [Flagged for Review](flagged.html)
 - [Analytics and privacy status](analytics.html)
 - [Sources](sources.html)
+
+---
+
+# Addendum — 2026-11-20, publication-quality round (T-48…T-51)
+
+**What changed.** (1) The front page was rewritten in the shop voice — a clearer hero, one
+spec-chip row per card instead of two, the feature figure corrected to the basket sizes
+("2 × 3 qt") so no total volume is stated as fact while FLG-022 is open, and one broken
+sentence fixed. (2) Two new question-shaped evergreen guides shipped —
+"Are air fryers worth it? Six questions to ask before you decide" and
+"Do you need a smart meat thermometer? Five questions before you pay for WiFi" — each with
+Article and FAQPage structured data that mirrors its visible FAQ text. The RSS feed now
+carries eleven items (the release gate counts them), and the sitemap was rebuilt. (3) The
+flag register's identifier collisions were resolved: four callouts used to repeat earlier
+FLG numbers, and one ID could not mean one finding. The meanings held in
+`data/flagged.json` kept FLG-020…FLG-023; the later callouts became FLG-025…FLG-028 with
+every cross-reference updated (mapping note published on `flagged.html`). (4) The decision
+desk gained SG-32…SG-35 (FAQ rollout, guide voice refresh, PageSpeed measurement before
+any performance work, data-driven seasonal block) and Q-24…Q-25 (the two missing
+measurements: live PageSpeed scores and whether FAQ rich results appear). Stale guide
+counts in this summary, the README and Q-14/Q-17 were corrected to the eleven guides that
+actually ship.
+
+**What is still not established (unchanged):** intended product identities (FLG-001),
+short-link compliance in the enrolled workflow (FLG-006), Associates account status
+(FLG-010), any traffic, conversion, or revenue figure (the campaign ledger stays empty by
+design), Search Console data (Q-18), and share-debugger validation of the social preview
+(Q-21). All release gates pass on this tree; none of them can answer an account-side
+question.

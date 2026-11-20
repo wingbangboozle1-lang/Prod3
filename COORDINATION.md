@@ -2005,3 +2005,31 @@ FLG-001 intended ASINs · FLG-006 Special Link test · FLG-010 account status ·
 homepage-link cause · FLG-026 tag parameter demonstration · Search Console verification
 (DT-03/Q-18) · analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_type
 (FLG-024) · seasonal rotation decision (SG-43).
+
+## T-56 release record (session `arena/7878cdbe-prod3`, 2026-11-20)
+
+### Release-blocking fix on the merged tree
+
+- Upstream gate `D40` (a stated guide count must equal the guides on disk) failed on two strings:
+  `flagged.html` FLG-038's heading said "Eight articles" (a historical count that now reads as a
+  live claim — ten guides ship) and `data/suggestions.json` SG-44 said "the nine guides". Fixed by
+  removing the counts rather than updating them: FLG-038's heading now reads "Every article page
+  ended with the same block" (meaning preserved — the defect was that all article pages carried
+  the identical ending block), and SG-44 now reads "the guides already answer questions in visible
+  prose". Both fixes are count-free, so they cannot go stale; generated pages rebuilt.
+
+### Gates at close (final tree, after rebase onto c14b28c)
+
+`build_chrome --check`, `build_registers --check`, `build_decisions --check`, `build_sitemap
+--check` (all current, 39 pages); `tools/verify_site.py` release gate passed (32 sources resolve
+and are published; publishing coverage: 10 guides in sitemap, feed and hub; cadence recorded);
+`scripts/check_site.py` all checks passed; `tools/check_site.py` 39 pages, 5,919 assertions, all
+rules (incl. D20/D25/D26/D34/D35/D36/D37/D40) passed; `tools/crawl_links.py` 39 pages crawled,
+38 reachable from the front page, 0 broken links, 0 dead anchors, 0 orphans.
+
+### Not claimed / owner gates unchanged
+
+FLG-001 intended ASINs · FLG-006 Special Link test · FLG-010 account status · FLG-017/025/031
+homepage-link cause · FLG-026 tag parameter demonstration · Search Console verification
+(DT-03/Q-18) · analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_type
+(FLG-024) · seasonal rotation decision (SG-43) · Q-28 indexing status · Q-29 Core Web Vitals.

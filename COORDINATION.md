@@ -42,6 +42,7 @@
 | T-23 | Line-by-line verification of data registers and published claims against official sources; fix only demonstrable defects; final integration PR → main, merge, confirm Pages deploy | done (PR #18, https://github.com/wingbangboozle1-lang/Prod3/pull/18) | arena/28d2d6c0-prod3 | `data/sources.json`, `data/analysis.json`, `data/flagged.json`, `data/policy-checks.json`, `sources.html`, `tools/verify_site.py` (source-resolution gate), `COORDINATION.md` |
 | T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
+| T-25 | Publication-polish pass (SG-27..30): one nav label for the Direction/Decision-log page, RSS `rel=alternate` on every page head, re-verify the five short links on 2026-11-20 (new FLG-017), register SG-27..SG-30 with evidence-based status | in progress | arena/e52053d1-prod3 | `index.html`, `*.html` (nav label + feed head link only), `articles/*.html`, `data/products.json`, `data/flagged.json`, `flagged.html`, `data/suggestions.json`, `suggestions.html` (generated), `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -829,3 +830,9 @@ Claimed and completed the executive-summary refresh only. Scope: `executive-summ
 - **Pre-merge verification (all pass):** `python3 scripts/check_site.py` (24 HTML pages), `python3 tools/verify_site.py` (21 sources; release gate passed), `python3 tools/check_site.py` (24 pages / 2,521 assertions), `python3 scripts/build_sitemap.py --check`, `python3 scripts/build_registers.py --check`, `git diff --check`.
 - **GitHub Pages deploy:** workflow run `44686152047` (Deploy GitHub Pages) — success on the merged SHA; companion build run `44686151504` — success. Pages API status: `built`, source `main:/`, URL https://wingbangboozle1-lang.github.io/Prod3/. Live spot-check of `/executive-summary.html` after the earlier deploy confirmed the updated summary, dated intent/observed link table, official-source links, and above-the-fold disclosure.
 - **Not claimed:** Associates account enrollment/eligibility (FLG-010), intended product confirmation (FLG-001), Special Link compliance/testing (FLG-006), social-preview debugger validation (F-21/SG-16/Q-21), Search Console setup, server analytics endpoint, or email provider — all remain flagged on `flagged.html` / `questions.html` and were not verified by this session.
+
+
+## Session arena/e52053d1-prod3 — T-25 claim (2026-11-20)
+
+Claimed T-25 (scope in the board row). Starting baseline: all five release gates green on `cd2a886`.
+Known gaps found before editing: SG-27..SG-30 named in the request do not exist in `data/suggestions.json` (register ends at SG-25); nav says "Direction" while the footer says "Decision log" for the same page; RSS `rel="alternate"` missing from most page heads.

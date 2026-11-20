@@ -35,7 +35,7 @@
       "group": "Commercial",
       "question": "Do the five Special Links actually carry tag=shopnow047c-20?",
       "blocks": "Any claim that the site earns anything. If the tag is missing, clicks earn nothing.",
-      "known": "The 2026-11-19 observation records each supplied short link reaching one of five ASINs (S10-S14). The resolved URLs carried query parameters but no visible tag= value in what was served to that session (F-09, FLG-023).",
+      "known": "The 2026-11-19 observation records each supplied short link reaching one of five ASINs (S10-S14). The resolved URLs carried query parameters but no visible tag= value in what was served to that session (F-09, FLG-031).",
       "unknown": "Whether the Associates ID is attached server-side, which is invisible from outside the account.",
       "how_to_find_out": "Sign in to Associates, open a product page with SiteStripe active, and read the Get Link panel for one of the five. Confirm the tag field. Then make one test click and confirm it appears in the Click Reports within 24 hours.",
       "who": "owner",
@@ -75,7 +75,7 @@
       "group": "Compliance",
       "question": "Is the link.amazon short-link format acceptable in this account's enrolled workflow?",
       "blocks": "Whether the supplied links can ever be the published destination.",
-      "known": "Program Policies 2(b) prohibits a shortening service used so that it is unclear the link goes to an Amazon Site (S02). The site currently publishes direct amazon.com/dp/ URLs, so clarity is not in question there.",
+      "known": "Program Policies 6(w) prohibits a shortening service used so that it is unclear the link goes to an Amazon Site (S02; clause read and quoted 2026-11-20). The site currently publishes direct amazon.com/dp/ URLs, so clarity is not in question there.",
       "unknown": "Whether these particular links resolve visibly and are accepted in the enrolled workflow. Their compliance status is not established either way — nothing here calls them invalid (F-13).",
       "how_to_find_out": "Run SG-13: click one link while signed in, confirm the destination and confirm the click is reported. Repeat if it passes.",
       "who": "owner",
@@ -246,8 +246,8 @@
       "id": "Q-14",
       "group": "Content",
       "question": "What is the publishing cadence, and who writes the next guide?",
-      "blocks": "Whether the site grows or stalls at eight articles.",
-      "known": "Eight guides are published. Nothing in the repository schedules a ninth.",
+      "blocks": "Whether the site grows or stalls at thirteen articles.",
+      "known": "Thirteen guides are published (articles/*.html). Nothing in the repository schedules a fourteenth.",
       "unknown": "Whether the owner writes, or the agent drafts for approval, and how often.",
       "how_to_find_out": "Pick a cadence the owner will actually keep — one a fortnight beats three a week followed by silence. Write it in the repository so the next session honours it.",
       "who": "owner",
@@ -299,9 +299,9 @@
     {
       "id": "Q-17",
       "group": "Content",
-      "question": "Which of the eight guides should be retired if Search Console shows no impressions after 60 days?",
+      "question": "Which of the ten published guides should be retired if Search Console shows no impressions after 60 days?",
       "blocks": "Nothing yet. It is the question that stops a site accumulating pages nobody reads.",
-      "known": "No impression or query data exists yet (F-17).",
+      "known": "Thirteen guides are published (articles/*.html) and no impression or query data exists yet (F-17).",
       "unknown": "Which pages, if any, will fail to earn an impression. That number cannot be guessed.",
       "how_to_find_out": "After 60 days, sort the Pages report by impressions. Any page with zero impressions earns a rewrite, a merge, or a removal — decided with data, not taste.",
       "who": "owner",
@@ -438,7 +438,7 @@
       "group": "Links",
       "question": "Why did all five supplied links end at the Amazon homepage on the third check, when four of five reached product pages earlier the same day?",
       "blocks": "Nothing structurally, but it decides whether the buy buttons should keep pointing at the short links.",
-      "known": "Four dated observations exist: 2026-11-19 all five reached product pages; 2026-11-20 session 70e8475c one of five reached the homepage; session ce911db5 two of five; session 6bf60cac all five (FLG-017, FLG-023, FLG-025). No record is overwritten.",
+      "known": "Four dated observations exist: 2026-11-19 all five reached product pages; 2026-11-20 session 70e8475c one of five reached the homepage; session ce911db5 two of five; session 6bf60cac all five (FLG-017, FLG-031, FLG-025). No record is overwritten.",
       "unknown": "Whether the change is geographic, time-of-day, a per-fetch rate limit, a change on Amazon's side, or something about the fetching client. No logs are available to the site.",
       "how_to_find_out": "Owner clicks all five while signed in, at three times of day, and records the landing page each time. Comparing those with the site's records is the only test that separates a link problem from a fetch-method problem.",
       "who": "owner",
@@ -487,6 +487,40 @@
       "sources": [
         "S21",
         "S24"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "Q-28",
+      "group": "Measurement",
+      "question": "Is any of this site in Google's index yet, and which pages?",
+      "blocks": "Judging whether any guide is discoverable at all; choosing between publishing more (SG-18's pipeline) and fixing discoverability first. Until this is answered, any statement about organic traffic is a guess.",
+      "known": "The site ships unique canonicals, a robots.txt pointing at sitemap.xml, a sitemap and an RSS feed — all enforced by the repo's gates. Coordination records show GitHub Pages deployments since 2026-11-19.",
+      "unknown": "Whether Google has crawled or indexed any URL; which pages, if any, appear for brand or topic queries. Nothing hosted on the site itself can answer this.",
+      "how_to_find_out": "Two steps. (1) Public, no account: a site:wingbangboozle1-lang.github.io/Prod3 query — a rough, incomplete indication; record the date and the result count, not a claim of completeness. (2) Authoritative: Search Console → property → Pages report, after Q-18's verification — it lists indexed and excluded URLs with reasons (S26).",
+      "who": "any session (step 1); owner (step 2)",
+      "cost": "2 minutes (step 1); 5 minutes after verification (step 2)",
+      "status": "queued",
+      "changes": "Whether “publish and wait” is a plan or a hope, and whether the next guide should be written at all before indexing is confirmed.",
+      "sources": [
+        "S26"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "Q-29",
+      "group": "Measurement",
+      "question": "What do Core Web Vitals measure on this site today, on a mid-range phone?",
+      "blocks": "SG-46 (the proposed CWV gate) and any decision to add visual effects; until measured, the mobile-first and light-page claims (S-20 pass) are design statements, not records.",
+      "known": "The stylesheet is one local file with system fonts (no webfonts, no @import), pages load one local script each, and there are no third-party asset requests on shop pages — verified by a URL scan on 2026-11-20 (T-54 log). Tap targets were audited at 48px (S-20).",
+      "unknown": "LCP, INP and CLS as actually measured. No dated lab or field result exists anywhere in the repository.",
+      "how_to_find_out": "pagespeed.web.dev — enter the live URL, choose mobile, and record the dated metric values on analytics.html; Lighthouse in Chrome gives the same lab metrics. No account is required.",
+      "who": "any session",
+      "cost": "about 5 minutes",
+      "status": "queued",
+      "changes": "Turns “the site is light” from a design claim into a dated measurement, and sets the baseline that SG-46's gate would compare future changes against.",
+      "sources": [
+        "S25"
       ],
       "evidence_status": "verified"
     }

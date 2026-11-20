@@ -88,7 +88,19 @@ try:
     items = tree.getroot().findall(".//item")
     n_guides = len(list((ROOT / "articles").glob("*.html")))
     assert len(items) == n_guides, f"feed.xml has {len(items)} items; articles/ has {n_guides} guides"
-    print(f"OK feed.xml: well-formed, {len(items)} items = {n_guides} guides")
+    # Added 2026-11-20 (T-52): counting items is not enough. A feed can hold the right
+    # number of items while one points at a page that does not exist, or omits the guide
+    # that was just published. Both are now failures.
+    _links = set()
+    for _it in items:
+        _loc = _it.find("link").text
+        assert _loc.startswith("https://wingbangboozle1-lang.github.io/Prod3/articles/"), f"unexpected feed link {_loc}"
+        _name = _loc.rsplit("/", 1)[-1]
+        assert (ROOT / "articles" / _name).exists(), f"feed.xml links a missing article: {_name}"
+        _links.add(_name)
+    _missing = sorted({a.name for a in (ROOT / "articles").glob("*.html")} - _links)
+    assert not _missing, f"published article(s) absent from the feed: {_missing}"
+    print(f"OK feed.xml: well-formed, {len(items)} items = {n_guides} guides, every link resolves")
 except Exception as e:
     errors.append(f"feed.xml: {e}")
 

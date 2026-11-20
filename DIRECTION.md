@@ -15,7 +15,7 @@ options, and recommendations live there.
 | SG-01 | One beat: cooking to a target temperature — both families in one sentence | implemented | owner |
 | SG-02 | Publish the two spec conflicts instead of picking a winner | implemented | editorial |
 | SG-03 | No prices anywhere, with the policy explained on its own page | implemented | editorial |
-| SG-04 | Eight question-shaped guides instead of eight product reviews | implemented | editorial |
+| SG-04 | 8 question-shaped guides instead of 8 product reviews | implemented | editorial |
 | SG-05 | Compliance gate inside the build, not a checklist promise | implemented | editorial |
 | SG-06 | Buy one air fryer and one thermometer to earn original testing | proposed | owner |
 | SG-07 | Search Console verification + sitemap submission before guide nine | proposed | owner |
@@ -51,6 +51,23 @@ options, and recommendations live there.
 | SG-36 | Lead the front page with a buyer question and five shop cards, not with the audit trail | implemented | editorial |
 | SG-37 | Publish catchy, trend-led question articles to earn organic traffic | proposed | editorial |
 | SG-38 | Review every change in the suggestions section before anything is built | implemented | owner |
+| SG-39 | Give a first-time visitor an intent fork before a product list | implemented | editorial |
+| SG-40 | One question-shaped guide for the month people are actually buying | implemented | editorial |
+| SG-41 | Decide what a reader-capture path would be, before writing any signup copy | proposed | owner |
+| SG-42 | Ship a way for the owner to look at every page without installing anything | implemented | editorial |
+| SG-43 | Give the seasonal block a retirement date and a successor, before Thanksgiving ends | proposed | editorial |
+| SG-44 | Do not add FAQ markup expecting a Google FAQ rich result — that feature is gone | proposed | editorial |
+| SG-45 | Fact-check any AI-assisted draft line by line before it ships, and say how the site is made | proposed | owner |
+| SG-46 | Measure Core Web Vitals once, then gate new frontend effects on the result | proposed | editorial |
+| SG-47 | Keep internal anchors descriptive — add a gate so the discipline cannot slip | proposed | engineering |
+
+SG-43..SG-47 were added 2026-11-20 (session `arena/7878cdbe-prod3`, T-54; renumbered twice while
+this branch was queued — first from SG-32..SG-36 after upstream 6bf60cac/8692a390 registered
+SG-32..SG-38, then from SG-39..SG-43 after upstream PR #52 registered SG-39..SG-42) with sources
+verified that day:
+S34 (Google link best practices), S35 (Google search-doc changelog: the FAQ rich result was
+deprecated 2026-05-07/08 and its documentation removed June 2026), S36 (Google generative-AI
+content guidance, page updated 2026-10-01). The rows above mirror `data/suggestions.json` verbatim.
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
@@ -60,7 +77,7 @@ SG-19. The ledger is the single source of truth.
 
 ## Open questions — what must be answered before deciding
 
-Twenty-seven questions are registered in `data/open-questions.json` (Q-01…Q-27). Each carries
+Twenty-nine questions are registered in `data/open-questions.json` (Q-01…Q-29). Each carries
 `known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only`).
 
@@ -91,7 +108,8 @@ Q-12 (brand and visual sign-off), Q-13 (endpoint storage schema), Q-14 (cadence 
 Q-15 (disclosure reach when a reader never scrolls), Q-16 (custom domain), Q-17 (retire
 zero-impression guides), Q-20 (email provider and consent), Q-21 (does the PNG preview render in
 a share debugger), Q-26 (who signs off the twelve-week plan), Q-27 (which trend-led topic earns
-impressions). Q-24 (whether the redirect attaches the tag) is owner-only and Q-25 (why all five
+impressions), Q-28 (is any of the site in Google's index yet), Q-29 (what Core Web Vitals
+measure today on a mid-range phone). Q-24 (whether the redirect attaches the tag) is owner-only and Q-25 (why all five
 links reached the homepage on the third check) is blocking; both are link-check questions for the
 same signed-in session as Q-22.
 
@@ -147,7 +165,7 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 |---|---|---|---|
 | 2026-11-19 | Publish both readings when a listing contradicts itself | S02 | Preset count, battery life, warranty and accessory count shown as conflicts |
 | 2026-11-19 | Display no price while neither Amazon-served nor PA-API data is used | S02 §2(b) | Price slots read "Current price on Amazon"; the gate fails on a currency amount |
-| 2026-11-19 | Remove customer star ratings and rating counts from every page | S02 §2(t) | Ratings replaced with a policy note in the comparison table |
+| 2026-11-19 | Remove customer star ratings and rating counts from every page | S02 §6(t) *(recorded as the Section 2 letter until corrected 2026-11-20)* | Ratings replaced with a policy note in the comparison table |
 | 2026-11-19 | Mark every outbound Amazon link `rel="sponsored"` and open in a new tab | S04 | The gate walks every anchor |
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |

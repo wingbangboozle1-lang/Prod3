@@ -250,6 +250,32 @@
       "used_for": "SG-34: fact-check rule and how-content-was-created disclosure for any AI-assisted draft; page last updated 2026-10-01 UTC",
       "quote": "It is critical to manually factcheck and review all AI-generated content for accuracy and trustworthiness before publishing.",
       "updated": "2026-10-01 (fetched 2026-11-20)"
+    },
+    {
+      "id": "S37",
+      "title": "Amazon Associates Program Policies — Participation Requirements, Section 2 “Links on Your Site”",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies#Associates%20Program%20Participation%20Requirements",
+      "used_for": "Buy-button format: Special Links must use the assigned Associates ID and the tag must appear as a URL parameter; the price/availability display condition; the duty to remove limited-time promotion mentions; the bar on inaccurate or misleading claims about a Product, an Amazon Site, or Amazon's policies, promotions or prices",
+      "quote": "Special Links must use the Associates ID we have assigned to you. … you must include your Associates ID or “tag” (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.",
+      "updated": "2026-04-14",
+      "verified": "2026-11-20"
+    },
+    {
+      "id": "S38",
+      "title": "Amazon Associates Program Policies — Commission Income Statement, Section 2 “Disqualified Purchases”",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies#Associates%20Program%20Fee%20Statement",
+      "used_for": "Why an untagged or redirecting link earns nothing; the 24-hour Session, 89-day cart and 180-day shipment windows the campaign ledger must respect",
+      "quote": "any Product purchase that is not correctly tracked or reported because the links from your site to the relevant Amazon Site are not properly formatted",
+      "updated": "2026-04-14",
+      "verified": "2026-11-20"
+    },
+    {
+      "id": "S39",
+      "title": "USDA FSIS — Food Thermometers (fact sheet)",
+      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
+      "used_for": "The 2–4°F ordinary-accuracy expectation, the ice-water and boiling-water calibration methods, minimum insertion depth and the dimple on the stem, placement away from bone, fat and gristle, and the two-hour limit in the 40–140°F span",
+      "quote": "Most food thermometers will give an accurate reading within 2 to 4 degrees F (see Calibration). However, the reading will only be correct if the thermometer is placed in the proper location of the food.",
+      "verified": "2026-11-20"
     }
   ],
   "note": "\"verified\"/\"updated\" fields record when a page was fetched or its listed update date; a fetch date is not an endorsement of the page's product claims. Listing sources are seller pages: specs, ratings, and prices transcribed from them are seller statements. Amazon page availability and content can change. Session a25ccde6 added the Google people-first, thin-affiliation, custom-404, snippet and page-experience sources (S21-S25) after finding that the people-first and thin-affiliation sources had been cited in the data registers without ever being defined (audit I-03). Those additions were renumbered after the merge to avoid colliding with this branch's tap-target source."

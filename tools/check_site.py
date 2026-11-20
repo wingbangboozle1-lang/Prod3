@@ -754,6 +754,36 @@ for _f in ("README.md", "EXECUTIVE_SUMMARY.md"):
         check("D40-guide-count", _m.group(1).lower() == _NUMWORD.get(_guides, ""),
               f"{_f}: says {_m.group(0)!r} but {_guides} guides ship")
 
+# D41: every page advertises the feed, exactly once, at the right relative depth.
+# The RSS autodiscovery link was added page by page during the publication pass
+# (session b8dae8e0): 24 of 34 pages had it, and one page briefly carried two.
+# A hand-added link drifts the way chrome drifts, so it is gated.
+_rss_re = re.compile(r'<link\s+rel="alternate"\s+type="application/rss\+xml"[^>]*>')
+for _name, _html in docs.items():
+    _links = _rss_re.findall(_html)
+    check("D41-rss-once", len(_links) == 1,
+          f"{_name}: {len(_links)} RSS autodiscovery links (expected exactly 1)")
+    if len(_links) == 1:
+        _want = "../feed.xml" if "/" in _name else "feed.xml"
+        _m = re.search(r'href="([^"]+)"', _links[0])
+        _got = _m.group(1) if _m else ""
+        check("D41-rss-autodiscovery", _got == _want,
+              f"{_name}: RSS autodiscovery href={_got!r} (expected {_want!r})")
+
+# D42: every SG/Q id a page mentions must exist in its register.
+# D28/D29 make this true for DIRECTION.md; the pages themselves were unchecked,
+# and a page can drift from a register the moment a register row is renumbered
+# (the 2026-11-20 collisions showed exactly that).
+_sg_ids = {x["id"] for x in json.loads((ROOT / "data/suggestions.json").read_text(encoding="utf-8"))["suggestions"]}
+_q_ids = {q["id"] for q in json.loads((ROOT / "data/open-questions.json").read_text(encoding="utf-8"))["questions"]}
+for _name, _html in docs.items():
+    for _sid in sorted(set(re.findall(r"\bSG-\d{2}\b", _html))):
+        check("D42-sg-refs-resolve", _sid in _sg_ids,
+              f"{_name} references {_sid}, which is not in data/suggestions.json")
+    for _qid in sorted(set(re.findall(r"\bQ-\d{2}\b", _html))):
+        check("D42-q-refs-resolve", _qid in _q_ids,
+              f"{_name} references {_qid}, which is not in data/open-questions.json")
+
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")
 if failures:

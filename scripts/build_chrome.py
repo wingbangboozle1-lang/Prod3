@@ -34,6 +34,7 @@ DISCLOSURE_SENTENCE = "As an Amazon Associate I earn from qualifying purchases."
 # Top-level navigation: one group, four editorial destinations plus the desk.
 NAV = [
     ("Shop", "index.html"),
+    ("Start here", "start.html"),
     ("Air fryers", "air-fryers.html"),
     ("Thermometers", "meat-thermometers.html"),
     ("Compare", "compare.html"),
@@ -50,6 +51,7 @@ SHELF = [
     ("Buying guide", "buying-guide.html"),
     ("Decision tools", "tools/index.html"),
     ("Gift guide", "articles/holiday-kitchen-gift-guide.html"),
+    ("December picks", "articles/kitchen-gifts-that-get-used.html"),
     ("RSS", "feed.xml"),
 ]
 

@@ -1,0 +1,89 @@
+name: Render screenshots (design review)
+
+# Renders the published pages at desktop and phone width with a headless browser
+# on the runner and uploads the PNGs as a downloadable artifact. Nothing is
+# committed and nothing is deployed: this exists so the owner can look at the shop
+# the way a reader sees it without installing anything, and so a layout regression
+# (horizontal overflow at phone width) shows up as a failed step rather than a
+# complaint after the fact.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - 'articles/**'
+      - 'tools/**'
+      - 'assets/style.css'
+      - 'design/pages.json'
+
+permissions:
+  contents: read
+
+jobs:
+  shots:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check the page list is real
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          pages = json.load(open('design/pages.json'))
+          missing = [p['file'] for p in pages if not __import__('pathlib').Path(p['file']).exists()]
+          print(f"{len(pages)} pages listed, {len(missing)} missing")
+          if missing:
+              print("MISSING:", missing); sys.exit(1)
+          PY
+
+      - name: Install renderer
+        run: npm install --no-save puppeteer@23
+
+      - name: Render pages
+        run: |
+          node - <<'JS'
+          const puppeteer = require('puppeteer');
+          const fs = require('fs');
+          const path = require('path');
+          const pages = JSON.parse(fs.readFileSync('design/pages.json', 'utf8'));
+          (async () => {
+            const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-dev-shm-usage'] });
+            fs.mkdirSync('design/shots', { recursive: true });
+            let problems = 0;
+            for (const p of pages) {
+              const url = 'file://' + path.resolve(p.file);
+              for (const [label, width] of [['desktop', 1366], ['phone', 390]]) {
+                const page = await browser.newPage();
+                await page.setViewport({ width, height: 900, deviceScaleFactor: 1 });
+                await page.goto(url, { waitUntil: 'load' });
+                await new Promise(r => setTimeout(r, 250));
+                const m = await page.evaluate(() => ({
+                  sw: document.documentElement.scrollWidth,
+                  cw: document.documentElement.clientWidth,
+                }));
+                if (m.sw > m.cw + 1) {
+                  problems++;
+                  console.log(`OVERFLOW ${label} ${p.file}: ${m.sw} > ${m.cw}`);
+                }
+                await page.screenshot({ path: `design/shots/${p.name}-${label}.png`, fullPage: true });
+                await page.close();
+              }
+            }
+            await browser.close();
+            console.log(`${pages.length} pages x 2 widths rendered, ${problems} overflow(s)`);
+            if (problems) process.exit(1);
+          })().catch(e => { console.error(e); process.exit(1); });
+          JS
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: design-screenshots
+          path: design/shots/*.png
+          if-no-files-found: error

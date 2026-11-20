@@ -10,7 +10,7 @@ Runs scripts/check_site.py, then verifies:
    documented in flagged.html
  - data/campaign-ledger.json has no fabricated rows (rows must be empty
    until first-party reports exist; provenance must be dated)
- - feed.xml is well-formed XML with 9 items
+ - feed.xml is well-formed XML and carries one item per published article
  - robots.txt references the sitemap
  - product-intent fields: intended ASINs need an owner-confirmation record
 """
@@ -83,8 +83,17 @@ except Exception as e:
 try:
     tree = ET.parse(ROOT / "feed.xml")
     items = tree.getroot().findall(".//item")
-    assert len(items) == 9, f"expected 9 feed items, got {len(items)}"
-    print("OK feed.xml: well-formed, 9 items")
+    _articles = sorted((ROOT / "articles").glob("*.html"))
+    assert len(items) == len(_articles), f"feed carries {len(items)} items but {len(_articles)} articles are published"
+    _links = set()
+    for _it in items:
+        _l = _it.find("link").text
+        assert _l.startswith("https://wingbangboozle1-lang.github.io/Prod3/articles/"), f"unexpected feed link {_l}"
+        _links.add(_l.rsplit("/", 1)[-1])
+    _missing = sorted({a.name for a in _articles} - _links)
+    assert not _missing, f"published article(s) absent from the feed: {_missing}"
+    _dates = [i.find("pubDate").text for i in items]
+    print(f"OK feed.xml: well-formed, {len(items)} items, one per published article, every link canonical")
 except Exception as e:
     errors.append(f"feed.xml: {e}")
 

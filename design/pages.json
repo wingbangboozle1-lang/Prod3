@@ -1,0 +1,12 @@
+[
+ {"name":"home","file":"index.html"},
+ {"name":"start","file":"start.html"},
+ {"name":"air-fryers","file":"air-fryers.html"},
+ {"name":"thermometers","file":"meat-thermometers.html"},
+ {"name":"compare","file":"compare.html"},
+ {"name":"buying-guide","file":"buying-guide.html"},
+ {"name":"gift-december","file":"articles/kitchen-gifts-that-get-used.html"},
+ {"name":"gift-holiday","file":"articles/holiday-kitchen-gift-guide.html"},
+ {"name":"flags","file":"flagged.html"},
+ {"name":"suggestions","file":"suggestions.html"}
+]

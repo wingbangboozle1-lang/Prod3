@@ -450,9 +450,17 @@ for _val in ("145°F (62.8°C)", "160°F (71.1°C)", "165°F (73.9°C)"):
 
 # D30: a seasonal guide must be surfaced on the front page, and it must be the
 # one whose month matches. Checked as a presence rule, not a render rule.
+# D30: the seasonal block must surface the guide that matches the month. It used to
+# assert the Thanksgiving plan literally; the guide set now has a December entry, so the
+# rule checks that a seasonal guide is surfaced and that the December one ships while it
+# is available. Both guides stay linked year-round; only the lead changes.
+_front = docs.get("index.html", "")
 check("D30-seasonal-surfaced",
-      "thanksgiving-temperature-plan.html" in docs.get("index.html", ""),
-      "the seasonal guide is not linked from the front page")
+      "thanksgiving-temperature-plan.html" in _front and "kitchen-gifts-that-get-used.html" in _front,
+      "a seasonal guide is not linked from the front page")
+check("D30-seasonal-lead",
+      _front.find("kitchen-gifts-that-get-used.html") < _front.find("thanksgiving-temperature-plan.html"),
+      "the December guide should lead the seasonal block while the site says it is December")
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

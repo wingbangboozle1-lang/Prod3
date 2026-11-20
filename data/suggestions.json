@@ -81,7 +81,7 @@
       "problem": "Product pages answer \"what is it\"; buyers arrive with \"which one, and will it fit\".",
       "evidence": "People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S21).",
       "options": [
-        "A. Eight question-shaped guides, each answerable from published specifications and USDA targets.",
+        "A. Ten question-shaped guides, each answerable from published specifications and USDA targets.",
         "B. Five long product reviews written without handling the products.",
         "C. One long \"best air fryers 2026\" listicle."
       ],
@@ -353,7 +353,7 @@
       "problem": "Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.",
       "evidence": "Search Console is the first-party source for the queries a site actually appears for (https://search.google.com/search-console/about — SG-07 is the verification prerequisite). analytics.html records that no data exists yet.",
       "options": [
-        "A. Hold at eight guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
+        "A. Hold at ten guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
         "B. Keep the weekly cadence with self-selected topics until data arrives.",
         "C. Retire or merge any guide with zero impressions after 60 days (Q-17)."
       ],
@@ -725,7 +725,7 @@
     {
       "id": "SG-37",
       "title": "Publish catchy, trend-led question articles to earn organic traffic",
-      "problem": "The eight guides are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
+      "problem": "The ten guides are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
       "evidence": "SG-04 chose question-shaped guides over reviews (shipped). SG-18 says guide nine must come from measured queries once Search Console exists (Q-18). Google's thin-affiliation policy treats affiliate pages with no added value as spam (S22), so each trend article must add buying criteria, not just repeat the listing (S21).",
       "options": [
         "A. Keep a small seasonal calendar of catchy question articles — Thanksgiving temperature planning, holiday air-fryer gifts, January meal prep, summer grilling thermometers — each answering one buyer question with listed specs.",
@@ -788,7 +788,7 @@
       "id": "SG-40",
       "title": "One question-shaped guide for the month people are actually buying",
       "problem": "The seasonal block led with Thanksgiving into December. Gift buying is the dominant December kitchen-appliance question, and the site's only gift page was a list of five ideas with no decision rule.",
-      "evidence": "Nine guides shipped before this pass; the gift guide (articles/holiday-kitchen-gift-guide.html) lists five ideas without explaining how to choose between shapes. Implemented 2026-11-20: articles/kitchen-gifts-that-get-used.html sorts the five by cook, gives the one listed number that decides each, and is wired into feed.xml and sitemap.xml. (Registered as SG-37 on 2026-11-20 for the same reason.) (Registered as SG-40 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
+      "evidence": "Nine of the ten guides had shipped before this later gift-guide pass, which added the tenth (articles/kitchen-gifts-that-get-used.html); the gift guide (articles/holiday-kitchen-gift-guide.html) lists five ideas without explaining how to choose between shapes. Implemented 2026-11-20: articles/kitchen-gifts-that-get-used.html sorts the five by cook, gives the one listed number that decides each, and is wired into feed.xml and sitemap.xml. (Registered as SG-37 on 2026-11-20 for the same reason.) (Registered as SG-40 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
       "options": [
         "A. A decision-shaped gift guide, linked from the seasonal block and the feed.",
         "B. Rewrite the existing gift guide in place.",

@@ -724,6 +724,27 @@ for _name, _html in docs.items():
             check("D36-range-current", int(_m.group(1)) == _last,
                   f"{_name}: range says {_m.group(0)} but the register's last id is {_pre}-{_last:02d}")
 
+# D40: a stated guide count must equal the number of guides on disk.
+# The tree shipped ten articles while README, buying-guide.html, both executive
+# summaries, Q-17, SG-18 and SG-37 all said "eight" or "nine" -- seven reader-facing
+# places, on a site whose whole claim is that the numbers are checked. The word
+# counts are compared, not the digits, because those are what the copy uses.
+_NUMWORD = {6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
+            11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen"}
+_guides = len(list((ROOT / "articles").glob("*.html")))
+check("D40-guide-count-known", _guides in _NUMWORD, f"{_guides} guides on disk; add the number word to D40")
+for _name, _html in docs.items():
+    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _html, re.I):
+        _said = _m.group(1).lower()
+        _want = _NUMWORD.get(_guides, "")
+        check("D40-guide-count", _said == _want,
+              f"{_name}: says {_m.group(0)!r} but {_guides} guides ship ({_want})")
+for _f in ("README.md", "EXECUTIVE_SUMMARY.md"):
+    _txt = (ROOT / _f).read_text(encoding="utf-8")
+    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _txt, re.I):
+        check("D40-guide-count", _m.group(1).lower() == _NUMWORD.get(_guides, ""),
+              f"{_f}: says {_m.group(0)!r} but {_guides} guides ship")
+
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")
 if failures:

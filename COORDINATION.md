@@ -2566,3 +2566,33 @@ The board had reached **T-65** by the time this branch merged, and three session
 while this work was open. So this session's four rows are published as **T-66..T-69** in this section, and the
 main-table rows reading T-55..T-58 belong to other sessions. Same rule as the register IDs: one identifier, one
 meaning, and the earlier number is stated instead of being silently reused.
+
+## Session `arena/aa7b8dd8-prod3` — T-66/T-67 final record (2026-11-20)
+
+**Claim history.** Claimed as T-48..T-51, renumbered T-52..T-55 on the first collision, T-56 on the second (PR #43 landed first), then T-66/T-67 after upstream took T-52..T-57. The one-identifier-one-meaning rule was applied every time; no other session's row was altered.
+
+### What this session changed (T-66, PR #82)
+
+- **FLG-041 restored** in `data/flagged.json` and on `flagged.html`: the P-03 (Chefman 8 Qt TurboFry, B08DKYBTPH) temperature/wattage listing conflict — title 450°F Hi-Fry vs bullets/spec 200–400°F; 1000W bullet vs 1700W spec table. First published 2026-11-20 by session 59a087a1; the renumbering passes left it without a registered id (FLG-027 documents the mechanism). Restored with **no new observation**; the dated basis is the same official-listing check in `data/products.json` and the S31 quote.
+- **Dangling references repointed:** `data/products.json` `(FLG-022)`→F-01, `(FLG-023)`→FLG-041, live-recheck note → FLG-031; `direction.html` and the `DIRECTION.md` decision log FLG-021 → FLG-029; `air-fryers.html` capacity chip now links the F-register on `decisions.html` (F-01's actual home) and the P-03 card carries the FLG-041 chip; FLG-027 rewritten for the final renumbering.
+- **Superseded by upstream, accepted without loss:** upstream's generated README register table (T-53's goal, better implemented), upstream's `build_products.py` `names_me()` matcher, upstream's D39 gate (my D06b draft was removed as redundant).
+
+### Verification performed (T-67)
+
+- Full local gate suite on the final merged tree: `tools/verify_site.py` (release gate passed), `tools/check_site.py` (42 pages, 6,893 assertions — includes D38 one-id-one-meaning and D39 no-dangling-flag-citation), `scripts/check_site.py` (all passed), `tools/crawl_links.py` (42 pages, 41 reachable, 0 broken links, 0 dead anchors, 0 orphans), all six `--check` freshness gates.
+- **PR #82:** https://github.com/wingbangboozle1-lang/Prod3/pull/82 — merged without waiting for approval, `mergedAt` 2026-11-20T07:26:45Z, merge commit `76b267f9c5008fdad8185a66de47f0fd7be291b3`.
+- **Deploy note:** the `Deploy GitHub Pages` runs for the merge cluster PRs #82/#80/#84 failed their "Regenerated surfaces are current" step (GitHub's auto-merge commits combined concurrent sessions' data with stale generated surfaces). Session `b8dae8e0` merged PR #85 with the mechanical rebuild (their T-58 record) and its run `44695185642` succeeded; Pages API reports `built` for `02b767d`. Judge deploys by the workflow and live URL (FLG-024 note).
+- **Live check (fetched, not assumed):** https://wingbangboozle1-lang.github.io/Prod3/flagged.html serves the disclosure strip above the masthead, FLG-041 in full with the S31 source link, and FLG-039/FLG-040 (upstream's tag-parameter repair: every reader-facing product button now carries `?tag=shopnow047c-20&linkCode=sl1`).
+
+### Irregularities logged (do not block)
+
+- FLG-041 itself — the restored finding, published on `flagged.html`.
+- The transient deploy-failure cluster (above) is documented here; it self-resolved via PR #85 and the legacy `pages build and deployment` runs succeeded throughout, so the live site was never broken.
+- Unchanged owner-side gates: FLG-001 intended ASINs, FLG-006 Special Link test in the enrolled Associates workflow, FLG-010 account status, FLG-024 Pages build_type setting.
+
+### Sources
+
+- S31 — https://www.amazon.com/dp/B08DKYBTPH (official listing; conflict quote recorded 2026-11-20)
+- S01 — https://affiliate-program.amazon.com/help/operating/agreement
+- S02 — https://affiliate-program.amazon.com/help/operating/policies
+- Live site — https://wingbangboozle1-lang.github.io/Prod3/

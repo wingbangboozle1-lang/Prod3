@@ -26,13 +26,13 @@
   <div class="wrap">
     <a class="brand" href="index.html">Kitchen Counter<small>The kitchen-gear desk</small></a>
     <nav class="nav" aria-label="Primary">
-      <a href="index.html">Shop</a><a href="air-fryers.html">Air fryers</a><a href="meat-thermometers.html">Thermometers</a><a href="compare.html">Compare</a><a href="buying-guide.html">Guides</a><a href="decisions.html">Decision desk</a>
+      <a href="index.html">Shop</a><a href="start.html">Start here</a><a href="air-fryers.html">Air fryers</a><a href="meat-thermometers.html">Thermometers</a><a href="compare.html">Compare</a><a href="buying-guide.html">Guides</a><a href="decisions.html">Decision desk</a>
     </nav>
   </div>
 </header>
 <div class="disclosure" role="note"><div class="wrap"><strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. If a qualifying purchase is credited, Kitchen Counter may earn a commission at no extra cost to you. Tracking ID: <strong>shopnow047c-20</strong>. Prices change &mdash; confirm on Amazon. <a href="disclosure.html">How we make money</a>.</div></div>
 <nav class="shelf" aria-label="Sections">
-  <div class="wrap"><span class="shelf-label">Trust</span><a href="buying-guide.html">Buying guide</a><a href="tools/index.html">Decision tools</a><a href="articles/holiday-kitchen-gift-guide.html">Gift guide</a><a href="feed.xml">RSS</a></div>
+  <div class="wrap"><span class="shelf-label">Trust</span><a href="buying-guide.html">Buying guide</a><a href="tools/index.html">Decision tools</a><a href="articles/holiday-kitchen-gift-guide.html">Gift guide</a><a href="articles/kitchen-gifts-that-get-used.html">December picks</a><a href="feed.xml">RSS</a></div>
 </nav>
 <!-- build-chrome:header:end -->
 <main id="main"><div class="article" style="max-width:1000px">
@@ -81,6 +81,8 @@
 <div class="callout warn"><strong>FLG-021 — Source register gaps and one listing quotation (2026-11-20).</strong> (1) S07, S08, S09 and S20 are not defined in <code>data/sources.json</code>. No current data file cites them. (2) The P-04 quotation “There is a newer model of this item” is cited to S13 (the ThermoMaven 1 Sec listing). The 2026-11-20 re-read covered the first page only, so the wording is not re-confirmed. (3) SG-21 duplicates SG-20 and is already retired on <code>main</code>.</div>
 
 
+
+
 <div class="callout"><strong>FLG-030 — A generated page shipped a broken script, and no gate was reading scripts.</strong> The decision block on the suggestions register was generated with a literal line break inside a JavaScript string — a syntax error, so the control would have rendered and done nothing. No release check parsed inline JavaScript. <strong>Resolved 2026-11-20:</strong> the generator emits the break as a character code, and a J-series gate now runs <code>node --check</code> over every inline script and over <code>assets/app.js</code>. The gate was negative-tested: the original defect fails the build, removing it passes. <code>actions/setup-node@v4</code> was added to the Pages workflow so CI blocks on it too.<p class="source-note">Evidence: <code>tools/check_site.py</code> J01–J03 · <code>.github/workflows/pages.yml</code></p></div>
 
 <div class="callout"><strong>FLG-031 — Two of the five supplied short links reached the Amazon homepage on 2026-11-20, and one same-day record disagrees.</strong> <code>B04G1MEwY</code> ended at <code>https://www.amazon.com/</code> on two attempts (FLG-017). Independently, <code>B0c8moW59</code> also ended at <code>https://www.amazon.com/</code> on two attempts, while another session recorded the same link reaching <code>/dp/B0DHZTCNR5</code> that day. Both observations are kept in <code>data/products.json</code>; neither is deleted and no tie is broken by seniority. The other three links resolved to their recorded product pages. This does <strong>not</strong> establish that the links are invalid, untracked or expired: a fetch cannot tell a signed-out session from a profile gate, a transient response or a link-level change. <strong>Decision needed:</strong> the signed-in check in Q-22.<p class="source-note">Basis: <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">Operating Agreement (S01)</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">Program Policies (S02)</a> · observations dated 2026-11-20 in <code>data/products.json</code></p></div>
@@ -93,6 +95,11 @@
 
 <div class="callout"><strong>FLG-027 — Two flag identifiers each named two different findings.</strong> <code>FLG-020</code> was used both for the unlocated Program Policies citations and for the <code>DIRECTION.md</code> question-id mismatch; <code>FLG-021</code> was used both for the source-register gap and for the nonexistent suggestion id. A reader sent to a flag by its id could land on the wrong one. Fixed on 2026-11-20: the later pair became <strong>FLG-028</strong> and <strong>FLG-029</strong>, in place, with the original wording kept and the change dated. No finding was deleted, merged or re-graded.<p class="source-note">Basis: this page, compared with <code>data/flagged.json</code> on 2026-11-20</p></div>
 
+
+
+
+
+<div class="callout warn"><strong>FLG-034 — Two listing conflicts lost their register ids in the 2026-11-20 renumbering, and one of them survives only as an unnumbered row.</strong> FLG-022 used to label the P-01 capacity conflict (title and bullets say 6 quarts; the details table says 6 liters) and FLG-023 the P-03 temperature and wattage conflict (450°F in the title; 200–400°F in the specification table; 1000W in one bullet; 1700W in the table). Both ids were later reallocated during a renumbering pass, so the two findings no longer have ids of their own: the capacity conflict exists only as <code>F-01</code> in <code>data/flagged.json</code>, and the temperature conflict as <code>F-02</code>, partly duplicated by FLG-031. Both readings are still published on the product cards and in <code>data/products.json</code>, so no reader sees only one number. <strong>Action for the register owner:</strong> give the two findings permanent ids, or fold them into F-01/F-02 deliberately. The citation gate D32 now fails on a flag id that is not defined here, which is how this was found — but a gate cannot tell whether a finding should have kept its id. Sources: <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">official listing B0CDY277D3</a> (S29) · <a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener">official listing B08DKYBTPH</a> (S31).</div>
 
 <p class="mt"><a href="sources.html">← Back to the source register</a> · <a href="direction.html">Direction &amp; open questions →</a></p>
 </div></main>

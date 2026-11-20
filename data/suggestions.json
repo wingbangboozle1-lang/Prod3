@@ -613,7 +613,7 @@
       "id": "SG-32",
       "title": "Show a dated status line on every buy button until the link test passes",
       "problem": "FLG-025 records all five supplied short links ending at the Amazon homepage on 2026-11-20. The buttons still read “Check price on Amazon”, which promises a product page. A reader who lands on the homepage has been given a promise the link did not keep.",
-      "evidence": "Third dated observation in data/products.json (live_recheck_2026_11_20_link_check): five of five final URLs were https://www.amazon.com/. Earlier records: 2026-11-19 five product pages; two partial same-day records. FLG-017, FLG-023, FLG-025.",
+      "evidence": "Third dated observation in data/products.json (live_recheck_2026_11_20_link_check): five of five final URLs were https://www.amazon.com/. Earlier records: 2026-11-19 five product pages; two partial same-day records. FLG-017, FLG-025, FLG-031.",
       "options": [
         "A. Keep the button but add one dated line: “Link re-tested 20 Nov 2026 — if it opens the Amazon homepage, use the listing link below.”",
         "B. Point every buy button at the official /dp/ listing instead and keep the short link on the flag page as the object under test.",
@@ -636,7 +636,7 @@
       "id": "SG-33",
       "title": "Add a five-row link-status table to the front page footer area, one row per product",
       "problem": "The reader cannot tell which of five buy links reached its product on which date. That information exists in four separate observations across three sessions and is spread over products.json, verification.json and three flag rows.",
-      "evidence": "data/products.json now holds four dated observations; flagged.html publishes FLG-017, FLG-023 and FLG-025.",
+      "evidence": "data/products.json now holds four dated observations; flagged.html publishes FLG-017, FLG-025 and FLG-031.",
       "options": [
         "A. One five-row table: product · supplied link · last fetched (date) · landed on (product page / homepage) · source.",
         "B. Keep it on flagged.html only.",
@@ -760,7 +760,87 @@
       "decision_owner": "owner",
       "blocks": "nothing — suggestions.html, questions.html, ideas.html and decisions.html ship today",
       "sources": []
+    },
+    {
+      "id": "SG-39",
+      "title": "Give a first-time visitor an intent fork before a product list",
+      "problem": "The front page opens on five products and a featured pick. A reader who does not already know whether they want a basket, an oven cabinet or a thermometer has to read the whole page to find out which shelf applies to them.",
+      "evidence": "Five products across two families (F-08). The three-question chooser answers a version of this, but it sits below the short list and returns a paragraph rather than a destination. Implemented 2026-11-20 as start.html: four intent paths, each two clicks from an official listing; the front page links to it in the primary nav and in a four-tile strip above the featured pick. (Registered as SG-36 on 2026-11-20: SG-32..SG-35 had already been taken by another session for four different proposals.) (Registered as SG-39 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
+      "options": [
+        "A. An intent page (start.html) that forks by how the reader cooks, with the product list left intact.",
+        "B. Put the chooser above the featured pick and delete the short list.",
+        "C. Leave the front page as the single entry point."
+      ],
+      "recommendation": "A — shipped. The short list still serves a reader who wants the recommendation immediately; the fork serves the reader who does not yet know what to compare. B loses the recommendation, C loses the reader who arrives without a product name.",
+      "effort": "S",
+      "confidence": "medium",
+      "status": "implemented",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "A first-time visitor reaches a relevant shelf in two clicks instead of scanning a long front page.",
+        "risk": "A fork adds a page between the reader and the listing; if the four paths are not mutually exclusive it becomes another index to read.",
+        "reversible": "yes — remove start.html from NAV in scripts/build_chrome.py and the front-page strip",
+        "falsifier": "If outbound clicks from start.html are zero over a measured period while front-page clicks stay flat, the fork is in the way and should become a single section."
+      }
+    },
+    {
+      "id": "SG-40",
+      "title": "One question-shaped guide for the month people are actually buying",
+      "problem": "The seasonal block led with Thanksgiving into December. Gift buying is the dominant December kitchen-appliance question, and the site's only gift page was a list of five ideas with no decision rule.",
+      "evidence": "Nine guides shipped before this pass; the gift guide (articles/holiday-kitchen-gift-guide.html) lists five ideas without explaining how to choose between shapes. Implemented 2026-11-20: articles/kitchen-gifts-that-get-used.html sorts the five by cook, gives the one listed number that decides each, and is wired into feed.xml and sitemap.xml. (Registered as SG-37 on 2026-11-20 for the same reason.) (Registered as SG-40 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
+      "options": [
+        "A. A decision-shaped gift guide, linked from the seasonal block and the feed.",
+        "B. Rewrite the existing gift guide in place.",
+        "C. Wait for search data before publishing another guide."
+      ],
+      "recommendation": "A — shipped, because C has no data behind it yet and B would have replaced a page that already works for a different intent.",
+      "effort": "S",
+      "confidence": "medium",
+      "status": "implemented",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "Catches the December gift search with a page that answers a real decision rather than another list.",
+        "risk": "Two gift pages can cannibalise each other in search if both target the same query.",
+        "reversible": "yes — remove the feed item and the seasonal tile",
+        "falsifier": "If Search Console shows the two gift pages competing for one query, merge them and keep the decision-shaped one."
+      }
+    },
+    {
+      "id": "SG-41",
+      "title": "Decide what a reader-capture path would be, before writing any signup copy",
+      "problem": "There is no email list, and the site says so in the footer. That is honest, but it also means no reader can be reached again without an RSS reader. The missing decision is not the copy, it is the provider, the consent record and who owns the list.",
+      "evidence": "FLG-014: the demo form was removed rather than shipped unconnected. assets/app.js reserves reader_signup and only emits it on kc:reader-signup-confirmed, which no integration dispatches. SG-30 proposes RSS-only versus an email provider; this row records the decision that has to precede any form markup. (Registered as SG-38 on 2026-11-20 for the same reason.) (Registered as SG-41 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
+      "options": [
+        "A. RSS only; state it plainly and stop treating capture as a gap.",
+        "B. Double opt-in provider, with the provider named on the privacy page before the first field ships.",
+        "C. Ask for a bookmark instead of an address."
+      ],
+      "recommendation": "B is the only option that creates a reader relationship, and it needs an owner-chosen provider, a consent record and a deletion path. Until those three exist, A stays the shipped behaviour and no form appears.",
+      "effort": "M",
+      "confidence": "low",
+      "status": "proposed",
+      "decision_owner": "owner",
+      "blocks": "Reader-capture metrics; any signup form on any page"
+    },
+    {
+      "id": "SG-42",
+      "title": "Ship a way for the owner to look at every page without installing anything",
+      "problem": "Review rounds have argued about layout from HTML source. A reader sees a rendered page, and a phone-width layout defect (horizontal scroll, a card that overflows) is invisible in source.",
+      "evidence": "Ten pages are rendered at 1366px and 390px by .github/workflows/snapshots.yml and uploaded as a downloadable artifact; the job fails when a page is wider than the viewport. design/pages.json lists the pages so the set is reviewable rather than hidden in a workflow file. (Registered as SG-39 on 2026-11-20 for the same reason.) (Registered as SG-42 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
+      "options": [
+        "A. Render on CI, upload PNGs, fail on horizontal overflow.",
+        "B. Ask the owner to screenshot manually.",
+        "C. Trust the CSS review."
+      ],
+      "recommendation": "A — shipped. It adds no third-party asset to the published site (the browser runs on the runner, not for the reader) and it makes a layout regression a red check.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "implemented",
+      "decision_owner": "editorial",
+      "blocks": "nothing"
     }
   ],
-  "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed."
+  "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed. | 2026-11-20 (session f3900cd3): this session's four rows were renumbered twice while the branch was open — first written SG-32..SG-35, then SG-36..SG-39, now SG-39..SG-42 — each time because another session had registered different proposals under those ids. Text is unchanged; each moved row carries a dated note. No upstream row was edited."
 }

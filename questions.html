@@ -38,7 +38,7 @@
 <main id="main"><div class="article" style="max-width:1100px">
 <p class="kicker">Direction · Open questions</p>
 <h1>The questions that have to be answered before the next decision</h1>
-<p class="byline">Kitchen Counter · Register updated 2026-11-20 · 27 open questions, grouped by what they block</p>
+<p class="byline">Kitchen Counter · Register updated 2026-11-20 · 29 open questions, grouped by what they block</p>
 
 <p>A decision made on missing information is a guess with better manners. Each row states what is known, what is not, why it matters, and the cheapest concrete action that would settle it. Machine-readable copy: <code>data/open-questions.json</code>.</p>
 
@@ -177,7 +177,7 @@
   <td><span class="small">owner · 10 minutes after Q-18</span><br><span class="badge grey">queued</span></td>
   <td class="small"><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">S21</a> · <a href="https://developers.google.com/search/docs/appearance/snippet" rel="noopener">S24</a></td>
 </tr>
-</tbody></table></div><h2>Measurement (3)</h2>
+</tbody></table></div><h2>Measurement (5)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
 <tbody>
@@ -207,6 +207,24 @@
   <td><span class="small">Owner adds the property in Search Console, verifies via DNS or file upload, submits sitemap.xml, and reports back. Ten minutes, once.</span></td>
   <td><span class="small">owner · 10 minutes</span><br><span class="badge grey">blocking</span></td>
   <td class="small"><a href="https://developers.google.com/search/docs/appearance/snippet" rel="noopener">S24</a></td>
+</tr>
+<tr>
+  <td><strong>Q-28</strong></td>
+  <td><strong>Is any of this site in Google&#x27;s index yet, and which pages?</strong><br><span class="small muted">Blocks: Judging whether any guide is discoverable at all; choosing between publishing more (SG-18&#x27;s pipeline) and fixing discoverability first. Until this is answered, any statement about organic traffic is a guess.</span></td>
+  <td><span class="small">The site ships unique canonicals, a robots.txt pointing at sitemap.xml, a sitemap and an RSS feed — all enforced by the repo&#x27;s gates. Coordination records show GitHub Pages deployments since 2026-11-19.</span></td>
+  <td><span class="small">Whether Google has crawled or indexed any URL; which pages, if any, appear for brand or topic queries. Nothing hosted on the site itself can answer this.</span></td>
+  <td><span class="small">Two steps. (1) Public, no account: a site:wingbangboozle1-lang.github.io/Prod3 query — a rough, incomplete indication; record the date and the result count, not a claim of completeness. (2) Authoritative: Search Console → property → Pages report, after Q-18&#x27;s verification — it lists indexed and excluded URLs with reasons (S26).</span></td>
+  <td><span class="small">any session (step 1); owner (step 2) · 2 minutes (step 1); 5 minutes after verification (step 2)</span><br><span class="badge grey">queued</span></td>
+  <td class="small"><a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" rel="noopener">S26</a></td>
+</tr>
+<tr>
+  <td><strong>Q-29</strong></td>
+  <td><strong>What do Core Web Vitals measure on this site today, on a mid-range phone?</strong><br><span class="small muted">Blocks: SG-42 (the proposed CWV gate) and any decision to add visual effects; until measured, the mobile-first and light-page claims (S-20 pass) are design statements, not records.</span></td>
+  <td><span class="small">The stylesheet is one local file with system fonts (no webfonts, no @import), pages load one local script each, and there are no third-party asset requests on shop pages — verified by a URL scan on 2026-11-20 (T-54 log). Tap targets were audited at 48px (S-20).</span></td>
+  <td><span class="small">LCP, INP and CLS as actually measured. No dated lab or field result exists anywhere in the repository.</span></td>
+  <td><span class="small">pagespeed.web.dev — enter the live URL, choose mobile, and record the dated metric values on analytics.html; Lighthouse in Chrome gives the same lab metrics. No account is required.</span></td>
+  <td><span class="small">any session · about 5 minutes</span><br><span class="badge grey">queued</span></td>
+  <td class="small"><a href="https://developers.google.com/search/docs/appearance/page-experience" rel="noopener">S25</a></td>
 </tr>
 </tbody></table></div><h2>Product (2)</h2>
 <div class="table-wrap"><table>

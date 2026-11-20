@@ -95,6 +95,16 @@ Task T-52. The first claim, T-46, was taken on `main` by PR #38. The second, T-4
 
 **Still not established.** Whether the supplied links work in the enrolled Associates account (FLG-006; Q-02, Q-04, Q-22). Account eligibility (FLG-010). The Pages deploy for this merge (see the board record for T-52).
 
+# Addendum — 2026-11-20, session `arena/7878cdbe-prod3` (T-53..T-56)
+
+Task IDs were renumbered twice by collisions: T-46 was taken by PR #38, and T-50..T-52 by PRs #44–#51, so this session's work landed as T-53 (defect pass), T-54 (register additions), T-55 (this summary) and T-56 (release). Its proposal and question rows were renumbered the same way — upstream sessions registered SG-32..SG-38 and Q-24..Q-27 for different subjects while this branch was queued — and now ship as **SG-39..SG-43** and **Q-28..Q-29**.
+
+**Verified in this pass.** Four official pages were fetched and read on 2026-11-20 and registered as S34–S36 (plus re-reads of S22 and S25): Google's [link best practices](https://developers.google.com/search/docs/crawling-indexing/links-crawlable); Google's [search-documentation changelog](https://developers.google.com/search/updates), which shows the FAQ rich result was deprecated 2026-05-07/08 and its documentation removed in June 2026; and Google's [generative-AI content guidance](https://developers.google.com/search/docs/fundamentals/using-gen-ai-content), page updated 2026-10-01.
+
+**New proposals, all awaiting review** (none implemented): give the seasonal block a retirement date and a successor before Thanksgiving ends (SG-39); do not add FAQ markup expecting a Google FAQ rich result that no longer exists (SG-40); make the AI-assisted-draft fact-check rule and a how-the-site-is-made note explicit (SG-41); measure Core Web Vitals once and gate new frontend effects on the result (SG-42); add a gate for generic anchor text so the clean 2026-11-20 scan becomes a standing guarantee (SG-43). New questions: is any of the site in Google's index yet (Q-28 — two minutes with a public `site:` query, authoritative in Search Console after Q-18), and what do Core Web Vitals measure here today (Q-29 — pagespeed.web.dev, no account). The PageSpeed Insights API was not reachable from this session's sandbox, so no performance figure was recorded; Q-29 stays a question.
+
+**Defect pass (T-53).** The register-page bylines now derive from each register's own `generated` field (the suggestions and questions fixes landed upstream independently; the citation-log byline is derived here); `flagged.html`'s audit date was corrected to 2026-11-20; and the five listing sources (S10–S14) no longer describe "rating, price, rank" as rendered figures — the wording now says the snapshot values were recorded to data files only and never rendered. The duplicate FLG identifiers logged while this session worked (FLG-020/021/022/023) were resolved upstream as FLG-027..FLG-031, and gate D35 now fails any duplicate flag id, which was re-verified on the merged tree.
+
 # Addendum — 2026-11-20, shop-first pass
 
 **What this session did, in one paragraph.** The site was accurate and read like an audit.

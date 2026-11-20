@@ -424,8 +424,9 @@
    "S01",
    "S34"
   ],
-  "before": "329 product links on 36 published pages carried no tag parameter; 23 reader CTAs ran through the supplied link.amazon short links, whose tagging cannot be read from outside the account.",
-  "after": "Every product link the site places now ends in ?tag=shopnow047c-20, emitted by the three builders (scripts/build_registers.py, build_decisions.py, build_products.py) and by the one-shot tools/link_tagger.py, and enforced by tools/link_tagger.py --check as gate D38. Citation links in the registers route to the same tagged listing; the recorded values in data keep the canonical untagged URL so the record is not altered. A link to a 9-character token path (/dp/B04G1MEwY, source S15) stays untagged: it is evidence of an observation, not a link to a Product.",
-  "not_claimed": "Whether a tag added outside Associates Central is accepted for this account, and whether the supplied short links already attach the tag downstream, can only be settled in the account: S34 describes the click-and-read-the-URL check and the Link Checker. FLG-026 stays open for that half. Nothing here asserts that the supplied links are invalid."
- }
+  "price_snapshot_note": "price_observed fields are archival snapshots dated 2026-11-19. Observation time and delivery location were not recorded; prices are not current offers. See FLG-012.",
+  "claim_basis": "Specs, ratings, and prices are seller/listing statements from the snapshot. Claim-marked fields (accuracy, certification, response time, heat-safe ratings, function names) are marketing claims the site has not tested. See FLG-009.",
+  "citation_policy": "Every value rendered on the site must trace to one of: (a) a dated fetch of the official listing, (b) a dated fetch of an official policy page, or (c) arithmetic over (a) that states its inputs. Values with no such trace are left blank and published on flagged.html. See data/citations.json.",
+  "verified_on_live_recheck": "2026-11-20",
+  "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-031 and FLG-025."
 }

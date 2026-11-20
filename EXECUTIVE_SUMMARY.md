@@ -138,6 +138,8 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 **Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
 (31 pages, 4,073 assertions) and `tools/crawl_links.py` (31 pages, 0 broken links, 0 dead
+
+(31 pages, see the gate run recorded in COORDINATION.md) and `tools/crawl_links.py` (31 pages, 0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.
@@ -193,3 +195,40 @@ The repository's current release checks pass on the reviewed tree: `python3 scri
 - [Flagged for Review](flagged.html)
 - [Analytics and privacy status](analytics.html)
 - [Sources](sources.html)
+
+# Addendum — 2026-11-20, reader-first repair (session arena/0b7a3dd6-prod3)
+
+**What this session changed.** Two buy buttons were repaired rather than re-worded, and four
+defects found by reading the tree against its own registers were fixed.
+
+1. **The dual-basket buy button.** `compare.html` and the holiday gift guide still sent readers
+   through `link.amazon/B04G1MEwY` — the one supplied link recorded as ending at Amazon's
+   homepage — while `index.html` and `air-fryers.html` already used the product page. All four
+   agree now. The short link is unchanged on the evidence pages and is still described as
+   unresolved, not invalid.
+2. **The ThermoMaven button is disputed, not broken.** Three same-day checks disagree about where
+   the supplied links land (FLG-025, FLG-031). The recorded decision in FLG-019 not to swap buttons
+   to bare `/dp/` URLs (it would remove tracking) is respected: the button is unchanged and a
+   fallback product link plus both readings now sit beneath it.
+3. **Duplicate flag identifiers.** `flagged.html` carried two different cards numbered FLG-020 and
+   two numbered FLG-021, so following either citation could land on the wrong card. Resolved (now
+   recorded as FLG-027). Gate `D19` ended in `or True` and could never fail; it now fails on a
+   repeated identifier and was negative-tested.
+4. **Seven product links were indistinguishable.** A bare "Listing" ×5, "Amazon listing" ×5 and
+   "Check price" ×5 pointed at different products. Each now names its ASIN in text and
+   `aria-label`; new gate `P14b-unique-link-name`.
+5. **One review surface.** `ideas.html` now opens with a brief generated from the registers — its
+   counts cannot drift — carrying the seven decisions in dependency order, fifteen
+   missing-information rows (each with the exact place the answer lives), and ten question-shaped
+   research directions with the source each would need. Gated by `build_ideas.py --check`.
+
+**What was not done, and why.** This build environment could reach only `github.com` and package
+registries; `amazon.com`, the Associates policy pages, `ftc.gov` and `developers.google.com` were
+not reachable. **No listing or policy page was re-fetched and no new observation date is
+published.** Every change above is a consistency check of the tree against its own registers plus
+source-code fixes. That limit is published to the reader on `ideas.html` §4. No browser binary
+could be downloaded, so no screenshot-based visual check was performed and none is claimed.
+
+**Open for the owner, unchanged:** FLG-001 intended ASINs · FLG-006 Special Link test · FLG-010
+account status · FLG-025/031 link resolution · **FLG-026: no shipped link carries a visible tag
+parameter** · Search Console (Q-18) · analytics endpoint (Q-13).

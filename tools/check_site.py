@@ -733,6 +733,22 @@ for _name, _html in docs.items():
             check("D36-range-current", int(_m.group(1)) == _last,
                   f"{_name}: range says {_m.group(0)} but the register's last id is {_pre}-{_last:02d}")
 
+# D41: the flag register and the flagged page must agree in both directions.
+# On 2026-11-20 two rows (FLG-028, FLG-029) existed in data/flagged.json with no counterpart on
+# flagged.html, because a renumbering pass edited one side only. flaged.json is what a machine
+# reads and flagged.html is what a human reads; either drifting alone means the site publishes a
+# finding it cannot show evidence for, or holds a record nothing links to.
+_fdata = json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))["items"]
+_fpage = docs.get("flagged.html", "")
+for _row in _fdata:
+    if not _row["id"].startswith("FLG"):
+        continue  # the F-series is machine-only by design (flagged.html says so)
+    check("D41-flag-register-published", _row["id"] in _fpage,
+          f"data/flagged.json row {_row['id']} is not published on flagged.html")
+for _id in sorted(set(re.findall(r"<strong>(FLG-\d{3}) —", _fpage))):
+    check("D41-flag-page-defined", any(r["id"] == _id for r in _fdata),
+          f"flagged.html publishes {_id} with no row in data/flagged.json")
+
 # D40: a stated guide count must equal the number of guides on disk.
 # The tree shipped ten articles while README, buying-guide.html, both executive
 # summaries, Q-17, SG-18 and SG-37 all said "eight" or "nine" -- seven reader-facing

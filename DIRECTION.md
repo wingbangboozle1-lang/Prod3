@@ -1,6 +1,6 @@
 # DIRECTION.md — Suggestions, open questions, and the path chooser
 
-**Site:** Kitchen Counter · **Tracking ID:** shopnow047c-20 · **Date:** 2026-11-20 (shop-first revision)
+**Site:** Kitchen Counter · **Tracking ID:** shopnow047c-20 · **Date:** 2026-11-20 (shop-first revision; link-format and register-sync pass added the same day)
 **Reader-facing mirror:** `direction.html` · **Decision desk:** `decisions.html` (generated from `data/decisions.json` + the three registers) · **Machine registries:** `data/suggestions.json`, `data/open-questions.json`, `data/decisions.json`
 
 Nothing in this file is implemented until a path is chosen in the Path chooser
@@ -198,6 +198,6 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | ID | Finding | Why it was not changed |
 |---|---|---|
 | I-11 | `analysis.json` computes "quarts per square inch" from listed dimensions | The arithmetic is reproducible and `scripts/check_site.py` bans the phrase "capacity per inch" from reader pages, so it stays internal. Whether to publish it is proposal SG-18. |
-| I-12 | `data/flagged.json` (F-series) is not linked from any page, while `flagged.html` tracks a separate FLG-series | The two registers overlap in scope. Merging them is a content decision, not a defect fix; logged here rather than half-done. |
-| I-13 | The five `link.amazon` destinations still carry no visible `tag=` | Needs the owner's Associates account (FLG-006/010, Q-02). Not resolvable from outside. |
+| I-12 | `data/flagged.json` (F-series) is not linked from any page, while `flagged.html` tracks a separate FLG-series | **Addressed 2026-11-20 (T-64), not merged.** The FLG-series is now checked in both directions: every published callout has a register row and every FLG register row appears on the page, enforced by `tools/check_site.py` D41. The F-series stays machine-only by design — `flagged.html` says so in its own intro — so no F row was fabricated onto the page. Merging the two taxonomies is a content decision, not a defect fix; logged here rather than half-done. |
+| I-13 | The five `link.amazon` destinations still carry no visible `tag=` | **Closed on the site side 2026-11-20 (T-60).** No reader-facing button uses a short link any more; all 30 go to `amazon.com/dp/<observed ASIN>?tag=shopnow047c-20&linkCode=sl1`, which is the format Participation Requirements 2(b) names, and gates 7b/P09 hold it. The owner test (FLG-006/010, Q-02, Q-22) is still what settles whether the short links were tagged server-side; published as FLG-039. |
 | I-14 | No build step regenerates article HTML from data | Articles are hand-written prose; a generator would be a project, not a fix. |

@@ -310,3 +310,13 @@ its endpoint stays blank until the owner deploys it and publishes a privacy
 notice, and gate D43 keeps the client, server and ledger event contracts
 identical and the endpoint honest. All release gates pass on the PR branch;
 the ledger remains empty and no forecast of any kind was computed.
+
+---
+
+# Addendum — 2026-11-20, publication-quality round (T-75…T-78, PR #88)
+
+**What this round shipped.** (1) The front page reads like a shop: a clearer hero ("Five kitchen tools, sorted by the cook they belong to."), and the featured pick's headline figure corrected to "2 × 3 qt" so no disputed total volume is stated as fact while the listing conflict is open. (2) Two new question-shaped evergreen guides — "Are air fryers worth it? Six questions to ask before you decide" and "Do you need a smart meat thermometer? Five questions before you pay for WiFi" — in the current guide template (Article + BreadcrumbList structured data, dated byline), wired into the front-page grid, the buying-guide clusters and the category read-next boxes, carried in the RSS feed and sitemap, and verified live after deploy. (3) SG-55 registered: a dated voice refresh for the 2026-11-19 guide batch, as a reviewable proposal. (4) Demonstrable defects fixed: duplicated read-next links on the air-fryer shelf, a D40 guide-count word list that could not see counts above "twelve", and stale guide counts across Q-14/Q-17, the front page, README, the Direction digest and these summaries.
+
+**What the round deliberately did not do.** It dropped three in-flight changes that the merged register answered better: a parallel flag-ID renumbering (the merged mainline's scheme stands), FAQPage structured data (SG-44: Google's FAQ rich result is gone; the visible FAQ text stays, the markup does not), and register rows that duplicated coverage already on the mainline (PageSpeed → Q-29/SG-46, seasonal → SG-43). Nothing was discarded from any other session during the three board-collision reconciliations; the claim chain T-48…T-51 → T-66…T-69 → T-71…T-74 → T-75…T-78 is recorded in COORDINATION.md.
+
+**Merged and deployed.** PR #88 (merge commit `a5a100e`), Pages run `44697488609` success; both new guides and the new hero fetched from the live site after the deploy. Still not established (unchanged owner gates): intended product identities (FLG-001), Special-link compliance (FLG-006/FLG-026, Q-24), account status (FLG-010), the short links that end at the homepage (FLG-025/FLG-031, Q-25), Search Console data (Q-28), Core Web Vitals (Q-29), share-debugger validation (Q-21/F-21), Pages build_type (FLG-024). No traffic, demand or conversion is claimed for the two new guide topics: they are editorial hypotheses until Q-27/Q-28 return data.

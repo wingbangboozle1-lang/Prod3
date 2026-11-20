@@ -2829,7 +2829,7 @@ conversion, or product superiority.
 
 - **PR #77** `arena/26285b01-prod3` → `main`: opened 2026-11-20, merged **2026-11-20** (`gh pr merge --merge`, no approval wait per the standing brief). Merge commit: `cec5f4d846fa6355388f9ff35e5e2c44d480f134`.
 - The merge went in after three sync-merge retries against a `main` that moved every few minutes (PRs #74–#91 merging concurrently). One retry slipped conflict markers into `direction.html`, which failed the repo's own `Deploy GitHub Pages` gate on the merge commit (run 44696490577). The markers, the SG-26 gap notes (a row now occupies the slot), and the gate exception logic were repaired immediately after in this follow-up commit; the full suite is green again locally (42 pages, 8,018+ assertions in `tools/check_site.py`, plus `scripts/check_site.py`, `tools/verify_site.py`, and all `--check` freshness gates).
-- `Deploy GitHub Pages` must be green on this follow-up merge before the record is closed; the deploy state is recorded in the next entry if it needs another retry.
+- **Deploy confirmed 2026-11-20:** `Deploy GitHub Pages` run 44697027338 (merge of PR #92) completed **success**, `pages build and deployment` success, GitHub Pages API `status: built`, source `main:/`, and https://wingbangboozle1-lang.github.io/Prod3/ serves the merged tree (disclosure above the fold, shop-first front page, buy buttons carrying the Associates tag with the unresolved short links documented on the cards). Record closed.
 
 ## Session `arena/1fbc2432-prod3` — T-70 independent verification round (2026-11-20)
 

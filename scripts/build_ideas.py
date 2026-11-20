@@ -276,8 +276,8 @@ def build():
     # ---- the numbers, computed
     out.append('<div class="grid cols-4 mt">')
     for label, value, note in (
-        ("Decisions open", f"{len(open_sg) + len(blocking)}", "nothing changes until chosen"),
-        ("Answerable today", f"{len(FIRST_HALF_HOUR)}", "about half an hour, one login"),
+        ("Proposals open", f"{len(open_sg)}", f"plus {len(blocking)} blocking questions"),
+        ("Answerable today", f"{len(FIRST_HALF_HOUR)}", "about half an hour, one login each"),
         ("Waiting on an account", f"{len(owner_q)}", "only the owner can settle"),
         ("Already shipped", f"{len(shipped)}", f"{first}&hellip;{last} on the register"),
     ):

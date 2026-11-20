@@ -37,8 +37,8 @@ options, and recommendations live there.
 | SG-23 | Make one page the definitive answer to "how big is it really" | implemented | editorial |
 | SG-24 | Give the site a named editor before giving it a voice | proposed | owner |
 | SG-25 | Stop calling it a decision log until decisions are actually recorded there | implemented | engineering |
-| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-026 gap note below; the registered SG-27..SG-31 rows (this session re-mirrored them verbatim) are the canonical ones | — |
-**Gap, 2026-11-20 (FLG-026):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
+| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-029 gap note below; the registered SG-27..SG-47 rows (this session re-mirrored them verbatim) are the canonical ones | — |
+**Gap, 2026-11-20 (FLG-029):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
 | SG-27 | One name for the Direction page, in the nav and the footer | implemented | engineering |
 | SG-28 | Ship the RSS feed and advertise it on every page | implemented | engineering |
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
@@ -83,11 +83,11 @@ SG-19. The ledger is the single source of truth.
 
 ## Open questions — what must be answered before deciding
 
-26 questions are registered in `data/open-questions.json` (Q-01…Q-26). Each carries
+Twenty-nine questions are registered in `data/open-questions.json` (Q-01…Q-29). Each carries
 `known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only`).
 
-**Correction, 2026-11-20 (FLG-025).** This digest used to list Q-08 as the account-status question
+**Correction, 2026-11-20 (FLG-028).** This digest used to list Q-08 as the account-status question
 and Q-05 as "which query set converts". Neither matched the register: Q-08 is "what counts as a
 session for the ledger" and Q-05 is "who is the named author". The account-status question had never
 been registered at all, so it was added as **Q-23** rather than renumbered into a used id. Every id
@@ -170,8 +170,9 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |
 | 2026-11-20 | Reconcile the path chooser on `direction.html` and in this file with the canonical paths in `data/decisions.json` (DT-01..DT-10); retire the stale “Steady publication / Conversion focus / Hold” wording and its wrong SG-04/SG-06 citations | session T-39 audit | The digest and the decision desk cannot disagree about what the three paths are |
-| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-021, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
+| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-029, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
 | 2026-11-20 | Publish one question-shaped guide a calendar month; approver: the site owner; next guide due 2026-12-31 (DT-10, owner instruction in the 2026-11-20 brief) | Owner instruction · `docs/publishing-cadence.md` · `data/decisions.json` DT-10 | The commitment is a rhythm, not a traffic or revenue forecast; `tools/verify_site.py` now fails a guide that is missing from the sitemap, the feed (headline = H1) or the guides hub |
+| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-021, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
 | 2026-11-20 | Correct the section number under the no-ratings decision: the clause is Participation Requirements **§6(t)**, read on the live Program Policies page today. §2 has subsections (a) and (b) only. The 2026-11-19 decision stands; its citation did not | Program Policies, fetched and read 2026-11-20 (header: Updated April 14, 2026) | `compare.html` footnote and policy check C-15 now cite §6(t); the row above is kept as written, and FLG-020's "not located" text is superseded by a located clause |
 | 2026-11-20 | Add five rows to the machine-readable policy register for the clauses that bind an automated publisher: no price tracking or alerting (§6(y)), no artificial clicks or impressions "by way of a robot or software program or otherwise" (§6(s)), no incentive for using Special Links and none of it inside Amazon customer content (§6(g), §6(p)), no framing and no altered Program Content (§6(a), §6(n)), and original-content plus public-availability eligibility (§1) with the dual-attribution limit (Commission Income Statement §5) | Program Policies, read 2026-11-20 · `data/policy-checks.json` C-16..C-20 | `ideas.html` now rejects price-drop alerts and synthetic traffic on the clause that forbids them, rather than on taste |
 | 2026-11-20 | Publish the shop-polish defects found by reading the built HTML as five register rows (SG-49..SG-53; they arrived as SG-36..SG-41, moved to SG-43..SG-48, and settled here as upstream filled each range first — one ID, one meaning); the sixth idea, dating the seasonal block, was withdrawn as a duplicate of upstream's SG-43, which words the same request betteras SG-49..SG-53 and renumbered when upstream filled those IDs) instead of editing the pages under another session's active claim | `data/suggestions.json` · `docs/policy-verification-2026-11-20.md` | A redesign prompt can be assembled from named, checkable defects; the front page itself waits for the T-46 claim to clear |

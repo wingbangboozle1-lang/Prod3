@@ -80,7 +80,7 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 | Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-10 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows |
-| Flagged findings | `flagged.html` | `data/flagged.json` | FLG-001..FLG-028 on the page; F-01..F-21 and FLG-017, FLG-020..FLG-028 in the JSON |
+| Flagged findings | `flagged.html` | `data/flagged.json` | FLG-001..FLG-029 on the page; `data/flagged.json` holds F-01..F-21, FLG-017, FLG-020..FLG-023 and FLG-025..FLG-029 (FLG-024 is on the page only) |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
 
 An ID prefix belongs to exactly one register. A proposal, a question and a decision

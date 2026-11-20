@@ -4,7 +4,7 @@
 
 **Tracking ID:** `shopnow047c-20` (provided for the project; Associates account enrollment and eligibility are not confirmed — FLG-010).
 
-**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links and both Associates policy pages were fetched again. Same-day fetches disagree. The 2026-11-20 record in `data/products.json` shows product pages for `B02NbDxp3`, `B00hJ57DV`, `B0c8moW59` and `B0f3GKalj`, and the Amazon.com homepage for `B04G1MEwY` (FLG-017). Another session's note records the homepage for `B0c8moW59` too (FLG-023). The check for this addendum found the homepage for all five (FLG-028). Fetches cannot settle which result is right; the signed-in check in Q-22 can. This is not an account-side test, and no price, rating, or offer was recorded.
+**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links and both Associates policy pages were fetched again. Same-day fetches disagree. The 2026-11-20 record in `data/products.json` shows product pages for `B02NbDxp3`, `B00hJ57DV`, `B0c8moW59` and `B0f3GKalj`, and the Amazon.com homepage for `B04G1MEwY` (FLG-017). Another session's note records the homepage for `B0c8moW59` too (FLG-023, short-links callout). The check for this addendum found the homepage for all five (FLG-028). Fetches cannot settle which result is right; the signed-in check in Q-22 can. This is not an account-side test, and no price, rating, or offer was recorded.
 
 ## Bottom line
 
@@ -21,7 +21,7 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 | `B04G1MEwY` | Chefman 6 Qt Dual Basket · `B0CDY277D3` (2026-11-19); 2026-11-20 re-check ended at the Amazon homepage — FLG-017; this addendum's check also the homepage — FLG-028 | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
 | `B02NbDxp3` | Emeril Lagasse 26QT French Door · `B09B7SB46R` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B09B7SB46R) |
 | `B00hJ57DV` | Chefman 8 Qt TurboFry · `B08DKYBTPH` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B08DKYBTPH) |
-| `B0c8moW59` | ThermoMaven instant-read · `B0DHZTCNR5` (2026-11-20 records conflict — FLG-023, FLG-028) | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DHZTCNR5) |
+| `B0c8moW59` | ThermoMaven instant-read · `B0DHZTCNR5` (2026-11-20 records conflict — FLG-023 short-links callout, FLG-028) | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DHZTCNR5) |
 | `B0f3GKalj` | CHEF iQ Sense Gen3 · `B0DZFD6R9Z` | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DZFD6R9Z) |
 
 **Important distinction:** the observed destination is evidence of where a supplied link resolved during that dated check; it does not prove that destination is the product the owner intended or that the link has been tested in the enrolled Associates account. FLG-001 and FLG-006 remain open. Do not describe the supplied short links as invalid: their exact compliance status is unresolved.
@@ -135,7 +135,7 @@ The editorial hypotheses already in the guide plan include “Basket or oven-sty
 
 The proposal ledger, open-question register, and decision log are available on the [Direction page](direction.html). Each suggestion should remain a proposal until its evidence, owner, cost, and decision are recorded.
 
-# Addendum — 2026-11-20, session 2cd3bab9 (T-46)
+# Addendum — 2026-11-20, session 2cd3bab9 (T-48)
 
 ## What was checked against official sources
 

@@ -1,7 +1,7 @@
 # Publishing cadence and per-guide checklist
 
 Status: **set 2026-11-20** (decision DT-10 in `data/decisions.json`, recorded in `DIRECTION.md`).
-Set on the owner's instruction in the 2026-11-20 brief ("Set a publishing cadence"), recorded by session `arena/2cd3bab9-prod3` (task T-46).
+Set on the owner's instruction in the 2026-11-20 brief ("Set a publishing cadence"), recorded by session `arena/2cd3bab9-prod3` (task T-48).
 
 ## The cadence
 

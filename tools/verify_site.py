@@ -120,7 +120,7 @@ except Exception as e:
     errors.append(f"product intent gate: {e}")
 
 try:
-    # Publishing coverage (T-46). A new guide is not done until the sitemap,
+    # Publishing coverage (T-48). A new guide is not done until the sitemap,
     # the feed and the guides hub all reach it, and its headline in the feed is
     # the same headline the reader sees on the page.
     base = "https://wingbangboozle1-lang.github.io/Prod3/"

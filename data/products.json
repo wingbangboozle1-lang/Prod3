@@ -45,7 +45,8 @@
         "FLG-007",
         "FLG-011",
         "FLG-012",
-        "FLG-017"
+        "FLG-017",
+        "FLG-022"
       ],
       "newer_model_note": null,
       "citation": {
@@ -70,6 +71,17 @@
         "result": "Redirected to the Amazon.com homepage (https://www.amazon.com/); no /dp/ ASIN in the final URL. Reproduced on a second attempt the same day. The 2026-11-19 observation (B0CDY277D3) was not reproduced.",
         "intended_asin_changed": false,
         "flag": "FLG-017"
+      },
+      "official_listing_check_2026_11_20": {
+        "date": "2026-11-20",
+        "asin_checked": "B0CDY277D3",
+        "listing_url": "https://www.amazon.com/dp/B0CDY277D3",
+        "source": "S29",
+        "method": "fetch_page of the official Amazon product page; each value read from the page text",
+        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
+        "conflicts": [
+          "Capacity: title/bullets 6 quarts (2 × 3 qt) vs details table 6 liters (FLG-022)"
+        ]
       },
       "live_recheck_2026_11_20_session_2cd3bab9": {
         "date": "2026-11-20",
@@ -151,6 +163,14 @@
         "intended_asin_changed": false,
         "flag": null
       },
+      "official_listing_check_2026_11_20": {
+        "date": "2026-11-20",
+        "asin_checked": "B09B7SB46R",
+        "listing_url": "https://www.amazon.com/dp/B09B7SB46R",
+        "source": "S30",
+        "method": "fetch_page of the official Amazon product page; each value read from the page text",
+        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says"
+      },
       "live_recheck_2026_11_20_session_2cd3bab9": {
         "date": "2026-11-20",
         "method": "fetch_page of the supplied link.amazon URL (third fetch of the day in this session); final URL read for /dp/<ASIN>. No price, rating or offer text recorded.",
@@ -203,7 +223,8 @@
         "FLG-006",
         "FLG-007",
         "FLG-011",
-        "FLG-012"
+        "FLG-012",
+        "FLG-023"
       ],
       "newer_model_note": "B0CNY1YVDD (Chefman 6 QT Compact) — listed on the product page — cross-promotion wording on the seller page, not an obsolescence statement",
       "citation": {
@@ -228,6 +249,18 @@
         "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
         "intended_asin_changed": false,
         "flag": null
+      },
+      "official_listing_check_2026_11_20": {
+        "date": "2026-11-20",
+        "asin_checked": "B08DKYBTPH",
+        "listing_url": "https://www.amazon.com/dp/B08DKYBTPH",
+        "source": "S31",
+        "method": "fetch_page of the official Amazon product page; each value read from the page text",
+        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
+        "conflicts": [
+          "Temperature: title 450°F vs bullets/spec 200–400°F (FLG-023)",
+          "Wattage: resource bullet 1000W vs spec table 1700W (FLG-023)"
+        ]
       },
       "live_recheck_2026_11_20_session_2cd3bab9": {
         "date": "2026-11-20",
@@ -305,6 +338,14 @@
         "intended_asin_changed": false,
         "flag": null
       },
+      "official_listing_check_2026_11_20": {
+        "date": "2026-11-20",
+        "asin_checked": "B0DHZTCNR5",
+        "listing_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+        "source": "S32",
+        "method": "fetch_page of the official Amazon product page; each value read from the page text",
+        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says"
+      },
       "live_recheck_2026_11_20_session_2cd3bab9": {
         "date": "2026-11-20",
         "method": "fetch_page of the supplied link.amazon URL (third fetch of the day in this session); final URL read for /dp/<ASIN>. No price, rating or offer text recorded.",
@@ -381,6 +422,17 @@
         "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
         "intended_asin_changed": false,
         "flag": null
+      },
+      "official_listing_check_2026_11_20": {
+        "date": "2026-11-20",
+        "asin_checked": "B0DZFD6R9Z",
+        "listing_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "source": "S33",
+        "method": "fetch_page of the official Amazon product page; each value read from the page text",
+        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
+        "conflicts": [
+          "Battery life 50 h vs 70 h; warranty 2 vs 3 years (FLG-003)"
+        ]
       },
       "live_recheck_2026_11_20_session_2cd3bab9": {
         "date": "2026-11-20",

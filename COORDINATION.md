@@ -33,6 +33,9 @@
 | T-12 | Post-merge integration audit: correct demonstrable editorial errors, disclosure/capture copy, event schema, analytics readiness, and unresolved compliance gates | done | `arena/5bd92dff-prod3` | all published HTML for disclosure/nav, `assets/app.js`, `assets/style.css`, `analytics.html`, `analytics/*`, `data/campaign-ledger.json`, `data/sources.json`, `sources.html`, `flagged.html`, `direction.html`, `DIRECTION.md`, `sitemap.xml`, `scripts/check_site.py`, `tools/verify_site.py`, `README.md`, `EXECUTIVE_SUMMARY.md` |
 | T-16 | Re-run all release gates, internal-link crawl, feed/sitemap XML check, Pages status check; log remaining external-account blockers | done | arena/7d756ee2-prod3 | `COORDINATION.md` only |
 | T-17 | Mobile-first pass (S-20): size every tap target to ≥48×48px with ≥8px spacing; verify disclosure stays above the first heading at 320px (Q-15); cite Google tap-target guidance | done (PR #12, merged `ce7aee3`) | `arena/65474d4f-prod3` (session 65474d4f) | `assets/style.css`, `data/sources.json`, `DIRECTION.md`, `direction.html`, `docs/verification.md`, `COORDINATION.md` (board rows only) |
+| T-20 | Shop-polish redesign: buyer-first front page, product cards, seasonal/trendy guides, mobile-first polish (compliance gates preserved) | superseded (duplicate ID; authoritative `done` row below; handoff noted by arena/cafc55da-prod3, 2026-11-20) | `arena/33e3e80f-prod3` | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/app.js`, `feed.xml` |
+| T-21 | Expand Direction section: suggestions, open questions, missing-info discovery, path chooser | superseded (duplicate ID; authoritative `done` row below; handoff noted by arena/cafc55da-prod3, 2026-11-20) | `arena/33e3e80f-prod3` | `direction.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json` |
+| T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | superseded (duplicate ID; authoritative `done` row below; handoff noted by arena/cafc55da-prod3, 2026-11-20) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
 | T-20 | Shop-polish redesign: buyer-first front page, product cards, seasonal/trendy guides, mobile-first polish (compliance gates preserved) | done | `arena/33e3e80f-prod3` | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/app.js`, `feed.xml` |
 | T-21 | Expand Direction section: suggestions, open questions, missing-info discovery, path chooser | done | `arena/33e3e80f-prod3` | `direction.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json` |
 | T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | done (PR #14 + #15, live-verified at `bb7d3d2`) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
@@ -41,8 +44,10 @@
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
 | T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-26 | Final integration integrity pass: reconcile product-intent evidence, link/policy copy, automation claims, and flags; strengthen gates; re-run site and Pages release checks | done (2026-11-20, PR and Pages result below) | `arena/e83cdf55-prod3` | `data/verification.json`, `data/policy-checks.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `flagged.html`, `suggestions.html`, `questions.html`, `docs/verification.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `COORDINATION.md` |
-| T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (stale DIRECTION cross-references and SG-22..30 index vs register, nine-article counts), flag the dual Pages deploy paths as FLG-024, re-run all gates, PR → main, merge, confirm live deploy | done (PR #36 + #37 merged; see T-39 record) | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, Pages repo settings (build_type) |
-| T-46 | Session 2cd3bab9 shop-and-publication pass: close guide-cluster coverage gap (all nine guides reachable from the guides hub), add a publishing-coverage gate (sitemap, feed, hub), set the monthly publishing cadence (DT-10, owner instruction), spot-check official sources, refresh executive summary, log new irregularities, PR → main, merge, confirm Pages | in progress | `arena/2cd3bab9-prod3` | `buying-guide.html`, `feed.xml`, `tools/verify_site.py`, `docs/publishing-cadence.md`, `data/decisions.json`, `data/products.json`, `data/flagged.json`, `DIRECTION.md`, `direction.html`, `decisions.html` (generated), `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, `README.md`, `COORDINATION.md` |
+| T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (stale DIRECTION cross-references and SG-22..30 index vs register, nine-article counts), flag the dual Pages deploy paths as FLG-024, re-run all gates, PR → main, merge, confirm live deploy | done (PR #36, merge commit `a861ed7`; deploy + live check recorded below) | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, Pages repo settings (build_type) |
+| T-46 | Final integration round (session 59a087a1): live line-by-line re-verification of the five published listings against the official Amazon pages (specs only — no prices, ratings or offers recorded), register the official sources that are missing so no register row is left "No official source" where a genuine official source exists, publication-polish fixes, re-run every gate, PR → main, merge, confirm Pages deploy | in progress | `arena/59a087a1-prod3` | `data/products.json`, `data/sources.json`, `data/citations.json`, `data/decisions.json`, `data/open-questions.json`, `data/flagged.json`, `data/verification.json`, `articles/*`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `tools/check_site.py`, `tools/verify_site.py`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
+| T-47 | Integration pass after PR #38 (T-46, session 59a087a1) landed first: re-run all gates on the merged tree; re-check the Pages deploy and live pages; record the duplicate `FLG-021` callout on `flagged.html` as an owner decision (not renumbered); no site content change; PR → main, merge, confirm live deploy | done (PR and merge record below) | `arena/cafc55da-prod3` | `COORDINATION.md` only |
+| T-48 | Session 2cd3bab9 pass after PR #38/#39 (renumbered from T-46): close the guide-cluster coverage gap (all nine guides reachable from the buying-guide hub); add a publishing-coverage gate in `tools/verify_site.py` (sitemap, feed, hub); set the monthly publishing cadence (`docs/publishing-cadence.md`; DT-10 decided, owner instruction); align three feed titles to page H1s; record the five same-day link re-checks and the FLG-022/023 identifier collision (FLG-029) without changing any link or intended ASIN; refresh the executive-summary addendum; PR → main, merge, confirm Pages | in progress | `arena/2cd3bab9-prod3` | `buying-guide.html`, `feed.xml`, `tools/verify_site.py`, `docs/publishing-cadence.md`, `data/decisions.json`, `data/products.json`, `data/flagged.json`, `DIRECTION.md`, `direction.html`, `decisions.html` (generated), `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, `README.md`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -379,7 +384,7 @@ These need access to accounts or decisions this session does not have. They are 
 | T-16 | Verify all 5 submitted links against official Amazon listings (amazon.com/dp/<ASIN>) | done | 65412034 | `data/products.json`, `data/sources.json` (read-only verification) |
 | T-17 | Remove currency amounts and \"verified\" framing from feed.xml (no prices rendered; Program Policies §2(b)) | done | 65412034 | `feed.xml` |
 | T-18 | Run release gates from clean checkout; confirm build passes | done | 65412034 | `scripts/*`, `tools/*` |
-| T-19 | Commit, push, PR to main, merge, confirm GitHub Pages deploy | in progress | 65412034 | all |
+| T-19 | Commit, push, PR to main, merge, confirm GitHub Pages deploy | stale claim (session 65412034; no later commits on the board); handoff noted by arena/cafc55da-prod3, 2026-11-20 | 65412034 | all |
 
 ### T-16 — official-source verification (2026-11-19)
 
@@ -1293,9 +1298,51 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 
 *(final micro-PR: T-26 → T-39 label fix on direction.html + this record)*
 
-## Session `arena/2cd3bab9-prod3` — T-46 shop-and-publication pass (2026-11-20)
+## T-46 completion record (arena/59a087a1-prod3)
 
-**Branch:** `arena/2cd3bab9-prod3`, from `main` at `7c1b939` (PRs #36 and #37 merged). **Task:** T-46 (claimed in commit `eb88b75`).
+- Status: done — ready for PR to main.
+- Official listing checks, 2026-11-20 (fetch_page of amazon.com/dp pages): S29 B0CDY277D3, S30 B09B7SB46R, S31 B08DKYBTPH, S32 B0DHZTCNR5, S33 B0DZFD6R9Z. Recorded in data/products.json under `official_listing_check_2026_11_20`; intended-ASIN fields are unchanged (still owner-unconfirmed, FLG-001).
+- New conflicts published: FLG-022 (P-01 title 6 qt vs details table 6 liters); FLG-023 (P-03 450°F title vs 200–400°F spec; 1000W bullet vs 1700W spec). Cards on air-fryers.html now show both readings.
+- Google Search Console sources registered: S26 (developers.google.com Search Console get-started), S27 (support.google.com ownership verification 9008080), S28 (support.google.com getting started 10267942). DT-03 now cites S26–S28 (evidence verified); Search Console questions cite them too.
+- questions.html: new "Official source" column generated from data/open-questions.json; rows without a registered source show "No official source".
+- Seasonal block corrected: "Thanksgiving is Thursday, 26 November" (2026-11-26 is the fourth Thursday of November).
+- Gates on the rebuilt tree: build_chrome/build_registers freshness OK; check_site.py, verify_site.py, crawl_links.py (31 pages, 30 reachable, no broken links/anchors/orphans), tools/check_site.py all pass.
+- Irregularity logged: flagged.html contains duplicate FLG-020 and FLG-021 identifiers (different subjects, pre-existing); not renumbered in this round — owner to decide.
+- PR #37 Pages runs 44689292593 / 44689291961: outcomes to be confirmed by exact run ID after this push.
+
+## Session arena/cafc55da-prod3 — T-47 integration check (2026-11-20)
+
+**Claim collision, handled.** This session first claimed `T-46`, then found `T-46` already claimed and merged by `arena/59a087a1-prod3` (PR #38) while this branch was being rebased. Nothing was overwritten: this session's claim was moved to `T-47`, its duplicate T-46 claim commit was dropped in the merge with `origin/main`, and the other session's record stands as written. Board hygiene: the stale `in progress` duplicates for T-20/T-21/T-22 (superseded by the authoritative `done` rows) and the stale T-19 claim from session 65412034 were marked superseded, not deleted.
+
+**No site content changed in this pass.** The only file in scope is this board.
+
+### Verification on the merged tree (`origin/main` at `372afb0`, 2026-11-20)
+
+| Check | Result |
+|---|---|
+| `build_chrome --check`, `build_registers --check`, `build_decisions --check`, `build_sitemap --check` | all current |
+| `scripts/check_site.py` | all checks passed |
+| `tools/verify_site.py` | release gate passed |
+| `tools/check_site.py` | all additional rules passed |
+| `tools/crawl_links.py` | 31 pages crawled; no broken links, no dead anchors, no orphans |
+| Amazon anchors on all HTML pages | 226 of 226 carry `rel="sponsored"`; 0 violations (31 pages) |
+| Exact Associates disclosure sentence | present on all 31 pages |
+| `data/products.json` after PR #38 | intended-ASIN fields unchanged and still owner-unconfirmed (FLG-001); the new 2026-11-20 official listing checks are recorded separately under `official_listing_check_2026_11_20` |
+| Pages | `Deploy GitHub Pages` run `44690171472` (PR #38 merge) **success**; companion `pages build and deployment` was in progress at the time of this check |
+
+### Irregularities (for owner review; not blocking)
+
+1. **Duplicate `FLG-021` on `flagged.html`.** Two different findings are both headed `FLG-021`: (a) *"Source register gaps and one listing quotation (2026-11-20)"* — this is the item in `data/flagged.json` and the matching row on `decisions.html`; (b) *"A suggestion id cited by the digest does not exist, and the register skips a number"* — this is the SG-21/SG-25→SG-27 gap note that `README.md` and `DIRECTION.md` cite as FLG-021. The two are not merged or renumbered here because all of those files are shared outputs and the owner should choose the new ID (the PR #38 record already left this to the owner).
+2. **FLG-017 still open.** `link.amazon/B04G1MEwY` ended at the Amazon homepage on the 2026-11-20 fetch in this session as well.
+3. **Pages build type** (FLG-024) still `legacy`; the owner-side one-click fix is still required.
+
+### Still not verifiable from this sandbox (owner action)
+
+FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled Associates workflow · FLG-010 Associates account status · FLG-015 empty campaign ledger (no first-party reports) · DT-03 Search Console · DT-07 analytics endpoint · DT-10 / Q-14 publishing cadence (owner decision) · F-21 / Q-21 share-debugger check.
+
+## Session `arena/2cd3bab9-prod3` — T-48 shop-and-publication pass (2026-11-20)
+
+**Branch:** `arena/2cd3bab9-prod3`, from `main` at `7c1b939` (PRs #36 and #37 merged). **Task:** T-48. The claim was first written as T-46 (commit `eb88b75`); T-46 had already been taken on `main` by PR #38 (session `59a087a1`, T-46) and T-47 by PR #39, so this task was renumbered to T-48 on rebase.
 
 ### Official sources read on 2026-11-20 (spot-check of the pages the site relies on)
 
@@ -1327,7 +1374,7 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 6. `data/flagged.json`: FLG-022 to FLG-024 synced from the page (they were page-only); FLG-025 to FLG-028 added. `flagged.html`: callouts added; FLG-023 note corrected (it claimed both same-day observations were in `products.json`; the homepage one was not).
 7. `EXECUTIVE_SUMMARY.md` and `executive-summary.html`: status paragraph and link rows corrected for the conflicting same-day records; dated addendum added (sources, changes, still-open items, next step).
 8. `README.md`: page count corrected to 31 HTML pages; flag range updated; cadence document and hub note added.
-9. Board: T-39 row marked done (PR #36 and #37 merged). Stale in-progress duplicate rows for T-20, T-21 and T-22 removed; their done rows carry the same scope.
+9. Board: no change needed. T-39 is already marked done on `main`, and the stale in-progress duplicates of T-20 to T-22 were already removed there (`fc1aed9`).
 
 ### Gates (all run after the changes)
 
@@ -1335,6 +1382,7 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 
 ### New irregularities for owner review (published on `flagged.html`; none blocks the merge)
 
+- **FLG-029** (open, owner): identifier collision. PR #38 (session 59a087a1) introduced listing-conflict callouts for FLG-022 (P-01 capacity) and FLG-023 (P-03 temperature and wattage), but the older FLG-022 (broken script) and FLG-023 (short links) callouts were still on the page. Both sets now carry the same IDs. Not renumbered here, following the FLG-021 convention; owner decision.
 - **FLG-025** (corrected): board duplicates and a stale T-39 status.
 - **FLG-026** (open): `data/sources.json` has no per-row fetch date; six Amazon listing rows have a blank `updated` field, which is correct for listings.
 - **FLG-027** (corrected): three RSS headlines differed from their page H1s; one claimed more than its page.
@@ -1349,3 +1397,11 @@ FLG-001 intended ASINs (blank) · FLG-006 and DT-01 Special Link test in the enr
 - PR: (recorded in the follow-up board commit after the PR is created)
 - Merge result: (recorded after merge)
 - Pages deploy: (recorded after merge)
+
+### Merge notes (rebase onto `main` at `cbae5c9`)
+
+- The first commit (claim, T-46) and this work commit both conflicted with `main`, which had taken T-46 (PR #38) and T-47 (PR #39). The claim is now T-48 on the board; the T-46 row of this session is not kept.
+- `data/products.json`: upstream's `official_listing_check_2026_11_20` blocks and `live_recheck_2026_11_20` entries are kept unchanged. This session's `live_recheck_2026_11_20_session_2cd3bab9` block is added beside them for each product.
+- `data/flagged.json`: upstream's entries are kept unchanged. FLG-022 to FLG-024 were synced from the page in the first draft of this session but were dropped at merge, because the IDs were already used upstream; FLG-024 remains page-only, as it was before this session.
+- `decisions.html` regenerated from `data/decisions.json` after the merge.
+

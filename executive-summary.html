@@ -78,7 +78,7 @@
 
 <h2>What is flagged (does not block)</h2>
 <h2>Five supplied links: observed destination is not confirmed intent</h2>
-<p>Targets below are dated observations from the repository's 2026-11-19 records. Same-day checks disagree. The 2026-11-20 record shows product pages for four links (P-02 to P-05) and the Amazon.com homepage for <code>B04G1MEwY</code> (<a href="flagged.html">FLG-017</a>). Another session's note records the homepage for <code>B0c8moW59</code> too (<a href="flagged.html">FLG-023</a>). The check for this addendum found the homepage for all five (<a href="flagged.html">FLG-028</a>). Fetches cannot settle which result is right; the signed-in check in Q-22 can. These observations do not prove which products were intended or validate the Special Links in the enrolled Associates account. The intended-ASIN, official-intended-listing, confirmation-date and confirmation-source fields remain blank until confirmed.</p>
+<p>Targets below are dated observations from the repository's 2026-11-19 records. Same-day checks disagree. The 2026-11-20 record shows product pages for four links (P-02 to P-05) and the Amazon.com homepage for <code>B04G1MEwY</code> (<a href="flagged.html">FLG-017</a>). Another session's note records the homepage for <code>B0c8moW59</code> too (<a href="flagged.html">FLG-023</a>, short-links callout). The check for this addendum found the homepage for all five (<a href="flagged.html">FLG-028</a>). Fetches cannot settle which result is right; the signed-in check in Q-22 can. These observations do not prove which products were intended or validate the Special Links in the enrolled Associates account. The intended-ASIN, official-intended-listing, confirmation-date and confirmation-source fields remain blank until confirmed.</p>
 <div class="table-wrap"><table data-source-required="amazon-listing">
 <thead><tr><th>Submitted token</th><th>Observed listing</th><th>Category</th><th>Intent</th><th>Official source</th></tr></thead><tbody>
 <tr><td><code>B04G1MEwY</code></td><td>Chefman 6 Qt Dual Basket<br><code>B0CDY277D3</code></td><td>Air fryer</td><td>Unconfirmed</td><td><a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">Amazon listing</a></td></tr>
@@ -132,7 +132,7 @@
 <li>The social-preview PNG is present; a share-debugger check remains outstanding. Product photography is not used.</li>
 </ul>
 
-<h2>Addendum — 2026-11-20, session 2cd3bab9 (T-46)</h2>
+<h2>Addendum — 2026-11-20, session 2cd3bab9 (T-48)</h2>
 <p>Six official pages were fetched and read on 2026-11-20. This is a spot-check of the pages the site relies on most, not a line-by-line re-audit of every clause.</p>
 <div class="table-wrap"><table>
 <thead><tr><th>Official source</th><th>What the page says on 2026-11-20</th><th>Used for</th></tr></thead><tbody>
@@ -149,7 +149,7 @@
 <li><strong>RSS headlines.</strong> Three feed titles now match their page H1s. One claimed more than its page does (<a href="flagged.html">FLG-027</a>).</li>
 <li><strong>Release gate.</strong> The release gate checks that every guide is in the sitemap, the feed (headline equal to H1) and the hub, and that the cadence is written down. It was negative-tested: removing a hub link and changing a headline both fail the build.</li>
 <li><strong>Publishing cadence set.</strong> One guide per calendar month; approver: the site owner; next guide due 2026-12-31 (DT-10, on the owner's instruction). This is a rhythm, not a traffic forecast.</li>
-<li><strong>Link observations.</strong> The 2026-11-20 check for this addendum is recorded as separate, dated observations for all five links. The conflicting same-day records are flagged (<a href="flagged.html">FLG-023</a>, <a href="flagged.html">FLG-028</a>). The FLG-023 note was corrected, because it said both observations were in <code>data/products.json</code> when they were not.</li>
+<li><strong>Link observations.</strong> The 2026-11-20 check for this addendum is recorded as separate, dated observations for all five links. The conflicting same-day records are flagged (<a href="flagged.html">FLG-023</a>, short-links callout, and <a href="flagged.html">FLG-028</a>). The FLG-023 note was corrected, because it said both observations were in <code>data/products.json</code> when they were not.</li>
 <li><strong>Board hygiene.</strong> T-39 is marked done. Duplicate in-progress rows for T-20 to T-22 were removed (<a href="flagged.html">FLG-025</a>).</li>
 <li><strong>Source register.</strong> The register has no per-row fetch date (<a href="flagged.html">FLG-026</a>, open for the owner).</li>
 </ul>

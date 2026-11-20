@@ -38,7 +38,7 @@
 <main id="main"><div class="article" style="max-width:1000px">
 <p class="kicker">Trust · Disclosure</p>
 <h1>How we disclose</h1>
-<p class="byline">Kitchen Counter · Reviewed against the Operating Agreement and FTC guidance, 2026-11-19</p>
+<p class="byline">Kitchen Counter · Reviewed against the Operating Agreement and FTC guidance, 2026-11-19; the link-tagging rules were re-read on 2026-11-20 and the links were changed the same day</p>
 
 <h2>The short version</h2>
 <p>The required statement “As an Amazon Associate I earn from qualifying purchases.” appears above the fold and in the footer of every page, with conditional wording: if an eligible qualifying purchase is credited, Kitchen Counter may earn a commission at no extra cost to you. The site owner supplied tracking ID <strong>shopnow047c-20</strong>. We have not verified that this ID is assigned to an enrolled Associates account, that the account is eligible, or that the supplied short links meet the program's current requirements — see <a href="flagged.html">FLG-006, FLG-010, FLG-011</a>. We do not claim the short links are invalid.</p>
@@ -58,6 +58,12 @@
 <li><strong>No prices at all</strong> — Amazon's Program Policies (section 2(b)) permit displaying price and availability only when Amazon serves that data or it arrives through the Product Advertising API. We do neither, so no price appears anywhere on this site; you confirm it on the listing.</li>
 </ul>
 <p>This follows the FTC's guidance that disclosures be placed so they are hard to miss, with the endorsement itself, in simple clear language. Source: <a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener">FTC Disclosures 101</a>.</p>
+
+<h2>How we link to Amazon</h2>
+<p>Every link on this site that opens an Amazon product page carries the store ID in its address, as <code>?tag=shopnow047c-20</code>. That is not a flourish: Amazon's Associates Program Policies state that &ldquo;you must include your Associates ID or &lsquo;tag&rsquo; (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site&rdquo;, and that Special Links must use the ID assigned to the account. The tag is what lets a click be attributed at all.</p>
+<p><strong>What that means for you:</strong> the tag changes who gets credit for a qualifying purchase. It does not change the price you pay, the product you see, or the seller you buy from. The listing page opens exactly as it would from a search.</p>
+<p><strong>What we do not do:</strong> we do not run price alerts or price-tracking on this site (the program bars it, and the numbers move daily anyway); we do not publish Amazon star ratings or customer review text, because that data is only licensed to us through the Product Advertising or Creators API, which this site does not call; we do not describe a link as a deal; and we do not send you through a shortened URL whose destination cannot be read. Where the owner supplied a short link, it is recorded in the register as what was submitted, and the button routes to the official listing instead — see <a href="flagged.html">FLG-026</a> and <a href="questions.html">Q-28</a>.</p>
+<p>The verification of a tagged link is a five-minute job inside the Associates account — open the link, read the destination URL for the tag, or run it through Amazon's own Link Checker. Sources: <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">Program Policies (Participation Requirements 2)</a> · <a href="https://affiliate-program.amazon.com/help/node/topic/G6253GFSARDQENZR" rel="sponsored noopener">Associates Help — Can I Check If My Links Are Tagging to My Account?</a> · <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener">Google's guidance on qualifying outbound links</a>, which is why every Amazon link here is marked <code>rel="sponsored"</code>.</p>
 
 <h2>How product links are marked</h2>
 <p>Every outbound product link carries <code>rel="sponsored"</code>, per Google's guidance for paid links. Source: <a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener">Google Search Central — Qualify outbound links</a>.</p>

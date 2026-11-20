@@ -371,3 +371,13 @@ input,select,textarea,button{font-size:max(16px,1em)}
   font-size:.82rem;line-height:1.6;background:var(--paper-2);border:1px solid var(--line);
   border-radius:10px;padding:14px;margin:10px 0;overflow-x:auto;min-height:64px}
 @media(max-width:720px){.decide-box button{min-height:48px;flex:1 1 auto}}
+
+/* Rules that used to live as inline style="" attributes on one page each.
+   Kept here so a card or a shelf can be re-rendered without losing them. */
+.article-wide{max-width:1040px}
+.article-table{max-width:1000px}
+.chooser .kicker{color:#fdba74}
+.product-art.neutral{background:linear-gradient(135deg,#292524,#57534e)}
+.feature .feature-art .spec-hero{color:#fff}
+.feature .feature-art .spec-hero small{color:#e6d9c8}
+.feature .feature-art .footprint{margin-top:22px}

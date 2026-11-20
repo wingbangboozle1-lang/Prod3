@@ -469,6 +469,37 @@
       "status": "open — duplicates recorded; no rows removed or renumbered in this pass",
       "sources": [],
       "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-034",
+      "severity": "high",
+      "area": "Outbound link format",
+      "product": "All five (P-01..P-05)",
+      "detail": "Fourth dated observation on 2026-11-20 (session 6c0972fb, independent of session 6bf60cac's same-day check): each of the five supplied link.amazon short links ended at the Amazon homepage with no /dp/ ASIN and no tag in the URL the reader receives. Participation Requirements 2(a)/2(b) (S34) require the assigned Associates ID as a URL parameter on every link to an Amazon Site, and Commission Income Statement 2(g) (S35) disqualifies purchases whose links are “not properly formatted”; 2(e) disqualifies a Redirecting Link that bounces a customer through an intermediate site without an affirmative click there. Every reader-facing product button now goes to the official product page with this site's tag, and two gate rules (scripts/check_site.py 7b, tools/check_site.py P09) fail the build if a button loses its tag, its product target, or returns to a shortener.",
+      "why_it_matters": "A button that lands a buyer on a homepage loses the sale and earns nothing; a link with no tag cannot be attributed even when it lands correctly. Both were true at once before this change.",
+      "action": "Owner: the signed-in test in Q-02 / Q-22 — generate a Special Link per product with SiteStripe, click it, and confirm the destination plus a matching row in the click reports. If the supplied links do carry the tag inside the enrolled account, restoring them is one line per button.",
+      "status": "open — site response shipped, owner test still required",
+      "sources": [
+        "S01",
+        "S02",
+        "S34",
+        "S35"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-035",
+      "severity": "medium",
+      "area": "Coordination: another session's records were dropped by a rewrite",
+      "product": "All five (P-01..P-05)",
+      "detail": "Commit ffcb419 rewrote data/products.json and lost the five official_listing_check_2026_11_20 blocks session 59a087a1 had added in 56cddb5 (the dated 2026-11-20 read of each official listing, cited by sources S29–S33 and by the published listing-conflict flags). They are restored verbatim from 56cddb5; nothing ffcb419 added was altered. The README register ranges (SG-01..SG-38, Q-01..Q-27) were also stale on main and failed gate D37 — a red build that merged because the gate set runs on push to main rather than as a required check on pull requests.",
+      "why_it_matters": "Two failure modes in one day: a wholesale file rewrite silently deleting another session's evidence, and a register table the release gate only reads after the damage is merged.",
+      "action": "Adopt append-only edits for data/*.json registers (patch the keys you mean, never re-render a whole file from a summary), and consider making the gate set a required status check on pull requests.",
+      "status": "open — data repaired; workflow change is the owner's call",
+      "sources": [
+        "S05"
+      ],
+      "sources_checked": "2026-11-20"
     }
   ],
   "alias_records": [

@@ -21,6 +21,7 @@ import json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+TRACKING = "shopnow047c-20"
 errors = []
 
 # 1. products.json
@@ -154,6 +155,36 @@ for f in html_files:
             errors.append(f"{rel}: data-source-required row has neither a source link nor an unverified marker")
 print("OK data-source-required tables")
 
+# 7b. buy-button link hygiene (added 2026-11-20, T-60): a reader-facing product button must
+#     be a tagged product link. Participation Requirements 2(a)/2(b) (S34) require the assigned
+#     Associates ID as a URL parameter; Commission Income Statement 2(g) (S35) disqualifies
+#     purchases whose links are "not properly formatted". Negative-tested the same day: it named
+#     two untagged hand-written buttons and five untagged generated pages before they were fixed.
+_asin_by_token = {p0["submitted_token"]: p0["observed_asin"] for p0 in _json.loads((ROOT / "data/products.json").read_text())["products"]}
+buy_buttons = 0
+for f in html_files:
+    _html = f.read_text(); rel = f.relative_to(ROOT)
+    for tag_html in re.findall(r"<a\b[^>]*>", _html):
+        if 'data-event="outbound_click"' not in tag_html:
+            continue
+        buy_buttons += 1
+        href = re.search(r'href="([^"]*)"', tag_html)
+        href = href.group(1) if href else ""
+        asin = re.search(r'data-asin="([A-Z0-9]{10})"', tag_html)
+        asin = asin.group(1) if asin else None
+        if "link.amazon/" in href:
+            errors.append(f"{rel}: buy button still routes a reader through a redirecting short link: {href}")
+            continue
+        m = re.match(r'https://www\.amazon\.com/dp/([A-Z0-9]{10})(?:\?[^"]*)?$', href)
+        if not m:
+            errors.append(f"{rel}: buy button does not target a product page: {href}")
+            continue
+        if asin and m.group(1) != asin:
+            errors.append(f"{rel}: buy button targets {m.group(1)} but is labelled {asin}")
+        if f"tag={TRACKING}" not in href:
+            errors.append(f"{rel}: buy button carries no Associates tag, so it cannot earn (S34 2(b)): {href}")
+print(f"OK buy-button link hygiene ({buy_buttons} tagged product buttons)")
+
 # 8. price blocks must be dated
 for f in html_files:
     html = f.read_text()
@@ -170,6 +201,16 @@ for f in sorted((ROOT / "articles").glob("*.html")):
     if '"dateModified"' not in html:
         errors.append(f"{rel}: JSON-LD missing dateModified")
 print("OK article dateModified")
+
+# 9b. every guide carries breadcrumbs and a byline (T-62: the three newest guides had them,
+#     the nine older ones did not, so one site described itself two different ways)
+for f in sorted((ROOT / "articles").glob("*.html")):
+    html = f.read_text(); rel = f.relative_to(ROOT)
+    if '"BreadcrumbList"' not in html:
+        errors.append(f"{rel}: no BreadcrumbList structured data")
+    if 'class="byline"' not in html:
+        errors.append(f"{rel}: no byline line (who published it, and when the sources were read)")
+print("OK guide structured data and bylines")
 
 # 10. no committed merge-conflict markers anywhere in the tree
 # (a botched resolution once shipped literal <<<<<<< / >>>>>>> lines to readers)

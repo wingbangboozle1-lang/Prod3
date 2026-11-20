@@ -163,3 +163,46 @@ The repository's current release checks pass on the reviewed tree: `python3 scri
 - [Flagged for Review](flagged.html)
 - [Analytics and privacy status](analytics.html)
 - [Sources](sources.html)
+
+## Round record — session `arena/a9b513e9-prod3` (T-51), 2026-11-20
+
+This session started from the brief's "make it read like a shop, not an audit" instruction and
+found two things worth recording alongside the copy work.
+
+**1. The policy citations the site had marked "not located" are on the live page.** The repository
+carried FLG-020, stating that Program Policies §2(t), §2(v) and a shortener prohibition under §2(b)
+could not be found and that Section 2 showed only (a) and (b). A full re-read of the live Program
+Policies page (Updated April 14, 2026) on 2026-11-20 found the Participation Requirements running
+**(a)–(z)**, including §2(t) (customer reviews and star ratings only via Creators API/PA API),
+§2(v) (no cloaking or obscuring the URL) and §2(w) — **not §2(b)** — for the shortener rule:
+
+> "You will not use a link shortening service, button, hyperlink or other ad placement in a manner
+> that makes it unclear that you are linking to an Amazon Site."
+
+Also confirmed the same day: §2(a) tag requirement, §2(b) general link requirements and the
+price/availability rule, §2(u) no purchasing through your own Special Links, §2(x) certification,
+§2(y) no price tracking, §2(z) no excluded products. `data/citations.json`, `data/policy-checks.json`
+C-04, `citations.html`, `questions.html` and `flagged.html` now quote the located text; FLG-020 is
+marked **resolved** and the earlier "not located" note is preserved in the record rather than deleted.
+Nothing on the site changes as a result: it already shows no ratings and no prices.
+
+**2. A fourth dated link observation, recorded separately (FLG-034).** This session fetched all five
+supplied `link.amazon` URLs and all five ended at `https://www.amazon.com/` with no `/dp/` ASIN —
+including three that another same-day record shows reaching their product pages. Later in the same
+session all five `/dp/` listings loaded with page titles matching the recorded titles. Both facts are
+kept; no earlier observation was overwritten and no intended ASIN was inferred. Because every buy
+button still points at a supplied short link, the front page, both category hubs and the comparison
+table now carry one sentence above the buttons saying so. Q-27 asks the question this raises: whether
+a signed-out fetch is a meaningful test at all.
+
+**3. The shop-voice pass.** The front page, the five product cards, both category hubs and the buying
+guide were rewritten in the second person with a "buy it if / skip it if" pair per product, a named
+week pick, and a shelf organised by what you are cooking. Every figure on those pages still traces to
+the listing that publishes it, no price or rating is rendered, and every Amazon link remains
+`rel="sponsored"`. The audit surfaces stay reachable from the footer and from the Decision desk.
+
+**Gates.** All green on the merged tree: `scripts/check_site.py`, `tools/verify_site.py`,
+`tools/check_site.py` (37 pages, 5,270 assertions, including new I01–I04 checks that one finding ID
+cannot mean two things and that every dated observation names its date and method),
+`tools/crawl_links.py` (0 broken links, 0 dead anchors, 0 orphans) and the five `--check` freshness
+gates.

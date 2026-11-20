@@ -1403,3 +1403,46 @@ tools/crawl_links.py                   37 pages crawled · 36 reachable · no br
 Associates account status (FLG-010) · intended ASINs (FLG-001) · Special Link validity or per-link tag
 presence (FLG-006, Q-24) · cause of the four disagreeing link observations (Q-25) · Search Console ·
 analytics endpoint · any traffic, click, conversion or revenue figure.
+
+## Session `arena/a9b513e9-prod3` — T-51 (2026-11-20)
+
+Claimed as T-46; that id and T-46..T-50 were already taken upstream by sessions 59a087a1,
+cafc55da and 6bf60cac, so this task is recorded as **T-51**. The branch was rebased onto
+`main` (`2c8d152`); every conflict below was resolved keeping the other session's work.
+
+### What this session did
+
+| Change | Why | Evidence |
+|---|---|---|
+| Front page rewritten in the second person: named week pick, five cards each with "buy it if / skip it if", shelf by what you are cooking, guides and the full table kept | Brief asked for a page that reads like a shop, not an audit | `index.html`; every figure still resolves to its listing; gates green |
+| One-sentence link-status strip above the buy buttons on the front page, both category hubs and the comparison table | FLG-034: all five supplied links ended at the Amazon homepage in this session; the buttons still use them | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`; copy points to `flagged.html` |
+| `buying-guide.html` opening rewritten; a hurry-up callout added | Same brief; the guide opened with an audit-flavoured paragraph | `buying-guide.html` |
+| FLG-020 **resolved**: located §2(t), §2(v) and §2(w) on the live Program Policies page; corrected the shortener subsection from §2(b) to §2(w) | The repository claimed three clauses could not be found. They are present, verbatim, under Participation Requirements (a)–(z) | `https://affiliate-program.amazon.com/help/operating/policies` fetched 2026-11-20 (Updated April 14, 2026); `data/citations.json` S02, `data/policy-checks.json` C-04, `citations.html`, `flagged.html` |
+| FLG-034 published; a fourth dated `live_recheck_2026_11_20_session_a9b513e9` block per product | Dated observation, recorded separately; no earlier record overwritten, no intended ASIN inferred | `data/products.json`, `flagged.html` |
+| Q-27 registered: is a signed-out fetch a meaningful test? | Four dated observations of the same five links disagree; all were unauthenticated fetches | `data/open-questions.json`, `questions.html` |
+| Gates I01–I04 in `tools/check_site.py` | `flagged.html` had published two different findings under FLG-020 and two under FLG-021 while the data held one meaning each (upstream fixed the ids as FLG-027..029; the gate stops the class returning) | gate added and negative-tested locally |
+| `executive-summary.html` and `EXECUTIVE_SUMMARY.md` round record | Keep the summaries from drifting behind the tree | both files |
+
+### Conflicts met during the rebase, and how they were resolved
+
+- `COORDINATION.md`: board-row conflict on the T-46 id. Upstream rows T-46..T-50 kept verbatim;
+  this session's row renumbered **T-51**. No upstream row edited.
+- `data/products.json`: upstream's `live_recheck_2026_11_20_link_check` (FLG-025) kept; this
+  session's block kept beside it as `live_recheck_2026_11_20_session_a9b513e9` (FLG-034).
+- `flagged.html`: upstream keeps FLG-025..FLG-031 and had already renumbered the duplicate FLG-020 /
+  FLG-021 callouts to FLG-027..FLG-029. This session therefore did **not** apply its own renumbering;
+  it only corrected FLG-020 in place and appended FLG-034. A stale copy of this session's FLG-020
+  correction (left by an earlier conflict resolution) was removed so the id appears once.
+- `data/decisions.json`: upstream already registered DT-11 (what a buy button promises) and DT-12.
+  This session's DT-11 draft was dropped rather than duplicated.
+- `data/open-questions.json`, `data/citations.json`, `data/policy-checks.json`,
+  `scripts/build_registers.py`: kept upstream's structure, re-applied this session's corrected text to
+  those same fields; `Q-27` appended after upstream's Q-24..Q-26.
+- Branch history was rebased, so the push needed `--force-with-lease` (the remote held only this
+  session's own three commits). No other session's branch was touched.
+
+### Not claimed here
+
+Associates account status (FLG-010) · intended ASINs (FLG-001) · tag attached by the redirect (Q-24,
+FLG-026) · where a reader actually lands when signed in (Q-27) · Search Console · analytics endpoint ·
+traffic, clicks, conversions or revenue. No product test was performed and no price or rating is shown.

@@ -804,3 +804,10 @@ Claimed and completed the executive-summary refresh only. Scope: `executive-summ
 - Official references used in the summary: Amazon Associates Operating Agreement and Program Policies; five official product listing URLs; FTC Disclosures 101; Google sponsored-link, people-first content, spam policy, and snippet guidance. URLs are recorded in `data/sources.json` and linked inline.
 - Gates (all pass): `python3 scripts/check_site.py` (24 HTML pages), `python3 tools/verify_site.py` (21 sources resolve and publish), `python3 scripts/build_registers.py --check`, `python3 scripts/build_sitemap.py --check`, and `git diff --check`.
 - Remaining owner/external gates: FLG-001 intended product confirmation; FLG-006 Special Link workflow and reporting test; FLG-010 Associates account status; Search Console verification; selection and configuration of analytics/email infrastructure; social-preview debugger check. These remain visible on the review pages and do not justify invented values.
+
+#### T-24 publication record (PR #22)
+
+- **PR #22:** https://github.com/wingbangboozle1-lang/Prod3/pull/22 — merged to `main` at `2026-11-20T06:08:42Z`; merge commit `a7972192978110994dbcb2a7c5a9b5b522d823fe`.
+- **GitHub Pages deploy:** workflow run `44685724944` — success on the merged SHA. Pages API status: `built`, source `main:/`, URL https://wingbangboozle1-lang.github.io/Prod3/.
+- **Live check:** fetched `/executive-summary.html` after deploy. The updated buyer-first executive summary, dated intent/observed link table, official-source links and above-the-fold disclosure are live.
+- **Non-blocking irregularity:** the successful deployment emitted GitHub Actions notices that the pinned `actions/*@v4/v5` workflow actions target Node.js 20, which GitHub is moving to Node.js 24. No release check or deployment failed; workflow runtime upgrades can be scheduled separately.

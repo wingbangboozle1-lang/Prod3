@@ -1130,3 +1130,13 @@ git diff --check                           clean
 - `data/flagged.json` FLG-017 has `status` open; `data/products.json` live_recheck_2026_11_20 still records the homepage result. Both left as recorded.
 - Items for the owner, unchanged: FLG-001 (intended ASINs), FLG-006 (short-link compliance, including the Special Link test in the Associates workflow), FLG-010 (account status), FLG-017 (B04G1MEwY redirect), FLG-020 (policy citations), FLG-021 (P-04 quotation and register gaps).
 - Not done: self-hosted analytics endpoint (GitHub Pages cannot receive POSTs); Search Console property (SG-29); reader capture (SG-30); campaign ledger (no first-party Associates report available to this session).
+
+### T-37 integration record (session `arena/e52053d1-prod3`, 2026-11-20)
+
+- **PR #31:** https://github.com/wingbangboozle1-lang/Prod3/pull/31 (`arena/e52053d1-prod3` → `main`).
+- **Merge result:** merged with `gh pr merge 31 --merge`, `mergedAt` 2026-11-20T06:23:08Z, merge commit `e036edf2ca0447e1110bd6bbd0dece4fc9c9f00f`. Merged without waiting for approval, per the project instructions. No `--auto`.
+- **Pre-merge gates:** all green on the branch (eight gates, listed in PR #31).
+- **Post-merge gates on `e036edf` (the merged `main`):** `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`, `build_sitemap.py --check`, `build_registers.py --check`, `build_chrome.py --check`, `build_decisions.py --check`, `tools/crawl_links.py` — all exit 0. RSS head link on 30 of 30 HTML pages.
+- **GitHub Pages:** `Deploy GitHub Pages` run `44687419004` (`success`) and `pages build and deployment` run `44687418865` (`success`) on `e036edf`. Pages API: `status: built`, source `main:/`, URL https://wingbangboozle1-lang.github.io/Prod3/.
+- **Live check:** `https://wingbangboozle1-lang.github.io/Prod3/feed.xml` lists the guides, including the Thanksgiving guide added on `main`. `suggestions.html` renders from the same `data/suggestions.json` that passed the gates. (The page's "Register updated 2026-11-19" line predates this pass; it is generator text from `main`, logged here as an irregularity rather than edited.)
+- **Collision log:** T-25 was taken by PR #27 (arena/70e8475c), and T-26 by PR #30 (arena/e83cdf55). This session's first two claims were withdrawn and renumbered to T-37. No other session's work was overwritten; the history was kept with `-s ours` merges, not force-pushes.

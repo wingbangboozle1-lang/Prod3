@@ -1718,3 +1718,45 @@ lives in the new recheck file and in FLG-025, so the register stays untouched wh
 session's scope is respected. The registers edited here belong to sessions whose own completion
 records say done (PRs #30/#38 merged); each edit above is a demonstrable defect fix against a
 dated official source, per the board's rules.
+
+### T-53 completion record (session `arena/1fbc2432-prod3`, 2026-11-20)
+
+**Edits applied** (each traceable to the dated fetches in `data/recheck-2026-11-20-1fbc2432.json`):
+
+1. **FLG-020 resolved (D-1).** The three "not located" Program Policies clauses were located
+   verbatim on the live page and cited: `data/citations.json` (S02 entry, `observed_on`
+   2026-11-20), `data/policy-checks.json` (C-04 requirement + quote basis → §6(w); C-05/C-06
+   quote bases → verbatim §2(b); `verified_note` added), `data/suggestions.json` (SG-13 evidence
+   cites §6(w)/§2(b)), `data/flagged.json` (FLG-020 → resolved with `resolved_on`),
+   `flagged.html` (callout rewritten as resolved, `callout ok` style added to `assets/style.css`),
+   `scripts/build_registers.py` (ratings citation line updated; `citations.html` regenerated).
+2. **FLG-025 fourth dated observation** appended to `data/flagged.json` and the `flagged.html`
+   callout: all five short links → Amazon homepage again on 2026-11-20 (B02NbDxp3 twice
+   in-session), with the live-listing diagnostic (B09B7SB46R serves the recorded product).
+3. **SG-39 registered** (`data/suggestions.json`, mirrored into `DIRECTION.md` digest rows
+   SG-32..SG-39 verbatim): before any automated Amazon listing/price refresh, use the PA API or
+   make the fetcher identify itself under the IP License Agent Terms (§4, read verbatim today).
+   Recommendation: A long-term, B now, C non-compliant.
+4. **`DIRECTION.md` mirror restored**: SG-32..SG-39 rows added verbatim (the digest had stopped
+   at SG-31 while the register carried SG-32..38); the questions-count line corrected to
+   Q-01…Q-27 (27 registered). `direction.html` register ranges corrected (SG-01..SG-39,
+   Q-01..Q-27).
+5. **`data/recheck-2026-11-20-1fbc2432.json`** created: the dated record of this session's
+   official-source reads (5 short links, 1 direct listing diagnostic, Operating Agreement,
+   Program Policies, FTC, Google) with verbatim quotes and the FLG-020 resolution map.
+6. Regenerated surfaces: `suggestions.html`, `questions.html`, `citations.html`,
+   `decisions.html`, `ideas.html`, README register table. No CTA destination changed (FLG-019's
+   standing decision respected); `data/products.json` untouched.
+
+**Verification performed after the edits (all green):** all seven `--check` freshness gates
+(chrome, registers, decisions, products, sitemap, README table, ideas brief);
+`scripts/check_site.py` all passed; `tools/verify_site.py` release gate passed;
+`tools/check_site.py` 37 pages, 5,594 assertions, all additional rules passed;
+`tools/crawl_links.py` 37 pages crawled, 36 reachable, 0 broken links, 0 dead anchors, 0 orphans.
+
+**Remaining owner gates (unchanged):** FLG-001 intended ASINs · FLG-006/SG-13 Special Link test ·
+FLG-010/C-10 account status · FLG-026 tag parameter · FLG-024 Pages build_type ·
+Search Console (DT-03/Q-18) · analytics endpoint (Q-13) · share-debugger (F-21/Q-21) ·
+ledger remains empty by design (FLG-015) until first-party reports exist.
+
+**PR and merge record:** to be appended after the merge below.

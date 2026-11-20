@@ -332,14 +332,15 @@
       "severity": "medium",
       "area": "Policy citations (Associates Program Policies)",
       "product": "Site-wide (citation log, compare, direction)",
-      "detail": "The site cites Program Policies §2(t) (customer star ratings), §2(v) (URL obscuring), and a shortener prohibition under §2(b). On 2026-11-20 the live Program Policies page (updated April 14, 2026) showed Section 2 with subsections (a) and (b) only; none of the three clauses was found there. Their wording is marked unverified in citations.json, citations.html, and suggestions.json.",
+      "detail": "The site cites Program Policies §2(t) (customer star ratings), §2(v) (URL obscuring), and a shortener prohibition under §2(b). On 2026-11-20 the live Program Policies page (updated April 14, 2026) showed Section 2 with subsections (a) and (b) only; none of the three clauses was found there. Their wording is marked unverified in citations.json, citations.html, and suggestions.json. RESOLVED 2026-11-20 (session 1fbc2432, T-53): the restructured page carries the three clauses in the Participation Requirements — §6(t) for customer reviews and star ratings, §6(v) for cloaking or obscuring Special-Link URLs, §6(w) for link shortening — while §2(b) itself carries the tag, price/availability, misleading-claims, product-list and sub-tag clauses. All were read verbatim on the live page (updated 2026-04-14); the quotes are recorded in data/policy-checks.json, data/citations.json and data/recheck-2026-11-20-1fbc2432.json.",
       "why_it_matters": "A reader or reviewer who checks the cited clause will not find it. Ratings and prices are not shown on the site, so the conduct does not depend on these citations, but the stated basis is unverified.",
-      "action": "Owner or editorial review: locate the Associates text that carries these clauses (Operating Agreement, Program Policies, or a dated version) and cite it, or remove the citation. Do not infer replacement wording.",
-      "status": "open — citations reworded to 'not located'; owner review",
+      "action": "Done 2026-11-20 (T-53): clauses located on the official page and cited in citations.json (S02 entry) and policy-checks.json (C-04/C-05/C-06) with the verbatim text; suggestions.json SG-13's evidence now cites §6(w)/§2(b) correctly. No wording was inferred — every quote is from the 2026-11-20 fetch.",
+      "status": "resolved 2026-11-20 — clauses located verbatim and cited (T-53)",
       "sources": [
         "S02"
       ],
-      "sources_checked": "2026-11-20"
+      "sources_checked": "2026-11-20",
+      "resolved_on": "2026-11-20"
     },
     {
       "id": "FLG-021",
@@ -360,10 +361,10 @@
       "severity": "high",
       "area": "Outbound links (buy buttons)",
       "product": "All five (P-01..P-05)",
-      "detail": "On 2026-11-20 (session 6bf60cac, T-46) all five supplied link.amazon URLs were fetched again and every one ended at https://www.amazon.com/ — the Amazon homepage — rather than at a product page. That is a wider result than either earlier same-day record (session 70e8475c: one of five; session ce911db5: two of five) and wider than 2026-11-19, when all five read as /dp/ product pages.",
+      "detail": "On 2026-11-20 (session 6bf60cac, T-46) all five supplied link.amazon URLs were fetched again and every one ended at https://www.amazon.com/ — the Amazon homepage — rather than at a product page. That is a wider result than either earlier same-day record (session 70e8475c: one of five; session ce911db5: two of five) and wider than 2026-11-19, when all five read as /dp/ product pages. Fourth dated observation (session 1fbc2432, T-53, 2026-11-20): all five short links again ended at https://www.amazon.com/; B02NbDxp3 was reproduced twice within the session, and the direct listing https://www.amazon.com/dp/B09B7SB46R served the Emeril 26QT product page with the recorded title, isolating the drift to the short-link resolution rather than the listings. Recorded in data/recheck-2026-11-20-1fbc2432.json.",
       "why_it_matters": "A reader who presses a buy button is meant to reach the product. If the final destination is the Amazon homepage, the reader has to search for the product again, and the site's own claim that a button opens the listing is wrong at the moment of the click.",
       "action": "Owner: click each of the five links signed in to Associates, record the landing page, and replace the href with a freshly generated SiteStripe Special Link once it is confirmed (DT-01). Do not treat this as proof that the links are invalid: the destination depends on Amazon's redirect, which changed between observations.",
-      "status": "open — third dated observation recorded; no record overwritten",
+      "status": "open — fourth dated observation recorded (T-53); no record overwritten",
       "sources": [
         "S10",
         "S11",

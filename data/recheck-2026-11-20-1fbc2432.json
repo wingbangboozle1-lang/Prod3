@@ -1,0 +1,122 @@
+{
+  "session": "arena/1fbc2432-prod3",
+  "task": "T-53",
+  "date": "2026-11-20",
+  "purpose": "Dated record of every official source this session fetched and read, so each register edit in the T-53 round traces to a verbatim page read. This file is additive: it overwrites no earlier observation record (FLG-025's history, data/products.json and the 2026-11-19 snapshots are untouched).",
+  "method": "Every page below was fetched through this session's page-fetch tool and read from the returned content (chunk-indexed reads; final URLs recorded as served). Quotes marked verbatim were compared word-for-word against the register entries they support. No value was inferred; anything not readable on a fetched page is not recorded here.",
+  "network_note": "This session's page-fetch path reached amazon.com, affiliate-program.amazon.com, ftc.gov and developers.google.com. Earlier same-day sessions recorded that their sandboxes could not reach those hosts; that difference is why this recheck exists. github.io was not fetched (not needed for the official-source checks).",
+  "supplied_short_links": [
+    {
+      "submitted_link": "https://link.amazon/B04G1MEwY",
+      "final_url": "https://www.amazon.com/",
+      "final_page_title": "Amazon.com. Spend less. Smile more.",
+      "asin_in_final_url": null,
+      "matches_2026_11_19_observed_asin_B0CDY277D3": false,
+      "note": "Consistent with session 70e8475c's 2026-11-20 result (FLG-017) and with the third dated check (FLG-025)."
+    },
+    {
+      "submitted_link": "https://link.amazon/B02NbDxp3",
+      "final_url": "https://www.amazon.com/",
+      "final_page_title": "Amazon.com. Spend less. Smile more.",
+      "asin_in_final_url": null,
+      "matches_2026_11_19_observed_asin_B09B7SB46R": false,
+      "note": "Fetched twice this session; both attempts ended at the homepage. Changed from the 2026-11-19 product-page destination."
+    },
+    {
+      "submitted_link": "https://link.amazon/B00hJ57DV",
+      "final_url": "https://www.amazon.com/",
+      "final_page_title": "Amazon.com. Spend less. Smile more.",
+      "asin_in_final_url": null,
+      "matches_2026_11_19_observed_asin_B08DKYBTPH": false
+    },
+    {
+      "submitted_link": "https://link.amazon/B0c8moW59",
+      "final_url": "https://www.amazon.com/",
+      "final_page_title": "Amazon.com. Spend less. Smile more.",
+      "asin_in_final_url": null,
+      "matches_2026_11_19_observed_asin_B0DHZTCNR5": false
+    },
+    {
+      "submitted_link": "https://link.amazon/B0f3GKalj",
+      "final_url": "https://www.amazon.com/",
+      "final_page_title": "Amazon.com. Spend less. Smile more.",
+      "asin_in_final_url": null,
+      "matches_2026_11_19_observed_asin_B0DZFD6R9Z": false
+    }
+  ],
+  "supplied_short_links_summary": "Fourth dated observation (after 2026-11-19 all-product-pages; 2026-11-20 sessions 70e8475c one-of-five, ce911db5 two-of-five, 6bf60cac all-five): all five ended at the Amazon homepage. B02NbDxp3 reproduced twice in-session. No record overwritten; no invalidity claim (FLG-006, FLG-011 unchanged).",
+  "diagnostic_direct_listing": {
+    "url": "https://www.amazon.com/dp/B09B7SB46R",
+    "served_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
+    "browse_path_served": "Home & Kitchen › Kitchen & Dining › Small Appliances › Fryers › Air Fryers",
+    "matches_register_title": true,
+    "conclusion": "The official listing is live and serves the recorded product, isolating the homepage landings to the short-link resolution rather than to dead listings."
+  },
+  "official_policy_pages": [
+    {
+      "source_id": "S01",
+      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+      "page_updated_line": "Updated: October 15, 2025 (Current Associates, see what's changed.)",
+      "register_matches": true,
+      "verified_verbatim": [
+        "Section 1: \"The links must properly use the special \\\"tagged\\\" link formats we provide and comply with this Agreement (\\\"Special Links\\\")\" — matches the register quote.",
+        "Section 5: \"You must clearly and prominently state the following ... \\\"As an Amazon Associate I earn from qualifying purchases.\\\"\" — the exact sentence the site carries in its disclosure strip and footer."
+      ]
+    },
+    {
+      "source_id": "S02",
+      "url": "https://affiliate-program.amazon.com/help/operating/policies",
+      "page_updated_line": "Updated: April 14, 2026. (Current Associates, see what's changed.)",
+      "register_matches": true,
+      "verified_verbatim": [
+        "Participation Requirements §2(a): \"Special Links enable accurate tracking, reporting, and accrual of commission income. Special Links must use the Associates ID we have assigned to you.\"",
+        "Participation Requirements §2(b) (tag): \"you must include your Associates ID or \\\"tag\\\" (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.\"",
+        "Participation Requirements §2(b) (price): \"your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.\" — the exact basis the site states in its price slots.",
+        "Participation Requirements §2(b) (claims): \"You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product, an Amazon Site, or any of our policies, promotions, or prices.\" with the 64 GB / 128 GB smartphone example.",
+        "Participation Requirements §2(b) (product lists): \"When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link.\"",
+        "Participation Requirements §2(b) (sub-tags): \"Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site\".",
+        "Participation Requirements §6(t): \"You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API ...\"",
+        "Participation Requirements §6(v): \"You will not cloak, hide, spoof, or otherwise obscure the URL of your Site containing Special Links (including by use of Redirecting Links) or the user agent of the application in which Program Content is displayed ...\"",
+        "Participation Requirements §6(w): \"You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.\"",
+        "Participation Requirements §6(y): \"Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.\"",
+        "IP License §2(h): \"you may store individual Amazon Standard Identification Numbers (ASINs) for an indefinite period until the termination of this License.\"",
+        "IP License §4 (Agent Terms): agents must identify themselves (\"Agent/[agent name]\" in the request user-agent string), must not conceal that access is from an agent, must not mimic human speed or keystroke patterns, must respond truthfully to human-verification prompts, and must not circumvent such measures. Registered as proposal SG-39."
+      ],
+      "flg_020_resolution": "The three clauses FLG-020 could not find in Section 2 (ratings, URL-obscuring, shortener) are §6(t), §6(v) and §6(w) of the Participation Requirements on the restructured page. FLG-020 is resolved with these verbatim reads; citations.json (S02 entry) and policy-checks.json (C-04/C-05/C-06) cite the located clauses."
+    },
+    {
+      "source_id": "S03",
+      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+      "page_dated": "November 2019",
+      "register_matches": true,
+      "verified_verbatim": [
+        "\"Place it so it's hard to miss.\"",
+        "\"The disclosure should be placed with the endorsement message itself.\"",
+        "\"You can't talk about your experience with a product you haven't tried.\""
+      ]
+    },
+    {
+      "source_id": "S04",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+      "page_updated_line": "Last updated 2025-12-10 UTC.",
+      "register_matches": true,
+      "verified_verbatim": [
+        "\"Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value.\""
+      ]
+    }
+  ],
+  "register_edits_supported_by_this_recheck": [
+    "data/citations.json — S02 entry rewritten to the located clause map (§2(a), §2(b) tag/price/claims/product-lists/sub-tags, §6(t)/(v)/(w)); observed_on moved to 2026-11-20.",
+    "data/policy-checks.json — C-04 requirement and quote basis now cite §6(w) verbatim; C-05 and C-06 quote bases carry the verbatim §2(b) text; verified_note added.",
+    "data/suggestions.json — SG-13 evidence cites §6(w)/§2(b) correctly; SG-39 (Agent Terms) added.",
+    "data/flagged.json — FLG-020 resolved; FLG-025 gains the fourth dated observation.",
+    "flagged.html — FLG-020 callout rewritten as resolved (verbatim locations); FLG-025 callout gains the fourth observation.",
+    "DIRECTION.md — SG-39 digest row added (register mirror)."
+  ],
+  "irregularities_noted": [
+    "The 28 link.amazon anchors on the served pages (register/provenance anchors on citations.html and sources.html; buy buttons elsewhere per FLG-019's standing decision) keep their hrefs; this session changes no CTA destination.",
+    "flagged.html previously carried duplicate FLG-020/FLG-021 identifiers; the duplicate-ID defect itself was fixed upstream as FLG-027/028/029 (PR #43 lineage), and this session's FLG-020 resolution rewrites the surviving callout to its resolved state.",
+    "The site's product buttons carry no tag= parameter (FLG-026, open) and the Associates account status remains owner-side (FLG-010, C-10 blocked). §2(b)'s verbatim tag requirement is now recorded on FLG-026's basis."
+  ],
+  "not_verified_here": "Prices, ratings and offer text were not recorded from any Amazon page this session (policy and identity pages only). The five /dp/ listings other than B09B7SB46R were not re-fetched directly this session; their liveness is recorded by session 6bf60cac's same-day official_listing_check (S29–S33). Associates reporting, account status and the Special Link test remain owner-side (FLG-001, FLG-006, FLG-010)."
+}

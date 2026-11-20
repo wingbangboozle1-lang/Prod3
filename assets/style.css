@@ -151,6 +151,8 @@ td a{font-weight:600}
   border-radius:10px;padding:15px 18px;margin:20px 0;font-family:var(--sans);font-size:.9rem;line-height:1.6;color:#3d332a}
 .callout strong{color:var(--warn)}
 .callout.warn{background:#fdf0ee;border-color:#f0cec6;border-left-color:#b4401b}
+.callout.ok{background:#eef7ee;border-color:#cfe6cf;border-left-color:#2e7d32}
+.callout.ok strong{color:#1b5e20}
 .callout.warn strong{color:#96321a}
 .callout a{font-weight:700}
 

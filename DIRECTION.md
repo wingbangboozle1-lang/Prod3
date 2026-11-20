@@ -8,6 +8,11 @@ at the bottom. Suggestions are proposals; open questions are unknowns. The
 ledger index below mirrors `data/suggestions.json` — full problem statements,
 options, and recommendations live there.
 
+*Mirror extended 2026-11-20 (session `arena/1fbc2432-prod3`, T-53): rows SG-32..SG-39
+added verbatim from the register, restoring the mirror claim above. SG-39 records the
+IP-License Agent Terms finding from the same-day official-source recheck
+(`data/recheck-2026-11-20-1fbc2432.json`).*
+
 ## Suggestion ledger (index)
 
 | # | Suggestion | Status | Decided by |
@@ -44,6 +49,14 @@ options, and recommendations live there.
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
 | SG-30 | Decide how readers stay in touch: RSS only, or an email provider with consent | proposed | owner |
 | SG-31 | Put the listing's own contradiction on the product card, not only the flag page | implemented 2026-11-20 | editorial |
+| SG-32 | Show a dated status line on every buy button until the link test passes | proposed | editorial |
+| SG-33 | Add a five-row link-status table to the front page footer area, one row per product | proposed | editorial |
+| SG-34 | State the tag-parameter requirement once, in plain words, on the disclosure page | proposed | owner |
+| SG-35 | Give the twelve guide proposals a home with a gate, so the writing plan is reviewable | implemented | editorial |
+| SG-36 | Lead the front page with a buyer question and five shop cards, not with the audit trail | implemented | editorial |
+| SG-37 | Publish catchy, trend-led question articles to earn organic traffic | proposed | editorial |
+| SG-38 | Review every change in the suggestions section before anything is built | implemented | owner |
+| SG-39 | Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms | proposed | owner |
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
@@ -53,7 +66,7 @@ SG-19. The ledger is the single source of truth.
 
 ## Open questions — what must be answered before deciding
 
-Twenty-three questions are registered in `data/open-questions.json` (Q-01…Q-23). Each carries
+Twenty-seven questions are registered in `data/open-questions.json` (Q-01…Q-27). Each carries
 `known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only`).
 

@@ -258,7 +258,7 @@
       "id": "SG-13",
       "title": "Test one short link inside the enrolled Associates workflow before trusting the format",
       "problem": "The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.",
-      "evidence": "Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
+      "evidence": "Program Policies Participation Requirements §6(w) prohibits a shortener used so the destination is unclear, and §2(b) requires the Associates tag in every link placed to an Amazon Site (S02; both clauses read verbatim on the live page on 2026-11-20, session 1fbc2432, T-53). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
       "options": [
         "A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.",
         "B. Switch every link to direct /dp/ URLs and drop the short form.",
@@ -760,6 +760,23 @@
       "decision_owner": "owner",
       "blocks": "nothing — suggestions.html, questions.html, ideas.html and decisions.html ship today",
       "sources": []
+    },
+    {
+      "id": "SG-39",
+      "title": "Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms",
+      "problem": "The roadmap wants automated refreshes of listing and price data, but the Associates IP License now carries explicit Agent Terms: software that accesses Program Content must identify itself in its user-agent string, must not conceal that it is an agent, and must not circumvent human-verification measures. A scheduled scraper of Amazon listing pages built into CI would breach those terms even if the copied values were handled carefully afterwards.",
+      "evidence": "Associates Program Policies → IP License and Usage Requirements §4 (Agent Terms), read verbatim on the live page on 2026-11-20 (session 1fbc2432, T-53): an agent must identify itself (\"Agent/[agent name]\" in the request user-agent string), must not mimic human speed or keystroke patterns, must respond truthfully to human-verification prompts, and must not circumvent such measures. PA API access has separate credential requirements (§2). The site today records listing values only from dated manual fetches (data/products.json verification_method); no automated Amazon fetch exists in CI.",
+      "options": [
+        "A. Enroll in the Product Advertising API (owner account action) and refresh prices, availability and star ratings only through it, with the required date/time stamp and disclaimer whenever displayed.",
+        "B. Keep manual dated fetches only; if an automated fetch of Amazon pages is ever added, configure it to identify itself per the Agent Terms and halt immediately on any anti-bot measure.",
+        "C. Add a scheduled scraper of listing pages without agent identification."
+      ],
+      "recommendation": "A long-term, B until the PA API is approved. C is non-compliant with the Agent Terms and endangers the Associates account; do not implement.",
+      "effort": "M",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "owner",
+      "blocks": "any future automation of listing or price data (follow-on to DT-02)"
     }
   ],
   "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed."

@@ -489,6 +489,40 @@
         "S24"
       ],
       "evidence_status": "verified"
+    },
+    {
+      "id": "Q-28",
+      "group": "Measurement",
+      "question": "Is any of this site in Google's index yet, and which pages?",
+      "blocks": "Judging whether any guide is discoverable at all; choosing between publishing more (SG-18's pipeline) and fixing discoverability first. Until this is answered, any statement about organic traffic is a guess.",
+      "known": "The site ships unique canonicals, a robots.txt pointing at sitemap.xml, a sitemap and an RSS feed — all enforced by the repo's gates. Coordination records show GitHub Pages deployments since 2026-11-19.",
+      "unknown": "Whether Google has crawled or indexed any URL; which pages, if any, appear for brand or topic queries. Nothing hosted on the site itself can answer this.",
+      "how_to_find_out": "Two steps. (1) Public, no account: a site:wingbangboozle1-lang.github.io/Prod3 query — a rough, incomplete indication; record the date and the result count, not a claim of completeness. (2) Authoritative: Search Console → property → Pages report, after Q-18's verification — it lists indexed and excluded URLs with reasons (S26).",
+      "who": "any session (step 1); owner (step 2)",
+      "cost": "2 minutes (step 1); 5 minutes after verification (step 2)",
+      "status": "queued",
+      "changes": "Whether “publish and wait” is a plan or a hope, and whether the next guide should be written at all before indexing is confirmed.",
+      "sources": [
+        "S26"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "Q-29",
+      "group": "Measurement",
+      "question": "What do Core Web Vitals measure on this site today, on a mid-range phone?",
+      "blocks": "SG-46 (the proposed CWV gate) and any decision to add visual effects; until measured, the mobile-first and light-page claims (S-20 pass) are design statements, not records.",
+      "known": "The stylesheet is one local file with system fonts (no webfonts, no @import), pages load one local script each, and there are no third-party asset requests on shop pages — verified by a URL scan on 2026-11-20 (T-54 log). Tap targets were audited at 48px (S-20).",
+      "unknown": "LCP, INP and CLS as actually measured. No dated lab or field result exists anywhere in the repository.",
+      "how_to_find_out": "pagespeed.web.dev — enter the live URL, choose mobile, and record the dated metric values on analytics.html; Lighthouse in Chrome gives the same lab metrics. No account is required.",
+      "who": "any session",
+      "cost": "about 5 minutes",
+      "status": "queued",
+      "changes": "Turns “the site is light” from a design claim into a dated measurement, and sets the baseline that SG-46's gate would compare future changes against.",
+      "sources": [
+        "S25"
+      ],
+      "evidence_status": "verified"
     }
   ],
   "sources_note": "Each question carries the registered source IDs of the official document that speaks to it, or an empty list plus evidence_status='unverified' when no official document settles it. Nothing is cited that does not answer the question."

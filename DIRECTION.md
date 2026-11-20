@@ -44,6 +44,19 @@ options, and recommendations live there.
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
 | SG-30 | Decide how readers stay in touch: RSS only, or an email provider with consent | proposed | owner |
 | SG-31 | Put the listing's own contradiction on the product card, not only the flag page | implemented 2026-11-20 | editorial |
+| SG-43 | Give the seasonal block a retirement date and a successor, before Thanksgiving ends | proposed | editorial |
+| SG-44 | Do not add FAQ markup expecting a Google FAQ rich result — that feature is gone | proposed | editorial |
+| SG-45 | Fact-check any AI-assisted draft line by line before it ships, and say how the site is made | proposed | owner |
+| SG-46 | Measure Core Web Vitals once, then gate new frontend effects on the result | proposed | editorial |
+| SG-47 | Keep internal anchors descriptive — add a gate so the discipline cannot slip | proposed | engineering |
+
+SG-43..SG-47 were added 2026-11-20 (session `arena/7878cdbe-prod3`, T-54; renumbered twice while
+this branch was queued — first from SG-32..SG-36 after upstream 6bf60cac/8692a390 registered
+SG-32..SG-38, then from SG-39..SG-43 after upstream PR #52 registered SG-39..SG-42) with sources
+verified that day:
+S34 (Google link best practices), S35 (Google search-doc changelog: the FAQ rich result was
+deprecated 2026-05-07/08 and its documentation removed June 2026), S36 (Google generative-AI
+content guidance, page updated 2026-10-01). The rows above mirror `data/suggestions.json` verbatim.
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices

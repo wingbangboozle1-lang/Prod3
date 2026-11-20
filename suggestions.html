@@ -45,7 +45,7 @@
 <div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (17)</h2>
+<h2>Waiting on a decision (22)</h2>
 <div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -250,6 +250,66 @@
         <div class="opts" data-decide="SG-41"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: Reader-capture metrics; any signup form on any page</p>
+    </article><article class="card decision-card" id="SG-43">
+      <div class="meta">SG-43 · editorial decides</div>
+      <h3>Give the seasonal block a retirement date and a successor, before Thanksgiving ends</h3>
+      <p><strong>The situation.</strong> The front page&#x27;s seasonal block is hand-edited HTML. The 2026-11-20 wording fix (PR #38) made it accurate for this week — the block now says Thanksgiving is Thursday, 26 November — but nothing retires it: on 2026-11-27 the shop would still open on Thanksgiving. Stale seasonal copy is the exact generated-site smell this project is trying to avoid.</p>
+      <p><strong>The evidence.</strong> index.html hardcodes the block, its “Right now” label and its dated paragraph; the only related gate (D30 in tools/check_site.py) checks that the Thanksgiving guide is linked from the front page and cannot expire. The holiday gift guide beneath it already carries the December theme, so a successor slot exists.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Rotate the block by hand on a calendar date — an owner task that recurs every season.</li><li>B. Move the seasonal block into a dated JSON and generate it, so build_chrome renders the current slot and a gate fails when a dated slot is past its end date.</li><li>C. Drop the seasonal block entirely.</li></ul>
+        <p><strong>Recommendation.</strong> B — generation plus a dated gate makes staleness impossible to ship silently, and it is the same pattern the rest of the chrome already uses. Fallback: if B is not built by 2026-11-26, rotate by hand that day (A).</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-43"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: front-page timeliness after 2026-11-26</p>
+    </article><article class="card decision-card" id="SG-44">
+      <div class="meta">SG-44 · editorial decides</div>
+      <h3>Do not add FAQ markup expecting a Google FAQ rich result — that feature is gone</h3>
+      <p><strong>The situation.</strong> Adding FAQPage JSON-LD to the guides is advice that still circulates in older SEO guides. If the site followed it, effort would go into markup whose only search-feature payoff has ended, and future guides would inherit a dead pattern — one of the tells of a site built from stale templates.</p>
+      <p><strong>The evidence.</strong> Google&#x27;s own changelog (S35, fetched 2026-11-20): a deprecation notice added 2026-05-08 states the FAQ rich result “will no longer appear in Google Search starting May 7, 2026”, and the June 2026 entry records that the feature documentation was removed — the old documentation URL now redirects to the changelog.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Keep question-shaped headings and visible answers in prose; add no FAQPage markup; revisit only if Google restores the feature.</li><li>B. Add FAQPage markup anyway so AI answer engines can extract the questions and answers.</li><li>C. Add the markup but hide it from readers.</li></ul>
+        <p><strong>Recommendation.</strong> A — the guides already answer questions in visible prose, which is what people-first guidance rewards. B duplicates every answer in a second surface to maintain, for no search-feature benefit. C is hidden-text abuse under Google&#x27;s spam policies (S22) and is rejected outright.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-44"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: guide nine onward</p>
+    </article><article class="card decision-card" id="SG-45">
+      <div class="meta">SG-45 · owner decides</div>
+      <h3>Fact-check any AI-assisted draft line by line before it ships, and say how the site is made</h3>
+      <p><strong>The situation.</strong> The publication is intended to scale with AI assistance. Without an explicit review step, a hallucinated specification could reach a product card — the exact failure this site&#x27;s registers exist to prevent — and pages produced for search engines rather than readers are a named spam category.</p>
+      <p><strong>The evidence.</strong> Google&#x27;s guidance on generative AI content (S36, page updated 2026-10-01, fetched 2026-11-20) states that generative outputs “may contain inaccuracies (also known as hallucinations)” and that it is critical to manually fact-check before publishing; the scaled content abuse policy (S22) covers unoriginal content “no matter how it&#x27;s created”; the same page recommends sharing how content was created.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Write the rule into docs/verification.md and about.html: every AI-assisted draft is checked line by line against the dated listing snapshots and policy records before it ships, and the about page states how the site is produced.</li><li>B. Keep the fact-checking practice informal, depending on each session&#x27;s judgement.</li><li>C. Publish drafts unreviewed and correct after reader reports.</li></ul>
+        <p><strong>Recommendation.</strong> A — one page of documentation and it matches the gates the repo already runs. C violates the spam policy and the site&#x27;s own accuracy rules. B is how the SG-20/SG-21 duplicate happened.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-45"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: scaling content production (Q-14 cadence, SG-18 topic pipeline)</p>
+    </article><article class="card decision-card" id="SG-46">
+      <div class="meta">SG-46 · editorial decides</div>
+      <h3>Measure Core Web Vitals once, then gate new frontend effects on the result</h3>
+      <p><strong>The situation.</strong> The site has never recorded a Core Web Vitals measurement. “Deliberately light” is a design claim, not a measurement, and any future effect could erode it silently — the hover lift on product cards already exists.</p>
+      <p><strong>The evidence.</strong> Google&#x27;s page-experience guidance (S25, fetched 2026-11-20) states Core Web Vitals are used by Google&#x27;s ranking systems and recommends site owners achieve good Core Web Vitals; its self-assessment checklist asks whether pages have good Core Web Vitals and display well on mobile. PageSpeed Insights requires no account.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Run pagespeed.web.dev on the front page and one guide (mobile), record the dated results on analytics.html, and require a fresh dated pass with any new frontend effect.</li><li>B. Skip measurement and rely on the light stylesheet.</li><li>C. Add heavier visual effects first and measure later.</li></ul>
+        <p><strong>Recommendation.</strong> A — it is free, minutes-scale, and turns a design claim into a dated record that future sessions can compare against. C inverts the evidence order every other decision on this site follows.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-46"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: any new animation, script or image weight on the shop pages</p>
+    </article><article class="card decision-card" id="SG-47">
+      <div class="meta">SG-47 · engineering decides</div>
+      <h3>Keep internal anchors descriptive — add a gate so the discipline cannot slip</h3>
+      <p><strong>The situation.</strong> A scan on 2026-11-20 found zero generic anchors (“click here”, “read more”, “learn more”) across the published pages, but nothing tests for them, so guide nine could reintroduce them without anyone noticing.</p>
+      <p><strong>The evidence.</strong> Google&#x27;s link best practices (S34, fetched 2026-11-20) state that good anchor text “is descriptive, reasonably concise, and relevant to the page that it&#x27;s on and to the page it links to”, and that generic text gives neither readers nor Google context. The scan method is recorded in COORDINATION.md (T-54).</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Add a check_site rule that fails on the generic anchor texts Google names, then keep writing as now.</li><li>B. Leave anchor quality to code review.</li><li>C. Rewrite existing anchors for keywords beyond Google&#x27;s guidance.</li></ul>
+        <p><strong>Recommendation.</strong> A — one regex in an existing gate converts today&#x27;s clean scan into a standing guarantee, which is how every other discipline on this site is enforced. C is unneeded: the scan is already clean.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-47"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing (protective)</p>
     </article></div>
 
 <h2 class="mt">Already shipped (24)</h2>

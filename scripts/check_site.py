@@ -134,15 +134,21 @@ for f in html_files:
             errors.append(f"{rel}: banned phrase present: {phrase!r}")
 print("OK banned-phrase scan")
 
-# 7. data-source-required tables: every body row must cite an https source
+# 7. data-source-required tables: every body row must cite an https source,
+#    OR carry the explicit "no official source" marker. The second branch exists
+#    because the brief allows a value to be left blank and flagged when no official
+#    source confirms it -- but it must never be left blank silently. A row with
+#    neither a link nor the marker fails, so "unverified" cannot hide.
+UNVERIFIED_MARKER = '<span class="unverified">No official source</span>'
 for f in html_files:
     html = f.read_text()
     rel = f.relative_to(ROOT)
     for tbl in re.findall(r"<table[^>]*data-source-required[^>]*>.*?</table>", html, re.S):
         rows = re.findall(r"<tr>(.*?)</tr>", tbl, re.S)
         for row in rows[1:]:  # skip header row
-            if "https://" not in row:
-                errors.append(f"{rel}: data-source-required row without https source link")
+            if "https://" in row or UNVERIFIED_MARKER in row:
+                continue
+            errors.append(f"{rel}: data-source-required row has neither a source link nor an unverified marker")
 print("OK data-source-required tables")
 
 # 8. price blocks must be dated

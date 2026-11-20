@@ -5,10 +5,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://wingbangboozle1-lang.github.io/Prod3"
-DATE = "2026-11-19"
+DATE = "2026-11-20"
 
 def pages():
-    files = sorted(ROOT.glob("*.html")) + sorted((ROOT / "articles").glob("*.html"))
+    files = (sorted(ROOT.glob("*.html"))
+             + sorted((ROOT / "articles").glob("*.html"))
+             + sorted((ROOT / "tools").glob("*.html")))
     files = [f for f in files if f.name != "404.html"]  # error page: never in the sitemap
     return [f.relative_to(ROOT).as_posix() for f in files]
 

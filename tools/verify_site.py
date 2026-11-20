@@ -10,7 +10,7 @@ Runs scripts/check_site.py, then verifies:
    documented in flagged.html
  - data/campaign-ledger.json has no fabricated rows (rows must be empty
    until first-party reports exist; provenance must be dated)
- - feed.xml is well-formed XML with 8 items
+ - feed.xml is well-formed XML with 9 items
  - robots.txt references the sitemap
 """
 import json, re, subprocess, sys
@@ -82,8 +82,8 @@ except Exception as e:
 try:
     tree = ET.parse(ROOT / "feed.xml")
     items = tree.getroot().findall(".//item")
-    assert len(items) == 8, f"expected 8 feed items, got {len(items)}"
-    print("OK feed.xml: well-formed, 8 items")
+    assert len(items) == 9, f"expected 9 feed items, got {len(items)}"
+    print("OK feed.xml: well-formed, 9 items")
 except Exception as e:
     errors.append(f"feed.xml: {e}")
 

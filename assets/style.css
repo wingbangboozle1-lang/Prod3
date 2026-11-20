@@ -246,6 +246,74 @@ input,select,textarea,button{font-size:max(16px,1em)}
 .trustbar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-family:var(--sans);font-size:.8rem;color:var(--ink-soft)}
 .trustbar span{background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:6px 12px}
 
+
+
+/* ------------------------------------------------------------------
+   Shelf bar (2026-11-20)
+   The masthead carries ONE nav group. Sections that used to compete
+   with it for room live here, one level down, so a reader always knows
+   which desk they are on and where the next useful page is.
+   ------------------------------------------------------------------ */
+.shelf{background:#1f1b17;border-bottom:1px solid #332c25;
+  font-family:var(--sans);font-size:.8rem}
+.shelf .wrap{display:flex;align-items:center;gap:2px;flex-wrap:wrap;padding-top:4px;padding-bottom:4px}
+.shelf a{color:#c8bcab;text-decoration:none;padding:8px 11px;border-radius:7px;font-weight:600;
+  display:inline-flex;align-items:center;min-height:36px}
+.shelf a:hover{background:#2c2621;color:#fff}
+.shelf a[aria-current="page"]{color:#fff;background:#3a322a}
+.shelf-label{font-size:.68rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);padding:0 12px 0 2px;border-right:1px solid #3a322a;margin-right:8px}
+
+/* ------------------------------------------------------------------
+   Featured pick (2026-11-20)
+   A shop needs a recommendation at the top, not a tie. The featured
+   card states who it is for in the reader's terms; it does not claim a
+   test result the site cannot produce.
+   ------------------------------------------------------------------ */
+.feature{display:grid;gap:0;background:var(--card);border:1px solid var(--line-strong);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lift);margin-top:22px}
+@media(min-width:860px){.feature{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}}
+.feature .feature-art{background:linear-gradient(150deg,#2b2521,#16130f);color:#fff;padding:28px;
+  display:flex;flex-direction:column;justify-content:space-between;min-height:100%}
+.feature .feature-art .eyebrow{font-family:var(--sans);font-size:.68rem;font-weight:800;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.feature .feature-art .big{font-family:var(--sans);font-size:clamp(1.6rem,3.4vw,2.2rem);
+  font-weight:800;letter-spacing:-.03em;line-height:1.08;margin:14px 0 6px}
+.feature .feature-art .sub{font-family:var(--sans);font-size:.86rem;color:#bdb2a5}
+.feature .feature-body{padding:28px}
+.feature .feature-body h3{margin-top:0;font-size:1.35rem}
+.feature .why{font-family:var(--sans);font-size:.9rem;color:var(--ink-soft);
+  border-left:3px solid var(--accent);padding:2px 0 2px 14px;margin:16px 0}
+.feature .why strong{color:var(--ink)}
+.feature .notfor{font-family:var(--sans);font-size:.86rem;color:var(--ink-faint);margin:10px 0 18px}
+
+/* ------------------------------------------------------------------
+   Editorial rhythm (2026-11-20)
+   Rules and kickers so long pages read as a publication.
+   ------------------------------------------------------------------ */
+.section-head{border-bottom:2px solid var(--line-strong);padding-bottom:10px;margin-bottom:18px}
+.section-head h2{margin-bottom:0}
+.rule-gold{width:56px;height:3px;background:var(--gold);border:0;margin:0 0 16px}
+.read-next{display:grid;gap:0;background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius);padding:20px 22px;margin:30px 0}
+.read-next h3{margin:0 0 10px;font-size:.95rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-soft)}
+.read-next ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+@media(min-width:700px){.read-next ul{grid-template-columns:1fr 1fr}}
+.read-next li{font-family:var(--sans);font-size:.92rem}
+.read-next a{font-weight:600}
+
+/* Caveat strip used where a number could be mistaken for a test result */
+.attrib{font-family:var(--sans);font-size:.78rem;color:var(--ink-faint);margin:.2em 0 1em;
+  padding-left:12px;border-left:2px solid var(--line-strong)}
+
+/* Quiet marker for an unverified value: never a filled-in guess */
+.unverified{font-family:var(--sans);font-size:.74rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--warn);background:var(--warn-wash);
+  border:1px solid #efd4b4;border-radius:999px;padding:2px 8px;white-space:nowrap}
+.verified{font-family:var(--sans);font-size:.74rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--good);background:var(--good-wash);
+  border:1px solid #cfe6d8;border-radius:999px;padding:2px 8px;white-space:nowrap}
+
 /* ---------- Print ---------- */
 @media print{
   .masthead .nav,.sticky-bar,.chooser,.hero-cta,footer .cols{display:none}

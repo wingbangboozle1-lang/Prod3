@@ -260,10 +260,16 @@ def render_citations():
 
 
 def main():
+    # Apply the shared chrome so the output here matches what scripts/build_chrome.py
+    # produces. Otherwise the two builders overwrite each other and every --check
+    # fails immediately after the other has run.
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import build_chrome
+
     outputs = {
-        "suggestions.html": render_suggestions(),
-        "questions.html": render_questions(),
-        "citations.html": render_citations(),
+        "suggestions.html": build_chrome.render(render_suggestions(), "suggestions.html", 0),
+        "questions.html": build_chrome.render(render_questions(), "questions.html", 0),
+        "citations.html": build_chrome.render(render_citations(), "citations.html", 0),
     }
     if "--check" in sys.argv:
         stale = [n for n, t in outputs.items()

@@ -916,30 +916,92 @@
       "confidence": "high",
       "status": "proposed",
       "decision_owner": "editorial",
-      "blocks": "any new animation, script or image weight on the shop pages",
-      "sources": [
-        "S25"
-      ]
+      "blocks": "nothing",
+      "sources": [],
+      "decision": {
+        "benefit": "One source of truth for colour, and one less thing that looks assembled.",
+        "risk": "A careless swap shifts contrast; the check is that text stays legible on the hero at 320px.",
+        "reversible": "yes",
+        "falsifier": "If contrast fails at 320px after tokenising, keep the current inline colours and revisit the palette instead."
+      }
     },
     {
-      "id": "SG-47",
-      "title": "Keep internal anchors descriptive — add a gate so the discipline cannot slip",
-      "problem": "A scan on 2026-11-20 found zero generic anchors (“click here”, “read more”, “learn more”) across the published pages, but nothing tests for them, so guide nine could reintroduce them without anyone noticing.",
-      "evidence": "Google's link best practices (S34, fetched 2026-11-20) state that good anchor text “is descriptive, reasonably concise, and relevant to the page that it's on and to the page it links to”, and that generic text gives neither readers nor Google context. The scan method is recorded in COORDINATION.md (T-54).",
+      "id": "SG-46",
+      "title": "Drop the price placeholder line and keep the button",
+      "problem": "Every product card prints a short line reading Current price on Amazon and then a button reading Check price on Amazon. The line has no value beside it, which reads like a field an import left empty.",
+      "evidence": "Both strings appear on all five front-page cards and on the category cards, counted in the built HTML on 2026-11-20. The compliance reason the value is absent is correct and stays: Program Policies 2(b) permits price display only when Amazon serves the data or it comes from Creators or PA API (S02), and the site uses neither, so no currency may be rendered. Showing the empty slot is a stylistic choice, not a policy requirement - the button already sends the reader to the price.",
       "options": [
-        "A. Add a check_site rule that fails on the generic anchor texts Google names, then keep writing as now.",
-        "B. Leave anchor quality to code review.",
-        "C. Rewrite existing anchors for keywords beyond Google's guidance."
+        "A. Delete the placeholder line; keep the button and the no-prices note once per page, not once per card.",
+        "B. Keep the line but reword it as the reason, e.g. prices change, so they live on Amazon.",
+        "C. Status quo."
       ],
-      "recommendation": "A — one regex in an existing gate converts today's clean scan into a standing guarantee, which is how every other discipline on this site is enforced. C is unneeded: the scan is already clean.",
+      "recommendation": "A, with B's sentence moved into the page-level note. A shopper needs one honest explanation, not five identical empty slots.",
       "effort": "S",
       "confidence": "high",
       "status": "proposed",
-      "decision_owner": "engineering",
-      "blocks": "nothing (protective)",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
       "sources": [
-        "S34"
-      ]
+        "S02"
+      ],
+      "decision": {
+        "benefit": "Removes the most audit-like element from otherwise shop-like cards.",
+        "risk": "A reader may look for a price and not find one; the note and the button already answer that.",
+        "reversible": "yes",
+        "falsifier": "If owner testing shows readers miss the no-price explanation, reinstate it once per page."
+      }
+    },
+    {
+      "id": "SG-47",
+      "title": "Put the disqualifier directly under the buy button",
+      "problem": "The most useful sentence on the front page - who the pick is not for - is the third paragraph of the feature card, above the button. On the other four cards the equivalent trade-off line sits below the fold of the card body.",
+      "evidence": "Read from index.html on 2026-11-20: the feature card order is why-this-one, look-elsewhere-if, then the CTA; the product cards place the CTA after the trade-off but with a spacer pushing the button down. This is a placement judgement, and the only evidence for it is that the decision happens at the button, so the caveat belongs beside it. Nothing in Program Policies 2(b) is involved, and no claim about products or popularity is made either way (S02).",
+      "options": [
+        "A. Reorder each card so the CTA is followed immediately by the who-it-is-not-for line.",
+        "B. Keep the order and pull the line into the button block as a caption.",
+        "C. Status quo."
+      ],
+      "recommendation": "A. It changes order only, so the risk is a layout regression, not a factual one, and it puts the site's distinguishing honesty where the click decision is made.",
+      "effort": "S",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "sources": [
+        "S02"
+      ],
+      "decision": {
+        "benefit": "The one line a competing page will never print ends up where the reader is about to act.",
+        "risk": "A caveat after the button may reduce clicks; if it does, that is a trade the owner may not want.",
+        "reversible": "yes",
+        "falsifier": "Once any click measurement exists, if click-through drops materially, move the line back above the CTA."
+      }
+    },
+    {
+      "id": "SG-48",
+      "title": "Date the seasonal block and schedule what replaces it",
+      "problem": "The front page carries a Thanksgiving block with two dated tiles and no stated review date. Thanksgiving 2026 is Thursday 2026-11-26, so the block becomes last week's news on 2026-11-27 and nothing is queued to replace it.",
+      "evidence": "Read from index.html on 2026-11-20 (the block links the temperature plan and the gift guide, each labelled by month, not by an expiry). Program Policies 2(b) obliges an associate to remove links and references to a limited-time promotion as soon as it ends on the Amazon site (S02); a dated editorial tile is not a promotion, but the same discipline is what keeps a publication from shipping as a museum. The plan in data/editorial-plan.json already holds guide proposals; none carries a scheduled publish date.",
+      "options": [
+        "A. Add a visible in-season-until label to the block and a dated replacement task for 2026-11-27.",
+        "B. Take the seasonal block out of the front page entirely and rely on the guides list.",
+        "C. Status quo."
+      ],
+      "recommendation": "A. It is one label and one calendar commitment, and it is the difference between a publication with a cadence and a repository with pages.",
+      "effort": "M",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "the first scheduled publish, which is also what SG-07 and SG-18 want measured",
+      "sources": [
+        "S02"
+      ],
+      "decision": {
+        "benefit": "Readers get told when a date-bound recommendation stops applying, and the front page has a next step instead of a fade.",
+        "risk": "A committed date the site then misses is worse than no date.",
+        "reversible": "yes",
+        "falsifier": "If no replacement guide is ready by 2026-11-26, remove the block rather than let it run past its season."
+      }
     }
   ],
   "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed. | 2026-11-20 (session f3900cd3): this session's four rows were renumbered twice while the branch was open — first written SG-32..SG-35, then SG-36..SG-39, now SG-39..SG-42 — each time because another session had registered different proposals under those ids. Text is unchanged; each moved row carries a dated note. No upstream row was edited."

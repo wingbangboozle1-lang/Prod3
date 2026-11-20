@@ -35,6 +35,11 @@ implemented by being written down.
    Associates ID on live links, and the Special Link test are still owner-only (FLG-001, FLG-006, FLG-010).
    Today's read adds one reason not to improvise: the "tag as a parameter in the URL" wording is a direct
    quote from §2(b), so an untagged link is a tracking failure before it is a policy question.
+6. **The link picture got worse and better in the same hour.** This session re-tested two of the five supplied
+   short links and both landed on the correct product page (§7a) — where two earlier records from today read a
+   homepage landing, and where 18 of the site's 25 buy buttons still route readers through that same
+   inconsistency. Nobody's record is overwritten; the practical conclusion is the same one SG-13 already
+   reaches, and it is now the only blocker worth an hour of the owner's time before anything else ships.
 
 ## 2. What was read today, and where to check it
 
@@ -142,7 +147,19 @@ exists, it is quoted above, and it is a question for the owner's legal review ra
 | `data/policy-checks.json` | C-04 restated with the located §6(w) text; C-01 corrected to "§5 names the sentence, §6 makes it a material breach"; C-05, C-06, C-11, C-13 given the located subsection text; six new rows **C-15..C-20** for §6(t), §6(y), §6(s), §6(g)+§4, §6(n)+§6(p), §1 + CIS §5 | Not claimed by another session |
 | `compare.html` | The Ratings footnote no longer cites §2(t); it cites §6(t) and drops the claim that the API returns a rating to print | Not claimed |
 | `ideas.html` | Rejected-idea rows corrected to §6(t), and a new rejected row for **price-drop alerts** on the §6(y) ground; a new block of paste-ready design inputs for the next polish pass | Not claimed |
-| `DIRECTION.md` | Dated rows: the citation correction, and a note that the 2026-11-19 decision to remove ratings stands on §6(t) now that it is located | Not claimed |
+| `DIRECTION.md` | Dated rows: the citation correction, the five new policy-register rows, and the design-brief publication. The digest's suggestion index was also re-mirrored to the full register (it stopped at SG-31 while SG-32..SG-35 already existed) and its open-questions count corrected | Not claimed |
+
+### 4a. Register nits found while working, listed rather than fixed
+
+- `suggestions.html`, `questions.html` and `citations.html` all render the byline "Register updated
+  2026-11-19" from a literal in `scripts/build_registers.py`, while the data files carry a `generated` field
+  that this round moved to 2026-11-20. One-line fix in a file owned by T-46: read the field instead of the
+  literal. A register that dates itself wrongly is the kind of detail that makes a reader distrust the numbers
+  next to it.
+- `tools/verify_site.py` asserts the feed has exactly nine items. The article count changed once already this
+  week and will change again; the assertion should be derived from the `articles/` directory (requested in §6).
+- `data/flagged.json` holds FLG-017 with `status: open` while `data/products.json` records a later same-day
+  observation; §7a adds a third. Nothing here picks a winner — the flags exist so a human can.
 | `data/suggestions.json` + regenerated `suggestions.html` | **SG-36..SG-41**, six design-brief rows in the register's own format, each with the defect, the evidence, the options and a recommendation | suggestions.json is free; the generator was run unmodified |
 
 Left alone because an active parallel session (`arena/59a087a1-prod3`, T-46, claiming `data/citations.json`,
@@ -229,6 +246,35 @@ Why it earns a slot: it is a real question with a real date, it has an official 
 sells the thermometer honestly (the rule is a *measured* temperature), and it is not the sentence-shape
 "best X for Y" filler that makes affiliate pages smell generated. Blocks: it needs the S34 registration
 first (§6) so the source column can be filled rather than marked unverified.
+
+## 7a. A fourth dated link observation, from this session, at 06:57–06:58Z
+
+Read by following the URL and recording the final address the page was served from. No purchase, no
+session-forging, no tag appended — a page read, not a click. Prices shown on those pages are deliberately not
+recorded here or anywhere in the repository (Participation Requirements §2(b); policy check C-05).
+
+| Supplied link | Final address read at | What it shows | vs. the other 2026-11-20 records |
+|---|---|---|---|
+| `link.amazon/B04G1MEwY` | `amazon.com/dp/B0CDY277D3` (P-01, Chefman 6 Qt Dual Basket) — product page, browse path `Home & Kitchen › … › Air Fryers` | 2026-11-20 06:57Z | **Disagrees** with the record that read the Amazon homepage for this token on 2026-11-20; **agrees** with the 2026-11-19 ASIN |
+| `link.amazon/B0c8moW59` | `amazon.com/dp/B0DHZTCNR5` (P-04, ThermoMaven) — product page, browse path `… › Thermometers & Timers › Meat` | 2026-11-20 06:58Z | **Agrees** with one same-day record and with 2026-11-19; the other same-day record read the homepage (FLG-023) |
+
+Three things this settles, and one it does not:
+
+- **The behaviour is not stable across attempts.** Three dated records on 2026-11-20 alone disagree with each
+  other about the same token. A shopper's single click should not depend on that. It is the strongest
+  argument yet for SG-13 (regenerate the product links inside the enrolled workflow), which is already the
+  register's open proposal — this round adds evidence to it rather than a competing proposal.
+- **`plpRedirect=mhFallback` appears in both resolved URLs.** Read literally, the parameter names a
+  homepage-fallback path in the redirect chain. That is an observation about a query string, *not* a
+  proven cause of the homepage landings other sessions recorded, and no cause is asserted here.
+- **Neither resolved URL carries a visible `tag=` parameter.** §2(b) requires the Associates ID to appear as a
+  parameter in the URL of each link to an Amazon Site. Absence in the final URL is not proof of absence in the
+  attribution chain — which is exactly why Q-B has to be answered signed in, from the report, and not by an
+  agent reading a URL bar.
+- **Not settled:** the other three tokens were not re-tested in this round (the fetch budget went to the two
+  whose records disagree). The site-wide count, from the built HTML at commit time, is **25 product buttons on
+  10 pages, 18 of them routed through `link.amazon/…` and 7 through direct `/dp/` addresses**; 435 Amazon-domain
+  anchors across 37 pages, all carrying `rel="sponsored noopener"`; the disclosure strip present on all 37.
 
 ## 8. The decision gate: what has to be answered, by whom, and what it unblocks
 

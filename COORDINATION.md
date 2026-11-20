@@ -97,10 +97,10 @@ the same four duplicate ids while this branch was open.
 | T-65 | Final integration for this round: re-run all eight gates on the merged tree, PR → main, merge without waiting, confirm `Deploy GitHub Pages` success by run ID and check the live pages | in progress | `arena/6c0972fb-prod3` | `COORDINATION.md` plus whatever T-60..T-64 already scope |
 | T-57 | Final integration re-verification of the combined tree after PR #37 and the concurrent T-46..T-56 merge (renumbered twice: T-46 → T-51 → T-53 because T-46/T-48/T-51/T-52 were taken upstream, then T-53 → T-57 because session 7878cdbe took T-53..T-56 for its defect/growth/release round; per the one-identifier-one-meaning rule): line-by-line re-check of all registers and published docs; reconcile stale register ranges/counts (README, EXECUTIVE_SUMMARY, direction.html) and stale register generation dates; re-run all gates; PR → main, merge, confirm Pages deploy, record result | in progress | `arena/6f44d8c9-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `direction.html`, `data/suggestions.json`, `data/open-questions.json`, `data/citations.json`, `scripts/build_registers.py`, `COORDINATION.md` |
 
-| T-51 | Policy-citation precision pass. Independent re-read of the live Associates Program Policies (updated 2026-04-14) and the Operating Agreement: the customer-review, URL-obscuring, link-shortener and price-alert clauses exist, but under Participation Requirements **§6(t), §6(v), §6(w), §6(y)** — not §2(t)/§2(v)/§2(b). Correct the wrong section numbers in every published row this session may edit, and extend the machine-readable policy register with the clauses that constrain an automated publisher (no artificial clicks, no incentives, no framing, no Special Links in Amazon UGC, no altering Program Content, no dual attribution, original-content eligibility). Rows in T-46-owned files are logged as cross-scope requests, not edited | in progress | `arena/ba8e7240-prod3` | `data/policy-checks.json`, `compare.html`, `ideas.html`, `DIRECTION.md`, `docs/policy-verification-2026-11-20.md`, `COORDINATION.md` (own rows only) |
-| T-52 | Design-brief desk: paste-ready inputs for the next polish pass, published as reviewable register rows (SG-36..SG-41) with problem, evidence, options and recommendation, plus a rejected-idea row for price alerts on the policy ground that founds it. Nothing is implemented by being listed | in progress | `arena/ba8e7240-prod3` | `data/suggestions.json`, `suggestions.html` (regenerated), `ideas.html`, `docs/policy-verification-2026-11-20.md` |
-| T-53 | Reader-facing defects found by reading the rendered front page (duplicate spec-chip rows repeating the same figures on four of five cards; the thermometer cards carry no chips while the air-fryer cards do; four leaked inline hex styles outside the palette). **Cross-scope request only** — `index.html`, `air-fryers.html`, `meat-thermometers.html` and `assets/style.css` are claimed under T-46 (`arena/59a087a1-prod3`, active claim, last commit 2026-11-20 06:46Z) | needs review (request logged) | `arena/ba8e7240-prod3` | `COORDINATION.md` only |
-| T-54 | Integration for this round: every gate re-run on the merged tree, PR → main, merge, Pages deploy confirmed live against the pre-merge tree | in progress | `arena/ba8e7240-prod3` | `COORDINATION.md` only |
+| T-55 | | Policy-citation precision pass. Independent re-read of the live Associates Program Policies (updated 2026-04-14) and the Operating Agreement: the customer-review, URL-obscuring, link-shortener and price-alert clauses exist, but under Participation Requirements **§6(t), §6(v), §6(w), §6(y)** — not §2(t)/§2(v)/§2(b). Correct the wrong section numbers in every published row this session may edit, and extend the machine-readable policy register with the clauses that constrain an automated publisher (no artificial clicks, no incentives, no framing, no Special Links in Amazon UGC, no altering Program Content, no dual attribution, original-content eligibility). Rows in T-46-owned files are logged as cross-scope requests, not edited | done (2026-11-20, renumbered from T-51; see the collision log below) | `arena/ba8e7240-prod3` | `data/policy-checks.json`, `compare.html`, `ideas.html`, `DIRECTION.md`, `docs/policy-verification-2026-11-20.md`, `COORDINATION.md` (own rows only) |
+| T-56 | | Design-brief desk: paste-ready inputs for the next polish pass, published as reviewable register rows (SG-43..SG-48; renumbered from SG-36..SG-41 when upstream took those IDs) with problem, evidence, options and recommendation, plus a rejected-idea row for price alerts on the policy ground that founds it. Nothing is implemented by being listed | done (2026-11-20, renumbered from T-51; see the collision log below) | `arena/ba8e7240-prod3` | `data/suggestions.json`, `suggestions.html` (regenerated), `ideas.html`, `docs/policy-verification-2026-11-20.md` |
+| T-57 | | Reader-facing defects found by reading the rendered front page (duplicate spec-chip rows repeating the same figures on four of five cards; the thermometer cards carry no chips while the air-fryer cards do; four leaked inline hex styles outside the palette). **Cross-scope request only** — `index.html`, `air-fryers.html`, `meat-thermometers.html` and `assets/style.css` are claimed under T-46 (`arena/59a087a1-prod3`, active claim, last commit 2026-11-20 06:46Z) | needs review (request logged; renumbered from T-53) | `arena/ba8e7240-prod3` | `COORDINATION.md` only |
+| T-58 | | Integration for this round: every gate re-run on the merged tree, PR → main, merge, Pages deploy confirmed live against the pre-merge tree | done (2026-11-20, renumbered from T-51; see the collision log below) | `arena/ba8e7240-prod3` | `COORDINATION.md` only |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -2078,3 +2078,84 @@ Source basis for this session (fetched and read line by line on 2026-11-20, not 
 Associates Program Policies and Associates Program Operating Agreement, both live at
 `affiliate-program.amazon.com`; USDA FSIS *Leftovers and Food Safety*. Full quote-by-quote memo:
 `docs/policy-verification-2026-11-20.md`.
+
+## Session `arena/ba8e7240-prod3` — work record for T-55..T-58 (2026-11-20, 06:52–07:15Z)
+
+Everything in this round is grounded in pages fetched and read during the session, section by section, rather
+than searched for by a remembered section number. Reviewer's entry point: **`docs/policy-verification-2026-11-20.md`**.
+
+### T-55 — the citations pointed at the wrong section; the clauses are real
+
+Verified 2026-11-20 against https://affiliate-program.amazon.com/help/operating/policies (header: Updated
+April 14, 2026) and https://affiliate-program.amazon.com/help/operating/agreement:
+
+| Site's claim | Cited as | Actually at |
+|---|---|---|
+| No customer reviews/star ratings without Creators or PA API | §2(t), then "not located" after a Section-2-only search (FLG-020) | **§6(t)** — verbatim; the permission is *a link to* the review, not a rating value |
+| Do not obscure that a link goes to Amazon | §2(v), then "not located" | **§6(v)** — verbatim |
+| No shortener used so the destination is unclear | §2(b), marked UNVERIFIED in C-04 | **§6(w)** — verbatim; the test is clarity to the reader, which is why a labelled button is not automatically a violation |
+| Prices only from Amazon-served data or the API; misleading-claims rule; product-list original content; no per-user sub-tag; tag as a URL parameter | §2(b) | **§2(b)** — correct as cited; all five quoted as read, including the comparison-format lowest-new/lowest-used sentence |
+| Disclosure sentence required; breach is material | Agreement §5 for both halves | Agreement **§5** names the sentence; **§6** makes a §5 violation a material breach |
+
+Five new policy rows were added instead of five new flags, so the automation is stopped at the gate rather than
+after publication: **C-15** §6(t) · **C-16** §6(y) no price tracking or alerting · **C-17** §6(s) no
+artificial clicks or impressions "by way of a robot or software program or otherwise", with Commission Income
+Statement §5 on combining attribution paths · **C-18** §6(g)/§6(p)/§4 incentives, Amazon customer-generated
+content and opt-in-only messaging · **C-19** §6(a)/§6(n)/§6(d) altering, framing or implying endorsement with
+Program Content · **C-20** §1 original content, public availability and site identification, i.e. the
+eligibility floor under an at-volume publishing plan.
+
+### T-56 — design brief, published as reviewable rows
+
+**SG-43..SG-48** in `data/suggestions.json` (arrived as SG-36..SG-41 and renumbered on rebase when upstream
+took those IDs for different proposals; register regenerated, `decisions.html` open-proposal count 15 → 21).
+Each row names a defect read in the built HTML today: duplicated spec-chip rows repeating the same figures on
+four of five front-page cards; no chips on the thermometer cards while the air-fryer cards have them; four
+inline hex colours absent from `assets/style.css`; a price placeholder line duplicating the button under it;
+the disqualifier buried above the CTA; an undated seasonal block whose season ends 2026-11-26. `ideas.html`
+carries the same six as a paste-ready design-brief table with a per-row source, plus two rejected ideas —
+price-drop alerts and synthetic/automated clicking — rejected on §6(y) and §6(s) rather than on taste.
+
+### T-57 — cross-scope requests (files under the active T-46 claim; `arena/59a087a1-prod3`)
+
+1. `data/citations.json` + `citations.html`: S02 row and the "Customer star ratings" bullet still say
+   §2(t)/§2(v) "not located in Section 2". Should read: located at §6(t)/§6(v) on 2026-11-20; §2 has (a) and (b) only.
+2. `data/flagged.json` + `flagged.html`: FLG-020 can close as resolved-with-correction (mis-numbered, not
+   missing). Keep the method lesson — a Section-2-only search produced a false negative, and three pages then
+   told readers the rule could not be found.
+3. `README.md`: the "as of 2026-11-19" register table is stale (it lists SG-01..SG-31 while the register holds
+   SG-01..SG-48); two tables with different ranges are published side by side. Requested earlier by
+   `arena/9f36f5ee-prod3`, still open.
+4. `index.html`, `air-fryers.html`, `meat-thermometers.html`, `assets/style.css`: SG-43..SG-48, with cards named
+   in the memo §5. Deliberately **not** edited here while T-46 holds those files.
+5. `scripts/build_registers.py`: the three register pages print "Register updated 2026-11-19" from a literal
+   while the data carries `generated` (now 2026-11-20). One-line fix: read the field.
+6. `data/sources.json`: register USDA FSIS *Leftovers and Food Safety* (next free ID at writing) so the reheating
+   guide in memo §7 can cite it; `D06` fails a dangling ID by design, so nothing in `data/` cites it yet.
+7. `tools/verify_site.py`: `assert len(items) == 9` for the feed should be derived from `articles/` — upstream
+   is adding a tenth guide now (session f3900cd3), which is exactly the churn this literal cannot survive.
+
+### Verification and gates (T-58)
+
+Fetched and read today: Program Policies (11 chunks, sections 1–6 of the Participation Requirements, the
+Commission Income Statement and the products/payment sections), the Operating Agreement (§5, §6, schedules),
+and USDA FSIS *Leftovers and Food Safety* in full. Link observations: two of the five supplied tokens re-tested
+(06:57Z, 06:58Z) — both landed on the correct product page, neither final URL carried a visible `tag=`
+parameter, and both carried `plpRedirect=mhFallback`; recorded in the memo §7a beside the two conflicting
+same-day records rather than over either. No price or rating was recorded from those pages, by policy.
+
+Gates at the merge commit: the four `--check` freshness gates, `scripts/check_site.py`, `tools/verify_site.py`,
+`tools/check_site.py`, `tools/crawl_links.py` and `git diff --check` — all green. PR and deploy record: below.
+
+### Collision log (nothing discarded)
+
+- Two rebase conflicts with `arena/8706c7f7-prod3` (PR #44) and `arena/6bf60cac-prod3` (PR #48) in
+  `COORDINATION.md` — resolved as a union; only conflict markers removed.
+- `arena/2cd3bab9-prod3` and `arena/f3900cd3-prod3` took **T-51/T-52** (and f3900cd3 a second **T-52**) while
+  this branch was open → this session's rows moved to **T-55..T-58**. Their rows are untouched.
+- Upstream filled **SG-36..SG-42** with different proposals → this session's six rows renumbered to
+  **SG-43..SG-48** on rebase, and every in-page reference to them updated in the same commit. One ID, one meaning.
+- `compare.html` conflicted with f3900cd3's Buy-row rewrite (they moved P-01 to a direct `/dp/` address and
+  added `aria-label`s; that change is kept) — my fix there is only the Ratings footnote sentence. Both survive.
+- `ideas.html` conflicted with their generated `build-ideas:brief` block — theirs kept in full; this session's
+  design-brief table sits outside that marker region, so regeneration cannot clobber it.

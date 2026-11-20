@@ -286,7 +286,7 @@ parallel produced the defect class closed here: the same identifier naming
 different findings wherever a merge dropped a renumber. One id now means one
 thing (FLG-024..FLG-038, SG-01..SG-47, Q-01..Q-29, DT-01..DT-13); the
 DIRECTION.md suggestion index is generated from `data/suggestions.json` so it
-cannot drift again; gate D41 (negative-tested) fails the build when any surface
+cannot drift again; gate D44 (negative-tested) fails the build when any surface
 cites an id no register defines. Reading still finds what gates cannot: this
 pass corrected five wrong-subject citations (air-fryers.html and
 data/products.json named a retired flag number for the F-01 capacity conflict;

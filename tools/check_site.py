@@ -413,6 +413,20 @@ for _sid in sorted(set(re.findall(r"\bSG-\d{2}\b", _dir))):
     check("D29-direction-suggestion-refs", _sid in _sgids,
           f"DIRECTION.md cites {_sid}, which is not in data/suggestions.json")
 
+# D31: one flag id must label one finding.
+# On 2026-11-20 flagged.html carried FLG-020, FLG-021, FLG-022 and FLG-023 twice each,
+# labelling four pairs of unrelated findings (T-46 logged it and left it for the owner).
+# A duplicated id makes an earlier citation ambiguous, which is the whole point of an id,
+# so this is now a release failure. The second finding in each pair was renumbered;
+# no finding was deleted. Count is taken from the callout labels, not from the whole page,
+# because ids are also cited in prose.
+_flag_ids = re.findall(r"<strong>((?:FLG|F)-\d{3}) \u2014", docs.get("flagged.html", ""))
+_flag_dupes = sorted({i for i in _flag_ids if _flag_ids.count(i) > 1})
+check("D31-flag-id-unique", not _flag_dupes,
+      f"flagged.html: id(s) labelling more than one finding: {_flag_dupes}")
+check("D31-flag-count", len(_flag_ids) >= 26,
+      f"flagged.html: only {len(_flag_ids)} labelled findings found (expected at least 26)")
+
 # D27: the tools pages must exist and be reachable from the front page
 for _tool in ("tools/index.html", "tools/compare-builder.html",
               "tools/oven-converter.html", "tools/cook-temperatures.html"):

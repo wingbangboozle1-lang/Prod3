@@ -262,7 +262,7 @@ the screen said, and the rest of the register becomes decidable.</p>
 <thead><tr><th>#</th><th>Do this</th><th>You end up with</th><th>Then unblocks</th></tr></thead>
 <tbody>
 <tr><td><strong>Q-23</strong></td><td>Associates Central → Account Settings. Is <code>shopnow047c-20</code> listed, and is the account in good standing?</td><td>Yes or no, with the date</td><td>Whether the disclosure describes a live relationship, and whether any link can earn at all</td></tr>
-<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the two homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-023)</td></tr>
+<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-025)</td></tr>
 <tr><td><strong>Q-18</strong></td><td>Add the site as a Search Console property, verify it, submit <code>sitemap.xml</code>.</td><td>A verified property and a submitted sitemap</td><td>Choosing the next guide from measured queries instead of instinct</td></tr>
 <tr><td><strong>Q-19</strong></td><td>Associates Central → Product Advertising API. Is the tab available?</td><td>Available, or not yet</td><td>Whether prices and ratings can ever be displayed compliantly</td></tr>
 </tbody></table></div>
@@ -345,7 +345,7 @@ def render_citations():
 <h2>What is deliberately not here</h2>
 <ul>
 <li><strong>Prices and availability.</strong> Program Policies §2(b) permits them only when Amazon serves the data or they arrive through Creators/PA API. Neither applies, so no price is rendered and none is logged as a published figure.</li>
-<li><strong>Customer star ratings.</strong> Program Policies §2(t) wording was not located in Section 2 on 2026-11-20 (FLG-020). Star ratings were removed from this site on 2026-11-19.</li>
+<li><strong>Customer star ratings.</strong> Program Policies §6(t) — &ldquo;Content on your Site&rdquo;, not Section 2 — bars displaying customer reviews or star ratings unless they were obtained through Creators API or PA API. The clause was located and quoted on 2026-11-20 (<code>data/policy-clause-map.json</code>). Star ratings were removed from this site on 2026-11-19.</li>
 <li><strong>Revenue, conversion rates, traffic.</strong> No first-party report exists. The ledger is empty by design.</li>
 <li><strong>Product photography.</strong> No licensed photography is used; the cards are typographic art built from listed specs.</li>
 </ul>

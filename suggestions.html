@@ -45,7 +45,7 @@
 <div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (23)</h2>
+<h2>Waiting on a decision (24)</h2>
 <div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -311,15 +311,27 @@
       </div>
       <p class="small muted">Unblocks: nothing (protective)</p>
     </article><article class="card decision-card" id="SG-48">
-      <div class="meta">SG-48 · owner decides</div>
+      <div class="meta">SG-48 · editorial decides</div>
+      <h3>Give each generated product page a consider-if / look-elsewhere-if pair and a guide next-step</h3>
+      <p><strong>The situation.</strong> The generated product pages list every published field and every flag naming the product, but they do not tell a reader in one place which routine the product fits and which alternative fits better, so the shop&#x27;s judgement lives only on the front page.</p>
+      <p><strong>The evidence.</strong> The generated pages carry &#x27;The honest one-liner&#x27; plus a next-step line (compare / buying guide), while the front page carries a consider-if line per card (T-50 pages). The product page is where a reader has already narrowed the choice.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Extend scripts/build_products.py to render a consider-if / look-elsewhere-if block and 2-3 guide links per product, sourced from the existing register data. Draft copy for all five exists on branch arena/fe5fd1d9-prod3 (T-38 hand-built pages, now superseded).</li><li>B. Keep the generated pages as-is and leave the judgement to the front page and the buying guide.</li><li>C. Add a per-product FAQ block instead.</li></ul>
+        <p><strong>Recommendation.</strong> A is cheap and keeps the generator canonical. Needs the T-50 generator owner to accept the block.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-48"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: </p>
+    </article><article class="card decision-card" id="SG-49">
+      <div class="meta">SG-49 · owner decides</div>
       <h3>Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms</h3>
       <p><strong>The situation.</strong> The roadmap wants automated refreshes of listing and price data, but the Associates IP License now carries explicit Agent Terms: software that accesses Program Content must identify itself in its user-agent string, must not conceal that it is an agent, and must not circumvent human-verification measures. A scheduled scraper of Amazon listing pages built into CI would breach those terms even if the copied values were handled carefully afterwards.</p>
-      <p><strong>The evidence.</strong> Associates Program Policies → IP License and Usage Requirements §4 (Agent Terms), read verbatim on the live page on 2026-11-20 (session 1fbc2432, T-66; recheck file carries the quotes): an agent must identify itself (&quot;Agent/[agent name]&quot; in the request user-agent string), must not mimic human speed or keystroke patterns, must respond truthfully to human-verification prompts, and must not circumvent such measures. PA API access has separate credential requirements (§2). The site today records listing values only from dated manual fetches (data/products.json verification_method); no automated Amazon fetch exists in CI. Originally drafted as SG-39; renumbered after PR #52 and the T-54 renumber took SG-39..42 (main at SG-47 when registered).</p>
+      <p><strong>The evidence.</strong> Associates Program Policies → IP License and Usage Requirements §4 (Agent Terms), read verbatim on the live page on 2026-11-20 (session 1fbc2432, T-66; data/recheck-2026-11-20-1fbc2432.json carries the quotes): an agent must identify itself (&quot;Agent/[agent name]&quot; in the request user-agent string), must not mimic human speed or keystroke patterns, must respond truthfully to human-verification prompts, and must not circumvent such measures. PA API access has separate credential requirements (§2). The site today records listing values only from dated manual fetches (data/products.json verification_method); no automated Amazon fetch exists in CI. Drafted as SG-39, then renumbered SG-48 after the PR #52/#72 collisions took those slots; registered as SG-49.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence high</span></p>
       <details><summary>The options and the recommendation</summary><ul><li>A. Enroll in the Product Advertising API (owner account action) and refresh prices, availability and star ratings only through it, with the required date/time stamp and disclaimer whenever displayed.</li><li>B. Keep manual dated fetches only; if an automated fetch of Amazon pages is ever added, configure it to identify itself per the Agent Terms and halt immediately on any anti-bot measure.</li><li>C. Add a scheduled scraper of listing pages without agent identification.</li></ul>
         <p><strong>Recommendation.</strong> A long-term, B until the PA API is approved. C is non-compliant with the Agent Terms and endangers the Associates account; do not implement.</p></details>
       <div class="decide-box">
-        <div class="opts" data-decide="SG-48"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+        <div class="opts" data-decide="SG-49"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: any future automation of listing or price data (follow-on to DT-02)</p>
     </article></div>

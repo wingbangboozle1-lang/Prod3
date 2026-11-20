@@ -82,6 +82,16 @@
 </table>
 <p class="small muted">What did <em>not</em> change: no price is rendered anywhere, every Amazon anchor is <code>rel="sponsored"</code>, the exact &sect;5 disclosure sentence appears in the strip and the footer of every page, and every new table row carries a source link or an explicit <em>No official source</em> marker.</p>
 
+<h2>What changed on 2026-11-20 — session fe5fd1d9 (T-38), after T-50's product pages</h2>
+<p>This session claimed per-product detail pages while T-50 was shipping them as a generator. The generated pages (under <a href="products/chefman-6-qt-dual-basket.html">products/</a>) were adopted as canonical and this session's hand-built drafts were retired untouched. What shipped on top of T-50 instead:</p>
+<ul>
+<li><strong>A FLG callout-id-uniqueness gate was proposed</strong> (three sessions had numbered flags independently); main's generalized one-meaning rules (D19/D35/D38) already enforce it, so the duplicate rule was dropped instead of shipped twice.</li>
+<li><strong>The comparison table's five buy buttons were de-risked</strong> to the official product pages, matching T-50's product-page policy, because <a href="flagged.html">FLG-025</a> records every supplied short link landing on the Amazon homepage at the 2026-11-20 re-check.</li>
+<li><strong>A dated addendum to FLG-019</strong>, whose button counts had moved twice.</li>
+<li><strong>Register rows FLG-030/FLG-031</strong>, so the FLG-030/031 callouts have register entries (the FLG-033/034 callouts that arrived from main still lack register rows — logged for the json owners, not invented here).</li>
+<li><strong>Proposal SG-48</strong> (numbered SG-39, then SG-43, then SG-48 as main took each id): consider-if / look-elsewhere-if blocks for the generated pages, with register-traced draft copy preserved on branch arena/fe5fd1d9-prod3.</li>
+<li><strong>Full suite green on the merged tree</strong>: all freshness gates, both checkers, release gate, and the crawler — 0 broken links, 0 dead anchors, 0 orphans.</li>
+</ul>
 <h2>The three decisions that actually gate revenue</h2>
 <ol>
 <li><strong>Are the links tagged?</strong> Amazon's Program Policies require an Associates ID or tag as a URL parameter on every link to an Amazon site. The five supplied <code>link.amazon</code> short links carry no visible tag in the URL a reader receives. One signed-in click per product in SiteStripe settles it (DT-01). This is not a claim that the links are invalid — it is an unresolved status.</li>

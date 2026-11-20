@@ -135,7 +135,7 @@ gate rule `D20` now fails the build if any two live suggestions share a title.
 
 **Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
 `rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
-39 pages. Every new table row carries a source link or an explicit "No official source" marker,
+every shipped page. Every new table row carries a source link or an explicit "No official source" marker,
 and the gate fails a row that has neither — so "unverified" can never hide.
 
 **Still true, still not this session's to fix.** The five short links carry no visible
@@ -149,6 +149,20 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
 (39 pages, 5,879 assertions) and `tools/crawl_links.py` (39 pages, 0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
+
+**Gates at the close of this session (T-38, session fe5fd1d9, 2026-11-20):** this session claimed
+per-product detail pages concurrently with T-50, which shipped them first as a generator
+(`scripts/build_products.py`, five pages, its own freshness and coverage gates). The generated
+pages were adopted as canonical and this session's hand-built drafts were retired; what shipped
+on top of T-50 instead: gate rule **D34** (unique FLG callout ids on `flagged.html`),
+de-risking of all five comparison-table buy buttons to the official product pages (the supplied
+short links all landed on the Amazon homepage at the FLG-025 re-check), a dated addendum to
+FLG-019, register rows FLG-030/FLG-031 so every published callout id has a register entry, and
+proposal **SG-39** (consider-if / look-elsewhere-if blocks for the generated pages, draft copy
+preserved on this branch). Full suite green on the merged tree: `build_chrome
+--check`, `build_registers --check`, `build_decisions --check`, `build_products --check`,
+`build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
+and `tools/crawl_links.py` — 0 broken links, 0 dead anchors, 0 orphans.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.
 

@@ -37,8 +37,8 @@ options, and recommendations live there.
 | SG-23 | Make one page the definitive answer to "how big is it really" | implemented | editorial |
 | SG-24 | Give the site a named editor before giving it a voice | proposed | owner |
 | SG-25 | Stop calling it a decision log until decisions are actually recorded there | implemented | engineering |
-| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-021 gap note below; the registered SG-27..SG-31 rows (this session re-mirrored them verbatim) are the canonical ones | — |
-**Gap, 2026-11-20 (FLG-021):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
+| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-029 gap note below; the registered SG-27..SG-47 rows (this session re-mirrored them verbatim) are the canonical ones | — |
+**Gap, 2026-11-20 (FLG-029):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
 | SG-27 | One name for the Direction page, in the nav and the footer | implemented | engineering |
 | SG-28 | Ship the RSS feed and advertise it on every page | implemented | engineering |
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
@@ -49,9 +49,10 @@ options, and recommendations live there.
 | SG-45 | Fact-check any AI-assisted draft line by line before it ships, and say how the site is made | proposed | owner |
 | SG-46 | Measure Core Web Vitals once, then gate new frontend effects on the result | proposed | editorial |
 | SG-47 | Keep internal anchors descriptive — add a gate so the discipline cannot slip | proposed | engineering |
-| SG-48 | Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms | proposed | owner |
+| SG-48 | Give each generated product page a consider-if / look-elsewhere-if pair and a guide next-step | proposed | editorial |
+| SG-49 | Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms | proposed | owner |
 
-SG-48 was added 2026-11-20 (session `arena/1fbc2432-prod3`, T-66) from the same-day official-source recheck (`data/recheck-2026-11-20-1fbc2432.json`); the row was drafted as SG-39 and renumbered twice with the register. SG-43..SG-47 were added 2026-11-20 (session `arena/7878cdbe-prod3`, T-54; renumbered twice while
+SG-49 was added 2026-11-20 (session `arena/1fbc2432-prod3`, T-66) from the same-day official-source recheck (drafted as SG-39, then SG-48, before the register collisions took those slots) (`data/recheck-2026-11-20-1fbc2432.json`); the row was drafted as SG-39 and renumbered twice with the register. SG-43..SG-47 were added 2026-11-20 (session `arena/7878cdbe-prod3`, T-54; renumbered twice while
 this branch was queued — first from SG-32..SG-36 after upstream 6bf60cac/8692a390 registered
 SG-32..SG-38, then from SG-39..SG-43 after upstream PR #52 registered SG-39..SG-42) with sources
 verified that day:
@@ -67,11 +68,11 @@ SG-19. The ledger is the single source of truth.
 
 ## Open questions — what must be answered before deciding
 
-Twenty-three questions are registered in `data/open-questions.json` (Q-01…Q-23). Each carries
+Twenty-nine questions are registered in `data/open-questions.json` (Q-01…Q-29). Each carries
 `known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only`).
 
-**Correction, 2026-11-20 (FLG-020).** This digest used to list Q-08 as the account-status question
+**Correction, 2026-11-20 (FLG-028).** This digest used to list Q-08 as the account-status question
 and Q-05 as "which query set converts". Neither matched the register: Q-08 is "what counts as a
 session for the ledger" and Q-05 is "who is the named author". The account-status question had never
 been registered at all, so it was added as **Q-23** rather than renumbered into a used id. Every id
@@ -154,7 +155,7 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |
 | 2026-11-20 | Reconcile the path chooser on `direction.html` and in this file with the canonical paths in `data/decisions.json` (DT-01..DT-10); retire the stale “Steady publication / Conversion focus / Hold” wording and its wrong SG-04/SG-06 citations | session T-39 audit | The digest and the decision desk cannot disagree about what the three paths are |
-| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-021, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
+| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-029, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
 | 2026-11-20 | Publish one question-shaped guide a calendar month; approver: the site owner; next guide due 2026-12-31 (DT-10, owner instruction in the 2026-11-20 brief) | Owner instruction · `docs/publishing-cadence.md` · `data/decisions.json` DT-10 | The commitment is a rhythm, not a traffic or revenue forecast; `tools/verify_site.py` now fails a guide that is missing from the sitemap, the feed (headline = H1) or the guides hub |
 
 ## Audit findings, session a25ccde6 (2026-11-19)

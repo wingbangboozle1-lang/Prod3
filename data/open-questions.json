@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-20",
-  "premise": "A decision made on missing information is a guess wearing a suit. Each entry states what is known, what is not, why it blocks a decision, and the cheapest concrete action that would answer it. Q-22 and Q-23 were added 2026-11-20 by session ce911db5; the account-status question had been described in DIRECTION.md but never registered (FLG-020).",
+  "premise": "A decision made on missing information is a guess wearing a suit. Each entry states what is known, what is not, why it blocks a decision, and the cheapest concrete action that would answer it. Q-22 and Q-23 were added 2026-11-20 by session ce911db5; the account-status question had been described in DIRECTION.md but never registered (FLG-028).",
   "status_scale": {
     "blocking": "A decision is on hold until this is answered.",
     "queued": "Should be answered before the next content release.",
@@ -523,6 +523,23 @@
         "S25"
       ],
       "evidence_status": "verified"
+    },
+    {
+      "id": "Q-30",
+      "group": "Measurement",
+      "question": "Do the outbound-click counters fire on the tagged product buttons, and where do the counts land?",
+      "blocks": "SG-48, and any statement about which button gets clicked. The campaign ledger stays empty until an authorized first-party report exists.",
+      "known": "assets/app.js records a click event per outbound link with an ASIN label; scripts/check_site.py rule 7b now counts the tagged buttons (30 on 2026-11-20), so the population being measured is known and stable. The event has a data-event name and a data-asin, both machine-checkable.",
+      "unknown": "Whether anything receives or stores the event. No analytics endpoint is configured (DT-07), and no first-party report exists, so no click count, conversion rate or revenue figure can be quoted anywhere on this site.",
+      "how_to_find_out": "Owner: decide DT-07 (self-hosted counter, a privacy-preserving hosted endpoint, or nothing). If nothing is chosen, the local-only counts and this question should be closed as won't-measure, and the ledger's columns stay defined but empty.",
+      "who": "owner",
+      "cost": "a decision, then minutes",
+      "evidence_status": "unverified — no measurement exists",
+      "status": "open",
+      "sources": [
+        "S01",
+        "S02"
+      ]
     }
   ],
   "sources_note": "Each question carries the registered source IDs of the official document that speaks to it, or an empty list plus evidence_status='unverified' when no official document settles it. Nothing is cited that does not answer the question."

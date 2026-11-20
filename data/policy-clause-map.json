@@ -137,8 +137,90 @@
       "quote": "Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.",
       "cited_by_site_for": "why no price history or price alert feature is proposed",
       "verified_on": "2026-11-20"
+    },
+    {
+      "cite": "S02 s.6(a)",
+      "doc": "S02",
+      "section": "6(a)",
+      "heading": "Content on your Site",
+      "quote": "You will not add to, delete from, or otherwise alter any Program Content in any way, including by adding additional information, except that you may resize Program Content consisting of a graphic image in a manner that maintains the original proportions of the image or truncate Program Content consisting of text in a manner that does not materially alter the meaning of the text or cause the text to become factually incorrect, or misleading.",
+      "cited_by_site_for": "why no Amazon banner, API block or Program Content widget is rendered, and why listing text is quoted with attribution rather than restyled",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "cite": "S02 s.6(d)",
+      "doc": "S02",
+      "section": "6(d)",
+      "heading": "Content on your Site",
+      "quote": "You will not use any Program Content, including any name or likeness embodied in that Program Content, in a manner that implies a person's or company's endorsement or sponsorship of, or commercial tie-in or other association with, any product, service, party, or cause (including by placing unrelated third party materials in close proximity to Program Content).",
+      "cited_by_site_for": "why product names appear in the site's own label art and no recommendation is worded as an endorsement",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "cite": "S02 s.6(g)",
+      "doc": "S02",
+      "section": "6(g)",
+      "heading": "Content on your Site",
+      "quote": "You will not offer any person or entity any consideration, reward, or incentive (including any money, rebate, discount, points, donation to charity or other organization, or other benefit) for using Special Links.",
+      "cited_by_site_for": "why there is no giveaway, cashback, rebate or share-to-unlock mechanic attached to a link (policy check C-18)",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "cite": "S02 s.6(n)",
+      "doc": "S02",
+      "section": "6(n)",
+      "heading": "Content on your Site",
+      "quote": "You will not frame an Amazon Site, or any part of it, within your Site, including by display within an integrated web browser (e.g., WebView) within a Mobile Application. However, displaying a Special Link on your Site in accordance with Section 2 of these Participation Requirements, will not be a violation of this section.",
+      "cited_by_site_for": "why no Amazon page is embedded and why the only product surface is an outbound link",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "cite": "S02 s.6(p)",
+      "doc": "S02",
+      "section": "6(p)",
+      "heading": "Content on your Site",
+      "quote": "You will not include any Special Links in any content that you place on an Amazon Site (for example, in connection with any advertising service available through an Amazon Site or in a customer review, forum, Wish List, guide, or any other customer-generated context available on an Amazon Site).",
+      "cited_by_site_for": "why no link is ever posted to Amazon, including by an automated promoter (C-18)",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "cite": "S02 s.6(s)",
+      "doc": "S02",
+      "section": "6(s)",
+      "heading": "Content on your Site",
+      "quote": "You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise.",
+      "cited_by_site_for": "why the click counter is passive, why nothing prefetches a Special Link, and why synthetic traffic is refused (C-17)",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "cite": "S02 s.4 email",
+      "doc": "S02",
+      "section": "4",
+      "heading": "Promotional Limitations",
+      "quote": "You may include Special Links in emails, SMS and direct messaging from your social media Sites; provided, that such communications are solicited (i.e., opted into by the receiving customer) and are otherwise in compliance with the Agreement, the Trademark Guidelines, and the Amazon Brand Usage Guidelines.",
+      "cited_by_site_for": "why no email or messaging automation ships without an opt-in record (C-18)",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "cite": "S02 s.1 original content",
+      "doc": "S02",
+      "section": "1",
+      "heading": "Enrollment and Eligibility",
+      "quote": "Your Site(s) must contain original content and be publicly available via the website address provided in the application. Original content utilizing third-party materials must contain significant commentary, analysis, or transformation to any materials you include.",
+      "cited_by_site_for": "the eligibility floor under any at-volume content automation (C-20)",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "cite": "S02 s.5 CIS attribution",
+      "doc": "S02",
+      "section": "5",
+      "heading": "Commission Income Limitations",
+      "quote": "Associates' tags should only be used to benefit from Amazon Associates commissions. If we detect that you (and/or a third party acting on your behalf) are attempting to claim commissions from both Amazon Associates and another program using the same traffic (for example, by manipulating or combining attribution links), we may take action, including withholding commissions, and/or terminating your participation in the Associates program.",
+      "cited_by_site_for": "why combining or double-tagging attribution links is refused, including in automated promotion (C-17)",
+      "verified_on": "2026-11-20"
     }
   ],
   "method": "Each clause was read on the live page on 2026-11-20 by fetching the URL in documents above and locating the section heading and subsection letter. Quotes are transcribed from that read. Where an older site citation used a different number, the supersedes_citation field records it so a reader can see the correction rather than a silent rewrite.",
-  "gate": "tools/check_site.py D30 fails the release if any data file or published page cites a Program Policies clause whose number is not in this map, or re-uses a retired number."
+  "gate": "tools/check_site.py D30 fails the release if any data file or published page cites a Program Policies clause whose number is not in this map, or re-uses a retired number.",
+  "extended_by": "arena/ba8e7240-prod3, 2026-11-20 - automation-side clauses added after reading the same page section by section; each quote transcribed from the served page, none paraphrased."
 }

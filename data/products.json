@@ -104,7 +104,7 @@
         "method": "fetch_page of the official Amazon product page; each value read from the page text",
         "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
         "conflicts": [
-          "Capacity: title/bullets 6 quarts (2 × 3 qt) vs details table 6 liters (FLG-022)"
+          "Capacity: title/bullets 6 quarts (2 × 3 qt) vs details table 6 liters (F-01)"
         ]
       },
       "short_link_rechecks": [
@@ -339,8 +339,8 @@
         "method": "fetch_page of the official Amazon product page; each value read from the page text",
         "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
         "conflicts": [
-          "Temperature: title 450°F vs bullets/spec 200–400°F (FLG-023)",
-          "Wattage: resource bullet 1000W vs spec table 1700W (FLG-023)"
+          "Temperature: title 450°F vs bullets/spec 200–400°F (FLG-041)",
+          "Wattage: resource bullet 1000W vs spec table 1700W (FLG-041)"
         ]
       },
       "short_link_rechecks": [
@@ -594,7 +594,7 @@
   "claim_basis": "Specs, ratings, and prices are seller/listing statements from the snapshot. Claim-marked fields (accuracy, certification, response time, heat-safe ratings, function names) are marketing claims the site has not tested. See FLG-009.",
   "citation_policy": "Every value rendered on the site must trace to one of: (a) a dated fetch of the official listing, (b) a dated fetch of an official policy page, or (c) arithmetic over (a) that states its inputs. Values with no such trace are left blank and published on flagged.html. See data/citations.json.",
   "verified_on_live_recheck": "2026-11-20",
-  "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-023 and FLG-025.",
+  "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-031 and FLG-025.",
   "observation_note": "Three dated observations of the supplied links exist for 2026-11-20 and they do not agree. Nothing is deleted and no record outranks another. A fetch cannot establish what a signed-in reader sees, so only the owner's click-through inside the enrolled Associates workflow (Q-02 + Q-22) settles the question. No observation here is evidence that the links are invalid.",
   "link_policy_2026_11_20": {
     "date": "2026-11-20",

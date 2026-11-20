@@ -64,10 +64,10 @@ are the reasons a buyer might not trust the page yet.</div>
 <h2 class="mt">The seven decisions this site actually needs, in the order they unblock each other</h2>
 <p class="lede section-sub">Five kitchen tools, one site, and a short list of choices that are still open. Everything else on this page is the evidence behind these seven. Read down; stop when you have answered the ones you can answer today.</p>
 <div class="grid cols-4 mt">
-<div class="card"><p class="kicker" style="margin:0">Proposals open</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">27</p><p class="small muted">plus 3 blocking questions</p></div>
+<div class="card"><p class="kicker" style="margin:0">Proposals open</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">26</p><p class="small muted">plus 3 blocking questions</p></div>
 <div class="card"><p class="kicker" style="margin:0">Answerable today</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">4</p><p class="small muted">about half an hour, one login each</p></div>
 <div class="card"><p class="kicker" style="margin:0">Waiting on an account</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">13</p><p class="small muted">only the owner can settle</p></div>
-<div class="card"><p class="kicker" style="margin:0">Already shipped</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">25</p><p class="small muted">SG-01&hellip;SG-54 on the register</p></div>
+<div class="card"><p class="kicker" style="margin:0">Already shipped</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">25</p><p class="small muted">SG-01&hellip;SG-53 on the register</p></div>
 </div>
 <h2 class="mt">1. The seven, in order</h2>
 <p>Each row says what is being decided, what is known, what would settle it, and who can settle it. The first four are answerable in about half an hour with one signed-in browser.</p>
@@ -132,14 +132,33 @@ are the reasons a buyer might not trust the page yet.</div>
 <h2 class="mt">5. Where the detail lives</h2>
 <p>This brief is the reading order. The working documents are behind it, and nothing on them is implemented by being read.</p>
 <div class="grid cols-2 mt">
-<a class="card tile" href="suggestions.html"><h3>The suggestions register (SG-01&hellip;SG-54)</h3><p class="small">All 53 proposals with evidence, options, cost and risk. 25 are already shipped; 27 are open.</p></a>
-<a class="card tile" href="questions.html"><h3>The open-questions register (Q-01&hellip;Q-29)</h3><p class="small">All 29 questions: what is known, what is not, how to find out. 13 need only the owner.</p></a>
+<a class="card tile" href="suggestions.html"><h3>The suggestions register (SG-01&hellip;SG-53)</h3><p class="small">All 52 proposals with evidence, options, cost and risk. 25 are already shipped; 26 are open.</p></a>
+<a class="card tile" href="questions.html"><h3>The open-questions register (Q-01&hellip;Q-30)</h3><p class="small">All 30 questions: what is known, what is not, how to find out. 13 need only the owner.</p></a>
 <a class="card tile" href="decisions.html"><h3>The decision desk</h3><p class="small">The same material assembled as decisions, with what settles each one and a path chooser.</p></a>
 <a class="card tile" href="flagged.html"><h3>Flagged for review</h3><p class="small">Every irregularity found, including the ones that are still open, with the source for each.</p></a>
 </div>
-<p class="small muted mt">Generated from <code>data/suggestions.json</code> and <code>data/open-questions.json</code> by <code>scripts/build_ideas.py</code>. The counts above are computed at build time, so this page cannot drift from the registers again. Last built against 53 suggestions and 29 questions.</p>
+<p class="small muted mt">Generated from <code>data/suggestions.json</code> and <code>data/open-questions.json</code> by <code>scripts/build_ideas.py</code>. The counts above are computed at build time, so this page cannot drift from the registers again. Last built against 52 suggestions and 30 questions.</p>
 </section>
 <!-- build-ideas:brief:end -->
+<!-- build-ideas:design:start -->
+<h2 class="mt" id="design-brief">The design brief, copy-ready for whoever restyles this</h2>
+<p class="small muted">Written 2026-11-20 (T-63) and kept in its own marked region, so neither the generated brief above nor a rebuild can drop it. Every line is a rule the build already enforces or a constraint an official source sets. Hand it to a designer as it stands.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Constraint</th><th>The rule, in one line</th><th>Why it is not negotiable</th></tr></thead>
+<tbody>
+<tr><td>Lead with products</td><td>The first screen shows appliances and buyer questions; the verification surfaces sit one click away in the footer.</td><td>Owner instruction, recorded in <code>DIRECTION.md</code>. The site is a shop, not an audit.</td></tr>
+<tr><td>Disclosure</td><td>One strip above the masthead on every page, plus the footer copy, naming the tracking ID.</td><td>FTC guidance asks for a clear and conspicuous disclosure near the claim it qualifies (S03).</td></tr>
+<tr><td>No prices, no ratings</td><td>Nothing renders a price, star rating or review count; a button opens the listing instead, where the number is current.</td><td>Program Policies allow price and availability display only when Amazon serves them or they come from Creators API / PA API (S37). Neither applies here.</td></tr>
+<tr><td>Buttons are tagged product links</td><td>Every <code>data-event="outbound_click"</code> anchor is <code>amazon.com/dp/&lt;10-char ASIN&gt;?tag=&hellip;</code> — no shortener, no untagged link, label and target agree.</td><td>Participation Requirements 2(a)/2(b) (S37). Gates 7b and P09 fail the build otherwise, so a redesign cannot quietly undo it.</td></tr>
+<tr><td>Art, not photography</td><td>Typographic and CSS/SVG artwork only. No reused Amazon images, no generated product photographs.</td><td>Program Content includes images and only Amazon-provided assets may be used (S01, FLG-008).</td></tr>
+<tr><td>Attribution is a design element</td><td>A seller-stated figure prints with the listing named beside it; a field nobody verified stays visibly blank.</td><td>The site&rsquo;s claim is that any number on a page is traceable. Blank beats inferred.</td></tr>
+<tr><td>Guides answer a question</td><td>One buyer question per page, an honest limits section, dated sources, and a byline stating what was and was not tested.</td><td>Gate D40 counts the guides, the cadence document sets one per month, and the byline rule keeps the claim modest.</td></tr>
+<tr><td>Light page</td><td>One local stylesheet, one local script, system fonts, no third-party asset requests on shop pages.</td><td>Verified by URL scan on 2026-11-20. Core Web Vitals remain unmeasured, so no speed claim is made (Q-29).</td></tr>
+</tbody></table></div>
+<!-- build-ideas:design:end -->
+
+
+
 
 <h2>What is worth doing next, ranked</h2>
 <p>Ranked by how much it changes a reader's willingness to trust the page or click a link, per hour

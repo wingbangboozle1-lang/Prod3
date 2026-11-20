@@ -795,7 +795,7 @@ _sg_ids = {x["id"] for x in json.loads((ROOT / "data/suggestions.json").read_tex
 _q_ids = {q["id"] for q in json.loads((ROOT / "data/open-questions.json").read_text(encoding="utf-8"))["questions"]}
 for _name, _html in docs.items():
     for _sid in sorted(set(re.findall(r"\bSG-\d{2}\b", _html))):
-        if _sid == "SG-26" and _sid not in _sg_ids:  # documented gap (FLG-029); nameable only alongside it. SG-26 was restored to the register on 2026-11-20, so the exception applies only while the id is absent.
+        if _sid == "SG-26" and "SG-26" not in _sg_ids:  # gap id; nameable only with FLG-029
             check("D42-sg-refs-resolve", "FLG-029" in _html,
                   f"{_name} cites the SG-26 gap without naming FLG-029")
             continue
@@ -838,7 +838,7 @@ _families = (("SG", _reg_sg, r"\bSG-\d{2}\b"), ("Q", _reg_q, r"\bQ-\d{2}\b"),
 for _name, _txt in _surfaces.items():
     for _fam, _known, _pat in _families:
         for _tok in sorted(set(_re.findall(_pat, _txt))):
-            if _tok == "SG-26" and _tok not in _reg_sg:
+            if _tok == "SG-26" and _tok not in _known:  # gap id; nameable only with FLG-029
                 check("D44-id-refs", "FLG-029" in _txt,
                       f"{_name}: cites the SG-26 gap without naming FLG-029")
                 continue

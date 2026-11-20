@@ -232,7 +232,7 @@
       "id": "SG-13",
       "title": "Test one short link inside the enrolled Associates workflow before trusting the format",
       "problem": "The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.",
-      "evidence": "Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
+      "evidence": "Program Policies 6(w) prohibits a shortener used so the destination is unclear (S02; clause read 2026-11-20). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
       "options": [
         "A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.",
         "B. Switch every link to direct /dp/ URLs and drop the short form.",

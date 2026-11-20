@@ -135,7 +135,7 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 |---|---|---|---|
 | 2026-11-19 | Publish both readings when a listing contradicts itself | S02 | Preset count, battery life, warranty and accessory count shown as conflicts |
 | 2026-11-19 | Display no price while neither Amazon-served nor PA-API data is used | S02 §2(b) | Price slots read "Current price on Amazon"; the gate fails on a currency amount |
-| 2026-11-19 | Remove customer star ratings and rating counts from every page | S02 §2(t) | Ratings replaced with a policy note in the comparison table |
+| 2026-11-19 | Remove customer star ratings and rating counts from every page | S02 §6(t) *(recorded as the Section 2 letter until corrected 2026-11-20)* | Ratings replaced with a policy note in the comparison table |
 | 2026-11-19 | Mark every outbound Amazon link `rel="sponsored"` and open in a new tab | S04 | The gate walks every anchor |
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |

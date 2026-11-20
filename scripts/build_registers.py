@@ -345,7 +345,7 @@ def render_citations():
 <h2>What is deliberately not here</h2>
 <ul>
 <li><strong>Prices and availability.</strong> Program Policies §2(b) permits them only when Amazon serves the data or they arrive through Creators/PA API. Neither applies, so no price is rendered and none is logged as a published figure.</li>
-<li><strong>Customer star ratings.</strong> Program Policies §2(t) wording was not located in Section 2 on 2026-11-20 (FLG-020). Star ratings were removed from this site on 2026-11-19.</li>
+<li><strong>Customer star ratings.</strong> Program Policies §6(t) — &ldquo;Content on your Site&rdquo;, not Section 2 — bars displaying customer reviews or star ratings unless they were obtained through Creators API or PA API. The clause was located and quoted on 2026-11-20 (<code>data/policy-clause-map.json</code>). Star ratings were removed from this site on 2026-11-19.</li>
 <li><strong>Revenue, conversion rates, traffic.</strong> No first-party report exists. The ledger is empty by design.</li>
 <li><strong>Product photography.</strong> No licensed photography is used; the cards are typographic art built from listed specs.</li>
 </ul>

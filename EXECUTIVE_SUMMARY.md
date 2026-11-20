@@ -119,7 +119,7 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 
 **Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
-(30 pages, 3541 assertions) and `tools/crawl_links.py` (30 pages, 0 broken links, 0 dead
+(37 pages, 5,198 assertions) and `tools/crawl_links.py` (37 pages, 0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.
@@ -163,3 +163,26 @@ The repository's current release checks pass on the reviewed tree: `python3 scri
 - [Flagged for Review](flagged.html)
 - [Analytics and privacy status](analytics.html)
 - [Sources](sources.html)
+
+## Verification pass, 2026-11-20 (third session on this tree)
+
+Two defects found by reading the site against the official pages, both fixed and both now gated.
+
+**1. The Program Policies clause letters were wrong.** Ten places cited Section 2 for the star-ratings rule, the URL-obscuring rule and the shortener
+rule. Read live on 2026-11-20, the [Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (page states *Updated
+April 14, 2026*) has Section 2 titled "Links on Your Site" with subsections (a) and (b) only. The three rules are **Section 6, "Content on your Site"**:
+**(t)** customer reviews and star ratings, **(v)** obscuring the referring URL, **(w)** unclear link shortening. Every citation was corrected, the quoted
+wording and its read date are in `data/policy-clause-map.json`, and gate `D35` fails the release if a retired letter returns. Published as FLG-033,
+beside the earlier FLG-020. The conduct never changed; only the reference did.
+
+**2. The pages read as template output.** All eight evergreen articles closed with a byte-identical five-product block, and every product card on the
+front page printed its spec pills twice (the second copy HTML-entity-encoded, so it rendered as a near-repeat). Each article now closes with a next step
+specific to its own argument, the duplicate pills are removed, and gate `D36` fails the build if an article-length block repeats. Published as FLG-034.
+
+**Also checked and left alone:** every food-safety temperature and rest time on the [cook-to-temperature card](tools/cook-temperatures.html) matches the
+[USDA FSIS chart](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart), and the accuracy
+article's position on NIST matches [NIST's own traceability policy](https://www.nist.gov/metrology/metrological-traceability) ("only measurement results
+are traceable"; NIST does not endorse products and forbids references to it in advertising).
+
+**Not claimed here:** whether the five supplied short links work for a signed-in reader. Three dated observations exist for 2026-11-20 and they disagree;
+they are kept side by side in `data/products.json`, and only the owner's click inside the enrolled Associates workflow settles it (Q-02 + Q-22).

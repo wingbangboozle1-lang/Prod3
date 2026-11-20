@@ -82,6 +82,19 @@
         "matches_2026_11_19_observed_asin": false,
         "matches_other_2026_11_20_record": null,
         "note": "Third dated observation for this link. Neither earlier observation is overwritten."
+      },
+      "live_recheck_2026_11_20_five_links": {
+        "date": "2026-11-20",
+        "window_utc": "06:44-06:50",
+        "method": "each supplied link.amazon URL was fetched through the page-fetch proxy and the final URL was read. Redirect hops are not observable this way; the landing URL is the whole of the evidence. Direct TLS from this sandbox to link.amazon was refused (TLS connection closed), so a curl redirect trace could not corroborate the run.",
+        "control_observation": "In the same minutes https://www.amazon.com/dp/B08DKYBTPH was fetched with the same tool and returned the product page (its title was read), so a blanket block of Amazon product pages by the tool does not explain this run.",
+        "submitted_link": "https://link.amazon/B04G1MEwY",
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "matches_2026_11_19_observed_asin": false,
+        "result": "Landing URL was the Amazon homepage, not a product page. Recorded as its own dated observation. It neither overwrites nor outranks the other 2026-11-20 records; three independent same-day observations now exist and they differ, which is exactly why the owner's signed-in test decides it.",
+        "intended_asin_changed": false,
+        "flag": "FLG-031"
       }
     },
     {
@@ -163,6 +176,19 @@
         "matches_2026_11_19_observed_asin": false,
         "matches_other_2026_11_20_record": null,
         "note": "Third dated observation for this link. Neither earlier observation is overwritten."
+      },
+      "live_recheck_2026_11_20_five_links": {
+        "date": "2026-11-20",
+        "window_utc": "06:44-06:50",
+        "method": "each supplied link.amazon URL was fetched through the page-fetch proxy and the final URL was read. Redirect hops are not observable this way; the landing URL is the whole of the evidence. Direct TLS from this sandbox to link.amazon was refused (TLS connection closed), so a curl redirect trace could not corroborate the run.",
+        "control_observation": "In the same minutes https://www.amazon.com/dp/B08DKYBTPH was fetched with the same tool and returned the product page (its title was read), so a blanket block of Amazon product pages by the tool does not explain this run.",
+        "submitted_link": "https://link.amazon/B02NbDxp3",
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "matches_2026_11_19_observed_asin": false,
+        "result": "Landing URL was the Amazon homepage, not a product page. Recorded as its own dated observation. It neither overwrites nor outranks the other 2026-11-20 records; three independent same-day observations now exist and they differ, which is exactly why the owner's signed-in test decides it.",
+        "intended_asin_changed": false,
+        "flag": "FLG-031"
       }
     },
     {
@@ -242,6 +268,19 @@
         "matches_2026_11_19_observed_asin": false,
         "matches_other_2026_11_20_record": null,
         "note": "Third dated observation for this link. Neither earlier observation is overwritten."
+      },
+      "live_recheck_2026_11_20_five_links": {
+        "date": "2026-11-20",
+        "window_utc": "06:44-06:50",
+        "method": "each supplied link.amazon URL was fetched through the page-fetch proxy and the final URL was read. Redirect hops are not observable this way; the landing URL is the whole of the evidence. Direct TLS from this sandbox to link.amazon was refused (TLS connection closed), so a curl redirect trace could not corroborate the run.",
+        "control_observation": "In the same minutes https://www.amazon.com/dp/B08DKYBTPH was fetched with the same tool and returned the product page (its title was read), so a blanket block of Amazon product pages by the tool does not explain this run.",
+        "submitted_link": "https://link.amazon/B00hJ57DV",
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "matches_2026_11_19_observed_asin": false,
+        "result": "Landing URL was the Amazon homepage, not a product page. Recorded as its own dated observation. It neither overwrites nor outranks the other 2026-11-20 records; three independent same-day observations now exist and they differ, which is exactly why the owner's signed-in test decides it.",
+        "intended_asin_changed": false,
+        "flag": "FLG-031"
       }
     },
     {
@@ -319,6 +358,19 @@
         "matches_2026_11_19_observed_asin": false,
         "matches_other_2026_11_20_record": null,
         "note": "Third dated observation for this link. Neither earlier observation is overwritten."
+      },
+      "live_recheck_2026_11_20_five_links": {
+        "date": "2026-11-20",
+        "window_utc": "06:44-06:50",
+        "method": "each supplied link.amazon URL was fetched through the page-fetch proxy and the final URL was read. Redirect hops are not observable this way; the landing URL is the whole of the evidence. Direct TLS from this sandbox to link.amazon was refused (TLS connection closed), so a curl redirect trace could not corroborate the run.",
+        "control_observation": "In the same minutes https://www.amazon.com/dp/B08DKYBTPH was fetched with the same tool and returned the product page (its title was read), so a blanket block of Amazon product pages by the tool does not explain this run.",
+        "submitted_link": "https://link.amazon/B0c8moW59",
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "matches_2026_11_19_observed_asin": false,
+        "result": "Landing URL was the Amazon homepage, not a product page. Recorded as its own dated observation. It neither overwrites nor outranks the other 2026-11-20 records; three independent same-day observations now exist and they differ, which is exactly why the owner's signed-in test decides it.",
+        "intended_asin_changed": false,
+        "flag": "FLG-031"
       }
     },
     {
@@ -397,6 +449,19 @@
         "matches_2026_11_19_observed_asin": false,
         "matches_other_2026_11_20_record": null,
         "note": "Third dated observation for this link. Neither earlier observation is overwritten."
+      },
+      "live_recheck_2026_11_20_five_links": {
+        "date": "2026-11-20",
+        "window_utc": "06:44-06:50",
+        "method": "each supplied link.amazon URL was fetched through the page-fetch proxy and the final URL was read. Redirect hops are not observable this way; the landing URL is the whole of the evidence. Direct TLS from this sandbox to link.amazon was refused (TLS connection closed), so a curl redirect trace could not corroborate the run.",
+        "control_observation": "In the same minutes https://www.amazon.com/dp/B08DKYBTPH was fetched with the same tool and returned the product page (its title was read), so a blanket block of Amazon product pages by the tool does not explain this run.",
+        "submitted_link": "https://link.amazon/B0f3GKalj",
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "matches_2026_11_19_observed_asin": false,
+        "result": "Landing URL was the Amazon homepage, not a product page. Recorded as its own dated observation. It neither overwrites nor outranks the other 2026-11-20 records; three independent same-day observations now exist and they differ, which is exactly why the owner's signed-in test decides it.",
+        "intended_asin_changed": false,
+        "flag": "FLG-031"
       }
     }
   ],
@@ -404,5 +469,6 @@
   "claim_basis": "Specs, ratings, and prices are seller/listing statements from the snapshot. Claim-marked fields (accuracy, certification, response time, heat-safe ratings, function names) are marketing claims the site has not tested. See FLG-009.",
   "citation_policy": "Every value rendered on the site must trace to one of: (a) a dated fetch of the official listing, (b) a dated fetch of an official policy page, or (c) arithmetic over (a) that states its inputs. Values with no such trace are left blank and published on flagged.html. See data/citations.json.",
   "verified_on_live_recheck": "2026-11-20",
-  "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-023 and FLG-025."
+  "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-023 and FLG-025.",
+  "observation_note": "Three dated observations of the supplied links exist for 2026-11-20 and they do not agree. Nothing is deleted and no record outranks another. A fetch cannot establish what a signed-in reader sees, so only the owner's click-through inside the enrolled Associates workflow (Q-02 + Q-22) settles the question. No observation here is evidence that the links are invalid."
 }

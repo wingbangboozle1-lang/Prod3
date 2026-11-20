@@ -497,6 +497,28 @@ for _p in products:
     check("D32-product-page-intent-blank", "No official source" in docs.get(_rel, ""),
           f"{_rel} does not show the blank intended-ASIN field")
 
+# ---- I01–I04: an ID means one thing, and an observation says when it was made ----
+# Found 2026-11-20 while merging: flagged.html published two unrelated findings under
+# FLG-020 and two more under FLG-021 while data/flagged.json and decisions.html held
+# only the first meaning of each. Register gates already block this for SG/Q ids; the
+# flag page had no equivalent. I-series closes that.
+import collections as _c
+_flg = docs.get("flagged.html", "")
+_ids = re.findall(r"<strong>(FLG-\d{3}) — ", _flg)
+_dupes = sorted(k for k, v in _c.Counter(_ids).items() if v > 1)
+check("I02-flg-id-unique", not _dupes, f"flagged.html: repeated finding id(s) {_dupes}")
+check("I01-flg-ids-present", len(_ids) >= 25, f"flagged.html: only {len(_ids)} findings carry an id")
+for _it in json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))["items"]:
+    if str(_it["id"]).startswith("FLG-"):
+        check("I03-flg-registered-published", _it["id"] in _ids,
+              f"data/flagged.json records {_it['id']} but flagged.html does not publish it")
+for _p in products:
+    for _k, _v in _p.items():
+        if _k.startswith("live_recheck_"):
+            check("I04-recheck-shape",
+                  bool(_v.get("date")) and bool(_v.get("method")),
+                  f"{_p['id']}.{_k}: observation block missing date or method")
+
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")
 if failures:

@@ -82,6 +82,24 @@
         "matches_2026_11_19_observed_asin": false,
         "matches_other_2026_11_20_record": null,
         "note": "Third dated observation for this link. Neither earlier observation is overwritten."
+      },
+      "live_recheck_2026_11_20_session_a9b513e9": {
+        "date": "2026-11-20",
+        "session": "arena/a9b513e9-prod3 (T-51)",
+        "method": "fetch_page of the supplied link.amazon URL; the resolved page title and final URL were read. No price, rating, offer or availability text recorded.",
+        "submitted_link": "https://link.amazon/B04G1MEwY",
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_records": false,
+        "result": "Resolved to the Amazon.com homepage (page title \"Amazon.com. Spend less. Smile more.\"). No /dp/ ASIN in the final URL. All five supplied links returned the homepage in this session, including three that another same-day record shows reaching their product pages.",
+        "direct_listing_check_2026_11_20": {
+          "url": "https://www.amazon.com/dp/B0CDY277D3",
+          "result": "The /dp/ listing loaded later the same session and its page title matched the recorded title. This is a listing check, not a test of the supplied short link."
+        },
+        "intended_asin_changed": false,
+        "note": "Fourth dated observation of this link. No earlier observation is overwritten.",
+        "flag": "FLG-034"
       }
     },
     {
@@ -163,6 +181,24 @@
         "matches_2026_11_19_observed_asin": false,
         "matches_other_2026_11_20_record": null,
         "note": "Third dated observation for this link. Neither earlier observation is overwritten."
+      },
+      "live_recheck_2026_11_20_session_a9b513e9": {
+        "date": "2026-11-20",
+        "session": "arena/a9b513e9-prod3 (T-51)",
+        "method": "fetch_page of the supplied link.amazon URL; the resolved page title and final URL were read. No price, rating, offer or availability text recorded.",
+        "submitted_link": "https://link.amazon/B02NbDxp3",
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_records": false,
+        "result": "Resolved to the Amazon.com homepage (page title \"Amazon.com. Spend less. Smile more.\"). No /dp/ ASIN in the final URL. All five supplied links returned the homepage in this session, including three that another same-day record shows reaching their product pages.",
+        "direct_listing_check_2026_11_20": {
+          "url": "https://www.amazon.com/dp/B09B7SB46R",
+          "result": "The /dp/ listing loaded later the same session and its page title matched the recorded title. This is a listing check, not a test of the supplied short link."
+        },
+        "intended_asin_changed": false,
+        "note": "Fourth dated observation of this link. No earlier observation is overwritten.",
+        "flag": "FLG-034"
       }
     },
     {
@@ -242,6 +278,24 @@
         "matches_2026_11_19_observed_asin": false,
         "matches_other_2026_11_20_record": null,
         "note": "Third dated observation for this link. Neither earlier observation is overwritten."
+      },
+      "live_recheck_2026_11_20_session_a9b513e9": {
+        "date": "2026-11-20",
+        "session": "arena/a9b513e9-prod3 (T-51)",
+        "method": "fetch_page of the supplied link.amazon URL; the resolved page title and final URL were read. No price, rating, offer or availability text recorded.",
+        "submitted_link": "https://link.amazon/B00hJ57DV",
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_records": false,
+        "result": "Resolved to the Amazon.com homepage (page title \"Amazon.com. Spend less. Smile more.\"). No /dp/ ASIN in the final URL. All five supplied links returned the homepage in this session, including three that another same-day record shows reaching their product pages.",
+        "direct_listing_check_2026_11_20": {
+          "url": "https://www.amazon.com/dp/B08DKYBTPH",
+          "result": "The /dp/ listing loaded later the same session and its page title matched the recorded title. This is a listing check, not a test of the supplied short link."
+        },
+        "intended_asin_changed": false,
+        "note": "Fourth dated observation of this link. No earlier observation is overwritten.",
+        "flag": "FLG-034"
       }
     },
     {
@@ -319,6 +373,24 @@
         "matches_2026_11_19_observed_asin": false,
         "matches_other_2026_11_20_record": null,
         "note": "Third dated observation for this link. Neither earlier observation is overwritten."
+      },
+      "live_recheck_2026_11_20_session_a9b513e9": {
+        "date": "2026-11-20",
+        "session": "arena/a9b513e9-prod3 (T-51)",
+        "method": "fetch_page of the supplied link.amazon URL; the resolved page title and final URL were read. No price, rating, offer or availability text recorded.",
+        "submitted_link": "https://link.amazon/B0c8moW59",
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_records": false,
+        "result": "Resolved to the Amazon.com homepage (page title \"Amazon.com. Spend less. Smile more.\"). No /dp/ ASIN in the final URL. All five supplied links returned the homepage in this session, including three that another same-day record shows reaching their product pages.",
+        "direct_listing_check_2026_11_20": {
+          "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+          "result": "The /dp/ listing loaded later the same session and its page title matched the recorded title. This is a listing check, not a test of the supplied short link."
+        },
+        "intended_asin_changed": false,
+        "note": "Fourth dated observation of this link. No earlier observation is overwritten.",
+        "flag": "FLG-034"
       }
     },
     {
@@ -397,6 +469,24 @@
         "matches_2026_11_19_observed_asin": false,
         "matches_other_2026_11_20_record": null,
         "note": "Third dated observation for this link. Neither earlier observation is overwritten."
+      },
+      "live_recheck_2026_11_20_session_a9b513e9": {
+        "date": "2026-11-20",
+        "session": "arena/a9b513e9-prod3 (T-51)",
+        "method": "fetch_page of the supplied link.amazon URL; the resolved page title and final URL were read. No price, rating, offer or availability text recorded.",
+        "submitted_link": "https://link.amazon/B0f3GKalj",
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_records": false,
+        "result": "Resolved to the Amazon.com homepage (page title \"Amazon.com. Spend less. Smile more.\"). No /dp/ ASIN in the final URL. All five supplied links returned the homepage in this session, including three that another same-day record shows reaching their product pages.",
+        "direct_listing_check_2026_11_20": {
+          "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+          "result": "The /dp/ listing loaded later the same session and its page title matched the recorded title. This is a listing check, not a test of the supplied short link."
+        },
+        "intended_asin_changed": false,
+        "note": "Fourth dated observation of this link. No earlier observation is overwritten.",
+        "flag": "FLG-034"
       }
     }
   ],

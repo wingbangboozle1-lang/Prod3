@@ -77,10 +77,10 @@
       "product": "site",
       "brand": "—",
       "asin": "—",
-      "observed": "Program Policies: 2(a) tag in every link; 2(b) no unclear shortening, no price display without Amazon-served data; 2(t) and 2(v) wording not located in Section 2 on 2026-11-20 (FLG-020)",
-      "observed_on": "2026-11-19",
+      "observed": "Participation Requirements §2(t): customer reviews/star ratings only if obtained through Creators API or PA API. §2(v): no cloaking, hiding, spoofing or obscuring of the URL or user agent. §2(w): no link-shortening that makes it unclear you are linking to an Amazon Site. §2(b): Associates tag in the URL of each link; price/availability only if Amazon serves it or via Creators API/PA API. §2(u): no purchasing through your own Special Links. All re-read on the live page 2026-11-20 (Updated April 14, 2026); Participation Requirements run (a)-(z). Corrects FLG-020, which had recorded (t), (v) and the shortener clause as not located.",
+      "observed_on": "2026-11-20",
       "source": "S02",
-      "used_for": "Program Policies: 2(a) tag in every link; 2(b) no unclear shortening, no price display without Amazon-served data; 2(t) and 2(v) wording not located in Section 2 on 2026-11-20 (FLG-020)",
+      "used_for": "Participation Requirements §2(t): customer reviews/star ratings only if obtained through Creators API or PA API. §2(v): no cloaking, hiding, spoofing or obscuring of the URL or user agent. §2(w): no link-shortening that makes it unclear you are linking to an Amazon Site. §2(b): Associates tag in the URL of each link; price/availability only if Amazon serves it or via Creators API/PA API. §2(u): no purchasing through your own Special Links. All re-read on the live page 2026-11-20 (Updated April 14, 2026); Participation Requirements run (a)-(z). Corrects FLG-020, which had recorded (t), (v) and the shortener clause as not located.",
       "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
     },
     {

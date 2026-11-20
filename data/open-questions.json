@@ -453,6 +453,23 @@
         "S21"
       ],
       "evidence_status": "observed"
+    },
+    {
+      "id": "Q-27",
+      "group": "Commercial",
+      "question": "Is a signed-out fetch of a Special Link a meaningful test of what a reader will experience?",
+      "blocks": "How the site talks about its own link checks, and whether repeated homepage results should keep being published as findings.",
+      "known": "Four dated observations of the same five links disagree with each other, and every one was made by an unauthenticated automated fetch (FLG-017, FLG-023, FLG-025, FLG-034). The repository has never recorded a signed-in observation.",
+      "unknown": "Whether Amazon serves different destinations to signed-out or automated sessions, and therefore whether any fetch-based result describes a reader's experience at all.",
+      "how_to_find_out": "Owner clicks each link once, signed in, in a normal browser, and records the final URL plus whether the Associates report shows the click. That is the only observation this project can treat as representative.",
+      "who": "owner",
+      "cost": "Five minutes",
+      "status": "owner-only",
+      "changes": "Whether fetch observations continue to be published as findings, or only as dated notes carrying an explicit \"not a reader test\" caveat.",
+      "sources": [
+        "S01"
+      ],
+      "evidence_status": "unverified"
     }
   ],
   "sources_note": "Each question carries the registered source IDs of the official document that speaks to it, or an empty list plus evidence_status='unverified' when no official document settles it. Nothing is cited that does not answer the question."

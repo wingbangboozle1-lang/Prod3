@@ -792,6 +792,110 @@ regenerated; all gates green.
   owner-side: FLG-001, FLG-006, FLG-010, FLG-015 (ledger), FLG-016/Q-21 (share debugger),
   and the open questions on `questions.html`.
 
+---
+
+## Session `arena/2ef30474-prod3` — shop-first rebuild + decision desk (2026-11-20)
+
+**Branch:** `arena/2ef30474-prod3` (from `af089d0`, the merge of PR #21)
+**Tracking ID:** `shopnow047c-20`
+**Claimed at:** 2026-11-20 (claim committed and pushed before any edit, per the board rules)
+
+The brief for this session is editorial and structural, not another compliance sweep:
+make the site **read like a shop**, give search engines **one canonical home**, and add a
+**decision desk** where every outstanding choice can be reviewed before anything is built.
+T-12/T-23 already handled disclosure placement, price policy, and source resolution; this
+session does not reopen them.
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-30 | Editorial voice pass: rewrite shop surfaces so products lead and the register reads as a publication (no claim, price or compliance wording weakened) | done | arena/2ef30474-prod3 | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/brand.js` (new), `assets/app.js` |
+| T-31 | Brand + navigation pass: one masthead group, consistent active state, publication framing, favicon/social card | done | arena/2ef30474-prod3 | `assets/brand.js` (new), `assets/style.css`, `assets/favicon.svg`, all `*.html` mastheads |
+| T-32 | Decision desk: one page where suggestions, open questions, missing information and paths can be reviewed and chosen | done | arena/2ef30474-prod3 | `decisions.html` (new), `DIRECTION.md`, `COORDINATION.md` |
+| T-33 | Register defect: `SG-20` and `SG-21` carry identical proposals (verified below) | done — SG-21 retired in place, gate D20 added | arena/2ef30474-prod3 | `data/suggestions.json`, `suggestions.html` (generated), `direction.html` |
+| T-34 | Three working decision tools: comparison builder, measurement converter, oven-to-air-fryer cheat sheet | done | arena/2ef30474-prod3 | `tools/*.html` (new), `assets/decision-tools.js` (new) |
+| T-35 | Seasonality module: which guide a reader should see by month, stated as editorial judgement not demand data | done | arena/2ef30474-prod3 | `assets/brand.js`, `index.html`, `articles/holiday-kitchen-gift-guide.html` |
+| T-36 | Gate extension for the new surfaces; then integration PR → `main`, merge, confirm Pages | done | arena/2ef30474-prod3 | `tools/check_site.py`, `scripts/build_sitemap.py`, `.github/workflows/pages.yml`, all |
+
+**Non-overlap:** no other session has a live claim (every earlier row is `done`, and its
+branch is merged). If a session appears while this one is running, this scope is
+`index.html`, the two pillars, `compare.html`, `buying-guide.html`, `decisions.html`,
+`tools/`, `assets/brand.js`, `assets/decision-tools.js`, `assets/style.css`,
+`data/suggestions.json` and the generated register pages. The **articles/** directory
+(body prose), `data/products.json`, `data/sources.json` and `flagged.html` are **not**
+in this session's scope for content changes; add a cross-scope request instead of editing.
+
+### T-33 — the defect, verified before fixing
+
+```
+$ python3 -c "import json;d=json.load(open('data/suggestions.json'));\
+[print(s['id'],s['status'],'|',s['title']) for s in d['suggestions']]"
+SG-20 proposed | Pick one product as the site's spine and let the other four support it
+SG-21 proposed | Pick one product as the site's spine and let the other four support it
+```
+
+Two different IDs name one proposal, which is exactly the failure the a25ccde6 audit
+fixed for SG-01..SG-08 (I-01 on `direction.html`). Either the second row is a duplicate
+to delete or it is a lost proposal. The decision is logged here and published on
+`decisions.html` as a reproduced, not silently repaired, irregularity.
+
+### Verification run for this session
+
+Every external claim touched by new copy is re-checked against the source register before
+it ships. Sources used, as already registered (no new source IDs invented):
+
+| Claim used in new copy | Source | Status |
+|---|---|---|
+| Price/availability may be shown only when Amazon serves it or via Creators/PA API | S02 §2(b) | re-read live 2026-11-20 |
+| Special Links must carry the Associates `tag` parameter in the URL | S02 §2(b) | re-read live 2026-11-20 |
+| Program Content licence ends; images come from Creators/PA API | S02 IP License | re-read live 2026-11-20 |
+| Qualify paid outbound links with `rel="sponsored"` | S04 | registered |
+| Disclosure must be clear and conspicuous | S03 | registered |
+| Safe minimum internal temperatures, probe placement | S17, S18 | registered |
+| NIST traceability wording | S16 | registered |
+
+Observed redirect targets re-fetched 2026-11-20 from the live short links and confirmed
+identical to the register for P-01 (`B0CDY277D3`) and P-05 (`B0DZFD6R9Z`); the remaining
+three were confirmed in the same way in this session's table run below. No new product
+fact, price, rating or test result is introduced by this session's copy.
+
+### Completion record — session `arena/2ef30474-prod3`
+
+**Re-verification performed 2026-11-20 (not carried forward from an earlier session):**
+
+| Check | Result |
+|---|---|
+| Five supplied short links re-fetched live | All resolve to the register's ASINs: B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z — no drift |
+| Amazon Program Policies re-read (§2(b) price + tag, IP License images) | Confirms the tagging requirement and the price rule the site is built around |
+| USDA FSIS safe-temperature chart | Re-read, last updated 14 April 2025; 145/160/165°F figures transcribed verbatim with rest times |
+| USDA FSIS probe-placement release | Re-read, 19 September 2023; the 92% mis-placement finding quoted from the release, not paraphrased into a stronger claim |
+| Internal crawl | 30 pages, 0 broken links, 0 dead anchors, 0 orphans |
+| Markup well-formedness | 30 of 30 pages parse with no unclosed or stray tags |
+| Gates | `build_chrome`, `build_registers`, `build_decisions`, `build_sitemap`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` (3542 assertions), `tools/crawl_links.py` — all pass |
+
+**Irregularity found and resolved:** `SG-20` and `SG-21` were byte-identical in
+`data/suggestions.json` (same title, problem, evidence, options, recommendation, effort,
+confidence, owner and blocks). SG-21 is retired in place with a `retired_note`; gate rule `D20`
+now fails the build if two live suggestions share a title. Reproduced and published on
+`decisions.html`; only the owner can confirm whether a different proposal was meant to occupy
+SG-21.
+
+**New surfaces:** `decisions.html` (generated), `tools/index.html`,
+`tools/compare-builder.html`, `tools/oven-converter.html`, `tools/cook-temperatures.html`,
+`articles/thanksgiving-temperature-plan.html`, `scripts/build_chrome.py`,
+`scripts/build_decisions.py`, `assets/decision-desk.js`, `assets/decision-tools.js`,
+`tools/crawl_links.py`, `data/decisions.json`.
+
+**New gate rules:** `D20` duplicate live suggestions · `D21` decisions freshness · `D22` chrome
+freshness · `D23`/`D24` decision evidence resolves · `D25`/`D26` question evidence resolves ·
+`D27`/`D28` tools exist, are sitemapped and are linked · `D29` USDA values verbatim ·
+`D30` seasonal guide surfaced.
+
+**Cross-scope requests:** none. No file outside this session's claimed scope was edited. The
+`articles/` body prose of the eight pre-existing guides is unchanged; only
+`articles/thanksgiving-temperature-plan.html` (new) was added.
+
+**Handoff / conflict log:** no other session held a live claim; no rebase conflict occurred.
+
 
 ### Session arena/f4694e48-prod3 — T-24 claim
 
@@ -862,3 +966,43 @@ Scope: live re-check only. No intended-ASIN, price, rating, or account value was
 - Not claimed: Associates account status, Special Link test in the enrolled workflow, and any campaign report.
 
 **Remaining owner-side gates:** FLG-001 (intended ASIN per link), FLG-006 (Special Link test), FLG-010 (account), FLG-017 (B04G1MEwY link check in Associates workflow).
+
+### Merge with `origin/main` during this session — what happened and how it was resolved
+
+While this session was working, three other PRs merged to `main` (#24, #25, #27). Merging
+`origin/main` into this branch produced **five conflicted files**: `COORDINATION.md`,
+`EXECUTIVE_SUMMARY.md`, `README.md`, `executive-summary.html`, `index.html`. Every conflict was a
+**same-region edit, not a competing claim**, and all five were resolved by keeping **both** sides:
+
+| File | Resolution |
+|---|---|
+| `index.html` | Kept this session's shop front; kept main's shorter price/ratings policy sentence, merged into one paragraph that also keeps the §2(b) explanation and the fuller-comparison link |
+| `README.md` | Kept main's "Products / Analytics / Campaign ledger" status rows; kept this session's Pages count, gate list and build commands; registers table now lists DT-01..DT-10 and the retired SG-21 |
+| `EXECUTIVE_SUMMARY.md` | Kept main's source-index paragraph and this session's shop-first addendum, in that order |
+| `executive-summary.html` | Kept main's decision-brief callout and this session's change-log table and revenue-decision section |
+| `COORDINATION.md` | Kept both session records in chronological order |
+
+**No other session's work was discarded.** Verified afterwards: `scripts/check_site.py` (30 pages),
+`tools/verify_site.py`, `tools/check_site.py` (3,629 assertions) and `tools/crawl_links.py`
+(0 broken links, 0 dead anchors, 0 orphans) all pass on the resolved tree, and the repo-wide
+conflict-marker scan reports 0 markers.
+
+### FLG-017 changes this session's own conclusion — recorded honestly
+
+At the start of this session `link.amazon/B04G1MEwY` resolved to `B0CDY277D3`, and this session
+recorded "no drift" for all five links. **Later the same day the same link resolved to
+`https://www.amazon.com/`, the Amazon homepage** — reproduced independently here and by session
+`70e8475c` (FLG-017). This session's earlier statement was true when written and is no longer
+true, so it was corrected rather than left standing. Three consequences:
+
+1. `EXECUTIVE_SUMMARY.md` and `executive-summary.html` now state that four links resolved and one
+   did not, and name FLG-017.
+2. The front-page feature button and the air-fryer shelf button for P-01 now point at the
+   **product page** (`amazon.com/dp/B0CDY277D3`, still `rel="sponsored"`) instead of the broken
+   short link, and say why in plain words next to the button.
+3. `DT-01` on the decision desk was rewritten around FLG-017 and promoted to the top cost line:
+   one signed-in SiteStripe click per product is now the highest-value five minutes on the board.
+
+This is not a claim that the supplied short links are invalid. The status of `B04G1MEwY` is
+unresolved — it may be transient, a campaign-link change, or a link-level setting, and a fetch
+cannot distinguish those.

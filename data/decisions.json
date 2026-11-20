@@ -1,0 +1,203 @@
+{
+  "generated": "2026-11-20",
+  "premise": "Each row is one choice the owner can make. A row is only complete when it names what would settle it. Where no official document settles the question, sources is empty, evidence_status is 'unverified', and the page says so instead of citing something that does not answer the question.",
+  "rules": [
+    "sources[] must contain IDs registered in data/sources.json. The build fails on an unregistered ID.",
+    "A row with sources: [] must set evidence_status: 'unverified'. tools/check_site.py enforces both halves.",
+    "No effort estimate here is a time promise; effort is a relative band (S = one session, M = a focused day, L = a project)."
+  ],
+  "decisions": [
+    {
+      "id": "DT-01",
+      "title": "Re-establish a working, tagged Special Link for the Chefman dual basket, then for all five",
+      "why": "On 2026-11-20 the supplied short link B04G1MEwY stopped reaching its product page and ended at the Amazon.com homepage (two independent sessions, FLG-017); it reached B0CDY277D3 earlier the same day. Separately, none of the five short links carries a visible tag parameter in the URL a reader receives, and Program Policies require an Associates ID or tag in the URL of each link to an Amazon site.",
+      "recommendation": "Owner opens SiteStripe, generates a fresh tagged link for each of the five products, clicks each one while signed in, and confirms both the destination and that the click is reported. Replace the hrefs only after the click appears in the report. Until then the site sends readers to the product page directly and says why. Do not describe the supplied short links as invalid: B04G1MEwY's status is unresolved, not disproven.",
+      "effort": "S",
+      "who": "owner",
+      "blocks": "Every click that is meant to earn. Currently the highest-value five minutes on the board.",
+      "status": "open",
+      "sources": [
+        "S01",
+        "S02",
+        "S15"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "DT-02",
+      "title": "Show prices from the Product Advertising API, or keep showing none",
+      "why": "Program Policies 2(b) allow price and availability only when Amazon serves the data or it arrives through the Creators/PA API. The site currently shows none, which is compliant and costs conversion.",
+      "recommendation": "Stay with no prices until the account qualifies for the API, then show API-served prices with the required attribution. Anything else means publishing numbers that are wrong within hours.",
+      "effort": "M",
+      "who": "owner",
+      "blocks": "The strongest single conversion lever on the site.",
+      "status": "shipped",
+      "sources": [
+        "S02"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "DT-03",
+      "title": "Turn on Search Console, or keep choosing topics by instinct",
+      "why": "No query data exists for this site. Every topic decision so far has been editorial judgement. Search Console is free and takes about ten minutes once.",
+      "recommendation": "Verify the property this week and submit sitemap.xml. From then on, the next guide is chosen from measured queries and not from taste.",
+      "effort": "S",
+      "who": "owner",
+      "blocks": "The answer to 'which guide should be ninth'. Without it, any answer is a guess.",
+      "status": "open",
+      "sources": [
+        "S21"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "DT-04",
+      "title": "Use Amazon-served product images, or keep the typographic cards",
+      "why": "The site uses illustrated cards built from each product's own numbers, because using listing photography means relying on Amazon's Program Content licence, which is granted for Amazon marketing and can be terminated.",
+      "recommendation": "Keep the typographic cards for now. They are honest, they carry the key spec, and they avoid a licensing dependency this site cannot police. Revisit only if a reader test shows the cards cost clicks.",
+      "effort": "S",
+      "who": "editorial",
+      "blocks": "Nothing. The current state is safe.",
+      "status": "shipped",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "DT-05",
+      "title": "Buy one unit of each family to earn first-hand testing, or stay a documentation desk",
+      "why": "Every number on this site is a seller statement. That is disclosed everywhere, but it caps how much authority the writing can carry, and Google's people-first guidance rewards demonstrable experience.",
+      "recommendation": "Two units — one air fryer, one thermometer — would let the site publish its own measurements and stop qualifying every sentence. That is a spend decision, not an editorial one.",
+      "effort": "L",
+      "who": "owner",
+      "blocks": "The difference between 'here is what the label says' and 'here is what we measured'.",
+      "status": "open",
+      "sources": [
+        "S21"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "DT-06",
+      "title": "Cut the list to one product family, or keep air fryers and thermometers together",
+      "why": "Five products across two families read as two separate sites sharing a header. The current framing — cooking to a target temperature — is defensible but it is doing real work to hold the set together.",
+      "recommendation": "Keep both for now, but make the air fryers the spine and treat the thermometers as the smaller shelf. If one family earns no traffic after a quarter of Search Console data, retire it.",
+      "effort": "M",
+      "who": "editorial",
+      "blocks": "Any brand or navigation decision that assumes a single beat.",
+      "status": "open",
+      "sources": [
+        "S22"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "DT-07",
+      "title": "Ship a self-hosted analytics endpoint, or keep measurement local-only",
+      "why": "GitHub Pages cannot receive POSTs, so any server-side counter needs a separate service. Five event types are defined and four are emitted, but nothing is transmitted today.",
+      "recommendation": "Choose the endpoint and its retention period before writing anything else that assumes traffic data. Until then, the local-only counter is honest and useful only to the reader.",
+      "effort": "M",
+      "who": "owner",
+      "blocks": "Every claim about which page or product is working.",
+      "status": "open",
+      "sources": [
+        "S23"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "DT-08",
+      "title": "Add a reader email list, or stay RSS-only",
+      "why": "There is no mailing list, so there is no form. An unconnected form with a fake confirmation would be worse than none.",
+      "recommendation": "Stay RSS-only until there is a provider and a consent sentence the owner is willing to stand behind. A newsletter that never sends is a broken promise.",
+      "effort": "M",
+      "who": "owner",
+      "blocks": "Reader capture, and any plan that depends on repeat visits.",
+      "status": "shipped",
+      "sources": [],
+      "evidence_status": "unverified"
+    },
+    {
+      "id": "DT-09",
+      "title": "Keep the site on the github.io project path, or move to a custom domain",
+      "why": "Every canonical, sitemap entry and social card currently points at wingbangboozle1-lang.github.io/Prod3/. A domain move rewrites all of them and any existing links break unless redirected.",
+      "recommendation": "Decide before any promotion. After promotion, the move costs whatever links have accumulated. On a project path, hosting stays free and the URL stays slightly awkward.",
+      "effort": "S",
+      "who": "owner",
+      "blocks": "Brand decisions, and any print or social material carrying the URL.",
+      "status": "open",
+      "sources": [
+        "S05"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "DT-10",
+      "title": "Publish on a fixed cadence, or publish when a guide is ready",
+      "why": "Eight guides shipped in one pass and nothing since. A cadence that nobody owns is a wish with a calendar attached.",
+      "recommendation": "One guide a month, chosen from Search Console once it is verified, with the owner named as the person who approves it. Monthly is survivable; weekly is not, for one person.",
+      "effort": "S",
+      "who": "owner",
+      "blocks": "Whether this is a publication or a finished project.",
+      "status": "open",
+      "sources": [],
+      "evidence_status": "unverified"
+    }
+  ],
+  "paths": [
+    {
+      "id": "Path A",
+      "name": "Make it earn",
+      "summary": "Fix the links and the measurement first, then write. Nothing new is published until a click can be counted.",
+      "includes": [
+        "DT-01: one signed-in Special Link test per product",
+        "DT-07: choose and stand up the analytics endpoint",
+        "DT-03: Search Console verified, sitemap submitted",
+        "Then one guide, chosen from search data"
+      ],
+      "delays": [
+        "Guide nine",
+        "Any brand or domain change"
+      ],
+      "cost": "One session for the link test, one focused day for the endpoint",
+      "best_if": "The goal is revenue in the next ninety days."
+    },
+    {
+      "id": "Path B",
+      "name": "Make it a publication",
+      "summary": "Buy the two units, publish real measurements, and let first-hand testing carry the writing.",
+      "includes": [
+        "DT-05: one air fryer and one thermometer purchased",
+        "Test notes and measured temperatures published as method",
+        "A named author with a stated basis for the claim",
+        "Cadence fixed at one guide a month"
+      ],
+      "delays": [
+        "Nothing compliance-critical",
+        "Costs money before it earns any"
+      ],
+      "cost": "Purchase price of two units, plus a recurring writing commitment",
+      "best_if": "The goal is a site that ranks and is worth reading in a year."
+    },
+    {
+      "id": "Path C",
+      "name": "Narrow and harden",
+      "summary": "Keep air fryers, retire the thermometer shelf, and resolve every owner-only question before adding anything.",
+      "includes": [
+        "DT-06: air fryers as the single beat",
+        "DT-09: settle the URL before promoting it",
+        "Clear the owner-only question rows (Q-02, Q-03, Q-04, Q-18, Q-19)",
+        "No new content until the desk is empty"
+      ],
+      "delays": [
+        "Any growth work",
+        "The thermometer guides lose their home"
+      ],
+      "cost": "Mostly time, and one irreversible-ish pruning decision",
+      "best_if": "The site is a side project that must stay small and correct."
+    }
+  ]
+}

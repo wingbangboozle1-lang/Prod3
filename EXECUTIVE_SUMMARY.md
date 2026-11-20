@@ -130,8 +130,11 @@ mis-placement finding in the FSIS test-kitchen study.
 
 **A real defect, found and fixed.** `SG-20` and `SG-21` in `data/suggestions.json` were
 byte-identical — the same "one identifier, two meanings" failure an earlier audit fixed
-elsewhere. SG-21 was retired in place rather than deleted, so the change can be audited, and
-gate rule `D20` now fails the build if any two live suggestions share a title.
+elsewhere. The duplicate arose when a merge replay clobbered SG-20's content; on 2026-11-20
+(T-27) the original was recovered verbatim from PR #17's own history (commit `7fbef67`), so
+SG-20 ("Ask the Associates account one question…") and SG-21 ("Pick one product as the site's
+spine…") are two live proposals again and the interim SG-21 tombstone is withdrawn. Gate rule
+`D20` fails the build if any two live suggestions share a title.
 
 **Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
 `rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all

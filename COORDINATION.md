@@ -1307,3 +1307,17 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 - Gates on the rebuilt tree: build_chrome/build_registers freshness OK; check_site.py, verify_site.py, crawl_links.py (31 pages, 30 reachable, no broken links/anchors/orphans), tools/check_site.py all pass.
 - Irregularity logged: flagged.html contains duplicate FLG-020 and FLG-021 identifiers (different subjects, pre-existing); not renumbered in this round — owner to decide.
 - PR #37 Pages runs 44689292593 / 44689291961: outcomes to be confirmed by exact run ID after this push.
+
+## Session `arena/d42249a7-prod3` — T-47 verification + shop-read pass (2026-11-20)
+
+**Claim (pushed first, before any edit).** Base commit `7c1b939`; rebased onto `372afb0`.
+Renumbered **T-46 → T-47** on rebase: session `arena/59a087a1-prod3` had already claimed
+T-46 for the official-listing checks below. Their row and record are untouched.
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-47 | Correct demonstrable citation errors against the official Program Policies / Operating Agreement text; record the dated 2026-11-20 five-link observation as a second, separate record; remove duplicated card markup that makes the shop read as generated; add a gate that binds every Program Policies clause citation to a verified clause map; refresh the summaries; PR → main, merge, confirm Pages | in progress | `arena/d42249a7-prod3` | `data/policy-checks.json`, `data/policy-clause-map.json` (new), `data/citations.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `data/products.json`, `flagged.html`, `citations.html`, `questions.html`, `suggestions.html`, `ideas.html`, `compare.html`, `index.html`, `direction.html`, `DIRECTION.md`, `tools/check_site.py`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
+
+Not editing: `assets/product-art/*` (typographic label art is deliberate and compliant —
+FLG-008), article bodies, `assets/app.js`, `sitemap.xml`, `feed.xml` (authoritative
+generated surfaces; regenerated only by their own builders if a builder input changes).

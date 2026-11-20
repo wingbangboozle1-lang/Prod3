@@ -279,9 +279,20 @@ _r = _sp.run([sys.executable, str(ROOT / "scripts" / "build_registers.py"), "--c
              capture_output=True, text=True)
 check("D18-registers-fresh", _r.returncode == 0, f"registers stale: {_r.stdout.strip()[:200]}")
 
-# ---- one suggestion ID must mean one thing ------------------------------
-_sg_ids = re.findall(r"\bSG-\d{2}\b", docs.get("suggestions.html", ""))
-check("D19-register-ids", len(_sg_ids) == len(set(_sg_ids)) or True, "")
+# ---- one identifier must mean one thing ----------------------------------
+# This rule used to end in `or True`, so it could never fail. It was written for
+# SG ids but the defect that actually shipped was in the FLG register: on
+# 2026-11-20 flagged.html carried two different cards numbered FLG-020 and two
+# numbered FLG-021, so a reader following "FLG-020" from citations.html (the
+# Program Policies citation gap) landed on a card about DIRECTION.md question
+# ids instead. Each id is now counted where it is DEFINED (a card or heading),
+# not where it is merely referenced, and a repeat fails the release.
+for _page, _prefix in (("suggestions.html", "SG"), ("flagged.html", "FLG")):
+    _html = docs.get(_page, "")
+    _defined = re.findall(rf"\b{_prefix}-\d{{2,3}}\s*(?:—|</strong>|<)", _html)
+    _dupes = sorted({i for i in _defined if _defined.count(i) > 1})
+    check(f"D19-{_prefix.lower()}-one-meaning", not _dupes,
+          f"{_page}: identifier(s) defined more than once: {', '.join(_dupes)}")
 
 
 # J01-J04: every inline script (and assets/app.js) must parse.

@@ -433,7 +433,7 @@
       "sources_checked": "2026-11-20"
     },
     {
-      "id": "FLG-033",
+      "id": "FLG-035",
       "severity": "high",
       "area": "Policy citations (Associates Program Policies)",
       "product": "Site-wide (citations, policy checks, questions, suggestions, compare, ideas, direction, disclosure)",
@@ -447,7 +447,7 @@
       "sources_checked": "2026-11-20"
     },
     {
-      "id": "FLG-034",
+      "id": "FLG-036",
       "severity": "medium",
       "area": "Published page consistency",
       "product": "articles/*.html, index.html",
@@ -455,6 +455,18 @@
       "why_it_matters": "The brief is that the shop should not read as generated. Repeating the same closing block under eight different arguments, and printing the same three numbers twice in one card, is the most visible version of that problem - and it is visible to a reader, not just to a reviewer.",
       "action": "Fixed 2026-11-20: each article now closes with a next step specific to its argument, and the duplicate pill block is removed. Gate D36 fails the build if an article-length block repeats across articles.",
       "status": "resolved 2026-11-20",
+      "sources": [],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-032",
+      "severity": "medium",
+      "area": "Coordination board: duplicate task identifiers",
+      "product": "COORDINATION.md",
+      "detail": "The board has two or more rows for each of T-12 to T-23 (T-16 and T-17 have three and four). Each duplicate pair has a different scope. Some duplicates are marked superseded or done, but the rows are not removed. Session 2cd3bab9 wrote earlier that the duplicate in-progress rows for T-20 to T-22 had been removed. That was wrong: they are marked superseded, not deleted.",
+      "why_it_matters": "The board rule is one identifier, one meaning. A reader who looks up T-17 finds four different tasks.",
+      "action": "Owner or the next integration session: decide whether superseded rows are kept as history or consolidated. Rows of other sessions are not edited in this pass.",
+      "status": "open — duplicates recorded; no rows removed or renumbered in this pass",
       "sources": [],
       "sources_checked": "2026-11-20"
     }

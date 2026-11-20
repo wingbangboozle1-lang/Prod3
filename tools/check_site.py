@@ -52,6 +52,18 @@ docs = {p.relative_to(ROOT).as_posix(): p.read_text(encoding="utf-8") for p in p
 
 titles, descs = {}, {}
 
+
+def _link_names(html):
+    """link text -> [outbound hrefs]. Used by the P14b uniqueness rule."""
+    out = {}
+    for m in re.finditer(r'<a\b[^>]*href="(https?://[^"]*)"[^>]*>(.*?)</a>', html, re.S):
+        text = re.sub(r"<[^>]+>", "", m.group(2)).strip()
+        href = m.group(1)
+        if not text or "amazon" not in href:
+            continue
+        out.setdefault(text, []).append(href)
+    return out
+
 for name, html in docs.items():
 
     # ---- disclosure: present, and above the first <h1>
@@ -134,6 +146,16 @@ for name, html in docs.items():
         text = re.sub(r"<[^>]+>", "", m.group(2)).strip()
         check("P14-link-text", text.lower() not in ("click here", "here", "read more", "link"),
               f"{name}: non-descriptive link text {text!r} → {m.group(1)[:60]}")
+
+    # ---- one link name must not point at several products ----------------
+    # A table that ends five rows with a bare "Listing" link gives a screen
+    # reader, and anyone scanning the links panel, five identically-named
+    # destinations. The visible table position carries the meaning; the link
+    # name does not. Evidence links are named by ASIN instead.
+    for label, hrefs in _link_names(html).items():
+        if len(set(hrefs)) > 1:
+            check("P14b-unique-link-name", False,
+                  f"{name}: link text {label!r} points at {len(set(hrefs))} different destinations")
 
     # ---- internal targets exist on disk
     for target in re.findall(r'(?:href|src)="([^"#:]+)(?:#[^"]*)?"', html):
@@ -281,9 +303,25 @@ _r = _sp.run([sys.executable, str(ROOT / "scripts" / "build_registers.py"), "--c
              capture_output=True, text=True)
 check("D18-registers-fresh", _r.returncode == 0, f"registers stale: {_r.stdout.strip()[:200]}")
 
-# ---- one suggestion ID must mean one thing ------------------------------
-_sg_ids = re.findall(r"\bSG-\d{2}\b", docs.get("suggestions.html", ""))
-check("D19-register-ids", len(_sg_ids) == len(set(_sg_ids)) or True, "")
+# ---- the reader brief on ideas.html must match the registers ---------------
+_rb = _sp.run([sys.executable, str(ROOT / "scripts" / "build_ideas.py"), "--check"],
+              capture_output=True, text=True)
+check("D18b-ideas-fresh", _rb.returncode == 0, f"ideas brief stale: {_rb.stdout.strip()[:200]}")
+
+# ---- one identifier must mean one thing ----------------------------------
+# This rule used to end in `or True`, so it could never fail. It was written for
+# SG ids but the defect that actually shipped was in the FLG register: on
+# 2026-11-20 flagged.html carried two different cards numbered FLG-020 and two
+# numbered FLG-021, so a reader following "FLG-020" from citations.html (the
+# Program Policies citation gap) landed on a card about DIRECTION.md question
+# ids instead. Each id is now counted where it is DEFINED (a card or heading),
+# not where it is merely referenced, and a repeat fails the release.
+for _page, _prefix in (("suggestions.html", "SG"), ("flagged.html", "FLG")):
+    _html = docs.get(_page, "")
+    _defined = re.findall(rf"\b{_prefix}-\d{{2,3}}\s*(?:—|</strong>|<)", _html)
+    _dupes = sorted({i for i in _defined if _defined.count(i) > 1})
+    check(f"D19-{_prefix.lower()}-one-meaning", not _dupes,
+          f"{_page}: identifier(s) defined more than once: {', '.join(_dupes)}")
 
 
 # J01-J04: every inline script (and assets/app.js) must parse.

@@ -2651,3 +2651,32 @@ re-editing the corrected registers.
 ### Gates and merge record
 
 To be appended below after the final gate run and merge.
+
+## Session `arena/aa7b8dd8-prod3` — T-70/T-71 final record (2026-11-20, re-appended after merge)
+
+**Claim history.** Claimed as T-48..T-51, renumbered T-52..T-55 on the first collision, T-56 on the second (PR #43 landed first), T-66/T-67 on the third, T-70/T-71 after upstream took T-52..T-57 and T-66/T-67. The one-identifier-one-meaning rule was applied every time; no other session's row was altered.
+
+### What this session changed (T-70, PR #82)
+
+- **FLG-041 restored** in `data/flagged.json` and on `flagged.html`: the P-03 (Chefman 8 Qt TurboFry, B08DKYBTPH) temperature/wattage listing conflict — title 450°F Hi-Fry vs bullets/spec 200–400°F; 1000W bullet vs 1700W spec table. First published 2026-11-20 by session 59a087a1; the renumbering passes left it without a registered id (FLG-027 documents the mechanism). Restored with **no new observation**; the dated basis is the same official-listing check in `data/products.json` and the S31 quote.
+- **Dangling references repointed:** `data/products.json` `(FLG-022)`→F-01, `(FLG-023)`→FLG-041; `direction.html` and the `DIRECTION.md` decision log FLG-021 → FLG-029; `air-fryers.html` capacity chip links the F-register on `decisions.html` and the P-03 card carries the FLG-041 chip; FLG-027 reconciled to the final renumbering.
+- **Superseded by upstream, accepted without loss:** upstream's generated README register table, upstream's `build_products.py` `names_me()` matcher, upstream's D39 gate (this session's D06b draft removed as redundant).
+
+### Verification performed (T-71)
+
+- Full local gate suite on the final tree: `tools/verify_site.py` (release gate passed), `tools/check_site.py` (42 pages, 6,913 assertions — D38/D39 green), `scripts/check_site.py` (all passed), `tools/crawl_links.py` (42 pages, 41 reachable, 0 broken links, 0 dead anchors, 0 orphans), all six `--check` freshness gates.
+- **PR #82:** https://github.com/wingbangboozle1-lang/Prod3/pull/82 — merged without waiting for approval, `mergedAt` 2026-11-20T07:26:45Z, merge commit `76b267f9c5008fdad8185a66de47f0fd7be291b3`.
+- **Deploy note:** the `Deploy GitHub Pages` runs for the merge cluster PRs #82/#80/#84 failed their "Regenerated surfaces are current" step (auto-merge commits combined concurrent sessions' data with stale generated surfaces). PR #85's session merged the mechanical rebuild and its run `44695185642` succeeded; judge deploys by the workflow and live URL (FLG-024 note).
+- **Live check (fetched, not assumed):** https://wingbangboozle1-lang.github.io/Prod3/flagged.html serves the disclosure strip above the masthead, FLG-041 in full with the S31 source link, and FLG-039/FLG-040 (upstream's tag-parameter repair: every reader-facing product button now carries `?tag=shopnow047c-20&linkCode=sl1`).
+
+### Irregularities logged (do not block)
+
+- FLG-041 itself — the restored finding, published on `flagged.html`.
+- The transient deploy-failure cluster self-resolved via PR #85; the legacy `pages build and deployment` runs succeeded throughout, so the live site was never broken.
+- Unchanged owner-side gates: FLG-001 intended ASINs, FLG-006 Special Link test in the enrolled Associates workflow, FLG-010 account status, FLG-024 Pages build_type setting.
+
+### Sources
+
+- S31 — https://www.amazon.com/dp/B08DKYBTPH (official listing; conflict quote recorded 2026-11-20)
+- S01 — https://affiliate-program.amazon.com/help/operating/agreement · S02 — https://affiliate-program.amazon.com/help/operating/policies
+- Live site — https://wingbangboozle1-lang.github.io/Prod3/

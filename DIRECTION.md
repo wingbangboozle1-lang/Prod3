@@ -19,7 +19,7 @@ options, and recommendations live there.
 | SG-04 | Answer eight buyer questions, not eight product reviews | implemented | editorial |
 | SG-05 | Build the compliance gate into the build, not into a checklist | implemented | engineering |
 | SG-06 | Buy one air fryer and one thermometer, and earn the right to say "we used it" | proposed | owner |
-| SG-07 | Turn on Search Console before writing guide nine | proposed | owner |
+| SG-07 | Turn on Search Console before writing the next guide | proposed | owner |
 | SG-08 | Add a working outbound-click counter that stores nothing about the reader | implemented | engineering |
 | SG-09 | Give every page a unique title and description, and test that the build rejects duplicates | implemented | engineering |
 | SG-10 | Make the front page a publication front page, and keep the dashboards one click away in the footer | implemented | design |
@@ -30,7 +30,7 @@ options, and recommendations live there.
 | SG-15 | Lead every shop page with the products, and keep the verification record one click away | implemented | editorial |
 | SG-16 | Replace the SVG social preview with a raster card, and verify it before relying on it | partly implemented | editorial |
 | SG-17 | Make the Product Advertising API the only path to displayed prices | proposed | owner |
-| SG-18 | Choose guide nine from measured queries, not instinct | proposed | editorial |
+| SG-18 | Choose the next guide from measured queries, not instinct | proposed | editorial |
 | SG-19 | Mobile-first tap-target pass: every control ≥44px (48px at touch widths) with ≥8px spacing | implemented | engineering |
 | SG-20 | Ask the Associates account one question and let the answer price the whole site | proposed | owner |
 | SG-21 | Pick one product as the site's spine and let the other four support it | proposed | owner |

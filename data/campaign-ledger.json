@@ -1,9 +1,11 @@
 {
   "tracking_id": "shopnow047c-20",
-  "note": "Empty but well-defined campaign ledger. Rows are added ONLY from authorized first-party reports (Amazon Associates reports, site analytics). No conversion score or revenue forecast is presented. Provenance trail is dated.",
+  "schema_source": "data/campaigns.json",
+  "note": "Empty but well-defined campaign ledger. Rows are added ONLY from authorized first-party reports (Amazon Associates reports, site analytics). No conversion score or revenue forecast is presented. Provenance trail is dated. Column definitions live in data/campaigns.json; this file is the canonical ledger the release gates read.",
   "events_defined": ["page_view", "outbound_click", "article_read", "chooser_complete", "reader_signup"],
   "rows": [],
   "provenance": [
-    {"date": "2026-11-19", "event": "ledger_created", "detail": "Ledger initialized empty by session 5a4e180c. No sessions, clicks, or orders reported yet."}
+    {"date": "2026-11-19", "event": "ledger_created", "detail": "Ledger initialized empty by session 5a4e180c. No sessions, clicks, or orders reported yet."},
+    {"date": "2026-11-20", "event": "schema_paired", "detail": "Session arena/47f4e1e5-prod3 (T-79) paired this file with data/campaigns.json: shared tracking id, cross-pointers both ways, rows still empty in both. No row, figure or forecast added."}
   ]
 }

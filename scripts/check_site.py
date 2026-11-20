@@ -185,6 +185,58 @@ for f in html_files:
             errors.append(f"{rel}: buy button carries no Associates tag, so it cannot earn (S37 2(b)): {href}")
 print(f"OK buy-button link hygiene ({buy_buttons} tagged product buttons)")
 
+# 7c. outbound_click coverage (M01, T-79 session 47f4e1e5): analytics.html tells the
+#     reader the event is "activation of a supplied product link", so the shipped script
+#     must bind every countable product link — rel="sponsored" plus an Amazon product URL —
+#     not only the buy buttons that happen to carry data-event. Before this rule the
+#     selector was a[data-event="outbound_click"] and counted 30 of 355 product links.
+#     Negative-tested: narrowing the selector back to data-event fails this rule.
+_app_js = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
+if 'querySelectorAll(\'a[rel~="sponsored"]\')' not in _app_js:
+    errors.append("assets/app.js: outbound_click no longer binds rel=sponsored product links (coverage narrowed)")
+if "PRODUCT_LINK" not in _app_js or r"https:\/\/www\.amazon\.com\/dp\/[A-Z0-9]{10}" not in _app_js:
+    errors.append("assets/app.js: product-URL filter missing; policy-page or homepage links would be counted")
+if 'a[data-event="outbound_click"]' in _app_js:
+    errors.append("assets/app.js: data-event selector still present; it would double-count or diverge from M01")
+_countable = 0
+for f in html_files:
+    for tag_html in re.findall(r"<a\b[^>]*>", f.read_text()):
+        if 'rel="sponsored' not in tag_html:
+            continue
+        _h = re.search(r'href="([^"]*)"', tag_html)
+        _h = _h.group(1) if _h else ""
+        if re.match(r"https://www\.amazon\.com/dp/[A-Z0-9]{10}", _h) or _h.startswith("https://link.amazon/"):
+            _countable += 1
+if _countable == 0:
+    errors.append("no countable product links found; the M01 population is empty, which means the scan itself broke")
+print(f"OK outbound_click coverage (M01: all {_countable} product links bound by the shipped selector)")
+
+# 7d. campaign ledger coherence (M02): two files describe one ledger. They must agree on
+#     the tracking id, point at each other, and both stay empty until a first-party report
+#     exists. Negative-tested: a row in either file, or a broken pointer, fails this rule.
+try:
+    _led = json.loads((ROOT / "data" / "campaign-ledger.json").read_text(encoding="utf-8"))
+    _defs = json.loads((ROOT / "data" / "campaigns.json").read_text(encoding="utf-8"))
+    if _led.get("rows") != [] or _defs.get("rows") != []:
+        errors.append("campaign ledger: rows present in a file with no first-party report behind it")
+    if _led.get("tracking_id") != TRACKING or _defs.get("tracking_id") != TRACKING:
+        errors.append(f"campaign ledger: tracking id must be {TRACKING} in both files")
+    if _defs.get("canonical_ledger") != "data/campaign-ledger.json":
+        errors.append("campaigns.json: canonical_ledger must point at data/campaign-ledger.json")
+    if _led.get("schema_source") != "data/campaigns.json":
+        errors.append("campaign-ledger.json: schema_source must point at data/campaigns.json")
+    if _led.get("events_defined") != ["page_view", "outbound_click", "article_read", "chooser_complete", "reader_signup"]:
+        errors.append("campaign-ledger.json: events_defined changed; the five defined events are frozen")
+    _allowed = re.search(r"var ALLOWED = \[([^\]]+)\]", _app_js)
+    _allowed = [e.strip().strip("'\"") for e in _allowed.group(1).split(",")] if _allowed else []
+    if _allowed != _led.get("events_defined"):
+        errors.append("assets/app.js ALLOWED list no longer matches campaign-ledger.json events_defined")
+    if not _led.get("provenance"):
+        errors.append("campaign-ledger.json: provenance trail missing")
+except Exception as e:
+    errors.append(f"campaign ledger coherence: {e}")
+print("OK campaign ledger coherence (M02: both files empty, cross-pointed, events match app.js)")
+
 # 8. price blocks must be dated
 for f in html_files:
     html = f.read_text()

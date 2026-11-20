@@ -4,11 +4,11 @@
 
 **Tracking ID:** `shopnow047c-20` (provided for the project; Associates account enrollment and eligibility are not confirmed — FLG-010).
 
-**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links were fetched three separate times by three sessions, with different results each time: four of five reached product pages, then three of five, then — on the most recent pass (session 6bf60cac, ~07:0x UTC) — **none of the five**, with every final URL reading `https://www.amazon.com/`. All four dated observations are kept side by side in `data/products.json`; none is overwritten and no cause is asserted (FLG-017, FLG-023, FLG-025). Separately, the Associates Program Policies (updated 2026-04-14) §2(b) require the Associates tag as a parameter in each link's URL, and no shipped anchor on this site carries one in the URL the reader receives — recorded as FLG-026, with the caveat that a short-link service may add the tag downstream (Q-24). No price, rating or offer was recorded.
+**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links were fetched again in five session passes, with different results: four of five reached product pages (70e8475c), three of five (ce911db5), then **none of the five** on the 6bf60cac and 6c0972fb passes, with every final URL reading `https://www.amazon.com/`; the d52ad947 pass fetched two links (B04G1MEwY, B0c8moW59) and both ended at the homepage. Exact fetch times are not recorded (FLG-012), so the passes are not ordered beyond what their records state. All dated observations are kept side by side in `data/products.json` — the ce911db5 records were transcribed into the file by d52ad947 from the published session record — and none is overwritten and no cause is asserted (FLG-017, FLG-031, FLG-025, FLG-039). Separately, the Associates Program Policies (updated 2026-04-14) §2(b) require the Associates tag as a parameter in each link's URL, and no shipped anchor on this site carries one in the URL the reader receives — recorded as FLG-026, with the caveat that a short-link service may add the tag downstream (Q-24). No price, rating or offer was recorded.
 
 ## Bottom line
 
-The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and thirteen question-shaped articles (evergreen guides plus the dated Thanksgiving temperature plan and a second gift guide), one generated spec page per product, and a dated twelve-row publishing plan. Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
+The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and fifteen question-shaped articles (evergreen guides and dated seasonal pieces — the guide hub lists them by theme), one generated spec page per product, and a dated twelve-row publishing plan. Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
 
 **Recommendation:** keep the current editorial publication, but do not scale links or claim revenue performance until the owner-side Associates workflow confirms the intended products, link compliance, and tracking. The site does not have aggregate analytics, verified Search Console data, or conversion reports. Consequently, there is no evidence here for product superiority, demand, conversion rate, commission potential, or revenue forecasts.
 
@@ -18,10 +18,10 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 | Submitted token | Observed listing at snapshot | Category | Intent confirmed? | Source |
 |---|---|---|---|---|
-| `B04G1MEwY` | Chefman 6 Qt Dual Basket · `B0CDY277D3` (2026-11-19); 2026-11-20 re-check ended at the Amazon homepage — FLG-017 | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
+| `B04G1MEwY` | Chefman 6 Qt Dual Basket · `B0CDY277D3` (2026-11-19); 2026-11-20 re-checks all ended at the Amazon homepage (every pass that fetched it) — FLG-017 | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
 | `B02NbDxp3` | Emeril Lagasse 26QT French Door · `B09B7SB46R` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B09B7SB46R) |
 | `B00hJ57DV` | Chefman 8 Qt TurboFry · `B08DKYBTPH` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B08DKYBTPH) |
-| `B0c8moW59` | ThermoMaven instant-read · `B0DHZTCNR5` | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DHZTCNR5) |
+| `B0c8moW59` | ThermoMaven instant-read · `B0DHZTCNR5` (2026-11-20 re-checks disagree: product page in the first pass, homepage in the later passes — FLG-031/FLG-025) | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DHZTCNR5) |
 | `B0f3GKalj` | CHEF iQ Sense Gen3 · `B0DZFD6R9Z` | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DZFD6R9Z) |
 
 **Important distinction:** the observed destination is evidence of where a supplied link resolved during that dated check; it does not prove that destination is the product the owner intended or that the link has been tested in the enrolled Associates account. FLG-001 and FLG-006 remain open. Do not describe the supplied short links as invalid: their exact compliance status is unresolved.
@@ -32,7 +32,7 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 | Area | Current state | What is not established | Official source |
 |---|---|---|---|
-| Publication | Buyer-first front page; two category pillars; comparison and buying guide; thirteen articles (evergreen guides, the dated Thanksgiving pair, the two gift guides and the listing-literacy guide); five per-product spec pages; a twelve-row publishing plan; three decision tools; RSS feed and sitemap | Organic impressions, rankings, readership, or topic popularity | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
+| Publication | Buyer-first front page; two category pillars; comparison and buying guide; fifteen articles (evergreen guides, the dated Thanksgiving pair, the two gift guides and the listing-literacy guide); five per-product spec pages; a twelve-row publishing plan; three decision tools; RSS feed and sitemap | Organic impressions, rankings, readership, or topic popularity | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 | Product facts | Seller-listed specifications linked to dated listing snapshots; conflicts are flagged, not silently resolved | Independent product testing or a current listing re-check after the 2026-11-19 snapshot | [Chefman listing](https://www.amazon.com/dp/B0CDY277D3) · [Emeril listing](https://www.amazon.com/dp/B09B7SB46R) · [Chefman listing](https://www.amazon.com/dp/B08DKYBTPH) · [ThermoMaven listing](https://www.amazon.com/dp/B0DHZTCNR5) · [CHEF iQ listing](https://www.amazon.com/dp/B0DZFD6R9Z) |
 | Pricing and ratings | No price or customer-rating claims are rendered on the site | Current prices, availability, ratings, or commission rates | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | Affiliate links | All Amazon anchors use `rel="sponsored"`; supplied links and observed targets are separately recorded; a dated check found all five supplied links ending at the Amazon homepage (FLG-025) and no shipped anchor carrying a visible `tag=` parameter (FLG-026) | Whether the tag is attached downstream by the short-link service (Q-24); Associates account eligibility; intended products; reporting attribution | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Google sponsored links guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) |
@@ -51,12 +51,12 @@ lift on hover (mobile-first pass S-20 in effect). The RSS feed no longer
 advertises a price range in the gift-guide description, and its channel title
 drops the overstated channel title the audit flagged. The
 Direction desk was rebuilt as a ledger and now matches `data/suggestions.json` /
-`data/open-questions.json` exactly: 46 suggestion rows (SG-01..SG-47; SG-21 retired
-in place, SG-26 unoccupied) and 29 open questions (Q-01..Q-29). That paragraph was
-written when the registers held 18 and 21 rows; the counts here were re-read from the
-JSON on 2026-11-20 rather than copied forward. Still open: FLG-016 / F-21 — the
-social-preview image has never been run through a share debugger. All release
-gates pass on the current tree.
+`data/open-questions.json` exactly: 58 suggestion rows (SG-01..SG-58) and 30 open
+questions (Q-01..Q-30). Those counts were re-read from the JSON on 2026-11-20 after
+the integration merges rather than copied forward. Still open: FLG-016 / F-21 — the
+social-preview image has never been run through a share debugger (the earlier SVG
+format issue is resolved; the shipped 1200×630 PNG is the asset in question). All
+release gates pass on the current tree.
 
 
 ## Added 2026-11-20 (session 6bf60cac): what a buyer can now do, and what is still blocked
@@ -85,7 +85,7 @@ Task T-52. The first claim, T-46, was taken on `main` by PR #38. The second, T-4
 
 **Verified in this pass.** Six official pages were read on 2026-11-20: the Associates Operating Agreement (S01, updated October 15, 2025; §5 sentence matches the disclosure), Program Policies (S02, updated April 14, 2026, opening sections only), FTC Disclosures 101 (S03, November 2019), Google's outbound-links guidance (S04, last updated 2025-12-10 UTC), Creators API GetItems (S06, ASIN defined as a 10-character identifier), and NIST TN 2156 (S16). The spot-check did not cover S05, S10–S15, S17–S19 or S21–S25.
 
-**Checked on the merged tree.** The buying guide links all thirteen guides. All ten feed items carry the same title as their page H1. The publishing-coverage check in `tools/verify_site.py` (sitemap, feed, hub, cadence) passes; the eight gates pass.
+**Checked on the merged tree.** The buying guide links all fifteen guides. Every feed item carries the same title as its page H1. The publishing-coverage check in `tools/verify_site.py` (sitemap, feed, hub, cadence) passes; the release gates pass.
 
 **Decision.** DT-10 (fixed monthly cadence) is marked decided, on the owner's instruction. One guide per calendar month; approver: the site owner; next guide due 2026-12-31 (`docs/publishing-cadence.md`). It is a rhythm, not a traffic or revenue forecast. DT-12 (promise or proposal for the twelve-week plan) remains open and is not decided here.
 
@@ -130,12 +130,15 @@ mis-placement finding in the FSIS test-kitchen study.
 
 **A real defect, found and fixed.** `SG-20` and `SG-21` in `data/suggestions.json` were
 byte-identical — the same "one identifier, two meanings" failure an earlier audit fixed
-elsewhere. SG-21 was retired in place rather than deleted, so the change can be audited, and
-gate rule `D20` now fails the build if any two live suggestions share a title.
+elsewhere. The duplicate arose when a merge replay clobbered SG-20's content; on 2026-11-20
+(T-27) the original was recovered verbatim from PR #17's own history (commit `7fbef67`), so
+SG-20 ("Ask the Associates account one question…") and SG-21 ("Pick one product as the site's
+spine…") are two live proposals again and the interim SG-21 tombstone is withdrawn. Gate rule
+`D20` fails the build if any two live suggestions share a title.
 
 **Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
-`rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
-every shipped page. Every new table row carries a source link or an explicit "No official source" marker,
+`rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of
+every page. Every new table row carries a source link or an explicit "No official source" marker,
 and the gate fails a row that has neither — so "unverified" can never hide.
 
 **Still true, still not this session's to fix.** The five short links carry no visible
@@ -147,7 +150,7 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 
 **Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
-(39 pages, 5,879 assertions) and `tools/crawl_links.py` (39 pages, 0 broken links, 0 dead
+(page and assertion counts recorded with the final gate run in `COORDINATION.md`) and `tools/crawl_links.py` (0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
 
 **Gates at the close of this session (T-38, session fe5fd1d9, 2026-11-20):** this session claimed
@@ -198,7 +201,7 @@ The open question that discovers missing information for the traffic path is Q-2
 | What product was intended for each submitted link? | Five observed destinations are documented separately | Intended ASIN and listing remain blank; product matching cannot be assumed | Confirm each in the Associates account and record date, official listing URL, and source | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
 | Is `shopnow047c-20` enrolled and eligible for the intended activity? | Tracking ID was supplied | Account state, eligibility, and API access are not visible to this repository | Check Associates Central; save only non-sensitive confirmation/status and date | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
 | Do the Special Links work as intended and report under this ID? | Outbound links are marked sponsored in the site | Account-side link compliance and report attribution are untested | Test one product link in the enrolled workflow; confirm destination and report before scaling | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
-| Which topics attract qualified visitors? | Thirteen guides and the technical SEO files exist | No Search Console impressions, clicks, or query export | Verify Search Console and review dated query reports after sufficient data accrues | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
+| Which topics attract qualified visitors? | Fifteen guides and the technical SEO files exist | No Search Console impressions, clicks, or query export | Verify Search Console and review dated query reports after sufficient data accrues | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 | Are visits turning into outbound clicks or orders? | Event definitions exist; browser-local counters are not aggregate | No endpoint or first-party click/order reports | Configure privacy-reviewed analytics; obtain authorized Associates reports; add provenance to the ledger | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | What commissions or revenue are realistic? | No qualifying order or commission evidence is recorded | Current rates, attribution, conversion, and order data are unavailable | Obtain current account reports and applicable program terms; do not forecast beforehand | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | What analytics and email data handling is acceptable? | No endpoint or email provider is connected | Hosting, retention, consent/notice, access, and data subject process are undecided | Select a provider and document the full data lifecycle before enabling collection | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) |
@@ -209,7 +212,7 @@ The proposal ledger, open-question register, and decision log are available on t
 
 ## Release and review status
 
-The repository's current release checks pass on the reviewed tree: `python3 scripts/check_site.py`, `python3 tools/verify_site.py`, `python3 scripts/build_registers.py --check`, and `python3 scripts/build_sitemap.py --check`. The coordination history records a successful GitHub Pages deployment at the project URL. These checks validate repository structure and registered content; they do not verify the Associates account, live traffic, external search indexing, or link-report conversion.
+The repository's current release checks pass on the reviewed tree: `python3 scripts/build_registers.py --check`, `python3 scripts/build_decisions.py --check`, `python3 scripts/build_chrome.py --check`, `python3 scripts/build_sitemap.py --check`, `python3 scripts/build_products.py --check`, `python3 scripts/build_readme.py --check`, `python3 scripts/build_ideas.py --check`, `python3 scripts/check_site.py`, `python3 tools/verify_site.py`, `python3 tools/check_site.py` (42 pages, 6,372 assertions), and `python3 tools/crawl_links.py` (42 pages crawled, 0 broken links, 0 dead anchors, 0 orphans). The coordination history records a successful GitHub Pages deployment at the project URL. These checks validate repository structure and registered content; they do not verify the Associates account, live traffic, external search indexing, or link-report conversion.
 
 - [Open the publication](https://wingbangboozle1-lang.github.io/Prod3/)
 - [Suggestions and path chooser](direction.html)
@@ -277,46 +280,43 @@ could be downloaded, so no screenshot-based visual check was performed and none 
 **Open for the owner, unchanged:** FLG-001 intended ASINs · FLG-006 Special Link test · FLG-010
 account status · FLG-025/031 link resolution · **FLG-026: no shipped link carries a visible tag
 parameter** · Search Console (Q-18) · analytics endpoint (Q-13).
-## Addendum — 2026-11-20, session `52f418e7`: the one defect that was worth finding
 
-**What the line-by-line pass found.** Read against the Associates Program Policies, the
-site had a money defect, not a wording defect. Participation Requirements 2(b) states:
-&ldquo;you must include your Associates ID or ‘tag’ (appearing as XXXXX-##, or such other
-format as we may designate) as a parameter in the URL of each link you place on your Site to
-an Amazon Site&rdquo;, and 2(a) that &ldquo;Special Links must use the Associates ID we have assigned
-to you&rdquo;. The Commission Income Statement then disqualifies a purchase that &ldquo;is not correctly
-tracked or reported because the links from your site to the relevant Amazon Site are not
-properly formatted&rdquo;. Every product link on this site — 329 of them, plus the five supplied
-short links — carried no tag. So every click was simultaneously a policy gap and worth nothing.
-Earlier passes had recorded the tag as an owner-only unknown (F-09, Q-02) rather than as a
-defect the site itself could fix, which is how it survived four audits.
 
-**What was changed, not queued.** All 369 product anchors across 42 pages now end in
-`?tag=shopnow047c-20`. The tag is emitted by the four builders, so it cannot be lost by
-regenerating a page, and `tools/link_tagger.py --check` runs as gate `D41`: a build that
-drops the tag fails instead of shipping. The JSON registers keep the canonical untagged
-listing URL, because that field is a record of what was read, not a route for a reader; and
-`/dp/B04G1MEwY` — a 9-character short-link token published as evidence of an observation —
-is deliberately left untagged. `disclosure.html` gained a plain-words &ldquo;How we link to
-Amazon&rdquo; section, which is what SG-34 had been asking for.
+## Addendum — 2026-11-20, session arena/26285b01-prod3 (T-58)
 
-**What was deliberately not claimed.** Nothing here says the five supplied links are invalid,
-broken or untracked. Three sessions fetched them on 2026-11-20 from outside an Amazon login
-and all reached the homepage; another record from the same day reached the listings. A fetch
-path is not an account report. The links stay recorded, the readers stop depending on them, and
-the one check that settles it is inside the account — open a link, read the destination URL for
-the tag, run it through the Link Checker, look for the click the next day (Q-31, FLG-026).
+Register-integrity pass. Three sessions renumbering flags and register rows in
+parallel produced the defect class closed here: the same identifier naming
+different findings wherever a merge dropped a renumber. One id now means one
+thing (FLG-024..FLG-038, SG-01..SG-47, Q-01..Q-29, DT-01..DT-13); the
+DIRECTION.md suggestion index is generated from `data/suggestions.json` so it
+cannot drift again; gate D44 (negative-tested) fails the build when any surface
+cites an id no register defines. Reading still finds what gates cannot: this
+pass corrected five wrong-subject citations (air-fryers.html and
+data/products.json named a retired flag number for the F-01 capacity conflict;
+data/open-questions.json named two renumbered findings by their old ids, now
+FLG-031 and FLG-028; the suggestions premise named the wrong flag for the
+FLG-029 gap; about.html cited SG-19 for SG-24's named-editor subject) and
+registered DT-13 for the question DIRECTION.md mis-cited as "DT-11 territory".
 
-**Two corrections this pass made about itself.** The `2026-11-20` clause-mapping pass (FLG-037)
-fixed most citation letters but recorded the cookies rule as 6(e); on the live page that wording
-is 3(e), and 6(e) is the search-engine clause. It was renumbered with a `supersedes_citation`
-note and the true 6(e) added, with 1(g), 4, 5 and 6(f) from the same read (FLG-041, moved twice as parallel sessions took 039 then 040). And the
-check meant to prove that every register row is published on `flagged.html` was written inverted
-— `not not _fmissing`, which passes when rows are missing. It passed while 18 of the 21 data
-findings had no published home. The condition is fixed, and `scripts/build_flag_index.py` now
-generates the F table on that page from `data/flagged.json`, watched by gate `D42`.
+Two items stay open for review, neither blocking: `data/flagged.json`'s
+id_policy note describes two placeholder flag ids (the second id-collision
+record; the ids themselves are listed in that note and in PR #77's
+description) as published records that no page in this tree publishes (they
+may land with an open session PR — logged on COORDINATION.md as a request), and whether SG-21 ever held a different proposal
+is now the owner's call (DT-13). A self-hosted, privacy-preserving analytics
+collector ships as deployable code (`analytics/collector/worker.js`, with
+deployment steps and the payload contract in `analytics/collector/README.md`);
+its endpoint stays blank until the owner deploys it and publishes a privacy
+notice, and gate D43 keeps the client, server and ledger event contracts
+identical and the endpoint honest. All release gates pass on the PR branch;
+the ledger remains empty and no forecast of any kind was computed.
 
-**Gates at this session's close:** `scripts/build_check_site.py`… all of `scripts/check_site.py`,
-`tools/check_site.py` (42 pages, 7,120 assertions), `tools/verify_site.py`, `tools/crawl_links.py`
-(0 broken links, 0 dead anchors, 0 orphans), `tools/link_tagger.py --check`, and all eight
-`--check` freshness gates pass on the merged tree.
+---
+
+# Addendum — 2026-11-20, publication-quality round (T-75…T-78, PR #88)
+
+**What this round shipped.** (1) The front page reads like a shop: a clearer hero ("Five kitchen tools, sorted by the cook they belong to."), and the featured pick's headline figure corrected to "2 × 3 qt" so no disputed total volume is stated as fact while the listing conflict is open. (2) Two new question-shaped evergreen guides — "Are air fryers worth it? Six questions to ask before you decide" and "Do you need a smart meat thermometer? Five questions before you pay for WiFi" — in the current guide template (Article + BreadcrumbList structured data, dated byline), wired into the front-page grid, the buying-guide clusters and the category read-next boxes, carried in the RSS feed and sitemap, and verified live after deploy. (3) SG-55 registered: a dated voice refresh for the 2026-11-19 guide batch, as a reviewable proposal. (4) Demonstrable defects fixed: duplicated read-next links on the air-fryer shelf, a D40 guide-count word list that could not see counts above "twelve", and stale guide counts across Q-14/Q-17, the front page, README, the Direction digest and these summaries.
+
+**What the round deliberately did not do.** It dropped three in-flight changes that the merged register answered better: a parallel flag-ID renumbering (the merged mainline's scheme stands), FAQPage structured data (SG-44: Google's FAQ rich result is gone; the visible FAQ text stays, the markup does not), and register rows that duplicated coverage already on the mainline (PageSpeed → Q-29/SG-46, seasonal → SG-43). Nothing was discarded from any other session during the three board-collision reconciliations; the claim chain T-48…T-51 → T-66…T-69 → T-71…T-74 → T-75…T-78 is recorded in COORDINATION.md.
+
+**Merged and deployed.** PR #88 (merge commit `a5a100e`), Pages run `44697488609` success; both new guides and the new hero fetched from the live site after the deploy. Still not established (unchanged owner gates): intended product identities (FLG-001), Special-link compliance (FLG-006/FLG-026, Q-24), account status (FLG-010), the short links that end at the homepage (FLG-025/FLG-031, Q-25), Search Console data (Q-28), Core Web Vitals (Q-29), share-debugger validation (Q-21/F-21), Pages build_type (FLG-024). No traffic, demand or conversion is claimed for the two new guide topics: they are editorial hypotheses until Q-27/Q-28 return data.

@@ -305,18 +305,18 @@ broken or untracked. Three sessions fetched them on 2026-11-20 from outside an A
 and all reached the homepage; another record from the same day reached the listings. A fetch
 path is not an account report. The links stay recorded, the readers stop depending on them, and
 the one check that settles it is inside the account — open a link, read the destination URL for
-the tag, run it through the Link Checker, look for the click the next day (Q-30, FLG-026).
+the tag, run it through the Link Checker, look for the click the next day (Q-31, FLG-026).
 
 **Two corrections this pass made about itself.** The `2026-11-20` clause-mapping pass (FLG-037)
 fixed most citation letters but recorded the cookies rule as 6(e); on the live page that wording
 is 3(e), and 6(e) is the search-engine clause. It was renumbered with a `supersedes_citation`
-note and the true 6(e) added, with 1(g), 4, 5 and 6(f) from the same read (FLG-041, moved from 039 when a parallel session took that id). And the
+note and the true 6(e) added, with 1(g), 4, 5 and 6(f) from the same read (FLG-041, moved twice as parallel sessions took 039 then 040). And the
 check meant to prove that every register row is published on `flagged.html` was written inverted
 — `not not _fmissing`, which passes when rows are missing. It passed while 18 of the 21 data
 findings had no published home. The condition is fixed, and `scripts/build_flag_index.py` now
 generates the F table on that page from `data/flagged.json`, watched by gate `D42`.
 
 **Gates at this session's close:** `scripts/build_check_site.py`… all of `scripts/check_site.py`,
-`tools/check_site.py` (42 pages, 6,630 assertions), `tools/verify_site.py`, `tools/crawl_links.py`
+`tools/check_site.py` (42 pages, 7,120 assertions), `tools/verify_site.py`, `tools/crawl_links.py`
 (0 broken links, 0 dead anchors, 0 orphans), `tools/link_tagger.py --check`, and all eight
 `--check` freshness gates pass on the merged tree.

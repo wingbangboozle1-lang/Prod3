@@ -13,10 +13,10 @@ Product details are attributed as seller/listing statements, not independent tes
 | Products | 5 submitted short-link tokens; 5 observed destinations; intended ASIN/listing confirmation remains blank for all 5 |
 | Pages | 42 HTML (front page, start page, 2 pillars, compare, buying guide, publishing plan, decision desk, ideas & review hub, 5 per-product spec pages, 4 tool pages, 10 articles, 10 trust pages, 404 — not in sitemap) |
 | Intended ASINs confirmed | 0 of 5 (blank until owner confirms — see FLG-001) |
-| Links | Four dated observations of the five supplied short links; the 2026-11-20 pass ended all five at the Amazon homepage from an unauthenticated fetch (FLG-025) — recorded as an observation, not a verdict on the link. Every product link the site places now carries the Associates tag, as Participation Requirements 2(b) requires: 390 tagged anchors, and gate `D41` fails the build if one is missing. Whether this account credits a manually tagged link is the owner's to confirm (FLG-026, Q-30) |
+| Links | Four dated observations of the five supplied short links; the 2026-11-20 pass ended all five at the Amazon homepage from an unauthenticated fetch (FLG-025) — recorded as an observation, not a verdict on the link. Every product link the site places now carries the Associates tag, as Participation Requirements 2(b) requires: 390 tagged anchors, and gate `D41` fails the build if one is missing. Whether this account credits a manually tagged link is the owner's to confirm (FLG-026, Q-31) |
 | Analytics | Five event types defined; four can be counted locally, none is sent to a server; no endpoint, Search Console property, or email provider configured |
 | Campaign ledger | Empty by design; add data only from authorized first-party reports |
-| Gates | `scripts/check_site.py`, `tools/check_site.py` (6,630 assertions on 42 pages), `tools/verify_site.py`, `tools/crawl_links.py`, plus eight `--check` freshness gates for generated surfaces and `tools/link_tagger.py --check` for outbound tagging |
+| Gates | `scripts/check_site.py`, `tools/check_site.py` (7,120 assertions on 42 pages), `tools/verify_site.py`, `tools/crawl_links.py`, plus eight `--check` freshness gates for generated surfaces and `tools/link_tagger.py --check` for outbound tagging |
 
 ## Working with it
 
@@ -75,12 +75,12 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 <!-- build-registers-table:start -->
 | Register | Page | Data | IDs | Count |
 |---|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-53 (SG-21 retired in place); unoccupied: SG-26 | 52 rows |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-30 | 30 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-56 (SG-21 retired in place); unoccupied: SG-26 | 55 rows |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-31 | 31 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | - |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | dated proposals | 12 |
-| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-040, F-01..F-21 | 56 in the data file |
+| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-042, F-01..F-21 | 58 in the data file |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | 28 |
 <!-- build-registers-table:end -->
 

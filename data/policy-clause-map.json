@@ -8,211 +8,270 @@
    "updated_on_page": "2025-10-15",
    "verified_on": "2026-11-20"
   },
-  "clauses": [
-    {
-      "cite": "S01 s.5",
-      "doc": "S01",
-      "section": "5",
-      "heading": "Identifying Yourself as an Associate",
-      "required_statement": "As an Amazon Associate I earn from qualifying purchases.",
-      "quote": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: \"As an Amazon Associate I earn from qualifying purchases.\"",
-      "cited_by_site_for": "the disclosure strip and footer",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S01 s.6",
-      "doc": "S01",
-      "section": "6",
-      "heading": "Term and Termination",
-      "quote": "any violation of Section 5 and as specified in the Program Policies will be deemed a material breach of this Agreement.",
-      "cited_by_site_for": "why a missing disclosure is treated as a material breach",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.2(a)",
-      "doc": "S02",
-      "section": "2(a)",
-      "heading": "Special Links",
-      "quote": "Special Links must use the Associates ID we have assigned to you.",
-      "cited_by_site_for": "the tag requirement on every outbound link",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.2(b)",
-      "doc": "S02",
-      "section": "2(b)",
-      "heading": "General Requirements Applicable to All Special Links",
-      "quote": "All Special Links must be accessed directly from your Site. For example, you must include your Associates ID or \"tag\" ... as a parameter in the URL of each link you place on your Site to an Amazon Site.",
-      "cited_by_site_for": "the tag parameter, and the rule that links are placed on the site itself rather than handed out for others to post",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.2(b) price",
-      "doc": "S02",
-      "section": "2(b)",
-      "heading": "General Requirements Applicable to All Special Links",
-      "quote": "your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.",
-      "cited_by_site_for": "why no price is rendered anywhere on the site",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.2(b) claims",
-      "doc": "S02",
-      "section": "2(b)",
-      "heading": "General Requirements Applicable to All Special Links",
-      "quote": "You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product, an Amazon Site, or any of our policies, promotions, or prices. For example, if you include on your Site a link to a 64 GB smartphone sold on an Amazon Site, you may not state that you are linking to a smartphone that has 128 GB of memory.",
-      "cited_by_site_for": "why seller-stated claims are attributed and conflicting listing values are shown both ways",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.2(b) sub-tag",
-      "doc": "S02",
-      "section": "2(b)",
-      "heading": "General Requirements Applicable to All Special Links",
-      "quote": "Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).",
-      "cited_by_site_for": "why the click counter is aggregate and stores no per-visitor identifier",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.2(b) product lists",
-      "doc": "S02",
-      "section": "2(b)",
-      "heading": "General Requirements Applicable to All Special Links",
-      "quote": "When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link.",
-      "cited_by_site_for": "why the site carries original guides rather than bare links",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.6(e)",
-      "doc": "S02",
-      "section": "6(e)",
-      "heading": "Content on your Site",
-      "quote": "disclosing on your Site accurately and adequately and otherwise satisfying applicable legal requirements, either through a privacy policy or otherwise, the use of cookies, pixels, and other technologies by you and third parties and how you collect, use, store, and disclose data collected from visitors",
-      "cited_by_site_for": "the analytics and privacy page",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.6(t)",
-      "doc": "S02",
-      "section": "6(t)",
-      "heading": "Content on your Site",
-      "quote": "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License.",
-      "cited_by_site_for": "why no customer star rating or rating count is displayed",
-      "supersedes_citation": "S02 s.2(t) - wrong section; corrected 2026-11-20",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.6(v)",
-      "doc": "S02",
-      "section": "6(v)",
-      "heading": "Content on your Site",
-      "quote": "You will not cloak, hide, spoof, or otherwise obscure the URL of your Site containing Special Links (including by use of Redirecting Links) or the user agent of the application in which Program Content is displayed or used such that we cannot reasonably determine the site or application from which a customer clicks through such Special Link to an Amazon Site.",
-      "cited_by_site_for": "why the site does not cloak the referring page",
-      "supersedes_citation": "S02 s.2(v) - wrong section; corrected 2026-11-20",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.6(w)",
-      "doc": "S02",
-      "section": "6(w)",
-      "heading": "Content on your Site",
-      "quote": "You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.",
-      "cited_by_site_for": "the supplied short links: whether a short link is ambiguous is judged by the reader's certainty, not by the domain",
-      "supersedes_citation": "S02 s.2(b) shortener - wrong section; corrected 2026-11-20",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.6(y)",
-      "doc": "S02",
-      "section": "6(y)",
-      "heading": "Content on your Site",
-      "quote": "Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.",
-      "cited_by_site_for": "why no price history or price alert feature is proposed",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.6(a)",
-      "doc": "S02",
-      "section": "6(a)",
-      "heading": "Content on your Site",
-      "quote": "You will not add to, delete from, or otherwise alter any Program Content in any way, including by adding additional information, except that you may resize Program Content consisting of a graphic image in a manner that maintains the original proportions of the image or truncate Program Content consisting of text in a manner that does not materially alter the meaning of the text or cause the text to become factually incorrect, or misleading.",
-      "cited_by_site_for": "why no Amazon banner, API block or Program Content widget is rendered, and why listing text is quoted with attribution rather than restyled",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.6(d)",
-      "doc": "S02",
-      "section": "6(d)",
-      "heading": "Content on your Site",
-      "quote": "You will not use any Program Content, including any name or likeness embodied in that Program Content, in a manner that implies a person's or company's endorsement or sponsorship of, or commercial tie-in or other association with, any product, service, party, or cause (including by placing unrelated third party materials in close proximity to Program Content).",
-      "cited_by_site_for": "why product names appear in the site's own label art and no recommendation is worded as an endorsement",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.6(g)",
-      "doc": "S02",
-      "section": "6(g)",
-      "heading": "Content on your Site",
-      "quote": "You will not offer any person or entity any consideration, reward, or incentive (including any money, rebate, discount, points, donation to charity or other organization, or other benefit) for using Special Links.",
-      "cited_by_site_for": "why there is no giveaway, cashback, rebate or share-to-unlock mechanic attached to a link (policy check C-18)",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.6(n)",
-      "doc": "S02",
-      "section": "6(n)",
-      "heading": "Content on your Site",
-      "quote": "You will not frame an Amazon Site, or any part of it, within your Site, including by display within an integrated web browser (e.g., WebView) within a Mobile Application. However, displaying a Special Link on your Site in accordance with Section 2 of these Participation Requirements, will not be a violation of this section.",
-      "cited_by_site_for": "why no Amazon page is embedded and why the only product surface is an outbound link",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.6(p)",
-      "doc": "S02",
-      "section": "6(p)",
-      "heading": "Content on your Site",
-      "quote": "You will not include any Special Links in any content that you place on an Amazon Site (for example, in connection with any advertising service available through an Amazon Site or in a customer review, forum, Wish List, guide, or any other customer-generated context available on an Amazon Site).",
-      "cited_by_site_for": "why no link is ever posted to Amazon, including by an automated promoter (C-18)",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.6(s)",
-      "doc": "S02",
-      "section": "6(s)",
-      "heading": "Content on your Site",
-      "quote": "You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise.",
-      "cited_by_site_for": "why the click counter is passive, why nothing prefetches a Special Link, and why synthetic traffic is refused (C-17)",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.4 email",
-      "doc": "S02",
-      "section": "4",
-      "heading": "Promotional Limitations",
-      "quote": "You may include Special Links in emails, SMS and direct messaging from your social media Sites; provided, that such communications are solicited (i.e., opted into by the receiving customer) and are otherwise in compliance with the Agreement, the Trademark Guidelines, and the Amazon Brand Usage Guidelines.",
-      "cited_by_site_for": "why no email or messaging automation ships without an opt-in record (C-18)",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.1 original content",
-      "doc": "S02",
-      "section": "1",
-      "heading": "Enrollment and Eligibility",
-      "quote": "Your Site(s) must contain original content and be publicly available via the website address provided in the application. Original content utilizing third-party materials must contain significant commentary, analysis, or transformation to any materials you include.",
-      "cited_by_site_for": "the eligibility floor under any at-volume content automation (C-20)",
-      "verified_on": "2026-11-20"
-    },
-    {
-      "cite": "S02 s.5 CIS attribution",
-      "doc": "S02",
-      "section": "5",
-      "heading": "Commission Income Limitations",
-      "quote": "Associates' tags should only be used to benefit from Amazon Associates commissions. If we detect that you (and/or a third party acting on your behalf) are attempting to claim commissions from both Amazon Associates and another program using the same traffic (for example, by manipulating or combining attribution links), we may take action, including withholding commissions, and/or terminating your participation in the Associates program.",
-      "cited_by_site_for": "why combining or double-tagging attribution links is refused, including in automated promotion (C-17)",
-      "verified_on": "2026-11-20"
-    }
-  ],
-  "method": "Each clause was read on the live page on 2026-11-20 by fetching the URL in documents above and locating the section heading and subsection letter. Quotes are transcribed from that read. Where an older site citation used a different number, the supersedes_citation field records it so a reader can see the correction rather than a silent rewrite.",
-  "gate": "tools/check_site.py D30 fails the release if any data file or published page cites a Program Policies clause whose number is not in this map, or re-uses a retired number.",
-  "extended_by": "arena/ba8e7240-prod3, 2026-11-20 - automation-side clauses added after reading the same page section by section; each quote transcribed from the served page, none paraphrased."
+  "S02": {
+   "title": "Associates Program Policies (contains Associates Program Participation Requirements)",
+   "url": "https://affiliate-program.amazon.com/help/operating/policies",
+   "updated_on_page": "2026-04-14",
+   "verified_on": "2026-11-20",
+   "note": "Section 2 'Links on Your Site' has subsections (a) Special Links and (b) General Requirements Applicable to All Special Links. Section 6 'Content on your Site' runs (a) through (z)."
+  }
+ },
+ "clauses": [
+  {
+   "cite": "S01 s.5",
+   "doc": "S01",
+   "section": "5",
+   "heading": "Identifying Yourself as an Associate",
+   "required_statement": "As an Amazon Associate I earn from qualifying purchases.",
+   "quote": "You must clearly and prominently state the following, or any substantially similar statement previously allowed under this Agreement, on your Site or any other location where Amazon may authorize your display or other use of Program Content: \"As an Amazon Associate I earn from qualifying purchases.\"",
+   "cited_by_site_for": "the disclosure strip and footer",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S01 s.6",
+   "doc": "S01",
+   "section": "6",
+   "heading": "Term and Termination",
+   "quote": "any violation of Section 5 and as specified in the Program Policies will be deemed a material breach of this Agreement.",
+   "cited_by_site_for": "why a missing disclosure is treated as a material breach",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.1 original content",
+   "doc": "S02",
+   "section": "1",
+   "heading": "Enrollment and Eligibility",
+   "quote": "Your Site(s) must contain original content and be publicly available via the website address provided in the application. Original content utilizing third-party materials must contain significant commentary, analysis, or transformation to any materials you include.",
+   "cited_by_site_for": "the eligibility floor under any at-volume content automation (C-20)",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.1(g)",
+   "doc": "S02",
+   "section": "1(g)",
+   "heading": "Enrollment and Eligibility",
+   "quote": "You will not … include any trademark of Amazon or its affiliates, or a variant or misspelling of a trademark of Amazon or its affiliates in any domain name, subdomain name, in any “tag” or Associates ID, or in any username, group name, or other identifier on any social networking site",
+   "cited_by_site_for": "why the site is called Kitchen Counter and no address or handle on it contains an Amazon Mark (SG-55)",
+   "verified_on": "2026-11-20",
+   "added_by": "session 52f418e7"
+  },
+  {
+   "cite": "S02 s.2(a)",
+   "doc": "S02",
+   "section": "2(a)",
+   "heading": "Special Links",
+   "quote": "Special Links must use the Associates ID we have assigned to you.",
+   "cited_by_site_for": "the tag requirement on every outbound link",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.2(b)",
+   "doc": "S02",
+   "section": "2(b)",
+   "heading": "General Requirements Applicable to All Special Links",
+   "quote": "All Special Links must be accessed directly from your Site. For example, you must include your Associates ID or \"tag\" ... as a parameter in the URL of each link you place on your Site to an Amazon Site.",
+   "cited_by_site_for": "the tag parameter, and the rule that links are placed on the site itself rather than handed out for others to post",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.2(b) price",
+   "doc": "S02",
+   "section": "2(b)",
+   "heading": "General Requirements Applicable to All Special Links",
+   "quote": "your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API and you comply with the requirements regarding use of Creators API or PA API in the License.",
+   "cited_by_site_for": "why no price is rendered anywhere on the site",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.2(b) claims",
+   "doc": "S02",
+   "section": "2(b)",
+   "heading": "General Requirements Applicable to All Special Links",
+   "quote": "You must not make inaccurate, overbroad, deceptive or otherwise misleading claims about any Product, an Amazon Site, or any of our policies, promotions, or prices. For example, if you include on your Site a link to a 64 GB smartphone sold on an Amazon Site, you may not state that you are linking to a smartphone that has 128 GB of memory.",
+   "cited_by_site_for": "why seller-stated claims are attributed and conflicting listing values are shown both ways",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.2(b) sub-tag",
+   "doc": "S02",
+   "section": "2(b)",
+   "heading": "General Requirements Applicable to All Special Links",
+   "quote": "Under no circumstances may you associate any sub-tag, other ID or reporting provided in connection with the Associates Program with a specific end user of your Site (e.g., you may not dynamically assign sub-tags to users as they arrive on your Site for purposes of monitoring such users' behavior).",
+   "cited_by_site_for": "why the click counter is aggregate and stores no per-visitor identifier",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.2(b) product lists",
+   "doc": "S02",
+   "section": "2(b)",
+   "heading": "General Requirements Applicable to All Special Links",
+   "quote": "When linking to pages with Product lists you must have additional original content on your Site that is relevant to the Special Link.",
+   "cited_by_site_for": "why the site carries original guides rather than bare links",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.2(g) CIS",
+   "doc": "S02",
+   "section": "2(g)",
+   "heading": "Commission Income Statement — Disqualified Purchases",
+   "quote": "any Product purchase that is not correctly tracked or reported because the links from your site to the relevant Amazon Site are not properly formatted",
+   "cited_by_site_for": "why an untagged or badly formatted link costs earnings rather than breaking a page (FLG-026, Q-31)",
+   "verified_on": "2026-11-20",
+   "added_by": "session 52f418e7"
+  },
+  {
+   "cite": "S02 s.3(e)",
+   "doc": "S02",
+   "section": "3(e)",
+   "heading": "Responsibility for Your Site",
+   "quote": "disclosing on your Site accurately and adequately and otherwise satisfying applicable legal requirements, either through a privacy policy or otherwise, the use of cookies, pixels, and other technologies by you and third parties and how you collect, use, store, and disclose data collected from visitors",
+   "cited_by_site_for": "the analytics and privacy page (cookies, pixels, visitor-data disclosure)",
+   "verified_on": "2026-11-20",
+   "supersedes_citation": "S02 s.6(e) — recorded that way in the 2026-11-20 FLG-037 correction pass. On the live page read the same day this wording is Section 3 item (e); Section 6 item (e) is the search-engine clause, now recorded separately. Renumbered by session 52f418e7 (FLG-041)."
+  },
+  {
+   "cite": "S02 s.4 email",
+   "doc": "S02",
+   "section": "4",
+   "heading": "Promotional Limitations",
+   "quote": "You may include Special Links in emails, SMS and direct messaging from your social media Sites; provided, that such communications are solicited (i.e., opted into by the receiving customer) and are otherwise in compliance with the Agreement, the Trademark Guidelines, and the Amazon Brand Usage Guidelines.",
+   "cited_by_site_for": "why no email or messaging automation ships without an opt-in record (C-18)",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.5 CIS attribution",
+   "doc": "S02",
+   "section": "5",
+   "heading": "Commission Income Limitations",
+   "quote": "Associates' tags should only be used to benefit from Amazon Associates commissions. If we detect that you (and/or a third party acting on your behalf) are attempting to claim commissions from both Amazon Associates and another program using the same traffic (for example, by manipulating or combining attribution links), we may take action, including withholding commissions, and/or terminating your participation in the Associates program.",
+   "cited_by_site_for": "why combining or double-tagging attribution links is refused, including in automated promotion (C-17)",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.5 ML",
+   "doc": "S02",
+   "section": "5",
+   "heading": "Distribution of Special Links Through Software and Devices",
+   "quote": "You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology.",
+   "cited_by_site_for": "the limit on any model trained with Program Content, and on client-side software that carries Program Content (SG-54)",
+   "verified_on": "2026-11-20",
+   "added_by": "session 52f418e7"
+  },
+  {
+   "cite": "S02 s.6(a)",
+   "doc": "S02",
+   "section": "6(a)",
+   "heading": "Content on your Site",
+   "quote": "You will not add to, delete from, or otherwise alter any Program Content in any way, including by adding additional information, except that you may resize Program Content consisting of a graphic image in a manner that maintains the original proportions of the image or truncate Program Content consisting of text in a manner that does not materially alter the meaning of the text or cause the text to become factually incorrect, or misleading.",
+   "cited_by_site_for": "why no Amazon banner, API block or Program Content widget is rendered, and why listing text is quoted with attribution rather than restyled",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.6(d)",
+   "doc": "S02",
+   "section": "6(d)",
+   "heading": "Content on your Site",
+   "quote": "You will not use any Program Content, including any name or likeness embodied in that Program Content, in a manner that implies a person's or company's endorsement or sponsorship of, or commercial tie-in or other association with, any product, service, party, or cause (including by placing unrelated third party materials in close proximity to Program Content).",
+   "cited_by_site_for": "why product names appear in the site's own label art and no recommendation is worded as an endorsement",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.6(e)",
+   "doc": "S02",
+   "section": "6(e)",
+   "heading": "Content on your Site",
+   "quote": "You will not (and you will not seek to) purchase, register or otherwise use any Amazon Mark … for use in any Search Engine . In addition to any other rights or remedies available to us, upon our request you will cause any Search Engine designated by us to exclude Proprietary Terms (defined below) from keywords used to display your advertising content in association with search results (e.g., request exclusion by negative keyword bidding), assuming the Search Engine offers such exclusion capabilities.",
+   "cited_by_site_for": "why no paid search campaign is proposed anywhere on this site (SG-55)",
+   "verified_on": "2026-11-20",
+   "added_by": "session 52f418e7"
+  },
+  {
+   "cite": "S02 s.6(f)",
+   "doc": "S02",
+   "section": "6(f)",
+   "heading": "Content on your Site",
+   "quote": "You will not bid on or purchase keywords, search terms, or other identifiers, including the word “amazon,” “Kindle,” or any other trademark of Amazon or its affiliates or variations or misspellings of any of these words (“Proprietary Terms” …) or otherwise participate in keyword auctions on any Search Engine if the resulting paid search advertisement is a Prohibited Paid Search Placement … You may purchase paid search advertisements and submit links to Search Engines to appear in response to a general Internet search query or keyword … so long as you comply with the Agreement and those paid or unpaid search results send users to your site and not directly, or indirectly via a Redirecting Link … to an Amazon Site.",
+   "cited_by_site_for": "what a paid search plan may and may not buy (SG-55)",
+   "verified_on": "2026-11-20",
+   "added_by": "session 52f418e7"
+  },
+  {
+   "cite": "S02 s.6(g)",
+   "doc": "S02",
+   "section": "6(g)",
+   "heading": "Content on your Site",
+   "quote": "You will not offer any person or entity any consideration, reward, or incentive (including any money, rebate, discount, points, donation to charity or other organization, or other benefit) for using Special Links.",
+   "cited_by_site_for": "why there is no giveaway, cashback, rebate or share-to-unlock mechanic attached to a link (policy check C-18)",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.6(n)",
+   "doc": "S02",
+   "section": "6(n)",
+   "heading": "Content on your Site",
+   "quote": "You will not frame an Amazon Site, or any part of it, within your Site, including by display within an integrated web browser (e.g., WebView) within a Mobile Application. However, displaying a Special Link on your Site in accordance with Section 2 of these Participation Requirements, will not be a violation of this section.",
+   "cited_by_site_for": "why no Amazon page is embedded and why the only product surface is an outbound link",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.6(p)",
+   "doc": "S02",
+   "section": "6(p)",
+   "heading": "Content on your Site",
+   "quote": "You will not include any Special Links in any content that you place on an Amazon Site (for example, in connection with any advertising service available through an Amazon Site or in a customer review, forum, Wish List, guide, or any other customer-generated context available on an Amazon Site).",
+   "cited_by_site_for": "why no link is ever posted to Amazon, including by an automated promoter (C-18)",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.6(s)",
+   "doc": "S02",
+   "section": "6(s)",
+   "heading": "Content on your Site",
+   "quote": "You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise.",
+   "cited_by_site_for": "why the click counter is passive, why nothing prefetches a Special Link, and why synthetic traffic is refused (C-17)",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.6(t)",
+   "doc": "S02",
+   "section": "6(t)",
+   "heading": "Content on your Site",
+   "quote": "You will not display or otherwise use any of our customer reviews or star ratings, in part or in whole, on your Site unless you have obtained a link to that customer review or star rating through Creators API or PA API and you comply with the requirements for Creators API and PA API described in the License.",
+   "cited_by_site_for": "why no customer star rating or rating count is displayed",
+   "supersedes_citation": "S02 s.2(t) - wrong section; corrected 2026-11-20",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.6(v)",
+   "doc": "S02",
+   "section": "6(v)",
+   "heading": "Content on your Site",
+   "quote": "You will not cloak, hide, spoof, or otherwise obscure the URL of your Site containing Special Links (including by use of Redirecting Links) or the user agent of the application in which Program Content is displayed or used such that we cannot reasonably determine the site or application from which a customer clicks through such Special Link to an Amazon Site.",
+   "cited_by_site_for": "why the site does not cloak the referring page",
+   "supersedes_citation": "S02 s.2(v) - wrong section; corrected 2026-11-20",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.6(w)",
+   "doc": "S02",
+   "section": "6(w)",
+   "heading": "Content on your Site",
+   "quote": "You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.",
+   "cited_by_site_for": "the supplied short links: whether a short link is ambiguous is judged by the reader's certainty, not by the domain",
+   "supersedes_citation": "S02 s.2(b) shortener - wrong section; corrected 2026-11-20",
+   "verified_on": "2026-11-20"
+  },
+  {
+   "cite": "S02 s.6(y)",
+   "doc": "S02",
+   "section": "6(y)",
+   "heading": "Content on your Site",
+   "quote": "Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.",
+   "cited_by_site_for": "why no price history or price alert feature is proposed",
+   "verified_on": "2026-11-20"
+  }
+ ],
+ "method": "Each clause was read on the live page on 2026-11-20 by fetching the URL in documents above and locating the section heading and subsection letter. Quotes are transcribed from that read. Where an older site citation used a different number, the supersedes_citation field records it so a reader can see the correction rather than a silent rewrite.",
+ "gate": "tools/check_site.py D30 fails the release if any data file or published page cites a Program Policies clause whose number is not in this map, or re-uses a retired number.",
+ "extended_by": "session 52f418e7, 2026-11-20: the cookies clause renumbered 6(e) to 3(e) with the superseded citation recorded (FLG-041), and 6(e), 6(f), 1(g), the Section 5 machine-learning clause and Commission Income Statement 2(g) added from the same live read. Every entry carries the wording transcribed from https://affiliate-program.amazon.com/help/operating/policies on the date in verified_on."
 }

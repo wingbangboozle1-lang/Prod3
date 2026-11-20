@@ -1,7 +1,7 @@
 # DIRECTION.md — Suggestions, open questions, and the path chooser
 
-**Site:** Kitchen Counter · **Tracking ID:** shopnow047c-20 · **Date:** 2026-11-19 (shop-polish revision)
-**Reader-facing mirror:** `direction.html` · **Machine registries:** `data/suggestions.json`, `data/open-questions.json`
+**Site:** Kitchen Counter · **Tracking ID:** shopnow047c-20 · **Date:** 2026-11-20 (shop-first revision)
+**Reader-facing mirror:** `direction.html` · **Decision desk:** `decisions.html` (generated from `data/decisions.json` + the three registers) · **Machine registries:** `data/suggestions.json`, `data/open-questions.json`, `data/decisions.json`
 
 Nothing in this file is implemented until a path is chosen in the Path chooser
 at the bottom. Suggestions are proposals; open questions are unknowns. The
@@ -31,17 +31,13 @@ options, and recommendations live there.
 | SG-17 | Product Advertising API as the only path to displayed prices (retires the old price-re-check idea) | proposed | owner |
 | SG-18 | Guide nine chosen from measured queries, not instinct | proposed | editorial |
 | SG-19 | Mobile-first tap-target pass ≥44/48px, ≥8px spacing (S-20, session 65474d4f; Google Lighthouse guidance, source S19) | implemented 2026-11-19 | engineering |
-| SG-20 | Pick one product as the site's spine and let the other four support it | proposed | owner |
-| SG-21 | Pick one product as the site's spine and let the other four support it | duplicate | owner |
-| SG-22 | Write the first-hand answer only after someone has actually used the appliance for a month | proposed | owner |
-| SG-23 | Make one page the definitive answer to "how big is it really" | implemented | editorial |
-| SG-24 | Give the site a named editor before giving it a voice | proposed | owner |
-| SG-25 | Stop calling it a decision log until decisions are actually recorded there | implemented | engineering |
-| SG-26 | _Unassigned — no proposal in the 2026-11-20 brief uses this number_ | — | — |
-| SG-27 | Give the navigation one group and one name for the review desk | proposed | editorial |
-| SG-28 | Make the shipped RSS feed discoverable from every page | proposed | engineering |
-| SG-29 | Choose the Search Console property type and verification method (extends SG-07) | proposed | owner |
-| SG-30 | Reader capture: RSS first, email only after a provider and a CAN-SPAM check | proposed | owner |
+| SG-20 | Pick one product as the site's spine and let the other four support it | implemented 2026-11-20 (dual-basket air fryer is the front-page starting pick) | owner |
+| SG-21 | — | **retired 2026-11-20**: byte-identical duplicate of SG-20, kept as a retired row so the change is auditable | — |
+| SG-26 | One generated chrome for all pages: masthead, disclosure strip, footer | implemented 2026-11-20 | editorial |
+| SG-27 | Nav labels shortened to six, with a second-level shelf and an active state on every page | implemented 2026-11-20 | editorial |
+| SG-28 | Ship three working decision tools instead of describing them | implemented 2026-11-20 | editorial |
+| SG-29 | Surface the seasonal guide from the calendar, labelled as editorial judgement not traffic data | implemented 2026-11-20 | editorial |
+| SG-30 | One decision desk that summarises the three registers and offers three costed paths | implemented 2026-11-20 | owner |
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
@@ -73,10 +69,32 @@ Q-12 (brand/visual sign-off), Q-13 (endpoint storage schema), Q-14 (cadence owne
 (disclosure reach), Q-16 (custom domain), Q-17 (retire zero-impression guides), Q-20 (email
 provider + consent), Q-21 (does the SVG preview render anywhere).
 
+## The SG-20 / SG-21 duplicate — reproduced and resolved
+
+Verified 2026-11-20: `SG-20` and `SG-21` carried byte-identical `title`, `problem`,
+`evidence`, `options`, `recommendation`, `effort`, `confidence`, `decision_owner` and
+`blocks` fields. This is the same "one identifier, two meanings" failure the a25ccde6
+audit fixed for SG-01..SG-08, so it was treated as a recurrence rather than a typo.
+
+**Resolution:** SG-21 was retired in place — not deleted — with a `retired_note` recording
+the byte-for-byte comparison. Deleted rows cannot be audited; retired rows can. Gate rule
+`D20` now fails the build if any two live suggestions share a title.
+
+**What is still open:** only the owner knows whether a second, different proposal was ever
+meant to occupy SG-21. If so, the duplicate displaced it and it needs re-entering. That is
+DT-11 territory and is recorded on `decisions.html`.
+
 ## Path chooser
 
-Choose one path. Record the choice here (date + path) and on `direction.html`.
-Unchosen suggestions stay proposals.
+Choose one path. Record the choice here (date + path) and on `decisions.html`.
+Unchosen suggestions stay proposals. The three paths are defined in `data/decisions.json`
+so the page and the data cannot disagree.
+
+| Path | Name | What it fixes first | Cost |
+|---|---|---|---|
+| A | Make it earn | Special Link test (DT-01), analytics endpoint (DT-07), Search Console (DT-03) | One session + one focused day |
+| B | Make it a publication | Buy two units (DT-05), publish real measurements, fix cadence (DT-10) | Purchase price + recurring writing |
+| C | Narrow and harden | Cut to one family (DT-06), settle the URL (DT-09), clear owner-only questions | Time and one pruning decision |
 
 - [ ] **Path A — Steady publication:** one question-shaped guide per week, sitemap + RSS
       updated each time; from guide nine onward, topics chosen from Search Console queries
@@ -86,7 +104,7 @@ Unchosen suggestions stay proposals.
 - [ ] **Path C — Hold:** resolve FLG-001 (intended ASINs) and FLG-006 (Special Link test)
       first, then choose A or B.
 
-**Chosen path:** _(none yet — 2026-11-19)_
+**Chosen path:** _(none yet — 2026-11-20. Recording a path on `decisions.html` writes to the reader's browser only; the real record is this table.)_
 
 ## Decision log (dated, with the source each decision rests on)
 
@@ -98,10 +116,6 @@ Unchosen suggestions stay proposals.
 | 2026-11-19 | Mark every outbound Amazon link `rel="sponsored"` and open in a new tab | S04 | The gate walks every anchor |
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |
-| 2026-11-20 | Register SG-27..SG-30 as proposals: one navigation label for the review desk, RSS discoverability, Search Console property choice (extends SG-07), reader capture | S26–S30; S02 §4 | Four proposals await a choice. None is implemented. |
-| 2026-11-20 | Mark SG-21 as a duplicate of SG-20 (identical text); keep the ID so later IDs do not shift | `data/suggestions.json` | Owner may delete or replace SG-21 |
-| 2026-11-20 | Correct 16 source IDs that named the wrong publisher (e.g., a Google rule cited to a product listing; an FTC quotation cited to Google) and add gate rule `D15-attribution` | S03, S04, S21, S22, S24, S25 | Fixed in the data; the gate fails on future publisher mismatches |
-| 2026-11-20 | Flag the Program Policies §2(t), §2(v) and shortener citations as UNVERIFIED (FLG-018); compliance copy otherwise unchanged | S02 (section 2 text read 2026-11-20) | Owner or editorial review needed; no claim removed without a source |
 
 ## Audit findings, session a25ccde6 (2026-11-19)
 

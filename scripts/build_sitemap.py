@@ -5,17 +5,34 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://wingbangboozle1-lang.github.io/Prod3"
-DATE = "2026-11-19"
+DATE = "2026-11-20"
 
 def pages():
-    files = sorted(ROOT.glob("*.html")) + sorted((ROOT / "articles").glob("*.html"))
+    files = (sorted(ROOT.glob("*.html"))
+             + sorted((ROOT / "articles").glob("*.html"))
+             + sorted((ROOT / "tools").glob("*.html")))
     files = [f for f in files if f.name != "404.html"]  # error page: never in the sitemap
     return [f.relative_to(ROOT).as_posix() for f in files]
 
+# Editorial weight, not a search-engine lever: sitemaps.org defines <priority> and
+# Google's documentation says it is ignored for ranking. It is kept because it makes
+# the file readable to a human deciding what to re-check, and nothing more.
+PRIORITY = {
+    "index.html": "1.0",
+    "air-fryers.html": "0.9",
+    "meat-thermometers.html": "0.9",
+    "compare.html": "0.9",
+    "decisions.html": "0.8",
+    "buying-guide.html": "0.8",
+}
+
+
 def render():
-    urls = "\n".join(
-        f"  <url><loc>{BASE}/{p}</loc><lastmod>{DATE}</lastmod></url>" for p in pages()
-    )
+    def row(p):
+        pri = PRIORITY.get(p)
+        extra = f"<priority>{pri}</priority>" if pri else ""
+        return f"  <url><loc>{BASE}/{p}</loc><lastmod>{DATE}</lastmod>{extra}</url>"
+    urls = "\n".join(row(p) for p in pages())
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n'
 
 if __name__ == "__main__":

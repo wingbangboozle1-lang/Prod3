@@ -26,6 +26,8 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 **Important distinction:** the observed destination is evidence of where a supplied link resolved during that dated check; it does not prove that destination is the product the owner intended or that the link has been tested in the enrolled Associates account. FLG-001 and FLG-006 remain open. Do not describe the supplied short links as invalid: their exact compliance status is unresolved.
 
+**Correction (2026-11-20, FLG-018/019):** earlier 2026-11-19 records had copied observed ASINs into the intended-ASIN fields and cited a NIST reference page as their source. Those intended fields are now blank, and a release gate blocks any intended ASIN without an owner-confirmation record. The policy record also said product buttons go straight to `/dp/` URLs; the buttons actually use the supplied short links, and the `/dp/` URLs are separate source links. Both corrections are recorded.
+
 ## Current capabilities and evidence limits
 
 | Area | Current state | What is not established | Official source |
@@ -38,6 +40,69 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 | Campaign ledger | Defined but empty; rows are to be added only from authorized first-party reports with provenance | Any clicks, sessions, orders, revenue, conversion score, or forecast | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | Search | Canonicals, robots file, sitemap, and RSS feed are present | Search Console ownership/verification, submission, query data, or indexing status | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 | Brand and imagery | Consistent publication design and illustrated/typographic product cards; 1200×630 PNG social preview is shipped | Share-debugger validation; official product photography is not used | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Google snippet guidance](https://developers.google.com/search/docs/appearance/snippet) |
+
+The reader-facing surface now leads with the shop, not the audit. The front
+page opens on a buyer question (“Basket or oven? Instant-read or wireless?”),
+followed by five product cards — seller-listed spec chips, an honest
+“consider if” line, ratings dated at capture, a “Check price on Amazon” CTA,
+and a source link under every card — then the chooser, seasonal guide row,
+and the data table. Stylesheet: 44 px tap targets, visible focus states, card
+lift on hover (mobile-first pass S-20 in effect). The RSS feed no longer
+advertises a price range in the gift-guide description, and its channel title
+drops the overstated channel title the audit flagged. The
+Direction desk was rebuilt as a full ledger (SG-01…18 with statuses, Q-01…21
+with discovery paths) and now matches `data/suggestions.json` /
+`data/open-questions.json` exactly. New open item: FLG-016 / F-21 — the SVG
+social-preview image is unverified in share previewers. All four release gates
+pass on the rebuilt tree.
+
+
+---
+
+# Addendum — 2026-11-20, shop-first pass
+
+**What this session did, in one paragraph.** The site was accurate and read like an audit.
+It now reads like a shop without giving up a single compliance rule: a named starting pick on
+the front page with a "look elsewhere if" that names the alternative; one navigation group plus
+a second-level shelf, generated so it cannot drift; three working decision tools; a dated
+seasonal guide; and a decision desk where every open choice, every unknown and three costed
+paths sit on one page.
+
+**Verified, not asserted — and one link changed under us.** Four of the five supplied short
+links resolved to the ASINs recorded on 2026-11-19. The fifth, `B04G1MEwY`, resolved to the
+Chefman product page at the start of this session and to the **Amazon.com homepage** on the
+same day's later fetch (independently reproduced by session 70e8475c, recorded as **FLG-017**).
+The cause is not established: it could be a campaign-link change, a transient response, or a
+link-level setting. The 2026-11-19 observation is kept, the intended-ASIN fields stay blank,
+and the front page now carries a visible status note on that card rather than presenting a
+possibly-broken link as live. It is the single most urgent item on the decision desk.
+The Amazon Program Policies were re-read the same day for the two clauses this pass leans on:
+§2(b) on price display and Special Link tagging, and the IP License on product images. The
+USDA FSIS safe-temperature chart (last updated 14 April 2025) and its probe-placement release
+(19 September 2023) were fetched and the figures transcribed exactly, including the 92%
+mis-placement finding in the FSIS test-kitchen study.
+
+**A real defect, found and fixed.** `SG-20` and `SG-21` in `data/suggestions.json` were
+byte-identical — the same "one identifier, two meanings" failure an earlier audit fixed
+elsewhere. SG-21 was retired in place rather than deleted, so the change can be audited, and
+gate rule `D20` now fails the build if any two live suggestions share a title.
+
+**Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
+`rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
+30 pages. Every new table row carries a source link or an explicit "No official source" marker,
+and the gate fails a row that has neither — so "unverified" can never hide.
+
+**Still true, still not this session's to fix.** The five short links carry no visible
+`tag=shopnow047c-20`; the enrolled-account test has not been run (DT-01, FLG-006), and one of
+them no longer reaches its product at all (FLG-017). There is no
+analytics endpoint and no Search Console property (DT-03, DT-07). Every figure remains a seller
+statement, because nothing has been purchased or tested (DT-05). These are owner actions with
+minutes-scale costs, and they are published on `decisions.html` rather than buried here.
+
+**Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
+`build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
+(30 pages, 3541 assertions) and `tools/crawl_links.py` (30 pages, 0 broken links, 0 dead
+anchors, 0 orphans) all pass on the merged tree.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.
 

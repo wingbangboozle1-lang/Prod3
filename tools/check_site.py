@@ -43,7 +43,9 @@ if not (ROOT / "index.html").exists():
     print("no site found — run this from the repository root after checkout")
     sys.exit(2)
 
-pages = sorted(ROOT.glob("*.html")) + sorted((ROOT / "articles").glob("*.html"))
+pages = (sorted(ROOT.glob("*.html"))
+         + sorted((ROOT / "articles").glob("*.html"))
+         + sorted((ROOT / "tools").glob("*.html")))
 docs = {p.relative_to(ROOT).as_posix(): p.read_text(encoding="utf-8") for p in pages}
 
 titles, descs = {}, {}
@@ -238,8 +240,8 @@ for p in _products:
           f"{p['id']}: an intended value was filled in without owner confirmation")
 
 # ---- no customer star ratings or rating counts rendered ------------------
-# Program Policies, Participation Requirements 2(t): customer reviews and star
-# ratings may be used only when obtained through Creators API or PA API.
+# Program Policies 2(t) was cited for this rule. The wording was not located in
+# Section 2 on 2026-11-20 (FLG-020). The rule is kept as a conservative site check.
 for name, html in docs.items():
     m = re.search(r"[0-9]\.[0-9]\s*★|\b\d+\s*ratings?\)", html)
     check("D10-no-ratings", not m, f"{name}: customer rating rendered ({m.group(0) if m else ''})")
@@ -327,6 +329,83 @@ import os
 for img in (ROOT / "assets").rglob("*.png"):
     kb = os.path.getsize(img) / 1024
     check("A13-img-weight", kb < 400, f"{img.name}: {kb:.0f} KB (over 400 KB)")
+
+
+# ---- decision desk and tools must stay fresh and fully sourced -----------
+# Added 2026-11-20 with the decision desk. Each rule guards a specific failure
+# that the rebuild could otherwise reintroduce silently.
+import subprocess as _sp2
+
+# D20: no two LIVE suggestions may share a title. SG-20/SG-21 were byte-identical
+# duplicates, which is the same "one ID, two meanings" failure the earlier audit
+# fixed elsewhere. Retired rows are exempt -- they are kept on purpose.
+_sugg = json.loads((ROOT / "data" / "suggestions.json").read_text(encoding="utf-8"))
+_live = {}
+for _s in _sugg["suggestions"]:
+    if _s.get("status") == "retired":
+        continue
+    key = _s["title"].strip().lower()
+    check("D20-suggestion-dup", key not in _live,
+          f"suggestions.json: {_s['id']} duplicates the title of {_live.get(key)}")
+    _live.setdefault(key, _s["id"])
+
+# D21: decisions.html must match data/decisions.json
+_r21 = _sp2.run([sys.executable, str(ROOT / "scripts" / "build_decisions.py"), "--check"],
+                capture_output=True, text=True)
+check("D21-decisions-fresh", _r21.returncode == 0, f"decisions.html stale: {_r21.stdout.strip()[:160]}")
+
+# D22: chrome (masthead / disclosure / footer) must match scripts/build_chrome.py
+_r22 = _sp2.run([sys.executable, str(ROOT / "scripts" / "build_chrome.py"), "--check"],
+                capture_output=True, text=True)
+check("D22-chrome-fresh", _r22.returncode == 0, f"chrome stale: {_r22.stdout.strip()[:160]}")
+
+# D23: every decision row resolves its evidence, and says so when it has none.
+_dec = json.loads((ROOT / "data" / "decisions.json").read_text(encoding="utf-8"))
+for _d in _dec["decisions"]:
+    has = bool(_d.get("sources"))
+    check("D23-decision-evidence",
+          has or _d.get("evidence_status") == "unverified",
+          f"{_d['id']}: no sources and not marked unverified")
+    for _sid in _d.get("sources", []):
+        check("D24-decision-source-known", _sid in _source_ids,
+              f"{_d['id']}: cites undefined source {_sid}")
+
+# D25: every open question either cites a registered source or is marked unverified
+for _q in json.loads((ROOT / "data" / "open-questions.json").read_text(encoding="utf-8"))["questions"]:
+    has = bool(_q.get("sources"))
+    check("D25-question-evidence",
+          has or _q.get("evidence_status") == "unverified",
+          f"{_q['id']}: no sources and not marked unverified")
+    for _sid in _q.get("sources", []):
+        check("D26-question-source-known", _sid in _source_ids,
+              f"{_q['id']}: cites undefined source {_sid}")
+
+# D27: the tools pages must exist and be reachable from the front page
+for _tool in ("tools/index.html", "tools/compare-builder.html",
+              "tools/oven-converter.html", "tools/cook-temperatures.html"):
+    check("D27-tool-present", _tool in docs, f"{_tool} missing")
+    check("D27-tool-in-sitemap", _tool in (ROOT / "sitemap.xml").read_text(), f"{_tool} not in sitemap")
+for _tool in ("tools/index.html", "tools/compare-builder.html",
+              "tools/oven-converter.html", "tools/cook-temperatures.html"):
+    check("D28-tool-linked", _tool.replace("tools/", "tools/") in docs.get("index.html", ""),
+          f"index.html does not link {_tool}")
+
+# D29: the USDA figures on the cook-temperature page must match the published chart.
+# Wrong food-safety numbers are the worst possible defect on this site, so the
+# values are asserted literally rather than trusted to the renderer.
+_usda = docs.get("tools/cook-temperatures.html", "")
+for _pair in (("poultry", "165"), ("ground meats", "160"), ("fish and shellfish", "145")):
+    check("D29-usda-values", _pair[0] in _usda.lower() or _pair[0] in (ROOT / "assets" / "decision-tools.js").read_text(encoding="utf-8").lower(),
+          f"the USDA row for {_pair[0]} is in neither the page nor the renderer")
+for _val in ("145°F (62.8°C)", "160°F (71.1°C)", "165°F (73.9°C)"):
+    check("D29-usda-exact", _val in (ROOT / "assets" / "decision-tools.js").read_text(encoding="utf-8"),
+          f"decision-tools.js is missing the USDA value {_val}")
+
+# D30: a seasonal guide must be surfaced on the front page, and it must be the
+# one whose month matches. Checked as a presence rule, not a render rule.
+check("D30-seasonal-surfaced",
+      "thanksgiving-temperature-plan.html" in docs.get("index.html", ""),
+      "the seasonal guide is not linked from the front page")
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

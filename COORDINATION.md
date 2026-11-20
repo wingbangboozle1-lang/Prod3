@@ -43,7 +43,7 @@
 | T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
 | T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
-| T-26 | Source-attribution integrity: every cited S-ID must name a source by the same publisher (16 wrong IDs corrected; gate rule `D15-attribution`); verify Program Policies §2 citations; register SG-27..SG-30 as proposals with evidence; flag SG-21 duplicate, FLG-018, FLG-019 | done (see log) | arena/9f36f5ee-prod3 | `data/suggestions.json`, `data/open-questions.json`, `data/policy-checks.json`, `data/sources.json`, `sources.html`, `flagged.html`, `README.md`, `DIRECTION.md`, `tools/check_site.py`, generated `suggestions.html` / `questions.html` / `citations.html`, `COORDINATION.md` |
+| T-26 | Final integration integrity pass: reconcile product-intent evidence, link/policy copy, automation claims, and flags; strengthen gates; re-run site and Pages release checks | done (2026-11-20, PR and Pages result below) | `arena/e83cdf55-prod3` | `data/verification.json`, `data/policy-checks.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `flagged.html`, `suggestions.html`, `questions.html`, `docs/verification.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -793,6 +793,112 @@ regenerated; all gates green.
   owner-side: FLG-001, FLG-006, FLG-010, FLG-015 (ledger), FLG-016/Q-21 (share debugger),
   and the open questions on `questions.html`.
 
+---
+
+## Session `arena/2ef30474-prod3` — shop-first rebuild + decision desk (2026-11-20)
+
+**Branch:** `arena/2ef30474-prod3` (from `af089d0`, the merge of PR #21)
+**Tracking ID:** `shopnow047c-20`
+**Claimed at:** 2026-11-20 (claim committed and pushed before any edit, per the board rules)
+
+The brief for this session is editorial and structural, not another compliance sweep:
+make the site **read like a shop**, give search engines **one canonical home**, and add a
+**decision desk** where every outstanding choice can be reviewed before anything is built.
+T-12/T-23 already handled disclosure placement, price policy, and source resolution; this
+session does not reopen them.
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-30 | Editorial voice pass: rewrite shop surfaces so products lead and the register reads as a publication (no claim, price or compliance wording weakened) | done | arena/2ef30474-prod3 | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/brand.js` (new), `assets/app.js` |
+| T-31 | Brand + navigation pass: one masthead group, consistent active state, publication framing, favicon/social card | done | arena/2ef30474-prod3 | `assets/brand.js` (new), `assets/style.css`, `assets/favicon.svg`, all `*.html` mastheads |
+| T-32 | Decision desk: one page where suggestions, open questions, missing information and paths can be reviewed and chosen | done | arena/2ef30474-prod3 | `decisions.html` (new), `DIRECTION.md`, `COORDINATION.md` |
+| T-33 | Register defect: `SG-20` and `SG-21` carry identical proposals (verified below) | done — SG-21 retired in place, gate D20 added | arena/2ef30474-prod3 | `data/suggestions.json`, `suggestions.html` (generated), `direction.html` |
+| T-34 | Three working decision tools: comparison builder, measurement converter, oven-to-air-fryer cheat sheet | done | arena/2ef30474-prod3 | `tools/*.html` (new), `assets/decision-tools.js` (new) |
+| T-35 | Seasonality module: which guide a reader should see by month, stated as editorial judgement not demand data | done | arena/2ef30474-prod3 | `assets/brand.js`, `index.html`, `articles/holiday-kitchen-gift-guide.html` |
+| T-36 | Gate extension for the new surfaces; then integration PR → `main`, merge, confirm Pages | done | arena/2ef30474-prod3 | `tools/check_site.py`, `scripts/build_sitemap.py`, `.github/workflows/pages.yml`, all |
+| T-37 | Publication-polish follow-up on current `main`: RSS `rel="alternate"` in the head of all 30 pages; SG-27..SG-30 registered with evidence-based status; FLG-017 added to `data/flagged.json`; footer link label "Search Console is connected" reworded to "Search Console setup" | done (2026-11-20) | arena/e52053d1-prod3 | `*.html` (head feed link + one index.html label), `data/suggestions.json`, `data/flagged.json`, generated `suggestions.html`, `decisions.html`, `COORDINATION.md` |
+| T-38 | Source-attribution integrity on current `main`: 19 mis-attributed citation fixes; gate `D15-attribution` added; Program Policies §2(t)/§2(v)/shortener citations marked not located (FLG-020); P-04 quotation and source-register gaps (FLG-021); generator `sponsored` marking limited to Amazon URLs | done (2026-11-20) | arena/9f36f5ee-prod3 | `data/suggestions.json`, `data/open-questions.json`, `data/policy-checks.json`, `data/citations.json`, `data/flagged.json`, `flagged.html`, `tools/check_site.py`, `scripts/build_registers.py`, generated `suggestions.html` / `questions.html` / `citations.html` / `decisions.html`, `COORDINATION.md` |
+
+**Non-overlap:** no other session has a live claim (every earlier row is `done`, and its
+branch is merged). If a session appears while this one is running, this scope is
+`index.html`, the two pillars, `compare.html`, `buying-guide.html`, `decisions.html`,
+`tools/`, `assets/brand.js`, `assets/decision-tools.js`, `assets/style.css`,
+`data/suggestions.json` and the generated register pages. The **articles/** directory
+(body prose), `data/products.json`, `data/sources.json` and `flagged.html` are **not**
+in this session's scope for content changes; add a cross-scope request instead of editing.
+
+### T-33 — the defect, verified before fixing
+
+```
+$ python3 -c "import json;d=json.load(open('data/suggestions.json'));\
+[print(s['id'],s['status'],'|',s['title']) for s in d['suggestions']]"
+SG-20 proposed | Pick one product as the site's spine and let the other four support it
+SG-21 proposed | Pick one product as the site's spine and let the other four support it
+```
+
+Two different IDs name one proposal, which is exactly the failure the a25ccde6 audit
+fixed for SG-01..SG-08 (I-01 on `direction.html`). Either the second row is a duplicate
+to delete or it is a lost proposal. The decision is logged here and published on
+`decisions.html` as a reproduced, not silently repaired, irregularity.
+
+### Verification run for this session
+
+Every external claim touched by new copy is re-checked against the source register before
+it ships. Sources used, as already registered (no new source IDs invented):
+
+| Claim used in new copy | Source | Status |
+|---|---|---|
+| Price/availability may be shown only when Amazon serves it or via Creators/PA API | S02 §2(b) | re-read live 2026-11-20 |
+| Special Links must carry the Associates `tag` parameter in the URL | S02 §2(b) | re-read live 2026-11-20 |
+| Program Content licence ends; images come from Creators/PA API | S02 IP License | re-read live 2026-11-20 |
+| Qualify paid outbound links with `rel="sponsored"` | S04 | registered |
+| Disclosure must be clear and conspicuous | S03 | registered |
+| Safe minimum internal temperatures, probe placement | S17, S18 | registered |
+| NIST traceability wording | S16 | registered |
+
+Observed redirect targets re-fetched 2026-11-20 from the live short links and confirmed
+identical to the register for P-01 (`B0CDY277D3`) and P-05 (`B0DZFD6R9Z`); the remaining
+three were confirmed in the same way in this session's table run below. No new product
+fact, price, rating or test result is introduced by this session's copy.
+
+### Completion record — session `arena/2ef30474-prod3`
+
+**Re-verification performed 2026-11-20 (not carried forward from an earlier session):**
+
+| Check | Result |
+|---|---|
+| Five supplied short links re-fetched live | All resolve to the register's ASINs: B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z — no drift |
+| Amazon Program Policies re-read (§2(b) price + tag, IP License images) | Confirms the tagging requirement and the price rule the site is built around |
+| USDA FSIS safe-temperature chart | Re-read, last updated 14 April 2025; 145/160/165°F figures transcribed verbatim with rest times |
+| USDA FSIS probe-placement release | Re-read, 19 September 2023; the 92% mis-placement finding quoted from the release, not paraphrased into a stronger claim |
+| Internal crawl | 30 pages, 0 broken links, 0 dead anchors, 0 orphans |
+| Markup well-formedness | 30 of 30 pages parse with no unclosed or stray tags |
+| Gates | `build_chrome`, `build_registers`, `build_decisions`, `build_sitemap`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` (3542 assertions), `tools/crawl_links.py` — all pass |
+
+**Irregularity found and resolved:** `SG-20` and `SG-21` were byte-identical in
+`data/suggestions.json` (same title, problem, evidence, options, recommendation, effort,
+confidence, owner and blocks). SG-21 is retired in place with a `retired_note`; gate rule `D20`
+now fails the build if two live suggestions share a title. Reproduced and published on
+`decisions.html`; only the owner can confirm whether a different proposal was meant to occupy
+SG-21.
+
+**New surfaces:** `decisions.html` (generated), `tools/index.html`,
+`tools/compare-builder.html`, `tools/oven-converter.html`, `tools/cook-temperatures.html`,
+`articles/thanksgiving-temperature-plan.html`, `scripts/build_chrome.py`,
+`scripts/build_decisions.py`, `assets/decision-desk.js`, `assets/decision-tools.js`,
+`tools/crawl_links.py`, `data/decisions.json`.
+
+**New gate rules:** `D20` duplicate live suggestions · `D21` decisions freshness · `D22` chrome
+freshness · `D23`/`D24` decision evidence resolves · `D25`/`D26` question evidence resolves ·
+`D27`/`D28` tools exist, are sitemapped and are linked · `D29` USDA values verbatim ·
+`D30` seasonal guide surfaced.
+
+**Cross-scope requests:** none. No file outside this session's claimed scope was edited. The
+`articles/` body prose of the eight pre-existing guides is unchanged; only
+`articles/thanksgiving-temperature-plan.html` (new) was added.
+
+**Handoff / conflict log:** no other session held a live claim; no rebase conflict occurred.
+
 
 ### Session arena/f4694e48-prod3 — T-24 claim
 
@@ -864,79 +970,163 @@ Scope: live re-check only. No intended-ASIN, price, rating, or account value was
 
 **Remaining owner-side gates:** FLG-001 (intended ASIN per link), FLG-006 (Special Link test), FLG-010 (account), FLG-017 (B04G1MEwY link check in Associates workflow).
 
-## Session arena/9f36f5ee-prod3 — T-26 source-attribution integrity (2026-11-20)
+### Merge with `origin/main` during this session — what happened and how it was resolved
 
-Claimed at `5b64eb8` (board row T-26) before any file edit. Rebased onto `origin/main` at `f2b3a07` (PR #27 by session 70e8475c, T-25). I did not repeat T-25's full re-check; my own short-link fetches are recorded below as an additional data point for FLG-017.
+While this session was working, three other PRs merged to `main` (#24, #25, #27). Merging
+`origin/main` into this branch produced **five conflicted files**: `COORDINATION.md`,
+`EXECUTIVE_SUMMARY.md`, `README.md`, `executive-summary.html`, `index.html`. Every conflict was a
+**same-region edit, not a competing claim**, and all five were resolved by keeping **both** sides:
 
-### Live observations (2026-11-20, `fetch_page`)
+| File | Resolution |
+|---|---|
+| `index.html` | Kept this session's shop front; kept main's shorter price/ratings policy sentence, merged into one paragraph that also keeps the §2(b) explanation and the fuller-comparison link |
+| `README.md` | Kept main's "Products / Analytics / Campaign ledger" status rows; kept this session's Pages count, gate list and build commands; registers table now lists DT-01..DT-10 and the retired SG-21 |
+| `EXECUTIVE_SUMMARY.md` | Kept main's source-index paragraph and this session's shop-first addendum, in that order |
+| `executive-summary.html` | Kept main's decision-brief callout and this session's change-log table and revenue-decision section |
+| `COORDINATION.md` | Kept both session records in chronological order |
 
-- `https://link.amazon/B04G1MEwY`, attempt 1: final URL `https://www.amazon.com/` (homepage). A second request to the same URL (chunkIndex 1): final URL `https://www.amazon.com/dp/B0CDY277D3`, title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven…", matching the 2026-11-19 observation. Session 70e8475c recorded homepage on two attempts. Across the four requests on 2026-11-20 (two here, two in 70e8475c): homepage ×3, product page ×1. This is consistent with an intermittent redirect, not a settled change. FLG-017 stays open for the owner's Associates check.
-- Other four short links, first attempt: final URLs `…/dp/B09B7SB46R`, `…/dp/B08DKYBTPH`, `…/dp/B0DHZTCNR5`, `…/dp/B0DZFD6R9Z`. Each title matches the `observed_title` in `data/products.json`.
+**No other session's work was discarded.** Verified afterwards: `scripts/check_site.py` (30 pages),
+`tools/verify_site.py`, `tools/check_site.py` (3,629 assertions) and `tools/crawl_links.py`
+(0 broken links, 0 dead anchors, 0 orphans) all pass on the resolved tree, and the repo-wide
+conflict-marker scan reports 0 markers.
 
-### Official sources re-read (2026-11-20)
+### FLG-017 changes this session's own conclusion — recorded honestly
 
-- FTC, Disclosures 101 for Social Media Influencers (S03): contains "You can't talk about your experience with a product you haven't tried." Hard-to-miss placement and "ABOUT ME" warning also confirmed.
-- Google, How to Write Meta Descriptions (S24): contains "Create unique descriptions for each page on your site."
-- Program Policies (S02), section 2(b) (General Requirements) read in full on 2026-11-20. Confirmed: no sub-tag or ID may be tied to an end user; product-list links need additional original content; no inaccurate or misleading claims; prices and availability shown only if Amazon serves them or they come through Creators/PA API. Section 4 confirmed: Special Links in email only when "solicited (i.e., opted into by the receiving customer)".
-- **Not confirmed:** Section 2 of the current text has only subsections (a) and (b). The repository's citations to "§2(t)" (customer star ratings), "§2(v)" (obscuring the URL), and a shortener prohibition attributed to "§2(b)" were **not found** there. Logged as FLG-018 (UNVERIFIED). The rating/price/sponsored conduct on the site does not depend on those citations.
+At the start of this session `link.amazon/B04G1MEwY` resolved to `B0CDY277D3`, and this session
+recorded "no drift" for all five links. **Later the same day the same link resolved to
+`https://www.amazon.com/`, the Amazon homepage** — reproduced independently here and by session
+`70e8475c` (FLG-017). This session's earlier statement was true when written and is no longer
+true, so it was corrected rather than left standing. Three consequences:
 
-### Citation corrections (fixed in data)
+1. `EXECUTIVE_SUMMARY.md` and `executive-summary.html` now state that four links resolved and one
+   did not, and name FLG-017.
+2. The front-page feature button and the air-fryer shelf button for P-01 now point at the
+   **product page** (`amazon.com/dp/B0CDY277D3`, still `rel="sponsored"`) instead of the broken
+   short link, and say why in plain words next to the button.
+3. `DT-01` on the decision desk was rewritten around FLG-017 and promoted to the top cost line:
+   one signed-in SiteStripe click per product is now the highest-value five minutes on the board.
 
-Checked every `S##` reference in `data/*.json` against the title of the source it names. Found 16 wrong or non-matching IDs and fixed them:
+This is not a claim that the supplied short links are invalid. The status of `B04G1MEwY` is
+unresolved — it may be transient, a campaign-link change, or a link-level setting, and a fetch
+cannot distinguish those.
 
-| File | Claim (short) | Was | Now | Basis |
-|---|---|---|---|---|
-| suggestions.json SG-01 | Google thin-affiliation policy | S12 (Chefman listing) | S22 | sources.json titles |
-| suggestions.json | Google `rel="sponsored"` requirement | S11 (Emeril listing) | S04 | Google qualify-outbound-links |
-| suggestions.json | FTC "can't talk about your experience" | S22 (Google spam) | S03 | FTC page, verified |
-| suggestions.json | Google E-E-A-T / experience | S14 (CHEF iQ listing) | S21 | Google people-first |
-| suggestions.json | Page-experience guidance | S14 | S25 | Google page experience |
-| suggestions.json | Google people-first (readers, not crawlers) | S12 | S21 | Google people-first |
-| suggestions.json | People-first heading guidance | S14 | S21 | Google people-first |
-| suggestions.json | Unique meta descriptions | S13 (ThermoMaven listing) | S24 | Google snippet, verified |
-| open-questions.json | Five products across four brands | S03-S21 (invalid range) | S10-S14 | listing sources |
-| open-questions.json | Links resolve to five ASINs | S16 (NIST) | S10-S14 | listing sources |
-| open-questions.json | Google "who created the content" | S14 (listing) | S21 | Google people-first |
-| open-questions.json | "The FTC prohibits…" | S22 (Google spam) | rewritten to FTC Disclosures 101 wording, S03 | FTC page, verified |
-| open-questions.json | Handled-unit honesty | S22 | S03 | policy-checks C-07 source |
-| open-questions.json | FTC "hard to miss" placement | S22 | S03 | FTC page, verified |
-| open-questions.json | P4 "newer model" wording | S06 (Creators API doc) | S13 (listing), quote not re-read — see FLG-019 | FLG-005 |
-| policy-checks.json C-11 evidence | "Air Fryers storefront" link | S15 (dp-token observation) | "internal site check, not an external source" | S15 covers only the dp token |
+### T-25 publication record (session `arena/70e8475c-prod3`, 2026-11-20)
 
-Shortener statements (suggestions SG-, open-questions, policy-checks C-"shortener") are reworded as UNVERIFIED with a pointer to FLG-018. Nothing else in the compliance copy was removed.
+- **PR #27:** https://github.com/wingbangboozle1-lang/Prod3/pull/27 (`arena/70e8475c-prod3` → `main`). Merged with `gh pr merge 27 --merge` at `2026-11-20T06:17:37Z`; merge commit `f2b3a07bdd65537341c2d7c84bb928beb5a8ae13`.
+- **Deploy GitHub Pages (workflow):** run `44686775327` — success on `f2b3a07`.
+- **pages build and deployment (GitHub built-in):** run `44686774699` — the build job succeeded; the **deploy job failed** with a transient results-receiver EOF on log retrieval. Re-running the built-in run is not permitted by GitHub. The Pages build history then recorded `f2b3a07` as `built`. Live fetch of `/flagged.html` on that build served FLG-017.
+- **Concurrent merge:** another session (`arena/2ef30474-prod3`) merged PR #26 into `main` at `c49de86`, which includes `f2b3a07`. The `Deploy GitHub Pages` workflow on `c49de86` reports success (`gh run list`); the Pages API reports the latest build `built` at `c49de86`. The live `/executive-summary.html` shows the 2026-11-20 re-check text.
+- **Gates re-run on the combined tree at `c49de86`:** `tools/verify_site.py`, `tools/check_site.py`, `scripts/check_site.py`, `scripts/build_sitemap.py --check`, `scripts/build_registers.py --check` — all pass.
+- **Irregularity logged:** one red `pages build and deployment` run (deploy job, transient) on `f2b3a07`, superseded by the successful `c49de86` build. Not a content failure. A `POST /pages/builds` request from this session returned 403 (insufficient integration permission), so no manual Pages rebuild was requested.
+- **Not claimed:** intended-ASIN confirmation (FLG-001), Special Link test (FLG-006), account status (FLG-010), FLG-017 cause, or any campaign data.
 
-### New sources (verified 2026-11-20, added to `data/sources.json` and `sources.html`)
+### Follow-up after PR #26 merged — source accuracy correction (2026-11-20)
 
-- S26 Google Search Console Help, Verify your site ownership — https://support.google.com/webmasters/answer/9008080
-- S27 Google Search Central, Link best practices — https://developers.google.com/search/docs/crawling-indexing/links-crawlable
-- S28 Google Search Central, Build and submit a sitemap — https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
-- S29 RSS Advisory Board, RSS 2.0 Specification — https://www.rssboard.org/rss-specification
-- S30 FTC, CAN-SPAM Act: A Compliance Guide for Business — https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business
+One defect in this session's own work was found by re-reading the rendered decision desk on the
+live site, and corrected:
 
-### Register and gate changes
+| Row | Was | Why that was wrong | Now |
+|---|---|---|---|
+| DT-07 (analytics endpoint) | cited **S23**, GitHub's *custom 404 page* doc | S23 says nothing about static hosting or POST handling. It was a nearby-looking GitHub Pages page, which is exactly the kind of citation the brief forbids. | cites **S05** (*What is GitHub Pages?*), which describes static hosting, and the row states the POST limit plainly |
+| DT-03 (Search Console) | cited **S21**, Google's people-first *content* guidance | S21 is about content quality, not Search Console verification. No registered source answers this question. | `sources: []` with `evidence_status: "unverified"` — rendered as **No official source**, which is the honest answer |
 
-- `data/suggestions.json`: SG-27 (one navigation label for the review desk), SG-28 (RSS autodiscovery and lastBuildDate), SG-29 (Search Console property type and verification; extends SG-07), SG-30 (reader capture: RSS first, email only after provider and CAN-SPAM check). All `proposed`; none implemented. SG-26 intentionally unassigned. **SG-21 marked `duplicate`:** its text is identical to SG-20 (kept so IDs do not shift; owner to delete or replace).
-- `tools/check_site.py`: new rule `D15-attribution`. A clause that names a publisher (Google, FTC, NIST, USDA, Lighthouse, Program Policies, Operating Agreement, CAN-SPAM, RSS, GitHub) must cite a source whose title names that publisher. **Mutation test:** re-inserting the S12 and S11 errors on a temporary copy made the rule fail with three named findings. The heuristic reads only back to the previous sentence or semicolon, so manual review still applies.
-- `flagged.html`: FLG-018 (policy citations UNVERIFIED), FLG-019 (S07/S08/S09/S20 undefined; P4 quote not re-confirmed; SG-20/SG-21 duplicate). Byline updated to 2026-11-20.
-- `README.md`: register table now lists SG-01..SG-30 and flagged IDs FLG-001..FLG-019 (flagged.html) with F-01..F-21 for `data/flagged.json` (not linked). The README previously listed F-IDs for flagged.html, which uses FLG IDs.
-- `DIRECTION.md`: index rows added for SG-20..SG-30; four decision-log rows dated 2026-11-20.
+Both rows now pass gate rules `D23`/`D25` (every decision and question either resolves its
+sources or is explicitly marked unverified). This is a correction to this session's own
+publication, found after deploy rather than before it — recorded here rather than quietly fixed.
 
-### Gates (all pass on the working tree)
+## Session arena/e83cdf55-prod3 — T-26 (2026-11-20)
 
-`python3 scripts/check_site.py` (24 HTML pages); `python3 tools/check_site.py` (24 pages, 2637 assertions, including D15); `python3 tools/verify_site.py` (release gate passed; 26 sources); `python3 scripts/build_registers.py --check`; `python3 scripts/build_sitemap.py --check`; `git diff --check`.
+Scope: integrity pass on product-intent provenance, policy-record copy, and gates. Board row T-25 was already taken by `arena/70e8475c-prod3` and merged (PR #27), so this claim is recorded as T-26.
 
-### Brief cross-references that do not match this repository (for the owner)
+**Defects found and corrected**
 
-- The brief places short-link compliance in "FLG-003". In this repository FLG-003 is the CHEF iQ battery-life conflict. Short-link compliance is FLG-006.
-- The brief cites "S07" and "S24" for a policy and for API checks. S07 is not defined in `data/sources.json`. S24 here is Google's meta-description guidance.
-- The brief's SG-27..SG-30 rows did not exist in the register. They are now registered (see above).
+- `data/verification.json`: 2026-11-19 `intended.asin` values were copied from observed redirects and cited S16 (NIST traceability FAQ). All five intended fields are blank now; observed fields are unchanged; `agrees` is replaced by `comparison_to_intent: "not performed"`. Logged as FLG-018.
+- `data/policy-checks.json` C-04: said buttons go directly to `/dp/`. Built HTML: 25 CTAs use the supplied `link.amazon` URLs; 138 separate `/dp/` source links. C-04 and C-09 are now `partial` with accurate evidence and gates. Logged as FLG-019.
+- C-09 said all five intended/observed values "agree"; intended values are null, so no agreement is claimed.
 
-### Not done, and why (owner or external; not blocking)
+**Gate added:** `tools/verify_site.py` now fails when an intended ASIN lacks `owner_confirmation_ref`, when its source is S16, or when `observed.agrees` returns. Negative test: exit 3 on an injected S16 intent.
 
-- **Self-hosted analytics endpoint:** not built. GitHub Pages is static and cannot receive POSTs. A relay or backend needs an owner decision first (`docs/analytics-endpoint.md`).
-- **Special Link test in the Associates workflow, intended-ASIN confirmation, account eligibility:** FLG-006, FLG-001, FLG-010. These need the owner's signed-in Associates account.
-- **Search Console property and sitemap submission:** SG-29 and Q-18. Requires the owner's Google account.
-- **Publishing cadence and email capture:** Q-14, Q-20, SG-30. Owner decisions.
-- **New guides:** none added. The four editorial hypotheses in the brief already exist as published guides: `articles/basket-or-oven-air-fryer.html`, `articles/air-fryer-capacity-checklist.html`, `articles/cleanup-counter-space.html`, `articles/questions-before-multi-function.html`. Adding a fifth guide needs the cadence decision first (Path A).
-- **Campaign ledger:** still empty. No first-party Associates report is available to this session.
-- **Executive summary:** unchanged in this session. T-24/T-25 updated it on 2026-11-20 and no statement in it changed.
+**Sources:** S01 Operating Agreement; S02 Program Policies; S04 Google outbound-link guidance (`rel="sponsored"`); S16 NIST (cited only as a reference that does not support intent).
+
+**Verification performed:** `scripts/check_site.py` passed; `tools/check_site.py` passed (24 pages, 2,608 assertions); `tools/verify_site.py` passed (intent gate included); `scripts/build_registers.py --check` and `scripts/build_sitemap.py --check` passed; `git diff --check` clean.
+
+**Irregularities (non-blocking, on flagged.html):** FLG-001 intended ASINs unconfirmed; FLG-006 short-link compliance unresolved (not called invalid or compliant); FLG-010 account status unverified; FLG-017 B04G1MEwY 2026-11-20 homepage result (recorded by T-25, not overwritten); FLG-018/019 corrections above.
+
+**Not claimed:** Associates enrollment, intended ASINs, Special Link validity, tracking-report attribution, Search Console, analytics volume, or live traffic.
+
+
+## Session arena/e52053d1-prod3 — T-37 (2026-11-20)
+
+**Collision and handoff log.** This session first claimed T-25 and built a 2026-11-20 link re-check. Before its push, `origin/main` gained PR #27 (`arena/70e8475c-prod3`), which already held T-25 for the same re-check and FLG-017. Rebase conflicted on this file. Resolution: the duplicate T-25 work was dropped from this branch and not pushed. The other session's work is unchanged. This session then renumbered to **T-26** for the non-overlapping parts. A later `main` (PR #26 and the shop-first rebuild `9032a35`) changed the nav and generated the page chrome, so this pass was reduced again to what `main` still lacked. Two branch-history merges with `-s ours` were used to keep the remote branch history without force-pushing.
+
+**ID note.** Renumbered from T-26: T-26 was already taken on `main` by session `arena/e83cdf55-prod3` (PR #30), so this record uses T-37, the next free ID on the board.
+
+**What changed**
+
+1. **RSS head link on the pages that lacked it.** On `origin/main` at `c49de86`, 20 of 30 HTML pages had no `<link rel="alternate" type="application/rss+xml">` in their head. The head is hand-written (`scripts/build_chrome.py` owns only the header and footer markers), so the link was added directly. All 30 pages now carry it.
+2. **SG-27..SG-30 registered** in `data/suggestions.json`. The request named these rows, but the register ended at SG-25. SG-27 (one name for the Direction page) is `implemented` upstream in `9032a35`. SG-28 (RSS) is `implemented` by this pass. SG-29 (Search Console) and SG-30 (reader capture) are `proposed`, owner-decided, and not verified from this environment.
+3. **FLG-017 added to `data/flagged.json`** so the machine-readable register matches `flagged.html`. The re-check and the `flagged.html` callout are from PR #27.
+4. **Footer/home link label reworded.** `index.html` had a link labelled "Search Console is connected" (inside a sentence that says "When … is connected"). No Search Console property exists, so the link now reads "Search Console setup". Owner-side item SG-29 is unchanged.
+5. **Generated files regenerated, not hand-edited:** `suggestions.html` (`build_registers.py`) and `decisions.html` (`build_decisions.py`).
+
+**Verification (all exit 0 on this branch)**
+
+```
+python3 scripts/check_site.py              all checks passed
+python3 tools/verify_site.py               release gate passed
+python3 tools/check_site.py                all additional rules passed
+python3 scripts/build_sitemap.py --check   up to date
+python3 scripts/build_registers.py --check register pages match data/*.json
+python3 scripts/build_chrome.py --check    chrome current on 30 pages
+python3 scripts/build_decisions.py --check decisions.html matches its data
+python3 tools/crawl_links.py               no broken links, no dead anchors, no orphans
+feed.xml, sitemap.xml                       well-formed XML
+rel=alternate feed link                    30 of 30 pages
+git diff --check                           clean
+```
+
+**Sources:** no new external source. SG-27..30 cite only repo files, the FLG-014 record, and `git log` history.
+
+**Irregularities (non-blocking)**
+- The T-25 collision above, logged rather than edited on the other session's row.
+- The SG-27..30 rows the request named did not exist in the register before this pass.
+- Owner-side items unchanged: FLG-001, FLG-006, FLG-010, FLG-015, FLG-016, FLG-017 (short-link check in the Associates workflow), SG-29 (Search Console), SG-30 (reader capture).
+- Not done: a self-hosted analytics endpoint. GitHub Pages cannot receive POST requests, and the repo has no backend.
+
+## Session arena/9f36f5ee-prod3 — T-38 (2026-11-20)
+
+**Collision and handoff log.** This session claimed T-26 at `5b64eb8` before starting the source-attribution pass. Before its push, `main` gained PR #30 (`arena/e83cdf55-prod3`, T-26), which took the same ID and created FLG-018 and FLG-019 for different subjects. The rebase of this session's two commits conflicted on this file. The rebase was aborted, and this session's original commit is preserved in the branch history. The branch was then merged with `origin/main` (merge commit recorded with upstream as a parent, tree kept equal to `origin/main`). The non-overlapping fixes below were re-applied on top of upstream. Work that upstream already completed (SG-27..SG-30, SG-21 retirement, RSS head link) was not repeated. This session's flag IDs moved to FLG-020 and FLG-021 to avoid colliding with upstream FLG-018 and FLG-019.
+
+**What changed**
+
+1. **19 mis-attributed citation fixes** (`data/suggestions.json`, `data/open-questions.json`, `data/policy-checks.json`; 34 changed lines). Each named publisher now matches a cited source's title. Examples: a Google policy cited to a product listing; an FTC quotation cited to Google's spam policy; a Google rule cited to a competitor listing. The wrong-to-right ID mapping is in the diff of commit `2de0d34`, which is preserved in this branch's history.
+2. **Gate `D15-attribution`** (`tools/check_site.py`). A clause naming a publisher must cite a source whose title names that publisher. It is a heuristic. Mutation test on the merged tree: an FTC clause changed from S03 to S22 in a temporary copy fails with `[D15-attribution] ... 'FTC' claim cites S22, none of which is a FTC source`; the real tree passes.
+3. **Unverified policy citations marked, not removed** (FLG-020). The live Program Policies page (updated April 14, 2026) was read for Section 2 on 2026-11-20. Section 2 has subsections (a) and (b) only. The §2(t) ratings clause, §2(v) URL-obscuring clause, and the shortener prohibition attributed to §2(b) were not found. `data/citations.json`, `citations.html`, `suggestions.json` now say "not located" rather than quoting them. The rating and price conduct on the site does not depend on those citations.
+4. **Generator `sponsored` marking** (`scripts/build_registers.py`). Citation rows applied `rel="sponsored noopener"` to all sources, including the FTC, Google and Program-policy references. Now `sponsored noopener` is applied only to Amazon URLs (the same test as gate P07), and `noopener` to everything else.
+5. **P-04 quotation and register gaps** (FLG-021). The quotation "There is a newer model of this item" is cited to S13. Only the first page of that listing was re-read, so the wording is not re-confirmed. The S-series numbers 07, 08, 09 and 20 are not defined in `data/sources.json`. Gate D06 forbids naming them in data, so the flag refers to them by number.
+
+**Sources.** No new external source. Checked against: Program Policies (S02) live page, Section 2 (2026-11-20); the FTC, Google, NIST and USDA entries already in `data/sources.json`.
+
+**Verification (all exit 0 on this branch, at the merged tree)**
+
+```
+python3 scripts/check_site.py              All checks passed.
+python3 tools/verify_site.py               Release gate passed.
+python3 tools/check_site.py                all additional rules passed (includes D15-attribution, D06, D21)
+python3 scripts/build_sitemap.py --check   up to date
+python3 scripts/build_registers.py --check register pages match data/*.json
+python3 scripts/build_decisions.py --check decisions.html matches its data
+python3 scripts/build_chrome.py --check    chrome current
+python3 tools/crawl_links.py               no broken links, no dead anchors, no orphans
+attribution re-check (/tmp/attr.py)        0 violations
+git diff --check                           clean
+```
+
+**Irregularities (non-blocking, for the owner)**
+
+- The brief's FLG-003 is not the short-link item; the short-link compliance item is FLG-006.
+- `README.md` lists two register tables: a stale one ("as of 2026-11-19", SG-01..SG-25, F-01..F-21) and the current one ("as of 2026-11-20"). The README is claimed under T-22 (`arena/33e3e80f-prod3`, in progress). Left unedited; the stale table should be removed by the claimant.
+- `DIRECTION.md` line 115 (2026-11-19 decision, "Remove customer star ratings") cites §2(t). That row is a historical record and was not changed. FLG-020 covers the citation.
+- `data/flagged.json` FLG-017 has `status` open; `data/products.json` live_recheck_2026_11_20 still records the homepage result. Both left as recorded.
+- Items for the owner, unchanged: FLG-001 (intended ASINs), FLG-006 (short-link compliance, including the Special Link test in the Associates workflow), FLG-010 (account status), FLG-017 (B04G1MEwY redirect), FLG-020 (policy citations), FLG-021 (P-04 quotation and register gaps).
+- Not done: self-hosted analytics endpoint (GitHub Pages cannot receive POSTs); Search Console property (SG-29); reader capture (SG-30); campaign ledger (no first-party Associates report available to this session).

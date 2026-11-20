@@ -162,46 +162,6 @@
       "used_for": "Page-experience expectations behind the mobile-first and performance rules",
       "quote": "Google's core systems reward pages that provide a great page experience.",
       "updated": "fetched 2026-11-19"
-    },
-    {
-      "id": "S26",
-      "title": "Google Search Console Help — Verify your site ownership",
-      "url": "https://support.google.com/webmasters/answer/9008080",
-      "used_for": "SG-29: URL-prefix vs Domain properties; Domain properties need a domain name provider; verification methods; data collection before verification",
-      "quote": "Data is collected for a property as soon as anyone adds it in Search Console, even before verification occurs.",
-      "updated": "fetched 2026-11-20"
-    },
-    {
-      "id": "S27",
-      "title": "Google Search Central — Link best practices for Google",
-      "url": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable",
-      "used_for": "SG-27: crawlable <a href> links and descriptive anchor text",
-      "quote": "Good anchor text is descriptive, reasonably concise, and relevant to the page that it's on and to the page it links to.",
-      "updated": "fetched 2026-11-20"
-    },
-    {
-      "id": "S28",
-      "title": "Google Search Central — Build and submit a sitemap",
-      "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
-      "used_for": "SG-28, SG-29: sitemap submission to Google; RSS, mRSS and Atom 1.0 listed among sitemap formats",
-      "quote": "Submit your sitemap to Google",
-      "updated": "fetched 2026-11-20"
-    },
-    {
-      "id": "S29",
-      "title": "RSS Advisory Board — RSS 2.0 Specification",
-      "url": "https://www.rssboard.org/rss-specification",
-      "used_for": "SG-28: required channel elements (title, link, description); optional lastBuildDate; RSS Validator",
-      "quote": "RSS documents can be tested for validity in the RSS Validator.",
-      "updated": "fetched 2026-11-20"
-    },
-    {
-      "id": "S30",
-      "title": "FTC — CAN-SPAM Act: A Compliance Guide for Business",
-      "url": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business",
-      "used_for": "SG-30: commercial email must identify as an ad, carry a postal address, offer an opt-out, and honor opt-outs within 10 business days",
-      "quote": "You must honor a recipient’s opt-out request within 10 business days.",
-      "updated": "fetched 2026-11-20"
     }
   ],
   "note": "\"verified\"/\"updated\" fields record when a page was fetched or its listed update date; a fetch date is not an endorsement of the page's product claims. Listing sources are seller pages: specs, ratings, and prices transcribed from them are seller statements. Amazon page availability and content can change. Session a25ccde6 added the Google people-first, thin-affiliation, custom-404, snippet and page-experience sources (S21-S25) after finding that the people-first and thin-affiliation sources had been cited in the data registers without ever being defined (audit I-03). Those additions were renumbered after the merge to avoid colliding with this branch's tap-target source."

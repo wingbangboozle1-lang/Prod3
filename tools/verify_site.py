@@ -12,6 +12,7 @@ Runs scripts/check_site.py, then verifies:
    until first-party reports exist; provenance must be dated)
  - feed.xml is well-formed XML with 9 items
  - robots.txt references the sitemap
+ - product-intent fields: intended ASINs need an owner-confirmation record
 """
 import json, re, subprocess, sys
 import xml.etree.ElementTree as ET
@@ -93,6 +94,26 @@ try:
     print("OK robots.txt references sitemap")
 except Exception as e:
     errors.append(f"robots.txt: {e}")
+
+try:
+    # Product-intent gate (C-09). An intended ASIN may be filled only with an
+    # owner-confirmation record; a reference source (for example S16) or an
+    # observed redirect value may never stand in for intent.
+    vdoc = json.loads((ROOT / "data/verification.json").read_text())
+    pdoc = json.loads((ROOT / "data/products.json").read_text())
+    for rec in vdoc["records"]:
+        intended = rec["intended"]
+        if intended.get("asin") is not None:
+            assert intended.get("owner_confirmation_ref"), f"{rec['product']}: intended ASIN set without owner_confirmation_ref"
+            assert intended.get("source") not in ("S16", None), f"{rec['product']}: intended source must be an owner record, not a reference page"
+            assert intended.get("listing_url") and intended.get("confirmation_date"), f"{rec['product']}: intended record incomplete"
+        assert "agrees" not in rec["observed"], f"{rec['product']}: observed.agrees compares to an unconfirmed intent"
+    for prod in pdoc["products"]:
+        if prod.get("intended_asin") is not None:
+            assert prod.get("intent_source"), f"{prod['id']}: intended_asin set without intent_source"
+    print("OK product intent: intended fields blank or owner-confirmed; observed kept separate")
+except Exception as e:
+    errors.append(f"product intent gate: {e}")
 
 if errors:
     print("\nFAIL:")

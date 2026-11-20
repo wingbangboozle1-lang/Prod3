@@ -96,3 +96,12 @@ Corrections made under T-23 (all gates re-run green afterwards):
 - New release gate in `tools/verify_site.py`: every source ID referenced from `data/*.json` must
   resolve to `data/sources.json`, and every registered source must appear on `sources.html`
   (negative-tested: exit 3 on an undefined ID).
+
+## T-26 intent-provenance and policy-copy correction (session `arena/e83cdf55-prod3`, 2026-11-20)
+
+- **Defect found:** `data/verification.json` (2026-11-19) copied each observed redirect ASIN into `intended.asin`, cited S16 (the NIST traceability FAQ) as the intent source, and set `agrees: true`. Intent cannot be inferred from a redirect, and S16 does not mention any ASIN.
+- **Correction:** all five `intended` fields are now null. `observed.*` values are unchanged. `agrees` is replaced by `comparison_to_intent: "not performed"`. Recorded under `correction_2026_11_20` in that file (FLG-018).
+- **Defect found:** policy check C-04 said product buttons go directly to `amazon.com/dp/<ASIN>`. The built HTML has 25 buttons to the supplied `link.amazon` URLs and 138 separate `/dp/` source links, all `rel="sponsored noopener"`. C-04 and C-09 are corrected to status `partial` with the actual evidence (FLG-019).
+- **Gate added:** `tools/verify_site.py` fails when an intended ASIN is set without `owner_confirmation_ref`, when the intended source is S16, or when `observed.agrees` reappears. Positive and negative checks were run on the corrected tree.
+- **Not changed:** the supplied short-link CTAs stay as they are. Their compliance status is unresolved (FLG-006). No link is described as invalid or compliant.
+- **Still open (owner-side):** FLG-001 intended ASIN confirmation; FLG-006 one-link Special Link test; FLG-010 account status; FLG-017 (2026-11-20 homepage result for B04G1MEwY, recorded by T-25).

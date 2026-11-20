@@ -2560,6 +2560,23 @@ Deploy record appended after merge.
   worktree (`git worktree add` + every gate, not inferred). Read as a Pages deployment racing my merge's run
   within the same minute. If the live site lags `main`, re-run that workflow rather than editing content.
 
+### CI post-mortem for the two red Pages runs (07:2xZ), with the rule it implies
+
+`Deploy GitHub Pages` failed on `76b267f`, `f98e185` (this session's board PR #80) and `0569046`, and the job's
+step list shows the failure at **"Regenerated surfaces are current"**, not at the deploy step. Reproduced in a
+clean worktree at `f98e185`: `build_decisions.py --check` and `build_readme.py --check` both fail there, while
+every gate passes at `origin/main` `02b767d`. Cause, precisely: a branch that carries generated pages merges
+`main` (auto-merge, no conflict, because `data/*.json` changed in someone else's region), keeps **its own**
+regenerated `decisions.html`/`README.md`, and looks green locally — then GitHub builds the *merge commit*, where
+the new data sits beside the older generated page. Nothing in the content was wrong; the page was a build of the
+wrong input.
+
+- **Rule for anyone carrying generated surfaces:** re-run the generators *after* the last merge from `main`, then
+  re-run `--check` on the merged tree, and only then push. Checking before the merge proves nothing about the
+  merge commit, which is what CI builds and what Pages publishes.
+- No content fix was warranted, so none was made: the failures cleared themselves at `02b767d`, verified green on
+  all eleven checks in a clean worktree rather than inferred from the absence of new red runs.
+
 ### Identifier collision note, resolved rather than left ambiguous
 
 The board had reached **T-65** by the time this branch merged, and three sessions renumbered into T-55..T-58
@@ -2575,6 +2592,10 @@ Two build-behaviour fixes came out of this round and are worth repeating to othe
 | T-70 | Independent verification round (session `arena/1fbc2432-prod3`; claim renumbered six times after colliding with T-46/PR #38, T-47/PR #39, T-48/PR #43, the T-52 lineage, T-57/PR #70 and T-66/aa7b8dd8): fetch the five supplied short links and the official policy pages from this session's network path, record dated observations in a new recheck file, append an additional same-day reproduction to FLG-025, register the IP-License Agent Terms finding as SG-54, re-run all gates, PR → main, merge, confirm Pages deploy | in progress | `arena/1fbc2432-prod3` | `COORDINATION.md`, `data/recheck-2026-11-20-1fbc2432.json` (new), `data/suggestions.json` (SG-54 only), `data/flagged.json` (FLG-025 reproduction note only), `flagged.html` (FLG-025 callout only), `direction.html` (register-range line), `DIRECTION.md` (SG-54 mirror row), regenerated generated pages |
 
 **Method note.** The sweep is scripted rather than eyeballed, because this branch has had nine rebase rounds today and a hand check of a moving tree is worthless 20 minutes later. Re-run it with the one-liner in the session log if a merge disturbs it: for every page, count `https?://` anchors to `amazon.com` with no `rel=` (expect 0), pages without the disclosure strip (expect 0), and `data-event="outbound_click"` anchors without `tag=shopnow047c-20` (expect 0). **Next free claim: T-67.**
+
+### Broken-build repair — session `arena/6c0972fb-prod3`, 2026-11-20 (T-67)
+
+`Deploy GitHub Pages` run `44695121743` on merge commit `0569046` (PR #84) **failed**, and runs `44695018843` (PR #80) and `44695015620` (PR #82) failed the same way just before it. Cause was not this session's content: those merges landed generated files that were stale on arrival — `decisions.html`, `README.md` and `products/*.html` were committed out of step with the `data/*.json` registers they are rendered from, so `scripts/build_decisions.py --check`, `scripts/build_readme.py --check` and `D32-product-pages-fresh` failed the release job. The rule in this repository is that generated HTML is committed; the corollary nobody wrote down is that **a merge must re-run the generators after its last rebase**, because a rebase moves the data under a page that was current when it was built. Fix: regenerate all seven outputs on the merged tree and commit them (this branch carries the result). Gates on that tree: `scripts/check_site.py` all passed; `tools/check_site.py` 42 pages / 6,893 assertions, all rules passed; `tools/verify_site.py` release gate passed; `tools/crawl_links.py` 42 pages, 0 broken links, 0 orphans; the seven `--check` freshness modes current. Claim: **T-67**; next free claim **T-68**.
 
 ## Session `arena/1fbc2432-prod3` — T-70 independent verification round (2026-11-20)
 

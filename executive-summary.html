@@ -37,10 +37,10 @@
 <main id="main"><div class="article" style="max-width:1000px">
 <p class="kicker">Executive summary</p>
 <h1>Kitchen Counter: listed specs, plainly told</h1>
-<p class="byline">Kitchen Counter · 2026-11-19 · Tracking ID shopnow047c-20</p>
+<p class="byline">Kitchen Counter · Updated 2026-11-20 · Tracking ID shopnow047c-20</p>
 
 <h2>What it is</h2>
-<p>A publication-style Amazon affiliate site covering two kitchen categories — air fryers (3 products) and meat thermometers (2 products). The front page leads with products, not process; every dashboard surface is reachable from the footer and one navigation group. Eight question-shaped guides, a comparison table, a buying guide, and a 3-question chooser help visitors decide.</p>
+<p>A shop-front Amazon affiliate site covering two kitchen categories — air fryers (3 products) and meat thermometers (2 products). The front page leads with products, not process; every dashboard surface is reachable from the footer and one navigation group. Eight question-shaped guides, a comparison table, a buying guide, and a 3-question chooser help visitors decide.</p>
 
 <h2>What is sourced — and what is not (audit 2026-11-19)</h2>
 <ul>
@@ -50,6 +50,30 @@
 <li>Disclosure strip above the fold on every page with the required “As an Amazon Associate I earn from qualifying purchases.” statement plus conditional commission wording; <code>rel="sponsored"</code> on every Amazon link (FLG-010 documents that account status is unverified).</li>
 <li>The demo email signup with a fake confirmation was removed; measurement is local-count only with no endpoint (FLG-014, <a href="analytics.html">Analytics &amp; privacy</a>).</li>
 </ul>
+
+<h2>What changed on 2026-11-20 — the shop-first pass</h2>
+<p>The site was accurate and hard to shop. It is now both. The compliance machinery was not loosened; it was moved out of the reader's way and into the build.</p>
+<table data-source-required="internal-decision">
+<caption>Every row is a change made and verified in this session. Source links point at the register or gate that now enforces it.</caption>
+<thead><tr><th>Change</th><th>What it replaced</th><th>Enforced by</th></tr></thead>
+<tbody>
+<tr><td><strong>A named starting pick on the front page</strong>, with a &ldquo;look elsewhere if&rdquo; that names the alternative</td><td>Five equally weighted cards and a method paragraph. A shop with no recommendation is a catalogue.</td><td><a href="index.html">index.html</a> · gate <code>D30</code></td></tr>
+<tr><td><strong>One navigation group plus a shelf</strong>, active on all 30 pages</td><td>Six labels with active state on 9 of 24 pages, hand-copied per page</td><td><a href="scripts/build_chrome.py">scripts/build_chrome.py</a> · gate <code>D22</code></td></tr>
+<tr><td><strong>Three working decision tools</strong>: comparison builder, oven-to-air-fryer converter, USDA cook-to-temperature card</td><td>Guides that described the arithmetic instead of doing it</td><td><a href="tools/index.html">tools/</a> · gates <code>D27&ndash;D29</code></td></tr>
+<tr><td><strong>A decision desk</strong> with every open choice, every unknown, a reproduced defect and three costed paths</td><td>Three registers on three pages with no single place to choose</td><td><a href="decisions.html">decisions.html</a> · gate <code>D21</code></td></tr>
+<tr><td><strong>A dated seasonal guide</strong> that leads with what the calendar makes urgent this week</td><td>A static gift-guide tile that read the same in July</td><td><a href="articles/thanksgiving-temperature-plan.html">Thanksgiving plan</a> · gate <code>D30</code></td></tr>
+<tr><td><strong>The SG-20 duplicate retired in place</strong></td><td>Two identifiers naming one proposal</td><td><a href="suggestions.html">suggestions register</a> · gate <code>D20</code></td></tr>
+</tbody>
+</table>
+<p class="small muted">What did <em>not</em> change: no price is rendered anywhere, every Amazon anchor is <code>rel="sponsored"</code>, the exact &sect;5 disclosure sentence appears in the strip and the footer of all 30 pages, and every new table row carries a source link or an explicit <em>No official source</em> marker.</p>
+
+<h2>The three decisions that actually gate revenue</h2>
+<ol>
+<li><strong>Are the links tagged?</strong> Amazon's Program Policies require an Associates ID or tag as a URL parameter on every link to an Amazon site. The five supplied <code>link.amazon</code> short links carry no visible tag in the URL a reader receives. One signed-in click per product in SiteStripe settles it (DT-01). This is not a claim that the links are invalid — it is an unresolved status.</li>
+<li><strong>Is anything measured?</strong> There is no analytics endpoint and no Search Console property, so the site cannot say which page or product works. Both are free and take minutes, not days (DT-03, DT-07).</li>
+<li><strong>Can the site say anything first-hand?</strong> Every figure on every page is a seller statement. Two purchased units would let it publish its own measurements and stop qualifying every sentence (DT-05).</li>
+</ol>
+<p>Fix only the first one and the site can earn. Fix the first two and it can learn. All three are on the <a href="decisions.html">decision desk</a> with their cost and the source each rests on.</p>
 
 <h2>What is flagged (does not block)</h2>
 <ul>

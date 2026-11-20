@@ -24,12 +24,15 @@ data tables).
 | Submitted tokens that are ASINs | 0 of 5 (they are 9-char short-link tokens; an ASIN is 10 chars) |
 | Observed destinations | B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z |
 | Intended ASINs confirmed | 0 of 5 (blank until owner confirms — see FLG-001) |
-| Pages | 24 HTML (front page, 2 pillars, compare, guide, 8 articles, 10 trust pages incl. suggestions/questions/citations, 404 page — not in sitemap) |
-| Gates | `tools/check_site.py`, `scripts/check_site.py`, `tools/verify_site.py`, `scripts/build_registers.py --check` (non-zero exit on violation) |
+| Pages | 30 HTML (front page, 2 pillars, compare, buying guide, decision desk, 4 tool pages, 9 articles, 10 trust pages, 404 — not in sitemap) |
+| Gates | `tools/check_site.py`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/crawl_links.py`, plus four `--check` freshness gates for generated surfaces |
 
 ## Working with it
 
 ```
+python3 scripts/build_chrome.py         # masthead, disclosure strip, footer into all 30 pages
+python3 scripts/build_decisions.py      # decisions.html from data/decisions.json + registers
+python3 tools/crawl_links.py            # internal links, anchors, orphans (exit 1)
 python3 tools/verify_site.py            # whole-tree release gate (exit 3 on violation)
 python3 scripts/build_registers.py      # rebuild suggestions.html, questions.html, citations.html
 python3 scripts/build_registers.py --check  # exit 1 if a register is stale
@@ -44,7 +47,9 @@ No third-party dependencies: the standard library only.
 
 ## Layout
 
-- `index.html` — publication front page, buyer-first (question hero, five product cards with CTAs and source links, 3-question chooser, category tiles, seasonal guides, data table, RSS capture)
+- `index.html` — shop front: a named starting pick with a "look elsewhere if", the rest of the short list, the 3-question chooser, the seasonal block, all guides, the full data table
+- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-10), every unanswered question (Q-01..Q-21) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
+- `tools/` — comparison builder, oven-to-air-fryer converter, USDA cook-to-temperature card
 - `air-fryers.html`, `meat-thermometers.html` — category pillars
 - `compare.html`, `buying-guide.html` — comparison + decision framework
 - `articles/` — 8 question-shaped guides (also in `feed.xml` + `sitemap.xml`)
@@ -54,7 +59,8 @@ No third-party dependencies: the standard library only.
 - `data/` — `products.json` (intent vs observed, never merged), `sources.json`, `campaign-ledger.json` (empty until first-party reports)
 - `assets/` — `style.css`, `app.js` (privacy-preserving measurement), `og-image.svg`, `favicon.svg`
 - `data/citations.json` — one row per rendered figure, with its observation date and source
-- `COORDINATION.md` — shared task board · `DIRECTION.md` — decision digest + pointers to the three registers
+- `scripts/build_chrome.py` — single source of truth for masthead, disclosure strip and footer; the article body is never touched
+- `COORDINATION.md` — shared task board · `DIRECTION.md` — decision digest + pointers to the registers
 
 ## Release gates
 
@@ -92,3 +98,22 @@ until a real first-party report exists.
 
 An ID prefix belongs to exactly one register. A proposal, a question and a decision
 are never given the same identifier, so no reader has to guess which page is authoritative.
+
+
+## What changed in the 2026-11-20 shop-first pass
+
+The site was accurate but read like an audit. It now reads like a shop, without giving up a
+single compliance rule. Concretely:
+
+| Change | Before | After |
+|---|---|---|
+| Front page | six-paragraph method statement above the products | a named starting pick ("Start here if…"), a "look elsewhere if" that names the alternative, then the rest of the list |
+| Navigation | six top-level labels, active state on 9 of 24 pages | one group of six, a second-level shelf, active state on all 30 pages, generated so it cannot drift |
+| Decision surfaces | suggestions, questions and decisions in three separate registers | one decision desk that summarises all three, plus a path chooser and an explicit "no official source" marker |
+| Seasonal | a static gift-guide tile | a dated seasonal block that leads with the guide the calendar makes urgent this week |
+| Tools | none | comparison builder, oven converter, USDA card — the three questions buyers get stuck on |
+| Duplicate proposal | `SG-20` and `SG-21` were byte-identical | SG-21 retired in place, gate rule `D20` prevents a recurrence |
+
+Nothing was softened: no price is rendered, every Amazon anchor is still `rel="sponsored"`,
+the exact §5 disclosure sentence still appears in the strip and the footer of every page, and
+every new table row carries a source link or an explicit "no official source" marker.

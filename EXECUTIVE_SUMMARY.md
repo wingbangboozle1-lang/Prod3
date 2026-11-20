@@ -100,3 +100,44 @@ with discovery paths) and now matches `data/suggestions.json` /
 `data/open-questions.json` exactly. New open item: FLG-016 / F-21 — the SVG
 social-preview image is unverified in share previewers. All four release gates
 pass on the rebuilt tree.
+
+
+---
+
+# Addendum — 2026-11-20, shop-first pass
+
+**What this session did, in one paragraph.** The site was accurate and read like an audit.
+It now reads like a shop without giving up a single compliance rule: a named starting pick on
+the front page with a "look elsewhere if" that names the alternative; one navigation group plus
+a second-level shelf, generated so it cannot drift; three working decision tools; a dated
+seasonal guide; and a decision desk where every open choice, every unknown and three costed
+paths sit on one page.
+
+**Verified, not asserted.** The five supplied short links were re-fetched on 2026-11-20 and
+resolved to the same five ASINs the register has recorded since 2026-11-19 — no drift. The
+Amazon Program Policies were re-read the same day for the two clauses this pass leans on:
+§2(b) on price display and Special Link tagging, and the IP License on product images. The
+USDA FSIS safe-temperature chart (last updated 14 April 2025) and its probe-placement release
+(19 September 2023) were fetched and the figures transcribed exactly, including the 92%
+mis-placement finding in the FSIS test-kitchen study.
+
+**A real defect, found and fixed.** `SG-20` and `SG-21` in `data/suggestions.json` were
+byte-identical — the same "one identifier, two meanings" failure an earlier audit fixed
+elsewhere. SG-21 was retired in place rather than deleted, so the change can be audited, and
+gate rule `D20` now fails the build if any two live suggestions share a title.
+
+**Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
+`rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
+30 pages. Every new table row carries a source link or an explicit "No official source" marker,
+and the gate fails a row that has neither — so "unverified" can never hide.
+
+**Still true, still not this session's to fix.** The five short links carry no visible
+`tag=shopnow047c-20`; the enrolled-account test has not been run (DT-01, FLG-006). There is no
+analytics endpoint and no Search Console property (DT-03, DT-07). Every figure remains a seller
+statement, because nothing has been purchased or tested (DT-05). These are owner actions with
+minutes-scale costs, and they are published on `decisions.html` rather than buried here.
+
+**Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
+`build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
+(30 pages, 3541 assertions) and `tools/crawl_links.py` (30 pages, 0 broken links, 0 dead
+anchors, 0 orphans) all pass on the merged tree.

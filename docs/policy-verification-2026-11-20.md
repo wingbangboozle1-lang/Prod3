@@ -352,9 +352,16 @@ merged tree rather than left standing:
 | `suggestions.html` / `questions.html` / `citations.html` self-dating from a literal | **Done upstream** — the "Register updated 2026-11-19" string no longer appears on any register page. |
 | `tools/verify_site.py` hardcoded feed count | **Done upstream** — it now derives the expected count from `articles/` and additionally fails if a guide is missing from the sitemap, the feed or the guides hub. The tree has 10 guides and 10 feed items. |
 | `README.md` duplicated register table (§6 item 3) | **Done upstream** — one generated table remains, produced by `scripts/build_readme.py`; this round's regeneration moved its counts to 47 suggestion rows and 27 questions. |
-| `citations.html` and `data/citations.json` still say the §2(t)/§2(v) wording "was not located" | **Still open** — owned by the active T-46 claim. It is now a false negative on the record: the clauses are §6(t) and §6(v). |
-| `flagged.html` FLG-020 "citations not located (UNVERIFIED)" | **Still open** — same owner; closable as resolved-with-correction. |
+| `citations.html` / `data/citations.json` still said §2(t)/§2(v) "was not located" | **Done upstream while this branch was open** — the published row now reads §2(a)/§2(b)/6(e), and the register carries an explicit `correction` field recording that the three rules are 6(t), 6(v), 6(w). The only remaining "not located" text in the tree is inside that correction sentence, where it belongs. |
+| `flagged.html` FLG-020 "citations not located (UNVERIFIED)" | **Closed upstream** — retitled "the letters were wrong and have been corrected", which is the outcome requested here. |
+| `tools/check_site.py` refused any §2(x) citation | **New upstream gate, and it passed on this round's edits** — `D35` reads `data/policy-clause-map.json` and rejects a clause letter absent from that map, plus `D36` (no repeated article-length block) and `D40` (a published count must equal the count on disk). This session's six rows cite only clauses in the map. |
+| `flagged.html` said "Eight articles…" against 10 guides on disk | **Fixed in this round** — the sentence now scopes the count to the date it was true instead of asserting a number that goes stale. Main was red on this line at merge time; a count a gate can only satisfy by being rewritten every deploy is the wrong shape of assertion. |
 | Thermometer cards have no chips; four inline hex colours remain on the front page | **Still open** — `meat-thermometers.html` renders zero chip rows against one per card on the air-fryer shelf, and `index.html` still carries `#fff`, `#fdba74`, `#e6d9c8` and the `#292524→#57534e` gradient inline. SG-44 and SG-45 cover exactly these. |
+
+Alongside those, this round extended the upstream clause map from 13 to 22 entries with the automation-side
+clauses the six new policy rows rest on — 6(a), 6(d), 6(g), 6(n), 6(p), 6(s), Participation Requirements section 1
+and section 4, and Commission Income Statement section 5 — each transcribed from the page served today, so
+gate `D35` now refuses a citation of any of them *and* accepts them when cited correctly.
 
 The pattern is worth stating plainly for whoever reads this after the merge: on this repository a cross-scope
 *request* is reliable, because the file owner is already editing it, and a cross-scope *edit* is how two

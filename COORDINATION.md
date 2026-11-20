@@ -2159,3 +2159,30 @@ Gates at the merge commit: the four `--check` freshness gates, `scripts/check_si
   added `aria-label`s; that change is kept) — my fix there is only the Ratings footnote sentence. Both survive.
 - `ideas.html` conflicted with their generated `build-ideas:brief` block — theirs kept in full; this session's
   design-brief table sits outside that marker region, so regeneration cannot clobber it.
+
+
+### Addendum, same session (07:20–07:30Z) — the tree moved again; state as of this push
+
+- Upstream (PRs through #60) merged `data/policy-clause-map.json` and gates `D35`/`D36`/`D40` while this branch
+  was open, and in doing so **executed three of the seven §7 requests**: the `citations.html` row and the
+  `data/citations.json` entry are corrected (the published row now reads §2(a)/§2(b)/6(e), with an explicit
+  `correction` field naming 6(t)/6(v)/6(w)), FLG-020 is closed as "the letters were wrong and have been
+  corrected", `README.md` has one generated register table, `scripts/build_registers.py` dates registers from
+  the data, and `tools/verify_site.py` derives the feed count from `articles/`. Those requests are withdrawn
+  as satisfied, not left open on the board.
+- This session's `data/policy-checks.json` was **rebuilt on upstream's base** rather than union-merged after a
+  rebase conflict corrupted the JSON (the earlier "both sessions added C-15..C-20" collision; upstream's IDs
+  won on 00:0xZ, so the same six areas are published under those numbers with this session's quotes). Net: 20
+  checks, `C-15`…`C-20` verified as this round's reads, and `citation_correction_2026_11_20` recorded.
+- Clause map extended 13 → 22 entries (6(a), 6(d), 6(g), 6(n), 6(p), 6(s), Participation Requirements §1 and §4,
+  Commission Income Statement §5), transcribed from today's served page, so `D35` accepts the automation clauses
+  the six new policy rows cite.
+- `flagged.html`: the "Eight articles…" sentence tripped `D40` on **`origin/main` at its own tip** (verified in a
+  clean worktree, not inferred). Reworded to scope the count to the date it was true; no number that goes stale
+  every deploy. File was under three in-progress claims, one of which (d42249a7) authored the line — flagged
+  here as a collision-by-necessity because main could not merge green otherwise.
+- **Still open, one line each:** (a) front-page chip rows — upstream shipped one row per card, so SG-43 is now a
+  confirmation task; (b) `meat-thermometers.html` renders **zero** chip rows against one per card on the
+  air-fryer shelf (SG-44); (c) four inline colour styles remain in `index.html` (SG-45); (d) the "Current price
+  on Amazon" line still sits beside nine buttons (SG-46); (e) the "Look elsewhere if…" disqualifier still precedes
+  the CTA (SG-47); (f) "Right now: December gift season" carries no in-season-until label (SG-48).

@@ -1,0 +1,143 @@
+{
+  "generated": "2026-11-20",
+  "session": "arena/6bf60cac-prod3 (T-47)",
+  "premise": "Twelve question-shaped guides proposed for the next twelve weeks. Each row states the buyer question, the calendar reason it is proposed for that week, the evidence it would need, and whether that evidence exists today. None of these is published. Nothing here is a claim about search volume, popularity, sales or product superiority: the only dated facts in the file are calendar dates and the publishing record.",
+  "rules": [
+    "A proposal becomes a guide only when its evidence column is satisfied by an official source, not when it is written.",
+    "The order is an editorial hypothesis for review (Q-14), not a measured ranking. When Search Console is live (DT-03) the order is re-chosen from measured queries.",
+    "No row may promise a price, a discount, a rating, a test result or a 'best' verdict.",
+    "Every published guide must carry the disclosure strip, source links to the official listing, and rel=\"sponsored\" on outbound product links."
+  ],
+  "columns": [
+    "week",
+    "calendar hook",
+    "proposed guide (question-shaped)",
+    "what the reader decides",
+    "evidence required",
+    "evidence status",
+    "pillar"
+  ],
+  "proposals": [
+    {
+      "week": "2026-11-23",
+      "hook": "Thanksgiving week",
+      "title": "How do I cook a turkey to temperature without a probe that reads wrong?",
+      "decides": "Where to put the probe, and which USDA minimum applies to which part",
+      "evidence": "S18 USDA probe-placement; S17 safe-temperature chart",
+      "evidence_status": "available",
+      "pillar": "Thermometers",
+      "note": "Extends the published Thanksgiving plan with the placement question that plan only summarises."
+    },
+    {
+      "week": "2026-11-30",
+      "hook": "Black Friday / Cyber Monday",
+      "title": "Is a bigger air fryer actually better for a family of four?",
+      "decides": "Whether to pay for capacity or for a second basket",
+      "evidence": "S10-S12 listing capacities and dimensions",
+      "evidence_status": "available",
+      "pillar": "Air fryers",
+      "note": "Black Friday is named here as a calendar date only. No discount, price or availability is claimed, and Program Policies §2(b) forbid stale promotion text."
+    },
+    {
+      "week": "2026-12-07",
+      "hook": "Gift-buying season",
+      "title": "What should I check before gifting a kitchen appliance?",
+      "decides": "Whether the recipient can store, power and clean it",
+      "evidence": "S10-S14 listed dimensions and power; S11 warranty wording",
+      "evidence_status": "available",
+      "pillar": "Cross-pillar"
+    },
+    {
+      "week": "2026-12-14",
+      "hook": "Christmas week",
+      "title": "What is the fastest safe way to check a roast in a crowded oven?",
+      "decides": "Instant-read vs leave-in probe when the oven is full",
+      "evidence": "S17, S18; S13, S14 listing claims",
+      "evidence_status": "available",
+      "pillar": "Thermometers"
+    },
+    {
+      "week": "2026-12-28",
+      "hook": "New Year, new kitchen habits",
+      "title": "Do I need an air fryer if I already have an oven?",
+      "decides": "Whether the appliance earns its counter space",
+      "evidence": "S10-S12 listed temperature ranges and dimensions; no energy or cost claim without a source",
+      "evidence_status": "partly blocked",
+      "pillar": "Air fryers",
+      "note": "Blocked on an official energy-use figure. Without one the guide can compare settings only, and must say so."
+    },
+    {
+      "week": "2027-01-11",
+      "hook": "January reset",
+      "title": "How do I clean a dual-basket air fryer without wrecking the coating?",
+      "decides": "Which parts are dishwasher safe, per the listing",
+      "evidence": "S10 listing wording on dishwasher-safe baskets; maker instructions would be stronger",
+      "evidence_status": "partly blocked",
+      "pillar": "Air fryers",
+      "note": "Blocked on the manufacturer's cleaning instructions. Listing wording alone is thin for a whole guide."
+    },
+    {
+      "week": "2027-02-01",
+      "hook": "Valentine's week",
+      "title": "Cooking for two: is a 6-quart dual basket too big?",
+      "decides": "Whether two 3-quart baskets suit a two-person household",
+      "evidence": "S10 capacity and dimensions",
+      "evidence_status": "available",
+      "pillar": "Air fryers"
+    },
+    {
+      "week": "2027-02-15",
+      "hook": "Late winter",
+      "title": "Wireless probe or instant-read: which fails first in a cold snap?",
+      "decides": "What the ratings actually cover",
+      "evidence": "S13, S14 stated operating ranges; S16 on what traceability means",
+      "evidence_status": "blocked",
+      "pillar": "Thermometers",
+      "note": "Blocked: neither listing publishes a minimum ambient operating temperature. Do not infer one."
+    },
+    {
+      "week": "2027-03-08",
+      "hook": "Spring cleaning",
+      "title": "How much counter space does an air fryer really take?",
+      "decides": "The true footprint including door swing and clearance",
+      "evidence": "S10-S12 listed exterior dimensions; clearance is not published, so the guide must say so",
+      "evidence_status": "partly blocked",
+      "pillar": "Air fryers",
+      "note": "Blocked on the clearance figure. The published space guide already publishes this gap honestly; a second guide must not fill it by guessing."
+    },
+    {
+      "week": "2027-04-05",
+      "hook": "Easter / spring lamb",
+      "title": "Which thermometer suits a bone-in roast?",
+      "decides": "Probe placement near bone and the safe minimum",
+      "evidence": "S17, S18; S13, S14 probes",
+      "evidence_status": "available",
+      "pillar": "Thermometers"
+    },
+    {
+      "week": "2027-05-03",
+      "hook": "Mother's Day / outdoor season",
+      "title": "What should I check before buying a grill thermometer as a gift?",
+      "decides": "Whether the recipient's cooker and phone support it",
+      "evidence": "S14 connectivity wording; S16 on what certifications do and do not mean",
+      "evidence_status": "available",
+      "pillar": "Thermometers"
+    },
+    {
+      "week": "2027-06-07",
+      "hook": "Father's Day / July 4 run-up",
+      "title": "Smoking a brisket overnight: what has to be true before you sleep?",
+      "decides": "Whether a wireless probe's range and battery suit an overnight cook",
+      "evidence": "S14 battery and range claims, published with the listing's two conflicting battery figures",
+      "evidence_status": "available",
+      "pillar": "Thermometers",
+      "note": "Uses FLG-003: the listing states 50 h and 70 h. Both are published; neither is chosen."
+    }
+  ],
+  "how_it_gets_chosen": {
+    "today": "By editorial judgement about the calendar, stated as a hypothesis. The site has no traffic data (FLG-015) and no Search Console property (Q-18).",
+    "after_dt_03": "Re-ordered from measured impressions and queries. A row that gets no impressions in a month is demoted, not quietly rewritten.",
+    "review_surface": "ideas.html holds the site-change proposals; this file holds the writing proposals. Both are reviewed before implementation."
+  },
+  "sources_note": "Calendar hooks are public calendar dates. Product evidence cites the official listing register S10-S14; food-safety rows cite S17/S18; traceability and certification wording cites S16. No row cites a search-volume, sales or review-count figure."
+}

@@ -560,6 +560,98 @@
     },
     {
       "id": "SG-32",
+      "title": "Show a dated status line on every buy button until the link test passes",
+      "problem": "FLG-025 records all five supplied short links ending at the Amazon homepage on 2026-11-20. The buttons still read “Check price on Amazon”, which promises a product page. A reader who lands on the homepage has been given a promise the link did not keep.",
+      "evidence": "Third dated observation in data/products.json (live_recheck_2026_11_20_link_check): five of five final URLs were https://www.amazon.com/. Earlier records: 2026-11-19 five product pages; two partial same-day records. FLG-017, FLG-023, FLG-025.",
+      "options": [
+        "A. Keep the button but add one dated line: “Link re-tested 20 Nov 2026 — if it opens the Amazon homepage, use the listing link below.”",
+        "B. Point every buy button at the official /dp/ listing instead and keep the short link on the flag page as the object under test.",
+        "C. Change nothing until the owner's signed-in test is done."
+      ],
+      "recommendation": "A now, then B only if the owner's test also fails. A costs one line per card, keeps the supplied link in test, and stops the page from promising a destination nobody has confirmed today.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "The page stops over-promising, without pretending the short links are invalid.",
+        "risk": "A visible caveat next to a buy button can reduce clicks; that is the honest cost of an unconfirmed link.",
+        "reversible": "yes",
+        "falsifier": "If the owner's test shows the links reach the products, remove the line the same day."
+      }
+    },
+    {
+      "id": "SG-33",
+      "title": "Add a five-row link-status table to the front page footer area, one row per product",
+      "problem": "The reader cannot tell which of five buy links reached its product on which date. That information exists in four separate observations across three sessions and is spread over products.json, verification.json and three flag rows.",
+      "evidence": "data/products.json now holds four dated observations; flagged.html publishes FLG-017, FLG-023 and FLG-025.",
+      "options": [
+        "A. One five-row table: product · supplied link · last fetched (date) · landed on (product page / homepage) · source.",
+        "B. Keep it on flagged.html only.",
+        "C. Publish only the most recent global result (“all five: homepage on 2026-11-20”)."
+      ],
+      "recommendation": "A on flagged.html and a one-line summary on the front page. C alone loses the per-product history that makes the finding checkable.",
+      "effort": "S",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "One table replaces three prose flags and four data fields a reader will never open.",
+        "risk": "A table of dated observations invites a reader to read the newest row as a verdict; the caption must say it is an observation, not a verdict.",
+        "reversible": "yes",
+        "falsifier": "If it does not change what readers do, fold it back into one line."
+      }
+    },
+    {
+      "id": "SG-34",
+      "title": "State the tag-parameter requirement once, in plain words, on the disclosure page",
+      "problem": "Program Policies §2(b) require the Associates tag as a parameter in each link's URL. The site's disclosure page explains that a commission may be earned but never tells the reader (or the owner) what makes a click attributable.",
+      "evidence": "Program Policies (updated 2026-04-14) §2(a) and §2(b), quoted in data/verification.json link_compliance_2026_11_20; FLG-026. Zero shipped anchors carry tag=shopnow047c-20.",
+      "options": [
+        "A. Add a short “How a click is credited” paragraph with the quoted requirement and the observed fact.",
+        "B. Leave it to the flag register.",
+        "C. Remove the tracking-ID line from the disclosure strip as too technical."
+      ],
+      "recommendation": "A. It is the one compliance statement on this site that a reader can check against the policy text, and it is one paragraph.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "owner",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "Makes the disclosure specific instead of ceremonial, and gives the owner a written rule to test against.",
+        "risk": "Quoting a policy clause wrongly is worse than not quoting it; the quote must be copied verbatim and dated.",
+        "reversible": "yes",
+        "falsifier": "If the policy page changes the clause, the paragraph is corrected or removed the same day."
+      }
+    },
+    {
+      "id": "SG-35",
+      "title": "Give the twelve guide proposals a home with a gate, so the writing plan is reviewable",
+      "problem": "The site had nine published guides and no reviewable answer to “what gets written next, and why”. Proposal rules lived in prose on several pages.",
+      "evidence": "data/editorial-plan.json (12 rows, each with the evidence it needs and whether it exists); publishing-plan.html; gate D31 in tools/check_site.py.",
+      "options": [
+        "A. Keep the dated twelve-week plan page, gated against its data file.",
+        "B. Keep the plan in the repository only.",
+        "C. Write guides as ideas arrive, with no plan."
+      ],
+      "recommendation": "A — implemented 2026-11-20. The gate makes a row edited in one place only fail the release, which is the same discipline the other registers use.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "implemented",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "A blocked row is visible before anyone writes around the gap, so the site cannot quietly invent the missing figure.",
+        "risk": "A published plan is a promise; if the cadence slips the page goes stale. The week column is therefore a proposal date, not a commitment, and the page says so.",
+        "reversible": "yes",
+        "falsifier": "If no row ships in four weeks, demote the page to a repository note."
+      }
+    },
+    {
+      "id": "SG-36",
       "title": "Lead the front page with a buyer question and five shop cards, not with the audit trail",
       "problem": "A buyer landing on the site should see products and a chooser, not a source register. The verification machinery is the site's credibility, not its pitch — it belongs one click away in the footer group.",
       "evidence": "SG-10 made the front page publication-first and SG-15 made every shop page product-first; both are shipped. Google's people-first guidance asks that content exist for readers rather than crawlers (S21), and page-experience guidance rewards pages that load and read well (S25).",
@@ -580,7 +672,7 @@
       ]
     },
     {
-      "id": "SG-33",
+      "id": "SG-37",
       "title": "Publish catchy, trend-led question articles to earn organic traffic",
       "problem": "The eight guides are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
       "evidence": "SG-04 chose question-shaped guides over reviews (shipped). SG-18 says guide nine must come from measured queries once Search Console exists (Q-18). Google's thin-affiliation policy treats affiliate pages with no added value as spam (S22), so each trend article must add buying criteria, not just repeat the listing (S21).",
@@ -601,7 +693,7 @@
       ]
     },
     {
-      "id": "SG-34",
+      "id": "SG-38",
       "title": "Review every change in the suggestions section before anything is built",
       "problem": "Changes reached the site without a recorded choice, and the Direction page once carried suggestions that nobody had been asked to approve (audit finding I-01).",
       "evidence": "The register now lives in data/suggestions.json and renders to suggestions.html with a Do / Maybe / No mark on every card and a copyable decision block (SG-25 made the log decision-first). ideas.html is the review surface: ranked moves, rejected ideas with reasons, and the copyable block.",
@@ -619,5 +711,5 @@
       "sources": []
     }
   ],
-  "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title."
+  "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed."
 }

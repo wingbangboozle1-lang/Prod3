@@ -21,7 +21,7 @@ Product details are attributed as seller/listing statements, not independent tes
 ## Working with it
 
 ```sh
-python3 scripts/build_chrome.py              # masthead, disclosure strip, footer into all 39 pages
+python3 scripts/build_chrome.py              # masthead, disclosure strip, footer into every page
 python3 scripts/build_products.py            # one spec page per product from data/products.json
 python3 scripts/build_products.py --check    # fail when a product page has drifted from the register
 python3 scripts/build_decisions.py           # decisions.html from data/decisions.json + registers
@@ -60,7 +60,7 @@ The tools use Python's standard library; no third-party Python dependencies are 
 
 ## Release workflow
 
-`.github/workflows/pages.yml` runs the five `--check` freshness gates, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` and `tools/crawl_links.py` before deploying to GitHub Pages. On 2026-11-20 the same checks passed locally, including 42 HTML pages and 6,949 assertions, with 0 broken links and 0 orphans. That is an internal repository check; it does not re-fetch Amazon listings or verify Associates account settings.
+`.github/workflows/pages.yml` runs the seven `--check` freshness gates, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` and `tools/crawl_links.py` before deploying to GitHub Pages. On 2026-11-20 the same checks passed locally (page and assertion counts recorded with the gate run in `COORDINATION.md`), with 0 broken links and 0 orphans. That is an internal repository check; it does not re-fetch Amazon listings or verify Associates account settings.
 
 **Deploy path note (FLG-024):** this workflow is the only deployer the site has ever shipped through. The repo's Pages build type is still set to `legacy`, so a second, redundant "pages build and deployment" run also triggers on every push to `main` and can fail its deploy step behind the successful artifact deploy without affecting the live site. The automation token cannot change that setting (`PATCH /pages` → HTTP 404); the one-click owner fix is Settings → Pages → Build and deployment → Source: **GitHub Actions**. Judge deploys by the `Deploy GitHub Pages` workflow and the live URL.
 
@@ -87,4 +87,3 @@ that went stale the moment another session added rows. The table above is now ge
 
 An ID prefix belongs to exactly one register. A proposal, a question and a decision
 are never given the same identifier, so no reader has to guess which page is authoritative.
-

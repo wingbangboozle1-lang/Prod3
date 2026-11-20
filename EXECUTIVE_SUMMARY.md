@@ -8,7 +8,7 @@
 
 ## Bottom line
 
-The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and fifteen question-shaped articles (evergreen guides plus the dated Thanksgiving temperature plan and a second gift guide), one generated spec page per product, and a dated twelve-row publishing plan. Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
+The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and fifteen question-shaped articles (evergreen guides and dated seasonal pieces — the guide hub lists them by theme), one generated spec page per product, and a dated twelve-row publishing plan. Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
 
 **Recommendation:** keep the current editorial publication, but do not scale links or claim revenue performance until the owner-side Associates workflow confirms the intended products, link compliance, and tracking. The site does not have aggregate analytics, verified Search Console data, or conversion reports. Consequently, there is no evidence here for product superiority, demand, conversion rate, commission potential, or revenue forecasts.
 
@@ -51,12 +51,12 @@ lift on hover (mobile-first pass S-20 in effect). The RSS feed no longer
 advertises a price range in the gift-guide description, and its channel title
 drops the overstated channel title the audit flagged. The
 Direction desk was rebuilt as a ledger and now matches `data/suggestions.json` /
-`data/open-questions.json` exactly: 46 suggestion rows (SG-01..SG-47; SG-21 retired
-in place, SG-26 unoccupied — FLG-029) and 29 open questions (Q-01..Q-29). That paragraph was
-written when the registers held 18 and 21 rows; the counts here were re-read from the
-JSON on 2026-11-20 rather than copied forward. Still open: FLG-016 / F-21 — the
-social-preview image has never been run through a share debugger. All release
-gates pass on the current tree.
+`data/open-questions.json` exactly: 58 suggestion rows (SG-01..SG-58) and 30 open
+questions (Q-01..Q-30). Those counts were re-read from the JSON on 2026-11-20 after
+the integration merges rather than copied forward. Still open: FLG-016 / F-21 — the
+social-preview image has never been run through a share debugger (the earlier SVG
+format issue is resolved; the shipped 1200×630 PNG is the asset in question). All
+release gates pass on the current tree.
 
 
 ## Added 2026-11-20 (session 6bf60cac): what a buyer can now do, and what is still blocked
@@ -85,7 +85,7 @@ Task T-52. The first claim, T-46, was taken on `main` by PR #38. The second, T-4
 
 **Verified in this pass.** Six official pages were read on 2026-11-20: the Associates Operating Agreement (S01, updated October 15, 2025; §5 sentence matches the disclosure), Program Policies (S02, updated April 14, 2026, opening sections only), FTC Disclosures 101 (S03, November 2019), Google's outbound-links guidance (S04, last updated 2025-12-10 UTC), Creators API GetItems (S06, ASIN defined as a 10-character identifier), and NIST TN 2156 (S16). The spot-check did not cover S05, S10–S15, S17–S19 or S21–S25.
 
-**Checked on the merged tree.** The buying guide links all fifteen guides. All fifteen feed items carry the same title as their page H1. The publishing-coverage check in `tools/verify_site.py` (sitemap, feed, hub, cadence) passes; the eight gates pass.
+**Checked on the merged tree.** The buying guide links all fifteen guides. Every feed item carries the same title as its page H1. The publishing-coverage check in `tools/verify_site.py` (sitemap, feed, hub, cadence) passes; the release gates pass.
 
 **Decision.** DT-10 (fixed monthly cadence) is marked decided, on the owner's instruction. One guide per calendar month; approver: the site owner; next guide due 2026-12-31 (`docs/publishing-cadence.md`). It is a rhythm, not a traffic or revenue forecast. DT-12 (promise or proposal for the twelve-week plan) remains open and is not decided here.
 
@@ -137,8 +137,8 @@ spine…") are two live proposals again and the interim SG-21 tombstone is withd
 `D20` fails the build if any two live suggestions share a title.
 
 **Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
-`rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
-every shipped page. Every new table row carries a source link or an explicit "No official source" marker,
+`rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of
+every page. Every new table row carries a source link or an explicit "No official source" marker,
 and the gate fails a row that has neither — so "unverified" can never hide.
 
 **Still true, still not this session's to fix.** The five short links carry no visible
@@ -150,7 +150,7 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 
 **Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
-(39 pages, 5,879 assertions) and `tools/crawl_links.py` (39 pages, 0 broken links, 0 dead
+(page and assertion counts recorded with the final gate run in `COORDINATION.md`) and `tools/crawl_links.py` (0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
 
 **Gates at the close of this session (T-38, session fe5fd1d9, 2026-11-20):** this session claimed
@@ -212,7 +212,7 @@ The proposal ledger, open-question register, and decision log are available on t
 
 ## Release and review status
 
-The repository's current release checks pass on the reviewed tree: `python3 scripts/check_site.py`, `python3 tools/verify_site.py`, `python3 scripts/build_registers.py --check`, and `python3 scripts/build_sitemap.py --check`. The coordination history records a successful GitHub Pages deployment at the project URL. These checks validate repository structure and registered content; they do not verify the Associates account, live traffic, external search indexing, or link-report conversion.
+The repository's current release checks pass on the reviewed tree: `python3 scripts/build_registers.py --check`, `python3 scripts/build_decisions.py --check`, `python3 scripts/build_chrome.py --check`, `python3 scripts/build_sitemap.py --check`, `python3 scripts/build_products.py --check`, `python3 scripts/build_readme.py --check`, `python3 scripts/build_ideas.py --check`, `python3 scripts/check_site.py`, `python3 tools/verify_site.py`, `python3 tools/check_site.py` (42 pages, 6,372 assertions), and `python3 tools/crawl_links.py` (42 pages crawled, 0 broken links, 0 dead anchors, 0 orphans). The coordination history records a successful GitHub Pages deployment at the project URL. These checks validate repository structure and registered content; they do not verify the Associates account, live traffic, external search indexing, or link-report conversion.
 
 - [Open the publication](https://wingbangboozle1-lang.github.io/Prod3/)
 - [Suggestions and path chooser](direction.html)

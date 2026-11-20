@@ -40,14 +40,18 @@
     {
       "id": "DT-03",
       "title": "Turn on Search Console, or keep choosing topics by instinct",
-      "why": "No query data exists for this site. Every topic decision so far has been editorial judgement. Search Console is a Google product whose verification steps are documented in Google's own Search Console help, which is not among the sources registered in data/sources.json, so this row is marked as having no registered official source rather than borrowing one that does not answer it.",
+      "why": "No query data exists for this site. Every topic decision so far has been editorial judgement. Search Console is a Google product whose verification steps are documented in Google's own Search Console help, now registered as S26–S28 in data/sources.json (checked 2026-11-20).",
       "recommendation": "Verify the property this week and submit sitemap.xml. From then on, the next guide is chosen from measured queries and not from taste.",
       "effort": "S",
       "who": "owner",
       "blocks": "The answer to 'which guide should be ninth'. Without it, any answer is a guess.",
       "status": "open",
-      "sources": [],
-      "evidence_status": "unverified"
+      "sources": [
+        "S26",
+        "S27",
+        "S28"
+      ],
+      "evidence_status": "verified"
     },
     {
       "id": "DT-04",

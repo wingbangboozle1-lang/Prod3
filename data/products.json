@@ -120,6 +120,30 @@
           "intended_asin_changed": false,
           "flag": "FLG-039",
           "token": "B04G1MEwY"
+        },
+        {
+          "date": "2026-11-20",
+          "session": "arena/ce911db5-prod3 (T-41; transcribed verbatim by arena/d52ad947-prod3)",
+          "method": "fetch of the supplied link.amazon URL; the final URL was read for an /dp/<ASIN>, two attempts. Transcribed from the session record published in COORDINATION.md; the fetch was performed by ce911db5, not the transcribing session.",
+          "result": "Final URL https://www.amazon.com/ (the Amazon.com homepage) on both attempts — not a product page; no /dp/ ASIN in the final URL.",
+          "reproduced": true,
+          "independent_confirmation": "Agrees with the live_recheck_2026_11_20 record by 70e8475c for this link.",
+          "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 records by other sessions are unchanged.",
+          "intended_asin_changed": false,
+          "flag": "FLG-017, FLG-031",
+          "token": "B04G1MEwY"
+        },
+        {
+          "date": "2026-11-20",
+          "session": "arena/d52ad947-prod3",
+          "method": "fetch_page of the supplied link.amazon URL; the final URL was read for an /dp/<ASIN>. No price, rating or offer text recorded; exact time of day not recorded (FLG-012).",
+          "result": "Final URL https://www.amazon.com/ (the Amazon.com homepage) — not a product page; no /dp/ ASIN in the final URL.",
+          "reproduced": true,
+          "independent_confirmation": "Agrees with the same-day records by 70e8475c, ce911db5, 6bf60cac and 6c0972fb for this link.",
+          "earlier_records_kept": "All earlier dated records are unchanged.",
+          "intended_asin_changed": false,
+          "flag": "FLG-017, FLG-025, FLG-031",
+          "token": "B04G1MEwY"
         }
       ]
     },
@@ -236,6 +260,18 @@
           "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
           "intended_asin_changed": false,
           "flag": "FLG-039",
+          "token": "B02NbDxp3"
+        },
+        {
+          "date": "2026-11-20",
+          "session": "arena/ce911db5-prod3 (T-41; transcribed verbatim by arena/d52ad947-prod3)",
+          "method": "fetch of the supplied link.amazon URL; the final URL was read for an /dp/<ASIN>, two attempts. Transcribed from the session record published in COORDINATION.md; the fetch was performed by ce911db5, not the transcribing session.",
+          "result": "Final URL https://www.amazon.com/dp/B09B7SB46R — product page, matching the 2026-11-19 observation.",
+          "reproduced": true,
+          "independent_confirmation": "Agrees with the live_recheck_2026_11_20 record by 70e8475c for this link.",
+          "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 records by other sessions are unchanged.",
+          "intended_asin_changed": false,
+          "flag": null,
           "token": "B02NbDxp3"
         }
       ]
@@ -356,6 +392,18 @@
           "intended_asin_changed": false,
           "flag": "FLG-039",
           "token": "B00hJ57DV"
+        },
+        {
+          "date": "2026-11-20",
+          "session": "arena/ce911db5-prod3 (T-41; transcribed verbatim by arena/d52ad947-prod3)",
+          "method": "fetch of the supplied link.amazon URL; the final URL was read for an /dp/<ASIN>, two attempts. Transcribed from the session record published in COORDINATION.md; the fetch was performed by ce911db5, not the transcribing session.",
+          "result": "Final URL https://www.amazon.com/dp/B08DKYBTPH — product page, matching the 2026-11-19 observation.",
+          "reproduced": true,
+          "independent_confirmation": "Agrees with the live_recheck_2026_11_20 record by 70e8475c for this link.",
+          "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 records by other sessions are unchanged.",
+          "intended_asin_changed": false,
+          "flag": null,
+          "token": "B00hJ57DV"
         }
       ]
     },
@@ -468,6 +516,30 @@
           "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
           "intended_asin_changed": false,
           "flag": "FLG-039",
+          "token": "B0c8moW59"
+        },
+        {
+          "date": "2026-11-20",
+          "session": "arena/ce911db5-prod3 (T-41; transcribed verbatim by arena/d52ad947-prod3)",
+          "method": "fetch of the supplied link.amazon URL; the final URL was read for an /dp/<ASIN>, two attempts. Transcribed from the session record published in COORDINATION.md; the fetch was performed by ce911db5, not the transcribing session.",
+          "result": "Final URL https://www.amazon.com/ (the Amazon.com homepage) on both attempts — not a product page. Disagrees with the same-day live_recheck_2026_11_20 record by 70e8475c, which ended at the product page. Both dated records are kept; no tie is broken.",
+          "reproduced": true,
+          "independent_confirmation": "The disagreeing same-day records stand side by side; no tie is broken by seniority.",
+          "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 records by other sessions are unchanged.",
+          "intended_asin_changed": false,
+          "flag": "FLG-031",
+          "token": "B0c8moW59"
+        },
+        {
+          "date": "2026-11-20",
+          "session": "arena/d52ad947-prod3",
+          "method": "fetch_page of the supplied link.amazon URL; the final URL was read for an /dp/<ASIN>. No price, rating or offer text recorded; exact time of day not recorded (FLG-012).",
+          "result": "Final URL https://www.amazon.com/ (the Amazon.com homepage) — not a product page; no /dp/ ASIN in the final URL.",
+          "reproduced": true,
+          "independent_confirmation": "Agrees with the same-day records by ce911db5, 6bf60cac and 6c0972fb; disagrees with the 70e8475c record, which ended at the product page.",
+          "earlier_records_kept": "All earlier dated records are unchanged.",
+          "intended_asin_changed": false,
+          "flag": "FLG-025, FLG-031",
           "token": "B0c8moW59"
         }
       ]
@@ -585,6 +657,18 @@
           "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
           "intended_asin_changed": false,
           "flag": "FLG-039",
+          "token": "B0f3GKalj"
+        },
+        {
+          "date": "2026-11-20",
+          "session": "arena/ce911db5-prod3 (T-41; transcribed verbatim by arena/d52ad947-prod3)",
+          "method": "fetch of the supplied link.amazon URL; the final URL was read for an /dp/<ASIN>, two attempts. Transcribed from the session record published in COORDINATION.md; the fetch was performed by ce911db5, not the transcribing session.",
+          "result": "Final URL https://www.amazon.com/dp/B0DZFD6R9Z — product page, matching the 2026-11-19 observation.",
+          "reproduced": true,
+          "independent_confirmation": "Agrees with the live_recheck_2026_11_20 record by 70e8475c for this link.",
+          "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 records by other sessions are unchanged.",
+          "intended_asin_changed": false,
+          "flag": null,
           "token": "B0f3GKalj"
         }
       ]

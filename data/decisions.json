@@ -11,7 +11,7 @@
       "id": "DT-01",
       "title": "Re-establish a working, tagged Special Link for the Chefman dual basket, then for all five",
       "why": "On 2026-11-20 the supplied short link B04G1MEwY stopped reaching its product page and ended at the Amazon.com homepage (two independent sessions, FLG-017); it reached B0CDY277D3 earlier the same day. Separately, none of the five short links carries a visible tag parameter in the URL a reader receives, and Program Policies require an Associates ID or tag in the URL of each link to an Amazon site.",
-      "recommendation": "Owner opens SiteStripe, generates a fresh tagged link for each of the five products, clicks each one while signed in, and confirms both the destination and that the click is reported. Replace the hrefs only after the click appears in the report. Until then, the buttons for that product send readers to the product page directly and say why; the other four keep the supplied short links pending the same test (FLG-019). Do not describe the supplied short links as invalid: B04G1MEwY's status is unresolved, not disproven.",
+      "recommendation": "Owner opens SiteStripe, generates a fresh tagged link for each of the five products, clicks each one while signed in, and confirms both the destination and that the click is reported. Replace the hrefs only after the click appears in the report. Until then the site sends readers to the product page directly and says why. Do not describe the supplied short links as invalid: B04G1MEwY's status is unresolved, not disproven.",
       "effort": "S",
       "who": "owner",
       "blocks": "Every click that is meant to earn. Currently the highest-value five minutes on the board.",
@@ -40,14 +40,18 @@
     {
       "id": "DT-03",
       "title": "Turn on Search Console, or keep choosing topics by instinct",
-      "why": "No query data exists for this site. Every topic decision so far has been editorial judgement. Search Console is a Google product whose verification steps are documented in Google's own Search Console help, which is not among the sources registered in data/sources.json, so this row is marked as having no registered official source rather than borrowing one that does not answer it.",
+      "why": "No query data exists for this site. Every topic decision so far has been editorial judgement. Search Console is a Google product whose verification steps are documented in Google's own Search Console help, now registered as S26–S28 in data/sources.json (checked 2026-11-20).",
       "recommendation": "Verify the property this week and submit sitemap.xml. From then on, the next guide is chosen from measured queries and not from taste.",
       "effort": "S",
       "who": "owner",
-      "blocks": "The answer to 'which guide comes next'. Without it, any answer is a guess.",
+      "blocks": "The answer to 'which guide should be ninth'. Without it, any answer is a guess.",
       "status": "open",
-      "sources": [],
-      "evidence_status": "unverified"
+      "sources": [
+        "S26",
+        "S27",
+        "S28"
+      ],
+      "evidence_status": "verified"
     },
     {
       "id": "DT-04",
@@ -135,11 +139,53 @@
     {
       "id": "DT-10",
       "title": "Publish on a fixed cadence, or publish when a guide is ready",
-      "why": "Eight guides shipped in one pass, the dated Thanksgiving plan after that, and nothing since. A cadence that nobody owns is a wish with a calendar attached.",
+      "why": "10 guides had shipped, most of them in single large passes., most of them in single large passes. A cadence that nobody owns is a wish with a calendar attached.",
       "recommendation": "One guide a month, chosen from Search Console once it is verified, with the owner named as the person who approves it. Monthly is survivable; weekly is not, for one person.",
       "effort": "S",
       "who": "owner",
       "blocks": "Whether this is a publication or a finished project.",
+      "status": "decided",
+      "sources": [],
+      "evidence_status": "unverified"
+    },
+    {
+      "id": "DT-11",
+      "title": "Decide what a buy button promises while the supplied links are unresolved",
+      "why": "On 2026-11-20 all five supplied short links ended at the Amazon homepage (FLG-025), and none of the shipped anchors carries a tag parameter even though Program Policies §2(b) require one (FLG-026). The buttons still read “Check price on Amazon”.",
+      "recommendation": "Add the dated one-line caveat now (SG-32). Replace the hrefs only when Q-24 and Q-25 are answered by the owner's signed-in test. Do not describe the supplied links as invalid in the meantime.",
+      "effort": "S",
+      "who": "editorial, then owner",
+      "blocks": "Any claim that a button opens the listing it names.",
+      "status": "open",
+      "sources": [
+        "S01",
+        "S02",
+        "S15"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "DT-12",
+      "title": "Choose whether the twelve-week writing plan is a promise or a proposal",
+      "why": "publishing-plan.html lists twelve dated rows. Four are partly or wholly blocked on evidence that does not exist. A reader cannot tell from the page whether a blocked row will be written anyway.",
+      "recommendation": "Keep it a proposal list, re-ordered from measured queries once Search Console is live, and demote rather than rewrite a row that earns nothing. If the owner prefers a commitment, the page must say which rows will ship even without their evidence — which this repository would not recommend.",
+      "effort": "S",
+      "who": "owner",
+      "blocks": "The publishing cadence and the wording of the plan page.",
+      "status": "open",
+      "sources": [
+        "S21"
+      ],
+      "evidence_status": "observed"
+    },
+    {
+      "id": "DT-13",
+      "title": "Was SG-21 meant to hold a different proposal, or was the duplicate all there ever was?",
+      "why": "SG-20 and SG-21 shipped byte-identical before SG-21 was retired in place, and a merge can displace a row. Only the owner's master requirements list can say whether a second, different proposal ever occupied that number (FLG-027, FLG-029).",
+      "recommendation": "Owner checks the master requirements list once. If a different proposal occupied SG-21, re-enter it under the next free SG id; if not, record that the duplicate was all there was and close this row.",
+      "effort": "S",
+      "who": "owner",
+      "blocks": "Nothing on the site; it blocks calling the suggestion register complete.",
       "status": "open",
       "sources": [],
       "evidence_status": "unverified"

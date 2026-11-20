@@ -106,16 +106,76 @@ Corrections made under T-23 (all gates re-run green afterwards):
 - **Not changed:** the supplied short-link CTAs stay as they are. Their compliance status is unresolved (FLG-006). No link is described as invalid or compliant.
 - **Still open (owner-side):** FLG-001 intended ASIN confirmation; FLG-006 one-link Special Link test; FLG-010 account status; FLG-017 (2026-11-20 homepage result for B04G1MEwY, recorded by T-25).
 
-## T-46 line-by-line integration review (session `arena/74e655e9-prod3`, 2026-11-20)
+## T-53 direction-surface reconciliation and page-wide gates (session `arena/b8dae8e0-prod3`, 2026-11-20)
 
-- **Same-day link re-checks recorded:** all five supplied short links fetched again (signed-out, 2026-11-20) and appended to `data/products.json` as `live_recheck_2026_11_20_session_74e655e9` — P-01 reached its product page twice (no `tag=` in either final URL), P-02 and P-03 ended at the Amazon homepage, P-04 returned HTTP 500 once and then reached its product page, P-05 reached its product page. Existing same-day records were never overwritten; FLG-017, FLG-023 and Q-22 were amended to carry all three passes with no tie broken.
-- **Defect found:** four front-page product cards carried two `.spec-chips` rows each (PR #36). Merged to one row per card; every unique fact kept.
-- **Defect found:** the front page's "All the guides" grid listed 8 of 9 articles. Thanksgiving tile added.
-- **Defect found:** `compare.html` and the gift guide still sent the Chefman dual-basket CTA through `B04G1MEwY` while `index.html`/`air-fryers.html` had moved it to the direct listing. CTAs are now consistent: 20 buttons — 16 via the supplied short links, 4 via `/dp/B0CDY277D3` — and C-04/FLG-019 carry dated recounts with explicit definitions.
-- **Defect found (count drift):** the canonical count is nine guides (eight evergreen plus the dated Thanksgiving plan). Factual fields in `data/open-questions.json`, `data/decisions.json`, `data/suggestions.json`, `direction.html`, `DIRECTION.md`, `EXECUTIVE_SUMMARY.md` and `executive-summary.html` still said eight / "guide nine" / "stalls at eight articles"; corrected and registers regenerated.
-- **Defect found (wrong sources):** Q-10 cited the Chefman listing (S12) for a ThermoMaven claim → S13 (with the FLG-021 first-page caveat). Q-08's `sources` field said S01 while its text cited S02; the Session definition was verified live in the Program Policies Commission Income Statement → sources set to S02. Q-18 borrowed S24 (meta-robots snippet control) for a Search Console access question → sources emptied and marked unverified, the precedent DT-03 already set for Search Console rows; the off-topic Q-04 reference was dropped from its blocks list.
-- **Defect found (FLG-020 itself was wrong):** a first 2026-11-20 re-read looked only at Program Policies Section 2 and reported the §2(t) ratings clause, §2(v) URL-obscuring clause and a §2(b) shortener clause as not located. A second re-read the same day located all three in the Associates Program Participation Requirements, in the lettered list under the section headed "Content on your Site": **(t)** customer reviews and star ratings only via a link obtained through Creators API or PA API; **(v)** do not cloak, hide, spoof or otherwise obscure the URL of your Site containing Special Links; **(w)** do not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site. Section 2's own (b) does carry the price-display and tag-parameter rules the site cites elsewhere. FLG-020 rewritten as corrected; every citation renumbered to §6(t)/§6(v)/§6(w) across `data/citations.json`, `data/policy-checks.json`, `data/open-questions.json`, `data/suggestions.json`, `data/flagged.json`, `compare.html`, `ideas.html`, `direction.html`, `DIRECTION.md`, `scripts/build_registers.py` and the `tools/check_site.py` comment; exact wording recorded in the citation log.
-- **Defect found (stale provenance and counts):** FLG-023 and Q-22 claimed both P-04 homepage records were kept in `data/products.json` — the ce911db5 record lives on FLG-023, Q-22 and the coordination board; corrected in place. README's two duplicate register tables (stale ranges) replaced with one table dated 2026-11-20; "all 30 pages" claims updated to 31; `ideas.html` FLG-018 references corrected to FLG-023; `flagged.html` byline re-dated; the empty "What is flagged" heading in `executive-summary.html` filled; stale "two of five / one no longer reaches its product" link claims in `EXECUTIVE_SUMMARY.md`, `executive-summary.html` and `ideas.html` rewritten to the three-pass record; `direction.html` register ranges corrected to SG-01..SG-31 / Q-01..Q-23.
-- **DT-01 recommendation scoped** to that product's buttons — the other four keep the supplied short links pending the same test (FLG-019).
-- **Not changed:** SG-04's proposal title, the meat-thermometers/compare bylines dated 2026-11-19, and pricenote wording — reviewed and left as accurate. The supplied short links are never described as invalid or compliant; their status stays unresolved (FLG-003/FLG-006).
-- **Gates after the fixes:** `build_chrome`/`build_registers`/`build_decisions`/`build_sitemap --check` all OK; `scripts/check_site.py` OK; `tools/verify_site.py` release gate passed; `tools/check_site.py` 31 pages, 3,948 assertions; `tools/crawl_links.py` 31 pages, 30 reachable, 0 broken links, 0 dead anchors, 0 orphans.
+- **Context:** this session began against `main` @ `0be7124` (PR #34) and re-based three
+  times as PRs #36–#62 landed; every earlier claim number (T-24, T-25, T-26, T-39) had
+  been taken upstream before the claim committed, so the claim ships as **T-53**. Work
+  already landed by parallel sessions was discarded rather than re-implemented (chrome
+  SG-26 reconstruction was explicitly declined upstream and is now FLG-029; the
+  guide-count copy is gated by D40; `build_decisions.py` counts only `proposed`; the
+  README table is generated). Nothing was re-added that main already had.
+- **Defects fixed (all demonstrable on the merged tree):**
+  - `direction.html` cited the unoccupied suggestion slot as "SG-26" in two places and
+    attributed it to FLG-021; FLG-021 is the source-register finding, and the gap was
+    renumbered FLG-029 in place. Citations now point at FLG-029 and describe the slot
+    between SG-25 and SG-27 (the register-jump id is not cited as a reference — the
+    convention DIRECTION.md already follows so D29 can pass).
+  - Register ranges were stale: pages said SG-01..SG-31 / Q-01..Q-21 while the
+    registers hold SG-01..SG-47 (SG-26 unoccupied) and Q-01..Q-29. Corrected in
+    `direction.html` (two places) and `DIRECTION.md` (index note + "twenty-nine
+    questions" count), plus the two remaining FLG-021→FLG-029 pointers and the
+    Q-digest correction's FLG-020→FLG-028 pointer (FLG-028 is the renumbered
+    duplicate that describes that correction).
+  - `direction.html` still shipped a duplicate "Source for SG-19" paragraph, one copy
+    inside `<tbody>`; the in-tbody copy was removed (the table cell text is unchanged).
+- **Gates added (`tools/check_site.py`, free ids D41/D42 after upstream's D40):**
+  - `D41-rss-autodiscovery` + `D41-rss-once` — every page carries exactly one
+    `application/rss+xml` link, `feed.xml` at the root and `../feed.xml` one level
+    down (articles/, tools/, products/). Negative-tested: removing the link fails
+    `rss-once`, duplicating it fails `rss-once`, and both were restored to green.
+  - `D42-sg-refs-resolve` + `D42-q-refs-resolve` — every `SG-nn`/`Q-nn` token on any
+    page must exist in its register (D28/D29 covered only `DIRECTION.md`). Its first
+    run caught the two direction-surface citations above. Negative-tested with a dangling unregistered suggestion id, restored to green.
+- **One cross-scope edit, logged per the board rule:** `data/flagged.json`, FLG-029's
+  `detail` field said "the register itself skips the SG-26 slot" — the same token the
+  new gate rightly rejects, and `decisions.html` renders the field verbatim. Reworded
+  to "skips the slot between SG-25 and SG-27"; no finding, id or grading changed, and
+  `data/flagged.json` was the only field touched. Flag file otherwise untouched
+  (guide-count was already handled upstream via D40/FLG-038-era rewording).
+- **Verification on the final tree (all exit 0):** `scripts/check_site.py` (39 pages),
+  `tools/check_site.py` (39 pages, 6245 assertions, all additional rules passed),
+  `tools/verify_site.py`, `scripts/build_sitemap.py --check`,
+  `scripts/build_registers.py --check`; plus a custom crawl of 39 pages / 1998 internal
+  hrefs with 0 broken links or anchors, and sitemap + feed link targets all resolving.
+## Live source re-verification (T-27, session arena/80802891-prod3, 2026-11-20)
+
+Each load-bearing quote was re-fetched from its official domain on 2026-11-20 and read against
+`data/sources.json`. All matched; no register value needed changing. Links below are for manual
+review.
+
+| Source | What was checked | Result | URL for manual review |
+|---|---|---|---|
+| S01 Operating Agreement | Update stamp; §5 disclosure sentence; §6 material-breach clause | "Updated: October 15, 2025"; §5 requires "As an Amazon Associate I earn from qualifying purchases." or a substantially similar statement, verbatim as recorded; §6 makes any §5 violation a material breach | https://affiliate-program.amazon.com/help/operating/agreement |
+| S02 Program Policies | Update stamp; Qualifying Purchases definition | "Updated: April 14, 2026"; Qualifying Purchases require a customer click through a Special Link on your Site, as recorded | https://affiliate-program.amazon.com/help/operating/policies |
+| S03 FTC Disclosures 101 | Placement language; page date | "Place it so it's hard to miss." and "The disclosure should be placed with the endorsement message itself." both verbatim; page dated November 2019 | https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers |
+| S04 Google — Qualify outbound links | `rel="sponsored"` definition; last-updated stamp | "Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value." verbatim; "Last updated 2025-12-10 UTC." | https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links |
+| S06 Creators API — GetItems | ItemIdType definition of ASIN | "Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon." verbatim | https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items |
+
+Product pages were not re-fetched by this session: session `arena/70e8475c-prod3` (T-25) re-checked
+all five short links and both policy pages on the same day, 2026-11-20; the only drift found there
+is FLG-017 (B04G1MEwY resolving to the Amazon homepage). T-27 changed no product claim.
+
+## Register recovery (T-27, 2026-11-20)
+
+`data/suggestions.json` SG-20 and SG-21 had carried byte-identical content since PR #17's merge
+replay (the board's own handoff log recorded "SG-21 was restored after a `=======` marker was
+mis-read"). The original content was recovered from PR #17's own commit history: commit
+`7fbef67` (`git show 7fbef67:data/suggestions.json`) carries SG-20 "Ask the Associates account one
+question and let the answer price the whole site" and SG-21 "Pick one product as the site's spine
+and let the other four support it" as two distinct rows. SG-20 was restored verbatim from that
+commit (with one dated sentence appended for the 2026-11-20 link re-check), SG-21 now carries the
+spine proposal, and the interim SG-21 tombstone is withdrawn. Gate rule D20 continues to fail the
+build if two live proposals ever share a title again. Manual review: the Commits tab of
+https://github.com/wingbangboozle1-lang/Prod3/pull/17, or `git show 7fbef67:data/suggestions.json`
+in any checkout of the repository.

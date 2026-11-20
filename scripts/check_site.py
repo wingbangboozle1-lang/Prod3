@@ -21,6 +21,7 @@ import json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+TRACKING = "shopnow047c-20"
 errors = []
 
 # 1. products.json
@@ -39,6 +40,7 @@ except Exception as e:
 
 # 2-4. HTML checks
 html_files = (sorted(ROOT.glob("*.html"))
+              + sorted((ROOT / "products").glob("*.html"))
               + sorted((ROOT / "articles").glob("*.html"))
               + sorted((ROOT / "tools").glob("*.html")))
 titles = {}
@@ -153,6 +155,88 @@ for f in html_files:
             errors.append(f"{rel}: data-source-required row has neither a source link nor an unverified marker")
 print("OK data-source-required tables")
 
+# 7b. buy-button link hygiene (added 2026-11-20, T-60): a reader-facing product button must
+#     be a tagged product link. Participation Requirements 2(a)/2(b) (S37) require the assigned
+#     Associates ID as a URL parameter; Commission Income Statement 2(g) (S38) disqualifies
+#     purchases whose links are "not properly formatted". Negative-tested the same day: it named
+#     two untagged hand-written buttons and five untagged generated pages before they were fixed.
+_asin_by_token = {p0["submitted_token"]: p0["observed_asin"] for p0 in json.loads((ROOT / "data/products.json").read_text())["products"]}
+buy_buttons = 0
+for f in html_files:
+    _html = f.read_text(); rel = f.relative_to(ROOT)
+    for tag_html in re.findall(r"<a\b[^>]*>", _html):
+        if 'data-event="outbound_click"' not in tag_html:
+            continue
+        buy_buttons += 1
+        href = re.search(r'href="([^"]*)"', tag_html)
+        href = href.group(1) if href else ""
+        asin = re.search(r'data-asin="([A-Z0-9]{10})"', tag_html)
+        asin = asin.group(1) if asin else None
+        if "link.amazon/" in href:
+            errors.append(f"{rel}: buy button still routes a reader through a redirecting short link: {href}")
+            continue
+        m = re.match(r'https://www\.amazon\.com/dp/([A-Z0-9]{10})(?:\?[^"]*)?$', href)
+        if not m:
+            errors.append(f"{rel}: buy button does not target a product page: {href}")
+            continue
+        if asin and m.group(1) != asin:
+            errors.append(f"{rel}: buy button targets {m.group(1)} but is labelled {asin}")
+        if f"tag={TRACKING}" not in href:
+            errors.append(f"{rel}: buy button carries no Associates tag, so it cannot earn (S37 2(b)): {href}")
+print(f"OK buy-button link hygiene ({buy_buttons} tagged product buttons)")
+
+# 7c. outbound_click coverage (M01, T-72 session 47f4e1e5): analytics.html tells the
+#     reader the event is "activation of a supplied product link", so the shipped script
+#     must bind every countable product link — rel="sponsored" plus an Amazon product URL —
+#     not only the buy buttons that happen to carry data-event. Before this rule the
+#     selector was a[data-event="outbound_click"] and counted 30 of 355 product links.
+#     Negative-tested: narrowing the selector back to data-event fails this rule.
+_app_js = (ROOT / "assets" / "app.js").read_text(encoding="utf-8")
+if 'querySelectorAll(\'a[rel~="sponsored"]\')' not in _app_js:
+    errors.append("assets/app.js: outbound_click no longer binds rel=sponsored product links (coverage narrowed)")
+if "PRODUCT_LINK" not in _app_js or r"https:\/\/www\.amazon\.com\/dp\/[A-Z0-9]{10}" not in _app_js:
+    errors.append("assets/app.js: product-URL filter missing; policy-page or homepage links would be counted")
+if 'a[data-event="outbound_click"]' in _app_js:
+    errors.append("assets/app.js: data-event selector still present; it would double-count or diverge from M01")
+_countable = 0
+for f in html_files:
+    for tag_html in re.findall(r"<a\b[^>]*>", f.read_text()):
+        if 'rel="sponsored' not in tag_html:
+            continue
+        _h = re.search(r'href="([^"]*)"', tag_html)
+        _h = _h.group(1) if _h else ""
+        if re.match(r"https://www\.amazon\.com/dp/[A-Z0-9]{10}", _h) or _h.startswith("https://link.amazon/"):
+            _countable += 1
+if _countable == 0:
+    errors.append("no countable product links found; the M01 population is empty, which means the scan itself broke")
+print(f"OK outbound_click coverage (M01: all {_countable} product links bound by the shipped selector)")
+
+# 7d. campaign ledger coherence (M02): two files describe one ledger. They must agree on
+#     the tracking id, point at each other, and both stay empty until a first-party report
+#     exists. Negative-tested: a row in either file, or a broken pointer, fails this rule.
+try:
+    _led = json.loads((ROOT / "data" / "campaign-ledger.json").read_text(encoding="utf-8"))
+    _defs = json.loads((ROOT / "data" / "campaigns.json").read_text(encoding="utf-8"))
+    if _led.get("rows") != [] or _defs.get("rows") != []:
+        errors.append("campaign ledger: rows present in a file with no first-party report behind it")
+    if _led.get("tracking_id") != TRACKING or _defs.get("tracking_id") != TRACKING:
+        errors.append(f"campaign ledger: tracking id must be {TRACKING} in both files")
+    if _defs.get("canonical_ledger") != "data/campaign-ledger.json":
+        errors.append("campaigns.json: canonical_ledger must point at data/campaign-ledger.json")
+    if _led.get("schema_source") != "data/campaigns.json":
+        errors.append("campaign-ledger.json: schema_source must point at data/campaigns.json")
+    if _led.get("events_defined") != ["page_view", "outbound_click", "article_read", "chooser_complete", "reader_signup"]:
+        errors.append("campaign-ledger.json: events_defined changed; the five defined events are frozen")
+    _allowed = re.search(r"var ALLOWED = \[([^\]]+)\]", _app_js)
+    _allowed = [e.strip().strip("'\"") for e in _allowed.group(1).split(",")] if _allowed else []
+    if _allowed != _led.get("events_defined"):
+        errors.append("assets/app.js ALLOWED list no longer matches campaign-ledger.json events_defined")
+    if not _led.get("provenance"):
+        errors.append("campaign-ledger.json: provenance trail missing")
+except Exception as e:
+    errors.append(f"campaign ledger coherence: {e}")
+print("OK campaign ledger coherence (M02: both files empty, cross-pointed, events match app.js)")
+
 # 8. price blocks must be dated
 for f in html_files:
     html = f.read_text()
@@ -169,6 +253,16 @@ for f in sorted((ROOT / "articles").glob("*.html")):
     if '"dateModified"' not in html:
         errors.append(f"{rel}: JSON-LD missing dateModified")
 print("OK article dateModified")
+
+# 9b. every guide carries breadcrumbs and a byline (T-62: the three newest guides had them,
+#     the nine older ones did not, so one site described itself two different ways)
+for f in sorted((ROOT / "articles").glob("*.html")):
+    html = f.read_text(); rel = f.relative_to(ROOT)
+    if '"BreadcrumbList"' not in html:
+        errors.append(f"{rel}: no BreadcrumbList structured data")
+    if 'class="byline"' not in html:
+        errors.append(f"{rel}: no byline line (who published it, and when the sources were read)")
+print("OK guide structured data and bylines")
 
 # 10. no committed merge-conflict markers anywhere in the tree
 # (a botched resolution once shipped literal <<<<<<< / >>>>>>> lines to readers)

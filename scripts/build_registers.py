@@ -161,7 +161,7 @@ def render_suggestions():
     body = f'''<main id="main"><div class="article" style="max-width:1000px">
 <p class="kicker">Direction · Suggestions register</p>
 <h1>Suggestions, and the decision each one waits on</h1>
-<p class="byline">Kitchen Counter · Register updated 2026-11-19 · Nothing here is implemented by being listed</p>
+<p class="byline">Kitchen Counter · Register updated {data['generated']} · Nothing here is implemented by being listed</p>
 
 <p>This is the review desk. Every proposal carries its problem, the evidence behind it, the options considered, a recommendation, and the person who decides. Machine-readable copy: <code>data/suggestions.json</code>. The questions that block these proposals live on <a href="questions.html">Open questions</a>; what was actually decided is on the <a href="direction.html">decision log</a>.</p>
 
@@ -207,6 +207,21 @@ def render_questions():
     for q in qs:
         groups.setdefault(q["group"], []).append(q)
 
+    src_by_id = {s["id"]: s for s in json.loads((ROOT / "data/sources.json").read_text(encoding="utf-8"))["sources"]}
+
+    def qsource(q):
+        ids = q.get("sources", [])
+        if not ids:
+            return '<span class="unverified">No official source</span>'
+        out = []
+        for sid in ids:
+            s = src_by_id.get(sid)
+            if not s:
+                raise SystemExit(f"questions.html: cites unregistered source {sid}")
+            rel = "sponsored noopener" if "amazon.com" in s["url"] else "noopener"
+            out.append(f'<a href="{html.escape(s["url"])}" rel="{rel}">{html.escape(sid)}</a>')
+        return " · ".join(out)
+
     def row(q):
         return f'''<tr>
   <td><strong>{html.escape(q["id"])}</strong></td>
@@ -215,6 +230,7 @@ def render_questions():
   <td><span class="small">{html.escape(q.get("unknown", "—"))}</span></td>
   <td><span class="small">{html.escape(q.get("how_to_find_out", "—"))}</span></td>
   <td><span class="small">{html.escape(q.get("who", "—"))} · {html.escape(q.get("cost", "—"))}</span><br><span class="badge grey">{html.escape(q.get("status", "—"))}</span></td>
+  <td class="small">{qsource(q)}</td>
 </tr>'''
 
     sections = []
@@ -222,7 +238,7 @@ def render_questions():
         rows = "\n".join(row(q) for q in items)
         sections.append(f'''<h2>{html.escape(g)} ({len(items)})</h2>
 <div class="table-wrap"><table>
-<thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th></tr></thead>
+<thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
 <tbody>
 {rows}
 </tbody></table></div>''')
@@ -230,7 +246,7 @@ def render_questions():
     body = f'''<main id="main"><div class="article" style="max-width:1100px">
 <p class="kicker">Direction · Open questions</p>
 <h1>The questions that have to be answered before the next decision</h1>
-<p class="byline">Kitchen Counter · Register updated 2026-11-19 · {len(qs)} open questions, grouped by what they block</p>
+<p class="byline">Kitchen Counter · Register updated {data['generated']} · {len(qs)} open questions, grouped by what they block</p>
 
 <p>A decision made on missing information is a guess with better manners. Each row states what is known, what is not, why it matters, and the cheapest concrete action that would settle it. Machine-readable copy: <code>data/open-questions.json</code>.</p>
 
@@ -246,7 +262,7 @@ the screen said, and the rest of the register becomes decidable.</p>
 <thead><tr><th>#</th><th>Do this</th><th>You end up with</th><th>Then unblocks</th></tr></thead>
 <tbody>
 <tr><td><strong>Q-23</strong></td><td>Associates Central → Account Settings. Is <code>shopnow047c-20</code> listed, and is the account in good standing?</td><td>Yes or no, with the date</td><td>Whether the disclosure describes a live relationship, and whether any link can earn at all</td></tr>
-<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the two homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-023)</td></tr>
+<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-025)</td></tr>
 <tr><td><strong>Q-18</strong></td><td>Add the site as a Search Console property, verify it, submit <code>sitemap.xml</code>.</td><td>A verified property and a submitted sitemap</td><td>Choosing the next guide from measured queries instead of instinct</td></tr>
 <tr><td><strong>Q-19</strong></td><td>Associates Central → Product Advertising API. Is the tab available?</td><td>Available, or not yet</td><td>Whether prices and ratings can ever be displayed compliantly</td></tr>
 </tbody></table></div>
@@ -305,7 +321,7 @@ def render_citations():
     body = f'''<main id="main"><div class="article" style="max-width:1050px">
 <p class="kicker">Trust · Citation log</p>
 <h1>Every figure on this site, and the observation behind it</h1>
-<p class="byline">Kitchen Counter · Log generated 2026-11-19 · Machine-readable copy in <code>data/citations.json</code></p>
+<p class="byline">Kitchen Counter · Log generated {html.escape(cites["generated"])} · Machine-readable copy in <code>data/citations.json</code></p>
 
 <p>The <a href="sources.html">source register</a> lists the pages we read. This log is the other half: one row per figure the site renders, naming the observation, its date, and the official page it came from. If a figure has no row here, it does not belong on the site.</p>
 
@@ -329,7 +345,7 @@ def render_citations():
 <h2>What is deliberately not here</h2>
 <ul>
 <li><strong>Prices and availability.</strong> Program Policies §2(b) permits them only when Amazon serves the data or they arrive through Creators/PA API. Neither applies, so no price is rendered and none is logged as a published figure.</li>
-<li><strong>Customer star ratings.</strong> Program Policies Participation Requirements §6(t): customer reviews and star ratings only when the link to them is obtained through Creators API or PA API — located on 2026-11-20; the earlier §2(t) label was wrong (FLG-020 corrected). Star ratings were removed from this site on 2026-11-19.</li>
+<li><strong>Customer star ratings.</strong> Program Policies §6(t) — &ldquo;Content on your Site&rdquo;, not Section 2 — bars displaying customer reviews or star ratings unless they were obtained through Creators API or PA API. The clause was located and quoted on 2026-11-20 (<code>data/policy-clause-map.json</code>). Star ratings were removed from this site on 2026-11-19.</li>
 <li><strong>Revenue, conversion rates, traffic.</strong> No first-party report exists. The ledger is empty by design.</li>
 <li><strong>Product photography.</strong> No licensed photography is used; the cards are typographic art built from listed specs.</li>
 </ul>

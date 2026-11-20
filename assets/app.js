@@ -53,11 +53,24 @@
   // page_view
   track('page_view', { path: location.pathname });
 
-  // outbound_click — every sponsored Amazon link that carries data-event
-  var outbound = document.querySelectorAll('a[data-event="outbound_click"]');
+  // outbound_click — every supplied product link: rel="sponsored" plus an
+  // Amazon product URL (www.amazon.com/dp/<10-char ASIN> or the supplied
+  // link.amazon short link). Policy-page citations, the homepage evidence
+  // link and non-Amazon links are not product links and are not counted.
+  // The ASIN comes from data-asin when it is a real ASIN, otherwise from
+  // the /dp/ path; track() only ever forwards a ^[A-Z0-9]{10}$ value.
+  var PRODUCT_LINK = /^(https:\/\/www\.amazon\.com\/dp\/[A-Z0-9]{10}|https:\/\/link\.amazon\/)/;
+  var outbound = document.querySelectorAll('a[rel~="sponsored"]');
   Array.prototype.forEach.call(outbound, function (a) {
+    var href = a.getAttribute('href') || '';
+    if (!PRODUCT_LINK.test(href)) return;
     a.addEventListener('click', function () {
-      track('outbound_click', { asin: a.getAttribute('data-asin') || '' });
+      var asin = a.getAttribute('data-asin') || '';
+      if (!/^[A-Z0-9]{10}$/.test(asin)) {
+        var m = href.match(/\/dp\/([A-Z0-9]{10})/);
+        asin = m ? m[1] : '';
+      }
+      track('outbound_click', { asin: asin });
     });
   });
 

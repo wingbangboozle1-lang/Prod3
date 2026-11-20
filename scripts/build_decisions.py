@@ -101,12 +101,16 @@ def render():
     sources = json.loads((ROOT / "data/sources.json").read_text(encoding="utf-8"))
     by_id = {s["id"]: s for s in sources["sources"]}
 
-    sg_open = [s for s in suggestions["suggestions"] if s["status"] != "implemented"]
-    sg_done = [s for s in suggestions["suggestions"] if s["status"] == "implemented"]
+    # "Open" means proposed: a row that is retired in place is neither open nor
+    # shipped, and counting it as open (the earlier behaviour) overstated the
+    # work waiting on the owner. "Shipped" includes partly implemented, because
+    # part of it is live.
+    sg_open = [s for s in suggestions["suggestions"] if s["status"] == "proposed"]
+    sg_done = [s for s in suggestions["suggestions"] if s["status"] in ("implemented", "partly implemented")]
+    sg_retired = [s for s in suggestions["suggestions"] if s["status"] == "retired"]
     q_all = questions["questions"]
     q_owner = [q for q in q_all if q.get("who") == "owner"]
     q_block = [q for q in q_all if q.get("status") == "blocking"]
-    dup = [s for s in suggestions["suggestions"] if s["id"] == "SG-20"]
 
     parts = []
     parts.append('<p class="kicker">Decision desk</p>')
@@ -120,7 +124,7 @@ def render():
 
     parts.append(f'''<div class="grid cols-4 mt">
   <div class="card"><p class="kicker" style="margin:0">Decisions to make</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">{len(decisions["decisions"])}</p><p class="small muted">DT rows below</p></div>
-  <div class="card"><p class="kicker" style="margin:0">Proposals open</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">{len(sg_open)}</p><p class="small muted">{len(sg_done)} already shipped</p></div>
+  <div class="card"><p class="kicker" style="margin:0">Proposals open</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">{len(sg_open)}</p><p class="small muted">{len(sg_done)} already shipped &middot; {len(sg_retired)} retired in place</p></div>
   <div class="card"><p class="kicker" style="margin:0">Questions unanswered</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">{len(q_all)}</p><p class="small muted">{len(q_owner)} need the owner&rsquo;s accounts</p></div>
   <div class="card"><p class="kicker" style="margin:0">Blocking today</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">{len(q_block)}</p><p class="small muted">A choice is on hold until answered</p></div>
 </div>''')
@@ -161,18 +165,19 @@ def render():
 
     # ---- Section 3: reproduce first, then fix
     parts.append('<h2 class="mt">3. Irregularities, reproduced before they are repaired</h2>')
-    parts.append('<p>Two things are wrong on this site right now. Both are published here rather than quietly corrected, because a fix nobody can check is just a different story.</p>')
+    parts.append('<p>Both defects below were reproduced here before they were repaired, because a fix nobody can check is just a different story. One is settled and now closed for good; the other still needs a check only the owner can run.</p>')
 
-    parts.append(f'''<div class="callout warn"><strong>Register defect: reproduced, then resolved the same day.</strong>
-Two different identifiers name one proposal:
-<code>SG-20</code> and <code>SG-21</code> both read &ldquo;{esc(dup[0]["title"]) if dup else ""}&rdquo;.
-The same failure — one ID, two meanings — was fixed for SG-01..SG-08 in an earlier audit, so this is a
-recurrence, not a one-off. Until it is settled, treat SG-21 as an alias of SG-20 and do not action it twice.
-<strong>What was done:</strong> SG-21 was retired in place rather than deleted, marked as a duplicate of SG-20, and
-kept in <a href="suggestions.html">the suggestions register</a> so the change is auditable. A new gate rule
-(<code>D20</code>) now fails the build if two live proposals ever share a title again. What the owner may still want
-to confirm: that no proposal was <em>displaced</em> by the duplicate — only the owner knows whether a second,
-different idea was ever meant to occupy SG-21.</div>''')
+    parts.append('''<div class="callout"><strong>Register defect: reproduced, then closed by history recovery.</strong>
+Two different identifiers briefly named one proposal: a merge replay during PR #17 clobbered <code>SG-20</code>&rsquo;s
+content with <code>SG-21</code>&rsquo;s, leaving both rows byte-identical. The same failure &mdash; one ID, two
+meanings &mdash; was fixed for the first eight proposals in an earlier audit, so this was a recurrence, not a
+one-off. <strong>Settled:</strong> on 2026-11-20 the original content was recovered from PR #17&rsquo;s own history
+(commit <code>7fbef67</code>): <code>SG-20</code> is &ldquo;Ask the Associates account one question and let the answer
+price the whole site&rdquo; and <code>SG-21</code> is &ldquo;Pick one product as the site&rsquo;s spine and let the other
+four support it&rdquo;. Both are live proposals again in <a href="suggestions.html">the suggestions register</a>, the
+interim SG-21 tombstone is withdrawn, and the displacement question is answered by the history itself &mdash; no
+proposal was lost. Gate rule <code>D20</code> still fails the build if two live proposals ever share a
+title.</div>''')
 
     f21 = next((f for f in flagged["items"] if f["id"] == "F-21"), None)
     if f21:

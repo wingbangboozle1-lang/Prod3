@@ -11,7 +11,7 @@ Product details are attributed as seller/listing statements, not independent tes
 | Item | Status |
 |---|---|
 | Products | 5 submitted short-link tokens; 5 observed destinations; intended ASIN/listing confirmation remains blank for all 5 |
-| Pages | 30 HTML (front page, 2 pillars, compare, buying guide, decision desk, 4 tool pages, 9 articles, 10 trust pages, 404 — not in sitemap) |
+| Pages | 31 HTML (front page, 2 pillars, compare, buying guide, decision desk, ideas & review hub, 4 tool pages, 9 articles, 11 trust pages, 404 — not in sitemap) |
 | Intended ASINs confirmed | 0 of 5 (blank until owner confirms — see FLG-001) |
 | Analytics | Five event types defined; four can be counted locally, none is sent to a server; no endpoint, Search Console property, or email provider configured |
 | Campaign ledger | Empty by design; add data only from authorized first-party reports |

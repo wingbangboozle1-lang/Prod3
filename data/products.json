@@ -95,7 +95,33 @@
         "result": "Landing URL was the Amazon homepage, not a product page. Recorded as its own dated observation. It neither overwrites nor outranks the other 2026-11-20 records; three independent same-day observations now exist and they differ, which is exactly why the owner's signed-in test decides it.",
         "intended_asin_changed": false,
         "flag": "FLG-031"
-      }
+      },
+      "official_listing_check_2026_11_20": {
+        "date": "2026-11-20",
+        "asin_checked": "B0CDY277D3",
+        "listing_url": "https://www.amazon.com/dp/B0CDY277D3",
+        "source": "S29",
+        "method": "fetch_page of the official Amazon product page; each value read from the page text",
+        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
+        "conflicts": [
+          "Capacity: title/bullets 6 quarts (2 × 3 qt) vs details table 6 liters (FLG-022)"
+        ]
+      },
+      "short_link_rechecks": [
+        {
+          "date": "2026-11-20",
+          "session": "arena/6c0972fb-prod3",
+          "task": "T-60",
+          "method": "fetch_page of the supplied link.amazon URL; the final URL and the page <title> after redirects were read from the response",
+          "result": "Final URL https://www.amazon.com/ with the page title 'Amazon.com. Spend less. Smile more.' — the Amazon homepage, not a product page. No /dp/ ASIN appeared in the final URL.",
+          "reproduced": true,
+          "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
+          "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
+          "intended_asin_changed": false,
+          "flag": "FLG-039",
+          "token": "B04G1MEwY"
+        }
+      ]
     },
     {
       "id": "P-02",
@@ -189,7 +215,30 @@
         "result": "Landing URL was the Amazon homepage, not a product page. Recorded as its own dated observation. It neither overwrites nor outranks the other 2026-11-20 records; three independent same-day observations now exist and they differ, which is exactly why the owner's signed-in test decides it.",
         "intended_asin_changed": false,
         "flag": "FLG-031"
-      }
+      },
+      "official_listing_check_2026_11_20": {
+        "date": "2026-11-20",
+        "asin_checked": "B09B7SB46R",
+        "listing_url": "https://www.amazon.com/dp/B09B7SB46R",
+        "source": "S30",
+        "method": "fetch_page of the official Amazon product page; each value read from the page text",
+        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says"
+      },
+      "short_link_rechecks": [
+        {
+          "date": "2026-11-20",
+          "session": "arena/6c0972fb-prod3",
+          "task": "T-60",
+          "method": "fetch_page of the supplied link.amazon URL; the final URL and the page <title> after redirects were read from the response",
+          "result": "Final URL https://www.amazon.com/ with the page title 'Amazon.com. Spend less. Smile more.' — the Amazon homepage, not a product page. No /dp/ ASIN appeared in the final URL.",
+          "reproduced": true,
+          "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
+          "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
+          "intended_asin_changed": false,
+          "flag": "FLG-039",
+          "token": "B02NbDxp3"
+        }
+      ]
     },
     {
       "id": "P-03",
@@ -281,7 +330,34 @@
         "result": "Landing URL was the Amazon homepage, not a product page. Recorded as its own dated observation. It neither overwrites nor outranks the other 2026-11-20 records; three independent same-day observations now exist and they differ, which is exactly why the owner's signed-in test decides it.",
         "intended_asin_changed": false,
         "flag": "FLG-031"
-      }
+      },
+      "official_listing_check_2026_11_20": {
+        "date": "2026-11-20",
+        "asin_checked": "B08DKYBTPH",
+        "listing_url": "https://www.amazon.com/dp/B08DKYBTPH",
+        "source": "S31",
+        "method": "fetch_page of the official Amazon product page; each value read from the page text",
+        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
+        "conflicts": [
+          "Temperature: title 450°F vs bullets/spec 200–400°F (FLG-023)",
+          "Wattage: resource bullet 1000W vs spec table 1700W (FLG-023)"
+        ]
+      },
+      "short_link_rechecks": [
+        {
+          "date": "2026-11-20",
+          "session": "arena/6c0972fb-prod3",
+          "task": "T-60",
+          "method": "fetch_page of the supplied link.amazon URL; the final URL and the page <title> after redirects were read from the response",
+          "result": "Final URL https://www.amazon.com/ with the page title 'Amazon.com. Spend less. Smile more.' — the Amazon homepage, not a product page. No /dp/ ASIN appeared in the final URL.",
+          "reproduced": true,
+          "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
+          "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
+          "intended_asin_changed": false,
+          "flag": "FLG-039",
+          "token": "B00hJ57DV"
+        }
+      ]
     },
     {
       "id": "P-04",
@@ -371,7 +447,30 @@
         "result": "Landing URL was the Amazon homepage, not a product page. Recorded as its own dated observation. It neither overwrites nor outranks the other 2026-11-20 records; three independent same-day observations now exist and they differ, which is exactly why the owner's signed-in test decides it.",
         "intended_asin_changed": false,
         "flag": "FLG-031"
-      }
+      },
+      "official_listing_check_2026_11_20": {
+        "date": "2026-11-20",
+        "asin_checked": "B0DHZTCNR5",
+        "listing_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+        "source": "S32",
+        "method": "fetch_page of the official Amazon product page; each value read from the page text",
+        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says"
+      },
+      "short_link_rechecks": [
+        {
+          "date": "2026-11-20",
+          "session": "arena/6c0972fb-prod3",
+          "task": "T-60",
+          "method": "fetch_page of the supplied link.amazon URL; the final URL and the page <title> after redirects were read from the response",
+          "result": "Final URL https://www.amazon.com/ with the page title 'Amazon.com. Spend less. Smile more.' — the Amazon homepage, not a product page. No /dp/ ASIN appeared in the final URL.",
+          "reproduced": true,
+          "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
+          "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
+          "intended_asin_changed": false,
+          "flag": "FLG-039",
+          "token": "B0c8moW59"
+        }
+      ]
     },
     {
       "id": "P-05",
@@ -462,7 +561,33 @@
         "result": "Landing URL was the Amazon homepage, not a product page. Recorded as its own dated observation. It neither overwrites nor outranks the other 2026-11-20 records; three independent same-day observations now exist and they differ, which is exactly why the owner's signed-in test decides it.",
         "intended_asin_changed": false,
         "flag": "FLG-031"
-      }
+      },
+      "official_listing_check_2026_11_20": {
+        "date": "2026-11-20",
+        "asin_checked": "B0DZFD6R9Z",
+        "listing_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "source": "S33",
+        "method": "fetch_page of the official Amazon product page; each value read from the page text",
+        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
+        "conflicts": [
+          "Battery life 50 h vs 70 h; warranty 2 vs 3 years (FLG-003)"
+        ]
+      },
+      "short_link_rechecks": [
+        {
+          "date": "2026-11-20",
+          "session": "arena/6c0972fb-prod3",
+          "task": "T-60",
+          "method": "fetch_page of the supplied link.amazon URL; the final URL and the page <title> after redirects were read from the response",
+          "result": "Final URL https://www.amazon.com/ with the page title 'Amazon.com. Spend less. Smile more.' — the Amazon homepage, not a product page. No /dp/ ASIN appeared in the final URL.",
+          "reproduced": true,
+          "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
+          "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
+          "intended_asin_changed": false,
+          "flag": "FLG-039",
+          "token": "B0f3GKalj"
+        }
+      ]
     }
   ],
   "price_snapshot_note": "price_observed fields are archival snapshots dated 2026-11-19. Observation time and delivery location were not recorded; prices are not current offers. See FLG-012.",
@@ -470,5 +595,25 @@
   "citation_policy": "Every value rendered on the site must trace to one of: (a) a dated fetch of the official listing, (b) a dated fetch of an official policy page, or (c) arithmetic over (a) that states its inputs. Values with no such trace are left blank and published on flagged.html. See data/citations.json.",
   "verified_on_live_recheck": "2026-11-20",
   "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-023 and FLG-025.",
-  "observation_note": "Three dated observations of the supplied links exist for 2026-11-20 and they do not agree. Nothing is deleted and no record outranks another. A fetch cannot establish what a signed-in reader sees, so only the owner's click-through inside the enrolled Associates workflow (Q-02 + Q-22) settles the question. No observation here is evidence that the links are invalid."
+  "observation_note": "Three dated observations of the supplied links exist for 2026-11-20 and they do not agree. Nothing is deleted and no record outranks another. A fetch cannot establish what a signed-in reader sees, so only the owner's click-through inside the enrolled Associates workflow (Q-02 + Q-22) settles the question. No observation here is evidence that the links are invalid.",
+  "link_policy_2026_11_20": {
+    "date": "2026-11-20",
+    "session": "arena/6c0972fb-prod3",
+    "flag": "FLG-039",
+    "decision": "Every reader-facing product button points at https://www.amazon.com/dp/<observed ASIN>?tag=shopnow047c-20&linkCode=sl1 — 30 buttons across the front page, both category shelves, the comparison table, the gift guide and the five generated product pages. None uses a link.amazon short link and none is untagged.",
+    "basis": "Program Policies, Participation Requirements 2(a) (S37) and 2(b); Commission Income Statement 2(g) (S38) and 2(e) (S38). Observed 2026-11-20: no short link delivered a URL carrying a tag, and all five delivered the Amazon homepage.",
+    "limits": "A fetch from outside the account cannot see whether Amazon attaches a tag server-side, and cannot confirm the tracking ID belongs to an eligible enrolled account (FLG-010). The owner test (FLG-006, Q-02, Q-22) settles both.",
+    "gates": "scripts/check_site.py rule 7b and tools/check_site.py P09 fail the build if a button loses its tag, loses its product target, or returns to a shortener. Both were negative-tested the same day: they named two untagged hand-written buttons and five untagged generated pages before the fix.",
+    "sources": [
+      "S37",
+      "S38"
+    ]
+  },
+  "integration_repair_2026-11-20": {
+    "date": "2026-11-20",
+    "session": "arena/6c0972fb-prod3",
+    "flag": "FLG-040",
+    "what": "Restored the five official_listing_check_2026_11_20 blocks (added by session 59a087a1 in 56cddb5, sources S29-S33) that commit ffcb419 dropped when it rewrote data/products.json, and corrected the README register ranges that were failing gate D37 on main.",
+    "why": "flagged.html and air-fryers.html publish the conflicts those blocks document, and the register is the only place a reader can trace a published spec value back to its dated check. Nothing ffcb419 added was changed."
+  }
 }

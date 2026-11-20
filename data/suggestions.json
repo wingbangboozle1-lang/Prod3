@@ -81,7 +81,7 @@
    "problem": "Product pages answer \"what is it\"; buyers arrive with \"which one, and will it fit\".",
    "evidence": "People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S21).",
    "options": [
-    "A. Ten question-shaped guides, each answerable from published specifications and USDA targets.",
+    "A. 10 question-shaped guides, at the time of writing, each answerable from published specifications and USDA targets.",
     "B. Five long product reviews written without handling the products.",
     "C. One long \"best air fryers 2026\" listicle."
    ],
@@ -353,7 +353,7 @@
    "problem": "Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.",
    "evidence": "Search Console is the first-party source for the queries a site actually appears for (https://search.google.com/search-console/about — SG-07 is the verification prerequisite). analytics.html records that no data exists yet.",
    "options": [
-    "A. Hold at ten guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
+    "A. Hold at 10 guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
     "B. Keep the weekly cadence with self-selected topics until data arrives.",
     "C. Retire or merge any guide with zero impressions after 60 days (Q-17)."
    ],
@@ -725,7 +725,7 @@
   {
    "id": "SG-37",
    "title": "Publish catchy, trend-led question articles to earn organic traffic",
-   "problem": "The ten guides are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
+   "problem": "The 10 guides at the time of writing are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
    "evidence": "SG-04 chose question-shaped guides over reviews (shipped). SG-18 says guide nine must come from measured queries once Search Console exists (Q-18). Google's thin-affiliation policy treats affiliate pages with no added value as spam (S22), so each trend article must add buying criteria, not just repeat the listing (S21).",
    "options": [
     "A. Keep a small seasonal calendar of catchy question articles — Thanksgiving temperature planning, holiday air-fryer gifts, January meal prep, summer grilling thermometers — each answering one buyer question with listed specs.",
@@ -788,7 +788,7 @@
    "id": "SG-40",
    "title": "One question-shaped guide for the month people are actually buying",
    "problem": "The seasonal block led with Thanksgiving into December. Gift buying is the dominant December kitchen-appliance question, and the site's only gift page was a list of five ideas with no decision rule.",
-   "evidence": "Nine of the ten guides had shipped before this later gift-guide pass, which added the tenth (articles/kitchen-gifts-that-get-used.html); the gift guide (articles/holiday-kitchen-gift-guide.html) lists five ideas without explaining how to choose between shapes. Implemented 2026-11-20: articles/kitchen-gifts-that-get-used.html sorts the five by cook, gives the one listed number that decides each, and is wired into feed.xml and sitemap.xml. (Registered as SG-37 on 2026-11-20 for the same reason.) (Registered as SG-40 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
+   "evidence": "Nine of the 10 guides at the time of writing had shipped before this later gift-guide pass, which added the 10th (articles/kitchen-gifts-that-get-used.html); the gift guide (articles/holiday-kitchen-gift-guide.html) lists five ideas without explaining how to choose between shapes. Implemented 2026-11-20: articles/kitchen-gifts-that-get-used.html sorts the five by cook, gives the one listed number that decides each, and is wired into feed.xml and sitemap.xml. (Registered as SG-37 on 2026-11-20 for the same reason.) (Registered as SG-40 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
    "options": [
     "A. A decision-shaped gift guide, linked from the seasonal block and the feed.",
     "B. Rewrite the existing gift guide in place.",
@@ -843,6 +843,106 @@
   },
   {
    "id": "SG-43",
+   "title": "Give the seasonal block a retirement date and a successor, before Thanksgiving ends",
+   "problem": "The front page's seasonal block is hand-edited HTML. The 2026-11-20 wording fix (PR #38) made it accurate for this week — the block now says Thanksgiving is Thursday, 26 November — but nothing retires it: on 2026-11-27 the shop would still open on Thanksgiving. Stale seasonal copy is the exact generated-site smell this project is trying to avoid.",
+   "evidence": "index.html hardcodes the block, its “Right now” label and its dated paragraph; the only related gate (D30 in tools/check_site.py) checks that the Thanksgiving guide is linked from the front page and cannot expire. The holiday gift guide beneath it already carries the December theme, so a successor slot exists.",
+   "options": [
+    "A. Rotate the block by hand on a calendar date — an owner task that recurs every season.",
+    "B. Move the seasonal block into a dated JSON and generate it, so build_chrome renders the current slot and a gate fails when a dated slot is past its end date.",
+    "C. Drop the seasonal block entirely."
+   ],
+   "recommendation": "B — generation plus a dated gate makes staleness impossible to ship silently, and it is the same pattern the rest of the chrome already uses. Fallback: if B is not built by 2026-11-26, rotate by hand that day (A).",
+   "effort": "S",
+   "confidence": "high",
+   "status": "proposed",
+   "decision_owner": "editorial",
+   "blocks": "front-page timeliness after 2026-11-26",
+   "sources": []
+  },
+  {
+   "id": "SG-44",
+   "title": "Do not add FAQ markup expecting a Google FAQ rich result — that feature is gone",
+   "problem": "Adding FAQPage JSON-LD to the guides is advice that still circulates in older SEO guides. If the site followed it, effort would go into markup whose only search-feature payoff has ended, and future guides would inherit a dead pattern — one of the tells of a site built from stale templates.",
+   "evidence": "Google's own changelog (S35, fetched 2026-11-20): a deprecation notice added 2026-05-08 states the FAQ rich result “will no longer appear in Google Search starting May 7, 2026”, and the June 2026 entry records that the feature documentation was removed — the old documentation URL now redirects to the changelog.",
+   "options": [
+    "A. Keep question-shaped headings and visible answers in prose; add no FAQPage markup; revisit only if Google restores the feature.",
+    "B. Add FAQPage markup anyway so AI answer engines can extract the questions and answers.",
+    "C. Add the markup but hide it from readers."
+   ],
+   "recommendation": "A — the guides already answer questions in visible prose, which is what people-first guidance rewards. B duplicates every answer in a second surface to maintain, for no search-feature benefit. C is hidden-text abuse under Google's spam policies (S22) and is rejected outright.",
+   "effort": "S",
+   "confidence": "high",
+   "status": "proposed",
+   "decision_owner": "editorial",
+   "blocks": "guide nine onward",
+   "sources": [
+    "S35",
+    "S22"
+   ]
+  },
+  {
+   "id": "SG-45",
+   "title": "Fact-check any AI-assisted draft line by line before it ships, and say how the site is made",
+   "problem": "The publication is intended to scale with AI assistance. Without an explicit review step, a hallucinated specification could reach a product card — the exact failure this site's registers exist to prevent — and pages produced for search engines rather than readers are a named spam category.",
+   "evidence": "Google's guidance on generative AI content (S36, page updated 2026-10-01, fetched 2026-11-20) states that generative outputs “may contain inaccuracies (also known as hallucinations)” and that it is critical to manually fact-check before publishing; the scaled content abuse policy (S22) covers unoriginal content “no matter how it's created”; the same page recommends sharing how content was created.",
+   "options": [
+    "A. Write the rule into docs/verification.md and about.html: every AI-assisted draft is checked line by line against the dated listing snapshots and policy records before it ships, and the about page states how the site is produced.",
+    "B. Keep the fact-checking practice informal, depending on each session's judgement.",
+    "C. Publish drafts unreviewed and correct after reader reports."
+   ],
+   "recommendation": "A — one page of documentation and it matches the gates the repo already runs. C violates the spam policy and the site's own accuracy rules. B is how the SG-20/SG-21 duplicate happened.",
+   "effort": "M",
+   "confidence": "high",
+   "status": "proposed",
+   "decision_owner": "owner",
+   "blocks": "scaling content production (Q-14 cadence, SG-18 topic pipeline)",
+   "sources": [
+    "S36",
+    "S22"
+   ]
+  },
+  {
+   "id": "SG-46",
+   "title": "Measure Core Web Vitals once, then gate new frontend effects on the result",
+   "problem": "The site has never recorded a Core Web Vitals measurement. “Deliberately light” is a design claim, not a measurement, and any future effect could erode it silently — the hover lift on product cards already exists.",
+   "evidence": "Google's page-experience guidance (S25, fetched 2026-11-20) states Core Web Vitals are used by Google's ranking systems and recommends site owners achieve good Core Web Vitals; its self-assessment checklist asks whether pages have good Core Web Vitals and display well on mobile. PageSpeed Insights requires no account.",
+   "options": [
+    "A. Run pagespeed.web.dev on the front page and one guide (mobile), record the dated results on analytics.html, and require a fresh dated pass with any new frontend effect.",
+    "B. Skip measurement and rely on the light stylesheet.",
+    "C. Add heavier visual effects first and measure later."
+   ],
+   "recommendation": "A — it is free, minutes-scale, and turns a design claim into a dated record that future sessions can compare against. C inverts the evidence order every other decision on this site follows.",
+   "effort": "S",
+   "confidence": "high",
+   "status": "proposed",
+   "decision_owner": "editorial",
+   "blocks": "any new animation, script or image weight on the shop pages",
+   "sources": [
+    "S25"
+   ]
+  },
+  {
+   "id": "SG-47",
+   "title": "Keep internal anchors descriptive — add a gate so the discipline cannot slip",
+   "problem": "A scan on 2026-11-20 found zero generic anchors (“click here”, “read more”, “learn more”) across the published pages, but nothing tests for them, so guide nine could reintroduce them without anyone noticing.",
+   "evidence": "Google's link best practices (S34, fetched 2026-11-20) state that good anchor text “is descriptive, reasonably concise, and relevant to the page that it's on and to the page it links to”, and that generic text gives neither readers nor Google context. The scan method is recorded in COORDINATION.md (T-54).",
+   "options": [
+    "A. Add a check_site rule that fails on the generic anchor texts Google names, then keep writing as now.",
+    "B. Leave anchor quality to code review.",
+    "C. Rewrite existing anchors for keywords beyond Google's guidance."
+   ],
+   "recommendation": "A — one regex in an existing gate converts today's clean scan into a standing guarantee, which is how every other discipline on this site is enforced. C is unneeded: the scan is already clean.",
+   "effort": "S",
+   "confidence": "high",
+   "status": "proposed",
+   "decision_owner": "engineering",
+   "blocks": "nothing (protective)",
+   "sources": [
+    "S34"
+   ]
+  },
+  {
+   "id": "SG-48",
    "title": "Give each generated product page a consider-if / look-elsewhere-if pair and a guide next-step",
    "problem": "The generated product pages list every published field and every flag naming the product, but they do not tell a reader in one place which routine the product fits and which alternative fits better, so the shop's judgement lives only on the front page.",
    "evidence": "The generated pages carry 'The honest one-liner' plus a next-step line (compare / buying guide), while the front page carries a consider-if line per card (T-50 pages). The product page is where a reader has already narrowed the choice.",

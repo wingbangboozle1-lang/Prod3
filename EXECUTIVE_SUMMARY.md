@@ -126,7 +126,7 @@ anchors, 0 orphans) all pass on the merged tree.
 per-product detail pages concurrently with T-50, which shipped them first as a generator
 (`scripts/build_products.py`, five pages, its own freshness and coverage gates). The generated
 pages were adopted as canonical and this session's hand-built drafts were retired; what shipped
-on top of T-50 instead: gate rule **D31** (unique FLG callout ids on `flagged.html`),
+on top of T-50 instead: gate rule **D34** (unique FLG callout ids on `flagged.html`),
 de-risking of all five comparison-table buy buttons to the official product pages (the supplied
 short links all landed on the Amazon homepage at the FLG-025 re-check), a dated addendum to
 FLG-019, register rows FLG-030/FLG-031 so every published callout id has a register entry, and

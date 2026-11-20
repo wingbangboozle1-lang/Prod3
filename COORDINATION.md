@@ -51,6 +51,7 @@
 | T-49 | Publishing plan: twelve dated guide proposals with the evidence each needs, rendered from `data/editorial-plan.json` and gated (D31); four blocked rows named rather than filled by inference. New suggestions SG-32..SG-35, questions Q-24..Q-26, decisions DT-11..DT-12 | done (renumbered from a colliding T-47 claim — upstream T-47 is session cafc55da) | `arena/6bf60cac-prod3` | `publishing-plan.html`, `data/editorial-plan.json`, `data/suggestions.json`, `data/open-questions.json`, `data/decisions.json`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `scripts/build_decisions.py`, `tools/check_site.py` |
 | T-50 | One generated page per product (`products/*.html`) from `data/products.json` + `data/flagged.json`, with intended-vs-observed kept separate and the blank intent field shown as blank; linked from both pillars and the front page; three new gates and a CI freshness step | done (2026-11-20) | `arena/6bf60cac-prod3` | `scripts/build_products.py`, `products/*`, `scripts/build_chrome.py`, `scripts/build_sitemap.py`, `scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py`, `.github/workflows/pages.yml`, `index.html`, `air-fryers.html`, `meat-thermometers.html` |
 | T-51 | Design + content suggestions round (renumbered from T-48 because T-48 was already in use on main by session arena/6bf60cac-prod3; both rows kept, no work discarded): add shopfront-design (SG-36), trend-led-article (SG-37), and review-before-build (SG-38) suggestions to the register; add the missing-info discovery question Q-27; refresh the executive summary; run every release gate; PR `arena/8692a390-prod3` → main (#42); merge; confirm Pages deploys; record PR link and merge result here | in progress | `arena/8692a390-prod3` | `data/suggestions.json`, `data/open-questions.json`, `scripts/build_registers.py`, `suggestions.html`, `questions.html`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
+| T-38 | Per-product detail pages (session fe5fd1d9; claimed concurrently with T-50, which shipped them first as a generator — the generated pages were adopted as canonical and this session's hand-built drafts were retired untouched). What shipped on top of T-50: merge of main adopting the generated pages; D34 callout-id-uniqueness gate on `flagged.html` (initially numbered D31, renamed because T-49's plan gates already used D31); the comparison table's five buy buttons de-risked to the official product pages per FLG-025; dated FLG-019 addendum; register rows FLG-030/FLG-031 so every published callout id has a register row; proposal SG-39 (consider-if/look-elsewhere-if blocks for the generated pages); executive summaries re-scoped; merge-doubled products globs fixed in both checkers and the crawler | done (2026-11-20) | `arena/fe5fd1d9-prod3` | `tools/check_site.py`, `scripts/check_site.py`, `tools/crawl_links.py`, `compare.html`, `flagged.html`, `data/flagged.json`, `data/suggestions.json`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -1428,4 +1429,65 @@ analytics endpoint · any traffic, click, conversion or revenue figure.
 
 - Pending: PR number, merge commit, Pages run ID after merge.
 
+## Session `arena/fe5fd1d9-prod3` — T-38 (2026-11-20)
 
+**Claim history:** claimed hand-built per-product detail pages early; main advanced three times
+during the session (7c1b939 → 1e47d23 → ddb50f8). Two rebase attempts were abandoned when the
+collision count made blind keep-both unsafe; the branch was then merged with origin/main
+audited conflict-by-conflict instead.
+
+**Supersede decision:** T-50 (session 6bf60cac) shipped the per-product pages as a generator
+(`scripts/build_products.py`, five pages under `products/`, freshness gate D32 and coverage gate
+D33). The generated pages are richer than this session's hand-built drafts (intent-blank tables,
+`data-source-required` spec tables with per-cell listing links, all-button de-risking, D33 flag
+coverage). Per the coordination protocol the generator and its pages were adopted as canonical;
+the five hand-built drafts were deleted untouched, and no T-50 file was edited except through its
+own generator.
+
+**What shipped on top of T-50:**
+- Merged origin/main (ddb50f8) into the branch; conflicts resolved theirs-first for every file
+  T-50 owned, audited line-by-line for the rest. My deleted product slugs were repointed to the
+  generated slugs in `compare.html` (columns and the per-product links line).
+- **D34** (`tools/check_site.py`): no two callouts on `flagged.html` may share a `FLG-xxx` id,
+  matched on callout heads (`<strong>FLG-xxx — `) so bold cross-references inside other callouts
+  do not false-positive. First numbered D31; renamed because T-49's plan gates already used D31
+  in the same checker. Three sessions had numbered flags independently, so the risk is real.
+- **Compare buy row de-risked:** all five `Check price` cells moved from the supplied
+  `link.amazon/*` tokens to the official `/dp/` product pages, each annotated with the reason
+  (FLG-025: every supplied short link landed on the Amazon homepage at the 2026-11-20 re-check),
+  matching the policy the generated product pages already follow. The P-01 cell note cites
+  FLG-025 (all five), not the earlier FLG-017 (one of five).
+- **FLG-019 addendum** (dated, session fe5fd1d9): the finding's button counts have moved twice;
+  records the current picture and says to re-measure before relying on any count.
+- **FLG-030/FLG-031 register rows** (`data/flagged.json`): the decisions.html broken-script
+  finding and the two-of-five homepage re-check finding existed as page callouts without register
+  rows; registered so every published callout id has a register entry (FLG-031 cross-references
+  FLG-025 as the wider observation).
+- **SG-39 proposal** (`data/suggestions.json`): consider-if / look-elsewhere-if blocks and guide
+  next-steps for the generated product pages; register-traced draft copy for all five products is
+  preserved in this branch's history (commit fac7199 lineage) and the proposal asks the T-50
+  generator owner to accept the block.
+- **Executive summaries re-scoped** (`EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`):
+  the "T-38 shipped five hand-built pages" narrative was replaced with the adoption story; page
+  counts set to 37; README's stale "31 pages / 3,938 assertions" line replaced with a pointer to
+  COORDINATION for final counts.
+- **Merge-repair fixes:** the auto-merge double-added the `products/` glob in
+  `scripts/check_site.py` and `tools/crawl_links.py` (every page counted twice; "duplicate title
+  with itself" failures) — deduped; `scripts/build_sitemap.py` still carried priority overrides
+  for my deleted slugs — removed; `sitemap.xml` regenerated (36 URLs, matches main's set).
+
+**Verification at close (all green on the merged tree):** `build_chrome --check`,
+`build_registers --check`, `build_decisions --check`, `build_products --check`,
+`build_sitemap --check`; `scripts/check_site.py` (all checks passed);
+`tools/check_site.py` (37 pages, 5,311 assertions, all additional rules passed);
+`tools/verify_site.py` release gate; `tools/crawl_links.py` (37 pages crawled, 36 reachable,
+0 broken links, 0 dead anchors, 0 orphans).
+
+**Sources:** no new web fetches were required this session; the FLG-025/FLG-017 link observations
+and the FLG-019 original counts are prior sessions' records, reused with attribution on the page.
+
+**Irregularities:** (1) main moved three times; rebase attempts #2/#3 abandoned in favor of an
+audited merge after a blind keep-both resolver produced a wrong-but-clean tree. (2) Two gate-id
+collisions were found and fixed: my D31 vs T-49's D31 (renamed D34), and doubled products globs
+from the auto-merge. (3) My record commit from the pre-merge branch was discarded with the
+abandoned rebase; this section is the record of record.

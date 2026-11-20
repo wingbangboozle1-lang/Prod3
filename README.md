@@ -44,7 +44,7 @@ The tools use Python's standard library; no third-party Python dependencies are 
 ## Site map
 
 - `index.html` — shop front: a named starting pick with a "look elsewhere if", the rest of the short list, the chooser, the seasonal block, all guides, the full data table
-- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-12), every unanswered question (Q-01..Q-26) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
+- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-12), every unanswered question (Q-01..Q-27) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
 - `tools/` — comparison builder, oven-to-air-fryer converter, USDA cook-to-temperature card
 - `air-fryers.html`, `meat-thermometers.html` — category hubs
 - `compare.html`, `buying-guide.html` — comparison and decision framework
@@ -70,8 +70,8 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 
 | Register | Page | Data | IDs | Count |
 |---|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-35 (SG-21 retired in place; SG-26 is unoccupied — FLG-021) | 34 rows, 1 retired |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-26 | 26 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-38 (SG-21 retired in place; SG-26 is unoccupied — FLG-021) | 37 rows, 1 retired |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-27 | 27 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | — |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | 12 dated proposals | 12 |

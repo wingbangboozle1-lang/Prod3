@@ -51,8 +51,8 @@ lift on hover (mobile-first pass S-20 in effect). The RSS feed no longer
 advertises a price range in the gift-guide description, and its channel title
 drops the overstated channel title the audit flagged. The
 Direction desk was rebuilt as a ledger and now matches `data/suggestions.json` /
-`data/open-questions.json` exactly: 30 suggestion rows (SG-21 retired in place,
-SG-26 unoccupied) and 23 open questions. That paragraph was written when the
+`data/open-questions.json` exactly: 46 suggestion rows (SG-01..SG-47; SG-21 retired
+in place, SG-26 unoccupied) and 29 open questions. That paragraph was written when the
 registers held 18 and 21 rows; the counts here were re-read from the JSON on
 2026-11-20 rather than copied forward. Still open: FLG-016 / F-21 — the
 social-preview image has never been run through a share debugger. All release
@@ -147,7 +147,7 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 
 **Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
-(39 pages, 5,879 assertions) and `tools/crawl_links.py` (39 pages, 0 broken links, 0 dead
+(39 pages, 5,919 assertions) and `tools/crawl_links.py` (39 pages, 0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.

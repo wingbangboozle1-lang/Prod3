@@ -64,6 +64,7 @@
 | T-54 | 2026-11-20 organic-growth register additions with sources verified live this session (renumbered twice: upstream 6bf60cac/8692a390 took SG-32..SG-38 and Q-24..Q-27, upstream PR #52 took SG-39..SG-42, so this session's rows ship as **SG-43..SG-47** and **Q-28..Q-29**): proposals — seasonal-block retirement date, FAQ-rich-result deprecation guard, AI-assisted-draft fact-check rule, CWV measurement gate, anchor-text discipline gate; questions — indexing status (Q-28), Core Web Vitals baseline (Q-29); new source rows **S34** (Google link best practices), **S35** (Google search-doc updates changelog: FAQ rich result deprecated 2026-05-07/08, docs removed 2026-06), **S36** (Google generative-AI content guidance, updated 2026-10-01); S22/S25 re-verified with quotes; DIRECTION.md SG index extended; generated pages rebuilt | done (session record below) | `arena/7878cdbe-prod3` | `data/suggestions.json` (appends SG-43..SG-47 only), `data/open-questions.json` (appends Q-28/Q-29 only), `data/sources.json` (adds S34–S36 only), `DIRECTION.md`, `suggestions.html`, `questions.html`, `decisions.html`, `citations.html` (regenerated), `COORDINATION.md` |
 | T-55 | Executive summary refresh (renumbered from T-52): add this session's register additions, verified-source notes, and defect-fix record to `EXECUTIVE_SUMMARY.md` and `executive-summary.html` on top of upstream's 2026-11-20 addenda; keep every count and ID range consistent with the registers | done (session record below) | `arena/7878cdbe-prod3` | `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
 | T-56 | Release for the 2026-11-20 round (renumbered from T-53): re-run all gates on the final tree, PR → main, merge without waiting for approval, confirm the GitHub Pages deploy and live URL, record PR/merge/deploy results and remaining owner gates here | done (PR #62, merge commit `9dd5c37`; deploy + live check in the record below) | `arena/7878cdbe-prod3` | `COORDINATION.md` only |
+| T-53 | **(session `arena/9f995863-prod3` — ID collision noted: this row was claimed before session 7878cdbe's T-53; both rows stand, no work discarded.)** Final consistency pass after PR #37: re-derive every register range/count from `data/*.json` and the current tree; fix only demonstrable stale claims (README/EXECUTIVE_SUMMARY range rows and page-count/assertion copy, direction.html register scope, flagged.html guide-count wording, SG-28 evidence); re-run all gates; PR → main, merge, confirm Pages | done (PR #64, merge commit `3a80986`; deploy + Pages status in the record below) | `arena/9f995863-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `direction.html`, `flagged.html`, `data/suggestions.json`, generated `suggestions.html`, `COORDINATION.md` (board rows + this session's record) |
 
 
 **Renumbered T-47 → T-51 → T-52, 2026-11-20.** Four other sessions merged while this work was open and
@@ -2043,3 +2044,57 @@ homepage-link cause · FLG-026 tag parameter demonstration · Search Console ver
 - **This record's own landing:** the board update and this record ship as a follow-up micro-PR (same session), merged after PR #62; its PR number is recorded below when merged.
 
 *(micro-PR record: to be appended after the board-update PR merges)*
+
+## Session `arena/9f995863-prod3` — T-53 (2026-11-20)
+
+**Claim history.** This session first claimed **T-46** (board row committed and pushed before
+any edit). Upstream session `59a087a1-prod3` had already merged PR #38 under the same ID, so the
+claim was renumbered **T-51** (per the one-identifier rule, upstream's row kept verbatim). Upstream
+session `8692a390-prod3` then took T-51 as well (PR #42), so the claim was renumbered again to
+**T-53**. When this branch was finally merged, upstream session `7878cdbe-prod3` had also claimed
+T-53 for a different defect pass (PRs #62/#63); both T-53 rows now stand side by side with the
+collision noted in the row itself. No other session's work was deleted at any point: every rebase
+conflict was resolved by keeping upstream's rows/records and re-applying only this session's
+additive reconciliation.
+
+### What this session did
+
+A final consistency pass: every register range and page-count/assertion claim was re-derived from
+`data/*.json` and the live page tree, and only demonstrable stale statements were corrected. The
+tree moved repeatedly while the branch was queued (PRs #38, #42-#44, #46-#48, #51, #53, #54-#57,
+#60, #62, #63 merged), so the pass was re-targeted at each rebase. Corrections:
+
+| File | Defect corrected |
+|---|---|
+| `README.md` | Pages row re-counted to 39 HTML / 10 articles (start page and tenth guide added upstream); release-workflow line to 39 pages / 5,919 assertions; superseded hand-edited register tables superseded by upstream's generated `scripts/build_readme.py` table (kept verbatim) |
+| `EXECUTIVE_SUMMARY.md` | Ledger counts to 46 suggestion rows (SG-01..SG-47; SG-21 retired in place, SG-26 unoccupied) and 29 open questions; disclosure strip/footer copy to 39 pages; gates-at-close to 39 pages / 5,919 assertions |
+| `executive-summary.html` | 'all 31/37 pages' copy to 39 pages |
+| `direction.html` | Register scope to SG-01..SG-47 / Q-01..Q-29; snapshot note SG-20..SG-47; 'all 46 registered suggestion ids (45 live rows)'; generation date 2026-11-20 |
+| `flagged.html` | FLG-038 (resolved flag) reworded count-free so gate **D40-guide-count** passes with the ten guides on disk ('Eight articles' / 'eight evergreen guides' → count-free wording) |
+| `data/suggestions.json` | SG-28 evidence: upstream's count-free formulation kept (page counts move as pages are added); `suggestions.html` regenerated |
+
+### PR, merge, deploy
+
+- **PR #64:** https://github.com/wingbangboozle1-lang/Prod3/pull/64
+  (`arena/9f995863-prod3` → `main`), merged at `2026-11-20T07:13:14Z`; merge commit
+  `3a8098652485da2f65e5dd6d3e28f2e14c8bab6b`. (An earlier PR #49 from this session was closed
+  unmerged by a parallel session while the branch was being rebased; the same work was re-issued
+  as PR #64 after the branch was rebased onto the then-current `main`.)
+- **Pre-merge gates on the final tree:** seven `--check` freshness gates current (39 pages);
+  `scripts/check_site.py` all passed; `tools/verify_site.py` release gate passed;
+  `tools/check_site.py` 39 pages, 5,919 assertions, all rules passed (incl. D40);
+  `tools/crawl_links.py` 39 pages crawled, 38 reachable, 0 broken links, 0 dead anchors, 0 orphans;
+  `git diff --check` clean.
+- **GitHub Pages:** `Deploy GitHub Pages` workflow on `3a80986` — **success**; Pages API
+  `status: built` at `https://wingbangboozle1-lang.github.io/Prod3/`.
+
+### Not claimed here (unchanged owner gates)
+
+FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled Associates workflow ·
+FLG-010 Associates account status · FLG-017/023/025 the supplied short links' changing observed
+destinations · FLG-026 no visible `tag=` parameter in shipped anchors · FLG-024 dual Pages
+build_type (owner one-click fix) · Search Console · analytics endpoint · share-debugger check.
+No Amazon listing was re-fetched by this session (outbound sandbox access does not include
+amazon.com); verification rests on the dated official-source citations in `data/sources.json`,
+the register data, and the repository gates. No claim is made that the supplied short links are
+invalid.

@@ -37,8 +37,8 @@ options, and recommendations live there.
 | SG-23 | Make one page the definitive answer to "how big is it really" | implemented | editorial |
 | SG-24 | Give the site a named editor before giving it a voice | proposed | owner |
 | SG-25 | Stop calling it a decision log until decisions are actually recorded there | implemented | engineering |
-| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-029 gap note below; the registered SG-27..SG-47 rows (this session re-mirrored them verbatim) are the canonical ones | — |
-**Gap, 2026-11-20 (FLG-029):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
+| SG-26 | Run the reader-facing polish path: authorship, navigation, brand, imagery, seasons, and clusters | partly implemented | owner |
+**Gap, 2026-11-20 (FLG-029):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id. **Resolved 2026-11-20 (T-27 integration):** SG-26 is now registered &mdash; the reader-facing polish-path row that carries the parallel passes SG-27..SG-31 &mdash; so the register no longer skips a number and the digest cites no phantom id; this note is kept for the audit trail.
 | SG-27 | One name for the Direction page, in the nav and the footer | implemented | engineering |
 | SG-28 | Ship the RSS feed and advertise it on every page | implemented | engineering |
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
@@ -170,7 +170,7 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |
 | 2026-11-20 | Reconcile the path chooser on `direction.html` and in this file with the canonical paths in `data/decisions.json` (DT-01..DT-10); retire the stale “Steady publication / Conversion focus / Hold” wording and its wrong SG-04/SG-06 citations | session T-39 audit | The digest and the decision desk cannot disagree about what the three paths are |
-| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-029, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
+| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-029, not re-numbered — resolved the same day: SG-26 registered by T-27 | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
 | 2026-11-20 | Publish one question-shaped guide a calendar month; approver: the site owner; next guide due 2026-12-31 (DT-10, owner instruction in the 2026-11-20 brief) | Owner instruction · `docs/publishing-cadence.md` · `data/decisions.json` DT-10 | The commitment is a rhythm, not a traffic or revenue forecast; `tools/verify_site.py` now fails a guide that is missing from the sitemap, the feed (headline = H1) or the guides hub |
 | 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-029, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
 | 2026-11-20 | Correct the section number under the no-ratings decision: the clause is Participation Requirements **§6(t)**, read on the live Program Policies page today. §2 has subsections (a) and (b) only. The 2026-11-19 decision stands; its citation did not | Program Policies, fetched and read 2026-11-20 (header: Updated April 14, 2026) | `compare.html` footnote and policy check C-15 now cite §6(t); the row above is kept as written, and FLG-020's "not located" text is superseded by a located clause |
@@ -201,6 +201,24 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | I-12 | `data/flagged.json` (F-series) is not linked from any page, while `flagged.html` tracks a separate FLG-series | **Addressed 2026-11-20 (T-64), not merged.** The FLG-series is now checked in both directions: every published callout has a register row and every FLG register row appears on the page, enforced by `tools/check_site.py` D41. The F-series stays machine-only by design — `flagged.html` says so in its own intro — so no F row was fabricated onto the page. Merging the two taxonomies is a content decision, not a defect fix; logged here rather than half-done. |
 | I-13 | The five `link.amazon` destinations still carry no visible `tag=` | **Closed on the site side 2026-11-20 (T-60).** No reader-facing button uses a short link any more; all 30 go to `amazon.com/dp/<observed ASIN>?tag=shopnow047c-20&linkCode=sl1`, which is the format Participation Requirements 2(b) names, and gates 7b/P09 hold it. The owner test (FLG-006/010, Q-02, Q-22) is still what settles whether the short links were tagged server-side; published as FLG-039. |
 | I-14 | No build step regenerates article HTML from data | Articles are hand-written prose; a generator would be a project, not a fix. |
+
+## T-27 — register recovery and design brief (session arena/80802891-prod3, 2026-11-20)
+
+| Date | Decision | Resting on | Effect |
+|---|---|---|---|
+| 2026-11-20 | Recover SG-20's clobbered content from PR #17 history (commit `7fbef67`) and restore SG-21 to its distinct "spine" proposal | PR #17 commit `7fbef67`, verifiable in git history | Two real proposals again in the suggestions register; the interim SG-21 tombstone is withdrawn; gate D20 keeps duplicate live titles impossible |
+| 2026-11-20 | Checked the path chooser against the one-identifier rule after the integration merge | Audit finding I-01 (an identifier means one thing) | The `direction.html` mirror now carries the canonical Path A/B/C wording (T-39 reconciliation), so page and desk agree and no second path set remains |
+| 2026-11-20 | Fill the SG-26 slot with the reader-facing polish path (it carries the parallel passes SG-27..SG-30 registered by session ce911db5, kept verbatim, plus SG-31), and add the design-brief rows SG-55..SG-58 (analytics endpoint, design brief, seasonal clusters as working titles only, publishing cadence) | The project brief of 2026-11-20; S01, S02, S21, S22, S24, S25 | Suggestions register reaches SG-01..SG-58; SG-56/SG-57 feed the next design prompt through the Direction page's design-brief section |
+
+### Design brief (feed to the next design prompt)
+
+Goal: a polished shop a buyer trusts — not generated filler. Concrete asks (SG-56):
+authorship note or an honest unnamed-desk line (SG-24, Q-05); one navigation group in reader
+language, generated so it cannot drift (SG-26, SG-27); one plain, specific brand voice; typographic
+listing art until imagery rights are settled (S01; FLG-008, DT-04); a seasonal hero rotation
+using the existing art; topic clusters around moments, joined to sitemap and feed on day one
+(SG-28, SG-57). Working titles are candidates only — never claims about popularity, search
+volume, or product superiority.
 | SG-54 | Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms | proposed | owner |
 
 *SG-54 was added 2026-11-20 (session `arena/1fbc2432-prod3`, T-66) from the same-day official-source recheck (`data/recheck-2026-11-20-1fbc2432.json`); the row was drafted as SG-39 and renumbered through the register collisions (SG-39, SG-48, SG-49 taken by PRs #52, #72 and #78) before landing at SG-54.*

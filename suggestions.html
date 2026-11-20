@@ -38,14 +38,14 @@
 <main id="main"><div class="article" style="max-width:1000px">
 <p class="kicker">Direction · Suggestions register</p>
 <h1>Suggestions, and the decision each one waits on</h1>
-<p class="byline">Kitchen Counter · Register updated 2026-11-19 · Nothing here is implemented by being listed</p>
+<p class="byline">Kitchen Counter · Register updated 2026-11-20 · Nothing here is implemented by being listed</p>
 
 <p>This is the review desk. Every proposal carries its problem, the evidence behind it, the options considered, a recommendation, and the person who decides. Machine-readable copy: <code>data/suggestions.json</code>. The questions that block these proposals live on <a href="questions.html">Open questions</a>; what was actually decided is on the <a href="direction.html">decision log</a>.</p>
 
 <div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (12)</h2>
+<h2>Waiting on a decision (13)</h2>
 <div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -190,9 +190,21 @@
         <div class="opts" data-decide="SG-30"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: Reader-capture metrics</p>
+    </article><article class="card decision-card" id="SG-33">
+      <div class="meta">SG-33 · editorial decides</div>
+      <h3>Publish catchy, trend-led question articles to earn organic traffic</h3>
+      <p><strong>The situation.</strong> The eight guides are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.</p>
+      <p><strong>The evidence.</strong> SG-04 chose question-shaped guides over reviews (shipped). SG-18 says guide nine must come from measured queries once Search Console exists (Q-18). Google&#x27;s thin-affiliation policy treats affiliate pages with no added value as spam (S22), so each trend article must add buying criteria, not just repeat the listing (S21).</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Keep a small seasonal calendar of catchy question articles — Thanksgiving temperature planning, holiday air-fryer gifts, January meal prep, summer grilling thermometers — each answering one buyer question with listed specs.</li><li>B. Publish generic &quot;best air fryer 2026&quot; listicles, the format every competitor already owns.</li><li>C. Do not write guide nine until Search Console data exists (SG-07), then pick from measured impressions.</li></ul>
+        <p><strong>Recommendation.</strong> A for the calendar, with C as the gating rule: no topic gets written without either a seasonal reason or measured query interest. The existing four suggested editorial hypotheses are working titles only — not popularity or superiority claims.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-33"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Q-18 (Search Console verification) before any topic is chosen from data; Q-24 registers the discovery question itself</p>
     </article></div>
 
-<h2 class="mt">Already shipped (18)</h2>
+<h2 class="mt">Already shipped (20)</h2>
 <p>Listed so the register stays complete, not to take credit. Each one can be reverted if a decision goes the other way.</p>
 <div class="grid mt"><article class="card decision-card" id="SG-01">
       <div class="meta">SG-01 · owner decides</div>
@@ -410,6 +422,30 @@
         <div class="opts" data-decide="SG-31"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-32">
+      <div class="meta">SG-32 · editorial decides</div>
+      <h3>Lead the front page with a buyer question and five shop cards, not with the audit trail</h3>
+      <p><strong>The situation.</strong> A buyer landing on the site should see products and a chooser, not a source register. The verification machinery is the site&#x27;s credibility, not its pitch — it belongs one click away in the footer group.</p>
+      <p><strong>The evidence.</strong> SG-10 made the front page publication-first and SG-15 made every shop page product-first; both are shipped. Google&#x27;s people-first guidance asks that content exist for readers rather than crawlers (S21), and page-experience guidance rewards pages that load and read well (S25).</p>
+      <p><span class="badge green">implemented</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Keep the current product-first front page: hero buyer question, five cards with CTAs, chooser, seasonal guide row, then the data table; audit surfaces stay in the footer group.</li><li>B. Move the register, gates, flags and ledger onto the front page so credibility leads.</li><li>C. Run two sites — a shop and a register — linked from each other.</li></ul>
+        <p><strong>Recommendation.</strong> A. It is already live on index.html and the two category pillars. The conflict chips and seasonal row keep the shop surface current without any new claim. Revisit only if click data shows readers scrolling past the cards to the register.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-32"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing — live on the front page, air-fryers.html and meat-thermometers.html</p>
+    </article><article class="card decision-card" id="SG-34">
+      <div class="meta">SG-34 · owner decides</div>
+      <h3>Review every change in the suggestions section before anything is built</h3>
+      <p><strong>The situation.</strong> Changes reached the site without a recorded choice, and the Direction page once carried suggestions that nobody had been asked to approve (audit finding I-01).</p>
+      <p><strong>The evidence.</strong> The register now lives in data/suggestions.json and renders to suggestions.html with a Do / Maybe / No mark on every card and a copyable decision block (SG-25 made the log decision-first). ideas.html is the review surface: ranked moves, rejected ideas with reasons, and the copyable block.</p>
+      <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Keep the review desk: suggestions register, open-questions register, decision log, and the ideas review page where every change is marked before implementation.</li><li>B. Let the next session implement whatever looks promising, with no register entry.</li><li>C. Require an owner sign-off recorded in the decision log before any published change.</li></ul>
+        <p><strong>Recommendation.</strong> A, which is already live. It costs one read per change and makes every ship decision auditable. C is the upgrade once the owner wants a formal sign-off step.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-34"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing — suggestions.html, questions.html, ideas.html and decisions.html ship today</p>
     </article></div>
 
 <h2 class="mt" id="decide">Your decision block</h2>

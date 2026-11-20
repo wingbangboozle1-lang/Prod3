@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "premise": "A decision made on missing information is a guess wearing a suit. Each entry states what is known, what is not, why it blocks a decision, and the cheapest concrete action that would answer it. Q-22 and Q-23 were added 2026-11-20 by session ce911db5; the account-status question had been described in DIRECTION.md but never registered (FLG-020).",
   "status_scale": {
     "blocking": "A decision is on hold until this is answered.",
@@ -392,6 +392,24 @@
         "S02"
       ],
       "evidence_status": "observed"
+    },
+    {
+      "id": "Q-24",
+      "group": "Content",
+      "question": "Which of the trend-led article topics earns impressions, and should guide nine be one of them?",
+      "blocks": "Choosing the ninth article from measured demand (SG-18, SG-33); depends on Q-18 first.",
+      "known": "No Search Console impressions or query data exist yet (F-17). Q-18 must be answered before any topic can be chosen from data.",
+      "unknown": "Which question clusters around air fryers and meat thermometers actually bring qualified visitors, and whether a seasonal topic or a specification topic wins.",
+      "how_to_find_out": "After Q-18 is answered (Search Console verified and sitemap submitted), review the Queries report after enough data accrues, pick a cluster with impressions and no dedicated page, and write guide nine around it.",
+      "who": "owner",
+      "cost": "10 minutes after Q-18",
+      "status": "queued",
+      "changes": "The topic and timing of guide nine.",
+      "sources": [
+        "S21",
+        "S24"
+      ],
+      "evidence_status": "verified"
     }
   ],
   "sources_note": "Each question carries the registered source IDs of the official document that speaks to it, or an empty list plus evidence_status='unverified' when no official document settles it. Nothing is cited that does not answer the question."

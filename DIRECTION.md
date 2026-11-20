@@ -37,8 +37,8 @@ options, and recommendations live there.
 | SG-23 | Make one page the definitive answer to "how big is it really" | implemented | editorial |
 | SG-24 | Give the site a named editor before giving it a voice | proposed | owner |
 | SG-25 | Stop calling it a decision log until decisions are actually recorded there | implemented | engineering |
-| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-021 gap note below; the registered SG-27..SG-31 rows (this session re-mirrored them verbatim) are the canonical ones | — |
-**Gap, 2026-11-20 (FLG-021):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
+| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-026 gap note below; the registered SG-27..SG-31 rows (this session re-mirrored them verbatim) are the canonical ones | — |
+**Gap, 2026-11-20 (FLG-026):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
 | SG-27 | One name for the Direction page, in the nav and the footer | implemented | engineering |
 | SG-28 | Ship the RSS feed and advertise it on every page | implemented | engineering |
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
@@ -86,7 +86,7 @@ SG-19. The ledger is the single source of truth.
 `known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only`).
 
-**Correction, 2026-11-20 (FLG-020).** This digest used to list Q-08 as the account-status question
+**Correction, 2026-11-20 (FLG-025).** This digest used to list Q-08 as the account-status question
 and Q-05 as "which query set converts". Neither matched the register: Q-08 is "what counts as a
 session for the ledger" and Q-05 is "who is the named author". The account-status question had never
 been registered at all, so it was added as **Q-23** rather than renumbered into a used id. Every id

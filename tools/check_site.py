@@ -440,6 +440,22 @@ check("D30-seasonal-surfaced",
       "thanksgiving-temperature-plan.html" in docs.get("index.html", ""),
       "the seasonal guide is not linked from the front page")
 
+# R-linknote: a page that sends a reader through a tracked link.amazon button
+# must also carry the reader-facing fallback note, because on 2026-11-20 all
+# five supplied links were observed ending at the Amazon homepage while the
+# official /dp/<ASIN> pages worked. Without the note a reader is stranded on
+# the front page. See FLG-025.
+for _rel, _html in sorted(docs.items()):
+    # Only tracked *buy buttons* count. A link.amazon URL quoted inside the
+    # source register is a record of what was supplied, not a button that
+    # sends a reader to Amazon.
+    _tracked_btn = re.search(
+        r'<a\b[^>]*data-event="outbound_click"[^>]*href="https://link\.amazon/', _html)
+    _has_note = "FLG-025" in _html and "official listing" in _html
+    check("R-linknote-fallback",
+          (not _tracked_btn) or _has_note,
+          f"{_rel} has a tracked link.amazon buy button but no FLG-025 fallback note")
+
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")
 if failures:

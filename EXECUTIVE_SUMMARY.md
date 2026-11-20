@@ -50,11 +50,13 @@ and the data table. Stylesheet: 44 px tap targets, visible focus states, card
 lift on hover (mobile-first pass S-20 in effect). The RSS feed no longer
 advertises a price range in the gift-guide description, and its channel title
 drops the overstated channel title the audit flagged. The
-Direction desk was rebuilt as a full ledger (SG-01…18 with statuses, Q-01…21
-with discovery paths) and now matches `data/suggestions.json` /
-`data/open-questions.json` exactly. New open item: FLG-016 / F-21 — the SVG
-social-preview image is unverified in share previewers. All four release gates
-pass on the rebuilt tree.
+Direction desk was rebuilt as a ledger and now matches `data/suggestions.json` /
+`data/open-questions.json` exactly: 30 suggestion rows (SG-21 retired in place,
+SG-26 unoccupied) and 23 open questions. That paragraph was written when the
+registers held 18 and 21 rows; the counts here were re-read from the JSON on
+2026-11-20 rather than copied forward. Still open: FLG-016 / F-21 — the
+social-preview image has never been run through a share debugger. All release
+gates pass on the current tree.
 
 
 ## Added 2026-11-20 (session 6bf60cac): what a buyer can now do, and what is still blocked
@@ -107,7 +109,7 @@ gate rule `D20` now fails the build if any two live suggestions share a title.
 
 **Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
 `rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
-30 pages. Every new table row carries a source link or an explicit "No official source" marker,
+31 pages. Every new table row carries a source link or an explicit "No official source" marker,
 and the gate fails a row that has neither — so "unverified" can never hide.
 
 **Still true, still not this session's to fix.** The five short links carry no visible
@@ -136,6 +138,18 @@ The official policy and guidance sources are indexed in the [source register](so
 | 6 — publication polish | Validate the shipped PNG preview with a social share debugger; then decide whether an approved brand/domain update is worthwhile | Design assets are in place, but preview rendering and brand preferences are not confirmed | Record debugger result and the owner-approved brand/domain decision | Do not claim the social preview was externally validated yet | [Google snippet guidance](https://developers.google.com/search/docs/appearance/snippet) |
 
 The editorial hypotheses already in the guide plan include “Basket or oven-style air fryer: what should you compare?”, “A no-hype checklist for comparing air fryer capacity”, “How to assess cleanup and counter-space trade-offs”, and “Questions to ask before buying a multi-function kitchen appliance.” These are working topics—not claims about search volume, popularity, or product superiority.
+
+## Design and content decisions awaiting review
+
+The suggestions register (`suggestions.html`, generated from `data/suggestions.json`) carries three additions from this review round (SG-32..SG-34), each with its problem, evidence, options, recommendation, decision owner, and a Do / Maybe / No mark that copies out as a decision block. Nothing is implemented by being listed; the ideas review page (`ideas.html`) is where a choice gets marked before anything is built.
+
+| ID | Suggestion | Status | Decided by |
+|---|---|---|---|
+| SG-32 | Lead the front page with a buyer question and five shop cards, not with the audit trail | Implemented — live on the front page and both category pillars | editorial |
+| SG-33 | Publish catchy, trend-led question articles to earn organic traffic (seasonal calendar; Search Console is the gate before guide nine) | Proposed | editorial |
+| SG-34 | Review every change in the suggestions section before anything is built | Implemented — the suggestions page, questions page, ideas review page and decision desk ship today | owner |
+
+The open question that discovers missing information for the traffic path is Q-24: “Which of the trend-led article topics earns impressions, and should guide nine be one of them?” — queued, and unanswerable until Q-18 (Search Console verification) is done.
 
 ## Questions that must be answered before consequential decisions
 

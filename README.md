@@ -44,7 +44,7 @@ The tools use Python's standard library; no third-party Python dependencies are 
 ## Site map
 
 - `index.html` — shop front: a named starting pick with a "look elsewhere if", the rest of the short list, the chooser, the seasonal block, all guides, the full data table
-- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-10), every unanswered question (Q-01..Q-23) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
+- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-12), every unanswered question (Q-01..Q-27) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
 - `tools/` — comparison builder, oven-to-air-fryer converter, USDA cook-to-temperature card
 - `air-fryers.html`, `meat-thermometers.html` — category hubs
 - `compare.html`, `buying-guide.html` — comparison and decision framework
@@ -66,26 +66,22 @@ The tools use Python's standard library; no third-party Python dependencies are 
 
 The checks enforce site structure, disclosures, sponsored-link marking, source references, price restrictions, data provenance, and generated-page consistency. Historical audit details and the supporting official policy links are on [`sources.html`](sources.html), [`citations.html`](citations.html), and [`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md).
 
-## Registers (current data as of 2026-11-19)
+## Registers (counted from the data files on 2026-11-20)
 
-| Register | Page | Data | IDs |
-|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-31 (SG-21 retired in place; the ID slot between SG-25 and SG-27 is unoccupied — FLG-021) |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-23 |
-| Decisions | `direction.html` | `DIRECTION.md` | dated rows |
-| Flagged findings | `flagged.html` | `data/flagged.json` | F-01..F-21 |
-| Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
+| Register | Page | Data | IDs | Count |
+|---|---|---|---|---|
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-38 (SG-21 retired in place; SG-26 is unoccupied — FLG-021) | 37 rows, 1 retired |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-27 | 27 |
+| Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
+| Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | — |
+| Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | 12 dated proposals | 12 |
+| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-034, F-01..F-21 | 33 in the data file + 21 alias records |
+| Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | — |
 
-## Registers (current data as of 2026-11-20)
-
-| Register | Page | Data | IDs |
-|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-30 (SG-21 retired) |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-23 |
-| Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-10 |
-| Decisions taken | `direction.html` | `DIRECTION.md` | dated rows |
-| Flagged findings | `flagged.html` | `data/flagged.json` | FLG-001..FLG-017, F-01..F-21 |
-| Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
+One table, not two. An earlier revision carried a 2026-11-19 table and a 2026-11-20 table side by
+side whose ID ranges disagreed with each other and with the pages; both were replaced by counts read
+from the JSON registers, and the counts were then re-read after later sessions added SG-32..SG-35,
+Q-24..Q-26 and DT-11..DT-12.
 
 An ID prefix belongs to exactly one register. A proposal, a question and a decision
 are never given the same identifier, so no reader has to guess which page is authoritative.

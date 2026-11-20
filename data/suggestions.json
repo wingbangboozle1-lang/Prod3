@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-31 added 2026-11-20 (session ce911db5) to give the conflict chip its own registered row; SG-26 is absent from this register and was cited by DIRECTION.md — see FLG-021.",
   "scale": {
     "effort": [
@@ -50,7 +50,10 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "editorial",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S02"
+      ]
     },
     {
       "id": "SG-03",
@@ -67,7 +70,10 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "owner",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S02"
+      ]
     },
     {
       "id": "SG-04",
@@ -84,7 +90,10 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "editorial",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S21"
+      ]
     },
     {
       "id": "SG-05",
@@ -102,7 +111,8 @@
       "decision_owner": "engineering",
       "blocks": "nothing",
       "sources": [
-        "S21"
+        "S01",
+        "S04"
       ]
     },
     {
@@ -122,7 +132,8 @@
       "decision_owner": "owner",
       "blocks": "the honest writing of any \"what it is like to live with\" page",
       "sources": [
-        "S21"
+        "S21",
+        "S03"
       ]
     },
     {
@@ -156,13 +167,16 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "engineering",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S02"
+      ]
     },
     {
       "id": "SG-09",
       "title": "Give every page a unique title and description, and test that the build rejects duplicates",
       "problem": "Duplicate titles and descriptions are the most common self-inflicted indexing problem for generated sites.",
-      "evidence": "Google: \"Create unique descriptions for each page on your site\"; identical descriptions on every page are named as a problem (S13).",
+      "evidence": "Google: \"Create unique descriptions for each page on your site\"; identical descriptions on every page are named as a problem (S24).",
       "options": [
         "A. Generate each page's title and description from its own content, and fail the build on a duplicate.",
         "B. One site-wide description."
@@ -174,6 +188,7 @@
       "decision_owner": "engineering",
       "blocks": "nothing",
       "sources": [
+        "S24",
         "S21"
       ]
     },
@@ -192,7 +207,10 @@
       "confidence": "medium",
       "status": "implemented",
       "decision_owner": "design",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S25"
+      ]
     },
     {
       "id": "SG-11",
@@ -209,7 +227,10 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "design",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S01"
+      ]
     },
     {
       "id": "SG-12",
@@ -226,7 +247,12 @@
       "confidence": "medium",
       "status": "implemented",
       "decision_owner": "design",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S03",
+        "S04",
+        "S05"
+      ]
     },
     {
       "id": "SG-13",
@@ -243,7 +269,10 @@
       "confidence": "high",
       "status": "proposed",
       "decision_owner": "owner",
-      "blocks": "confidence in attribution on the supplied links"
+      "blocks": "confidence in attribution on the supplied links",
+      "sources": [
+        "S02"
+      ]
     },
     {
       "id": "SG-14",
@@ -313,7 +342,10 @@
       "confidence": "high",
       "status": "proposed",
       "decision_owner": "owner",
-      "blocks": "any future price display"
+      "blocks": "any future price display",
+      "sources": [
+        "S02"
+      ]
     },
     {
       "id": "SG-18",
@@ -349,6 +381,7 @@
       "decision_owner": "engineering",
       "blocks": "nothing",
       "sources": [
+        "S19",
         "S21"
       ]
     },
@@ -369,7 +402,13 @@
       "decision_owner": "owner",
       "blocks": "Which guides get written next",
       "sources": [
-        "S21"
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S21",
+        "S22"
       ]
     },
     {
@@ -390,7 +429,13 @@
       "blocks": "Which guides get written next",
       "retired_note": "Verified duplicate on 2026-11-20: SG-20 and SG-21 carried byte-identical title, problem, evidence, options, recommendation, effort, confidence, owner and blocks fields. SG-21 is retained here as a retired row rather than deleted, so the register shows what happened instead of silently shrinking. Action SG-20, never both.",
       "sources": [
-        "S21"
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S21",
+        "S22"
       ]
     },
     {
@@ -410,7 +455,8 @@
       "decision_owner": "owner",
       "blocks": "Nothing today; it is the ceiling on how good the content can get",
       "sources": [
-        "S21"
+        "S21",
+        "S03"
       ]
     },
     {
@@ -428,7 +474,12 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "editorial",
-      "blocks": "Nothing"
+      "blocks": "Nothing",
+      "sources": [
+        "S10",
+        "S11",
+        "S12"
+      ]
     },
     {
       "id": "SG-24",
@@ -649,7 +700,67 @@
         "reversible": "yes",
         "falsifier": "If no row ships in four weeks, demote the page to a repository note."
       }
+    },
+    {
+      "id": "SG-36",
+      "title": "Lead the front page with a buyer question and five shop cards, not with the audit trail",
+      "problem": "A buyer landing on the site should see products and a chooser, not a source register. The verification machinery is the site's credibility, not its pitch — it belongs one click away in the footer group.",
+      "evidence": "SG-10 made the front page publication-first and SG-15 made every shop page product-first; both are shipped. Google's people-first guidance asks that content exist for readers rather than crawlers (S21), and page-experience guidance rewards pages that load and read well (S25).",
+      "options": [
+        "A. Keep the current product-first front page: hero buyer question, five cards with CTAs, chooser, seasonal guide row, then the data table; audit surfaces stay in the footer group.",
+        "B. Move the register, gates, flags and ledger onto the front page so credibility leads.",
+        "C. Run two sites — a shop and a register — linked from each other."
+      ],
+      "recommendation": "A. It is already live on index.html and the two category pillars. The conflict chips and seasonal row keep the shop surface current without any new claim. Revisit only if click data shows readers scrolling past the cards to the register.",
+      "effort": "M",
+      "confidence": "high",
+      "status": "implemented",
+      "decision_owner": "editorial",
+      "blocks": "nothing — live on the front page, air-fryers.html and meat-thermometers.html",
+      "sources": [
+        "S21",
+        "S25"
+      ]
+    },
+    {
+      "id": "SG-37",
+      "title": "Publish catchy, trend-led question articles to earn organic traffic",
+      "problem": "The eight guides are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
+      "evidence": "SG-04 chose question-shaped guides over reviews (shipped). SG-18 says guide nine must come from measured queries once Search Console exists (Q-18). Google's thin-affiliation policy treats affiliate pages with no added value as spam (S22), so each trend article must add buying criteria, not just repeat the listing (S21).",
+      "options": [
+        "A. Keep a small seasonal calendar of catchy question articles — Thanksgiving temperature planning, holiday air-fryer gifts, January meal prep, summer grilling thermometers — each answering one buyer question with listed specs.",
+        "B. Publish generic \"best air fryer 2026\" listicles, the format every competitor already owns.",
+        "C. Do not write guide nine until Search Console data exists (SG-07), then pick from measured impressions."
+      ],
+      "recommendation": "A for the calendar, with C as the gating rule: no topic gets written without either a seasonal reason or measured query interest. The existing four suggested editorial hypotheses are working titles only — not popularity or superiority claims.",
+      "effort": "M",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "Q-18 (Search Console verification) before any topic is chosen from data; Q-24 registers the discovery question itself",
+      "sources": [
+        "S21",
+        "S22"
+      ]
+    },
+    {
+      "id": "SG-38",
+      "title": "Review every change in the suggestions section before anything is built",
+      "problem": "Changes reached the site without a recorded choice, and the Direction page once carried suggestions that nobody had been asked to approve (audit finding I-01).",
+      "evidence": "The register now lives in data/suggestions.json and renders to suggestions.html with a Do / Maybe / No mark on every card and a copyable decision block (SG-25 made the log decision-first). ideas.html is the review surface: ranked moves, rejected ideas with reasons, and the copyable block.",
+      "options": [
+        "A. Keep the review desk: suggestions register, open-questions register, decision log, and the ideas review page where every change is marked before implementation.",
+        "B. Let the next session implement whatever looks promising, with no register entry.",
+        "C. Require an owner sign-off recorded in the decision log before any published change."
+      ],
+      "recommendation": "A, which is already live. It costs one read per change and makes every ship decision auditable. C is the upgrade once the owner wants a formal sign-off step.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "implemented",
+      "decision_owner": "owner",
+      "blocks": "nothing — suggestions.html, questions.html, ideas.html and decisions.html ship today",
+      "sources": []
     }
   ],
-  "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-26 remains an unoccupied id and was not reconstructed."
+  "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed."
 }

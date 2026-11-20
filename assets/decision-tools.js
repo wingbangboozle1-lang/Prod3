@@ -167,8 +167,9 @@
       body.innerHTML = USDA.filter(function (r) {
         return !q || r.join(' ').toLowerCase().indexOf(q) !== -1;
       }).map(function (r) {
-        return '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>';
-      }).join('') || '<tr><td colspan="3" class="small muted">No match.</td></tr>';
+        return '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td>' + r[2] +
+          '</td><td><a href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart" rel="noopener">S17</a></td></tr>';
+      }).join('') || '<tr><td colspan="4" class="small muted">No match.</td></tr>';
     }
     if (filter) filter.addEventListener('input', render);
     render();

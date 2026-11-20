@@ -23,18 +23,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Run release gate
+
+      # Every generated surface is rebuilt and compared before anything is deployed.
+      # Order does not matter: each builder re-renders its own output in full,
+      # including the shared chrome, so a stale file fails here rather than shipping.
+      - name: Regenerated surfaces are current
         run: |
+          python3 scripts/build_chrome.py --check
+          python3 scripts/build_registers.py --check
+          python3 scripts/build_decisions.py --check
+          python3 scripts/build_sitemap.py --check
+
+      - name: Release gate (structure, disclosure, sources)
+        run: |
+          python3 scripts/check_site.py
           python3 tools/verify_site.py
           python3 tools/check_site.py
-          python3 scripts/build_sitemap.py --check
-          python3 scripts/build_registers.py --check
+
+      - name: Internal link and anchor crawl
+        run: python3 tools/crawl_links.py
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

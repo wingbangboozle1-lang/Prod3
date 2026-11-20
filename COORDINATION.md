@@ -41,6 +41,7 @@
 | T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | done (PR #14 + #15, live-verified at `bb7d3d2`) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
 | T-23 | Line-by-line verification of data registers and published claims against official sources; fix only demonstrable defects; final integration PR → main, merge, confirm Pages deploy | done (PR #18, https://github.com/wingbangboozle1-lang/Prod3/pull/18) | arena/28d2d6c0-prod3 | `data/sources.json`, `data/analysis.json`, `data/flagged.json`, `data/policy-checks.json`, `sources.html`, `tools/verify_site.py` (source-resolution gate), `COORDINATION.md` |
 | T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
+| T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 

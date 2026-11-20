@@ -423,7 +423,7 @@
    "severity": "low",
    "area": "Register history",
    "product": "data/suggestions.json, DIRECTION.md",
-   "detail": "Previously published as a second FLG-021: the digest cited a suggestion id absent from the register, and the register itself skips the SG-26 slot.",
+   "detail": "Previously published as a second FLG-021: the digest cited a suggestion id absent from the register, and the register itself skips the slot between SG-25 and SG-27.",
    "why_it_matters": "A cited proposal that does not exist cannot be reviewed.",
    "action": "The gap is documented rather than reconstructed, because the original wording of the missing row is unknown. Renumbered from FLG-021 to FLG-029 on 2026-11-20.",
    "status": "open — SG-26 slot intentionally left unoccupied and documented",

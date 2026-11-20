@@ -43,7 +43,7 @@
 | T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
 | T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
-| T-26 | Final integration integrity pass: reconcile product-intent evidence, link/policy copy, automation claims, and flags; strengthen gates; re-run site and Pages release checks | done (2026-11-20, PR and Pages result below) | `arena/e83cdf55-prod3` | `data/verification.json`, `data/policy-checks.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `flagged.html`, `suggestions.html`, `questions.html`, `docs/verification.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `COORDINATION.md` |
+| T-26 | Final integration integrity pass: reconcile product-intent evidence, link/policy copy, automation claims, and flags; strengthen gates; re-run site and Pages release checks | done (2026-11-20) — PR #30 merged to main (merge commit `6ec959f`); Pages deploy run `44687263121` success | `arena/e83cdf55-prod3` | `data/verification.json`, `data/policy-checks.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `flagged.html`, `suggestions.html`, `questions.html`, `docs/verification.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -1036,4 +1036,12 @@ Scope: integrity pass on product-intent provenance, policy-record copy, and gate
 **Irregularities (non-blocking, on flagged.html):** FLG-001 intended ASINs unconfirmed; FLG-006 short-link compliance unresolved (not called invalid or compliant); FLG-010 account status unverified; FLG-017 B04G1MEwY 2026-11-20 homepage result (recorded by T-25, not overwritten); FLG-018/019 corrections above.
 
 **Not claimed:** Associates enrollment, intended ASINs, Special Link validity, tracking-report attribution, Search Console, analytics volume, or live traffic.
+
+**PR and deploy record (2026-11-20)**
+
+- **PR #30:** https://github.com/wingbangboozle1-lang/Prod3/pull/30 — merged with `gh pr merge 30 --merge`, merge commit `6ec959f1f15e218d4b82525f43468280b0d1fa03`, `mergedAt` 2026-11-20T06:21:49Z.
+- **Pages deploy:** `Deploy GitHub Pages` run `44687263121` for `6ec959f` — **success** (`deploy` job success).
+- **Live check (cache-busted fetch):** `https://wingbangboozle1-lang.github.io/Prod3/flagged.html?v=6ec959f` serves FLG-018 and FLG-019; the FLG-017 text from T-25 is unchanged.
+- **Conflict handling:** the rebase collided with T-25 (renumbered to T-26) and with a later board edit on `main`. Both sides were kept. One conflict-marker pass was missed on the first attempt and fixed in commit `5876ab2` before the PR; the repo-wide marker scan returns 0.
+- **Note:** this board update is on `arena/e83cdf55-prod3` only; it reaches `main` with the next integration PR.
 

@@ -202,6 +202,26 @@ for s in _sources["sources"]:
     check("D07-source-shape", s["url"].startswith("https://") and bool(s.get("used_for")),
           f"{s['id']}: source url not https or used_for missing")
 
+# ---- flag cross-references must resolve -----------------------------------
+# Found during the FLG-id collision repair (T-52, session aa7b8dd8): a page can
+# send a reader to a flag id that no longer exists after a renumber (the
+# collision left FLG-022/FLG-023 refs pointing at nothing). Every FLG-xxx or
+# F-xx id referenced on a published page must exist either as a callout heading
+# on flagged.html or as an id in data/flagged.json. Historical mentions of
+# retired ids are reworded, so every bare id must resolve.
+_flag_json_ids = {i["id"] for i in
+                  json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))["items"]}
+_flag_headings = set(re.findall(
+    r"<strong>(FLG-\d{3}|F-\d{2})\s+[—\u2014-]", (ROOT / "flagged.html").read_text(encoding="utf-8")))
+_flag_known = _flag_json_ids | _flag_headings
+for _name, _html in sorted(docs.items()):
+    # expand compressed forms (FLG-017/031, FLG-001..017) before scanning
+    _norm = re.sub(r"\bFLG-(\d{3})\s*(?:/|\.\.)\s*(\d{3})\b", r"FLG-\1 FLG-\2", _html)
+    _refs = set(re.findall(r"\bFLG-\d{3}\b|\bF-\d{2}\b", _norm))
+    _bad = sorted(r for r in _refs if r not in _flag_known)
+    check("D06b-flag-refs", not _bad, f"{_name}: references undefined flag id(s) {_bad}")
+
+
 # ---- citation attribution: a claim must cite a source by the same publisher --
 # The D06 rule only proves that a cited ID exists. A 2026-11-20 audit found
 # claims cited to the wrong publisher: a Google policy cited to a Chefman

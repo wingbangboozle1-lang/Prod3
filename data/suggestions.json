@@ -940,6 +940,149 @@
       "sources": [
         "S34"
       ]
+    },
+    {
+      "id": "SG-48",
+      "title": "Give each generated product page a consider-if / look-elsewhere-if pair and a guide next-step",
+      "problem": "The generated product pages list every published field and every flag naming the product, but they do not tell a reader in one place which routine the product fits and which alternative fits better, so the shop's judgement lives only on the front page.",
+      "evidence": "The generated pages carry 'The honest one-liner' plus a next-step line (compare / buying guide), while the front page carries a consider-if line per card (T-50 pages). The product page is where a reader has already narrowed the choice.",
+      "options": [
+        "A. Extend scripts/build_products.py to render a consider-if / look-elsewhere-if block and 2-3 guide links per product, sourced from the existing register data. Draft copy for all five exists on branch arena/fe5fd1d9-prod3 (T-38 hand-built pages, now superseded).",
+        "B. Keep the generated pages as-is and leave the judgement to the front page and the buying guide.",
+        "C. Add a per-product FAQ block instead."
+      ],
+      "recommendation": "A is cheap and keeps the generator canonical. Needs the T-50 generator owner to accept the block.",
+      "effort": "S",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": ""
+    },
+    {
+      "id": "SG-49",
+      "title": "Say each figure once: one chip row per product card",
+      "problem": "On the front page, four of the five product cards print two adjacent spec-chip rows, and the second row repeats figures from the first. The Emeril card shows 75-500 F, 1700 W and the footprint in one row, then 26 qt oven, 75-500 F and 1700W in the next; the 8 Qt, ThermoMaven and CHEF iQ cards repeat 450 F Hi-Fry, +/-0.5 F, IP67 and WiFi + Bluetooth the same way.",
+      "evidence": "Read in the built HTML of index.html on 2026-11-20: two spec-chips divs inside the same article element, with overlapping values and inconsistent spacing between the two rows (1700 W vs 1700W). Repeating an identical pill twice is what a partially-filled template looks like, and it is the specific artifact the owner called generated. No policy is involved; this is reader-facing quality, and Program Policies 2(b) is only relevant in that duplicating a figure cannot fix it, while choosing between two readings of a contradictory listing would (S02).",
+      "options": [
+        "A. One chip row per card: the constraining figure, the surprising one, and the footprint. Move the conflict chip below the trade-off line so it stays.",
+        "B. Keep two rows but make the second carry only non-duplicated content (e.g. the conflict chip).",
+        "C. Leave it; readers skim."
+      ],
+      "recommendation": "A. It deletes nothing that is currently true, it removes the strongest generated-page tell on the front page, and it costs one markup block per card. B is acceptable if the second row is repurposed rather than repeated.",
+      "effort": "S",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "nothing; it does conflict with the T-46 card pass, so whoever touches index.html last should own it",
+      "sources": [
+        "S02"
+      ],
+      "decision": {
+        "benefit": "The card reads as written for this product instead of filled from a schema.",
+        "risk": "Fewer pills per card slightly reduces the chance a reader sees a useful figure; mitigated by keeping three deliberate ones.",
+        "reversible": "yes",
+        "falsifier": "If card-level engagement after the change falls on any measured surface, restore the second row with distinct content only."
+      }
+    },
+    {
+      "id": "SG-50",
+      "title": "Give both shelves the same card anatomy",
+      "problem": "Every air-fryer card carries a spec-chip row; neither thermometer card does, and meat-thermometers.html has no chips at all. The same visual component exists on one shelf and not the other.",
+      "evidence": "Counted in the built HTML on 2026-11-20: air-fryers.html has three cards with one chip row each, meat-thermometers.html has two cards with zero. A shelf whose cards are shaped differently from its sister shelf is read as unfinished, and the thermometer side has honest figures to put there - claimed read time, claimed accuracy, probe count and the heat-safe figure, each already recorded as a seller claim in the product register.",
+      "options": [
+        "A. Add a chip row to the thermometer cards using only fields the register already carries as claims, each worded as a claim.",
+        "B. Remove chips from the air-fryer cards so both shelves are prose.",
+        "C. Do nothing and accept two layouts."
+      ],
+      "recommendation": "A, with the claim wording kept explicit (the listing says, not we measured). Parity costs nothing in accuracy and the register already distinguishes claim from measurement.",
+      "effort": "S",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "sources": [],
+      "decision": {
+        "benefit": "One card grammar across the shop, which is most of what makes a site feel published.",
+        "risk": "A claim chip without the word claim could be read as a test result.",
+        "reversible": "yes",
+        "falsifier": "If the chip set on the thermometer cards cannot be filled without inventing a figure, keep prose on that shelf instead."
+      }
+    },
+    {
+      "id": "SG-51",
+      "title": "Move the four inline hex colours onto the stylesheet's tokens",
+      "problem": "The front page carries inline style attributes with colours that appear nowhere in assets/style.css: a white override, #fdba74, #e6d9c8 and a #292524 to #57534e gradient on the hero art block.",
+      "evidence": "Grep of style= attributes across the built pages on 2026-11-20 shows these four on index.html only; the rest of the site styles through the token set in assets/style.css. Foreign pasted colours are a recognisable generation artifact and they defeat the theme in one place, so the hero cannot be restyled with the palette.",
+      "options": [
+        "A. Add hero tokens to style.css and delete the inline styles.",
+        "B. Keep the colours but move them into a class.",
+        "C. Leave them."
+      ],
+      "recommendation": "A or B - either removes the inline override. The visual outcome should not change, so this can be verified by diffing the rendered block before and after.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "sources": [],
+      "decision": {
+        "benefit": "One source of truth for colour, and one less thing that looks assembled.",
+        "risk": "A careless swap shifts contrast; the check is that text stays legible on the hero at 320px.",
+        "reversible": "yes",
+        "falsifier": "If contrast fails at 320px after tokenising, keep the current inline colours and revisit the palette instead."
+      }
+    },
+    {
+      "id": "SG-52",
+      "title": "Drop the price placeholder line and keep the button",
+      "problem": "Every product card prints a short line reading Current price on Amazon and then a button reading Check price on Amazon. The line has no value beside it, which reads like a field an import left empty.",
+      "evidence": "Both strings appear on all five front-page cards and on the category cards, counted in the built HTML on 2026-11-20. The compliance reason the value is absent is correct and stays: Program Policies 2(b) permits price display only when Amazon serves the data or it comes from Creators or PA API (S02), and the site uses neither, so no currency may be rendered. Showing the empty slot is a stylistic choice, not a policy requirement - the button already sends the reader to the price.",
+      "options": [
+        "A. Delete the placeholder line; keep the button and the no-prices note once per page, not once per card.",
+        "B. Keep the line but reword it as the reason, e.g. prices change, so they live on Amazon.",
+        "C. Status quo."
+      ],
+      "recommendation": "A, with B's sentence moved into the page-level note. A shopper needs one honest explanation, not five identical empty slots.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "sources": [
+        "S02"
+      ],
+      "decision": {
+        "benefit": "Removes the most audit-like element from otherwise shop-like cards.",
+        "risk": "A reader may look for a price and not find one; the note and the button already answer that.",
+        "reversible": "yes",
+        "falsifier": "If owner testing shows readers miss the no-price explanation, reinstate it once per page."
+      }
+    },
+    {
+      "id": "SG-53",
+      "title": "Put the disqualifier directly under the buy button",
+      "problem": "The most useful sentence on the front page - who the pick is not for - is the third paragraph of the feature card, above the button. On the other four cards the equivalent trade-off line sits below the fold of the card body.",
+      "evidence": "Read from index.html on 2026-11-20: the feature card order is why-this-one, look-elsewhere-if, then the CTA; the product cards place the CTA after the trade-off but with a spacer pushing the button down. This is a placement judgement, and the only evidence for it is that the decision happens at the button, so the caveat belongs beside it. Nothing in Program Policies 2(b) is involved, and no claim about products or popularity is made either way (S02).",
+      "options": [
+        "A. Reorder each card so the CTA is followed immediately by the who-it-is-not-for line.",
+        "B. Keep the order and pull the line into the button block as a caption.",
+        "C. Status quo."
+      ],
+      "recommendation": "A. It changes order only, so the risk is a layout regression, not a factual one, and it puts the site's distinguishing honesty where the click decision is made.",
+      "effort": "S",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "sources": [
+        "S02"
+      ],
+      "decision": {
+        "benefit": "The one line a competing page will never print ends up where the reader is about to act.",
+        "risk": "A caveat after the button may reduce clicks; if it does, that is a trade the owner may not want.",
+        "reversible": "yes",
+        "falsifier": "Once any click measurement exists, if click-through drops materially, move the line back above the CTA."
+      }
     }
   ],
   "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed. | 2026-11-20 (session f3900cd3): this session's four rows were renumbered twice while the branch was open — first written SG-32..SG-35, then SG-36..SG-39, now SG-39..SG-42 — each time because another session had registered different proposals under those ids. Text is unchanged; each moved row carries a dated note. No upstream row was edited."

@@ -423,7 +423,7 @@
       "severity": "low",
       "area": "Register history",
       "product": "data/suggestions.json, DIRECTION.md",
-      "detail": "Previously published as a second FLG-021: the digest cited a suggestion id absent from the register, and the register itself skips the SG-26 slot.",
+      "detail": "Previously published as a second FLG-021: the digest cited a suggestion id absent from the register, and the register itself skips the slot between SG-25 and SG-27.",
       "why_it_matters": "A cited proposal that does not exist cannot be reviewed.",
       "action": "The gap is documented rather than reconstructed, because the original wording of the missing row is unknown. Renumbered from FLG-021 to FLG-029 on 2026-11-20.",
       "status": "open — SG-26 slot intentionally left unoccupied and documented",
@@ -499,6 +499,30 @@
       "sources": [
         "S05"
       ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-030",
+      "severity": "high",
+      "area": "Generated-surface integrity",
+      "product": "decisions.html",
+      "detail": "A generated decision block shipped a JavaScript syntax error, and no gate read the scripts it generated. A gate now parses every script.",
+      "why_it_matters": "A broken script silently disables the interactive tools the desk depends on.",
+      "action": "Fixed by the gate added for the decisions page (the J-series script parsers); registered 2026-11-20 (session fe5fd1d9) so every published callout id has a register row.",
+      "status": "fixed (gate added)",
+      "sources": [],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-031",
+      "severity": "medium",
+      "area": "Short-link re-check",
+      "product": "supplied links",
+      "detail": "Two of the five supplied short links reached the Amazon homepage on 2026-11-20 in one same-day record; a later re-check (FLG-025) found all five doing so.",
+      "why_it_matters": "Homepage-landing links cost every click they receive and cannot carry a tracking tag.",
+      "action": "Superseded in breadth by FLG-025 (all five). Owner re-test in the Associates workflow (FLG-006) is the path to a conclusion. Registered 2026-11-20 (session fe5fd1d9).",
+      "status": "open — owner re-test (FLG-006); see FLG-025",
+      "sources": [],
       "sources_checked": "2026-11-20"
     },
     {

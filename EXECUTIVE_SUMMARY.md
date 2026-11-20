@@ -91,7 +91,7 @@ Task T-52. The first claim, T-46, was taken on `main` by PR #38. The second, T-4
 
 **Five supplied links, 2026-11-20.** This pass also found all five to the Amazon homepage. That agrees with the third dated check recorded under FLG-025. No product record changed. The intended ASIN for every link stays blank (FLG-001). No link is called invalid (FLG-003).
 
-**New flags.** FLG-032: the coordination board repeats task IDs T-12 to T-23. An earlier note in this session said the T-20 to T-22 duplicates were removed; they are marked superseded, not deleted, so that note was wrong. FLG-035: 23 of 29 source entries have no verified value, so the register has no consistent fetch date.
+**New flags.** FLG-032: the coordination board repeats task IDs T-12 to T-23. An earlier note in this session said the T-20 to T-22 duplicates were removed; they are marked superseded, not deleted, so that note was wrong. FLG-037: 23 of 29 source entries have no verified value, so the register has no consistent fetch date.
 
 **Still not established.** Whether the supplied links work in the enrolled Associates account (FLG-006; Q-02, Q-04, Q-22). Account eligibility (FLG-010). The Pages deploy for this merge (see the board record for T-52).
 
@@ -202,12 +202,12 @@ Two defects found by reading the site against the official pages, both fixed and
 rule. Read live on 2026-11-20, the [Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (page states *Updated
 April 14, 2026*) has Section 2 titled "Links on Your Site" with subsections (a) and (b) only. The three rules are **Section 6, "Content on your Site"**:
 **(t)** customer reviews and star ratings, **(v)** obscuring the referring URL, **(w)** unclear link shortening. Every citation was corrected, the quoted
-wording and its read date are in `data/policy-clause-map.json`, and gate `D35` fails the release if a retired letter returns. Published as FLG-035,
+wording and its read date are in `data/policy-clause-map.json`, and gate `D35` fails the release if a retired letter returns. Published as FLG-037,
 beside the earlier FLG-020. The conduct never changed; only the reference did.
 
 **2. The pages read as template output.** All eight evergreen articles closed with a byte-identical five-product block, and every product card on the
 front page printed its spec pills twice (the second copy HTML-entity-encoded, so it rendered as a near-repeat). Each article now closes with a next step
-specific to its own argument, the duplicate pills are removed, and gate `D36` fails the build if an article-length block repeats. Published as FLG-036.
+specific to its own argument, the duplicate pills are removed, and gate `D36` fails the build if an article-length block repeats. Published as FLG-038.
 
 **Also checked and left alone:** every food-safety temperature and rest time on the [cook-to-temperature card](tools/cook-temperatures.html) matches the
 [USDA FSIS chart](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart), and the accuracy

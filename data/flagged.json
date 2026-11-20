@@ -433,7 +433,7 @@
       "sources_checked": "2026-11-20"
     },
     {
-      "id": "FLG-035",
+      "id": "FLG-037",
       "severity": "high",
       "area": "Policy citations (Associates Program Policies)",
       "product": "Site-wide (citations, policy checks, questions, suggestions, compare, ideas, direction, disclosure)",
@@ -447,7 +447,7 @@
       "sources_checked": "2026-11-20"
     },
     {
-      "id": "FLG-036",
+      "id": "FLG-038",
       "severity": "medium",
       "area": "Published page consistency",
       "product": "articles/*.html, index.html",
@@ -620,5 +620,5 @@
       "verified_on": "2026-11-20"
     }
   ],
-  "id_policy": "One identifier carries one finding. On 2026-11-20 two collisions were found and fixed by earlier work (FLG-020/021 renumbered to FLG-028/029, and the earlier two-link record renumbered to FLG-032). This alias_records list covers the opposite failure: a flag a reader sees on the page but cannot find in the data file is enumerated here with its published title, so nothing is silently undocumented."
+  "id_policy": "One identifier carries one finding. On 2026-11-20 two collisions were found and fixed by earlier work (FLG-020/021 renumbered to FLG-028/029, and the earlier two-link record renumbered to FLG-032). This alias_records list covers the opposite failure: a flag a reader sees on the page but cannot find in the data file is enumerated here with its published title, so nothing is silently undocumented. On 2026-11-20 a second collision was found: two flags were published as FLG-035 and FLG-036 while this session's policy-citation and article-duplication findings held the same numbers. The published FLG-034 (listing-conflict ids) and the published FLG-035/FLG-036 records are untouched; the two late additions are renumbered FLG-037 and FLG-038 here and on flagged.html. Gate D32 is what caught it."
 }

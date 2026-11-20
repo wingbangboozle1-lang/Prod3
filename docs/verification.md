@@ -105,3 +105,77 @@ Corrections made under T-23 (all gates re-run green afterwards):
 - **Gate added:** `tools/verify_site.py` fails when an intended ASIN is set without `owner_confirmation_ref`, when the intended source is S16, or when `observed.agrees` reappears. Positive and negative checks were run on the corrected tree.
 - **Not changed:** the supplied short-link CTAs stay as they are. Their compliance status is unresolved (FLG-006). No link is described as invalid or compliant.
 - **Still open (owner-side):** FLG-001 intended ASIN confirmation; FLG-006 one-link Special Link test; FLG-010 account status; FLG-017 (2026-11-20 homepage result for B04G1MEwY, recorded by T-25).
+
+## T-53 direction-surface reconciliation and page-wide gates (session `arena/b8dae8e0-prod3`, 2026-11-20)
+
+- **Context:** this session began against `main` @ `0be7124` (PR #34) and re-based three
+  times as PRs #36–#62 landed; every earlier claim number (T-24, T-25, T-26, T-39) had
+  been taken upstream before the claim committed, so the claim ships as **T-53**. Work
+  already landed by parallel sessions was discarded rather than re-implemented (chrome
+  SG-26 reconstruction was explicitly declined upstream and is now FLG-029; the
+  guide-count copy is gated by D40; `build_decisions.py` counts only `proposed`; the
+  README table is generated). Nothing was re-added that main already had.
+- **Defects fixed (all demonstrable on the merged tree):**
+  - `direction.html` cited the unoccupied suggestion slot as "SG-26" in two places and
+    attributed it to FLG-021; FLG-021 is the source-register finding, and the gap was
+    renumbered FLG-029 in place. Citations now point at FLG-029 and describe the slot
+    between SG-25 and SG-27 (the register-jump id is not cited as a reference — the
+    convention DIRECTION.md already follows so D29 can pass).
+  - Register ranges were stale: pages said SG-01..SG-31 / Q-01..Q-21 while the
+    registers hold SG-01..SG-47 (SG-26 unoccupied) and Q-01..Q-29. Corrected in
+    `direction.html` (two places) and `DIRECTION.md` (index note + "twenty-nine
+    questions" count), plus the two remaining FLG-021→FLG-029 pointers and the
+    Q-digest correction's FLG-020→FLG-028 pointer (FLG-028 is the renumbered
+    duplicate that describes that correction).
+  - `direction.html` still shipped a duplicate "Source for SG-19" paragraph, one copy
+    inside `<tbody>`; the in-tbody copy was removed (the table cell text is unchanged).
+- **Gates added (`tools/check_site.py`, free ids D41/D42 after upstream's D40):**
+  - `D41-rss-autodiscovery` + `D41-rss-once` — every page carries exactly one
+    `application/rss+xml` link, `feed.xml` at the root and `../feed.xml` one level
+    down (articles/, tools/, products/). Negative-tested: removing the link fails
+    `rss-once`, duplicating it fails `rss-once`, and both were restored to green.
+  - `D42-sg-refs-resolve` + `D42-q-refs-resolve` — every `SG-nn`/`Q-nn` token on any
+    page must exist in its register (D28/D29 covered only `DIRECTION.md`). Its first
+    run caught the two direction-surface citations above. Negative-tested with a dangling unregistered suggestion id, restored to green.
+- **One cross-scope edit, logged per the board rule:** `data/flagged.json`, FLG-029's
+  `detail` field said "the register itself skips the SG-26 slot" — the same token the
+  new gate rightly rejects, and `decisions.html` renders the field verbatim. Reworded
+  to "skips the slot between SG-25 and SG-27"; no finding, id or grading changed, and
+  `data/flagged.json` was the only field touched. Flag file otherwise untouched
+  (guide-count was already handled upstream via D40/FLG-038-era rewording).
+- **Verification on the final tree (all exit 0):** `scripts/check_site.py` (39 pages),
+  `tools/check_site.py` (39 pages, 6245 assertions, all additional rules passed),
+  `tools/verify_site.py`, `scripts/build_sitemap.py --check`,
+  `scripts/build_registers.py --check`; plus a custom crawl of 39 pages / 1998 internal
+  hrefs with 0 broken links or anchors, and sitemap + feed link targets all resolving.
+## Live source re-verification (T-27, session arena/80802891-prod3, 2026-11-20)
+
+Each load-bearing quote was re-fetched from its official domain on 2026-11-20 and read against
+`data/sources.json`. All matched; no register value needed changing. Links below are for manual
+review.
+
+| Source | What was checked | Result | URL for manual review |
+|---|---|---|---|
+| S01 Operating Agreement | Update stamp; §5 disclosure sentence; §6 material-breach clause | "Updated: October 15, 2025"; §5 requires "As an Amazon Associate I earn from qualifying purchases." or a substantially similar statement, verbatim as recorded; §6 makes any §5 violation a material breach | https://affiliate-program.amazon.com/help/operating/agreement |
+| S02 Program Policies | Update stamp; Qualifying Purchases definition | "Updated: April 14, 2026"; Qualifying Purchases require a customer click through a Special Link on your Site, as recorded | https://affiliate-program.amazon.com/help/operating/policies |
+| S03 FTC Disclosures 101 | Placement language; page date | "Place it so it's hard to miss." and "The disclosure should be placed with the endorsement message itself." both verbatim; page dated November 2019 | https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers |
+| S04 Google — Qualify outbound links | `rel="sponsored"` definition; last-updated stamp | "Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value." verbatim; "Last updated 2025-12-10 UTC." | https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links |
+| S06 Creators API — GetItems | ItemIdType definition of ASIN | "Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon." verbatim | https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items |
+
+Product pages were not re-fetched by this session: session `arena/70e8475c-prod3` (T-25) re-checked
+all five short links and both policy pages on the same day, 2026-11-20; the only drift found there
+is FLG-017 (B04G1MEwY resolving to the Amazon homepage). T-27 changed no product claim.
+
+## Register recovery (T-27, 2026-11-20)
+
+`data/suggestions.json` SG-20 and SG-21 had carried byte-identical content since PR #17's merge
+replay (the board's own handoff log recorded "SG-21 was restored after a `=======` marker was
+mis-read"). The original content was recovered from PR #17's own commit history: commit
+`7fbef67` (`git show 7fbef67:data/suggestions.json`) carries SG-20 "Ask the Associates account one
+question and let the answer price the whole site" and SG-21 "Pick one product as the site's spine
+and let the other four support it" as two distinct rows. SG-20 was restored verbatim from that
+commit (with one dated sentence appended for the 2026-11-20 link re-check), SG-21 now carries the
+spine proposal, and the interim SG-21 tombstone is withdrawn. Gate rule D20 continues to fail the
+build if two live proposals ever share a title again. Manual review: the Commits tab of
+https://github.com/wingbangboozle1-lang/Prod3/pull/17, or `git show 7fbef67:data/suggestions.json`
+in any checkout of the repository.

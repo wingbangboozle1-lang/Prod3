@@ -1,0 +1,16 @@
+<!-- build-ideas:design:start -->
+<h2 class="mt" id="design-brief">The design brief, copy-ready for whoever restyles this</h2>
+<p class="small muted">Written 2026-11-20 (T-63) and kept in its own marked region, so neither the generated brief above nor a rebuild can drop it. Every line is a rule the build already enforces or a constraint an official source sets. Hand it to a designer as it stands.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Constraint</th><th>The rule, in one line</th><th>Why it is not negotiable</th></tr></thead>
+<tbody>
+<tr><td>Lead with products</td><td>The first screen shows appliances and buyer questions; the verification surfaces sit one click away in the footer.</td><td>Owner instruction, recorded in <code>DIRECTION.md</code>. The site is a shop, not an audit.</td></tr>
+<tr><td>Disclosure</td><td>One strip above the masthead on every page, plus the footer copy, naming the tracking ID.</td><td>FTC guidance asks for a clear and conspicuous disclosure near the claim it qualifies (S03).</td></tr>
+<tr><td>No prices, no ratings</td><td>Nothing renders a price, star rating or review count; a button opens the listing instead, where the number is current.</td><td>Program Policies allow price and availability display only when Amazon serves them or they come from Creators API / PA API (S37). Neither applies here.</td></tr>
+<tr><td>Buttons are tagged product links</td><td>Every <code>data-event="outbound_click"</code> anchor is <code>amazon.com/dp/&lt;10-char ASIN&gt;?tag=&hellip;</code> — no shortener, no untagged link, label and target agree.</td><td>Participation Requirements 2(a)/2(b) (S37). Gates 7b and P09 fail the build otherwise, so a redesign cannot quietly undo it.</td></tr>
+<tr><td>Art, not photography</td><td>Typographic and CSS/SVG artwork only. No reused Amazon images, no generated product photographs.</td><td>Program Content includes images and only Amazon-provided assets may be used (S01, FLG-008).</td></tr>
+<tr><td>Attribution is a design element</td><td>A seller-stated figure prints with the listing named beside it; a field nobody verified stays visibly blank.</td><td>The site&rsquo;s claim is that any number on a page is traceable. Blank beats inferred.</td></tr>
+<tr><td>Guides answer a question</td><td>One buyer question per page, an honest limits section, dated sources, and a byline stating what was and was not tested.</td><td>Gate D40 counts the guides, the cadence document sets one per month, and the byline rule keeps the claim modest.</td></tr>
+<tr><td>Light page</td><td>One local stylesheet, one local script, system fonts, no third-party asset requests on shop pages.</td><td>Verified by URL scan on 2026-11-20. Core Web Vitals remain unmeasured, so no speed claim is made (Q-29).</td></tr>
+</tbody></table></div>
+<!-- build-ideas:design:end -->

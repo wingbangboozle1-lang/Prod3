@@ -38,7 +38,7 @@
 <main id="main"><div class="article" style="max-width:1100px">
 <p class="kicker">Direction · Open questions</p>
 <h1>The questions that have to be answered before the next decision</h1>
-<p class="byline">Kitchen Counter · Register updated 2026-11-20 · 27 open questions, grouped by what they block</p>
+<p class="byline">Kitchen Counter · Register updated 2026-11-20 · 30 open questions, grouped by what they block</p>
 
 <p>A decision made on missing information is a guess with better manners. Each row states what is known, what is not, why it matters, and the cheapest concrete action that would settle it. Machine-readable copy: <code>data/open-questions.json</code>.</p>
 
@@ -152,8 +152,8 @@
 </tr>
 <tr>
   <td><strong>Q-14</strong></td>
-  <td><strong>What is the publishing cadence, and who writes the next guide?</strong><br><span class="small muted">Blocks: Whether the site grows or stalls at eight articles.</span></td>
-  <td><span class="small">Eight guides are published. Nothing in the repository schedules a ninth.</span></td>
+  <td><strong>What is the publishing cadence, and who writes the next guide?</strong><br><span class="small muted">Blocks: Whether the site keeps the cadence it has written down.</span></td>
+  <td><span class="small">The published guides live in articles/*.html. A monthly cadence with a next-due date and an approver is written down in docs/publishing-cadence.md (decision DT-10); nothing in the repository publishes automatically.</span></td>
   <td><span class="small">Whether the owner writes, or the agent drafts for approval, and how often.</span></td>
   <td><span class="small">Pick a cadence the owner will actually keep — one a fortnight beats three a week followed by silence. Write it in the repository so the next session honours it.</span></td>
   <td><span class="small">owner · one decision</span><br><span class="badge grey">owner-only</span></td>
@@ -161,8 +161,8 @@
 </tr>
 <tr>
   <td><strong>Q-17</strong></td>
-  <td><strong>Which of the eight guides should be retired if Search Console shows no impressions after 60 days?</strong><br><span class="small muted">Blocks: Nothing yet. It is the question that stops a site accumulating pages nobody reads.</span></td>
-  <td><span class="small">No impression or query data exists yet (F-17).</span></td>
+  <td><strong>Which of the published guides should be retired if Search Console shows no impressions after 60 days?</strong><br><span class="small muted">Blocks: Nothing yet. It is the question that stops a site accumulating pages nobody reads.</span></td>
+  <td><span class="small">The published guides live in articles/*.html, and no impression or query data exists yet (F-17).</span></td>
   <td><span class="small">Which pages, if any, will fail to earn an impression. That number cannot be guessed.</span></td>
   <td><span class="small">After 60 days, sort the Pages report by impressions. Any page with zero impressions earns a rewrite, a merge, or a removal — decided with data, not taste.</span></td>
   <td><span class="small">owner · 60 days and one report</span><br><span class="badge grey">watch</span></td>
@@ -170,20 +170,20 @@
 </tr>
 <tr>
   <td><strong>Q-27</strong></td>
-  <td><strong>Which of the trend-led article topics earns impressions, and should guide nine be one of them?</strong><br><span class="small muted">Blocks: Choosing the ninth article from measured demand (SG-18, SG-37); depends on Q-18 first.</span></td>
+  <td><strong>Which of the trend-led article topics earns impressions, and should the next guide be one of them?</strong><br><span class="small muted">Blocks: Choosing the next article from measured demand (SG-18, SG-37); depends on Q-18 first.</span></td>
   <td><span class="small">No Search Console impressions or query data exist yet (F-17). Q-18 must be answered before any topic can be chosen from data.</span></td>
   <td><span class="small">Which question clusters around air fryers and meat thermometers actually bring qualified visitors, and whether a seasonal topic or a specification topic wins.</span></td>
-  <td><span class="small">After Q-18 is answered (Search Console verified and sitemap submitted), review the Queries report after enough data accrues, pick a cluster with impressions and no dedicated page, and write guide nine around it.</span></td>
+  <td><span class="small">After Q-18 is answered (Search Console verified and sitemap submitted), review the Queries report after enough data accrues, pick a cluster with impressions and no dedicated page, and write the next guide around it.</span></td>
   <td><span class="small">owner · 10 minutes after Q-18</span><br><span class="badge grey">queued</span></td>
   <td class="small"><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">S21</a> · <a href="https://developers.google.com/search/docs/appearance/snippet" rel="noopener">S24</a></td>
 </tr>
-</tbody></table></div><h2>Measurement (3)</h2>
+</tbody></table></div><h2>Measurement (6)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
 <tbody>
 <tr>
   <td><strong>Q-07</strong></td>
-  <td><strong>Which analytics will actually be installed, given no cookies and no personal data?</strong><br><span class="small muted">Blocks: Choosing the ninth article and knowing whether any of the first eight worked.</span></td>
+  <td><strong>Which analytics will actually be installed, given no cookies and no personal data?</strong><br><span class="small muted">Blocks: Choosing the next article and knowing whether the published guides worked.</span></td>
   <td><span class="small">No analytics endpoint and no Search Console property exist (F-17). The site ships a cookie-free, network-free client-side counter (SG-08).</span></td>
   <td><span class="small">Whether the owner has hosting that can run a small endpoint, and whether they want one at all.</span></td>
   <td><span class="small">Decide between: Search Console only (zero cost, query data, no page-level behaviour); a self-hosted endpoint (needs a host); or nothing.</span></td>
@@ -207,6 +207,33 @@
   <td><span class="small">Owner adds the property in Search Console, verifies via DNS or file upload, submits sitemap.xml, and reports back. Ten minutes, once.</span></td>
   <td><span class="small">owner · 10 minutes</span><br><span class="badge grey">blocking</span></td>
   <td class="small"><a href="https://developers.google.com/search/docs/appearance/snippet" rel="noopener">S24</a></td>
+</tr>
+<tr>
+  <td><strong>Q-28</strong></td>
+  <td><strong>Is any of this site in Google&#x27;s index yet, and which pages?</strong><br><span class="small muted">Blocks: Judging whether any guide is discoverable at all; choosing between publishing more (SG-18&#x27;s pipeline) and fixing discoverability first. Until this is answered, any statement about organic traffic is a guess.</span></td>
+  <td><span class="small">The site ships unique canonicals, a robots.txt pointing at sitemap.xml, a sitemap and an RSS feed — all enforced by the repo&#x27;s gates. Coordination records show GitHub Pages deployments since 2026-11-19.</span></td>
+  <td><span class="small">Whether Google has crawled or indexed any URL; which pages, if any, appear for brand or topic queries. Nothing hosted on the site itself can answer this.</span></td>
+  <td><span class="small">Two steps. (1) Public, no account: a site:wingbangboozle1-lang.github.io/Prod3 query — a rough, incomplete indication; record the date and the result count, not a claim of completeness. (2) Authoritative: Search Console → property → Pages report, after Q-18&#x27;s verification — it lists indexed and excluded URLs with reasons (S26).</span></td>
+  <td><span class="small">any session (step 1); owner (step 2) · 2 minutes (step 1); 5 minutes after verification (step 2)</span><br><span class="badge grey">queued</span></td>
+  <td class="small"><a href="https://developers.google.com/search/docs/monitor-debug/search-console-start" rel="noopener">S26</a></td>
+</tr>
+<tr>
+  <td><strong>Q-29</strong></td>
+  <td><strong>What do Core Web Vitals measure on this site today, on a mid-range phone?</strong><br><span class="small muted">Blocks: SG-46 (the proposed CWV gate) and any decision to add visual effects; until measured, the mobile-first and light-page claims (S-20 pass) are design statements, not records.</span></td>
+  <td><span class="small">The stylesheet is one local file with system fonts (no webfonts, no @import), pages load one local script each, and there are no third-party asset requests on shop pages — verified by a URL scan on 2026-11-20 (T-54 log). Tap targets were audited at 48px (S-20).</span></td>
+  <td><span class="small">LCP, INP and CLS as actually measured. No dated lab or field result exists anywhere in the repository.</span></td>
+  <td><span class="small">pagespeed.web.dev — enter the live URL, choose mobile, and record the dated metric values on analytics.html; Lighthouse in Chrome gives the same lab metrics. No account is required.</span></td>
+  <td><span class="small">any session · about 5 minutes</span><br><span class="badge grey">queued</span></td>
+  <td class="small"><a href="https://developers.google.com/search/docs/appearance/page-experience" rel="noopener">S25</a></td>
+</tr>
+<tr>
+  <td><strong>Q-30</strong></td>
+  <td><strong>Do the outbound-click counters fire on the tagged product buttons, and where do the counts land?</strong><br><span class="small muted">Blocks: SG-48, and any statement about which button gets clicked. The campaign ledger stays empty until an authorized first-party report exists.</span></td>
+  <td><span class="small">assets/app.js records a click event per outbound link with an ASIN label; scripts/check_site.py rule 7b now counts the tagged buttons (30 on 2026-11-20), so the population being measured is known and stable. The event has a data-event name and a data-asin, both machine-checkable.</span></td>
+  <td><span class="small">Whether anything receives or stores the event. No analytics endpoint is configured (DT-07), and no first-party report exists, so no click count, conversion rate or revenue figure can be quoted anywhere on this site.</span></td>
+  <td><span class="small">Owner: decide DT-07 (self-hosted counter, a privacy-preserving hosted endpoint, or nothing). If nothing is chosen, the local-only counts and this question should be closed as won&#x27;t-measure, and the ledger&#x27;s columns stay defined but empty.</span></td>
+  <td><span class="small">owner · a decision, then minutes</span><br><span class="badge grey">open</span></td>
+  <td class="small"><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></td>
 </tr>
 </tbody></table></div><h2>Product (2)</h2>
 <div class="table-wrap"><table>
@@ -289,7 +316,7 @@
 <tr>
   <td><strong>Q-22</strong></td>
   <td><strong>Why did two of the five supplied short links (B04G1MEwY, B0c8moW59) end at the Amazon homepage on 2026-11-20 instead of a product page?</strong><br><span class="small muted">Blocks: Whether the two homepage-resolving buy buttons can be attributed at all, and whether the other three are stable.</span></td>
-  <td><span class="small">On 2026-11-19 both ended at a product page. On 2026-11-20 B04G1MEwY ended at https://www.amazon.com/ twice (FLG-017) and B0c8moW59 ended at https://www.amazon.com/ twice (observed independently by session ce911db5), while B02NbDxp3, B00hJ57DV and B0f3GKalj still resolved to their product pages. Another session&#x27;s same-day record reads B0c8moW59 as still resolving; both dated records are kept in data/products.json and neither is deleted.</span></td>
+  <td><span class="small">On 2026-11-19 both ended at a product page. On 2026-11-20 B04G1MEwY ended at https://www.amazon.com/ twice (FLG-017) and B0c8moW59 ended at https://www.amazon.com/ twice (observed independently by session ce911db5), while B02NbDxp3, B00hJ57DV and B0f3GKalj still resolved to their product pages. Another session&#x27;s same-day record reads B0c8moW59 as still resolving; both dated records are kept in data/products.json and neither is deleted. Two further same-day passes widened the finding: session 6bf60cac recorded the homepage for all five links (FLG-025), session 6c0972fb independently recorded the same for all five (FLG-039), and session d52ad947 again recorded the homepage for B04G1MEwY and B0c8moW59. Every dated record is kept in data/products.json.</span></td>
   <td><span class="small">Whether the cause is link expiry, a signed-out fetch versus an enrolled account, a profile gate or a transient response. None can be distinguished from outside the account, so none is asserted.</span></td>
   <td><span class="small">Signed in, open each of the five links once. Note the final URL, whether it lands on the product or the homepage, and whether it carries tag=shopnow047c-20. Then check Link Reports for a same-day click. If a link still lands on the homepage there, regenerate that Special Link from the product page with SiteStripe and record the new URL.</span></td>
   <td><span class="small">owner · 15 minutes, signed in</span><br><span class="badge grey">blocking</span></td>

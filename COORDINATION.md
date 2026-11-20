@@ -1294,3 +1294,41 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 - **Live checks after deploy (fetched, not assumed):** the front page and `direction.html` serve the updated content — path chooser shows the canonical “Make it earn / Make it a publication / Narrow and harden” wording with DT references, the snapshot note reads “SG-20..SG-31 … the ID slot between SG-25 and SG-27 is unoccupied, FLG-021”, and the disclosure strip remains above the first heading.
 
 *(final micro-PR: T-26 → T-39 label fix on direction.html + this record)*
+
+---
+
+## Session arena/0b7a3dd6-prod3 — reader-first polish + line-by-line audit (2026-11-20)
+
+**Session ID:** `arena/0b7a3dd6-prod3` · **Branch:** `arena/0b7a3dd6-prod3` (cut from `7c1b939`, the T-39 merge on `main`)
+
+### Claims (written, committed and pushed before any file edit)
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-40 | **Highest-value fix:** one product (Chefman 6 Qt Dual Basket, B0CDY277D3) is linked to a **broken** short link (`link.amazon/B04G1MEwY`) on `compare.html` and `articles/holiday-kitchen-gift-guide.html`, including in a "Check price" buy button, while other pages correctly route that product to the product page. Route every reader-facing link for that product to the product page and say why, matching the treatment already used on `index.html` / `air-fryers.html`. No href is claimed invalid; the short link is unresolved (FLG-003/FLG-017) and stays listed on the evidence pages. | in progress | arena/0b7a3dd6-prod3 | `compare.html`, `articles/holiday-kitchen-gift-guide.html` |
+| T-41 | **Line-by-line audit of the board against the tree and the registers.** The board lists FLG-024 as an open irregularity; `flagged.html` (which `verify_site.py` reads as the authority for "is this flag documented") does not carry it. Reconcile and record. | in progress | arena/0b7a3dd6-prod3 | `COORDINATION.md` |
+| T-42 | **One submission surface.** The owner is currently pointed at four review pages (`ideas.html`, `suggestions.html`, `questions.html`, `decisions.html`). Ship a single numbered read-in-order brief at the top of `ideas.html`, generated from `data/suggestions.json` + `data/open-questions.json` so its IDs and counts cannot drift again; retire the overlapping "Read in this order" block. Keep every existing surface reachable. | in progress | arena/0b7a3dd6-prod3 | `ideas.html`, new `scripts/build_ideas.py`, `scripts/check_site.py` (freshness gate hook only) |
+| T-43 | **Missing-information discovery + research scope.** Add an MR row per missing item with the *exact* official location that would settle it and the measurable effort, plus an "additional research ideas" block for growing organic traffic (question-shaped topics only, no volume or popularity claims). Rows that cannot be settled from an official document are marked, not filled. | in progress | arena/0b7a3dd6-prod3 | `ideas.html` (+ its generator), `COORDINATION.md` |
+| T-44 | **Copy pass: read like a shop, not an audit.** Remove the duplicate metric strip on the front page (the same five numbers are printed twice in cards that repeat themselves); keep every claim, disclosure and source link. | in progress | arena/0b7a3dd6-prod3 | `index.html` |
+| T-45 | Release gates re-run, integration PR → `main`, merge, confirm Pages deploy, record PR + run IDs here. | in progress | arena/0b7a3dd6-prod3 | `COORDINATION.md` |
+
+### Scope statement
+
+Read-only outside this scope. Not touched: `data/*.json`, `assets/style.css`, `assets/app.js`, the masthead/footer chrome
+(`scripts/build_chrome.py`), `flagged.html`, `sources.html`, `suggestions.html`, `questions.html`, `decisions.html`,
+`direction.html`, `DIRECTION.md`, the executive summaries and the articles (except the two named above). The T-39
+session's rows and every prior session's log are preserved above this block.
+
+### Environment limit recorded up front (affects what can be claimed)
+
+This sandbox has outbound network access to `github.com` / `codeload` / `api.github.com` / npm / PyPI **only**.
+`amazon.com`, `affiliate-program.amazon.com`, `ftc.gov` and `developers.google.com` are **not reachable**, so this
+session **cannot and does not claim** a fresh re-fetch of any listing or policy page. Every no-network statement below
+is labelled as such, and no value in the registers is changed. Reader-facing pages get **no** claim of a fresh fetch;
+a separate dated note is published on the review page so the reader can see exactly what was and was not re-observed.
+
+### Irregularities found so far (detail and resolution appended as each is closed)
+
+- **AUD-01** — the T-41 item above: FLG-024 is on the board but not on `flagged.html`.
+- **AUD-02** — `compare.html` and the gift guide send the dual-basket product's buy button through the one short link
+  that stopped resolving (FLG-017), so on those two pages the highest-traffic action can land on Amazon's homepage.

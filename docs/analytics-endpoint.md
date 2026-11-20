@@ -19,7 +19,9 @@ The five events defined in `data/campaign-ledger.json` (`events_defined`):
 
 The footer counter shows these local counts only. It is a single-device counter, not a visitor total.
 
-## Server endpoint (not implemented)
+## Server endpoint (code shipped, not deployed)
+
+A deployable, privacy-preserving collector ships at `analytics/collector/worker.js` (deployment steps and the payload contract: `analytics/collector/README.md`). It is not deployed anywhere and `ENDPOINT` remains `` until the owner deploys it and publishes a privacy notice. Gate `D43` fails the build if `ENDPOINT` names a URL that `analytics.html` does not, or if the five event names diverge between `assets/app.js`, the collector, and `data/campaign-ledger.json`.
 
 `ENDPOINT` in `assets/app.js` is intentionally `''`. When it is empty the script never calls `navigator.sendBeacon`, so nothing leaves the browser. GitHub Pages is static hosting and cannot receive POSTs.
 

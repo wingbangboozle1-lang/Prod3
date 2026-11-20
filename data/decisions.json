@@ -16,7 +16,11 @@
       "who": "owner",
       "blocks": "Any traffic push. A click that is not tagged earns nothing.",
       "status": "open",
-      "sources": ["S01", "S02"]
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "evidence_status": "verified"
     },
     {
       "id": "DT-02",
@@ -27,7 +31,10 @@
       "who": "owner",
       "blocks": "The strongest single conversion lever on the site.",
       "status": "shipped",
-      "sources": ["S02"]
+      "sources": [
+        "S02"
+      ],
+      "evidence_status": "verified"
     },
     {
       "id": "DT-03",
@@ -38,7 +45,10 @@
       "who": "owner",
       "blocks": "The answer to 'which guide should be ninth'. Without it, any answer is a guess.",
       "status": "open",
-      "sources": ["S21"]
+      "sources": [
+        "S21"
+      ],
+      "evidence_status": "verified"
     },
     {
       "id": "DT-04",
@@ -49,7 +59,11 @@
       "who": "editorial",
       "blocks": "Nothing. The current state is safe.",
       "status": "shipped",
-      "sources": ["S01", "S02"]
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "evidence_status": "verified"
     },
     {
       "id": "DT-05",
@@ -60,7 +74,10 @@
       "who": "owner",
       "blocks": "The difference between 'here is what the label says' and 'here is what we measured'.",
       "status": "open",
-      "sources": ["S21"]
+      "sources": [
+        "S21"
+      ],
+      "evidence_status": "verified"
     },
     {
       "id": "DT-06",
@@ -71,7 +88,10 @@
       "who": "editorial",
       "blocks": "Any brand or navigation decision that assumes a single beat.",
       "status": "open",
-      "sources": ["S22"]
+      "sources": [
+        "S22"
+      ],
+      "evidence_status": "verified"
     },
     {
       "id": "DT-07",
@@ -82,7 +102,10 @@
       "who": "owner",
       "blocks": "Every claim about which page or product is working.",
       "status": "open",
-      "sources": ["S23"]
+      "sources": [
+        "S23"
+      ],
+      "evidence_status": "verified"
     },
     {
       "id": "DT-08",
@@ -93,7 +116,8 @@
       "who": "owner",
       "blocks": "Reader capture, and any plan that depends on repeat visits.",
       "status": "shipped",
-      "sources": []
+      "sources": [],
+      "evidence_status": "unverified"
     },
     {
       "id": "DT-09",
@@ -104,7 +128,10 @@
       "who": "owner",
       "blocks": "Brand decisions, and any print or social material carrying the URL.",
       "status": "open",
-      "sources": ["S05"]
+      "sources": [
+        "S05"
+      ],
+      "evidence_status": "verified"
     },
     {
       "id": "DT-10",
@@ -115,7 +142,8 @@
       "who": "owner",
       "blocks": "Whether this is a publication or a finished project.",
       "status": "open",
-      "sources": []
+      "sources": [],
+      "evidence_status": "unverified"
     }
   ],
   "paths": [

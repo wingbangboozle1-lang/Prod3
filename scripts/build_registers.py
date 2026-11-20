@@ -76,7 +76,8 @@ FOOTER = f'''<footer><div class="wrap">
 def pill(text, kind="grey"):
     return f'<span class="badge {kind}">{html.escape(text)}</span>'
 
-STATUS_KIND = {"implemented": "green", "proposed": "grey", "rejected": "grey", "in progress": "grey"}
+STATUS_KIND = {"implemented": "green", "proposed": "grey", "rejected": "grey", "retired": "grey",
+               "in progress": "grey", "partly implemented": "grey"}
 EFFORT = {"S": "Short session", "M": "Focused day", "L": "Project"}
 
 

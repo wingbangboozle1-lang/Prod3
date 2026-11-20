@@ -38,7 +38,9 @@ except Exception as e:
     errors.append(f"products.json: {e}")
 
 # 2-4. HTML checks
-html_files = sorted(ROOT.glob("*.html")) + sorted((ROOT / "articles").glob("*.html"))
+html_files = (sorted(ROOT.glob("*.html"))
+              + sorted((ROOT / "articles").glob("*.html"))
+              + sorted((ROOT / "tools").glob("*.html")))
 titles = {}
 for f in html_files:
     html = f.read_text()

@@ -115,7 +115,7 @@ the same four duplicate ids while this branch was open.
 | T-71 | Fix post-renumbering flag references: executive-summary.html FLG-028 → FLG-025/FLG-039 for the all-five checks; executive summaries updated for the five-pass picture (the DIRECTION.md FLG-020/021 mis-cites were already cleaned upstream by the T-52 round) | done | `arena/d52ad947-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md` |
 | T-72 | FLG-024 owner-fix re-check: `PATCH /repos/…/pages {"build_type":"workflow"}` re-attempted → HTTP 404 again; flag row updated with the dated re-attempt. FLG-032 partial consolidation (delegated by the flag to the next integration session): the three superseded T-20/T-21/T-22 rows removed; flag status updated | done | `arena/d52ad947-prod3` | `flagged.html`, `data/flagged.json`, `COORDINATION.md` (this board) |
 | T-73 | All release gates re-run on the reconciled tree; PR → main, merge without waiting, confirm Pages deploy, record merge + deploy result on the board | done (merge result recorded below after the PR merges) | `arena/d52ad947-prod3` | `COORDINATION.md` |
-| T-79 | Measurement coverage + ledger coherence (renumbered twice: claimed T-53, upstream took T-53..T-56; claimed T-72, session d52ad947 took T-72 on main while this branch was in flight — their rows untouched; session 47f4e1e5): `outbound_click` only bound links carrying `data-event` — 30 of 355 product links counted on the merged tree, while `analytics.html` tells the reader the event is "activation of a supplied product link". Bind every `rel="sponsored"` Amazon/`link.amazon` link (ASIN from `data-asin` or the `/dp/` href, same 10-char rule, no other payload change). Two ledger files both claim to be the campaign ledger (`data/campaigns.json` cited by F-15, `data/campaign-ledger.json` read by every gate): reconcile them (canonical pointer + shared tracking id, both stay empty). Update `docs/analytics-endpoint.md`; add gates in `scripts/check_site.py` so coverage and ledger coherence cannot regress; re-run every release gate; PR → main, merge, confirm Pages; record here | in progress | `arena/47f4e1e5-prod3` | `assets/app.js`, `data/campaigns.json`, `data/campaign-ledger.json`, `docs/analytics-endpoint.md`, `scripts/check_site.py`, `COORDINATION.md` (board + session log only) |
+| T-79 | Measurement coverage + ledger coherence (renumbered twice: claimed T-53, upstream took T-53..T-56; claimed T-72, session d52ad947 took T-72 on main while this branch was in flight — their rows untouched; session 47f4e1e5): `outbound_click` only bound links carrying `data-event` — 30 of 355 product links counted on the merged tree, while `analytics.html` tells the reader the event is "activation of a supplied product link". Bind every `rel="sponsored"` Amazon/`link.amazon` link (ASIN from `data-asin` or the `/dp/` href, same 10-char rule, no other payload change). Two ledger files both claim to be the campaign ledger (`data/campaigns.json` cited by F-10, `data/campaign-ledger.json` read by every gate): reconcile them (canonical pointer + shared tracking id, both stay empty). Update `docs/analytics-endpoint.md`; add gates in `scripts/check_site.py` so coverage and ledger coherence cannot regress; re-run every release gate; PR → main, merge, confirm Pages; record here | done (PR #101 merged as `0bcbac5`; Deploy run 44699872820 success; live app.js serves the new selector — full record below) | `arena/47f4e1e5-prod3` | `assets/app.js`, `data/campaigns.json`, `data/campaign-ledger.json`, `docs/analytics-endpoint.md`, `scripts/check_site.py`, `COORDINATION.md` (board + session log only) |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -3196,3 +3196,81 @@ link-redirect behaviour and the tag-parameter question (Q-22/Q-24/Q-25) · Searc
 (DT-03, Q-28) · analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Core Web
 Vitals measurement (Q-29) · outbound-click counter behaviour (Q-30) · Pages build_type setting
 (FLG-024). No new claims about traffic, conversion, or product superiority.
+
+## Session `arena/47f4e1e5-prod3` — T-79 measurement coverage + ledger coherence (2026-11-20)
+
+**Claim history.** Claimed **T-53** (free at the time) and pushed the claim before any other edit;
+on the first rebase T-53..T-56 were found taken by session 7878cdbe on main, renumbered to **T-72**;
+on the second rebase session d52ad947 had taken T-72 on main, renumbered to **T-79** (free: T-79 had
+zero mentions in `origin/main`). Both renumbers kept the earlier sessions' rows byte-identical; no
+other session's row was edited.
+
+**Defects fixed (both demonstrable, both pre-existing on the merged tree):**
+
+1. **`outbound_click` counted 30 of 355 product links.** `analytics.html` tells the reader the
+   event is "activation of a supplied product link", but `assets/app.js` bound only anchors
+   carrying `data-event="outbound_click"` — the 30 tagged buy buttons. The other 325 countable
+   links (every inline `Source: official listing →` anchor and the five supplied
+   `https://link.amazon/…` short links on `sources.html`) activate a supplied product link and
+   were silently uncounted. Fix: bind `a[rel~="sponsored"]` filtered by
+   `/^(https:\/\/www\.amazon\.com\/dp\/[A-Z0-9]{10}|https:\/\/link\.amazon\/)/`. Policy-page
+   citations (`affiliate-program.amazon.com`), the homepage evidence link on `flagged.html`,
+   non-Amazon `rel=sponsored` citations (FTC/Google/GitHub) and the 9-char `/dp/B04G1MEwY`
+   observation link are excluded by the URL filter — they are not product links. ASIN rule
+   unchanged: `data-asin` when it matches `^[A-Z0-9]{10}$`, else parsed from the `/dp/` path;
+   `track()` still forwards only `{event, page, asin?}` and `ENDPOINT` is still `''`.
+2. **Two files each claimed to be the campaign ledger.** `data/campaigns.json` (column
+   definitions; cited by F-10) and `data/campaign-ledger.json` (tracking id, `events_defined`,
+   provenance; read by `tools/check_site.py` D05 and `tools/verify_site.py`) were unrelated.
+   Fix: cross-pointers (`canonical_ledger` → `data/campaign-ledger.json`,
+   `schema_source` → `data/campaigns.json`), shared `tracking_id: shopnow047c-20`, both
+   `rows: []`, and a dated `schema_paired` entry appended to the canonical provenance trail.
+   No row, figure or forecast was added to either file.
+
+**Gates added (`scripts/check_site.py`, both negative-tested):**
+
+- **M01 outbound_click coverage** — fails if the selector narrows back to
+  `a[data-event="outbound_click"]`, if the product-URL filter disappears, or if the countable
+  population scans to zero. Negative test: reintroducing the data-event selector → exit 1 with
+  two errors; restored → exit 0. Reports the population (`M01: all 355 product links`).
+- **M02 campaign ledger coherence** — fails on: any row in either file; tracking id ≠
+  `shopnow047c-20`; broken `canonical_ledger`/`schema_source`; changed `events_defined`;
+  `assets/app.js` `ALLOWED` drifting from `events_defined`; missing provenance. Negative tests:
+  injected a fabricated row → exit 1; broke the pointer → exit 1; restored → exit 0.
+
+**Docs:** `docs/analytics-endpoint.md` re-reconciled with the shipped code (trigger row now
+describes the real selector; the two-file ledger layout documented; coverage rule stated).
+
+**Gates re-run on the rebased tree (`b7b11a8`), all green:**
+
+| Gate | Result |
+| --- | --- |
+| `scripts/check_site.py` | All checks passed (M01: 355 links; M02 coherent) |
+| `tools/verify_site.py` | Release gate passed |
+| `tools/check_site.py` | 44 pages / 8,375 assertions, all rules passed |
+| `tools/crawl_links.py` | 44 pages, 0 broken links, 0 dead anchors, 0 orphans |
+| `scripts/build_{chrome,registers,decisions,products,sitemap,readme,ideas}.py --check` | all OK |
+| `scripts/build_digest.py --check` | OK |
+| `node --check assets/app.js` | OK |
+
+**Merge and deploy record (T-79):**
+
+- PR: https://github.com/wingbangboozle1-lang/Prod3/pull/101
+- Merged: `gh pr merge 101 --merge` → merge commit **`0bcbac5`** on `main`, 2026-11-20 ~08:05Z.
+- Pages: `Deploy GitHub Pages` run **44699872820** → **success** (completed 2026-11-20T08:06:30Z;
+  only annotation is the repository-wide Node 20 deprecation warning, not from this change).
+- Live check: `https://wingbangboozle1-lang.github.io/Prod3/assets/app.js` serves the new
+  selector (`querySelectorAll('a[rel~="sponsored"]')` and the `PRODUCT_LINK` filter) — fetched
+  after the run completed.
+
+**Cross-scope request (logged, not executed here):** Q-30's known-state cell in
+`data/open-questions.json` still says the measured population is "the tagged buttons (30 on
+2026-11-20), so the population being measured is known and stable" — after this merge the
+population is all 355 product links. The file is claimed by three open PRs (#59, #71, #98), so
+the wording is left for those sessions (or the next register pass) to update; the claim itself
+("rule 7b counts the tagged buttons") remains true for rule 7b's buy-button hygiene count.
+
+**Not claimed / not verified here (unchanged owner gates):** FLG-001 intended ASINs · FLG-006
+Special Link test · FLG-010 account status · Search Console (DT-03) · analytics endpoint
+decision (DT-07) · outbound-click storage decision (Q-30) · Pages build_type (FLG-024). No new
+claims about traffic, conversion, prices, ratings, or product superiority.

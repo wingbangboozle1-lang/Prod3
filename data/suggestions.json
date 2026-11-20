@@ -539,7 +539,7 @@
       "id": "SG-28",
       "title": "Ship the RSS feed and advertise it on every page",
       "problem": "feed.xml was linked from the head of only some pages. A reader arriving on a guide or a comparison page had no discoverable subscription path there.",
-      "evidence": "feed.xml is well-formed and lists the guides (tools/verify_site.py). On origin/main at c49de86, 20 of 30 HTML pages had no rel=\"alternate\" feed link in their head. T-26 adds it to those 20, so all 30 pages carry it. The head is hand-written, so the link sits outside the build-chrome markers.",
+      "evidence": "feed.xml is well-formed and lists the guides (tools/verify_site.py). At the time this row was written, 20 of the then-30 HTML pages had no rel=\"alternate\" feed link in their head; the pass added it to those 20, so every page then published carried it. Page counts move as pages are added, so the count is not restated here. The head is hand-written, so the link sits outside the build-chrome markers.",
       "options": [
         "A. Feed link in every head, plus the footer link (T-26).",
         "B. Footer link only.",

@@ -50,7 +50,7 @@ The tools use Python's standard library; no third-party Python dependencies are 
 - `compare.html`, `buying-guide.html` — comparison and decision framework
 - `products/` — five per-product spec pages, generated from `data/products.json` by `scripts/build_products.py`; each prints the listing's own contradictions and shows the blank intended-ASIN field as blank
 - `publishing-plan.html` — twelve dated guide proposals from `data/editorial-plan.json`, with the evidence each needs and whether it exists
-- `articles/` — nine question-shaped guides, included in `feed.xml` and `sitemap.xml`
+- `articles/` — ten question-shaped guides, included in `feed.xml` and `sitemap.xml`
 - `suggestions.html`, `questions.html`, `direction.html` — proposals, missing-information questions, and decisions
 - `sources.html`, `citations.html`, `flagged.html`, `disclosure.html`, `analytics.html`, `executive-summary.html`, `about.html` — source, disclosure, analytics, and trust pages
 - `suggestions.html`, `questions.html`, and `citations.html` are generated from JSON by `scripts/build_registers.py`; `decisions.html` by `scripts/build_decisions.py`; the masthead/disclosure/footer of every page by `scripts/build_chrome.py`. Do not hand-edit any of them.
@@ -78,8 +78,8 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | - |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | dated proposals | 12 |
-| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-017..FLG-035, F-01..F-21 | 32 in the data file |
-| Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | 27 |
+| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-017..FLG-038, F-01..F-21 | 32 in the data file |
+| Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | 21 |
 <!-- build-registers-table:end -->
 
 One table, not two. An earlier revision carried a 2026-11-19 table and a 2026-11-20 table side by

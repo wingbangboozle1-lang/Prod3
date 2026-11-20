@@ -20,6 +20,7 @@ missing, each of which a real defect slipped past recently:
 Run:  python3 tools/check_site.py     (exit 0 = pass, 1 = fail, 2 = no site)
 """
 
+import hashlib
 import json
 import re
 import sys
@@ -610,6 +611,73 @@ for _p in products:
     for _fid in _expected:
         check("D33-flag-listed", _fid in _page, f"{_rel}: flag {_fid} names this product but is not listed on its page")
 
+# ---------------------------------------------------------------------------
+# D35: every Program Policies clause citation must match the verified clause map.
+# Found 2026-11-20: ten places cited the Section 2 letter for the star-ratings,
+# URL-obscuring and shortener rules. All three rules exist, but in Section 6
+# ("Content on your Site") as (t), (v) and (w). Section 2 ("Links on Your Site")
+# has only (a) and (b). A wrong letter is a citation a reader cannot follow, so the
+# letters actually on the live page are recorded in data/policy-clause-map.json and
+# this rule refuses any other. A historical mention passes only when the same line
+# says it was corrected - that is what keeps the fix auditable.
+# ---------------------------------------------------------------------------
+_clause_map = json.loads((ROOT / "data" / "policy-clause-map.json").read_text(encoding="utf-8"))
+_verified = {c["section"] for c in _clause_map["clauses"]}
+_verified |= {c["section"].split(" ")[0] for c in _clause_map["clauses"]}
+CORRECTION_MARKERS = ("until corrected", "not Section 2", "cited as the section 2 letter", "as it read at the time",
+                      "before the correction", "retired", "wrong section", "renumbered")
+_scan_files = sorted(ROOT.glob("*.html")) + sorted((ROOT / "articles").glob("*.html")) \
+    + sorted((ROOT / "tools").glob("*.html")) + sorted((ROOT / "data").glob("*.json")) \
+    + [ROOT / "DIRECTION.md", ROOT / "EXECUTIVE_SUMMARY.md", ROOT / "README.md"]
+for _f in _scan_files:
+    if _f.name == "policy-clause-map.json":
+        continue  # the map quotes retired letters on purpose, as supersedes_citation
+    _t = _f.read_text(encoding="utf-8")
+    for _line in _t.splitlines():
+        if ("\u00a72(t)" in _line or "\u00a72(v)" in _line or "§2(t)" in _line or "§2(v)" in _line):
+            if not any(mk in _line for mk in CORRECTION_MARKERS):
+                check("D35-clause-retired", False, f"{_f.name}: live citation of a retired clause — {_line.strip()[:110]}")
+    for _m in re.finditer(r"(?:Program Policies|Participation Requirements|S02)\s*§?\s*(\d\([a-z]\))", _t):
+        check("D35-clause-known", _m.group(1) in _verified,
+              f"{_f.name}: cites Program Policies §{_m.group(1)}, which is not in data/policy-clause-map.json")
+    for _m in re.finditer(r"§2\(([c-z])\)", _t):
+        _ctx = _t[max(0, _m.start() - 160):_m.end() + 160]
+        if not any(mk in _ctx for mk in CORRECTION_MARKERS):
+            check("D35-clause-2x", False, f"{_f.name}: cites §2({_m.group(1)}); Section 2 stops at (b)")
+
+# ---------------------------------------------------------------------------
+# D36: no paragraph-length block of article body may repeat across articles.
+# Found 2026-11-20: all eight evergreen articles closed with the same five-product
+# block, byte for byte. Nothing in it was false; it is what makes a publication read
+# as a template. Article chrome may repeat - the argument may not.
+# ---------------------------------------------------------------------------
+_art_blocks = {}
+for _n, _h in docs.items():
+    if not _n.startswith("articles/"):
+        continue
+    _body = _h.split("build-chrome:header:end")[-1].split("build-chrome:footer:start")[0]
+    _body = re.sub(r"<(script|style)[^>]*>.*?</\1>", "", _body, flags=re.S)
+    for _blk in re.findall(r'<div class="card[^"]*"[^>]*>(.*?)</div>', _body, re.S):
+        _txt = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", _blk)).strip()
+        if len(_txt) > 300:
+            _art_blocks.setdefault(hashlib.md5(_txt.encode()).hexdigest(), []).append((_n, _txt[:100]))
+for _key, _where in _art_blocks.items():
+    check("D36-article-unique", len(_where) == 1,
+          f"identical {len(_where)}x article block across {[w[0] for w in _where]}: {_where[0][1]}...")
+
+# D37: the README register table must agree with the data files. It carried two
+# contradicting tables and then stale ranges (Q-01..Q-21 while the register held
+# Q-23) that nothing checked, so a reader could not tell which count was current.
+_readme = (ROOT / "README.md").read_text(encoding="utf-8")
+for _pre, _fn, _key, _page in (
+        ("SG", "suggestions.json", "suggestions", "suggestions.html"),
+        ("Q", "open-questions.json", "questions", "questions.html"),
+        ("DT", "decisions.json", "decisions", "decisions.html")):
+    _ids = json.loads((ROOT / "data" / _fn).read_text(encoding="utf-8"))[_key]
+    _last = f"{_pre}-{max(int(i['id'].split('-')[1]) for i in _ids):02d}"
+    check("D37-readme-range", f"{_pre}-01..{_last}" in _readme,
+          f"README.md register table does not show {_pre}-01..{_last} for {_page}")
+
 # D37: the README register table must match the data registers. It carried two
 # contradicting tables and then hard-coded ranges that went stale the moment
 # another session added rows. The table is now generated by scripts/build_readme.py,
@@ -666,6 +734,27 @@ for _name, _html in docs.items():
         for _m in re.finditer(_pre + r"-01\s*(?:\.\.|…+)\s*" + _pre + r"-(\d{2})", _heads):
             check("D36-range-current", int(_m.group(1)) == _last,
                   f"{_name}: range says {_m.group(0)} but the register's last id is {_pre}-{_last:02d}")
+
+# D40: a stated guide count must equal the number of guides on disk.
+# The tree shipped ten articles while README, buying-guide.html, both executive
+# summaries, Q-17, SG-18 and SG-37 all said "eight" or "nine" -- seven reader-facing
+# places, on a site whose whole claim is that the numbers are checked. The word
+# counts are compared, not the digits, because those are what the copy uses.
+_NUMWORD = {6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
+            11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen"}
+_guides = len(list((ROOT / "articles").glob("*.html")))
+check("D40-guide-count-known", _guides in _NUMWORD, f"{_guides} guides on disk; add the number word to D40")
+for _name, _html in docs.items():
+    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _html, re.I):
+        _said = _m.group(1).lower()
+        _want = _NUMWORD.get(_guides, "")
+        check("D40-guide-count", _said == _want,
+              f"{_name}: says {_m.group(0)!r} but {_guides} guides ship ({_want})")
+for _f in ("README.md", "EXECUTIVE_SUMMARY.md"):
+    _txt = (ROOT / _f).read_text(encoding="utf-8")
+    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _txt, re.I):
+        check("D40-guide-count", _m.group(1).lower() == _NUMWORD.get(_guides, ""),
+              f"{_f}: says {_m.group(0)!r} but {_guides} guides ship")
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

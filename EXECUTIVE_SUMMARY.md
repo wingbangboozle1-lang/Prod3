@@ -8,7 +8,7 @@
 
 ## Bottom line
 
-The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and nine question-shaped articles (eight evergreen guides plus the dated Thanksgiving temperature plan), one generated spec page per product, and a dated twelve-row publishing plan. Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
+The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and ten question-shaped articles (evergreen guides plus the dated Thanksgiving temperature plan and a second gift guide), one generated spec page per product, and a dated twelve-row publishing plan. Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
 
 **Recommendation:** keep the current editorial publication, but do not scale links or claim revenue performance until the owner-side Associates workflow confirms the intended products, link compliance, and tracking. The site does not have aggregate analytics, verified Search Console data, or conversion reports. Consequently, there is no evidence here for product superiority, demand, conversion rate, commission potential, or revenue forecasts.
 
@@ -32,7 +32,7 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 | Area | Current state | What is not established | Official source |
 |---|---|---|---|
-| Publication | Buyer-first front page; two category pillars; comparison and buying guide; nine articles (eight evergreen plus the dated Thanksgiving plan); five per-product spec pages; a twelve-row publishing plan; three decision tools; RSS feed and sitemap | Organic impressions, rankings, readership, or topic popularity | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
+| Publication | Buyer-first front page; two category pillars; comparison and buying guide; ten articles (evergreen guides plus the dated Thanksgiving plan and a second gift guide); five per-product spec pages; a twelve-row publishing plan; three decision tools; RSS feed and sitemap | Organic impressions, rankings, readership, or topic popularity | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 | Product facts | Seller-listed specifications linked to dated listing snapshots; conflicts are flagged, not silently resolved | Independent product testing or a current listing re-check after the 2026-11-19 snapshot | [Chefman listing](https://www.amazon.com/dp/B0CDY277D3) · [Emeril listing](https://www.amazon.com/dp/B09B7SB46R) · [Chefman listing](https://www.amazon.com/dp/B08DKYBTPH) · [ThermoMaven listing](https://www.amazon.com/dp/B0DHZTCNR5) · [CHEF iQ listing](https://www.amazon.com/dp/B0DZFD6R9Z) |
 | Pricing and ratings | No price or customer-rating claims are rendered on the site | Current prices, availability, ratings, or commission rates | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | Affiliate links | All Amazon anchors use `rel="sponsored"`; supplied links and observed targets are separately recorded; a dated check found all five supplied links ending at the Amazon homepage (FLG-025) and no shipped anchor carrying a visible `tag=` parameter (FLG-026) | Whether the tag is attached downstream by the short-link service (Q-24); Associates account eligibility; intended products; reporting attribution | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Google sponsored links guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) |
@@ -85,13 +85,13 @@ Task T-52. The first claim, T-46, was taken on `main` by PR #38. The second, T-4
 
 **Verified in this pass.** Six official pages were read on 2026-11-20: the Associates Operating Agreement (S01, updated October 15, 2025; §5 sentence matches the disclosure), Program Policies (S02, updated April 14, 2026, opening sections only), FTC Disclosures 101 (S03, November 2019), Google's outbound-links guidance (S04, last updated 2025-12-10 UTC), Creators API GetItems (S06, ASIN defined as a 10-character identifier), and NIST TN 2156 (S16). The spot-check did not cover S05, S10–S15, S17–S19 or S21–S25.
 
-**Checked on the merged tree.** The buying guide links all nine guides. All nine feed items carry the same title as their page H1. The publishing-coverage check in `tools/verify_site.py` (sitemap, feed, hub, cadence) passes; the eight gates pass.
+**Checked on the merged tree.** The buying guide links all ten guides. All ten feed items carry the same title as their page H1. The publishing-coverage check in `tools/verify_site.py` (sitemap, feed, hub, cadence) passes; the eight gates pass.
 
 **Decision.** DT-10 (fixed monthly cadence) is marked decided, on the owner's instruction. One guide per calendar month; approver: the site owner; next guide due 2026-12-31 (`docs/publishing-cadence.md`). It is a rhythm, not a traffic or revenue forecast. DT-12 (promise or proposal for the twelve-week plan) remains open and is not decided here.
 
 **Five supplied links, 2026-11-20.** This pass also found all five to the Amazon homepage. That agrees with the third dated check recorded under FLG-025. No product record changed. The intended ASIN for every link stays blank (FLG-001). No link is called invalid (FLG-003).
 
-**New flags.** FLG-032: the coordination board repeats task IDs T-12 to T-23. An earlier note in this session said the T-20 to T-22 duplicates were removed; they are marked superseded, not deleted, so that note was wrong. FLG-033: 23 of 29 source entries have no verified value, so the register has no consistent fetch date.
+**New flags.** FLG-032: the coordination board repeats task IDs T-12 to T-23. An earlier note in this session said the T-20 to T-22 duplicates were removed; they are marked superseded, not deleted, so that note was wrong. FLG-037: 23 of 29 source entries have no verified value, so the register has no consistent fetch date.
 
 **Still not established.** Whether the supplied links work in the enrolled Associates account (FLG-006; Q-02, Q-04, Q-22). Account eligibility (FLG-010). The Pages deploy for this merge (see the board record for T-52).
 
@@ -137,9 +137,7 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 
 **Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
-(31 pages, 4,073 assertions) and `tools/crawl_links.py` (31 pages, 0 broken links, 0 dead
-
-(31 pages, see the gate run recorded in COORDINATION.md) and `tools/crawl_links.py` (31 pages, 0 broken links, 0 dead
+(37 pages, 5,198 assertions) and `tools/crawl_links.py` (37 pages, 0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.
@@ -176,7 +174,7 @@ The open question that discovers missing information for the traffic path is Q-2
 | What product was intended for each submitted link? | Five observed destinations are documented separately | Intended ASIN and listing remain blank; product matching cannot be assumed | Confirm each in the Associates account and record date, official listing URL, and source | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
 | Is `shopnow047c-20` enrolled and eligible for the intended activity? | Tracking ID was supplied | Account state, eligibility, and API access are not visible to this repository | Check Associates Central; save only non-sensitive confirmation/status and date | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
 | Do the Special Links work as intended and report under this ID? | Outbound links are marked sponsored in the site | Account-side link compliance and report attribution are untested | Test one product link in the enrolled workflow; confirm destination and report before scaling | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
-| Which topics attract qualified visitors? | Eight guides and the technical SEO files exist | No Search Console impressions, clicks, or query export | Verify Search Console and review dated query reports after sufficient data accrues | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
+| Which topics attract qualified visitors? | Ten guides and the technical SEO files exist | No Search Console impressions, clicks, or query export | Verify Search Console and review dated query reports after sufficient data accrues | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 | Are visits turning into outbound clicks or orders? | Event definitions exist; browser-local counters are not aggregate | No endpoint or first-party click/order reports | Configure privacy-reviewed analytics; obtain authorized Associates reports; add provenance to the ledger | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | What commissions or revenue are realistic? | No qualifying order or commission evidence is recorded | Current rates, attribution, conversion, and order data are unavailable | Obtain current account reports and applicable program terms; do not forecast beforehand | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | What analytics and email data handling is acceptable? | No endpoint or email provider is connected | Hosting, retention, consent/notice, access, and data subject process are undecided | Select a provider and document the full data lifecycle before enabling collection | [FTC Disclosures 101](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) |
@@ -195,6 +193,29 @@ The repository's current release checks pass on the reviewed tree: `python3 scri
 - [Flagged for Review](flagged.html)
 - [Analytics and privacy status](analytics.html)
 - [Sources](sources.html)
+
+## Verification pass, 2026-11-20 (third session on this tree)
+
+Two defects found by reading the site against the official pages, both fixed and both now gated.
+
+**1. The Program Policies clause letters were wrong.** Ten places cited Section 2 for the star-ratings rule, the URL-obscuring rule and the shortener
+rule. Read live on 2026-11-20, the [Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (page states *Updated
+April 14, 2026*) has Section 2 titled "Links on Your Site" with subsections (a) and (b) only. The three rules are **Section 6, "Content on your Site"**:
+**(t)** customer reviews and star ratings, **(v)** obscuring the referring URL, **(w)** unclear link shortening. Every citation was corrected, the quoted
+wording and its read date are in `data/policy-clause-map.json`, and gate `D35` fails the release if a retired letter returns. Published as FLG-037,
+beside the earlier FLG-020. The conduct never changed; only the reference did.
+
+**2. The pages read as template output.** All eight evergreen articles closed with a byte-identical five-product block, and every product card on the
+front page printed its spec pills twice (the second copy HTML-entity-encoded, so it rendered as a near-repeat). Each article now closes with a next step
+specific to its own argument, the duplicate pills are removed, and gate `D36` fails the build if an article-length block repeats. Published as FLG-038.
+
+**Also checked and left alone:** every food-safety temperature and rest time on the [cook-to-temperature card](tools/cook-temperatures.html) matches the
+[USDA FSIS chart](https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart), and the accuracy
+article's position on NIST matches [NIST's own traceability policy](https://www.nist.gov/metrology/metrological-traceability) ("only measurement results
+are traceable"; NIST does not endorse products and forbids references to it in advertising).
+
+**Not claimed here:** whether the five supplied short links work for a signed-in reader. Three dated observations exist for 2026-11-20 and they disagree;
+they are kept side by side in `data/products.json`, and only the owner's click inside the enrolled Associates workflow settles it (Q-02 + Q-22).
 
 # Addendum — 2026-11-20, reader-first repair (session arena/0b7a3dd6-prod3)
 

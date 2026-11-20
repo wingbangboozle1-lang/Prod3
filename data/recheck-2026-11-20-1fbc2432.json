@@ -1,6 +1,6 @@
 {
   "session": "arena/1fbc2432-prod3",
-  "task": "T-66",
+  "task": "T-70",
   "date": "2026-11-20",
   "purpose": "Dated record of every official source this session fetched and read, so each register edit in the T-53 round traces to a verbatim page read. This file is additive: it overwrites no earlier observation record (FLG-025's history, data/products.json and the 2026-11-19 snapshots are untouched).",
   "method": "Every page below was fetched through this session's page-fetch tool and read from the returned content (chunk-indexed reads; final URLs recorded as served). Quotes marked verbatim were compared word-for-word against the register entries they support. No value was inferred; anything not readable on a fetched page is not recorded here.",

@@ -161,7 +161,7 @@ def render_suggestions():
     body = f'''<main id="main"><div class="article" style="max-width:1000px">
 <p class="kicker">Direction · Suggestions register</p>
 <h1>Suggestions, and the decision each one waits on</h1>
-<p class="byline">Kitchen Counter · Register updated 2026-11-19 · Nothing here is implemented by being listed</p>
+<p class="byline">Kitchen Counter · Register updated {data['generated']} · Nothing here is implemented by being listed</p>
 
 <p>This is the review desk. Every proposal carries its problem, the evidence behind it, the options considered, a recommendation, and the person who decides. Machine-readable copy: <code>data/suggestions.json</code>. The questions that block these proposals live on <a href="questions.html">Open questions</a>; what was actually decided is on the <a href="direction.html">decision log</a>.</p>
 
@@ -207,6 +207,21 @@ def render_questions():
     for q in qs:
         groups.setdefault(q["group"], []).append(q)
 
+    src_by_id = {s["id"]: s for s in json.loads((ROOT / "data/sources.json").read_text(encoding="utf-8"))["sources"]}
+
+    def qsource(q):
+        ids = q.get("sources", [])
+        if not ids:
+            return '<span class="unverified">No official source</span>'
+        out = []
+        for sid in ids:
+            s = src_by_id.get(sid)
+            if not s:
+                raise SystemExit(f"questions.html: cites unregistered source {sid}")
+            rel = "sponsored noopener" if "amazon.com" in s["url"] else "noopener"
+            out.append(f'<a href="{html.escape(s["url"])}" rel="{rel}">{html.escape(sid)}</a>')
+        return " · ".join(out)
+
     def row(q):
         return f'''<tr>
   <td><strong>{html.escape(q["id"])}</strong></td>
@@ -215,6 +230,7 @@ def render_questions():
   <td><span class="small">{html.escape(q.get("unknown", "—"))}</span></td>
   <td><span class="small">{html.escape(q.get("how_to_find_out", "—"))}</span></td>
   <td><span class="small">{html.escape(q.get("who", "—"))} · {html.escape(q.get("cost", "—"))}</span><br><span class="badge grey">{html.escape(q.get("status", "—"))}</span></td>
+  <td class="small">{qsource(q)}</td>
 </tr>'''
 
     sections = []
@@ -222,7 +238,7 @@ def render_questions():
         rows = "\n".join(row(q) for q in items)
         sections.append(f'''<h2>{html.escape(g)} ({len(items)})</h2>
 <div class="table-wrap"><table>
-<thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th></tr></thead>
+<thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
 <tbody>
 {rows}
 </tbody></table></div>''')
@@ -230,7 +246,7 @@ def render_questions():
     body = f'''<main id="main"><div class="article" style="max-width:1100px">
 <p class="kicker">Direction · Open questions</p>
 <h1>The questions that have to be answered before the next decision</h1>
-<p class="byline">Kitchen Counter · Register updated 2026-11-19 · {len(qs)} open questions, grouped by what they block</p>
+<p class="byline">Kitchen Counter · Register updated {data['generated']} · {len(qs)} open questions, grouped by what they block</p>
 
 <p>A decision made on missing information is a guess with better manners. Each row states what is known, what is not, why it matters, and the cheapest concrete action that would settle it. Machine-readable copy: <code>data/open-questions.json</code>.</p>
 

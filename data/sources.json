@@ -162,6 +162,70 @@
       "used_for": "Page-experience expectations behind the mobile-first and performance rules",
       "quote": "Google's core systems reward pages that provide a great page experience.",
       "updated": "fetched 2026-11-19"
+    },
+    {
+      "id": "S26",
+      "title": "Google Search Console — Get started (verify ownership, sitemap, Search performance report)",
+      "url": "https://developers.google.com/search/docs/monitor-debug/search-console-start",
+      "used_for": "DT-03 / Q-07: ownership verification before property data; sitemap submission is optional; Search performance report",
+      "quote": "Verify site ownership. Get access to all of the information Search Console makes available.",
+      "updated": "2026-11-20"
+    },
+    {
+      "id": "S27",
+      "title": "Google Search Console Help — Verify your site ownership",
+      "url": "https://support.google.com/webmasters/answer/9008080?hl=en",
+      "used_for": "DT-03: file, HTML-tag, DNS and related ownership-verification methods",
+      "quote": "Verify ownership of your site to access Search Console data.",
+      "updated": "2026-11-20"
+    },
+    {
+      "id": "S28",
+      "title": "Google Search Console Help — Getting started",
+      "url": "https://support.google.com/webmasters/answer/10267942?hl=en",
+      "used_for": "DT-03: add and verify ownership before using property data; a sitemap lists URLs used as crawl starting points",
+      "quote": "A sitemap lists URLs used as crawl starting points.",
+      "updated": "2026-11-20"
+    },
+    {
+      "id": "S29",
+      "title": "Amazon listing B0CDY277D3 — Chefman 6-quart dual-basket air fryer (P-01)",
+      "url": "https://www.amazon.com/dp/B0CDY277D3",
+      "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
+      "quote": "Dual 3-quart baskets; 200–450°F; 120V/1700W; model RJ38-SQPF-3TDB-2W; UPC 810087845025. CONFLICT: details table says Capacity 6 liters; title and bullets say 6 quarts.",
+      "updated": "2026-11-20"
+    },
+    {
+      "id": "S30",
+      "title": "Amazon listing B09B7SB46R — Emeril Lagasse 26QT French Door air fryer toaster oven (P-02)",
+      "url": "https://www.amazon.com/dp/B09B7SB46R",
+      "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
+      "quote": "24 presets; 75–500°F; 1700W/120V; 16.9×15.8×14.8 in; 24.6 L capacity; model 4-00675-02X-VN; UPC 752356835682.",
+      "updated": "2026-11-20"
+    },
+    {
+      "id": "S31",
+      "title": "Amazon listing B08DKYBTPH — Chefman 8-quart TurboFry air fryer (P-03)",
+      "url": "https://www.amazon.com/dp/B08DKYBTPH",
+      "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
+      "quote": "8 qt; four presets; 12.75×13.5×10 in; 12.8 lb; 120V/1700W; model RJ38-SQSS-8T; UPC 816458024518. CONFLICTS: title claims 450°F Hi-Fry while bullets and specification table state 200–400°F; a resource bullet says 1000W while the specification table says 1700W.",
+      "updated": "2026-11-20"
+    },
+    {
+      "id": "S32",
+      "title": "Amazon listing B0DHZTCNR5 — ThermoMaven 1-second instant-read thermometer (P-04)",
+      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+      "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
+      "quote": "Claimed ±0.5°F accuracy; NIST/NSF specification metadata; 1-second response; rotating LED; IP67; motion activation; auto-off; AAA battery; calibration certificate included. Accuracy and response values are seller claims.",
+      "updated": "2026-11-20"
+    },
+    {
+      "id": "S33",
+      "title": "Amazon listing B0DZFD6R9Z — CHEF iQ Sense Gen3 smart wireless meat thermometer, 3-probe variant (P-05)",
+      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+      "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
+      "quote": "3 ultra-thin probes; 5 sensors; 1000°F heat-safe; WiFi and Bluetooth; app monitoring; model CQ60-3C-Z1-E; UPC 810170921148. CONFLICTS: battery life 50 h vs 70 h and warranty 2 vs 3 years appear in the listing (see FLG-003).",
+      "updated": "2026-11-20"
     }
   ],
   "note": "\"verified\"/\"updated\" fields record when a page was fetched or its listed update date; a fetch date is not an endorsement of the page's product claims. Listing sources are seller pages: specs, ratings, and prices transcribed from them are seller statements. Amazon page availability and content can change. Session a25ccde6 added the Google people-first, thin-affiliation, custom-404, snippet and page-experience sources (S21-S25) after finding that the people-first and thin-affiliation sources had been cited in the data registers without ever being defined (audit I-03). Those additions were renumbered after the merge to avoid colliding with this branch's tap-target source."

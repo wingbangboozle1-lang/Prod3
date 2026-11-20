@@ -115,5 +115,19 @@
     "what_was_wrong": "The 2026-11-19 records copied each observed redirect ASIN into intended.asin, cited S16 (NIST metrological traceability FAQ) as the intent source, and set observed.agrees to true. That is an inference from a redirect, and S16 says nothing about any ASIN. No owner confirmation exists in the repository.",
     "what_changed": "All five intended.asin, intended.listing_url, intended.confirmation_date and intended.source values are now null. observed.* values are unchanged. observed.agrees is replaced by comparison_to_intent, which states that no comparison is made until intent is confirmed.",
     "still_open": "FLG-001: owner confirms intended ASIN per link in the enrolled Associates workflow. Record that confirmation with date, official listing URL, and source (an owner-confirmation record, not a third-party reference)."
+  },
+  "link_compliance_2026_11_20": {
+    "checked_on": "2026-11-20",
+    "session": "arena/6bf60cac-prod3 (T-46)",
+    "what_was_read": "Associates Program Operating Agreement §5, and Associates Program Policies (updated April 14, 2026) §2(a), §2(b), §3.",
+    "quoted_requirement_2b": "“All Special Links must be accessed directly from your Site. For example, you must include your Associates ID or “tag” (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.”",
+    "quoted_requirement_2a": "“Special Links must use the Associates ID we have assigned to you.”",
+    "observed_on_this_site": "None of the five supplied link.amazon URLs contains a visible tag parameter in the URL a reader receives. 192 amazon.com anchors ship as evidence links with no tag parameter, 23 link.amazon anchors ship as buy links, and 0 shipped anchors carry tag=shopnow047c-20.",
+    "what_this_does_not_establish": "It does not establish that the short links are non-compliant. The tag may be attached by the short-link service before the redirect, and only the owner can read that in the Associates report (Q-02). It also does not establish that the account is enrolled or eligible (FLG-010).",
+    "why_it_is_recorded_here": "The rule is stated in the Program Policies as a parameter-in-URL requirement. Whether each of these particular URLs satisfies it is a question about the redirect chain and the account, which this site cannot see. Both halves are published so a reader can check the rule and the observation separately.",
+    "sources": [
+      "S01",
+      "S02"
+    ]
   }
 }

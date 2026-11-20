@@ -70,6 +70,18 @@
         "result": "Redirected to the Amazon.com homepage (https://www.amazon.com/); no /dp/ ASIN in the final URL. Reproduced on a second attempt the same day. The 2026-11-19 observation (B0CDY277D3) was not reproduced.",
         "intended_asin_changed": false,
         "flag": "FLG-017"
+      },
+      "live_recheck_2026_11_20_link_check": {
+        "date": "2026-11-20",
+        "session": "arena/6bf60cac-prod3 (T-46)",
+        "method": "fetch_page of each supplied link.amazon URL; the final URL reported by the fetch was read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "result": "Final URL was https://www.amazon.com/ (the Amazon.com homepage) for every one of the five supplied links. No /dp/ ASIN in the final URL.",
+        "attempts": 1,
+        "flag": "FLG-025",
+        "submitted_link": "https://link.amazon/B04G1MEwY",
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_record": null,
+        "note": "Third dated observation for this link. Neither earlier observation is overwritten."
       }
     },
     {
@@ -139,6 +151,18 @@
         "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
         "intended_asin_changed": false,
         "flag": null
+      },
+      "live_recheck_2026_11_20_link_check": {
+        "date": "2026-11-20",
+        "session": "arena/6bf60cac-prod3 (T-46)",
+        "method": "fetch_page of each supplied link.amazon URL; the final URL reported by the fetch was read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "result": "Final URL was https://www.amazon.com/ (the Amazon.com homepage) for every one of the five supplied links. No /dp/ ASIN in the final URL.",
+        "attempts": 1,
+        "flag": "FLG-025",
+        "submitted_link": "https://link.amazon/B02NbDxp3",
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_record": null,
+        "note": "Third dated observation for this link. Neither earlier observation is overwritten."
       }
     },
     {
@@ -206,6 +230,18 @@
         "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
         "intended_asin_changed": false,
         "flag": null
+      },
+      "live_recheck_2026_11_20_link_check": {
+        "date": "2026-11-20",
+        "session": "arena/6bf60cac-prod3 (T-46)",
+        "method": "fetch_page of each supplied link.amazon URL; the final URL reported by the fetch was read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "result": "Final URL was https://www.amazon.com/ (the Amazon.com homepage) for every one of the five supplied links. No /dp/ ASIN in the final URL.",
+        "attempts": 1,
+        "flag": "FLG-025",
+        "submitted_link": "https://link.amazon/B00hJ57DV",
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_record": null,
+        "note": "Third dated observation for this link. Neither earlier observation is overwritten."
       }
     },
     {
@@ -271,6 +307,18 @@
         "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
         "intended_asin_changed": false,
         "flag": null
+      },
+      "live_recheck_2026_11_20_link_check": {
+        "date": "2026-11-20",
+        "session": "arena/6bf60cac-prod3 (T-46)",
+        "method": "fetch_page of each supplied link.amazon URL; the final URL reported by the fetch was read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "result": "Final URL was https://www.amazon.com/ (the Amazon.com homepage) for every one of the five supplied links. No /dp/ ASIN in the final URL.",
+        "attempts": 1,
+        "flag": "FLG-025",
+        "submitted_link": "https://link.amazon/B0c8moW59",
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_record": null,
+        "note": "Third dated observation for this link. Neither earlier observation is overwritten."
       }
     },
     {
@@ -337,11 +385,24 @@
         "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
         "intended_asin_changed": false,
         "flag": null
+      },
+      "live_recheck_2026_11_20_link_check": {
+        "date": "2026-11-20",
+        "session": "arena/6bf60cac-prod3 (T-46)",
+        "method": "fetch_page of each supplied link.amazon URL; the final URL reported by the fetch was read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "result": "Final URL was https://www.amazon.com/ (the Amazon.com homepage) for every one of the five supplied links. No /dp/ ASIN in the final URL.",
+        "attempts": 1,
+        "flag": "FLG-025",
+        "submitted_link": "https://link.amazon/B0f3GKalj",
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_record": null,
+        "note": "Third dated observation for this link. Neither earlier observation is overwritten."
       }
     }
   ],
   "price_snapshot_note": "price_observed fields are archival snapshots dated 2026-11-19. Observation time and delivery location were not recorded; prices are not current offers. See FLG-012.",
   "claim_basis": "Specs, ratings, and prices are seller/listing statements from the snapshot. Claim-marked fields (accuracy, certification, response time, heat-safe ratings, function names) are marketing claims the site has not tested. See FLG-009.",
   "citation_policy": "Every value rendered on the site must trace to one of: (a) a dated fetch of the official listing, (b) a dated fetch of an official policy page, or (c) arithmetic over (a) that states its inputs. Values with no such trace are left blank and published on flagged.html. See data/citations.json.",
-  "verified_on_live_recheck": "2026-11-20"
+  "verified_on_live_recheck": "2026-11-20",
+  "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-023 and FLG-025."
 }

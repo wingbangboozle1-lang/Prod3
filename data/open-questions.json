@@ -122,7 +122,11 @@
       "cost": "Search Console is free; a self-hosted endpoint needs a small host",
       "status": "owner-only",
       "changes": "Whether traffic can be measured at all, and therefore whether the content plan can ever be data-driven.",
-      "sources": [],
+      "sources": [
+        "S26",
+        "S27",
+        "S28"
+      ],
       "evidence_status": "unverified"
     },
     {

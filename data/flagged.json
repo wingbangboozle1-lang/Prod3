@@ -354,6 +354,34 @@
         "S13"
       ],
       "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-022",
+      "severity": "medium",
+      "area": "Official listing conflict — capacity",
+      "product": "P-01 (Chefman 6 Qt Dual Basket)",
+      "detail": "The official listing's title and bullets state 6 quarts (2 × 3 qt). Its Item details table states Capacity: 6 liters. These are not the same figure (6 L ≈ 6.3 qt). The site shows the title/bullet figure and the table figure side by side and does not choose between them.",
+      "why_it_matters": "A buyer comparing capacity against a baking pan or a portion need may rely on the wrong number.",
+      "action": "Owner or seller: confirm the capacity of the listed unit. Until then, use the basket size (2 × 3 qt) and not a total-volume claim.",
+      "status": "open — conflict published, not resolved",
+      "sources": [
+        "S29"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-023",
+      "severity": "medium",
+      "area": "Official listing conflict — temperature and wattage",
+      "product": "P-03 (Chefman 8 Qt TurboFry)",
+      "detail": "Title: 450°F Hi-Fry claim. Bullets and specification table: 200–400°F. Resource bullet: 1000W. Specification table: 120V / 1700W. The site shows the specification-table range (200–400°F) and 1700W as the primary values, and publishes the title claim and the 1000W bullet as conflicts.",
+      "why_it_matters": "Maximum temperature and power draw both affect whether the unit suits high-heat recipes and a given circuit.",
+      "action": "Seller or manufacturer: confirm the maximum temperature and wattage of model RJ38-SQSS-8T. Until then, do not state either conflicting value as fact.",
+      "status": "open — conflicts published, not resolved",
+      "sources": [
+        "S31"
+      ],
+      "sources_checked": "2026-11-20"
     }
   ]
 }

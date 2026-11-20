@@ -33,9 +33,9 @@
 | T-12 | Post-merge integration audit: correct demonstrable editorial errors, disclosure/capture copy, event schema, analytics readiness, and unresolved compliance gates | done | `arena/5bd92dff-prod3` | all published HTML for disclosure/nav, `assets/app.js`, `assets/style.css`, `analytics.html`, `analytics/*`, `data/campaign-ledger.json`, `data/sources.json`, `sources.html`, `flagged.html`, `direction.html`, `DIRECTION.md`, `sitemap.xml`, `scripts/check_site.py`, `tools/verify_site.py`, `README.md`, `EXECUTIVE_SUMMARY.md` |
 | T-16 | Re-run all release gates, internal-link crawl, feed/sitemap XML check, Pages status check; log remaining external-account blockers | done | arena/7d756ee2-prod3 | `COORDINATION.md` only |
 | T-17 | Mobile-first pass (S-20): size every tap target to ≥48×48px with ≥8px spacing; verify disclosure stays above the first heading at 320px (Q-15); cite Google tap-target guidance | done (PR #12, merged `ce7aee3`) | `arena/65474d4f-prod3` (session 65474d4f) | `assets/style.css`, `data/sources.json`, `DIRECTION.md`, `direction.html`, `docs/verification.md`, `COORDINATION.md` (board rows only) |
-| T-20 | Shop-polish redesign: buyer-first front page, product cards, seasonal/trendy guides, mobile-first polish (compliance gates preserved) | in progress | `arena/33e3e80f-prod3` | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/app.js`, `feed.xml` |
-| T-21 | Expand Direction section: suggestions, open questions, missing-info discovery, path chooser | in progress | `arena/33e3e80f-prod3` | `direction.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json` |
-| T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | in progress | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
+| T-20 | Shop-polish redesign: buyer-first front page, product cards, seasonal/trendy guides, mobile-first polish (compliance gates preserved) | superseded (duplicate ID; authoritative `done` row below; handoff noted by arena/cafc55da-prod3, 2026-11-20) | `arena/33e3e80f-prod3` | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/app.js`, `feed.xml` |
+| T-21 | Expand Direction section: suggestions, open questions, missing-info discovery, path chooser | superseded (duplicate ID; authoritative `done` row below; handoff noted by arena/cafc55da-prod3, 2026-11-20) | `arena/33e3e80f-prod3` | `direction.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json` |
+| T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | superseded (duplicate ID; authoritative `done` row below; handoff noted by arena/cafc55da-prod3, 2026-11-20) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
 | T-20 | Shop-polish redesign: buyer-first front page, product cards, seasonal/trendy guides, mobile-first polish (compliance gates preserved) | done | `arena/33e3e80f-prod3` | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/app.js`, `feed.xml` |
 | T-21 | Expand Direction section: suggestions, open questions, missing-info discovery, path chooser | done | `arena/33e3e80f-prod3` | `direction.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json` |
 | T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | done (PR #14 + #15, live-verified at `bb7d3d2`) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
@@ -45,7 +45,9 @@
 | T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-26 | Final integration integrity pass: reconcile product-intent evidence, link/policy copy, automation claims, and flags; strengthen gates; re-run site and Pages release checks | done (2026-11-20, PR and Pages result below) | `arena/e83cdf55-prod3` | `data/verification.json`, `data/policy-checks.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `flagged.html`, `suggestions.html`, `questions.html`, `docs/verification.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `COORDINATION.md` |
 | T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (stale DIRECTION cross-references and SG-22..30 index vs register, nine-article counts), flag the dual Pages deploy paths as FLG-024, re-run all gates, PR → main, merge, confirm live deploy | done (PR #36, merge commit `a861ed7`; deploy + live check recorded below) | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, Pages repo settings (build_type) |
-| T-46 | Design + content suggestions round: add shopfront-design, trend-led-article, and review-before-build suggestions to the register; add the missing-info discovery question; refresh the executive summary; run every release gate; PR `arena/8692a390-prod3` → main; merge; confirm Pages deploys; record PR link and merge result here | in progress | `arena/8692a390-prod3` | `data/suggestions.json`, `data/open-questions.json`, `scripts/build_registers.py`, `suggestions.html`, `questions.html`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
+| T-46 | Final integration round (session 59a087a1): live line-by-line re-verification of the five published listings against the official Amazon pages (specs only — no prices, ratings or offers recorded), register the official sources that are missing so no register row is left "No official source" where a genuine official source exists, publication-polish fixes, re-run every gate, PR → main, merge, confirm Pages deploy | in progress | `arena/59a087a1-prod3` | `data/products.json`, `data/sources.json`, `data/citations.json`, `data/decisions.json`, `data/open-questions.json`, `data/flagged.json`, `data/verification.json`, `articles/*`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `tools/check_site.py`, `tools/verify_site.py`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
+| T-47 | Integration pass after PR #38 (T-46, session 59a087a1) landed first: re-run all gates on the merged tree; re-check the Pages deploy and live pages; record the duplicate `FLG-021` callout on `flagged.html` as an owner decision (not renumbered); no site content change; PR → main, merge, confirm live deploy | done (PR and merge record below) | `arena/cafc55da-prod3` | `COORDINATION.md` only |
+| T-48 | Design + content suggestions round (renumbered from T-46 because T-46 was already in use on main by session arena/59a087a1-prod3; both rows kept, no work discarded): add shopfront-design, trend-led-article, and review-before-build suggestions to the register; add the missing-info discovery question Q-24; refresh the executive summary; run every release gate; PR `arena/8692a390-prod3` → main (#42); merge; confirm Pages deploys; record PR link and merge result here | in progress | `arena/8692a390-prod3` | `data/suggestions.json`, `data/open-questions.json`, `scripts/build_registers.py`, `suggestions.html`, `questions.html`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -382,7 +384,7 @@ These need access to accounts or decisions this session does not have. They are 
 | T-16 | Verify all 5 submitted links against official Amazon listings (amazon.com/dp/<ASIN>) | done | 65412034 | `data/products.json`, `data/sources.json` (read-only verification) |
 | T-17 | Remove currency amounts and \"verified\" framing from feed.xml (no prices rendered; Program Policies §2(b)) | done | 65412034 | `feed.xml` |
 | T-18 | Run release gates from clean checkout; confirm build passes | done | 65412034 | `scripts/*`, `tools/*` |
-| T-19 | Commit, push, PR to main, merge, confirm GitHub Pages deploy | in progress | 65412034 | all |
+| T-19 | Commit, push, PR to main, merge, confirm GitHub Pages deploy | stale claim (session 65412034; no later commits on the board); handoff noted by arena/cafc55da-prod3, 2026-11-20 | 65412034 | all |
 
 ### T-16 — official-source verification (2026-11-19)
 
@@ -1295,3 +1297,53 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 - **Live checks after deploy (fetched, not assumed):** the front page and `direction.html` serve the updated content — path chooser shows the canonical “Make it earn / Make it a publication / Narrow and harden” wording with DT references, the snapshot note reads “SG-20..SG-31 … the ID slot between SG-25 and SG-27 is unoccupied, FLG-021”, and the disclosure strip remains above the first heading.
 
 *(final micro-PR: T-26 → T-39 label fix on direction.html + this record)*
+
+## T-46 completion record (arena/59a087a1-prod3)
+
+- Status: done — ready for PR to main.
+- Official listing checks, 2026-11-20 (fetch_page of amazon.com/dp pages): S29 B0CDY277D3, S30 B09B7SB46R, S31 B08DKYBTPH, S32 B0DHZTCNR5, S33 B0DZFD6R9Z. Recorded in data/products.json under `official_listing_check_2026_11_20`; intended-ASIN fields are unchanged (still owner-unconfirmed, FLG-001).
+- New conflicts published: FLG-022 (P-01 title 6 qt vs details table 6 liters); FLG-023 (P-03 450°F title vs 200–400°F spec; 1000W bullet vs 1700W spec). Cards on air-fryers.html now show both readings.
+- Google Search Console sources registered: S26 (developers.google.com Search Console get-started), S27 (support.google.com ownership verification 9008080), S28 (support.google.com getting started 10267942). DT-03 now cites S26–S28 (evidence verified); Search Console questions cite them too.
+- questions.html: new "Official source" column generated from data/open-questions.json; rows without a registered source show "No official source".
+- Seasonal block corrected: "Thanksgiving is Thursday, 26 November" (2026-11-26 is the fourth Thursday of November).
+- Gates on the rebuilt tree: build_chrome/build_registers freshness OK; check_site.py, verify_site.py, crawl_links.py (31 pages, 30 reachable, no broken links/anchors/orphans), tools/check_site.py all pass.
+- Irregularity logged: flagged.html contains duplicate FLG-020 and FLG-021 identifiers (different subjects, pre-existing); not renumbered in this round — owner to decide.
+- PR #37 Pages runs 44689292593 / 44689291961: outcomes to be confirmed by exact run ID after this push.
+
+## Session arena/cafc55da-prod3 — T-47 integration check (2026-11-20)
+
+**Claim collision, handled.** This session first claimed `T-46`, then found `T-46` already claimed and merged by `arena/59a087a1-prod3` (PR #38) while this branch was being rebased. Nothing was overwritten: this session's claim was moved to `T-47`, its duplicate T-46 claim commit was dropped in the merge with `origin/main`, and the other session's record stands as written. Board hygiene: the stale `in progress` duplicates for T-20/T-21/T-22 (superseded by the authoritative `done` rows) and the stale T-19 claim from session 65412034 were marked superseded, not deleted.
+
+**No site content changed in this pass.** The only file in scope is this board.
+
+### Verification on the merged tree (`origin/main` at `372afb0`, 2026-11-20)
+
+| Check | Result |
+|---|---|
+| `build_chrome --check`, `build_registers --check`, `build_decisions --check`, `build_sitemap --check` | all current |
+| `scripts/check_site.py` | all checks passed |
+| `tools/verify_site.py` | release gate passed |
+| `tools/check_site.py` | all additional rules passed |
+| `tools/crawl_links.py` | 31 pages crawled; no broken links, no dead anchors, no orphans |
+| Amazon anchors on all HTML pages | 226 of 226 carry `rel="sponsored"`; 0 violations (31 pages) |
+| Exact Associates disclosure sentence | present on all 31 pages |
+| `data/products.json` after PR #38 | intended-ASIN fields unchanged and still owner-unconfirmed (FLG-001); the new 2026-11-20 official listing checks are recorded separately under `official_listing_check_2026_11_20` |
+| Pages | `Deploy GitHub Pages` run `44690171472` (PR #38 merge) **success**; companion `pages build and deployment` was in progress at the time of this check |
+
+### Irregularities (for owner review; not blocking)
+
+1. **Duplicate `FLG-021` on `flagged.html`.** Two different findings are both headed `FLG-021`: (a) *"Source register gaps and one listing quotation (2026-11-20)"* — this is the item in `data/flagged.json` and the matching row on `decisions.html`; (b) *"A suggestion id cited by the digest does not exist, and the register skips a number"* — this is the SG-21/SG-25→SG-27 gap note that `README.md` and `DIRECTION.md` cite as FLG-021. The two are not merged or renumbered here because all of those files are shared outputs and the owner should choose the new ID (the PR #38 record already left this to the owner).
+2. **FLG-017 still open.** `link.amazon/B04G1MEwY` ended at the Amazon homepage on the 2026-11-20 fetch in this session as well.
+3. **Pages build type** (FLG-024) still `legacy`; the owner-side one-click fix is still required.
+
+### Still not verifiable from this sandbox (owner action)
+
+FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled Associates workflow · FLG-010 Associates account status · FLG-015 empty campaign ledger (no first-party reports) · DT-03 Search Console · DT-07 analytics endpoint · DT-10 / Q-14 publishing cadence (owner decision) · F-21 / Q-21 share-debugger check.
+
+### T-47 merge and deploy record (arena/cafc55da-prod3)
+
+- **PR #39:** https://github.com/wingbangboozle1-lang/Prod3/pull/39 (`arena/cafc55da-prod3` → `main`)
+- **Merge result:** merged with `gh pr merge 39 --merge`, merge commit `cbae5c9c431a39f6451ebae5d807bdcc2e4341b8`, 2026-11-20T06:47:47Z. Not waited on for approval, per the project instructions.
+- **Pages:** `Deploy GitHub Pages` run `44690336381` — success; companion `pages build and deployment` run `44690335588` — success. Pages API `status: built`, source `main:/`.
+- **Micro-PR:** this record itself is merged in the follow-up PR that carries it.
+

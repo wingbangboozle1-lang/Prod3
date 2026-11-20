@@ -160,7 +160,21 @@ def render(p, flags, products_doc):
     kicker = " · ".join(kicker_bits)
 
     # flags that name this product
-    mine = [f for f in flags if pid in (f.get("product") or "") or asin in (f.get("product") or "")]
+    # data/flagged.json holds two registers: F-* rows use product "P1"/"P4, P5", FLG-*
+    # rows use "P-01"/"P-04", and site-wide link rows use "All five (P-01..P-05)". The
+    # product page reports both registers, or it would under-report the flags that name
+    # its product. Matching is on the number, since the padding differs between them.
+    num = pid.split("-")[-1].lstrip("0")
+
+    def names_me(f):
+        prod = f.get("product") or ""
+        if asin in prod:
+            return True
+        if "All five" in prod:
+            return True
+        return any(tok.lstrip("0") == num for tok in re.findall(r"P-?(\d+)", prod))
+
+    mine = [f for f in flags if names_me(f)]
     flag_list = "".join(
         f'<li><strong>{esc(f["id"])}</strong> — {esc(re.sub(r"<[^>]+>", "", f["detail"])[:300])}…</li>'
         for f in mine)

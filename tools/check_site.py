@@ -497,7 +497,27 @@ for _p in products:
     check("D32-product-page-intent-blank", "No official source" in docs.get(_rel, ""),
           f"{_rel} does not show the blank intended-ASIN field")
 
-# D36: the README register table must agree with the data files. It carried two
+
+# D33: a product page must list every flag that names its product, in either register.
+# The first version of build_products.py matched only the "P-04" form and silently dropped
+# every F row; this gate exists so that cannot happen again without failing the release.
+_flags_all = json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))["items"]
+_SLUGS = {"P-01": "chefman-6-qt-dual-basket", "P-02": "emeril-26qt-french-door",
+          "P-03": "chefman-8-qt-turbofry", "P-04": "thermomaven-1-sec",
+          "P-05": "chef-iq-sense-gen3"}
+for _p in products:
+    _rel = f"products/{_SLUGS[_p['id']]}.html"
+    _page = docs.get(_rel, "")
+    _num = _p["id"].split("-")[-1].lstrip("0")
+    _expected = [f["id"] for f in _flags_all
+                 if "All five" in (f.get("product") or "")
+                 or _p["observed_asin"] in (f.get("product") or "")
+                 or any(t.lstrip("0") == _num for t in re.findall(r"P-?(\d+)", f.get("product") or ""))]
+    check("D33-flags-present", len(_expected) > 0, f"{_rel}: no flag names this product at all")
+    for _fid in _expected:
+        check("D33-flag-listed", _fid in _page, f"{_rel}: flag {_fid} names this product but is not listed on its page")
+
+# D37: the README register table must agree with the data files. It carried two
 # contradicting tables and then stale ranges (Q-01..Q-21 while the register held
 # Q-23) that nothing checked, so a reader could not tell which count was current.
 _readme = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -507,10 +527,10 @@ for _pre, _fn, _key, _page in (
         ("DT", "decisions.json", "decisions", "decisions.html")):
     _ids = json.loads((ROOT / "data" / _fn).read_text(encoding="utf-8"))[_key]
     _last = f"{_pre}-{max(int(i['id'].split('-')[1]) for i in _ids):02d}"
-    check("D36-readme-range", f"{_pre}-01..{_last}" in _readme,
+    check("D37-readme-range", f"{_pre}-01..{_last}" in _readme,
           f"README.md register table does not show {_pre}-01..{_last} for {_page}")
 
-# D33: a register row may not cite a source inline and omit it from its own
+# D34: a register row may not cite a source inline and omit it from its own
 # `sources` list. Found by reading on 2026-11-20: Q-01 cited S03/S21 while
 # declaring only S22, SG-09 attributed Google's meta-description guidance to the
 # Emeril listing (S13), and 15 more rows cited evidence they did not declare.
@@ -524,23 +544,23 @@ for _fn, _key, _fields in (
         _cite = set(re.findall(r"\bS\d{2}\b", _text))
         _declared = set(_row.get("sources") or [])
         _undeclared = sorted(_cite - _declared)
-        check("D33-citation-declared", not _undeclared,
+        check("D34-citation-declared", not _undeclared,
               f"{_fn}: {_row['id']} cites {_undeclared} inline but does not list them in sources")
 
-# D34: one flag id, one subject. flagged.html published two different FLG-020
+# D35: one flag id, one subject. flagged.html published two different FLG-020
 # callouts and two different FLG-021 callouts after a merge renumbered one pair,
 # so the same id named both a policy-citation gap and a digest defect. Also
 # checks the reverse: every id in data/flagged.json must be published.
 _fh = docs.get("flagged.html", "")
 _fids = re.findall(r"<strong>(FLG-\d{3}) —", _fh)
 _fdupes = sorted({i for i in _fids if _fids.count(i) > 1})
-check("D34-flag-unique", not _fdupes, f"flagged.html: duplicate flag id(s) {_fdupes}")
+check("D35-flag-unique", not _fdupes, f"flagged.html: duplicate flag id(s) {_fdupes}")
 _fdata = json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))
 _fmissing = [i["id"] for i in _fdata["items"] if i["id"] not in _fh]
-check("D34-flag-published", not not _fmissing,
+check("D35-flag-published", not not _fmissing,
       f"flagged.html: data/flagged.json id(s) not published {_fmissing}")
 
-# D35: a heading that advertises an ID range must end at the register's last id.
+# D36: a heading that advertises an ID range must end at the register's last id.
 # ideas.html and direction.html both carried headings with stale ranges
 # (SG-01..SG-26, SG-01..SG-25, FLG-001..FLG-020) that excluded rows published in
 # the very registers they linked to. Only headings are checked: historical prose
@@ -554,7 +574,7 @@ for _name, _html in docs.items():
         _last = max(int(i.split("-")[1]) for i in _ids)
         _heads = " ".join(re.findall(r"<h[123][^>]*>(.*?)</h[123]>", _html, re.S))
         for _m in re.finditer(_pre + r"-01\s*(?:\.\.|…+)\s*" + _pre + r"-(\d{2})", _heads):
-            check("D35-range-current", int(_m.group(1)) == _last,
+            check("D36-range-current", int(_m.group(1)) == _last,
                   f"{_name}: range says {_m.group(0)} but the register's last id is {_pre}-{_last:02d}")
 
 # ---- report

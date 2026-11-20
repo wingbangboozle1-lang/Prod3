@@ -1314,6 +1314,7 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 - Irregularity logged: flagged.html contains duplicate FLG-020 and FLG-021 identifiers (different subjects, pre-existing); not renumbered in this round — owner to decide.
 - PR #37 Pages runs 44689292593 / 44689291961: outcomes to be confirmed by exact run ID after this push.
 
+
 ## Session arena/cafc55da-prod3 — T-47 integration check (2026-11-20)
 
 **Claim collision, handled.** This session first claimed `T-46`, then found `T-46` already claimed and merged by `arena/59a087a1-prod3` (PR #38) while this branch was being rebased. Nothing was overwritten: this session's claim was moved to `T-47`, its duplicate T-46 claim commit was dropped in the merge with `origin/main`, and the other session's record stands as written. Board hygiene: the stale `in progress` duplicates for T-20/T-21/T-22 (superseded by the authoritative `done` rows) and the stale T-19 claim from session 65412034 were marked superseded, not deleted.
@@ -1343,6 +1344,7 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 ### Still not verifiable from this sandbox (owner action)
 
 FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled Associates workflow · FLG-010 Associates account status · FLG-015 empty campaign ledger (no first-party reports) · DT-03 Search Console · DT-07 analytics endpoint · DT-10 / Q-14 publishing cadence (owner decision) · F-21 / Q-21 share-debugger check.
+
 
 ### T-47 merge and deploy record (arena/cafc55da-prod3)
 
@@ -1500,3 +1502,27 @@ tools/crawl_links.py                   37 pages crawled · 36 reachable · no br
 Associates account status (FLG-010) · intended ASINs (FLG-001) · Special Link validity or per-link tag
 presence (FLG-006, Q-24) · cause of the four disagreeing link observations (Q-25) · Search Console ·
 analytics endpoint · any traffic, click, conversion or revenue figure.
+
+
+## T-47 — final verification round for this session (arena/8706c7f7-prod3, branch arena/8706c7f7-prod3)
+
+- Status: done.
+- Claimed scope: full-tree line-by-line review, release-gate re-run after the PR #38 fast-forward, README cross-ref fix, Pages deploy confirmation, PR → main + merge.
+- Files touched: `COORDINATION.md` (this record), `README.md` (Q-01..Q-21 → Q-01..Q-23 cross-refs; register had Q-01..Q-23).
+- Work performed:
+  - `git pull --rebase origin main`: integrated PR #38 (T-46, merge commit 372afb01); branch is now even with origin/main.
+  - Reviewed: `data/products.json` (intent/observation kept separate; all five intended_ASIN/intended_listing_url/confirmation_date/intent_source blank pending owner confirmation — FLG-001; live recheck 2026-11-20 recorded, B04G1MEwY now lands on the Amazon homepage — FLG-017), `data/sources.json` (29 sources, all cross-references resolve), `data/suggestions.json` (SG-01..SG-31 with SG-26 absent, SG-21 retired in place — FLG-021 gap note stands), `data/open-questions.json` (Q-01..Q-23), `data/decisions.json` (DT-01..DT-10), `data/flagged.json`, `data/campaign-ledger.json` (empty by design, provenance dated).
+  - All release gates pass on the rebuilt tree: four `--check` freshness gates (chrome, registers, decisions, sitemap), `scripts/check_site.py` (all checks passed), `tools/verify_site.py` (release gate passed), `tools/check_site.py` (4,059 assertions), `tools/crawl_links.py` (31 pages, 30 reachable, no broken links, no dead anchors, no orphans).
+  - Verified user-facing surfaces present and consistent: publication front page (`index.html`, products lead, disclosure strip above the first heading), category hubs (`air-fryers.html`, `meat-thermometers.html`), `compare.html`, `buying-guide.html`, nine question-shaped guides in `articles/` (in `feed.xml` + `sitemap.xml`), suggestions ledger with path chooser (`suggestions.html`, `DIRECTION.md`), open questions Q-01..Q-23 (`questions.html`), executive summary (`EXECUTIVE_SUMMARY.md`, `executive-summary.html`), flagged-for-review page (`flagged.html`), sources page (`sources.html`).
+  - Compliance marks verified on `index.html`: every outbound product link carries `rel="sponsored noopener"` with `data-event="outbound_click"`; the five defined outbound-click events are counted in `assets/app.js` (local-only; endpoint not configured — owner decision, Q-13).
+  - Fixed `README.md`: three stale "Q-01..Q-21" cross-refs → "Q-01..Q-23". Re-ran `scripts/build_registers.py --check` and `tools/verify_site.py` after the edit — still pass.
+- Pages: GitHub Pages API `status: built`, `https://wingbangboozle1-lang.github.io/Prod3/`, source branch `main`, HTTPS enforced. `Deploy GitHub Pages` run 44690171472 on 372afb01 — **success** (2026-11-20T06:46:25Z). Legacy companion run 44690171255 waiting — the documented FLG-024 dual-path race; non-blocking, owner one-click fix (Settings → Pages → Source: GitHub Actions).
+- Irregularities carried forward (do not block; published on `flagged.html`): FLG-001 intended ASINs unconfirmed · FLG-006 Special Link test in the enrolled Associates workflow (owner-only signed-in clicks) · FLG-010 Associates account status unverified · FLG-017 B04G1MEwY changed destination between 2026-11-19 and 2026-11-20 · FLG-024 legacy Pages build_type · flagged.html duplicate FLG-020/FLG-021 ids (pre-existing, owner to decide). No Amazon listing was re-fetched by this session (outbound sandbox access does not include amazon.com); verification rests on the dated official-source citations in `data/sources.json` and the T-46 official-listing-check record.
+- No conversion score, revenue forecast, or product-superiority claim is presented anywhere on the site.
+- Next step: PR `arena/8706c7f7-prod3` → `main`, merge, confirm Pages deploy, record PR link and merge result below.
+
+## T-47 merge and deploy record (arena/8706c7f7-prod3)
+
+- Pending: PR number, merge commit, Pages run ID after merge.
+
+

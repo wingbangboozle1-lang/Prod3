@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-19",
-  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-31 added 2026-11-20 (session ce911db5) to give the conflict chip its own registered row; SG-26 is absent from this register and was cited by DIRECTION.md — see FLG-021.",
+  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-31 added 2026-11-20 (session ce911db5) to give the conflict chip its own registered row; SG-26 is absent from this register and was cited by DIRECTION.md — see FLG-029.",
   "scale": {
     "effort": [
       "S — a short session",
@@ -232,7 +232,7 @@
       "id": "SG-13",
       "title": "Test one short link inside the enrolled Associates workflow before trusting the format",
       "problem": "The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.",
-      "evidence": "Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13). Destination behaviour is also unresolved: on 2026-11-20 three separate checks recorded all five supplied links ending at the Amazon homepage, four of five ending at their product page, and two of five ending at the homepage (FLG-017, FLG-023, FLG-025). The same day's control fetches of all five official /dp/<ASIN> pages rendered the correct product every time.",
+      "evidence": "Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13). Destination behaviour is also unresolved: on 2026-11-20 three separate checks recorded all five supplied links ending at the Amazon homepage, four of five ending at their product page, and two of five ending at the homepage (FLG-017, FLG-023, FLG-027). The same day's control fetches of all five official /dp/<ASIN> pages rendered the correct product every time.",
       "options": [
         "A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.",
         "B. Switch every link to direct /dp/ URLs and drop the short form.",

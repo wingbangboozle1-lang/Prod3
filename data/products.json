@@ -81,7 +81,7 @@
         "method": "fetch_page of the official Amazon product page; each value read from the page text",
         "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
         "conflicts": [
-          "Capacity: title/bullets 6 quarts (2 × 3 qt) vs details table 6 liters (FLG-022)"
+          "Capacity: title/bullets 6 quarts (2 × 3 qt) vs details table 6 liters (FLG-025)"
         ]
       },
       "independent_recheck_2026_11_20": {
@@ -285,8 +285,8 @@
         "method": "fetch_page of the official Amazon product page; each value read from the page text",
         "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
         "conflicts": [
-          "Temperature: title 450°F vs bullets/spec 200–400°F (FLG-023)",
-          "Wattage: resource bullet 1000W vs spec table 1700W (FLG-023)"
+          "Temperature: title 450°F vs bullets/spec 200–400°F (FLG-026)",
+          "Wattage: resource bullet 1000W vs spec table 1700W (FLG-026)"
         ]
       },
       "independent_recheck_2026_11_20": {

@@ -444,17 +444,37 @@ check("D30-seasonal-surfaced",
 # must also carry the reader-facing fallback note, because on 2026-11-20 all
 # five supplied links were observed ending at the Amazon homepage while the
 # official /dp/<ASIN> pages worked. Without the note a reader is stranded on
-# the front page. See FLG-025.
+# the front page. See FLG-027.
 for _rel, _html in sorted(docs.items()):
     # Only tracked *buy buttons* count. A link.amazon URL quoted inside the
     # source register is a record of what was supplied, not a button that
     # sends a reader to Amazon.
     _tracked_btn = re.search(
         r'<a\b[^>]*data-event="outbound_click"[^>]*href="https://link\.amazon/', _html)
-    _has_note = "FLG-025" in _html and "official listing" in _html
+    _has_note = "FLG-027" in _html and "official listing" in _html
     check("R-linknote-fallback",
           (not _tracked_btn) or _has_note,
-          f"{_rel} has a tracked link.amazon buy button but no FLG-025 fallback note")
+          f"{_rel} has a tracked link.amazon buy button but no FLG-027 fallback note")
+
+# R-flagids: one flag id must mean one thing.
+# A duplicate FLG id on the Flagged page sends a reader to the wrong finding,
+# and the machine-readable register can drift away from the published page
+# silently. Both happened on 2026-11-20: two pre-existing duplicates, and two
+# ids reused by a later session. See FLG-025..FLG-029.
+_flagged_html = (ROOT / "flagged.html").read_text(encoding="utf-8")
+_page_flags = re.findall(r"<strong>(FLG-\d+) \u2014", _flagged_html)
+if not _page_flags:  # fall back to a plain hyphen if the em dash is ever changed
+    _page_flags = re.findall(r"<strong>(FLG-\d+) -", _flagged_html)
+_dupes = sorted({f for f in _page_flags if _page_flags.count(f) > 1})
+check("R-flagids-unique", not _dupes,
+      f"flagged.html uses the same flag id more than once: {', '.join(_dupes)}")
+_reg_flags = {x["id"] for x in json.loads((ROOT / "data/flagged.json").read_text(encoding="utf-8"))["items"]
+              if x["id"].startswith("FLG-")}
+# One direction only: every id in the machine-readable register must also be
+# published on the page. The page is the authoritative FLG register and holds
+# more rows than data/flagged.json does, which is by design.
+check("R-flagids-mirrored", _reg_flags <= set(_page_flags),
+      f"data/flagged.json holds ids the Flagged page does not publish: {sorted(_reg_flags - set(_page_flags))}")
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

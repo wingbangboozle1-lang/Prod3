@@ -390,7 +390,7 @@
       "product": "P-01, P-02, P-03, P-04, P-05 (all five supplied links)",
       "detail": "A third, independent check of the five supplied link.amazon short links on 2026-11-20 (session arena/0f115b2d-prod3) found that all five ended at https://www.amazon.com/ with no /dp/<ASIN> in the final URL. As a control, each of the five official /dp/<ASIN> listing pages was fetched the same day: all five rendered the correct product, and the page title and the category breadcrumb matched the register for every product. The same day's earlier records disagree with each other — one recorded four of five links reaching their product page, another recorded two of five reaching the homepage. All three records are kept; none is deleted and no tie is broken by seniority. This does NOT establish that the supplied links are invalid, expired, untracked or non-compliant: a fetch cannot distinguish a signed-out or profile-gated session, a transient response, and a link-level change.",
       "why_it_matters": "The tracked button is the site's only path to a purchase. If it drops a reader on the Amazon homepage instead of the product page, the reader has to find the product again, which loses the sale and makes the recommendation look unreliable.",
-      "action": "The buttons keep the supplied short links, because changing a button's destination is an owner decision (SG-13), not an automated edit. Every product card also carries a second, verified link to its official listing, and the front page now tells readers to use that link if the button lands on the homepage. The owner runs the FLG-006 Special Link test — one link per product, destination and Associates report confirmed — and replaces the short links with working Special Links. Intended-ASIN fields stay blank (FLG-001).",
+      "action": "The buttons keep the supplied short links, because changing a button's destination is an owner decision (SG-13), not an automated edit. Every product card also carries a second, verified link to its official listing, and every page with a tracked button now tells the reader to use that link if the button lands on the homepage; gate R-linknote-fallback fails the build if that note is dropped. The owner runs the FLG-006 Special Link test — one link per product, destination and Associates report confirmed — and replaces the short links with working Special Links. Intended-ASIN fields stay blank (FLG-001).",
       "status": "open — owner test pending (FLG-006, DT-01)",
       "sources": [
         "S01",
@@ -398,6 +398,32 @@
       ],
       "sources_checked": "2026-11-20",
       "evidence": "data/products.json -> independent_recheck_2026_11_20 and listing_verified_2026_11_20 on P-01..P-05"
+    },
+    {
+      "id": "FLG-028",
+      "severity": "medium",
+      "area": "Digest described questions whose subjects did not exist",
+      "product": "the decision digest (DIRECTION.md)",
+      "detail": "DIRECTION.md used to list Q-08 as the account-status question and described Q-05 as a question about which query set converts. In data/open-questions.json, Q-08 is 'what counts as a session for the ledger' and Q-05 is 'who is the named author'; the account-status question had never been registered at all. Resolved 2026-11-20: the account-status question is registered as Q-23, the digest names only real ids and their real subjects, and gate D28 fails the build if DIRECTION.md cites a question id that is not in the data.",
+      "why_it_matters": "A digest that points at a question id with a different subject sends the reader to the wrong open question.",
+      "action": "Closed. The digest and the register agree; D28 enforces it.",
+      "status": "resolved 2026-11-20",
+      "sources": [],
+      "sources_checked": "2026-11-20",
+      "evidence": "data/open-questions.json · DIRECTION.md · tools/check_site.py D28"
+    },
+    {
+      "id": "FLG-029",
+      "severity": "low",
+      "area": "Digest cited a suggestion id that does not exist",
+      "product": "the decision digest (DIRECTION.md)",
+      "detail": "DIRECTION.md listed an implemented row titled 'one generated chrome for all pages' carrying an id absent from data/suggestions.json, and the register itself runs SG-25 → SG-27 with no SG-26 between them. The likeliest explanation is a row retired or renumbered during a merge, but that is not established, so nothing was reconstructed. The digest no longer names the phantom id and explains the gap in place; gate D29 fails the build if it cites any id the register does not hold.",
+      "why_it_matters": "A cited id that does not resolve cannot be checked by a reviewer.",
+      "action": "Closed as far as it can be. If a real proposal occupied SG-26, it needs re-entering — that is an owner decision, recorded on decisions.html.",
+      "status": "open — the SG-26 slot is still unoccupied",
+      "sources": [],
+      "sources_checked": "2026-11-20",
+      "evidence": "data/suggestions.json id list · DIRECTION.md · tools/check_site.py D29"
     }
   ]
 }

@@ -37,8 +37,8 @@ options, and recommendations live there.
 | SG-23 | Make one page the definitive answer to "how big is it really" | implemented | editorial |
 | SG-24 | Give the site a named editor before giving it a voice | proposed | owner |
 | SG-25 | Stop calling it a decision log until decisions are actually recorded there | implemented | engineering |
-| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-021 gap note below; the registered SG-27..SG-31 rows (this session re-mirrored them verbatim) are the canonical ones | — |
-**Gap, 2026-11-20 (FLG-021):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
+| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-029 gap note below; the registered SG-27..SG-31 rows (this session re-mirrored them verbatim) are the canonical ones | — |
+**Gap, 2026-11-20 (FLG-029):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
 | SG-27 | One name for the Direction page, in the nav and the footer | implemented | engineering |
 | SG-28 | Ship the RSS feed and advertise it on every page | implemented | engineering |
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
@@ -58,7 +58,7 @@ Twenty-three questions are registered in `data/open-questions.json` (Q-01…Q-23
 `known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only`).
 
-**Correction, 2026-11-20 (FLG-020).** This digest used to list Q-08 as the account-status question
+**Correction, 2026-11-20 (FLG-028).** This digest used to list Q-08 as the account-status question
 and Q-05 as "which query set converts". Neither matched the register: Q-08 is "what counts as a
 session for the ledger" and Q-05 is "who is the named author". The account-status question had never
 been registered at all, so it was added as **Q-23** rather than renumbered into a used id. Every id
@@ -73,7 +73,7 @@ Owner-only, cheapest first — these unblock the most:
 | Q-19 | Is the account eligible for the Product Advertising API? | 5 min in Associates Central |
 | Q-02 | Do the five Special Links carry `tag=shopnow047c-20`? | One signed-in click each |
 | Q-04 | Is the `link.amazon` short-link format acceptable in this account's enrollment? | Same session as Q-02 (FLG-006) |
-| Q-22 | Why did the supplied short links end at the Amazon homepage on 2026-11-20? | 15 min, signed in (FLG-017, FLG-023, FLG-025) |
+| Q-22 | Why did the supplied short links end at the Amazon homepage on 2026-11-20? | 15 min, signed in (FLG-017, FLG-023, FLG-027) |
 | Q-18 | Will the owner verify the site in Search Console this month? | 10 min |
 | Q-05 | Who is the named author, and what is their experience? | One decision |
 | Q-09 | What is the 90-day target outcome? | One decision |
@@ -141,10 +141,10 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |
 | 2026-11-20 | Reconcile the path chooser on `direction.html` and in this file with the canonical paths in `data/decisions.json` (DT-01..DT-10); retire the stale “Steady publication / Conversion focus / Hold” wording and its wrong SG-04/SG-06 citations | session T-39 audit | The digest and the decision desk cannot disagree about what the three paths are |
-| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-021, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
-| 2026-11-20 | Publish the counter-space arithmetic as a table on `compare.html` with every input shown; register it as SG-32 and replace the digest's broken "proposal SG-18" reference with SG-32 | session T-46 audit · `data/analysis.json`, `data/suggestions.json` | The site publishes its own analysis as the brief asks, and the digest no longer points at a proposal about a different subject |
-| 2026-11-20 | Remove the duplicated depth finding in `data/analysis.json` and correct "within 22 percent" to "about 22 percent apart" (the two are 22.4 percent apart) | session T-46 audit · `data/analysis.json` | A published register must not carry the same finding twice, nor a rounding that overstates a bound |
-| 2026-11-20 | Record the third dated 2026-11-20 link observation as FLG-025, refresh Q-22 and C-04, and add the reader-facing fallback note plus gate `R-linknote-fallback` | session T-46 audit · `data/products.json`, `data/flagged.json`, `tools/check_site.py` | The tracked button is the only path to a purchase; the reader is told what to do if it lands on the homepage, and the build fails if that note is dropped |
+| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-029, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
+| 2026-11-20 | Publish the counter-space arithmetic as a table on `compare.html` with every input shown; register it as SG-32 and replace the digest's broken "proposal SG-18" reference with SG-32 | session T-47 audit · `data/analysis.json`, `data/suggestions.json` | The site publishes its own analysis as the brief asks, and the digest no longer points at a proposal about a different subject |
+| 2026-11-20 | Remove the duplicated depth finding in `data/analysis.json` and correct "within 22 percent" to "about 22 percent apart" (the two are 22.4 percent apart) | session T-47 audit · `data/analysis.json` | A published register must not carry the same finding twice, nor a rounding that overstates a bound |
+| 2026-11-20 | Record the third dated 2026-11-20 link observation as FLG-027, refresh Q-22 and C-04, and add the reader-facing fallback note plus gate `R-linknote-fallback` | session T-47 audit · `data/products.json`, `data/flagged.json`, `tools/check_site.py` | The tracked button is the only path to a purchase; the reader is told what to do if it lands on the homepage, and the build fails if that note is dropped |
 
 ## Audit findings, session a25ccde6 (2026-11-19)
 

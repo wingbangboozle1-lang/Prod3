@@ -4,7 +4,7 @@
 
 **Tracking ID:** `shopnow047c-20` (provided for the project; Associates account enrollment and eligibility are not confirmed — FLG-010).
 
-**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links and both Associates policy pages were fetched again — three times, by three separate sessions, and the three records disagree. The latest check found **all five** short links ending at the Amazon.com homepage, while a same-day control fetch of all five official `/dp/<ASIN>` listing pages rendered the correct product every time, with the page title and category breadcrumb matching the register. That is recorded as **FLG-025**. The cause is not established and the supplied links are **not** declared invalid. This is not an account-side test, and no price, rating, or offer was recorded.
+**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links and both Associates policy pages were fetched again — three times, by three separate sessions, and the three records disagree. The latest check found **all five** short links ending at the Amazon.com homepage, while a same-day control fetch of all five official `/dp/<ASIN>` listing pages rendered the correct product every time, with the page title and category breadcrumb matching the register. That is recorded as **FLG-027**. The cause is not established and the supplied links are **not** declared invalid. This is not an account-side test, and no price, rating, or offer was recorded.
 
 ## Bottom line
 
@@ -26,7 +26,7 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 **Important distinction:** the observed destination is evidence of where a supplied link resolved during that dated check; it does not prove that destination is the product the owner intended or that the link has been tested in the enrolled Associates account. FLG-001 and FLG-006 remain open. Do not describe the supplied short links as invalid: their exact compliance status is unresolved.
 
-**Third dated check, 2026-11-20 (FLG-025).** A later independent check of the same five links found all five ending at `https://www.amazon.com/` with no `/dp/<ASIN>` in the final URL. The control matters more than the symptom: each official listing was fetched the same day and rendered the correct product, and for all three appliances with published dimensions the listing's own dimension fields matched the register exactly. So the products are live and unchanged — it is the short-link path that is not reliably resolving. All three same-day records (four of five resolving, two of five reaching the homepage, five of five reaching the homepage) are kept side by side in `data/products.json`; none is deleted and no tie is broken by seniority. Because the buttons keep the supplied short links — changing a button's destination is an owner decision (SG-13), not an automated edit — every page with a tracked button now tells the reader, in one line, that if the button lands on the homepage the "official listing" link beside it opens the product page directly. A new release gate (`R-linknote-fallback`) fails the build if that note is ever dropped from a page carrying a tracked button.
+**Third dated check, 2026-11-20 (FLG-027).** A later independent check of the same five links found all five ending at `https://www.amazon.com/` with no `/dp/<ASIN>` in the final URL. The control matters more than the symptom: each official listing was fetched the same day and rendered the correct product, and for all three appliances with published dimensions the listing's own dimension fields matched the register exactly. So the products are live and unchanged — it is the short-link path that is not reliably resolving. All three same-day records (four of five resolving, two of five reaching the homepage, five of five reaching the homepage) are kept side by side in `data/products.json`; none is deleted and no tie is broken by seniority. Because the buttons keep the supplied short links — changing a button's destination is an owner decision (SG-13), not an automated edit — every page with a tracked button now tells the reader, in one line, that if the button lands on the homepage the "official listing" link beside it opens the product page directly. A new release gate (`R-linknote-fallback`) fails the build if that note is ever dropped from a page carrying a tracked button.
 
 **Correction (2026-11-20, FLG-018/019):** earlier 2026-11-19 records had copied observed ASINs into the intended-ASIN fields and cited a NIST reference page as their source. Those intended fields are now blank, and a release gate blocks any intended ASIN without an owner-confirmation record. The policy record also said product buttons go straight to `/dp/` URLs; the buttons actually use the supplied short links, and the `/dp/` URLs are separate source links. Both corrections are recorded.
 
@@ -37,7 +37,7 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 | Publication | Buyer-first front page; two category pillars; comparison and buying guide; nine articles (eight evergreen plus the dated Thanksgiving plan); three decision tools; RSS feed and sitemap; the site's own counter-space arithmetic published as a sourced table | Organic impressions, rankings, readership, or topic popularity | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 | Product facts | Seller-listed specifications linked to dated listing snapshots; conflicts are flagged, not silently resolved; titles, category nodes and the three published dimension sets re-checked against the official listings on 2026-11-20 | Independent product testing, or a field-by-field re-read of every specification beyond the ones re-checked on 2026-11-20 | [Chefman listing](https://www.amazon.com/dp/B0CDY277D3) · [Emeril listing](https://www.amazon.com/dp/B09B7SB46R) · [Chefman listing](https://www.amazon.com/dp/B08DKYBTPH) · [ThermoMaven listing](https://www.amazon.com/dp/B0DHZTCNR5) · [CHEF iQ listing](https://www.amazon.com/dp/B0DZFD6R9Z) |
 | Pricing and ratings | No price or customer-rating claims are rendered on the site | Current prices, availability, ratings, or commission rates | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
-| Affiliate links | All Amazon anchors use `rel="sponsored"`; supplied links and observed targets are separately recorded; every page with a tracked button carries a direct-listing fallback note | Associates account eligibility, intended products, Special Link compliance, reporting attribution, or why the short links intermittently resolve to the homepage (FLG-025) | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Google sponsored links guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) |
+| Affiliate links | All Amazon anchors use `rel="sponsored"`; supplied links and observed targets are separately recorded; every page with a tracked button carries a direct-listing fallback note | Associates account eligibility, intended products, Special Link compliance, reporting attribution, or why the short links intermittently resolve to the homepage (FLG-027) | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Google sponsored links guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) |
 | Measurement | Five event names are defined: `page_view`, `outbound_click`, `article_read`, `chooser_complete`, `reader_signup`. Four are counted locally; signup is reserved for a confirmed provider response | A server endpoint, shared/site-wide counts, actual signup provider, conversions, or orders | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
 | Campaign ledger | Defined but empty; rows are to be added only from authorized first-party reports with provenance | Any clicks, sessions, orders, revenue, conversion score, or forecast | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | Search | Canonicals, robots file, sitemap, and RSS feed are present | Search Console ownership/verification, submission, query data, or indexing status | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
@@ -114,7 +114,7 @@ The official policy and guidance sources are indexed in the [source register](so
 re-checked the figures the site publishes, published the site's own analysis, and closed the
 gaps the earlier passes left in the registers. Four things changed.
 
-**1. The tracked links, checked a third time (FLG-025).** All five supplied `link.amazon`
+**1. The tracked links, checked a third time (FLG-027).** All five supplied `link.amazon`
 short links ended at the Amazon.com homepage on 2026-11-20 in this session's independent
 check. The control is the finding: each of the five official `/dp/<ASIN>` listing pages was
 fetched the same day and rendered the correct product, with the page title and the category
@@ -151,9 +151,18 @@ figure is written out in full and no product is ranked by it. The digest's refer
 calculation pointed at SG-18 — a proposal about a different subject entirely — and now points
 at SG-32, which records the decision.
 
+**4. The registers were reconciled, and a duplicate-identifier defect was fixed.** Three separate
+collisions had left the same `FLG-` id meaning two different findings: a reader following `FLG-021`
+landed on the wrong row. Following the repo's own precedent — the newer use of a contested id is
+renumbered, never the older published one — upstream's two new listing-conflict findings became
+**FLG-025** and **FLG-026**, two pre-existing duplicates became **FLG-028** and **FLG-029**, and
+this session's own finding became **FLG-027**. Every cross-reference was updated across
+`DIRECTION.md`, `README.md`, `direction.html`, the data registers, the generated pages and the
+Flagged page; no record was deleted and the older published ids keep their subjects. A new gate,
+`R-flagids-unique`, now fails the build if the Flagged page ever publishes the same id twice.
 **4. The registers were reconciled.** The README carried two register tables, one of them stale
 and both with out-of-date ID ranges; the stale one is gone and the remaining one now reads
-SG-01…SG-32 (SG-21 retired, SG-26 unoccupied), Q-01…Q-23, DT-01…DT-10 and FLG-001…FLG-025.
+SG-01…SG-32 (SG-21 retired, SG-26 unoccupied), Q-01…Q-23, DT-01…DT-10 and FLG-001…FLG-027.
 The coordination board had three rows still marked "in progress" for work that had merged weeks
 earlier; they are marked superseded or done.
 
@@ -164,7 +173,7 @@ The Associates account is still unverified (FLG-010) and the Special Link test i
 owner's to run (FLG-006, DT-01).
 
 **Gates at close:** `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
-(31 pages, 4,042 assertions), the four `--check` freshness gates and `tools/crawl_links.py`
+(31 pages, 4,168 assertions), the four `--check` freshness gates and `tools/crawl_links.py`
 (31 pages crawled, 0 broken links, 0 dead anchors, 0 orphans) all pass on this branch. The new
 `R-linknote-fallback` rule was negative-tested: removing the fallback note from a page with a
 tracked button fails the build, and restoring it passes.
@@ -200,7 +209,7 @@ The proposal ledger, open-question register, and decision log are available on t
 
 ## Release and review status
 
-The repository's current release checks pass on the reviewed tree: `python3 scripts/check_site.py`, `python3 tools/verify_site.py`, `python3 tools/check_site.py` (31 pages, 4,042 assertions), the four freshness gates (`build_chrome --check`, `build_registers --check`, `build_decisions --check`, `build_sitemap --check`) and `python3 tools/crawl_links.py` (31 pages crawled, 0 broken links, 0 dead anchors, 0 orphans). The coordination history records a successful GitHub Pages deployment at the project URL. These checks validate repository structure and registered content; they do not verify the Associates account, live traffic, external search indexing, or link-report conversion.
+The repository's current release checks pass on the reviewed tree: `python3 scripts/check_site.py`, `python3 tools/verify_site.py`, `python3 tools/check_site.py` (31 pages, 4,168 assertions), the four freshness gates (`build_chrome --check`, `build_registers --check`, `build_decisions --check`, `build_sitemap --check`) and `python3 tools/crawl_links.py` (31 pages crawled, 0 broken links, 0 dead anchors, 0 orphans). The coordination history records a successful GitHub Pages deployment at the project URL. These checks validate repository structure and registered content; they do not verify the Associates account, live traffic, external search indexing, or link-report conversion.
 
 - [Open the publication](https://wingbangboozle1-lang.github.io/Prod3/)
 - [Suggestions and path chooser](direction.html)

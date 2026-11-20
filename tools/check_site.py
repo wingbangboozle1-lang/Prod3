@@ -497,6 +497,26 @@ for _p in products:
     check("D32-product-page-intent-blank", "No official source" in docs.get(_rel, ""),
           f"{_rel} does not show the blank intended-ASIN field")
 
+
+# D33: a product page must list every flag that names its product, in either register.
+# The first version of build_products.py matched only the "P-04" form and silently dropped
+# every F row; this gate exists so that cannot happen again without failing the release.
+_flags_all = json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))["items"]
+_SLUGS = {"P-01": "chefman-6-qt-dual-basket", "P-02": "emeril-26qt-french-door",
+          "P-03": "chefman-8-qt-turbofry", "P-04": "thermomaven-1-sec",
+          "P-05": "chef-iq-sense-gen3"}
+for _p in products:
+    _rel = f"products/{_SLUGS[_p['id']]}.html"
+    _page = docs.get(_rel, "")
+    _num = _p["id"].split("-")[-1].lstrip("0")
+    _expected = [f["id"] for f in _flags_all
+                 if "All five" in (f.get("product") or "")
+                 or _p["observed_asin"] in (f.get("product") or "")
+                 or any(t.lstrip("0") == _num for t in re.findall(r"P-?(\d+)", f.get("product") or ""))]
+    check("D33-flags-present", len(_expected) > 0, f"{_rel}: no flag names this product at all")
+    for _fid in _expected:
+        check("D33-flag-listed", _fid in _page, f"{_rel}: flag {_fid} names this product but is not listed on its page")
+
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")
 if failures:

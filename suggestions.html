@@ -45,7 +45,7 @@
 <div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (12)</h2>
+<h2>Waiting on a decision (13)</h2>
 <div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -190,9 +190,21 @@
         <div class="opts" data-decide="SG-30"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: Reader-capture metrics</p>
+    </article><article class="card decision-card" id="SG-34">
+      <div class="meta">SG-34 · owner decides</div>
+      <h3>Decide what a reader-capture path would be, before writing any signup copy</h3>
+      <p><strong>The situation.</strong> There is no email list, and the site says so in the footer. That is honest, but it also means no reader can be reached again without an RSS reader. The missing decision is not the copy, it is the provider, the consent record and who owns the list.</p>
+      <p><strong>The evidence.</strong> FLG-014: the demo form was removed rather than shipped unconnected. assets/app.js reserves reader_signup and only emits it on kc:reader-signup-confirmed, which no integration dispatches. SG-30 proposes RSS-only versus an email provider; this row records the decision that has to precede any form markup.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence low</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. RSS only; state it plainly and stop treating capture as a gap.</li><li>B. Double opt-in provider, with the provider named on the privacy page before the first field ships.</li><li>C. Ask for a bookmark instead of an address.</li></ul>
+        <p><strong>Recommendation.</strong> B is the only option that creates a reader relationship, and it needs an owner-chosen provider, a consent record and a deletion path. Until those three exist, A stays the shipped behaviour and no form appears.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-34"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Reader-capture metrics; any signup form on any page</p>
     </article></div>
 
-<h2 class="mt">Already shipped (18)</h2>
+<h2 class="mt">Already shipped (21)</h2>
 <p>Listed so the register stays complete, not to take credit. Each one can be reverted if a decision goes the other way.</p>
 <div class="grid mt"><article class="card decision-card" id="SG-01">
       <div class="meta">SG-01 · owner decides</div>
@@ -408,6 +420,42 @@
         <p><strong>Recommendation.</strong> A — it is implemented on the front page and both category pages as of 2026-11-20. It costs one line per affected product, adds no new claim, and is the cheapest honest differentiator the site has.</p></details>
       <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> A shopper sees the site&#x27;s honesty exactly where the decision is made, instead of on a page they will not open.</p><p class="small"><strong>What could go wrong:</strong> A conflict chip with no source reads as a slur on the seller, so each one links to the flag row and the official listing.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> If click data shows no interaction with the chip, keep the headline spec and drop the chip.</p>
         <div class="opts" data-decide="SG-31"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-32">
+      <div class="meta">SG-32 · editorial decides</div>
+      <h3>Give a first-time visitor an intent fork before a product list</h3>
+      <p><strong>The situation.</strong> The front page opens on five products and a featured pick. A reader who does not already know whether they want a basket, an oven cabinet or a thermometer has to read the whole page to find out which shelf applies to them.</p>
+      <p><strong>The evidence.</strong> Five products across two families (F-08). The three-question chooser answers a version of this, but it sits below the short list and returns a paragraph rather than a destination. Implemented 2026-11-20 as start.html: four intent paths, each two clicks from an official listing; the front page links to it in the primary nav and in a four-tile strip above the featured pick.</p>
+      <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. An intent page (start.html) that forks by how the reader cooks, with the product list left intact.</li><li>B. Put the chooser above the featured pick and delete the short list.</li><li>C. Leave the front page as the single entry point.</li></ul>
+        <p><strong>Recommendation.</strong> A — shipped. The short list still serves a reader who wants the recommendation immediately; the fork serves the reader who does not yet know what to compare. B loses the recommendation, C loses the reader who arrives without a product name.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> A first-time visitor reaches a relevant shelf in two clicks instead of scanning a long front page.</p><p class="small"><strong>What could go wrong:</strong> A fork adds a page between the reader and the listing; if the four paths are not mutually exclusive it becomes another index to read.</p><p class="small"><strong>Reversible:</strong> yes — remove start.html from NAV in scripts/build_chrome.py and the front-page strip · <strong>What would prove it wrong:</strong> If outbound clicks from start.html are zero over a measured period while front-page clicks stay flat, the fork is in the way and should become a single section.</p>
+        <div class="opts" data-decide="SG-32"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-33">
+      <div class="meta">SG-33 · editorial decides</div>
+      <h3>One question-shaped guide for the month people are actually buying</h3>
+      <p><strong>The situation.</strong> The seasonal block led with Thanksgiving into December. Gift buying is the dominant December kitchen-appliance question, and the site&#x27;s only gift page was a list of five ideas with no decision rule.</p>
+      <p><strong>The evidence.</strong> Nine guides shipped before this pass; the gift guide (articles/holiday-kitchen-gift-guide.html) lists five ideas without explaining how to choose between shapes. Implemented 2026-11-20: articles/kitchen-gifts-that-get-used.html sorts the five by cook, gives the one listed number that decides each, and is wired into feed.xml and sitemap.xml.</p>
+      <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. A decision-shaped gift guide, linked from the seasonal block and the feed.</li><li>B. Rewrite the existing gift guide in place.</li><li>C. Wait for search data before publishing another guide.</li></ul>
+        <p><strong>Recommendation.</strong> A — shipped, because C has no data behind it yet and B would have replaced a page that already works for a different intent.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> Catches the December gift search with a page that answers a real decision rather than another list.</p><p class="small"><strong>What could go wrong:</strong> Two gift pages can cannibalise each other in search if both target the same query.</p><p class="small"><strong>Reversible:</strong> yes — remove the feed item and the seasonal tile · <strong>What would prove it wrong:</strong> If Search Console shows the two gift pages competing for one query, merge them and keep the decision-shaped one.</p>
+        <div class="opts" data-decide="SG-33"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-35">
+      <div class="meta">SG-35 · editorial decides</div>
+      <h3>Ship a way for the owner to look at every page without installing anything</h3>
+      <p><strong>The situation.</strong> Review rounds have argued about layout from HTML source. A reader sees a rendered page, and a phone-width layout defect (horizontal scroll, a card that overflows) is invisible in source.</p>
+      <p><strong>The evidence.</strong> Ten pages are rendered at 1366px and 390px by .github/workflows/snapshots.yml and uploaded as a downloadable artifact; the job fails when a page is wider than the viewport. design/pages.json lists the pages so the set is reviewable rather than hidden in a workflow file.</p>
+      <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Render on CI, upload PNGs, fail on horizontal overflow.</li><li>B. Ask the owner to screenshot manually.</li><li>C. Trust the CSS review.</li></ul>
+        <p><strong>Recommendation.</strong> A — shipped. It adds no third-party asset to the published site (the browser runs on the runner, not for the reader) and it makes a layout regression a red check.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-35"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: nothing</p>
     </article></div>

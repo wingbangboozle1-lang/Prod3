@@ -43,7 +43,7 @@
 | T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
 | T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
-| T-26 | Publication-polish follow-up on current `main`: RSS `rel="alternate"` in the head of all 30 pages; SG-27..SG-30 registered with evidence-based status; FLG-017 added to `data/flagged.json`; footer link label "Search Console is connected" reworded to "Search Console setup" | done (2026-11-20) | arena/e52053d1-prod3 | `*.html` (head feed link + one index.html label), `data/suggestions.json`, `data/flagged.json`, generated `suggestions.html`, `decisions.html`, `COORDINATION.md` |
+| T-26 | Final integration integrity pass: reconcile product-intent evidence, link/policy copy, automation claims, and flags; strengthen gates; re-run site and Pages release checks | done (2026-11-20, PR and Pages result below) | `arena/e83cdf55-prod3` | `data/verification.json`, `data/policy-checks.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `flagged.html`, `suggestions.html`, `questions.html`, `docs/verification.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -816,6 +816,7 @@ session does not reopen them.
 | T-34 | Three working decision tools: comparison builder, measurement converter, oven-to-air-fryer cheat sheet | done | arena/2ef30474-prod3 | `tools/*.html` (new), `assets/decision-tools.js` (new) |
 | T-35 | Seasonality module: which guide a reader should see by month, stated as editorial judgement not demand data | done | arena/2ef30474-prod3 | `assets/brand.js`, `index.html`, `articles/holiday-kitchen-gift-guide.html` |
 | T-36 | Gate extension for the new surfaces; then integration PR → `main`, merge, confirm Pages | done | arena/2ef30474-prod3 | `tools/check_site.py`, `scripts/build_sitemap.py`, `.github/workflows/pages.yml`, all |
+| T-37 | Publication-polish follow-up on current `main`: RSS `rel="alternate"` in the head of all 30 pages; SG-27..SG-30 registered with evidence-based status; FLG-017 added to `data/flagged.json`; footer link label "Search Console is connected" reworded to "Search Console setup" | done (2026-11-20) | arena/e52053d1-prod3 | `*.html` (head feed link + one index.html label), `data/suggestions.json`, `data/flagged.json`, generated `suggestions.html`, `decisions.html`, `COORDINATION.md` |
 
 **Non-overlap:** no other session has a live claim (every earlier row is `done`, and its
 branch is merged). If a session appears while this one is running, this scope is
@@ -1008,10 +1009,41 @@ This is not a claim that the supplied short links are invalid. The status of `B0
 unresolved — it may be transient, a campaign-link change, or a link-level setting, and a fetch
 cannot distinguish those.
 
+### T-25 publication record (session `arena/70e8475c-prod3`, 2026-11-20)
 
-## Session arena/e52053d1-prod3 — T-26 (2026-11-20)
+- **PR #27:** https://github.com/wingbangboozle1-lang/Prod3/pull/27 (`arena/70e8475c-prod3` → `main`). Merged with `gh pr merge 27 --merge` at `2026-11-20T06:17:37Z`; merge commit `f2b3a07bdd65537341c2d7c84bb928beb5a8ae13`.
+- **Deploy GitHub Pages (workflow):** run `44686775327` — success on `f2b3a07`.
+- **pages build and deployment (GitHub built-in):** run `44686774699` — the build job succeeded; the **deploy job failed** with a transient results-receiver EOF on log retrieval. Re-running the built-in run is not permitted by GitHub. The Pages build history then recorded `f2b3a07` as `built`. Live fetch of `/flagged.html` on that build served FLG-017.
+- **Concurrent merge:** another session (`arena/2ef30474-prod3`) merged PR #26 into `main` at `c49de86`, which includes `f2b3a07`. The `Deploy GitHub Pages` workflow on `c49de86` reports success (`gh run list`); the Pages API reports the latest build `built` at `c49de86`. The live `/executive-summary.html` shows the 2026-11-20 re-check text.
+- **Gates re-run on the combined tree at `c49de86`:** `tools/verify_site.py`, `tools/check_site.py`, `scripts/check_site.py`, `scripts/build_sitemap.py --check`, `scripts/build_registers.py --check` — all pass.
+- **Irregularity logged:** one red `pages build and deployment` run (deploy job, transient) on `f2b3a07`, superseded by the successful `c49de86` build. Not a content failure. A `POST /pages/builds` request from this session returned 403 (insufficient integration permission), so no manual Pages rebuild was requested.
+- **Not claimed:** intended-ASIN confirmation (FLG-001), Special Link test (FLG-006), account status (FLG-010), FLG-017 cause, or any campaign data.
+## Session arena/e83cdf55-prod3 — T-26 (2026-11-20)
+
+Scope: integrity pass on product-intent provenance, policy-record copy, and gates. Board row T-25 was already taken by `arena/70e8475c-prod3` and merged (PR #27), so this claim is recorded as T-26.
+
+**Defects found and corrected**
+
+- `data/verification.json`: 2026-11-19 `intended.asin` values were copied from observed redirects and cited S16 (NIST traceability FAQ). All five intended fields are blank now; observed fields are unchanged; `agrees` is replaced by `comparison_to_intent: "not performed"`. Logged as FLG-018.
+- `data/policy-checks.json` C-04: said buttons go directly to `/dp/`. Built HTML: 25 CTAs use the supplied `link.amazon` URLs; 138 separate `/dp/` source links. C-04 and C-09 are now `partial` with accurate evidence and gates. Logged as FLG-019.
+- C-09 said all five intended/observed values "agree"; intended values are null, so no agreement is claimed.
+
+**Gate added:** `tools/verify_site.py` now fails when an intended ASIN lacks `owner_confirmation_ref`, when its source is S16, or when `observed.agrees` returns. Negative test: exit 3 on an injected S16 intent.
+
+**Sources:** S01 Operating Agreement; S02 Program Policies; S04 Google outbound-link guidance (`rel="sponsored"`); S16 NIST (cited only as a reference that does not support intent).
+
+**Verification performed:** `scripts/check_site.py` passed; `tools/check_site.py` passed (24 pages, 2,608 assertions); `tools/verify_site.py` passed (intent gate included); `scripts/build_registers.py --check` and `scripts/build_sitemap.py --check` passed; `git diff --check` clean.
+
+**Irregularities (non-blocking, on flagged.html):** FLG-001 intended ASINs unconfirmed; FLG-006 short-link compliance unresolved (not called invalid or compliant); FLG-010 account status unverified; FLG-017 B04G1MEwY 2026-11-20 homepage result (recorded by T-25, not overwritten); FLG-018/019 corrections above.
+
+**Not claimed:** Associates enrollment, intended ASINs, Special Link validity, tracking-report attribution, Search Console, analytics volume, or live traffic.
+
+
+## Session arena/e52053d1-prod3 — T-37 (2026-11-20)
 
 **Collision and handoff log.** This session first claimed T-25 and built a 2026-11-20 link re-check. Before its push, `origin/main` gained PR #27 (`arena/70e8475c-prod3`), which already held T-25 for the same re-check and FLG-017. Rebase conflicted on this file. Resolution: the duplicate T-25 work was dropped from this branch and not pushed. The other session's work is unchanged. This session then renumbered to **T-26** for the non-overlapping parts. A later `main` (PR #26 and the shop-first rebuild `9032a35`) changed the nav and generated the page chrome, so this pass was reduced again to what `main` still lacked. Two branch-history merges with `-s ours` were used to keep the remote branch history without force-pushing.
+
+**ID note.** Renumbered from T-26: T-26 was already taken on `main` by session `arena/e83cdf55-prod3` (PR #30), so this record uses T-37, the next free ID on the board.
 
 **What changed**
 

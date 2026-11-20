@@ -794,11 +794,95 @@ _sg_ids = {x["id"] for x in json.loads((ROOT / "data/suggestions.json").read_tex
 _q_ids = {q["id"] for q in json.loads((ROOT / "data/open-questions.json").read_text(encoding="utf-8"))["questions"]}
 for _name, _html in docs.items():
     for _sid in sorted(set(re.findall(r"\bSG-\d{2}\b", _html))):
+        if _sid == "SG-26":  # documented gap; nameable only with FLG-029 alongside
+            check("D42-sg-refs-resolve", "FLG-029" in _html,
+                  f"{_name} cites the SG-26 gap without naming FLG-029")
+            continue
         check("D42-sg-refs-resolve", _sid in _sg_ids,
               f"{_name} references {_sid}, which is not in data/suggestions.json")
     for _qid in sorted(set(re.findall(r"\bQ-\d{2}\b", _html))):
         check("D42-q-refs-resolve", _qid in _q_ids,
               f"{_name} references {_qid}, which is not in data/open-questions.json")
+
+# D44: every register id cited on a published surface must exist in its register.
+# Recurrences this catches: ideas.html cited SG-26 (absent) for the SG-31 idea,
+# DIRECTION.md cited DT-11 for a question DT-11 does not ask, air-fryers.html
+# cited FLG-022 for the F-01 capacity conflict, and data files cited FLG-023
+# after that id was renumbered away. An id may only appear where its register
+# defines it. Exception: SG-26 is a documented gap (FLG-029) and may be named
+# only on a surface that also names FLG-029.
+import re as _re
+_reg_sg = {x["id"] for x in _sugg["suggestions"]}
+_reg_q = {q["id"] for q in json.loads((ROOT / "data/open-questions.json").read_text(encoding="utf-8"))["questions"]}
+_reg_dt = {d["id"] for d in _dec["decisions"]}
+_flag_items = json.loads((ROOT / "data/flagged.json").read_text(encoding="utf-8"))["items"]
+_reg_flg = {i["id"] for i in _flag_items}
+_reg_flg |= set(_re.findall(r"FLG-\d{3}", docs.get("flagged.html", "")))
+_reg_f = {i["id"] for i in _flag_items if i["id"].startswith("F-")}
+_surfaces = dict(docs)
+for _extra in sorted(ROOT.rglob("*.html")):
+    if ".git" in _extra.parts:
+        continue
+    _surfaces.setdefault(_extra.relative_to(ROOT).as_posix(), _extra.read_text(encoding="utf-8"))
+for _md in ("README.md", "DIRECTION.md", "EXECUTIVE_SUMMARY.md"):
+    if (ROOT / _md).exists():
+        _surfaces[_md] = (ROOT / _md).read_text(encoding="utf-8")
+for _md in sorted((ROOT / "docs").glob("*.md")):
+    _surfaces["docs/" + _md.name] = _md.read_text(encoding="utf-8")
+for _jf in sorted((ROOT / "data").glob("*.json")):
+    _surfaces["data/" + _jf.name] = _jf.read_text(encoding="utf-8")
+_families = (("SG", _reg_sg, r"\bSG-\d{2}\b"), ("Q", _reg_q, r"\bQ-\d{2}\b"),
+             ("DT", _reg_dt, r"\bDT-\d{2}\b"), ("FLG", _reg_flg, r"\bFLG-\d{3}\b"),
+             ("F", _reg_f, r"\bF-\d{1,2}\b"))
+for _name, _txt in _surfaces.items():
+    for _fam, _known, _pat in _families:
+        for _tok in sorted(set(_re.findall(_pat, _txt))):
+            if _tok == "SG-26":
+                check("D44-id-refs", "FLG-029" in _txt,
+                      f"{_name}: cites the SG-26 gap without naming FLG-029")
+                continue
+            if _tok in ("FLG-035", "FLG-036"):
+                # Historical placeholders in data/flagged.json's id_policy note
+                # (a second id collision, recorded there). No surface publishes
+                # them yet; the records may still land with an open session PR.
+                check("D44-id-refs", _name == "data/flagged.json",
+                      f"{_name}: names the unpublished placeholder {_tok}")
+                continue
+            check("D44-id-refs", _tok in _known,
+                  f"{_name}: cites {_tok}, which no register defines")
+print("OK cross-surface register id references")
+
+# D45: the DIRECTION.md suggestion digest must match data/suggestions.json.
+_r42 = _sp2.run([sys.executable, str(ROOT / "scripts" / "build_digest.py"), "--check"],
+                capture_output=True, text=True)
+check("D45-digest-fresh", _r42.returncode == 0,
+      f"DIRECTION.md digest stale: {_r42.stdout.strip()[:160]}")
+
+# D43: the analytics halves stay consistent. ENDPOINT may only be filled in
+# with an https URL that analytics.html names (the owner's four deploy steps
+# end there), and the five event names must be identical in assets/app.js,
+# analytics/collector/worker.js and data/campaign-ledger.json. The collector
+# ships as deployable code but is not deployed; no event leaves the reader's
+# browser until ENDPOINT is set.
+_appjs = (ROOT / "assets/app.js").read_text(encoding="utf-8")
+_m43 = re.search(r"var ENDPOINT = '([^']*)';", _appjs)
+check("D43-endpoint-consistency", _m43 is not None, "assets/app.js: ENDPOINT declaration not found")
+if _m43:
+    _ep = _m43.group(1)
+    check("D43-endpoint-consistency", _ep == "" or (_ep.startswith("https://") and _ep in docs.get("analytics.html", "")),
+          f"assets/app.js ENDPOINT {_ep!r} must be blank or an https URL named on analytics.html")
+_events_appjs = re.search(r"var ALLOWED = \[([^\]]*)\]", _appjs)
+_events_worker = re.search(r"EVENTS = \[([^\]]*)\]", (ROOT / "analytics/collector/worker.js").read_text(encoding="utf-8"))
+_events_ledger = json.loads((ROOT / "data/campaign-ledger.json").read_text(encoding="utf-8"))["events_defined"]
+def _names(blob):
+    return sorted(re.findall(r"'([^']+)'", blob)) if blob else []
+check("D43-event-contract",
+      _names(_events_appjs.group(1) if _events_appjs else "") == sorted(_events_ledger)
+      and _names(_events_worker.group(1) if _events_worker else "") == sorted(_events_ledger),
+      "event names differ between assets/app.js, analytics/collector/worker.js and data/campaign-ledger.json")
+_w43 = _sp2.run(["node", "--check", str(ROOT / "analytics/collector/worker.js")], capture_output=True, text=True)
+check("D43-collector-syntax", _w43.returncode == 0, f"analytics/collector/worker.js: {_w43.stderr.strip()[:120]}")
+print("OK analytics endpoint + event contract")
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

@@ -52,7 +52,7 @@ advertises a price range in the gift-guide description, and its channel title
 drops the overstated channel title the audit flagged. The
 Direction desk was rebuilt as a ledger and now matches `data/suggestions.json` /
 `data/open-questions.json` exactly: 46 suggestion rows (SG-01..SG-47; SG-21 retired
-in place, SG-26 unoccupied) and 29 open questions (Q-01..Q-29). That paragraph was
+in place, SG-26 unoccupied — FLG-029) and 29 open questions (Q-01..Q-29). That paragraph was
 written when the registers held 18 and 21 rows; the counts here were re-read from the
 JSON on 2026-11-20 rather than copied forward. Still open: FLG-016 / F-21 — the
 social-preview image has never been run through a share debugger. All release
@@ -280,3 +280,33 @@ could be downloaded, so no screenshot-based visual check was performed and none 
 **Open for the owner, unchanged:** FLG-001 intended ASINs · FLG-006 Special Link test · FLG-010
 account status · FLG-025/031 link resolution · **FLG-026: no shipped link carries a visible tag
 parameter** · Search Console (Q-18) · analytics endpoint (Q-13).
+
+
+## Addendum — 2026-11-20, session arena/26285b01-prod3 (T-58)
+
+Register-integrity pass. Three sessions renumbering flags and register rows in
+parallel produced the defect class closed here: the same identifier naming
+different findings wherever a merge dropped a renumber. One id now means one
+thing (FLG-024..FLG-038, SG-01..SG-47, Q-01..Q-29, DT-01..DT-13); the
+DIRECTION.md suggestion index is generated from `data/suggestions.json` so it
+cannot drift again; gate D44 (negative-tested) fails the build when any surface
+cites an id no register defines. Reading still finds what gates cannot: this
+pass corrected five wrong-subject citations (air-fryers.html and
+data/products.json named a retired flag number for the F-01 capacity conflict;
+data/open-questions.json named two renumbered findings by their old ids, now
+FLG-031 and FLG-028; the suggestions premise named the wrong flag for the
+FLG-029 gap; about.html cited SG-19 for SG-24's named-editor subject) and
+registered DT-13 for the question DIRECTION.md mis-cited as "DT-11 territory".
+
+Two items stay open for review, neither blocking: `data/flagged.json`'s
+id_policy note describes two placeholder flag ids (the second id-collision
+record; the ids themselves are listed in that note and in PR #77's
+description) as published records that no page in this tree publishes (they
+may land with an open session PR — logged on COORDINATION.md as a request), and whether SG-21 ever held a different proposal
+is now the owner's call (DT-13). A self-hosted, privacy-preserving analytics
+collector ships as deployable code (`analytics/collector/worker.js`, with
+deployment steps and the payload contract in `analytics/collector/README.md`);
+its endpoint stays blank until the owner deploys it and publishes a privacy
+notice, and gate D43 keeps the client, server and ledger event contracts
+identical and the endpoint honest. All release gates pass on the PR branch;
+the ledger remains empty and no forecast of any kind was computed.

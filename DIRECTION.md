@@ -33,11 +33,15 @@ options, and recommendations live there.
 | SG-19 | Mobile-first tap-target pass ≥44/48px, ≥8px spacing (S-20, session 65474d4f; Google Lighthouse guidance, source S19) | implemented 2026-11-19 | engineering |
 | SG-20 | Pick one product as the site's spine and let the other four support it | implemented 2026-11-20 (dual-basket air fryer is the front-page starting pick) | owner |
 | SG-21 | — | **retired 2026-11-20**: byte-identical duplicate of SG-20, kept as a retired row so the change is auditable | — |
-| SG-26 | One generated chrome for all pages: masthead, disclosure strip, footer | implemented 2026-11-20 | editorial |
-| SG-27 | Nav labels shortened to six, with a second-level shelf and an active state on every page | implemented 2026-11-20 | editorial |
-| SG-28 | Ship three working decision tools instead of describing them | implemented 2026-11-20 | editorial |
-| SG-29 | Surface the seasonal guide from the calendar, labelled as editorial judgement not traffic data | implemented 2026-11-20 | editorial |
-| SG-30 | One decision desk that summarises the three registers and offers three costed paths | implemented 2026-11-20 | owner |
+| SG-22 | Write the first-hand answer only after someone has actually used the appliance for a month | proposed | owner |
+| SG-23 | Make one page the definitive answer to "how big is it really" | implemented | editorial |
+| SG-24 | Give the site a named editor before giving it a voice | proposed | owner |
+| SG-25 | Stop calling it a decision log until decisions are actually recorded there | implemented | engineering |
+| SG-26 | — | **unoccupied ID** — no row in `data/suggestions.json` holds SG-26; the registered SG-27..SG-30 (below) are the canonical rows (registered by session e52053d1, T-37, because the register had ended at SG-25) | — |
+| SG-27 | One name for the Direction page, in the nav and the footer | implemented | engineering |
+| SG-28 | Ship the RSS feed and advertise it on every page | implemented | engineering |
+| SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
+| SG-30 | Decide how readers stay in touch: RSS only, or an email provider with consent | proposed | owner |
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
@@ -96,13 +100,20 @@ so the page and the data cannot disagree.
 | B | Make it a publication | Buy two units (DT-05), publish real measurements, fix cadence (DT-10) | Purchase price + recurring writing |
 | C | Narrow and harden | Cut to one family (DT-06), settle the URL (DT-09), clear owner-only questions | Time and one pruning decision |
 
-- [ ] **Path A — Steady publication:** one question-shaped guide per week, sitemap + RSS
-      updated each time; from guide nine onward, topics chosen from Search Console queries
-      (SG-18). No price re-checks — SG-03/SG-17 forbid it without the API.
-- [ ] **Path B — Conversion focus:** raster preview image (SG-16), self-hosted analytics
-      endpoint (SG-04), and email capture (SG-06) before any new content.
-- [ ] **Path C — Hold:** resolve FLG-001 (intended ASINs) and FLG-006 (Special Link test)
-      first, then choose A or B.
+- [ ] **Path A — Make it earn:** DT-01 one signed-in Special Link test per product, DT-07 the
+      analytics endpoint, DT-03 Search Console verified and the sitemap submitted — then one
+      guide, chosen from search data. Guide nine and any brand or domain change wait.
+- [ ] **Path B — Make it a publication:** DT-05 buy one air fryer and one thermometer (SG-06),
+      publish the measurements as method, name the author, fix the cadence at one guide a
+      month (DT-10). Costs money before it earns any.
+- [ ] **Path C — Narrow and harden:** DT-06 air fryers as the single beat, DT-09 settle the URL
+      before promoting it, clear the owner-only question rows; no new content until the desk
+      is empty.
+
+Superseded 2026-11-20: the checkbox list that previously lived here described different paths
+(“Steady publication / Conversion focus / Hold”) and mis-cited “analytics endpoint (SG-04)” and
+“email capture (SG-06)” — SG-04 is the guides-format proposal and SG-06 is the buy-units
+proposal. The table above, from `data/decisions.json`, is the only path definition now.
 
 **Chosen path:** _(none yet — 2026-11-20. Recording a path on `decisions.html` writes to the reader's browser only; the real record is this table.)_
 
@@ -116,6 +127,8 @@ so the page and the data cannot disagree.
 | 2026-11-19 | Mark every outbound Amazon link `rel="sponsored"` and open in a new tab | S04 | The gate walks every anchor |
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |
+| 2026-11-20 | Reconcile the path chooser on `direction.html` and in this file with the canonical paths in `data/decisions.json` (DT-01..DT-10); retire the stale “Steady publication / Conversion focus / Hold” wording and its wrong SG-04/SG-06 citations | session T-39 audit | The digest and the decision desk cannot disagree about what the three paths are |
+| 2026-11-20 | Reconcile the SG-26..SG-30 index rows with the registered SG-27..SG-30 (T-37); SG-26 recorded as an unoccupied ID | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
 
 ## Audit findings, session a25ccde6 (2026-11-19)
 

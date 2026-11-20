@@ -44,7 +44,7 @@
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
 | T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-26 | Final integration integrity pass: reconcile product-intent evidence, link/policy copy, automation claims, and flags; strengthen gates; re-run site and Pages release checks | done (2026-11-20, PR and Pages result below) | `arena/e83cdf55-prod3` | `data/verification.json`, `data/policy-checks.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `flagged.html`, `suggestions.html`, `questions.html`, `docs/verification.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `COORDINATION.md` |
-| T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (duplicate SG-20/SG-21, stale DIRECTION cross-references/index), reconcile the dual Pages deploy paths (legacy builder failing behind the artifact workflow), re-run all gates, PR → main, merge, confirm live deploy | in progress | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `data/suggestions.json`, generated pages (`suggestions.html`, `questions.html`, `citations.html`), `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, Pages repo settings (build_type), minor HTML copy fixes |
+| T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (stale DIRECTION cross-references and SG-22..30 index vs register, nine-article counts), flag the dual Pages deploy paths as FLG-022, re-run all gates, PR → main, merge, confirm live deploy | in progress | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, Pages repo settings (build_type) |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -90,6 +90,9 @@ via direct fetch. Findings (full detail in `data/products.json`):
 - FLG-013 — Emeril accessories count: six named in title/About vs "7 Accessories" config string.
 - FLG-014 — Reader email signup not connected (demo form with fake confirmation removed).
 - FLG-015 — Campaign ledger empty by design; no first-party reports yet.
+- FLG-016 — Social preview card not yet confirmed in an external share debugger (F-21/Q-21); PNG format shipped.
+- FLG-017 — B04G1MEwY resolves to the Amazon homepage on 2026-11-20; it resolved to B0CDY277D3 on 2026-11-19 (session 70e8475c). Cause not established; may be transient; owner check in the Associates workflow.
+- FLG-022 — Dual GitHub Pages deploy paths: the legacy branch builder races the artifact deploy and failed behind it (run 44686774699) while the live site served current content; settings change blocked by token permissions — owner one-click fix documented on `flagged.html` (session 09d7261c).
 
 ## Cross-scope requests
 
@@ -1143,3 +1146,63 @@ git diff --check                           clean
 - **Collision log:** T-25 was taken by PR #27 (arena/70e8475c), and T-26 by PR #30 (arena/e83cdf55). This session's first two claims were withdrawn and renumbered to T-37. No other session's work was overwritten; the history was kept with `-s ours` merges, not force-pushes.
 
 **PR and merge (T-38).** PR: https://github.com/wingbangboozle1-lang/Prod3/pull/33 (`arena/9f36f5ee-prod3` → `main`). Merge result is recorded in the next integration record after the merge.
+## Session `arena/09d7261c-prod3` — T-39 final integration round (2026-11-20)
+
+Scope: fresh line-by-line review of the post-rebuild tree, demonstrable-defect fixes only,
+Pages deploy reconciliation, gates, PR → main, merge, live confirmation. No product, price,
+rating, or account data was added; no owner-only gate was claimed.
+
+### Defects found and fixed (each verified before and after the edit)
+
+| Defect | Evidence before | Fix |
+|---|---|---|
+| `direction.html` path chooser contradicted the canonical paths in `data/decisions.json` | Buttons/callout/JS still described “Steady publication / Conversion focus / Hold” and mis-cited “analytics endpoint (SG-04)” and “email capture (SG-06)” — SG-04 is the guides-format proposal, SG-06 is the buy-units proposal | Chooser, callout and JS labels rewritten to the `data/decisions.json` paths (Make it earn / Make it a publication / Narrow and harden, DT-01/05/06/07/09/10), with the correction dated and the old wording acknowledged in place |
+| `DIRECTION.md` ledger index skipped SG-22..SG-25 while claiming to mirror `data/suggestions.json` | Index jumped SG-21 → SG-26 | Four rows added verbatim from the JSON (titles and statuses unchanged) |
+| `DIRECTION.md` carried the same stale checkbox path list | Same wrong SG-04/SG-06 citations | Replaced with the DT-based paths and a dated supersession note; decision log gains the 2026-11-20 row |
+| `DIRECTION.md` index rows SG-26..SG-30 described digest-only wording (chrome, nav labels, tools, seasonal, decision desk as "implemented") that never existed in `data/suggestions.json`, and after T-37 registered the canonical SG-27..SG-30 rows the digest and the register named different proposals | Register: SG-27 "One name for the Direction page", SG-28 "Ship the RSS feed…", SG-29/SG-30 proposed owner rows; digest kept 2ef30474's unregistered wording | Digest rows SG-27..SG-30 rewritten to mirror the register verbatim; SG-26 documented as an unoccupied ID with the reason; README register row now reads SG-01..SG-30 (SG-21 retired; SG-26 unoccupied) |
+| Both executive summaries said “eight question-shaped articles” | 9 articles ship since PR #26 (Thanksgiving plan added) | “nine … (eight evergreen guides plus the dated Thanksgiving temperature plan)” in `EXECUTIVE_SUMMARY.md` (2 places) and `executive-summary.html` (2 places) |
+| Board irregularity list stopped at FLG-015 while `flagged.html` published FLG-016/017 | List and page disagree | List extended with FLG-016/017 (from the published page) and the new deploy-path flag |
+| Dual Pages deploy paths | Run 44686774699 (legacy “pages build and deployment”) failed its deploy step after the PR #27 merge while run 44686775327 (`Deploy GitHub Pages`) succeeded on the same SHA and the live front page served current content (fetched and verified) | Flagged as FLG-022 with the exact manual remedy (Settings → Pages → Source: GitHub Actions); `PATCH /repos/…/pages {"build_type":"workflow"}` was attempted and returned HTTP 404 (automation token lacks the Administration permission) — recorded, not hidden |
+
+### Review performed (line-by-line, 2026-11-20)
+
+- All 12 data JSON files enumerated and read (`products`, `sources`, `citations`, `flagged`,
+  `suggestions`, `open-questions`, `decisions`, `policy-checks`, `verification`,
+  `analysis`, `campaign-ledger`, `campaigns`); counts cross-checked against the pages that
+  publish them (SG-01..SG-30 with SG-21 retired and SG-26 unoccupied, Q-01..Q-21, F-01..F-21,
+  FLG-001..FLG-022, DT-01..DT-10).
+
+### Collisions encountered and how they were resolved (no other session's work discarded)
+
+- Before this session's first push, `main` gained PRs #26 (shop-first rebuild),
+  #31 (T-37, SG-27..30 registration), #32 (T-26/e83cdf55) and #33 (T-38, FLG-020/021).
+- First rebase conflict: the board row. Sessions e83cdf55 and e52053d1 had both already used
+  the T-26 ID; per the board's one-identifier-one-meaning rule this session's claim was
+  renumbered **T-39** and their rows kept untouched.
+- Second rebase conflict (the work commit): FLG IDs had advanced to FLG-021 upstream, so this
+  session's deploy-path finding moved from FLG-018 to **FLG-022** in `flagged.html`, README,
+  and the board; git auto-merged the rest of the files (no content conflict).
+- `flagged.html` briefly carried two FLG-018 callouts mid-rebase (upstream's intent-provenance
+  flag and this session's deploy-path flag); resolved by renumbering this session's to FLG-022.
+  Upstream FLG-018/019/020/021 are untouched.
+- Board sections for all 13 prior sessions read; the `assets/brand.js` file named in the
+  T-30/T-31/T-35 scope rows does **not** exist in `assets/` — the seasonality/chrome logic
+  ships in `assets/decision-desk.js`, `assets/decision-tools.js` and `scripts/build_chrome.py`.
+  Logged here as a board-record inaccuracy; no code change made because no shipped file
+  references `brand.js` (grep across HTML/JS/PY/YML: 0 hits outside the board).
+- README release-workflow section and gate names re-checked against `.github/workflows/pages.yml`
+  (freshness gates → release gates → crawl → deploy).
+- Gates re-run after the edits: `build_chrome --check`, `build_registers --check`,
+  `build_decisions --check`, `build_sitemap --check` (all current), `tools/verify_site.py`
+  (release gate passed), `scripts/check_site.py` (all checks passed), `tools/check_site.py`
+  (30 pages, 3,631 assertions), `tools/crawl_links.py` (30 pages crawled, 0 broken links,
+  0 dead anchors, 0 orphans).
+
+### Not claimed / not verified here (unchanged owner gates)
+
+FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled workflow · FLG-010
+Associates account status · FLG-017 B04G1MEwY link check · Search Console (DT-03) ·
+analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_type setting
+(FLG-022, owner one-click). No new claims about traffic, conversion, or product superiority.
+
+(merge result and deploy confirmation recorded below after the PR merges)

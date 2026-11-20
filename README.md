@@ -55,7 +55,9 @@ The tools use Python's standard library; no third-party Python dependencies are 
 
 ## Release workflow
 
-`.github/workflows/pages.yml` runs the four `--check` freshness gates, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` and `tools/crawl_links.py` before deploying to GitHub Pages. On 2026-11-20 the same checks passed locally, including 30 HTML pages and 3,542 assertions, with 0 broken links and 0 orphans. That is an internal repository check; it does not re-fetch Amazon listings or verify Associates account settings.
+`.github/workflows/pages.yml` runs the four `--check` freshness gates, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` and `tools/crawl_links.py` before deploying to GitHub Pages. On 2026-11-20 the same checks passed locally, including 30 HTML pages and 3,631 assertions, with 0 broken links and 0 orphans. That is an internal repository check; it does not re-fetch Amazon listings or verify Associates account settings.
+
+**Deploy path note (FLG-022):** this workflow is the only deployer the site has ever shipped through. The repo's Pages build type is still set to `legacy`, so a second, redundant "pages build and deployment" run also triggers on every push to `main` and can fail its deploy step behind the successful artifact deploy without affecting the live site. The automation token cannot change that setting (`PATCH /pages` → HTTP 404); the one-click owner fix is Settings → Pages → Build and deployment → Source: **GitHub Actions**. Judge deploys by the `Deploy GitHub Pages` workflow and the live URL.
 
 The checks enforce site structure, disclosures, sponsored-link marking, source references, price restrictions, data provenance, and generated-page consistency. Historical audit details and the supporting official policy links are on [`sources.html`](sources.html), [`citations.html`](citations.html), and [`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md).
 
@@ -63,7 +65,7 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 
 | Register | Page | Data | IDs |
 |---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-25 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-30 (SG-21 retired in place; SG-26 unoccupied) |
 | Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
 | Decisions | `direction.html` | `DIRECTION.md` | dated rows |
 | Flagged findings | `flagged.html` | `data/flagged.json` | F-01..F-21 |

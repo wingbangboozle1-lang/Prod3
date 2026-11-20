@@ -38,14 +38,14 @@
 <main id="main"><div class="article" style="max-width:1000px">
 <p class="kicker">Direction · Decision log and path chooser</p>
 <h1>Direction: decisions, the path chooser, and where the registers live</h1>
-<p class="byline">Kitchen Counter · Updated 2026-11-19 · Decisions recorded here; proposals live in the suggestions register</p>
+<p class="byline">Kitchen Counter · Updated 2026-11-20 · Decisions recorded here; proposals live in the suggestions register</p>
 
 <p>This page is where the site's next moves are chosen. Each suggestion carries a status: <strong>implemented</strong> means it shipped and you can inspect it; <strong>proposed</strong> means it waits for a path. Each open question carries the concrete action that would answer it — and who can take that action. Nothing here is a claim about popularity, traffic, or product superiority.</p>
 
 <div class="callout"><strong>Current status (registers last generated 2026-11-19):</strong> the front page leads with product cards, chooser, seasonal guides, and comparison data. SG-17 keeps price display off unless compliant Amazon-served or API data is configured. F-21 / Q-21 concern whether the shipped 1200×630 PNG social-preview image renders in external share debuggers; the former SVG format issue is resolved. The complete suggestion list is in the <a href="suggestions.html">Suggestions register</a>.</div>
 
 <h2>Selected suggestion snapshot (SG-01 … SG-19)</h2>
-<p class="small muted">This embedded snapshot is not the full or authoritative list. Suggestions SG-20..SG-25 were added later; the complete current register, including options and recommendations, is <a href="suggestions.html">Suggestions (SG-01..SG-25)</a>.</p>
+<p class="small muted">This embedded snapshot is not the full or authoritative list. Suggestions SG-20..SG-30 were added later (SG-21 is retired in place as a duplicate of SG-20; SG-26 is unoccupied in the register); the complete current register, including options and recommendations, is <a href="suggestions.html">Suggestions (SG-01..SG-30)</a>.</p>
 <div class="table-wrap"><table>
 <thead><tr><th>#</th><th>Suggestion</th><th>Status</th><th>Effort</th><th>Confidence</th><th>Decided by</th></tr></thead>
 <tbody>
@@ -117,19 +117,20 @@
 <tr><td>2026-11-19</td><td>Keep intended ASIN and observed redirect in separate fields, never merged</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a></td><td><code>data/products.json</code> intent fields stay null until an owner confirms</td></tr>
 <tr><td>2026-11-19</td><td>Split suggestions, questions and decisions into three generated registers</td><td>Audit item I-01</td><td>SG-01 no longer names two different proposals on two pages</td></tr>
 <tr><td>2026-11-19</td><td>Every displayed figure must have a row in the citation log</td><td>Audit item I-05</td><td><code>data/citations.json</code> backs <a href="citations.html">citations.html</a>; the gate checks the page is fresh</td></tr>
+<tr><td>2026-11-20</td><td>The path chooser on this page and in DIRECTION.md mirrors the canonical paths in <code>data/decisions.json</code> (Make it earn / Make it a publication / Narrow and harden)</td><td>Session T-26 audit</td><td>The stale “Steady publication / Conversion focus / Hold” checkboxes and their wrong SG-04/SG-06 references were removed; SG-04 is the guides-format proposal and SG-06 the buy-units proposal</td></tr>
 </tbody></table></div>
 
 <h2>Path chooser</h2>
-<p>Choose one path. Record the choice here and in <code>DIRECTION.md</code>; unchosen suggestions stay proposals.</p>
+<p>Choose one path. The three paths below are the canonical ones defined in <code>data/decisions.json</code> and rendered on the <a href="decisions.html">decision desk</a>; this page mirrors them so the two cannot quietly disagree. Unchosen suggestions stay proposals.</p>
 <div class="chooser">
   <div class="opts" id="path-opts">
-    <button type="button" data-path="A">A — Steady publication (weekly guide; next topic from measured queries)</button>
-    <button type="button" data-path="B">B — Conversion focus (raster preview image + analytics endpoint + email capture before new content)</button>
-    <button type="button" data-path="C">C — Hold (fix FLG-001/006 first, then decide)</button>
+    <button type="button" data-path="A">A — Make it earn (fix links and measurement first, then write)</button>
+    <button type="button" data-path="B">B — Make it a publication (buy the two units, publish real measurements)</button>
+    <button type="button" data-path="C">C — Narrow and harden (one family; clear the owner-only questions)</button>
   </div>
-  <div class="result" id="path-result">No path chosen yet. Chosen path as of 2026-11-19: none recorded in DIRECTION.md.</div>
+  <div class="result" id="path-result">No path chosen yet. Chosen path as of 2026-11-20: none recorded in DIRECTION.md.</div>
 </div>
-<div class="callout warn"><strong>Path notes, honestly labeled:</strong> A is now compatible with the no-prices policy — it no longer promises price re-checks, only guide cadence gated on Search Console data (SG-18). B ships the preview image (SG-16), endpoint (SG-04), and capture (SG-06) before any ninth article. C remains the compliance-first option: Q-01, Q-02, Q-08 are all owner-only, and all three are cheap in minutes.</div>
+<div class="callout warn"><strong>Path notes, honestly labeled:</strong> A — <em>Make it earn</em> — runs DT-01 (one signed-in Special Link test per product), DT-07 (choose and stand up the analytics endpoint) and DT-03 (Search Console verified, sitemap submitted) before anything new is published; guide nine waits. B — <em>Make it a publication</em> — runs DT-05 (buy one air fryer and one thermometer, SG-06) and fixes the cadence (DT-10); it spends money before it earns any. C — <em>Narrow and harden</em> — runs DT-06 (air fryers as the single beat) and DT-09 (settle the URL before promoting it), and clears the owner-only questions; it delays all growth work. The old wording on this page — “analytics endpoint (SG-04), email capture (SG-06)” — named the wrong registers and was corrected on 2026-11-20; SG-04 is the guides-format proposal and SG-06 is the buy-units proposal.</div>
 
 <p class="mt"><a href="flagged.html">← Flagged for Review</a> · <a href="executive-summary.html">Executive summary →</a></p>
 </div></main>
@@ -157,7 +158,7 @@ document.querySelectorAll('#path-opts button').forEach(function(btn){
     document.querySelectorAll('#path-opts button').forEach(function(b){ b.setAttribute('aria-pressed','false'); });
     btn.setAttribute('aria-pressed','true');
     var p = btn.getAttribute('data-path');
-    var labels = { A: 'Path A — Steady publication: one guide per week, chosen from measured queries once Search Console has 30 days of data; sitemap + RSS updated each time.', B: 'Path B — Conversion focus: raster social preview (SG-16), self-hosted analytics endpoint (SG-04), and email capture (SG-06) before any new content.', C: 'Path C — Hold: resolve FLG-001 (intended ASINs) and FLG-006 (Special Link test) first, then choose A or B.' };
+    var labels = { A: 'Path A — Make it earn: DT-01 one signed-in Special Link test per product, DT-07 the analytics endpoint, DT-03 Search Console verified and sitemap submitted; then one guide, chosen from search data. Guide nine and any brand or domain change wait.', B: 'Path B — Make it a publication: DT-05 buy one air fryer and one thermometer, publish the measurements as method, name the author, fix the cadence at one guide a month (DT-10). Costs money before it earns any.', C: 'Path C — Narrow and harden: DT-06 air fryers as the single beat, DT-09 settle the URL before promoting it, clear the owner-only question rows; no new content until the desk is empty.' };
     document.getElementById('path-result').textContent = 'Chosen: ' + labels[p] + ' (recorded locally; update DIRECTION.md to make it official).';
   });
 });

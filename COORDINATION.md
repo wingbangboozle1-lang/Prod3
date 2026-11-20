@@ -805,13 +805,13 @@ session does not reopen them.
 
 | ID | Task | Status | Owner | File scope |
 |----|------|--------|-------|------------|
-| T-30 | Editorial voice pass: rewrite shop surfaces so products lead and the register reads as a publication (no claim, price or compliance wording weakened) | in progress | arena/2ef30474-prod3 | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/brand.js` (new), `assets/app.js` |
-| T-31 | Brand + navigation pass: one masthead group, consistent active state, publication framing, favicon/social card | in progress | arena/2ef30474-prod3 | `assets/brand.js` (new), `assets/style.css`, `assets/favicon.svg`, all `*.html` mastheads |
-| T-32 | Decision desk: one page where suggestions, open questions, missing information and paths can be reviewed and chosen | in progress | arena/2ef30474-prod3 | `decisions.html` (new), `DIRECTION.md`, `COORDINATION.md` |
-| T-33 | Register defect: `SG-20` and `SG-21` carry identical proposals (verified below) | in progress | arena/2ef30474-prod3 | `data/suggestions.json`, `suggestions.html` (generated), `direction.html` |
-| T-34 | Three working decision tools: comparison builder, measurement converter, oven-to-air-fryer cheat sheet | in progress | arena/2ef30474-prod3 | `tools/*.html` (new), `assets/decision-tools.js` (new) |
-| T-35 | Seasonality module: which guide a reader should see by month, stated as editorial judgement not demand data | in progress | arena/2ef30474-prod3 | `assets/brand.js`, `index.html`, `articles/holiday-kitchen-gift-guide.html` |
-| T-36 | Gate extension for the new surfaces; then integration PR → `main`, merge, confirm Pages | in progress | arena/2ef30474-prod3 | `tools/check_site.py`, `scripts/build_sitemap.py`, `.github/workflows/pages.yml`, all |
+| T-30 | Editorial voice pass: rewrite shop surfaces so products lead and the register reads as a publication (no claim, price or compliance wording weakened) | done | arena/2ef30474-prod3 | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/brand.js` (new), `assets/app.js` |
+| T-31 | Brand + navigation pass: one masthead group, consistent active state, publication framing, favicon/social card | done | arena/2ef30474-prod3 | `assets/brand.js` (new), `assets/style.css`, `assets/favicon.svg`, all `*.html` mastheads |
+| T-32 | Decision desk: one page where suggestions, open questions, missing information and paths can be reviewed and chosen | done | arena/2ef30474-prod3 | `decisions.html` (new), `DIRECTION.md`, `COORDINATION.md` |
+| T-33 | Register defect: `SG-20` and `SG-21` carry identical proposals (verified below) | done — SG-21 retired in place, gate D20 added | arena/2ef30474-prod3 | `data/suggestions.json`, `suggestions.html` (generated), `direction.html` |
+| T-34 | Three working decision tools: comparison builder, measurement converter, oven-to-air-fryer cheat sheet | done | arena/2ef30474-prod3 | `tools/*.html` (new), `assets/decision-tools.js` (new) |
+| T-35 | Seasonality module: which guide a reader should see by month, stated as editorial judgement not demand data | done | arena/2ef30474-prod3 | `assets/brand.js`, `index.html`, `articles/holiday-kitchen-gift-guide.html` |
+| T-36 | Gate extension for the new surfaces; then integration PR → `main`, merge, confirm Pages | done | arena/2ef30474-prod3 | `tools/check_site.py`, `scripts/build_sitemap.py`, `.github/workflows/pages.yml`, all |
 
 **Non-overlap:** no other session has a live claim (every earlier row is `done`, and its
 branch is merged). If a session appears while this one is running, this scope is
@@ -854,3 +854,41 @@ Observed redirect targets re-fetched 2026-11-20 from the live short links and co
 identical to the register for P-01 (`B0CDY277D3`) and P-05 (`B0DZFD6R9Z`); the remaining
 three were confirmed in the same way in this session's table run below. No new product
 fact, price, rating or test result is introduced by this session's copy.
+
+### Completion record — session `arena/2ef30474-prod3`
+
+**Re-verification performed 2026-11-20 (not carried forward from an earlier session):**
+
+| Check | Result |
+|---|---|
+| Five supplied short links re-fetched live | All resolve to the register's ASINs: B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z — no drift |
+| Amazon Program Policies re-read (§2(b) price + tag, IP License images) | Confirms the tagging requirement and the price rule the site is built around |
+| USDA FSIS safe-temperature chart | Re-read, last updated 14 April 2025; 145/160/165°F figures transcribed verbatim with rest times |
+| USDA FSIS probe-placement release | Re-read, 19 September 2023; the 92% mis-placement finding quoted from the release, not paraphrased into a stronger claim |
+| Internal crawl | 30 pages, 0 broken links, 0 dead anchors, 0 orphans |
+| Markup well-formedness | 30 of 30 pages parse with no unclosed or stray tags |
+| Gates | `build_chrome`, `build_registers`, `build_decisions`, `build_sitemap`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` (3542 assertions), `tools/crawl_links.py` — all pass |
+
+**Irregularity found and resolved:** `SG-20` and `SG-21` were byte-identical in
+`data/suggestions.json` (same title, problem, evidence, options, recommendation, effort,
+confidence, owner and blocks). SG-21 is retired in place with a `retired_note`; gate rule `D20`
+now fails the build if two live suggestions share a title. Reproduced and published on
+`decisions.html`; only the owner can confirm whether a different proposal was meant to occupy
+SG-21.
+
+**New surfaces:** `decisions.html` (generated), `tools/index.html`,
+`tools/compare-builder.html`, `tools/oven-converter.html`, `tools/cook-temperatures.html`,
+`articles/thanksgiving-temperature-plan.html`, `scripts/build_chrome.py`,
+`scripts/build_decisions.py`, `assets/decision-desk.js`, `assets/decision-tools.js`,
+`tools/crawl_links.py`, `data/decisions.json`.
+
+**New gate rules:** `D20` duplicate live suggestions · `D21` decisions freshness · `D22` chrome
+freshness · `D23`/`D24` decision evidence resolves · `D25`/`D26` question evidence resolves ·
+`D27`/`D28` tools exist, are sitemapped and are linked · `D29` USDA values verbatim ·
+`D30` seasonal guide surfaced.
+
+**Cross-scope requests:** none. No file outside this session's claimed scope was edited. The
+`articles/` body prose of the eight pre-existing guides is unchanged; only
+`articles/thanksgiving-temperature-plan.html` (new) was added.
+
+**Handoff / conflict log:** no other session held a live claim; no rebase conflict occurred.

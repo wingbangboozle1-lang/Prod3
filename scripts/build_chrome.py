@@ -69,6 +69,7 @@ FOOTER_GROUPS = [
     ]),
     ("Decision desk", [
         ("Ideas &amp; review", "ideas.html"),
+        ("Publishing plan", "publishing-plan.html"),
         ("Suggestions", "suggestions.html"),
         ("Open questions", "questions.html"),
         ("Information we still need", "decisions.html"),
@@ -175,6 +176,7 @@ def kicker_for(name):
         "compare.html": "Compare",
         "buying-guide.html": "Guides",
         "ideas.html": "Decision desk",
+        "publishing-plan.html": "Decision desk",
         "decisions.html": "Decision desk",
         "suggestions.html": "Decision desk",
         "questions.html": "Decision desk",

@@ -50,7 +50,7 @@ The tools use Python's standard library; no third-party Python dependencies are 
 - `compare.html`, `buying-guide.html` — comparison and decision framework
 - `products/` — five per-product spec pages, generated from `data/products.json` by `scripts/build_products.py`; each prints the listing's own contradictions and shows the blank intended-ASIN field as blank
 - `publishing-plan.html` — twelve dated guide proposals from `data/editorial-plan.json`, with the evidence each needs and whether it exists
-- `articles/` — thirteen question-shaped guides, included in `feed.xml` and `sitemap.xml`
+- `articles/` — fifteen question-shaped guides, included in `feed.xml` and `sitemap.xml`
 - `suggestions.html`, `questions.html`, `direction.html` — proposals, missing-information questions, and decisions
 - `sources.html`, `citations.html`, `flagged.html`, `disclosure.html`, `analytics.html`, `executive-summary.html`, `about.html` — source, disclosure, analytics, and trust pages
 - `suggestions.html`, `questions.html`, and `citations.html` are generated from JSON by `scripts/build_registers.py`; `decisions.html` by `scripts/build_decisions.py`; the masthead/disclosure/footer of every page by `scripts/build_chrome.py`. Do not hand-edit any of them.

@@ -755,18 +755,19 @@ for _id in sorted(set(re.findall(r"<strong>(FLG-\d{3}) —", _fpage))):
 # places, on a site whose whole claim is that the numbers are checked. The word
 # counts are compared, not the digits, because those are what the copy uses.
 _NUMWORD = {6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
-            11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen"}
+            11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen",
+            15: "fifteen", 16: "sixteen"}
 _guides = len(list((ROOT / "articles").glob("*.html")))
 check("D40-guide-count-known", _guides in _NUMWORD, f"{_guides} guides on disk; add the number word to D40")
 for _name, _html in docs.items():
-    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _html, re.I):
+    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _html, re.I):
         _said = _m.group(1).lower()
         _want = _NUMWORD.get(_guides, "")
         check("D40-guide-count", _said == _want,
               f"{_name}: says {_m.group(0)!r} but {_guides} guides ship ({_want})")
 for _f in ("README.md", "EXECUTIVE_SUMMARY.md"):
     _txt = (ROOT / _f).read_text(encoding="utf-8")
-    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _txt, re.I):
+    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _txt, re.I):
         check("D40-guide-count", _m.group(1).lower() == _NUMWORD.get(_guides, ""),
               f"{_f}: says {_m.group(0)!r} but {_guides} guides ship")
 
@@ -794,9 +795,7 @@ _sg_ids = {x["id"] for x in json.loads((ROOT / "data/suggestions.json").read_tex
 _q_ids = {q["id"] for q in json.loads((ROOT / "data/open-questions.json").read_text(encoding="utf-8"))["questions"]}
 for _name, _html in docs.items():
     for _sid in sorted(set(re.findall(r"\bSG-\d{2}\b", _html))):
-        if _sid == "SG-26" and _sid not in _sg_ids:
-            # documented gap era (FLG-029): nameable only with FLG-029 alongside;
-            # since SG-26 received a register row of its own, it resolves normally.
+        if _sid == "SG-26" and "SG-26" not in _sg_ids:  # gap id; nameable only with FLG-029
             check("D42-sg-refs-resolve", "FLG-029" in _html,
                   f"{_name} cites the SG-26 gap without naming FLG-029")
             continue
@@ -839,9 +838,7 @@ _families = (("SG", _reg_sg, r"\bSG-\d{2}\b"), ("Q", _reg_q, r"\bQ-\d{2}\b"),
 for _name, _txt in _surfaces.items():
     for _fam, _known, _pat in _families:
         for _tok in sorted(set(_re.findall(_pat, _txt))):
-            if _tok == "SG-26" and _tok not in _reg_sg:
-                # documented gap era (FLG-029); now that the register defines
-                # SG-26, its citations resolve like any other id.
+            if _tok == "SG-26" and _tok not in _known:  # gap id; nameable only with FLG-029
                 check("D44-id-refs", "FLG-029" in _txt,
                       f"{_name}: cites the SG-26 gap without naming FLG-029")
                 continue

@@ -73,7 +73,7 @@ options, and recommendations live there.
 | SG-58 | Publishing cadence: one question-shaped guide a month, joined to the sitemap and the feed on day one | implemented | owner |
 <!-- sg-index:end -->
 
-**Gap, 2026-11-20 (FLG-029):** the ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json`. This digest once listed a "one generated chrome for all pages" row carrying an id that does not exist in the register, and the suggestion-id finding is published as FLG-029 on `flagged.html`. Nothing is reconstructed to fill a number. Gate `D29` fails the build if this digest cites an id the register does not hold, and `scripts/build_digest.py` now generates the table above from the register so it cannot drift again.
+**Gap, 2026-11-20 (FLG-029) — since resolved:** the ID slot between SG-25 and SG-27 was unoccupied in `data/suggestions.json`, and this digest once listed a "one generated chrome for all pages" row carrying an id that does not exist in the register; the finding is published as FLG-029 on `flagged.html`. Nothing was reconstructed to fill a number. A row was registered in the slot on 2026-11-20 — SG-26, the reader-facing polish path — and `scripts/build_digest.py` generates the table above from the register so the index cannot drift again.
 
 SG-43..SG-47 were added 2026-11-20 (session `arena/7878cdbe-prod3`, T-54; renumbered twice while
 this branch was queued — first from SG-32..SG-36 after upstream 6bf60cac/8692a390 registered

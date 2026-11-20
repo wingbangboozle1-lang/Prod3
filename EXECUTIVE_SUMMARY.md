@@ -79,6 +79,22 @@ until the owner's test passes.
 
 ---
 
+# Addendum — 2026-11-20, session 2cd3bab9 (T-52)
+
+Task T-52. The first claim, T-46, was taken on `main` by PR #38. The second, T-48, was taken by PR #43, and the third, T-51, by PR #42. This pass ran on the merged tree of `origin/main` at `ddb50f8`.
+
+**Verified in this pass.** Six official pages were read on 2026-11-20: the Associates Operating Agreement (S01, updated October 15, 2025; §5 sentence matches the disclosure), Program Policies (S02, updated April 14, 2026, opening sections only), FTC Disclosures 101 (S03, November 2019), Google's outbound-links guidance (S04, last updated 2025-12-10 UTC), Creators API GetItems (S06, ASIN defined as a 10-character identifier), and NIST TN 2156 (S16). The spot-check did not cover S05, S10–S15, S17–S19 or S21–S25.
+
+**Checked on the merged tree.** The buying guide links all nine guides. All nine feed items carry the same title as their page H1. The publishing-coverage check in `tools/verify_site.py` (sitemap, feed, hub, cadence) passes; the eight gates pass.
+
+**Decision.** DT-10 (fixed monthly cadence) is marked decided, on the owner's instruction. One guide per calendar month; approver: the site owner; next guide due 2026-12-31 (`docs/publishing-cadence.md`). It is a rhythm, not a traffic or revenue forecast. DT-12 (promise or proposal for the twelve-week plan) remains open and is not decided here.
+
+**Five supplied links, 2026-11-20.** This pass also found all five to the Amazon homepage. That agrees with the third dated check recorded under FLG-025. No product record changed. The intended ASIN for every link stays blank (FLG-001). No link is called invalid (FLG-003).
+
+**New flags.** FLG-032: the coordination board repeats task IDs T-12 to T-23. An earlier note in this session said the T-20 to T-22 duplicates were removed; they are marked superseded, not deleted, so that note was wrong. FLG-033: 23 of 29 source entries have no verified value, so the register has no consistent fetch date.
+
+**Still not established.** Whether the supplied links work in the enrolled Associates account (FLG-006; Q-02, Q-04, Q-22). Account eligibility (FLG-010). The Pages deploy for this merge (see the board record for T-52).
+
 # Addendum — 2026-11-20, shop-first pass
 
 **What this session did, in one paragraph.** The site was accurate and read like an audit.
@@ -122,6 +138,8 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 **Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
 (31 pages, 4,073 assertions) and `tools/crawl_links.py` (31 pages, 0 broken links, 0 dead
+
+(31 pages, see the gate run recorded in COORDINATION.md) and `tools/crawl_links.py` (31 pages, 0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.
@@ -138,6 +156,18 @@ The official policy and guidance sources are indexed in the [source register](so
 | 6 — publication polish | Validate the shipped PNG preview with a social share debugger; then decide whether an approved brand/domain update is worthwhile | Design assets are in place, but preview rendering and brand preferences are not confirmed | Record debugger result and the owner-approved brand/domain decision | Do not claim the social preview was externally validated yet | [Google snippet guidance](https://developers.google.com/search/docs/appearance/snippet) |
 
 The editorial hypotheses already in the guide plan include “Basket or oven-style air fryer: what should you compare?”, “A no-hype checklist for comparing air fryer capacity”, “How to assess cleanup and counter-space trade-offs”, and “Questions to ask before buying a multi-function kitchen appliance.” These are working topics—not claims about search volume, popularity, or product superiority.
+
+## Design and content decisions awaiting review
+
+The suggestions register (`suggestions.html`, generated from `data/suggestions.json`) carries three additions from this review round (SG-32..SG-34), each with its problem, evidence, options, recommendation, decision owner, and a Do / Maybe / No mark that copies out as a decision block. Nothing is implemented by being listed; the ideas review page (`ideas.html`) is where a choice gets marked before anything is built.
+
+| ID | Suggestion | Status | Decided by |
+|---|---|---|---|
+| SG-32 | Lead the front page with a buyer question and five shop cards, not with the audit trail | Implemented — live on the front page and both category pillars | editorial |
+| SG-33 | Publish catchy, trend-led question articles to earn organic traffic (seasonal calendar; Search Console is the gate before guide nine) | Proposed | editorial |
+| SG-34 | Review every change in the suggestions section before anything is built | Implemented — the suggestions page, questions page, ideas review page and decision desk ship today | owner |
+
+The open question that discovers missing information for the traffic path is Q-24: “Which of the trend-led article topics earns impressions, and should guide nine be one of them?” — queued, and unanswerable until Q-18 (Search Console verification) is done.
 
 ## Questions that must be answered before consequential decisions
 
@@ -165,3 +195,40 @@ The repository's current release checks pass on the reviewed tree: `python3 scri
 - [Flagged for Review](flagged.html)
 - [Analytics and privacy status](analytics.html)
 - [Sources](sources.html)
+
+# Addendum — 2026-11-20, reader-first repair (session arena/0b7a3dd6-prod3)
+
+**What this session changed.** Two buy buttons were repaired rather than re-worded, and four
+defects found by reading the tree against its own registers were fixed.
+
+1. **The dual-basket buy button.** `compare.html` and the holiday gift guide still sent readers
+   through `link.amazon/B04G1MEwY` — the one supplied link recorded as ending at Amazon's
+   homepage — while `index.html` and `air-fryers.html` already used the product page. All four
+   agree now. The short link is unchanged on the evidence pages and is still described as
+   unresolved, not invalid.
+2. **The ThermoMaven button is disputed, not broken.** Three same-day checks disagree about where
+   the supplied links land (FLG-025, FLG-031). The recorded decision in FLG-019 not to swap buttons
+   to bare `/dp/` URLs (it would remove tracking) is respected: the button is unchanged and a
+   fallback product link plus both readings now sit beneath it.
+3. **Duplicate flag identifiers.** `flagged.html` carried two different cards numbered FLG-020 and
+   two numbered FLG-021, so following either citation could land on the wrong card. Resolved (now
+   recorded as FLG-027). Gate `D19` ended in `or True` and could never fail; it now fails on a
+   repeated identifier and was negative-tested.
+4. **Seven product links were indistinguishable.** A bare "Listing" ×5, "Amazon listing" ×5 and
+   "Check price" ×5 pointed at different products. Each now names its ASIN in text and
+   `aria-label`; new gate `P14b-unique-link-name`.
+5. **One review surface.** `ideas.html` now opens with a brief generated from the registers — its
+   counts cannot drift — carrying the seven decisions in dependency order, fifteen
+   missing-information rows (each with the exact place the answer lives), and ten question-shaped
+   research directions with the source each would need. Gated by `build_ideas.py --check`.
+
+**What was not done, and why.** This build environment could reach only `github.com` and package
+registries; `amazon.com`, the Associates policy pages, `ftc.gov` and `developers.google.com` were
+not reachable. **No listing or policy page was re-fetched and no new observation date is
+published.** Every change above is a consistency check of the tree against its own registers plus
+source-code fixes. That limit is published to the reader on `ideas.html` §4. No browser binary
+could be downloaded, so no screenshot-based visual check was performed and none is claimed.
+
+**Open for the owner, unchanged:** FLG-001 intended ASINs · FLG-006 Special Link test · FLG-010
+account status · FLG-025/031 link resolution · **FLG-026: no shipped link carries a visible tag
+parameter** · Search Console (Q-18) · analytics endpoint (Q-13).

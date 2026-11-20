@@ -44,7 +44,7 @@ The tools use Python's standard library; no third-party Python dependencies are 
 ## Site map
 
 - `index.html` — shop front: a named starting pick with a "look elsewhere if", the rest of the short list, the chooser, the seasonal block, all guides, the full data table
-- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-12), every unanswered question (Q-01..Q-26) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
+- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-12), every unanswered question (Q-01..Q-27) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
 - `tools/` — comparison builder, oven-to-air-fryer converter, USDA cook-to-temperature card
 - `air-fryers.html`, `meat-thermometers.html` — category hubs
 - `compare.html`, `buying-guide.html` — comparison and decision framework
@@ -71,12 +71,12 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 <!-- build-registers-table:start -->
 | Register | Page | Data | IDs | Count |
 |---|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-35 (SG-21 retired in place); unoccupied: SG-26 | 34 rows |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-26 | 26 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-38 (SG-21 retired in place); unoccupied: SG-26 | 37 rows |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-27 | 27 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | - |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | dated proposals | 12 |
-| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-017..FLG-029, F-01..F-21 | 29 in the data file |
+| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-017..FLG-033, F-01..F-21 | 31 in the data file |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | 21 |
 <!-- build-registers-table:end -->
 

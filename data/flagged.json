@@ -430,6 +430,30 @@
         "S02"
       ],
       "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-032",
+      "severity": "medium",
+      "area": "Coordination board: duplicate task identifiers",
+      "product": "COORDINATION.md",
+      "detail": "The board has two or more rows for each of T-12 to T-23 (T-16 and T-17 have three and four). Each duplicate pair has a different scope. Some duplicates are marked superseded or done, but the rows are not removed. Session 2cd3bab9 wrote earlier that the duplicate in-progress rows for T-20 to T-22 had been removed. That was wrong: they are marked superseded, not deleted.",
+      "why_it_matters": "The board rule is one identifier, one meaning. A reader who looks up T-17 finds four different tasks.",
+      "action": "Owner or the next integration session: decide whether superseded rows are kept as history or consolidated. Rows of other sessions are not edited in this pass.",
+      "status": "open — duplicates recorded; no rows removed or renumbered in this pass",
+      "sources": [],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-033",
+      "severity": "low",
+      "area": "Source register: no consistent per-row fetch date",
+      "product": "data/sources.json; sources.html",
+      "detail": "Of the 29 source entries, 23 have no verified value. The updated field mixes publication or update dates (for example 2025-10-15, 2019-11) with fetch dates (for example 'fetched 2026-11-19').",
+      "why_it_matters": "A reader cannot tell when a page was last read, or whether a quotation still matches the page.",
+      "action": "Owner or integration session: add a fetch-date field to each source entry, separate from the publisher's update date. Until then, treat each quotation as dated to the date of the record only where one is stated.",
+      "status": "open — recorded; no source entry changed in this pass",
+      "sources": [],
+      "sources_checked": "2026-11-20"
     }
   ]
 }

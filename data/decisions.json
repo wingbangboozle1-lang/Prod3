@@ -144,7 +144,7 @@
       "effort": "S",
       "who": "owner",
       "blocks": "Whether this is a publication or a finished project.",
-      "status": "open",
+      "status": "decided",
       "sources": [],
       "evidence_status": "unverified"
     },

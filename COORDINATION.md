@@ -1902,3 +1902,20 @@ Gates on this tree: all eight pass (39 pages, 5,906 assertions).
 | T-43 | done — M-01..M-15 missing-information table + ten research directions, in the brief |
 | T-44 | done — duplicate spec strip removed; unique product-named link text on every outbound link |
 | T-45 | done — PR #53 merged, both deploy paths green, record above |
+
+### T-51 follow-up: second flag-id collision (post-merge, session `arena/d42249a7-prod3`)
+
+After PR #54 merged (`9c367f3`), the live `flagged.html` showed that two flags had been published as **FLG-035** and **FLG-036** for different
+subjects while this session's policy-citation and article-duplication findings held the same two numbers in `data/flagged.json`. Gate `D32` did not
+catch it because the two sets of headings did not coexist in the same build until the merge.
+
+Fix: the two **late additions** were renumbered to **FLG-037** (policy clause letters) and **FLG-038** (repeated article block and duplicated
+card markup). The published FLG-034 (listing-conflict ids lost in an earlier renumbering) and the published FLG-035/FLG-036 records are untouched.
+The renumbering rule applied throughout: **a record that was already published keeps its number; the later addition moves.** All references
+(`EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `decisions.html`, `ideas.html`, `scripts/build_ideas.py`, `data/flagged.json`,
+`flagged.html`) were updated together and the generated pages rebuilt.
+
+A third gate now makes this class of error loud: **`D39-flag-citation`** fails the build when a page cites a flag id that is not defined as a
+heading on `flagged.html` — which is exactly how the stale `(FLG-035)` reference in `ideas.html` was caught one build after the renumbering.
+
+All ten gates pass on the final tree (39 pages, 5,859 assertions; `crawl_links` 0 broken links, 0 orphans).

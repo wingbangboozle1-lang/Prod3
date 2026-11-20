@@ -2867,6 +2867,27 @@ share-debugger check (F-21/Q-21) · Pages `build_type` setting (FLG-024, owner o
 FLG-033 source-register fetch dates · remaining FLG-032 duplicates. No new claims about traffic,
 conversion, or product superiority.
 
+### Merge and deploy record (T-73)
+
+- **PR #83:** https://github.com/wingbangboozle1-lang/Prod3/pull/83 (`arena/d52ad947-prod3` → `main`),
+  head `7eecc8f`, merged with `gh pr merge 83 --merge`, mergedAt **2026-11-20T07:36:39Z**, merge commit
+  `6455932205`. Merged without waiting for approval, per the project instructions. No `--auto`.
+- **Pre-merge gates:** all green on the branch (scripts/check_site, verify_site, tools/check_site with
+  42 pages / 6,894 assertions, crawl_links with 0 broken links, four `--check` freshness gates,
+  build_readme regeneration).
+- **GitHub Pages:** `Deploy GitHub Pages` run `44696238266` — **success** on `6455932`. The legacy
+  `pages build and deployment` run also triggered (the FLG-024 dual path is unchanged; judge deploys by
+  the workflow and the live URL).
+- **Live check (fetched, not assumed):** after the deploy,
+  https://wingbangboozle1-lang.github.io/Prod3/data/products.json serves the ce911db5 transcription
+  entry ("arena/ce911db5-prod3 (T-41; transcribed verbatim by arena/d52ad947-prod3)") and the
+  d52ad947 fifth-pass entry inside P-01's `short_link_rechecks`.
+- **Handoff note:** while PR #83 was open, sessions `ba8e7240` (PR #84) and `aa7b8dd8` (PRs #88/#89)
+  copied this session's board rows and record into `main` verbatim without the underlying data work.
+  The work itself lands with PR #83; both records are kept and the ownership stays as written
+  (`arena/d52ad947-prod3`). A further same-day link pass (session `1fbc2432`, recorded in
+  `data/recheck-2026-11-20-1fbc2432.json` and the FLG-025 callout) landed concurrently; the pass
+  counts in this session's records reflect what was known at record time.
 ### Independent confirmation of the merged clause correction
 
 This session's verbatim reads agree with the clause-letter correction already on `main`

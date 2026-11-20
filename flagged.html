@@ -100,6 +100,8 @@
 
 
 
+<div class="callout warn"><strong>FLG-032 — Two listing conflicts lost their register ids in the 2026-11-20 renumbering, and one of them survives only as an unnumbered row.</strong> FLG-022 used to label the P-01 capacity conflict (title and bullets say 6 quarts; the details table says 6 liters) and FLG-023 the P-03 temperature and wattage conflict (450°F in the title; 200–400°F in the specification table; 1000W in one bullet; 1700W in the table). Both ids were later reallocated during a renumbering pass, so the two findings no longer have ids of their own: the capacity conflict exists only as <code>F-01</code> in <code>data/flagged.json</code>, and the temperature conflict as <code>F-02</code>, partly duplicated by FLG-031. Both readings are still published on the product cards and in <code>data/products.json</code>, so no reader sees only one number. <strong>Action for the register owner:</strong> give the two findings permanent ids, or fold them into F-01/F-02 deliberately. The citation gate D32 now fails on a flag id that is not defined here, which is how this was found — but a gate cannot tell whether a finding should have kept its id. Sources: <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">official listing B0CDY277D3</a> (S29) · <a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener">official listing B08DKYBTPH</a> (S31).</div>
+
 <p class="mt"><a href="sources.html">← Back to the source register</a> · <a href="direction.html">Direction &amp; open questions →</a></p>
 </div></main>
 

@@ -91,7 +91,7 @@ MISSING = [
      "Verify the property in Search Console and submit sitemap.xml. Query impressions then replace instinct as the input to the next topic.",
      "10 min + a few weeks of data"),
     ("M-07", "Whether the ratings and review counts may be displayed at all",
-     "The site displays none. The clause it once cited for that rule - Program Policies 2(t) - was not located in Section 2 on 2026-11-20, so the citation is marked, not quoted (FLG-020).",
+     "The site displays none. The rule is real and was located on 2026-11-20: it is Participation Requirements <strong>&sect;6(t)</strong>, under &ldquo;Content on your Site&rdquo; &mdash; not Section 2, which has only (a) and (b). The clause is quoted with its read date in <code>data/policy-clause-map.json</code> (FLG-035).",
      ("registered", "S02"),
      "Read the Participation Requirements against the current policies page and record the clause number, or leave ratings off. The site's conduct does not depend on the answer.",
      "20 min of reading"),

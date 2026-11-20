@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "premise": "A decision made on missing information is a guess wearing a suit. Each entry states what is known, what is not, why it blocks a decision, and the cheapest concrete action that would answer it. Q-22 and Q-23 were added 2026-11-20 by session ce911db5; the account-status question had been described in DIRECTION.md but never registered (FLG-020).",
   "status_scale": {
     "blocking": "A decision is on hold until this is answered.",
@@ -396,6 +396,81 @@
         "S02"
       ],
       "evidence_status": "observed"
+    },
+    {
+      "id": "Q-24",
+      "group": "Links",
+      "question": "Does the link.amazon redirect attach tag=shopnow047c-20 to the destination URL?",
+      "blocks": "Whether the five buy links can be credited at all. Every earning claim depends on it.",
+      "known": "Program Policies §2(b) require the tag as a parameter in the URL of each link to an Amazon Site. None of the 23 shipped link.amazon anchors and none of 192 amazon.com anchors contain a tag parameter (FLG-026).",
+      "unknown": "Whether the short-link service appends the tag during the redirect. This is not visible from a plain fetch, because the fetch follows to a page that does not display the referrer's tag.",
+      "how_to_find_out": "Signed in to Associates, click one supplied link once in a normal browser. In the Associates report, check that the click appears within the reporting window, then open the same link with the redirect chain visible (browser dev tools → Network → preserve log) and read whether tag= appears on the amazon.com URL.",
+      "who": "owner",
+      "cost": "10 minutes, signed in",
+      "status": "owner-only",
+      "changes": "Whether the buy buttons can stay pointed at the supplied short links or must be replaced with freshly generated Special Links (DT-01).",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "evidence_status": "observed"
+    },
+    {
+      "id": "Q-25",
+      "group": "Links",
+      "question": "Why did all five supplied links end at the Amazon homepage on the third check, when four of five reached product pages earlier the same day?",
+      "blocks": "Nothing structurally, but it decides whether the buy buttons should keep pointing at the short links.",
+      "known": "Four dated observations exist: 2026-11-19 all five reached product pages; 2026-11-20 session 70e8475c one of five reached the homepage; session ce911db5 two of five; session 6bf60cac all five (FLG-017, FLG-023, FLG-025). No record is overwritten.",
+      "unknown": "Whether the change is geographic, time-of-day, a per-fetch rate limit, a change on Amazon's side, or something about the fetching client. No logs are available to the site.",
+      "how_to_find_out": "Owner clicks all five while signed in, at three times of day, and records the landing page each time. Comparing those with the site's records is the only test that separates a link problem from a fetch-method problem.",
+      "who": "owner",
+      "cost": "15 minutes across one day",
+      "status": "blocking",
+      "changes": "Whether the site describes the supplied links as working, unresolved, or in need of replacement.",
+      "sources": [
+        "S15",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "evidence_status": "observed"
+    },
+    {
+      "id": "Q-26",
+      "group": "Editorial",
+      "question": "Who signs off the twelve-week plan, and what happens to a row whose evidence never arrives?",
+      "blocks": "The publishing cadence, and whether the plan page stays honest as weeks pass.",
+      "known": "Twelve rows are proposed in data/editorial-plan.json with dated calendar hooks; four are partly or wholly blocked on a figure no source publishes.",
+      "unknown": "Whether the owner wants a blocked row dropped, replaced, or held in place with its gap named. Each choice produces a different page.",
+      "how_to_find_out": "A decision on the plan page itself: mark each row Do this / Maybe / No (the same control the ideas register uses), and record the choice.",
+      "who": "owner",
+      "cost": "10 minutes to read the table",
+      "status": "queued",
+      "changes": "Whether the plan page describes proposals or commitments.",
+      "sources": [
+        "S21"
+      ],
+      "evidence_status": "observed"
+    },
+    {
+      "id": "Q-27",
+      "group": "Content",
+      "question": "Which of the trend-led article topics earns impressions, and should guide nine be one of them?",
+      "blocks": "Choosing the ninth article from measured demand (SG-18, SG-37); depends on Q-18 first.",
+      "known": "No Search Console impressions or query data exist yet (F-17). Q-18 must be answered before any topic can be chosen from data.",
+      "unknown": "Which question clusters around air fryers and meat thermometers actually bring qualified visitors, and whether a seasonal topic or a specification topic wins.",
+      "how_to_find_out": "After Q-18 is answered (Search Console verified and sitemap submitted), review the Queries report after enough data accrues, pick a cluster with impressions and no dedicated page, and write guide nine around it.",
+      "who": "owner",
+      "cost": "10 minutes after Q-18",
+      "status": "queued",
+      "changes": "The topic and timing of guide nine.",
+      "sources": [
+        "S21",
+        "S24"
+      ],
+      "evidence_status": "verified"
     }
   ],
   "sources_note": "Each question carries the registered source IDs of the official document that speaks to it, or an empty list plus evidence_status='unverified' when no official document settles it. Nothing is cited that does not answer the question."

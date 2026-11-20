@@ -45,8 +45,7 @@
         "FLG-007",
         "FLG-011",
         "FLG-012",
-        "FLG-017",
-        "FLG-022"
+        "FLG-017"
       ],
       "newer_model_note": null,
       "citation": {
@@ -72,16 +71,17 @@
         "intended_asin_changed": false,
         "flag": "FLG-017"
       },
-      "official_listing_check_2026_11_20": {
+      "live_recheck_2026_11_20_link_check": {
         "date": "2026-11-20",
-        "asin_checked": "B0CDY277D3",
-        "listing_url": "https://www.amazon.com/dp/B0CDY277D3",
-        "source": "S29",
-        "method": "fetch_page of the official Amazon product page; each value read from the page text",
-        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
-        "conflicts": [
-          "Capacity: title/bullets 6 quarts (2 × 3 qt) vs details table 6 liters (FLG-022)"
-        ]
+        "session": "arena/6bf60cac-prod3 (T-46)",
+        "method": "fetch_page of each supplied link.amazon URL; the final URL reported by the fetch was read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "result": "Final URL was https://www.amazon.com/ (the Amazon.com homepage) for every one of the five supplied links. No /dp/ ASIN in the final URL.",
+        "attempts": 1,
+        "flag": "FLG-025",
+        "submitted_link": "https://link.amazon/B04G1MEwY",
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_record": null,
+        "note": "Third dated observation for this link. Neither earlier observation is overwritten."
       }
     },
     {
@@ -152,13 +152,17 @@
         "intended_asin_changed": false,
         "flag": null
       },
-      "official_listing_check_2026_11_20": {
+      "live_recheck_2026_11_20_link_check": {
         "date": "2026-11-20",
-        "asin_checked": "B09B7SB46R",
-        "listing_url": "https://www.amazon.com/dp/B09B7SB46R",
-        "source": "S30",
-        "method": "fetch_page of the official Amazon product page; each value read from the page text",
-        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says"
+        "session": "arena/6bf60cac-prod3 (T-46)",
+        "method": "fetch_page of each supplied link.amazon URL; the final URL reported by the fetch was read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "result": "Final URL was https://www.amazon.com/ (the Amazon.com homepage) for every one of the five supplied links. No /dp/ ASIN in the final URL.",
+        "attempts": 1,
+        "flag": "FLG-025",
+        "submitted_link": "https://link.amazon/B02NbDxp3",
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_record": null,
+        "note": "Third dated observation for this link. Neither earlier observation is overwritten."
       }
     },
     {
@@ -201,8 +205,7 @@
         "FLG-006",
         "FLG-007",
         "FLG-011",
-        "FLG-012",
-        "FLG-023"
+        "FLG-012"
       ],
       "newer_model_note": "B0CNY1YVDD (Chefman 6 QT Compact) — listed on the product page — cross-promotion wording on the seller page, not an obsolescence statement",
       "citation": {
@@ -228,17 +231,17 @@
         "intended_asin_changed": false,
         "flag": null
       },
-      "official_listing_check_2026_11_20": {
+      "live_recheck_2026_11_20_link_check": {
         "date": "2026-11-20",
-        "asin_checked": "B08DKYBTPH",
-        "listing_url": "https://www.amazon.com/dp/B08DKYBTPH",
-        "source": "S31",
-        "method": "fetch_page of the official Amazon product page; each value read from the page text",
-        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
-        "conflicts": [
-          "Temperature: title 450°F vs bullets/spec 200–400°F (FLG-023)",
-          "Wattage: resource bullet 1000W vs spec table 1700W (FLG-023)"
-        ]
+        "session": "arena/6bf60cac-prod3 (T-46)",
+        "method": "fetch_page of each supplied link.amazon URL; the final URL reported by the fetch was read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "result": "Final URL was https://www.amazon.com/ (the Amazon.com homepage) for every one of the five supplied links. No /dp/ ASIN in the final URL.",
+        "attempts": 1,
+        "flag": "FLG-025",
+        "submitted_link": "https://link.amazon/B00hJ57DV",
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_record": null,
+        "note": "Third dated observation for this link. Neither earlier observation is overwritten."
       }
     },
     {
@@ -305,13 +308,17 @@
         "intended_asin_changed": false,
         "flag": null
       },
-      "official_listing_check_2026_11_20": {
+      "live_recheck_2026_11_20_link_check": {
         "date": "2026-11-20",
-        "asin_checked": "B0DHZTCNR5",
-        "listing_url": "https://www.amazon.com/dp/B0DHZTCNR5",
-        "source": "S32",
-        "method": "fetch_page of the official Amazon product page; each value read from the page text",
-        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says"
+        "session": "arena/6bf60cac-prod3 (T-46)",
+        "method": "fetch_page of each supplied link.amazon URL; the final URL reported by the fetch was read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "result": "Final URL was https://www.amazon.com/ (the Amazon.com homepage) for every one of the five supplied links. No /dp/ ASIN in the final URL.",
+        "attempts": 1,
+        "flag": "FLG-025",
+        "submitted_link": "https://link.amazon/B0c8moW59",
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_record": null,
+        "note": "Third dated observation for this link. Neither earlier observation is overwritten."
       }
     },
     {
@@ -379,21 +386,23 @@
         "intended_asin_changed": false,
         "flag": null
       },
-      "official_listing_check_2026_11_20": {
+      "live_recheck_2026_11_20_link_check": {
         "date": "2026-11-20",
-        "asin_checked": "B0DZFD6R9Z",
-        "listing_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
-        "source": "S33",
-        "method": "fetch_page of the official Amazon product page; each value read from the page text",
-        "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
-        "conflicts": [
-          "Battery life 50 h vs 70 h; warranty 2 vs 3 years (FLG-003)"
-        ]
+        "session": "arena/6bf60cac-prod3 (T-46)",
+        "method": "fetch_page of each supplied link.amazon URL; the final URL reported by the fetch was read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "result": "Final URL was https://www.amazon.com/ (the Amazon.com homepage) for every one of the five supplied links. No /dp/ ASIN in the final URL.",
+        "attempts": 1,
+        "flag": "FLG-025",
+        "submitted_link": "https://link.amazon/B0f3GKalj",
+        "matches_2026_11_19_observed_asin": false,
+        "matches_other_2026_11_20_record": null,
+        "note": "Third dated observation for this link. Neither earlier observation is overwritten."
       }
     }
   ],
   "price_snapshot_note": "price_observed fields are archival snapshots dated 2026-11-19. Observation time and delivery location were not recorded; prices are not current offers. See FLG-012.",
   "claim_basis": "Specs, ratings, and prices are seller/listing statements from the snapshot. Claim-marked fields (accuracy, certification, response time, heat-safe ratings, function names) are marketing claims the site has not tested. See FLG-009.",
   "citation_policy": "Every value rendered on the site must trace to one of: (a) a dated fetch of the official listing, (b) a dated fetch of an official policy page, or (c) arithmetic over (a) that states its inputs. Values with no such trace are left blank and published on flagged.html. See data/citations.json.",
-  "verified_on_live_recheck": "2026-11-20"
+  "verified_on_live_recheck": "2026-11-20",
+  "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-023 and FLG-025."
 }

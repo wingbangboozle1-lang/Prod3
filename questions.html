@@ -38,7 +38,7 @@
 <main id="main"><div class="article" style="max-width:1100px">
 <p class="kicker">Direction · Open questions</p>
 <h1>The questions that have to be answered before the next decision</h1>
-<p class="byline">Kitchen Counter · Register updated 2026-11-19 · 23 open questions, grouped by what they block</p>
+<p class="byline">Kitchen Counter · Register updated 2026-11-20 · 27 open questions, grouped by what they block</p>
 
 <p>A decision made on missing information is a guess with better manners. Each row states what is known, what is not, why it matters, and the cheapest concrete action that would settle it. Machine-readable copy: <code>data/open-questions.json</code>.</p>
 
@@ -128,7 +128,7 @@
   <td><span class="small">owner · 5 minutes</span><br><span class="badge grey">owner-only</span></td>
   <td class="small"><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></td>
 </tr>
-</tbody></table></div><h2>Content (4)</h2>
+</tbody></table></div><h2>Content (5)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
 <tbody>
@@ -167,6 +167,15 @@
   <td><span class="small">After 60 days, sort the Pages report by impressions. Any page with zero impressions earns a rewrite, a merge, or a removal — decided with data, not taste.</span></td>
   <td><span class="small">owner · 60 days and one report</span><br><span class="badge grey">watch</span></td>
   <td class="small"><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">S21</a></td>
+</tr>
+<tr>
+  <td><strong>Q-27</strong></td>
+  <td><strong>Which of the trend-led article topics earns impressions, and should guide nine be one of them?</strong><br><span class="small muted">Blocks: Choosing the ninth article from measured demand (SG-18, SG-37); depends on Q-18 first.</span></td>
+  <td><span class="small">No Search Console impressions or query data exist yet (F-17). Q-18 must be answered before any topic can be chosen from data.</span></td>
+  <td><span class="small">Which question clusters around air fryers and meat thermometers actually bring qualified visitors, and whether a seasonal topic or a specification topic wins.</span></td>
+  <td><span class="small">After Q-18 is answered (Search Console verified and sitemap submitted), review the Queries report after enough data accrues, pick a cluster with impressions and no dedicated page, and write guide nine around it.</span></td>
+  <td><span class="small">owner · 10 minutes after Q-18</span><br><span class="badge grey">queued</span></td>
+  <td class="small"><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">S21</a> · <a href="https://developers.google.com/search/docs/appearance/snippet" rel="noopener">S24</a></td>
 </tr>
 </tbody></table></div><h2>Measurement (3)</h2>
 <div class="table-wrap"><table>
@@ -273,7 +282,7 @@
   <td><span class="small">editorial · 10 minutes with a browser</span><br><span class="badge grey">queued</span></td>
   <td class="small"><span class="unverified">No official source</span></td>
 </tr>
-</tbody></table></div><h2>Links (1)</h2>
+</tbody></table></div><h2>Links (3)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
 <tbody>
@@ -285,6 +294,24 @@
   <td><span class="small">Signed in, open each of the five links once. Note the final URL, whether it lands on the product or the homepage, and whether it carries tag=shopnow047c-20. Then check Link Reports for a same-day click. If a link still lands on the homepage there, regenerate that Special Link from the product page with SiteStripe and record the new URL.</span></td>
   <td><span class="small">owner · 15 minutes, signed in</span><br><span class="badge grey">blocking</span></td>
   <td class="small"><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></td>
+</tr>
+<tr>
+  <td><strong>Q-24</strong></td>
+  <td><strong>Does the link.amazon redirect attach tag=shopnow047c-20 to the destination URL?</strong><br><span class="small muted">Blocks: Whether the five buy links can be credited at all. Every earning claim depends on it.</span></td>
+  <td><span class="small">Program Policies §2(b) require the tag as a parameter in the URL of each link to an Amazon Site. None of the 23 shipped link.amazon anchors and none of 192 amazon.com anchors contain a tag parameter (FLG-026).</span></td>
+  <td><span class="small">Whether the short-link service appends the tag during the redirect. This is not visible from a plain fetch, because the fetch follows to a page that does not display the referrer&#x27;s tag.</span></td>
+  <td><span class="small">Signed in to Associates, click one supplied link once in a normal browser. In the Associates report, check that the click appears within the reporting window, then open the same link with the redirect chain visible (browser dev tools → Network → preserve log) and read whether tag= appears on the amazon.com URL.</span></td>
+  <td><span class="small">owner · 10 minutes, signed in</span><br><span class="badge grey">owner-only</span></td>
+  <td class="small"><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></td>
+</tr>
+<tr>
+  <td><strong>Q-25</strong></td>
+  <td><strong>Why did all five supplied links end at the Amazon homepage on the third check, when four of five reached product pages earlier the same day?</strong><br><span class="small muted">Blocks: Nothing structurally, but it decides whether the buy buttons should keep pointing at the short links.</span></td>
+  <td><span class="small">Four dated observations exist: 2026-11-19 all five reached product pages; 2026-11-20 session 70e8475c one of five reached the homepage; session ce911db5 two of five; session 6bf60cac all five (FLG-017, FLG-023, FLG-025). No record is overwritten.</span></td>
+  <td><span class="small">Whether the change is geographic, time-of-day, a per-fetch rate limit, a change on Amazon&#x27;s side, or something about the fetching client. No logs are available to the site.</span></td>
+  <td><span class="small">Owner clicks all five while signed in, at three times of day, and records the landing page each time. Comparing those with the site&#x27;s records is the only test that separates a link problem from a fetch-method problem.</span></td>
+  <td><span class="small">owner · 15 minutes across one day</span><br><span class="badge grey">blocking</span></td>
+  <td class="small"><a href="https://www.amazon.com/dp/B04G1MEwY" rel="sponsored noopener">S15</a> · <a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">S10</a> · <a href="https://www.amazon.com/dp/B09B7SB46R" rel="sponsored noopener">S11</a> · <a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener">S12</a> · <a href="https://www.amazon.com/dp/B0DHZTCNR5" rel="sponsored noopener">S13</a> · <a href="https://www.amazon.com/dp/B0DZFD6R9Z" rel="sponsored noopener">S14</a></td>
 </tr>
 </tbody></table></div><h2>Accounts (1)</h2>
 <div class="table-wrap"><table>
@@ -298,6 +325,19 @@
   <td><span class="small">Associates Central: read Account Settings for the tracking ID and status, and the account/payment page for standing. Record the date and what the screen said. If the ID is not there, the disclosure and every link assumption need correcting before any promotion.</span></td>
   <td><span class="small">owner · 5 minutes, signed in</span><br><span class="badge grey">owner-only</span></td>
   <td class="small"><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></td>
+</tr>
+</tbody></table></div><h2>Editorial (1)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>Q-26</strong></td>
+  <td><strong>Who signs off the twelve-week plan, and what happens to a row whose evidence never arrives?</strong><br><span class="small muted">Blocks: The publishing cadence, and whether the plan page stays honest as weeks pass.</span></td>
+  <td><span class="small">Twelve rows are proposed in data/editorial-plan.json with dated calendar hooks; four are partly or wholly blocked on a figure no source publishes.</span></td>
+  <td><span class="small">Whether the owner wants a blocked row dropped, replaced, or held in place with its gap named. Each choice produces a different page.</span></td>
+  <td><span class="small">A decision on the plan page itself: mark each row Do this / Maybe / No (the same control the ideas register uses), and record the choice.</span></td>
+  <td><span class="small">owner · 10 minutes to read the table</span><br><span class="badge grey">queued</span></td>
+  <td class="small"><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">S21</a></td>
 </tr>
 </tbody></table></div>
 
@@ -339,7 +379,7 @@ the screen said, and the rest of the register becomes decidable.</p>
         <p class="small">New guides by <a href="feed.xml">RSS</a>. No email signup: we could not connect one honestly, so we did not ship a fake form.</p>
         <p id="local-counts" class="small" hidden></p>
       </div>
-      <div><h4>Shop</h4><ul><li><a href="air-fryers.html">Air fryers</a></li><li><a href="meat-thermometers.html">Meat thermometers</a></li><li><a href="compare.html">Compare all five</a></li><li><a href="buying-guide.html">Buying guide</a></li></ul></div><div><h4>Guides</h4><ul><li><a href="articles/basket-or-oven-air-fryer.html">Basket or oven?</a></li><li><a href="articles/air-fryer-capacity-checklist.html">Capacity checklist</a></li><li><a href="articles/cleanup-counter-space.html">Cleanup &amp; counter space</a></li><li><a href="articles/questions-before-multi-function.html">Before you buy</a></li><li><a href="buying-guide.html">All guides</a></li></ul></div><div><h4>Decision desk</h4><ul><li><a href="ideas.html">Ideas &amp; review</a></li><li><a href="suggestions.html">Suggestions</a></li><li><a href="questions.html">Open questions</a></li><li><a href="decisions.html">Information we still need</a></li><li><a href="direction.html">Decision log</a></li></ul></div><div><h4>Trust</h4><ul><li><a href="disclosure.html">Disclosure</a></li><li><a href="sources.html">Sources</a></li><li><a href="citations.html">Citations</a></li><li><a href="flagged.html">Flagged for review</a></li><li><a href="analytics.html">Analytics &amp; privacy</a></li><li><a href="executive-summary.html">Executive summary</a></li><li><a href="about.html">About</a></li></ul></div>
+      <div><h4>Shop</h4><ul><li><a href="air-fryers.html">Air fryers</a></li><li><a href="meat-thermometers.html">Meat thermometers</a></li><li><a href="compare.html">Compare all five</a></li><li><a href="buying-guide.html">Buying guide</a></li></ul></div><div><h4>Guides</h4><ul><li><a href="articles/basket-or-oven-air-fryer.html">Basket or oven?</a></li><li><a href="articles/air-fryer-capacity-checklist.html">Capacity checklist</a></li><li><a href="articles/cleanup-counter-space.html">Cleanup &amp; counter space</a></li><li><a href="articles/questions-before-multi-function.html">Before you buy</a></li><li><a href="buying-guide.html">All guides</a></li></ul></div><div><h4>Decision desk</h4><ul><li><a href="ideas.html">Ideas &amp; review</a></li><li><a href="publishing-plan.html">Publishing plan</a></li><li><a href="suggestions.html">Suggestions</a></li><li><a href="questions.html">Open questions</a></li><li><a href="decisions.html">Information we still need</a></li><li><a href="direction.html">Decision log</a></li></ul></div><div><h4>Trust</h4><ul><li><a href="disclosure.html">Disclosure</a></li><li><a href="sources.html">Sources</a></li><li><a href="citations.html">Citations</a></li><li><a href="flagged.html">Flagged for review</a></li><li><a href="analytics.html">Analytics &amp; privacy</a></li><li><a href="executive-summary.html">Executive summary</a></li><li><a href="about.html">About</a></li></ul></div>
     </div>
     <p class="foot-disclosure"><strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Tracking ID: shopnow047c-20. If a qualifying purchase is credited, Kitchen Counter may earn a commission at no extra cost to you. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates. Where the listings contradict themselves, both readings are published on <a href="flagged.html">Flagged for Review</a>.</p>
   </div>

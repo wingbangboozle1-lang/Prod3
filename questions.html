@@ -38,7 +38,11 @@
 <main id="main"><div class="article" style="max-width:1100px">
 <p class="kicker">Direction · Open questions</p>
 <h1>The questions that have to be answered before the next decision</h1>
+<<<<<<< HEAD
 <p class="byline">Kitchen Counter · Register updated 2026-11-19 · 27 open questions, grouped by what they block</p>
+=======
+<p class="byline">Kitchen Counter · Register updated 2026-11-19 · 24 open questions, grouped by what they block</p>
+>>>>>>> 9457f9c (T-46: shop-voice front page and category copy, homepage link notice where buy buttons are, resolve FLG-020 with located policy text (2(w)), DT-11 + Q-24 registered)
 
 <p>A decision made on missing information is a guess with better manners. Each row states what is known, what is not, why it matters, and the cheapest concrete action that would settle it. Machine-readable copy: <code>data/open-questions.json</code>.</p>
 
@@ -105,6 +109,14 @@
   <td><span class="small">Owner clicks each link once, signed in, in a normal browser, and records the final URL plus whether the Associates report shows the click. That is the only observation this project can treat as representative.</span></td>
   <td><span class="small">owner · Five minutes</span><br><span class="badge grey">owner-only</span></td>
   <td class="small"><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a></td>
+</tr>
+<tr>
+  <td><strong>Q-24</strong></td>
+  <td><strong>Is a signed-out fetch of a Special Link a meaningful test of that link at all?</strong><br><span class="small muted">Blocks: How the site talks about its own link checks, and whether repeated homepage results should change anything on the page.</span></td>
+  <td><span class="small">Three dated observations of the same five links disagree, and all were made by unauthenticated automated fetches (FLG-017, FLG-023, FLG-028). The repo has never made a signed-in observation.</span></td>
+  <td><span class="small">Whether Amazon serves different destinations to signed-out or automated sessions, and therefore whether any fetch-based result describes what a reader experiences.</span></td>
+  <td><span class="small">Owner clicks each link once, signed in, in a normal browser, and records the final URL and whether the Associates report shows the click. That is the only observation this project can treat as representative.</span></td>
+  <td><span class="small">owner · Five minutes</span><br><span class="badge grey">owner-only</span></td>
 </tr>
 </tbody></table></div><h2>Compliance (3)</h2>
 <div class="table-wrap"><table>
@@ -288,8 +300,8 @@
 <tbody>
 <tr>
   <td><strong>Q-22</strong></td>
-  <td><strong>Why did two of the five supplied short links (B04G1MEwY, B0c8moW59) end at the Amazon homepage on 2026-11-20 instead of a product page?</strong><br><span class="small muted">Blocks: Whether the two homepage-resolving buy buttons can be attributed at all, and whether the other three are stable.</span></td>
-  <td><span class="small">On 2026-11-19 both ended at a product page. On 2026-11-20 B04G1MEwY ended at https://www.amazon.com/ twice (FLG-017) and B0c8moW59 ended at https://www.amazon.com/ twice (observed independently by session ce911db5), while B02NbDxp3, B00hJ57DV and B0f3GKalj still resolved to their product pages. Another session&#x27;s same-day record reads B0c8moW59 as still resolving; both dated records are kept in data/products.json and neither is deleted.</span></td>
+  <td><strong>Why did the supplied short links end at the Amazon homepage on 2026-11-20 instead of a product page?</strong><br><span class="small muted">Blocks: Whether the two homepage-resolving buy buttons can be attributed at all, and whether the other three are stable.</span></td>
+  <td><span class="small">On 2026-11-19 all five ended at a product page. Two separate 2026-11-20 records disagree with each other and with that: one session saw two of five reach the homepage (B04G1MEwY, B0c8moW59) while three reached their product pages, and a third session later the same day saw all five reach the homepage (FLG-028). All five /dp/ listings loaded on 2026-11-20 with titles matching the recorded ones. No tag parameter was visible in any final URL (F-09).</span></td>
   <td><span class="small">Whether the cause is link expiry, a signed-out fetch versus an enrolled account, a profile gate or a transient response. None can be distinguished from outside the account, so none is asserted.</span></td>
   <td><span class="small">Signed in, open each of the five links once. Note the final URL, whether it lands on the product or the homepage, and whether it carries tag=shopnow047c-20. Then check Link Reports for a same-day click. If a link still lands on the homepage there, regenerate that Special Link from the product page with SiteStripe and record the new URL.</span></td>
   <td><span class="small">owner · 15 minutes, signed in</span><br><span class="badge grey">blocking</span></td>

@@ -371,3 +371,23 @@ input,select,textarea,button{font-size:max(16px,1em)}
   font-size:.82rem;line-height:1.6;background:var(--paper-2);border:1px solid var(--line);
   border-radius:10px;padding:14px;margin:10px 0;overflow-x:auto;min-height:64px}
 @media(max-width:720px){.decide-box button{min-height:48px;flex:1 1 auto}}
+
+
+/* ------------------------------------------------------------------
+   Shop voice (2026-11-20, session a9b513e9)
+   A buyer needs one honest warning where it will be seen, not a
+   footnote three screens down. This strip sits directly above the
+   product grid and repeats no claim the flag page does not carry.
+   ------------------------------------------------------------------ */
+.notice-strip{background:var(--warn-wash);border:1px solid #efd4b4;border-left:5px solid var(--gold);
+  border-radius:12px;padding:14px 18px;margin:6px 0 0;font-family:var(--sans);font-size:.9rem;line-height:1.6;color:#3d332a}
+.notice-strip strong{color:var(--warn)}
+.notice-strip a{font-weight:700}
+
+/* "Buy it if / Skip it if" — the shop's smallest useful sentence pair */
+.card .bestfor,.card .tradeoff{border-radius:0 8px 8px 0}
+.product-card .card-body>p:last-of-type{margin-bottom:0}
+@media(max-width:520px){
+  .feature .feature-art,.feature .feature-body{padding:20px}
+  .spec-hero{font-size:1.6rem}
+}

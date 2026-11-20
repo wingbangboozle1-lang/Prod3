@@ -150,16 +150,26 @@
     },
     {
       "id": "DT-11",
+<<<<<<< HEAD
       "title": "Decide what a buy button promises while the supplied links are unresolved",
       "why": "On 2026-11-20 all five supplied short links ended at the Amazon homepage (FLG-025), and none of the shipped anchors carries a tag parameter even though Program Policies §2(b) require one (FLG-026). The buttons still read “Check price on Amazon”.",
       "recommendation": "Add the dated one-line caveat now (SG-32). Replace the hrefs only when Q-24 and Q-25 are answered by the owner's signed-in test. Do not describe the supplied links as invalid in the meantime.",
       "effort": "S",
       "who": "editorial, then owner",
       "blocks": "Any claim that a button opens the listing it names.",
+=======
+      "title": "Resolve the published hrefs against the 2026-11-20 homepage result, or leave them as supplied",
+      "why": "On 2026-11-20 a third dated check (session a9b513e9) fetched all five supplied link.amazon URLs and all five ended at https://www.amazon.com/ with no /dp/ ASIN, including three that other same-day records show reaching their product pages (FLG-028). Every buy button on the site still points at those five supplied URLs (FLG-019), so a reader clicking a button today may land on the Amazon homepage. None of the links carries a visible tag parameter in the URL a reader receives. A signed-out fetch cannot distinguish a redirect change, a session or profile gate, a bot response or a transient failure, so the links are not shown to be invalid.",
+      "recommendation": "Owner runs the DT-01 SiteStripe test first: one freshly generated, tagged Special Link per product, clicked signed-in, destination and Associates click report confirmed. If the supplied links still land on the homepage, replace only those hrefs; otherwise keep them. Do not infer an intended ASIN from this observation and do not describe the supplied links as invalid in the meantime.",
+      "effort": "S",
+      "who": "owner",
+      "blocks": "Every buy button that is supposed to earn. Until it is answered, the site states the unresolved destination beside the buttons it affects.",
+>>>>>>> 9457f9c (T-46: shop-voice front page and category copy, homepage link notice where buy buttons are, resolve FLG-020 with located policy text (2(w)), DT-11 + Q-24 registered)
       "status": "open",
       "sources": [
         "S01",
         "S02",
+<<<<<<< HEAD
         "S15"
       ],
       "evidence_status": "verified"
@@ -177,6 +187,15 @@
         "S21"
       ],
       "evidence_status": "observed"
+=======
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "evidence_status": "verified"
+>>>>>>> 9457f9c (T-46: shop-voice front page and category copy, homepage link notice where buy buttons are, resolve FLG-020 with located policy text (2(w)), DT-11 + Q-24 registered)
     }
   ],
   "paths": [

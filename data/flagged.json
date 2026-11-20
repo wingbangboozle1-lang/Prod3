@@ -329,13 +329,13 @@
     },
     {
       "id": "FLG-020",
-      "severity": "medium",
+      "severity": "info",
       "area": "Policy citations (Associates Program Policies)",
       "product": "Site-wide (citation log, compare, direction)",
-      "detail": "The site cites Program Policies §2(t) (customer star ratings), §2(v) (URL obscuring), and a shortener prohibition under §2(b). On 2026-11-20 the live Program Policies page (updated April 14, 2026) showed Section 2 with subsections (a) and (b) only; none of the three clauses was found there. Their wording is marked unverified in citations.json, citations.html, and suggestions.json.",
-      "why_it_matters": "A reader or reviewer who checks the cited clause will not find it. Ratings and prices are not shown on the site, so the conduct does not depend on these citations, but the stated basis is unverified.",
-      "action": "Owner or editorial review: locate the Associates text that carries these clauses (Operating Agreement, Program Policies, or a dated version) and cite it, or remove the citation. Do not infer replacement wording.",
-      "status": "open — citations reworded to 'not located'; owner review",
+      "detail": "The site had recorded that Program Policies §2(t), §2(v) and a shortener prohibition under §2(b) could not be found, and that Section 2 showed only (a) and (b). Re-read 2026-11-20 on the live page (Updated April 14, 2026): the Participation Requirements run (a)-(z) and all three clauses are present — (t) customer reviews/star ratings only via Creators API or PA API; (v) no cloaking or obscuring the URL; (w) no link-shortening that makes it unclear the link goes to an Amazon Site. The shortener clause is §2(w), not §2(b): the earlier subsection was wrong. citations.json, C-04 and the citation log were corrected; the original \"not located\" note is preserved in the correction record.",
+      "why_it_matters": "The site cites these clauses as the basis for showing no ratings and no prices. A citation that cannot be located is not a basis; a located one can be quoted.",
+      "action": "None outstanding. Editorially, the rating and price rules now rest on quoted §2(t), §2(b) and §2(t)/§2(w) text rather than paraphrase.",
+      "status": "resolved 2026-11-20 — clauses located; subsection corrected to §2(w)",
       "sources": [
         "S02"
       ],

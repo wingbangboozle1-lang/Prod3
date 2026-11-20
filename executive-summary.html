@@ -68,6 +68,20 @@
 </table>
 <p class="small muted">What did <em>not</em> change: no price is rendered anywhere, every Amazon anchor is <code>rel="sponsored"</code>, the exact &sect;5 disclosure sentence appears in the strip and the footer of all 30 pages, and every new table row carries a source link or an explicit <em>No official source</em> marker.</p>
 
+<h2>What changed on 2026-11-20 — the verification and publication pass</h2>
+<p>Everything on this site was re-checked at source, and the gaps the earlier passes left were closed. Four changes, all recorded.</p>
+<table>
+<caption>A change log, not a set of external claims: each row names the file and the rule that now enforces it. External figures elsewhere on this site are cited to their official source on <a href="sources.html">the source register</a>.</caption>
+<thead><tr><th>Change</th><th>What it replaced</th><th>Enforced by</th></tr></thead>
+<tbody>
+<tr><td>A third dated check of all five supplied short links, plus a same-day control fetch of all five official listings — recorded as <a href="flagged.html">FLG-025</a></td><td>Two same-day records that disagreed with each other and with the 2026-11-19 record</td><td><code>data/products.json</code> keeps three dated observations side by side; no record is deleted</td></tr>
+<tr><td>A reader-facing note on every page with a tracked button: if it lands on the homepage, the "official listing" link opens the product page</td><td>A silent dead end for readers whose button landed on the homepage</td><td>New gate <code>R-linknote-fallback</code> (negative-tested)</td></tr>
+<tr><td>The site's own counter-space arithmetic, published as a table with every input shown</td><td>An unpublished register in <code>data/analysis.json</code></td><td>Registered as SG-32; the build still bans the compact score-style labels</td></tr>
+<tr><td>Register reconciliation: stale README table removed, ID ranges corrected, three board rows closed</td><td>Two register tables, one of them stale, and rows still marked in progress after merging</td><td><code>tools/check_site.py</code> cross-reference rules</td></tr>
+</tbody>
+</table>
+<p class="small muted">The published figures were re-read at source on 2026-11-20: all five official listing titles matched the register, the two category breadcrumbs matched the published browse nodes, and the three appliances with published dimensions matched field by field (13.38&Prime; &times; 11.81&Prime; &times; 10.63&Prime;, 16.9&Prime; &times; 15.8&Prime; &times; 14.8&Prime;, and 12.75&Prime; &times; 13.5&Prime; &times; 10&Prime;). Nothing was softened: no price or rating is rendered, no intended-ASIN field was filled, no product was called a winner, and no revenue or conversion figure was written.</p>
+
 <h2>The three decisions that actually gate revenue</h2>
 <ol>
 <li><strong>Are the links tagged?</strong> Amazon's Program Policies require an Associates ID or tag as a URL parameter on every link to an Amazon site. The five supplied <code>link.amazon</code> short links carry no visible tag in the URL a reader receives. One signed-in click per product in SiteStripe settles it (DT-01). This is not a claim that the links are invalid — it is an unresolved status.</li>
@@ -78,7 +92,7 @@
 
 <h2>What is flagged (does not block)</h2>
 <h2>Five supplied links: observed destination is not confirmed intent</h2>
-<p>Targets below are dated observations from the repository's 2026-11-19 records. On 2026-11-20 the five short links were fetched again: four still end at the recorded product page, and <code>B04G1MEwY</code> ended at the Amazon.com homepage (<a href="flagged.html">FLG-017</a>). These observations do not prove which products were intended or validate the Special Links in the enrolled Associates account. The intended-ASIN, official-intended-listing, confirmation-date and confirmation-source fields remain blank until confirmed.</p>
+<p>Targets below are dated observations from the repository's 2026-11-19 records. On 2026-11-20 the five short links were fetched again — three times, by three separate sessions, and the three records disagree. The latest check found <strong>all five</strong> ending at the Amazon.com homepage, while a same-day control fetch of all five official <code>/dp/&lt;ASIN&gt;</code> listing pages rendered the correct product every time (<a href="flagged.html">FLG-025</a>). All three records are kept side by side; none is deleted and no tie is broken by seniority. <strong>The cause is not established and the supplied links are not declared invalid</strong> — a fetch cannot distinguish a signed-out session from a profile gate, a transient response, or a link-level change. These observations do not prove which products were intended or validate the Special Links in the enrolled Associates account. The intended-ASIN, official-intended-listing, confirmation-date and confirmation-source fields remain blank until confirmed.</p>
 <div class="table-wrap"><table data-source-required="amazon-listing">
 <thead><tr><th>Submitted token</th><th>Observed listing</th><th>Category</th><th>Intent</th><th>Official source</th></tr></thead><tbody>
 <tr><td><code>B04G1MEwY</code></td><td>Chefman 6 Qt Dual Basket<br><code>B0CDY277D3</code></td><td>Air fryer</td><td>Unconfirmed</td><td><a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">Amazon listing</a></td></tr>
@@ -127,13 +141,14 @@
 <h2>Flagged items and limits</h2>
 <ul>
 <li><a href="flagged.html">FLG-001:</a> intended products remain unconfirmed; <a href="flagged.html">FLG-006:</a> short-link compliance is unresolved; <a href="flagged.html">FLG-010:</a> Associates account status is unverified.</li>
+<li><a href="flagged.html">FLG-025:</a> all five supplied short links ended at the Amazon homepage in the latest 2026-11-20 check while every official listing page worked. Cause not established; the links are not declared invalid.</li>
 <li>Listing-internal conflicts and seller claims are flagged in the register; no independent test or certificate review is represented.</li>
 <li>No current pricing, customer ratings, commissions, search demand, conversions, or revenue estimates are claimed.</li>
 <li>The social-preview PNG is present; a share-debugger check remains outstanding. Product photography is not used.</li>
 </ul>
 
 <h2>Release status</h2>
-<p>On the reviewed repository tree, all of these commands pass: <code>python3 scripts/check_site.py</code>, <code>python3 tools/verify_site.py</code>, <code>python3 scripts/build_registers.py --check</code>, and <code>python3 scripts/build_sitemap.py --check</code>. The coordination record documents a successful Pages deployment at the <a href="https://wingbangboozle1-lang.github.io/Prod3/">project site</a>. These checks validate repository content and structure; they do not establish account eligibility, external indexing, traffic, or conversions.</p>
+<p>On the reviewed repository tree, all of these commands pass: <code>python3 scripts/check_site.py</code>, <code>python3 tools/verify_site.py</code>, <code>python3 tools/check_site.py</code> (31 pages, 4,042 assertions), the four freshness gates <code>build_chrome --check</code>, <code>build_registers --check</code>, <code>build_decisions --check</code> and <code>build_sitemap --check</code>, and <code>python3 tools/crawl_links.py</code> (31 pages crawled, 0 broken links, 0 dead anchors, 0 orphans). The coordination record documents a successful Pages deployment at the <a href="https://wingbangboozle1-lang.github.io/Prod3/">project site</a>. These checks validate repository content and structure; they do not establish account eligibility, external indexing, traffic, or conversions.</p>
 <p class="mt"><a href="index.html">← Shop the publication</a> · <a href="sources.html">Source register →</a></p>
 </div></main>
 

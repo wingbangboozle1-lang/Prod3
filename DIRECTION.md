@@ -51,7 +51,7 @@ options, and recommendations live there.
 | SG-47 | Keep internal anchors descriptive — add a gate so the discipline cannot slip | proposed | engineering |
 | SG-48 | Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms | proposed | owner |
 
-SG-48 was added 2026-11-20 (session `arena/1fbc2432-prod3`, T-57) from the same-day official-source recheck (`data/recheck-2026-11-20-1fbc2432.json`); the row was drafted as SG-39 and renumbered twice with the register. SG-43..SG-47 were added 2026-11-20 (session `arena/7878cdbe-prod3`, T-54; renumbered twice while
+SG-48 was added 2026-11-20 (session `arena/1fbc2432-prod3`, T-66) from the same-day official-source recheck (`data/recheck-2026-11-20-1fbc2432.json`); the row was drafted as SG-39 and renumbered twice with the register. SG-43..SG-47 were added 2026-11-20 (session `arena/7878cdbe-prod3`, T-54; renumbered twice while
 this branch was queued — first from SG-32..SG-36 after upstream 6bf60cac/8692a390 registered
 SG-32..SG-38, then from SG-39..SG-43 after upstream PR #52 registered SG-39..SG-42) with sources
 verified that day:

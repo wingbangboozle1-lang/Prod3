@@ -1,6 +1,6 @@
 {
   "session": "arena/1fbc2432-prod3",
-  "task": "T-53",
+  "task": "T-66",
   "date": "2026-11-20",
   "purpose": "Dated record of every official source this session fetched and read, so each register edit in the T-53 round traces to a verbatim page read. This file is additive: it overwrites no earlier observation record (FLG-025's history, data/products.json and the 2026-11-19 snapshots are untouched).",
   "method": "Every page below was fetched through this session's page-fetch tool and read from the returned content (chunk-indexed reads; final URLs recorded as served). Quotes marked verbatim were compared word-for-word against the register entries they support. No value was inferred; anything not readable on a fetched page is not recorded here.",
@@ -44,7 +44,7 @@
       "matches_2026_11_19_observed_asin_B0DZFD6R9Z": false
     }
   ],
-  "supplied_short_links_summary": "Fourth dated observation (after 2026-11-19 all-product-pages; 2026-11-20 sessions 70e8475c one-of-five, ce911db5 two-of-five, 6bf60cac all-five): all five ended at the Amazon homepage. B02NbDxp3 reproduced twice in-session. No record overwritten; no invalidity claim (FLG-006, FLG-011 unchanged).",
+  "supplied_short_links_summary": "Fetched before session 6c0972fb's same-day T-60 recheck merged; the result agrees with it and with every earlier 2026-11-20 observation (70e8475c one-of-five, ce911db5 two-of-five, 6bf60cac all-five). B02NbDxp3 reproduced twice in-session. No record overwritten; no invalidity claim (FLG-006, FLG-011 unchanged).",
   "diagnostic_direct_listing": {
     "url": "https://www.amazon.com/dp/B09B7SB46R",
     "served_title": "Amazon.com: Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven | Countertop Convection Cooker, 24 One-Touch Preset Options, Extra Large Interior, Six Cooking Accessories Included : Home & Kitchen",
@@ -114,9 +114,9 @@
     "DIRECTION.md — SG-39 digest row added (register mirror)."
   ],
   "irregularities_noted": [
-    "The 28 link.amazon anchors on the served pages (register/provenance anchors on citations.html and sources.html; buy buttons elsewhere per FLG-019's standing decision) keep their hrefs; this session changes no CTA destination.",
-    "flagged.html previously carried duplicate FLG-020/FLG-021 identifiers; the duplicate-ID defect itself was fixed upstream as FLG-027/028/029 (PR #43 lineage), and this session's FLG-020 resolution rewrites the surviving callout to its resolved state.",
-    "The site's product buttons carry no tag= parameter (FLG-026, open) and the Associates account status remains owner-side (FLG-010, C-10 blocked). §2(b)'s verbatim tag requirement is now recorded on FLG-026's basis."
+    "Reader-facing buy buttons: this session's fetches happened before main's T-60 change (session 6c0972fb) switched all 30 product buttons to tagged Special Links (dp/<ASIN>?tag=shopnow047c-20&linkCode=sl1, FLG-039). This session changes no button; the remaining link.amazon anchors on the served pages are register/provenance references (citations.html, sources.html, and the products/*.html observation records), which is correct.",
+    "The site's product buttons now carry the tag= parameter (T-60), closing part of FLG-026; FLG-026's remaining question is whether the enrolled Associates account actually owns tracking ID shopnow047c-20 (FLG-010, C-10, still owner-side).",
+    "flagged.html previously carried duplicate FLG-020/FLG-021 identifiers; that defect was fixed upstream as FLG-027/028/029, and FLG-020 itself is resolved with the located clause letters this session independently confirmed."
   ],
   "not_verified_here": "Prices, ratings and offer text were not recorded from any Amazon page this session (policy and identity pages only). The five /dp/ listings other than B09B7SB46R were not re-fetched directly this session; their liveness is recorded by session 6bf60cac's same-day official_listing_check (S29–S33). Associates reporting, account status and the Special Link test remain owner-side (FLG-001, FLG-006, FLG-010)."
 }

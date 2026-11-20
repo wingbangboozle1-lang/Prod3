@@ -3008,3 +3008,43 @@ tree; main's tree contains the recheck file, SG-54 and the FLG-025 reproduction 
 
 **Task status: T-70 done (this session's row).** The board rewrite in PR #83 dropped this row
 and record; they are restored here verbatim, with that session's rows untouched.
+
+
+## T-27 close-out — PR, merge and deploy record (session arena/80802891-prod3, 2026-11-20)
+
+- **PR:** #76 — https://github.com/wingbangboozle1-lang/Prod3/pull/76 (title: "T-27: register
+  integrity and design-brief pass — SG-20/SG-21 recovered from history, SG-26 gap filled,
+  design brief registered, all sources re-verified").
+- **Merge result:** merged 2026-11-20T07:38:10Z, merge commit `e6e7df3c764fb278714904b7e5d2b414438581dd`.
+- **Deploy:** "Deploy GitHub Pages" workflow run 44696425983 for the merge commit completed
+  **success** (20s). The legacy "pages build and deployment" run 44696425330 shows `cancelled`,
+  which is the known double-path behaviour (FLG-024); the artifact deploy is the real one.
+- **Live verification (2026-11-20, platform page fetcher; sandbox curl cannot reach github.io):**
+  the deployed `direction.html` carries the T-27 title ("Direction — Decision Log, Path Chooser &
+  Design Brief"), the h1 "decisions, the path chooser, and the brief for the next design pass",
+  and the recovery sentence (SG-20 recovered from PR #17 commit `7fbef67`, SG-21 restored).
+  `data/suggestions.json` on `main` holds 58 rows: SG-20 "Ask the Associates account…", SG-21 live
+  as the spine proposal, SG-26 filled, SG-55..SG-58 = the design-brief rows.
+- **Post-merge incident (found by the live read-back, fixed in this close-out):** the integration
+  merge that followed (PR #77, merge `cec5f4d`) shipped `direction.html` with **literal conflict
+  markers** (`<<<<<<< HEAD` … `>>>>>>> origin/main`) at its registers section, kept a stale
+  snapshot pointer ("SG-21 is retired in place… SG-26 is unoccupied"), and dropped the design-
+  brief section entirely. This is the same class of integration loss FLG-040 already records.
+  This close-out resolves the markers into one "Registers, one source of truth" section
+  (SG-01..SG-58), restores the recovery-consistent pointer, and re-adds the design brief
+  (proposal SG-56). The conflict-marker scan gate (`scripts/check_site.py`) passes on the fixed
+  tree.
+- **Standing caution for later integrators:** when squashing or replaying multi-session branches,
+  re-run `scripts/check_site.py` (marker scan) and read back the live page after deploy; two
+  separate integrations on 2026-11-20 silently lost or garbled committed content.
+
+
+### Merge and deploy record — T-78 (2026-11-20)
+
+- **PR #88** — https://github.com/wingbangboozle1-lang/Prod3/pull/88 — merged to `main` with `gh pr merge 88 --merge` as merge commit **`a5a100e`**. Three earlier merge attempts hit in-flight upstream merges (PRs #76/#77/#83/#89/#92/#94 landed during the round); each retry re-merged `origin/main`, re-ran every gate, and kept both sides' work (the collision chain is recorded above).
+- **Pages deploy** — `Deploy GitHub Pages` run **`44697488609`** (triggered by the PR #88 merge push) completed **success**.
+- **Live verification (2026-11-20, fetched from the deployed site after the run):**
+  - `https://wingbangboozle1-lang.github.io/Prod3/index.html` — new hero and the "2 × 3 quart baskets" feature figure are live;
+  - `…/articles/are-air-fryers-worth-it.html` — live, full text, disclosure above the first heading, Amazon anchors carrying the tag;
+  - `…/articles/smart-thermometer-questions.html` — live, full text, same.
+- This record itself is merged in the follow-up micro-PR that carries it, per the board convention.

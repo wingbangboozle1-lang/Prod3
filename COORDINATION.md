@@ -817,6 +817,7 @@ session does not reopen them.
 | T-35 | Seasonality module: which guide a reader should see by month, stated as editorial judgement not demand data | done | arena/2ef30474-prod3 | `assets/brand.js`, `index.html`, `articles/holiday-kitchen-gift-guide.html` |
 | T-36 | Gate extension for the new surfaces; then integration PR → `main`, merge, confirm Pages | done | arena/2ef30474-prod3 | `tools/check_site.py`, `scripts/build_sitemap.py`, `.github/workflows/pages.yml`, all |
 | T-37 | Publication-polish follow-up on current `main`: RSS `rel="alternate"` in the head of all 30 pages; SG-27..SG-30 registered with evidence-based status; FLG-017 added to `data/flagged.json`; footer link label "Search Console is connected" reworded to "Search Console setup" | done (2026-11-20) | arena/e52053d1-prod3 | `*.html` (head feed link + one index.html label), `data/suggestions.json`, `data/flagged.json`, generated `suggestions.html`, `decisions.html`, `COORDINATION.md` |
+| T-38 | Source-attribution integrity on current `main`: 19 mis-attributed citation fixes; gate `D15-attribution` added; Program Policies §2(t)/§2(v)/shortener citations marked not located (FLG-020); P-04 quotation and source-register gaps (FLG-021); generator `sponsored` marking limited to Amazon URLs | done (2026-11-20) | arena/9f36f5ee-prod3 | `data/suggestions.json`, `data/open-questions.json`, `data/policy-checks.json`, `data/citations.json`, `data/flagged.json`, `flagged.html`, `tools/check_site.py`, `scripts/build_registers.py`, generated `suggestions.html` / `questions.html` / `citations.html` / `decisions.html`, `COORDINATION.md` |
 
 **Non-overlap:** no other session has a live claim (every earlier row is `done`, and its
 branch is merged). If a session appears while this one is running, this scope is
@@ -1092,6 +1093,44 @@ git diff --check                           clean
 - Owner-side items unchanged: FLG-001, FLG-006, FLG-010, FLG-015, FLG-016, FLG-017 (short-link check in the Associates workflow), SG-29 (Search Console), SG-30 (reader capture).
 - Not done: a self-hosted analytics endpoint. GitHub Pages cannot receive POST requests, and the repo has no backend.
 
+## Session arena/9f36f5ee-prod3 — T-38 (2026-11-20)
+
+**Collision and handoff log.** This session claimed T-26 at `5b64eb8` before starting the source-attribution pass. Before its push, `main` gained PR #30 (`arena/e83cdf55-prod3`, T-26), which took the same ID and created FLG-018 and FLG-019 for different subjects. The rebase of this session's two commits conflicted on this file. The rebase was aborted, and this session's original commit is preserved in the branch history. The branch was then merged with `origin/main` (merge commit recorded with upstream as a parent, tree kept equal to `origin/main`). The non-overlapping fixes below were re-applied on top of upstream. Work that upstream already completed (SG-27..SG-30, SG-21 retirement, RSS head link) was not repeated. This session's flag IDs moved to FLG-020 and FLG-021 to avoid colliding with upstream FLG-018 and FLG-019.
+
+**What changed**
+
+1. **19 mis-attributed citation fixes** (`data/suggestions.json`, `data/open-questions.json`, `data/policy-checks.json`; 34 changed lines). Each named publisher now matches a cited source's title. Examples: a Google policy cited to a product listing; an FTC quotation cited to Google's spam policy; a Google rule cited to a competitor listing. The wrong-to-right ID mapping is in the diff of commit `2de0d34`, which is preserved in this branch's history.
+2. **Gate `D15-attribution`** (`tools/check_site.py`). A clause naming a publisher must cite a source whose title names that publisher. It is a heuristic. Mutation test on the merged tree: an FTC clause changed from S03 to S22 in a temporary copy fails with `[D15-attribution] ... 'FTC' claim cites S22, none of which is a FTC source`; the real tree passes.
+3. **Unverified policy citations marked, not removed** (FLG-020). The live Program Policies page (updated April 14, 2026) was read for Section 2 on 2026-11-20. Section 2 has subsections (a) and (b) only. The §2(t) ratings clause, §2(v) URL-obscuring clause, and the shortener prohibition attributed to §2(b) were not found. `data/citations.json`, `citations.html`, `suggestions.json` now say "not located" rather than quoting them. The rating and price conduct on the site does not depend on those citations.
+4. **Generator `sponsored` marking** (`scripts/build_registers.py`). Citation rows applied `rel="sponsored noopener"` to all sources, including the FTC, Google and Program-policy references. Now `sponsored noopener` is applied only to Amazon URLs (the same test as gate P07), and `noopener` to everything else.
+5. **P-04 quotation and register gaps** (FLG-021). The quotation "There is a newer model of this item" is cited to S13. Only the first page of that listing was re-read, so the wording is not re-confirmed. The S-series numbers 07, 08, 09 and 20 are not defined in `data/sources.json`. Gate D06 forbids naming them in data, so the flag refers to them by number.
+
+**Sources.** No new external source. Checked against: Program Policies (S02) live page, Section 2 (2026-11-20); the FTC, Google, NIST and USDA entries already in `data/sources.json`.
+
+**Verification (all exit 0 on this branch, at the merged tree)**
+
+```
+python3 scripts/check_site.py              All checks passed.
+python3 tools/verify_site.py               Release gate passed.
+python3 tools/check_site.py                all additional rules passed (includes D15-attribution, D06, D21)
+python3 scripts/build_sitemap.py --check   up to date
+python3 scripts/build_registers.py --check register pages match data/*.json
+python3 scripts/build_decisions.py --check decisions.html matches its data
+python3 scripts/build_chrome.py --check    chrome current
+python3 tools/crawl_links.py               no broken links, no dead anchors, no orphans
+attribution re-check (/tmp/attr.py)        0 violations
+git diff --check                           clean
+```
+
+**Irregularities (non-blocking, for the owner)**
+
+- The brief's FLG-003 is not the short-link item; the short-link compliance item is FLG-006.
+- `README.md` lists two register tables: a stale one ("as of 2026-11-19", SG-01..SG-25, F-01..F-21) and the current one ("as of 2026-11-20"). The README is claimed under T-22 (`arena/33e3e80f-prod3`, in progress). Left unedited; the stale table should be removed by the claimant.
+- `DIRECTION.md` line 115 (2026-11-19 decision, "Remove customer star ratings") cites §2(t). That row is a historical record and was not changed. FLG-020 covers the citation.
+- `data/flagged.json` FLG-017 has `status` open; `data/products.json` live_recheck_2026_11_20 still records the homepage result. Both left as recorded.
+- Items for the owner, unchanged: FLG-001 (intended ASINs), FLG-006 (short-link compliance, including the Special Link test in the Associates workflow), FLG-010 (account status), FLG-017 (B04G1MEwY redirect), FLG-020 (policy citations), FLG-021 (P-04 quotation and register gaps).
+- Not done: self-hosted analytics endpoint (GitHub Pages cannot receive POSTs); Search Console property (SG-29); reader capture (SG-30); campaign ledger (no first-party Associates report available to this session).
+
 ### T-37 integration record (session `arena/e52053d1-prod3`, 2026-11-20)
 
 - **PR #31:** https://github.com/wingbangboozle1-lang/Prod3/pull/31 (`arena/e52053d1-prod3` → `main`).
@@ -1102,3 +1141,4 @@ git diff --check                           clean
 - **Live check:** `https://wingbangboozle1-lang.github.io/Prod3/feed.xml` lists the guides, including the Thanksgiving guide added on `main`. `suggestions.html` renders from the same `data/suggestions.json` that passed the gates. (The page's "Register updated 2026-11-19" line predates this pass; it is generator text from `main`, logged here as an irregularity rather than edited.)
 - **Collision log:** T-25 was taken by PR #27 (arena/70e8475c), and T-26 by PR #30 (arena/e83cdf55). This session's first two claims were withdrawn and renumbered to T-37. No other session's work was overwritten; the history was kept with `-s ours` merges, not force-pushes.
 
+**PR and merge (T-38).** PR: https://github.com/wingbangboozle1-lang/Prod3/pull/33 (`arena/9f36f5ee-prod3` → `main`). Merge result is recorded in the next integration record after the merge.

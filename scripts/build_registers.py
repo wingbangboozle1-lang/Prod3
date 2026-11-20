@@ -207,7 +207,10 @@ def render_citations():
         s = srcs.get(c["source"])
         if not s:
             return "missing source"
-        return f'<a href="{html.escape(s["url"])}" rel="sponsored noopener">{html.escape(c["source"])}</a>'
+        # Same test as tools/check_site.py P07: any amazon.com or link.amazon URL is an Amazon link.
+        amazon = "amazon.com" in s["url"] or "link.amazon" in s["url"]
+        rel = "sponsored noopener" if amazon else "noopener"
+        return f'<a href="{html.escape(s["url"])}" rel="{rel}">{html.escape(c["source"])}</a>'
 
     prod_rows = "\n".join(
         f'<tr><td><strong>{html.escape(c["product"])}</strong><br><span class="small muted">{html.escape(c["asin"])}</span></td>'
@@ -246,7 +249,7 @@ def render_citations():
 <h2>What is deliberately not here</h2>
 <ul>
 <li><strong>Prices and availability.</strong> Program Policies §2(b) permits them only when Amazon serves the data or they arrive through Creators/PA API. Neither applies, so no price is rendered and none is logged as a published figure.</li>
-<li><strong>Customer star ratings.</strong> Program Policies Participation Requirements §2(t) permits customer reviews and star ratings only when obtained through Creators API or PA API. They were removed from this site on 2026-11-19.</li>
+<li><strong>Customer star ratings.</strong> Program Policies §2(t) wording was not located in Section 2 on 2026-11-20 (FLG-020). Star ratings were removed from this site on 2026-11-19.</li>
 <li><strong>Revenue, conversion rates, traffic.</strong> No first-party report exists. The ledger is empty by design.</li>
 <li><strong>Product photography.</strong> No licensed photography is used; the cards are typographic art built from listed specs.</li>
 </ul>

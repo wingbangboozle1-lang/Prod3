@@ -18,7 +18,7 @@
    "id": "SG-01",
    "title": "Narrow the site to one question: air fryer, or thermometer — not both",
    "problem": "Five products across two families read as a list of things someone had links for, not a publication with a beat.",
-   "evidence": "The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google's thin-affiliation policy specifically targets affiliate pages whose only reason to exist is the links (S12).",
+   "evidence": "The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google's thin-affiliation policy specifically targets affiliate pages whose only reason to exist is the links (S22).",
    "options": [
     "A. Keep both, and make the beat \"cooking to a target temperature\" — the air fryer gets food hot, the thermometer proves it is done. This is what the site currently does.",
     "B. Narrow to air fryers, and treat the thermometers as one comparison article.",
@@ -69,7 +69,7 @@
    "id": "SG-04",
    "title": "Answer eight buyer questions, not eight product reviews",
    "problem": "Product pages answer \"what is it\"; buyers arrive with \"which one, and will it fit\".",
-   "evidence": "People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S14). A product question has a real answer; a review of an untouched product does not (S22).",
+   "evidence": "People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S22).",
    "options": [
     "A. Eight question-shaped guides, each answerable from published specifications and USDA targets.",
     "B. Five long product reviews written without handling the products.",
@@ -86,7 +86,7 @@
    "id": "SG-05",
    "title": "Build the compliance gate into the build, not into a checklist",
    "problem": "Disclosure placement and rel=\"sponsored\" are the two things that are easy to forget on page fourteen.",
-   "evidence": "Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=\"sponsored\" on paid links (S11).",
+   "evidence": "Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=\"sponsored\" on paid links (S04).",
    "options": [
     "A. Generate every page from one template that always emits the disclosure strip, and run a checker that fails on any Amazon link without rel=\"sponsored\".",
     "B. A written checklist someone reads before publishing."
@@ -102,7 +102,7 @@
    "id": "SG-06",
    "title": "Buy one air fryer and one thermometer, and earn the right to say \"we used it\"",
    "problem": "The highest-value content in this niche — what the thing is like to live with — cannot be written honestly without the thing.",
-   "evidence": "FTC: \"You can't talk about your experience with a product you haven't tried\" (S22). Google's E-E-A-T guidance rewards demonstrated experience (S14).",
+   "evidence": "FTC: \"You can't talk about your experience with a product you haven't tried\" (S03). Google's E-E-A-T guidance rewards demonstrated experience (S21).",
    "options": [
     "A. Buy one unit per family out of the commission budget and document a fixed set of tests: heat-up time, evenness with a thermocouple grid, basket clean-up time, counter footprint.",
     "B. Stay specification-only, and be the site that is scrupulous about it.",
@@ -152,7 +152,7 @@
    "id": "SG-09",
    "title": "Give every page a unique title and description, and test that the build rejects duplicates",
    "problem": "Duplicate titles and descriptions are the most common self-inflicted indexing problem for generated sites.",
-   "evidence": "Google: \"Create unique descriptions for each page on your site\"; identical descriptions on every page are named as a problem (S13).",
+   "evidence": "Google: \"Create unique descriptions for each page on your site\"; identical descriptions on every page are named as a problem (S24).",
    "options": [
     "A. Generate each page's title and description from its own content, and fail the build on a duplicate.",
     "B. One site-wide description."
@@ -168,7 +168,7 @@
    "id": "SG-10",
    "title": "Make the front page a publication front page, and keep the dashboards one click away in the footer",
    "problem": "The verification machinery is genuinely interesting to the owner and irrelevant to a buyer.",
-   "evidence": "Page-experience guidance (S14); the reader came for a question, not an audit trail.",
+   "evidence": "Page-experience guidance (S25); the reader came for a question, not an audit trail.",
    "options": [
     "A. Front page leads with the products and the guides; the register, gate, ledger and flagged pages sit in a single footer group.",
     "B. Front page leads with the source register, because that is what makes this site different.",
@@ -219,7 +219,7 @@
    "id": "SG-13",
    "title": "Test one short link inside the enrolled Associates workflow before trusting the format",
    "problem": "The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.",
-   "evidence": "Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
+   "evidence": "A shortener clause is cited to Program Policies (S02), but the wording was not found in section 2(b) of the text read on 2026-11-20 (UNVERIFIED, see FLG-020). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
    "options": [
     "A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.",
     "B. Switch every link to direct /dp/ URLs and drop the short form.",
@@ -252,7 +252,7 @@
    "id": "SG-15",
    "title": "Lead every shop page with the products, and keep the verification record one click away",
    "problem": "The front page opened with the process (verification framing) instead of the picks, so a first-time buyer landed on an audit rather than a shop.",
-   "evidence": "Google's people-first guidance asks that content exist for readers, not for crawlers (S12). The compliance record stays reachable in the footer group, where the release gates already require it.",
+   "evidence": "Google's people-first guidance asks that content exist for readers, not for crawlers (S21). The compliance record stays reachable in the footer group, where the release gates already require it.",
    "options": [
     "A. Product-first front page: hero question, five cards with CTAs, chooser, then the data table and trust row.",
     "B. Keep the audit-first layout; readers who care will scroll.",

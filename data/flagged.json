@@ -326,6 +326,34 @@
         "S10"
       ],
       "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-020",
+      "severity": "medium",
+      "area": "Policy citations (Associates Program Policies)",
+      "product": "Site-wide (citation log, compare, direction)",
+      "detail": "The site cites Program Policies §2(t) (customer star ratings), §2(v) (URL obscuring), and a shortener prohibition under §2(b). On 2026-11-20 the live Program Policies page (updated April 14, 2026) showed Section 2 with subsections (a) and (b) only; none of the three clauses was found there. Their wording is marked unverified in citations.json, citations.html, and suggestions.json.",
+      "why_it_matters": "A reader or reviewer who checks the cited clause will not find it. Ratings and prices are not shown on the site, so the conduct does not depend on these citations, but the stated basis is unverified.",
+      "action": "Owner or editorial review: locate the Associates text that carries these clauses (Operating Agreement, Program Policies, or a dated version) and cite it, or remove the citation. Do not infer replacement wording.",
+      "status": "open — citations reworded to 'not located'; owner review",
+      "sources": [
+        "S02"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-021",
+      "severity": "low",
+      "area": "Source register and one quotation",
+      "product": "P-04 (ThermoMaven 1 Sec), source register",
+      "detail": "(1) data/sources.json has no entries for the S-series numbers 07, 08, 09 and 20; no current data file cites them. (2) The P-04 listing quotation \"There is a newer model of this item\" is cited to S13. The 2026-11-20 re-read covered the first page of that listing only, so the quoted wording is not re-confirmed. (3) SG-21 duplicates SG-20 and is retired on main.",
+      "why_it_matters": "Gaps in the source register make a cited ID unresolvable if a future page uses one. The quotation is a listing claim that may change.",
+      "action": "Owner: confirm the quotation on the live listing and record the date, or remove it. Decide whether the S-series numbers 07, 08, 09 and 20 are to be defined or retired (DIRECTION.md I-03).",
+      "status": "open — quotation not re-confirmed; register gap recorded",
+      "sources": [
+        "S13"
+      ],
+      "sources_checked": "2026-11-20"
     }
   ]
 }

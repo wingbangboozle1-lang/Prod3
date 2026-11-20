@@ -268,7 +268,7 @@ def href_for(url: str) -> str:
     line 2026-11-20): the Associates ID or tag must appear as a parameter in the
     URL of each link placed on the Site to an Amazon Site. The register keeps the
     canonical listing URL as the citation; only the rendered href carries the tag.
-    tools/link_tagger.py --check enforces it across the tree (gate D40).
+    tools/link_tagger.py --check enforces it across the tree (gate D41).
     """
     return f"{url}?tag={TRACKING}" if AMZ_PRODUCT.match(url) else url
 

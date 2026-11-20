@@ -1,846 +1,11 @@
 {
-  "generated": "2026-11-20",
-  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-31 added 2026-11-20 (session ce911db5) to give the conflict chip its own registered row; SG-26 is absent from this register and was cited by DIRECTION.md — see FLG-021.",
-  "scale": {
-    "effort": [
-      "S — a short session",
-      "M — a focused day",
-      "L — a project"
-    ],
-    "confidence": [
-      "high — backed by a primary source and a clear mechanism",
-      "medium — backed by a source but the outcome depends on factors outside our control",
-      "low — a judgement call, worth testing rather than debating"
-    ]
-  },
-  "suggestions": [
-    {
-      "id": "SG-01",
-      "title": "Narrow the site to one question: air fryer, or thermometer — not both",
-      "problem": "Five products across two families read as a list of things someone had links for, not a publication with a beat.",
-      "evidence": "The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google's spam policies on thin affiliation (S22) specifically targets affiliate pages whose only reason to exist is the links (S21).",
-      "options": [
-        "A. Keep both, and make the beat \"cooking to a target temperature\" — the air fryer gets food hot, the thermometer proves it is done. This is what the site currently does.",
-        "B. Narrow to air fryers, and treat the thermometers as one comparison article.",
-        "C. Split into two sites later, if either earns enough traffic to justify it."
-      ],
-      "recommendation": "A for now. It is the only framing in which both product families belong in the same sentence, and it gives every guide an obvious place to link back to. Revisit at the first Search Console data drop.",
-      "effort": "S",
-      "confidence": "medium",
-      "status": "implemented",
-      "decision_owner": "owner",
-      "blocks": "nothing — the site is live on option A",
-      "sources": [
-        "S21",
-        "S22"
-      ]
-    },
-    {
-      "id": "SG-02",
-      "title": "Publish the two spec conflicts instead of picking a winner",
-      "problem": "P1's capacity is stated as both 6 liters and 6 quarts; P2's preset count is both 24 and 25.",
-      "evidence": "Program Policies 2(b) prohibits inaccurate or misleading product claims (S02). Choosing one number at random is exactly that.",
-      "options": [
-        "A. Show both readings and name the conflict. A buyer learns the listing is sloppy, which is useful.",
-        "B. Publish the headline number only and say nothing.",
-        "C. Leave the field blank entirely."
-      ],
-      "recommendation": "A. It costs one sentence and it is the only option that is both accurate and useful. B is the option every competitor picks, which is the reason to not pick it.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "editorial",
-      "blocks": "nothing",
-      "sources": [
-        "S02"
-      ]
-    },
-    {
-      "id": "SG-03",
-      "title": "Publish no prices, anywhere, and say why on a dedicated page",
-      "problem": "Affiliate sites show prices to feel current. Amazon's policies restrict that sharply.",
-      "evidence": "Program Policies 2(b): price and availability may be shown only if Amazon serves the data or it comes through the Product Advertising / Creators API (S02).",
-      "options": [
-        "A. Show no prices. Link out. Explain the rule on a page so readers do not think the site is hiding something.",
-        "B. Join the Product Advertising API and display live prices with the required attribution.",
-        "C. Scrape and show prices, refreshing often."
-      ],
-      "recommendation": "A now, B when the account qualifies. C violates the policy the site is built to respect.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "owner",
-      "blocks": "nothing",
-      "sources": [
-        "S02"
-      ]
-    },
-    {
-      "id": "SG-04",
-      "title": "Answer eight buyer questions, not eight product reviews",
-      "problem": "Product pages answer \"what is it\"; buyers arrive with \"which one, and will it fit\".",
-      "evidence": "People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S21).",
-      "options": [
-        "A. Ten question-shaped guides, each answerable from published specifications and USDA targets.",
-        "B. Five long product reviews written without handling the products.",
-        "C. One long \"best air fryers 2026\" listicle."
-      ],
-      "recommendation": "A. C is the format that reads as generated, because every site in the niche already has it and none of them can differentiate inside it.",
-      "effort": "M",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "editorial",
-      "blocks": "nothing",
-      "sources": [
-        "S21"
-      ]
-    },
-    {
-      "id": "SG-05",
-      "title": "Build the compliance gate into the build, not into a checklist",
-      "problem": "Disclosure placement and rel=\"sponsored\" are the two things that are easy to forget on page fourteen.",
-      "evidence": "Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=\"sponsored\" on paid links (S04).",
-      "options": [
-        "A. Generate every page from one template that always emits the disclosure strip, and run a checker that fails on any Amazon link without rel=\"sponsored\".",
-        "B. A written checklist someone reads before publishing."
-      ],
-      "recommendation": "A. A checklist is a promise; a failing build is a fact. The checker is in tools/check_site.py and runs in CI.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "engineering",
-      "blocks": "nothing",
-      "sources": [
-        "S01",
-        "S04"
-      ]
-    },
-    {
-      "id": "SG-06",
-      "title": "Buy one air fryer and one thermometer, and earn the right to say \"we used it\"",
-      "problem": "The highest-value content in this niche — what the thing is like to live with — cannot be written honestly without the thing.",
-      "evidence": "FTC: \"You can't talk about your experience with a product you haven't tried\" (S03). Google's E-E-A-T guidance rewards demonstrated experience (S21).",
-      "options": [
-        "A. Buy one unit per family out of the commission budget and document a fixed set of tests: heat-up time, evenness with a thermocouple grid, basket clean-up time, counter footprint.",
-        "B. Stay specification-only, and be the site that is scrupulous about it.",
-        "C. Accept review units only if the site discloses the gift."
-      ],
-      "recommendation": "B until the site earns anything, then A. A is the only durable moat in this niche, but it should be funded by the site, not by a credit card.",
-      "effort": "M",
-      "confidence": "low",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "the honest writing of any \"what it is like to live with\" page",
-      "sources": [
-        "S21",
-        "S03"
-      ]
-    },
-    {
-      "id": "SG-07",
-      "title": "Turn on Search Console before writing guide nine",
-      "problem": "The next topic is currently chosen by instinct.",
-      "evidence": "No Search Console property exists (F-17). Choosing topics from measured queries is the only way to avoid writing eight more articles for nobody.",
-      "options": [
-        "A. Verify the property, wait two weeks, and pick the next three topics from the Queries report.",
-        "B. Keep writing on instinct and check the reports later."
-      ],
-      "recommendation": "A. It costs one DNS or file verification and it changes the entire content plan from guessing to reading. The site already carries the metadata needed for indexing.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "every content decision after guide eight"
-    },
-    {
-      "id": "SG-08",
-      "title": "Add a working outbound-click counter that stores nothing about the reader",
-      "problem": "There is no way to tell whether a guide is read or merely visited.",
-      "evidence": "Program Policies 2(b) forbids tying a sub-tag or ID to an individual user (S02). So the counter must be aggregate by construction, not by policy.",
-      "options": [
-        "A. Client-side counter: one integer per product in localStorage, no identifier, no network call. Honest but per-browser.",
-        "B. A self-hosted endpoint that logs a path and a product id and discards the IP.",
-        "C. A third-party analytics script."
-      ],
-      "recommendation": "A is shipped because it touches nothing and cannot leak. B is the upgrade once there is a host to run it on — it is the only option that gives a real denominator. C is the option that turns a small site into a privacy policy.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "engineering",
-      "blocks": "nothing",
-      "sources": [
-        "S02"
-      ]
-    },
-    {
-      "id": "SG-09",
-      "title": "Give every page a unique title and description, and test that the build rejects duplicates",
-      "problem": "Duplicate titles and descriptions are the most common self-inflicted indexing problem for generated sites.",
-      "evidence": "Google: \"Create unique descriptions for each page on your site\"; identical descriptions on every page are named as a problem (S24).",
-      "options": [
-        "A. Generate each page's title and description from its own content, and fail the build on a duplicate.",
-        "B. One site-wide description."
-      ],
-      "recommendation": "A. B is the specific failure mode the guidance names.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "engineering",
-      "blocks": "nothing",
-      "sources": [
-        "S24",
-        "S21"
-      ]
-    },
-    {
-      "id": "SG-10",
-      "title": "Make the front page a publication front page, and keep the dashboards one click away in the footer",
-      "problem": "The verification machinery is genuinely interesting to the owner and irrelevant to a buyer.",
-      "evidence": "Page-experience guidance (S25); the reader came for a question, not an audit trail.",
-      "options": [
-        "A. Front page leads with the products and the guides; the register, gate, ledger and flagged pages sit in a single footer group.",
-        "B. Front page leads with the source register, because that is what makes this site different.",
-        "C. Two sites."
-      ],
-      "recommendation": "A. The audit trail is the site's credibility, not its pitch. It should be exhaustively present and never in the way.",
-      "effort": "M",
-      "confidence": "medium",
-      "status": "implemented",
-      "decision_owner": "design",
-      "blocks": "nothing",
-      "sources": [
-        "S25"
-      ]
-    },
-    {
-      "id": "SG-11",
-      "title": "Use typographic hero art and labelled placeholders, and never a generated photograph of a product",
-      "problem": "The site needs to look published; it has no rights to product photography.",
-      "evidence": "The Operating Agreement treats images as Program Content (S01). A generated image of a product is a fabricated claim about what the buyer will receive.",
-      "options": [
-        "A. Typographic hero, illustrated placeholders that clearly are not photographs, and a one-line note saying so.",
-        "B. Generate photorealistic images of the products.",
-        "C. Take the listing's own images and host them."
-      ],
-      "recommendation": "A. B is fabrication and C is a rights problem the operating agreement does not solve for you.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "design",
-      "blocks": "nothing",
-      "sources": [
-        "S01"
-      ]
-    },
-    {
-      "id": "SG-12",
-      "title": "Put a three-question chooser above the comparison table",
-      "problem": "A comparison table asks the reader to hold eleven columns in their head and decide.",
-      "evidence": "The three air fryers differ along three axes that are decidable from the listing: form (basket vs oven), capacity, and counter depth. Nothing else materially separates them (S03, S04, S05).",
-      "options": [
-        "A. Three questions, each with two or three answers, resolving to one product with a stated reason.",
-        "B. A filterable table.",
-        "C. Nothing — let the table speak."
-      ],
-      "recommendation": "A. It is the only one of the three that produces a recommendation rather than a dataset.",
-      "effort": "M",
-      "confidence": "medium",
-      "status": "implemented",
-      "decision_owner": "design",
-      "blocks": "nothing",
-      "sources": [
-        "S03",
-        "S04",
-        "S05"
-      ]
-    },
-    {
-      "id": "SG-13",
-      "title": "Test one short link inside the enrolled Associates workflow before trusting the format",
-      "problem": "The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.",
-      "evidence": "Program Policies 6(w) prohibits a shortener used so the destination is unclear (S02; clause read 2026-11-20). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
-      "options": [
-        "A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.",
-        "B. Switch every link to direct /dp/ URLs and drop the short form.",
-        "C. Declare the short links non-compliant and remove them."
-      ],
-      "recommendation": "A for the short form as provenance, with the site continuing to publish direct URLs either way. C is a claim the evidence does not support.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "confidence in attribution on the supplied links",
-      "sources": [
-        "S02"
-      ]
-    },
-    {
-      "id": "SG-14",
-      "title": "Start the campaign ledger empty, with defined columns, and fill it only from first-party reports",
-      "problem": "Every affiliate dashboard invites a fabricated conversion rate on day one.",
-      "evidence": "No first-party performance data exists (F-10). A number without provenance is worse than a blank.",
-      "options": [
-        "A. An empty ledger with fixed columns — timestamp, source, channel, eligible sessions, clicks, reported orders, provenance — filled only after launch, from the Associates report.",
-        "B. Estimated figures marked as estimates."
-      ],
-      "recommendation": "A. B ages badly: the estimate outlives the label.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "owner",
-      "blocks": "nothing"
-    },
-    {
-      "id": "SG-15",
-      "title": "Lead every shop page with the products, and keep the verification record one click away",
-      "problem": "The front page opened with the process (verification framing) instead of the picks, so a first-time buyer landed on an audit rather than a shop.",
-      "evidence": "Google's people-first guidance asks that content exist for readers, not for crawlers (S21). The compliance record stays reachable in the footer group, where the release gates already require it.",
-      "options": [
-        "A. Product-first front page: hero question, five cards with CTAs, chooser, then the data table and trust row.",
-        "B. Keep the audit-first layout; readers who care will scroll.",
-        "C. Split into two sites — shop vs. process."
-      ],
-      "recommendation": "A. Implemented 2026-11-19: the front page now leads with the five picks and their CTAs; disclosure stays above the fold and every dashboard page remains in the footer group. The chooser pointer was kept deliberately humble — a starting point, not a test verdict.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "editorial",
-      "blocks": "nothing",
-      "sources": [
-        "S21"
-      ]
-    },
-    {
-      "id": "SG-16",
-      "title": "Replace the SVG social preview with a raster card, and verify it before relying on it",
-      "problem": "Every page referenced assets/og-image.svg as og:image until the publication-polish pass replaced it with a 1200×630 raster card (assets/og-image.png). SVG is not the format social preview tools typically render, so the format risk is resolved; what remains is confirming the card actually renders in a share debugger.",
-      "evidence": "Meta's sharing best-practices documentation asks for JPG or PNG preview images (https://developers.facebook.com/docs/sharing/best-practices — recorded as a to-verify reference; not re-fetched from this network, see F-21). The PNG is now shipped on all 24 pages; the debugger check (Q-21) has not been run.",
-      "options": [
-        "A. Produce one 1200×637 PNG card from the existing brand type, swap the og:image hrefs, and confirm with a share debugger.",
-        "B. Keep SVG and accept that some previews show nothing.",
-        "C. Drop og:image entirely."
-      ],
-      "recommendation": "A, once someone with a browser can run the share-preview check. The change is one file and nine href lines; the fallback today (a plain-text link preview) is honest but costs the click.",
-      "effort": "S",
-      "confidence": "medium",
-      "status": "partly implemented",
-      "decision_owner": "editorial",
-      "blocks": "nothing — flagged as F-21 for review"
-    },
-    {
-      "id": "SG-17",
-      "title": "Make the Product Advertising API the only path to displayed prices",
-      "problem": "An earlier draft suggestion proposed a weekly re-check that updated dated prices on the pages. That is exactly what Program Policies 2(b) restricts, and the audit removed the prices; the proposal is retired and replaced by this one.",
-      "evidence": "Program Policies 2(b): price and availability may be displayed only when served by Amazon or obtained through the Product Advertising API (S02). PA-API access requires an account with qualifying recent sales (Amazon Associates Help, account-eligibility page — owner-checked inside the account).",
-      "options": [
-        "A. Keep publishing no prices; every card says “Current price on Amazon” (status quo).",
-        "B. Once the account qualifies, wire PA-API responses into the build with the required attribution, and let the gate verify the data is API-served.",
-        "C. Display manually refreshed price text. Not offered as a real option — it violates 2(b)."
-      ],
-      "recommendation": "A now; B the moment the account is eligible. This supersedes the old “weekly price re-check” row that used to sit on direction.html.",
-      "effort": "M",
-      "confidence": "high",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "any future price display",
-      "sources": [
-        "S02"
-      ]
-    },
-    {
-      "id": "SG-18",
-      "title": "Choose guide nine from measured queries, not instinct",
-      "problem": "Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.",
-      "evidence": "Search Console is the first-party source for the queries a site actually appears for (https://search.google.com/search-console/about — SG-07 is the verification prerequisite). analytics.html records that no data exists yet.",
-      "options": [
-        "A. Hold at ten guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
-        "B. Keep the weekly cadence with self-selected topics until data arrives.",
-        "C. Retire or merge any guide with zero impressions after 60 days (Q-17)."
-      ],
-      "recommendation": "A, with C as the pruning rule. Cadence only after measurement — otherwise the site scales guesses.",
-      "effort": "S",
-      "confidence": "medium",
-      "status": "proposed",
-      "decision_owner": "editorial",
-      "blocks": "the ninth guide only"
-    },
-    {
-      "id": "SG-19",
-      "title": "Mobile-first tap-target pass: every control ≥44px (48px at touch widths) with ≥8px spacing",
-      "problem": "Affiliate traffic is majority mobile; a 32px button with a 2px gap is a mis-tap generator.",
-      "evidence": "Google's Lighthouse tap-targets audit flags targets below 48×48px that overlap neighbours (~8px spacing recommended). Recorded as S19 in data/sources.json by session 65474d4f.",
-      "options": [
-        "A. Enlarge hit areas via CSS only; no copy or link changes.",
-        "B. Redesign the layout per breakpoint.",
-        "C. Do nothing."
-      ],
-      "recommendation": "A. Shipped 2026-11-19 by session 65474d4f (S-20): nav 44/48px, full-width hero CTAs under 600px, chooser pills ≥48px, footer links ≥32px with roomy padding. This session's shop-polish pass inherited the rules and added focus-visible outlines and card lift.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "engineering",
-      "blocks": "nothing",
-      "sources": [
-        "S19",
-        "S21"
-      ]
-    },
-    {
-      "id": "SG-20",
-      "title": "Pick one product as the site's spine and let the other four support it",
-      "problem": "Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.",
-      "evidence": "The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google's thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).",
-      "options": [
-        "A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.",
-        "B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.",
-        "C. Keep the current two-family balance and expand only when the analytics say which family reads better."
-      ],
-      "recommendation": "A. Air fryers have the wider search intent and three products to compare, which is enough for a comparison table that earns its place. Revisit at the first Search Console report.",
-      "effort": "M",
-      "confidence": "medium",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "Which guides get written next",
-      "sources": [
-        "S10",
-        "S11",
-        "S12",
-        "S13",
-        "S14",
-        "S21",
-        "S22"
-      ]
-    },
-    {
-      "id": "SG-21",
-      "title": "[RETIRED — duplicate of SG-20] Pick one product as the site's spine and let the other four support it",
-      "problem": "Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.",
-      "evidence": "The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google's thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).",
-      "options": [
-        "A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.",
-        "B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.",
-        "C. Keep the current two-family balance and expand only when the analytics say which family reads better."
-      ],
-      "recommendation": "A. Air fryers have the wider search intent and three products to compare, which is enough for a comparison table that earns its place. Revisit at the first Search Console report. (Retired 2026-11-20 — this row duplicated SG-20 exactly; act on SG-20.)",
-      "effort": "M",
-      "confidence": "medium",
-      "status": "retired",
-      "decision_owner": "owner",
-      "blocks": "Which guides get written next",
-      "retired_note": "Verified duplicate on 2026-11-20: SG-20 and SG-21 carried byte-identical title, problem, evidence, options, recommendation, effort, confidence, owner and blocks fields. SG-21 is retained here as a retired row rather than deleted, so the register shows what happened instead of silently shrinking. Action SG-20, never both.",
-      "sources": [
-        "S10",
-        "S11",
-        "S12",
-        "S13",
-        "S14",
-        "S21",
-        "S22"
-      ]
-    },
-    {
-      "id": "SG-22",
-      "title": "Write the first-hand answer only after someone has actually used the appliance for a month",
-      "problem": "The most useful sentence on any appliance site — what it is like after the novelty wears off — cannot be written from a listing. Writing it anyway is the exact practice the FTC warns about.",
-      "evidence": "FTC Disclosures 101: you cannot talk about your experience with a product you have not tried (S03). Google's people-first guidance rewards demonstrated experience (S21).",
-      "options": [
-        "A. Buy one unit of the spine product and publish a dated 30-day note, clearly separated from the listing-sourced pages.",
-        "B. Stay listing-only and say so on every page, as now.",
-        "C. Invite owner-supplied notes without claiming testing."
-      ],
-      "recommendation": "A once there is traffic to justify the purchase, and never before. Until then the site's honest position is that it has not touched the products, which is already stated on every card.",
-      "effort": "M",
-      "confidence": "low",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "Nothing today; it is the ceiling on how good the content can get",
-      "sources": [
-        "S21",
-        "S03"
-      ]
-    },
-    {
-      "id": "SG-23",
-      "title": "Make one page the definitive answer to \"how big is it really\"",
-      "problem": "Every air fryer buyer asks the same question and every listing answers it badly: nominal quarts, no interior measurements, no clearance figure.",
-      "evidence": "The three air-fryer listings publish exterior dimensions only; interior cavity sizes and required clearances are not stated (S10-S12, F-12). Nominal capacity is a headline figure, not a usable volume.",
-      "options": [
-        "A. Publish a measurements page that shows the listed external size, the arithmetic for counter area, and an explicit blank where interior size and clearance belong.",
-        "B. Email the three manufacturers and publish their replies with dates.",
-        "C. Skip it and point at the listings."
-      ],
-      "recommendation": "A now — the arithmetic is already verified and the blanks are the honest part. B is the upgrade once an owner has an address to write from.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "editorial",
-      "blocks": "Nothing",
-      "sources": [
-        "S10",
-        "S11",
-        "S12"
-      ]
-    },
-    {
-      "id": "SG-24",
-      "title": "Give the site a named editor before giving it a voice",
-      "problem": "An anonymous publication can be accurate and still be untrustworthy, because nobody is accountable for the errors.",
-      "evidence": "Google's people-first guidance asks who created the content and whether it is written by someone with first-hand knowledge (S21).",
-      "options": [
-        "A. Publish a real byline with a short, factual author note and a contact address.",
-        "B. Keep the organizational voice and say plainly that no individual is named.",
-        "C. Publish a pen name, which trades one honesty problem for a worse one."
-      ],
-      "recommendation": "A if the owner is willing to be named, B otherwise. C is not on the table. Until then the About page should state that the desk is unnamed rather than leave the reader to notice.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "Nothing; it changes how much a reader should trust the page",
-      "sources": [
-        "S21"
-      ]
-    },
-    {
-      "id": "SG-25",
-      "title": "Stop calling it a decision log until decisions are actually recorded there",
-      "problem": "The Direction page once presented eight suggestions that nobody had been asked to approve. A register that lists proposals as if they were decisions teaches the reader to discount the whole page.",
-      "evidence": "This audit found direction.html carrying SG-01..SG-08 with meanings different from data/suggestions.json (I-01), and no dated decisions at all.",
-      "options": [
-        "A. Three registers: proposals, questions, decisions, each generated from its own data file with its own ID prefix.",
-        "B. One long page with three sections.",
-        "C. Only a decisions page, with proposals kept in the repo."
-      ],
-      "recommendation": "A, which is what now ships. The generator makes it impossible for a proposal to be silently presented as a decision again.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "engineering",
-      "blocks": "Nothing"
-    },
-    {
-      "id": "SG-27",
-      "title": "One name for the Direction page, in the nav and the footer",
-      "problem": "The primary nav called this page \"Direction\" while the footer called it \"Decision log\". A reader who clicked one and looked for the other could not tell they were the same page.",
-      "evidence": "Before the shop-first rebuild (commit 9032a35), every page's primary nav said \"Direction\" and the footer said \"Decision log\". On origin/main at c49de86, the primary nav no longer carries a Direction label, and the footer names the page \"Decision log\". Checked 2026-11-20 by grep across all HTML.",
-      "options": [
-        "A. One name in the nav and footer (shipped upstream in 9032a35; the footer name is kept).",
-        "B. Nav says \"Direction\" and footer says \"Direction\".",
-        "C. Split into two pages with separate names."
-      ],
-      "recommendation": "A, which is in place. Keep the footer name so the register and the link text match.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "engineering",
-      "blocks": "Nothing"
-    },
-    {
-      "id": "SG-28",
-      "title": "Ship the RSS feed and advertise it on every page",
-      "problem": "feed.xml was linked from the head of only some pages. A reader arriving on a guide or a comparison page had no discoverable subscription path there.",
-      "evidence": "feed.xml is well-formed and lists the guides (tools/verify_site.py). At the time this row was written, 20 of the then-30 HTML pages had no rel=\"alternate\" feed link in their head; the pass added it to those 20, so every page then published carried it. Page counts move as pages are added, so the count is not restated here. The head is hand-written, so the link sits outside the build-chrome markers.",
-      "options": [
-        "A. Feed link in every head, plus the footer link (T-26).",
-        "B. Footer link only.",
-        "C. No feed; email signup instead (see SG-30)."
-      ],
-      "recommendation": "A. RSS needs no provider and no consent flow.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "engineering",
-      "blocks": "Nothing"
-    },
-    {
-      "id": "SG-29",
-      "title": "Connect Google Search Console once the owner has an account",
-      "problem": "The site has a sitemap, and robots.txt points to it, but no search engine has been told the site exists, and nobody has checked how it is indexed.",
-      "evidence": "sitemap.xml and robots.txt are present and gated (tools/verify_site.py). No Search Console property, verification file or submission exists in the repo. The index page's link label that read \"Search Console is connected\" was changed to \"Search Console setup\" on 2026-11-20 (T-26). This environment has no Search Console account, so nothing here was verified.",
-      "options": [
-        "A. Owner adds the URL-prefix property https://wingbangboozle1-lang.github.io/Prod3/, verifies it, and submits sitemap.xml.",
-        "B. Defer until the owner decides on a custom domain.",
-        "C. Ask an agent with account access to do it."
-      ],
-      "recommendation": "A. It takes the owner about 10 minutes and gives the first measured search queries. Until then, the next guide topic is not chosen from search data (see SG-18).",
-      "effort": "S",
-      "confidence": "high",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "SG-18 (measured-query guide selection)"
-    },
-    {
-      "id": "SG-30",
-      "title": "Decide how readers stay in touch: RSS only, or an email provider with consent",
-      "problem": "The site has no way to capture readers who want new guides by email. The removed demo form was never connected, so there is no email list and no consent record.",
-      "evidence": "FLG-014: no email provider, endpoint or consent flow exists. reader_signup is reserved and fires only on a confirmed provider response (assets/app.js). The footer points to RSS.",
-      "options": [
-        "A. Keep RSS as the only subscription path (current).",
-        "B. Add a double-opt-in email provider with a stated privacy notice.",
-        "C. Defer until traffic from SG-29 shows whether a list is worth running."
-      ],
-      "recommendation": "A for now. B needs an owner-chosen provider and consent text. Neither exists yet, so none is implied on the site.",
-      "effort": "M",
-      "confidence": "medium",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "Reader-capture metrics"
-    },
-    {
-      "id": "SG-31",
-      "title": "Put the listing's own contradiction on the product card, not only on the flag page",
-      "problem": "Two listings contradict themselves on preset count, accessory count, battery life and warranty. Those conflicts are published on flagged.html, which a shopper never opens, so the most useful thing the site knows about those listings is invisible at the point of choice.",
-      "evidence": "The conflicts are recorded in data/products.json (P-02 presets 24 vs 25; P-02 accessories six vs seven; P-05 battery 50 vs 70 hours and warranty 2 vs 3 years) and published as FLG-002, FLG-003 and FLG-013. Program Policies 2(b) prohibits inaccurate or misleading product claims, which is the reason both readings are kept rather than one chosen.",
-      "options": [
-        "A. Add a one-line conflict chip to the card: “Listing conflicts: presets 24 vs 25 · accessories 6 vs 7”, linking to the flag row.",
-        "B. Keep the card clean and trust the reader to visit the flag page.",
-        "C. Drop the conflicting fields from the site entirely."
-      ],
-      "recommendation": "A — it is implemented on the front page and both category pages as of 2026-11-20. It costs one line per affected product, adds no new claim, and is the cheapest honest differentiator the site has.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "editorial",
-      "blocks": "nothing",
-      "decision": {
-        "benefit": "A shopper sees the site's honesty exactly where the decision is made, instead of on a page they will not open.",
-        "risk": "A conflict chip with no source reads as a slur on the seller, so each one links to the flag row and the official listing.",
-        "reversible": "yes",
-        "falsifier": "If click data shows no interaction with the chip, keep the headline spec and drop the chip."
-      }
-    },
-    {
-      "id": "SG-32",
-      "title": "Show a dated status line on every buy button until the link test passes",
-      "problem": "FLG-025 records all five supplied short links ending at the Amazon homepage on 2026-11-20. The buttons still read “Check price on Amazon”, which promises a product page. A reader who lands on the homepage has been given a promise the link did not keep.",
-      "evidence": "Third dated observation in data/products.json (live_recheck_2026_11_20_link_check): five of five final URLs were https://www.amazon.com/. Earlier records: 2026-11-19 five product pages; two partial same-day records. FLG-017, FLG-025, FLG-031.",
-      "options": [
-        "A. Keep the button but add one dated line: “Link re-tested 20 Nov 2026 — if it opens the Amazon homepage, use the listing link below.”",
-        "B. Point every buy button at the official /dp/ listing instead and keep the short link on the flag page as the object under test.",
-        "C. Change nothing until the owner's signed-in test is done."
-      ],
-      "recommendation": "A now, then B only if the owner's test also fails. A costs one line per card, keeps the supplied link in test, and stops the page from promising a destination nobody has confirmed today.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "proposed",
-      "decision_owner": "editorial",
-      "blocks": "nothing",
-      "decision": {
-        "benefit": "The page stops over-promising, without pretending the short links are invalid.",
-        "risk": "A visible caveat next to a buy button can reduce clicks; that is the honest cost of an unconfirmed link.",
-        "reversible": "yes",
-        "falsifier": "If the owner's test shows the links reach the products, remove the line the same day."
-      }
-    },
-    {
-      "id": "SG-33",
-      "title": "Add a five-row link-status table to the front page footer area, one row per product",
-      "problem": "The reader cannot tell which of five buy links reached its product on which date. That information exists in four separate observations across three sessions and is spread over products.json, verification.json and three flag rows.",
-      "evidence": "data/products.json now holds four dated observations; flagged.html publishes FLG-017, FLG-025 and FLG-031.",
-      "options": [
-        "A. One five-row table: product · supplied link · last fetched (date) · landed on (product page / homepage) · source.",
-        "B. Keep it on flagged.html only.",
-        "C. Publish only the most recent global result (“all five: homepage on 2026-11-20”)."
-      ],
-      "recommendation": "A on flagged.html and a one-line summary on the front page. C alone loses the per-product history that makes the finding checkable.",
-      "effort": "S",
-      "confidence": "medium",
-      "status": "proposed",
-      "decision_owner": "editorial",
-      "blocks": "nothing",
-      "decision": {
-        "benefit": "One table replaces three prose flags and four data fields a reader will never open.",
-        "risk": "A table of dated observations invites a reader to read the newest row as a verdict; the caption must say it is an observation, not a verdict.",
-        "reversible": "yes",
-        "falsifier": "If it does not change what readers do, fold it back into one line."
-      }
-    },
-    {
-      "id": "SG-34",
-      "title": "State the tag-parameter requirement once, in plain words, on the disclosure page",
-      "problem": "Program Policies §2(b) require the Associates tag as a parameter in each link's URL. The site's disclosure page explains that a commission may be earned but never tells the reader (or the owner) what makes a click attributable.",
-      "evidence": "Program Policies (updated 2026-04-14) §2(a) and §2(b), quoted in data/verification.json link_compliance_2026_11_20; FLG-026. Zero shipped anchors carry tag=shopnow047c-20.",
-      "options": [
-        "A. Add a short “How a click is credited” paragraph with the quoted requirement and the observed fact.",
-        "B. Leave it to the flag register.",
-        "C. Remove the tracking-ID line from the disclosure strip as too technical."
-      ],
-      "recommendation": "A. It is the one compliance statement on this site that a reader can check against the policy text, and it is one paragraph.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "nothing",
-      "decision": {
-        "benefit": "Makes the disclosure specific instead of ceremonial, and gives the owner a written rule to test against.",
-        "risk": "Quoting a policy clause wrongly is worse than not quoting it; the quote must be copied verbatim and dated.",
-        "reversible": "yes",
-        "falsifier": "If the policy page changes the clause, the paragraph is corrected or removed the same day."
-      }
-    },
-    {
-      "id": "SG-35",
-      "title": "Give the twelve guide proposals a home with a gate, so the writing plan is reviewable",
-      "problem": "The site had nine published guides and no reviewable answer to “what gets written next, and why”. Proposal rules lived in prose on several pages.",
-      "evidence": "data/editorial-plan.json (12 rows, each with the evidence it needs and whether it exists); publishing-plan.html; gate D31 in tools/check_site.py.",
-      "options": [
-        "A. Keep the dated twelve-week plan page, gated against its data file.",
-        "B. Keep the plan in the repository only.",
-        "C. Write guides as ideas arrive, with no plan."
-      ],
-      "recommendation": "A — implemented 2026-11-20. The gate makes a row edited in one place only fail the release, which is the same discipline the other registers use.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "editorial",
-      "blocks": "nothing",
-      "decision": {
-        "benefit": "A blocked row is visible before anyone writes around the gap, so the site cannot quietly invent the missing figure.",
-        "risk": "A published plan is a promise; if the cadence slips the page goes stale. The week column is therefore a proposal date, not a commitment, and the page says so.",
-        "reversible": "yes",
-        "falsifier": "If no row ships in four weeks, demote the page to a repository note."
-      }
-    },
-    {
-      "id": "SG-36",
-      "title": "Lead the front page with a buyer question and five shop cards, not with the audit trail",
-      "problem": "A buyer landing on the site should see products and a chooser, not a source register. The verification machinery is the site's credibility, not its pitch — it belongs one click away in the footer group.",
-      "evidence": "SG-10 made the front page publication-first and SG-15 made every shop page product-first; both are shipped. Google's people-first guidance asks that content exist for readers rather than crawlers (S21), and page-experience guidance rewards pages that load and read well (S25).",
-      "options": [
-        "A. Keep the current product-first front page: hero buyer question, five cards with CTAs, chooser, seasonal guide row, then the data table; audit surfaces stay in the footer group.",
-        "B. Move the register, gates, flags and ledger onto the front page so credibility leads.",
-        "C. Run two sites — a shop and a register — linked from each other."
-      ],
-      "recommendation": "A. It is already live on index.html and the two category pillars. The conflict chips and seasonal row keep the shop surface current without any new claim. Revisit only if click data shows readers scrolling past the cards to the register.",
-      "effort": "M",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "editorial",
-      "blocks": "nothing — live on the front page, air-fryers.html and meat-thermometers.html",
-      "sources": [
-        "S21",
-        "S25"
-      ]
-    },
-    {
-      "id": "SG-37",
-      "title": "Publish catchy, trend-led question articles to earn organic traffic",
-      "problem": "The ten guides are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
-      "evidence": "SG-04 chose question-shaped guides over reviews (shipped). SG-18 says guide nine must come from measured queries once Search Console exists (Q-18). Google's thin-affiliation policy treats affiliate pages with no added value as spam (S22), so each trend article must add buying criteria, not just repeat the listing (S21).",
-      "options": [
-        "A. Keep a small seasonal calendar of catchy question articles — Thanksgiving temperature planning, holiday air-fryer gifts, January meal prep, summer grilling thermometers — each answering one buyer question with listed specs.",
-        "B. Publish generic \"best air fryer 2026\" listicles, the format every competitor already owns.",
-        "C. Do not write guide nine until Search Console data exists (SG-07), then pick from measured impressions."
-      ],
-      "recommendation": "A for the calendar, with C as the gating rule: no topic gets written without either a seasonal reason or measured query interest. The existing four suggested editorial hypotheses are working titles only — not popularity or superiority claims.",
-      "effort": "M",
-      "confidence": "medium",
-      "status": "proposed",
-      "decision_owner": "editorial",
-      "blocks": "Q-18 (Search Console verification) before any topic is chosen from data; Q-24 registers the discovery question itself",
-      "sources": [
-        "S21",
-        "S22"
-      ]
-    },
-    {
-      "id": "SG-38",
-      "title": "Review every change in the suggestions section before anything is built",
-      "problem": "Changes reached the site without a recorded choice, and the Direction page once carried suggestions that nobody had been asked to approve (audit finding I-01).",
-      "evidence": "The register now lives in data/suggestions.json and renders to suggestions.html with a Do / Maybe / No mark on every card and a copyable decision block (SG-25 made the log decision-first). ideas.html is the review surface: ranked moves, rejected ideas with reasons, and the copyable block.",
-      "options": [
-        "A. Keep the review desk: suggestions register, open-questions register, decision log, and the ideas review page where every change is marked before implementation.",
-        "B. Let the next session implement whatever looks promising, with no register entry.",
-        "C. Require an owner sign-off recorded in the decision log before any published change."
-      ],
-      "recommendation": "A, which is already live. It costs one read per change and makes every ship decision auditable. C is the upgrade once the owner wants a formal sign-off step.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "owner",
-      "blocks": "nothing — suggestions.html, questions.html, ideas.html and decisions.html ship today",
-      "sources": []
-    },
-    {
-      "id": "SG-39",
-      "title": "Give a first-time visitor an intent fork before a product list",
-      "problem": "The front page opens on five products and a featured pick. A reader who does not already know whether they want a basket, an oven cabinet or a thermometer has to read the whole page to find out which shelf applies to them.",
-      "evidence": "Five products across two families (F-08). The three-question chooser answers a version of this, but it sits below the short list and returns a paragraph rather than a destination. Implemented 2026-11-20 as start.html: four intent paths, each two clicks from an official listing; the front page links to it in the primary nav and in a four-tile strip above the featured pick. (Registered as SG-36 on 2026-11-20: SG-32..SG-35 had already been taken by another session for four different proposals.) (Registered as SG-39 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
-      "options": [
-        "A. An intent page (start.html) that forks by how the reader cooks, with the product list left intact.",
-        "B. Put the chooser above the featured pick and delete the short list.",
-        "C. Leave the front page as the single entry point."
-      ],
-      "recommendation": "A — shipped. The short list still serves a reader who wants the recommendation immediately; the fork serves the reader who does not yet know what to compare. B loses the recommendation, C loses the reader who arrives without a product name.",
-      "effort": "S",
-      "confidence": "medium",
-      "status": "implemented",
-      "decision_owner": "editorial",
-      "blocks": "nothing",
-      "decision": {
-        "benefit": "A first-time visitor reaches a relevant shelf in two clicks instead of scanning a long front page.",
-        "risk": "A fork adds a page between the reader and the listing; if the four paths are not mutually exclusive it becomes another index to read.",
-        "reversible": "yes — remove start.html from NAV in scripts/build_chrome.py and the front-page strip",
-        "falsifier": "If outbound clicks from start.html are zero over a measured period while front-page clicks stay flat, the fork is in the way and should become a single section."
-      }
-    },
-    {
-      "id": "SG-40",
-      "title": "One question-shaped guide for the month people are actually buying",
-      "problem": "The seasonal block led with Thanksgiving into December. Gift buying is the dominant December kitchen-appliance question, and the site's only gift page was a list of five ideas with no decision rule.",
-      "evidence": "Nine of the ten guides had shipped before this later gift-guide pass, which added the tenth (articles/kitchen-gifts-that-get-used.html); the gift guide (articles/holiday-kitchen-gift-guide.html) lists five ideas without explaining how to choose between shapes. Implemented 2026-11-20: articles/kitchen-gifts-that-get-used.html sorts the five by cook, gives the one listed number that decides each, and is wired into feed.xml and sitemap.xml. (Registered as SG-37 on 2026-11-20 for the same reason.) (Registered as SG-40 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
-      "options": [
-        "A. A decision-shaped gift guide, linked from the seasonal block and the feed.",
-        "B. Rewrite the existing gift guide in place.",
-        "C. Wait for search data before publishing another guide."
-      ],
-      "recommendation": "A — shipped, because C has no data behind it yet and B would have replaced a page that already works for a different intent.",
-      "effort": "S",
-      "confidence": "medium",
-      "status": "implemented",
-      "decision_owner": "editorial",
-      "blocks": "nothing",
-      "decision": {
-        "benefit": "Catches the December gift search with a page that answers a real decision rather than another list.",
-        "risk": "Two gift pages can cannibalise each other in search if both target the same query.",
-        "reversible": "yes — remove the feed item and the seasonal tile",
-        "falsifier": "If Search Console shows the two gift pages competing for one query, merge them and keep the decision-shaped one."
-      }
-    },
-    {
-      "id": "SG-41",
-      "title": "Decide what a reader-capture path would be, before writing any signup copy",
-      "problem": "There is no email list, and the site says so in the footer. That is honest, but it also means no reader can be reached again without an RSS reader. The missing decision is not the copy, it is the provider, the consent record and who owns the list.",
-      "evidence": "FLG-014: the demo form was removed rather than shipped unconnected. assets/app.js reserves reader_signup and only emits it on kc:reader-signup-confirmed, which no integration dispatches. SG-30 proposes RSS-only versus an email provider; this row records the decision that has to precede any form markup. (Registered as SG-38 on 2026-11-20 for the same reason.) (Registered as SG-41 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
-      "options": [
-        "A. RSS only; state it plainly and stop treating capture as a gap.",
-        "B. Double opt-in provider, with the provider named on the privacy page before the first field ships.",
-        "C. Ask for a bookmark instead of an address."
-      ],
-      "recommendation": "B is the only option that creates a reader relationship, and it needs an owner-chosen provider, a consent record and a deletion path. Until those three exist, A stays the shipped behaviour and no form appears.",
-      "effort": "M",
-      "confidence": "low",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "Reader-capture metrics; any signup form on any page"
-    },
-    {
-      "id": "SG-42",
-      "title": "Ship a way for the owner to look at every page without installing anything",
-      "problem": "Review rounds have argued about layout from HTML source. A reader sees a rendered page, and a phone-width layout defect (horizontal scroll, a card that overflows) is invisible in source.",
-      "evidence": "Ten pages are rendered at 1366px and 390px by .github/workflows/snapshots.yml and uploaded as a downloadable artifact; the job fails when a page is wider than the viewport. design/pages.json lists the pages so the set is reviewable rather than hidden in a workflow file. (Registered as SG-39 on 2026-11-20 for the same reason.) (Registered as SG-42 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
-      "options": [
-        "A. Render on CI, upload PNGs, fail on horizontal overflow.",
-        "B. Ask the owner to screenshot manually.",
-        "C. Trust the CSS review."
-      ],
-      "recommendation": "A — shipped. It adds no third-party asset to the published site (the browser runs on the runner, not for the reader) and it makes a layout regression a red check.",
-      "effort": "S",
-      "confidence": "high",
-      "status": "implemented",
-      "decision_owner": "editorial",
-      "blocks": "nothing"
-    }
+ "generated": "2026-11-20",
+ "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-31 added 2026-11-20 (session ce911db5) to give the conflict chip its own registered row; SG-26 is absent from this register and was cited by DIRECTION.md — see FLG-021. SG-43..SG-45 added 2026-11-20 (session 52f418e7) from a line-by-line re-read of the Participation Requirements; they bound the automation and promotion roadmap, not the pages that are live.",
+ "scale": {
+  "effort": [
+   "S — a short session",
+   "M — a focused day",
+   "L — a project"
   ],
   "confidence": [
    "high — backed by a primary source and a clear mechanism",
@@ -916,7 +81,7 @@
    "problem": "Product pages answer \"what is it\"; buyers arrive with \"which one, and will it fit\".",
    "evidence": "People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S21).",
    "options": [
-    "A. Eight question-shaped guides, each answerable from published specifications and USDA targets.",
+    "A. Ten question-shaped guides, each answerable from published specifications and USDA targets.",
     "B. Five long product reviews written without handling the products.",
     "C. One long \"best air fryers 2026\" listicle."
    ],
@@ -1093,7 +258,7 @@
    "id": "SG-13",
    "title": "Test one short link inside the enrolled Associates workflow before trusting the format",
    "problem": "The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.",
-   "evidence": "Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
+   "evidence": "Program Policies 6(w) prohibits a shortener used so the destination is unclear (S02; clause read 2026-11-20). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
    "options": [
     "A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.",
     "B. Switch every link to direct /dp/ URLs and drop the short form.",
@@ -1188,7 +353,7 @@
    "problem": "Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.",
    "evidence": "Search Console is the first-party source for the queries a site actually appears for (https://search.google.com/search-console/about — SG-07 is the verification prerequisite). analytics.html records that no data exists yet.",
    "options": [
-    "A. Hold at eight guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
+    "A. Hold at ten guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
     "B. Keep the weekly cadence with self-selected topics until data arrives.",
     "C. Retire or merge any guide with zero impressions after 60 days (Q-17)."
    ],
@@ -1494,13 +659,13 @@
    "id": "SG-34",
    "title": "State the tag-parameter requirement once, in plain words, on the disclosure page",
    "problem": "Program Policies §2(b) require the Associates tag as a parameter in each link's URL. The site's disclosure page explains that a commission may be earned but never tells the reader (or the owner) what makes a click attributable.",
-   "evidence": "Program Policies (updated 2026-04-14) §2(a) and §2(b), quoted in data/verification.json link_compliance_2026_11_20; FLG-026. Zero shipped anchors carry tag=shopnow047c-20. Implemented 2026-11-20 (session 52f418e7): every product link on the site carries the tag, per Participation Requirements 2(b).",
+   "evidence": "Program Policies (updated 2026-04-14) §2(a) and §2(b), quoted in data/verification.json link_compliance_2026_11_20; FLG-026. Zero shipped anchors carry tag=shopnow047c-20. Implemented 2026-11-20 (session 52f418e7): disclosure.html now carries a “How we link to Amazon” section quoting Participation Requirements 2(b), and every product link on the site carries the tag.",
    "options": [
     "A. Add a short “How a click is credited” paragraph with the quoted requirement and the observed fact.",
     "B. Leave it to the flag register.",
     "C. Remove the tracking-ID line from the disclosure strip as too technical."
    ],
-   "recommendation": "A. It is the one compliance statement on this site that a reader can check against the policy text, and it is one paragraph. Shipped 2026-11-20; gate D40 keeps it true. The plain-words paragraph on disclosure.html is still to write.",
+   "recommendation": "A. It is the one compliance statement on this site that a reader can check against the policy text, and it is one paragraph. Shipped 2026-11-20; gate D41 keeps it true.",
    "effort": "S",
    "confidence": "high",
    "status": "implemented",
@@ -1560,7 +725,7 @@
   {
    "id": "SG-37",
    "title": "Publish catchy, trend-led question articles to earn organic traffic",
-   "problem": "The eight guides are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
+   "problem": "The ten guides are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
    "evidence": "SG-04 chose question-shaped guides over reviews (shipped). SG-18 says guide nine must come from measured queries once Search Console exists (Q-18). Google's thin-affiliation policy treats affiliate pages with no added value as spam (S22), so each trend article must add buying criteria, not just repeat the listing (S21).",
    "options": [
     "A. Keep a small seasonal calendar of catchy question articles — Thanksgiving temperature planning, holiday air-fryer gifts, January meal prep, summer grilling thermometers — each answering one buyer question with listed specs.",
@@ -1623,7 +788,7 @@
    "id": "SG-40",
    "title": "One question-shaped guide for the month people are actually buying",
    "problem": "The seasonal block led with Thanksgiving into December. Gift buying is the dominant December kitchen-appliance question, and the site's only gift page was a list of five ideas with no decision rule.",
-   "evidence": "Nine guides shipped before this pass; the gift guide (articles/holiday-kitchen-gift-guide.html) lists five ideas without explaining how to choose between shapes. Implemented 2026-11-20: articles/kitchen-gifts-that-get-used.html sorts the five by cook, gives the one listed number that decides each, and is wired into feed.xml and sitemap.xml. (Registered as SG-37 on 2026-11-20 for the same reason.) (Registered as SG-40 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
+   "evidence": "Nine of the ten guides had shipped before this later gift-guide pass, which added the tenth (articles/kitchen-gifts-that-get-used.html); the gift guide (articles/holiday-kitchen-gift-guide.html) lists five ideas without explaining how to choose between shapes. Implemented 2026-11-20: articles/kitchen-gifts-that-get-used.html sorts the five by cook, gives the one listed number that decides each, and is wired into feed.xml and sitemap.xml. (Registered as SG-37 on 2026-11-20 for the same reason.) (Registered as SG-40 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
    "options": [
     "A. A decision-shaped gift guide, linked from the seasonal block and the feed.",
     "B. Rewrite the existing gift guide in place.",
@@ -1678,15 +843,15 @@
   },
   {
    "id": "SG-43",
-   "title": "Write the automation rules down before the automation exists: what a research pipeline may not do",
-   "problem": "The project brief asks for an AI-powered platform that researches products, analyses pricing and reviews, generates articles and optimises campaigns. Parts of that ambition collide with the program rules this site already follows, and the collision lines are recorded nowhere a reader would see. A future session would then build the collision rather than choose it.",
-   "evidence": "Participation Requirements §5 (read 2026-11-20): Special Links and Program Content may not be used “to develop machine learning models or related technology” without Amazon's express prior written approval. The IP License in the same document excludes “any use of data mining, robots, or similar data gathering and extraction tools” over Program Content; §(t) bars displaying customer reviews or star ratings unless obtained through Creators API or PA API; §(y) prohibits price tracking or price alerting on the Site unless otherwise agreed. Source: S02.",
+   "title": "Write the automation boundary down before the automation exists",
+   "problem": "The brief asks for an AI-powered platform that researches products, analyses pricing and reviews, generates articles and optimises campaigns. Parts of that ambition collide with the program rules this site already follows, and the collision lines are recorded nowhere a builder would meet them, so a future session would implement the collision instead of choosing it.",
+   "evidence": "Participation Requirements §5: “You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology”, and the same section bars using Program Content “on or in connection with” client-side software such as a browser extension. §6(t) bars displaying customer reviews or star ratings unless obtained through Creators API or PA API. §6(y): “Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.” Quotes transcribed from the live page 2026-11-20; see data/policy-clause-map.json. Source: S02.",
    "options": [
-    "A. Publish a short “what the automation may and may not do” page citing each clause, and gate the build on it.",
-    "B. Keep the rules in COORDINATION.md, where no future reader of the site will meet them.",
-    "C. Ask Amazon for written approval before designing any pipeline that reads Program Content at scale."
+    "A. Publish a short “what the automation may and may not do” section on the disclosure page citing each clause, and let the gates keep the rest.",
+    "B. Keep the boundary in COORDINATION.md, where a future reader of the site never meets it.",
+    "C. Ask Amazon in writing before designing any pipeline that reads Program Content at scale."
    ],
-   "recommendation": "A now; C only if the owner actually wants a model trained on Amazon content. The gates already refuse prices, ratings and scraped content, so this is a boundary stated once in public rather than a new capability.",
+   "recommendation": "A now; C only if the owner actually wants a model trained on Program Content, which §5 makes an approval question rather than an engineering one. The gates already refuse prices, ratings and scraped content, so this row adds a stated boundary, not a new capability.",
    "effort": "S",
    "confidence": "high",
    "status": "proposed",
@@ -1698,15 +863,15 @@
   },
   {
    "id": "SG-44",
-   "title": "Settle the naming and paid-search guardrails before any traffic spend",
-   "problem": "A growth plan usually reaches for a keyword campaign and a punchier domain. Both are constrained by the program rules, and neither constraint is recorded on the site, so the obvious next move is the one that risks the account.",
-   "evidence": "Participation Requirements §1(g): no Amazon trademark, or a variant or misspelling of one, may appear in any domain name, subdomain, “tag” or Associates ID, username, group name or other social identifier. §4(e)–(f) bar paid placements bidding on Proprietary Terms and let Amazon require written certification that those terms were excluded. §2(b) requires removing any mention of a limited-time promotion as soon as it ends. Sources: S02, S01.",
+   "title": "Settle the naming and paid-search boundary before any traffic spend",
+   "problem": "A growth plan reaches for a keyword campaign and a punchier domain. Both are constrained here, and the constraint is recorded nowhere on the site, so the obvious next move is the one with account risk attached.",
+   "evidence": "Participation Requirements §1(g): no Amazon trademark “or a variant or misspelling” may appear “in any domain name, subdomain name, in any ‘tag’ or Associates ID, or in any username, group name, or other identifier on any social networking site”. §6(e): no purchasing, registering or otherwise using an Amazon Mark “for use in any Search Engine”, and on request Amazon can require exclusion of Proprietary Terms from paid keywords; §6(f) defines Proprietary Terms and bars keyword auctions that produce a Prohibited Paid Search Placement, while expressly permitting paid search on general keywords “so long as you comply with the Agreement and those paid or unpaid search results send users to your site and not directly, or indirectly via a Redirecting Link … to an Amazon Site”. The Commission Income Statement then disqualifies purchases referred through a Prohibited Paid Search Placement, so the penalty is economic as well as contractual. Quotes transcribed from the live page 2026-11-20. Sources: S02, S01.",
    "options": [
     "A. Record both rules beside Q-16 (custom domain) and in the publishing plan; keep organic-only growth as the shipped path.",
     "B. Buy a domain containing “Amazon” and argue it reads as descriptive.",
-    "C. Run brand-keyword ads now and handle the exclusion requirement if it is ever raised."
+    "C. Run brand-keyword ads now and handle the exclusion request if it ever arrives."
    ],
-   "recommendation": "A. “Kitchen Counter” already passes both tests, so the change is one dated note, not a rebuild. No paid traffic is proposed here; that is the owner's spend decision (Q-09).",
+   "recommendation": "A. “Kitchen Counter” and shopnow047c-20 already pass both tests, so the change is a dated note rather than a rebuild. No paid traffic is proposed anywhere on this site; whether to buy any is the owner's spend decision (Q-09).",
    "effort": "S",
    "confidence": "high",
    "status": "proposed",
@@ -1719,15 +884,15 @@
   },
   {
    "id": "SG-45",
-   "title": "Keep reader email strictly solicited whenever the list is started",
-   "problem": "SG-30 and SG-41 defer email capture to an owner decision, which is right. The condition that will apply at build time is not written down, so a future implementation could ship a list that carries affiliate links to people who never asked for them.",
-   "evidence": "Participation Requirements §4 (read 2026-11-20): Special Links may appear in “emails, SMS and direct messaging from your social media Sites; provided, that such communications are solicited (i.e., opted into by the receiving customer)” and comply with the Agreement, the Trademark Guidelines and the Brand Usage Guidelines; and “you are the ‘Sender’ of each communication containing any Special Links” for CAN-SPAM purposes. Source: S02. The site ships no form at all today (FLG-014).",
+   "title": "Keep reader email strictly solicited whenever a list is started",
+   "problem": "The reader-capture rows defer email to an owner decision, which is right. The condition that will apply at build time is not written down, so a future implementation could ship a list that receives affiliate links without having asked for them.",
+   "evidence": "Participation Requirements §4 (Promotional Limitations): “You may include Special Links in emails, SMS and direct messaging from your social media Sites; provided, that such communications are solicited (i.e., opted into by the receiving customer)”, and “you are the ‘Sender’ of each communication containing any Special Links” for the purposes of applicable marketing law. Amazon may also request “representative sample materials and written certification” of compliance, and failure to provide it is a material breach. Quote transcribed from the live page 2026-11-20. Source: S02. The site ships no form at all today (FLG-014).",
    "options": [
     "A. Write the condition into the reader-capture rows so a builder meets it at the point of choice: double opt-in, a stored consent timestamp, unsubscribe in every message.",
     "B. Ship a form now and fix consent later.",
-    "C. Keep RSS as the only path and never run a list."
+    "C. Keep RSS as the only subscription path and never run a list."
    ],
-   "recommendation": "A, and only A. Until a provider and a consent record exist, the footer keeps pointing at RSS — which is what the site does today, and what SG-41's decision block assumes.",
+   "recommendation": "A, and only A. Until a provider and a consent record exist the footer keeps pointing at RSS, which is what the site does today and what the deferral in the reader-capture rows assumes.",
    "effort": "S",
    "confidence": "high",
    "status": "proposed",

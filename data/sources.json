@@ -14,9 +14,9 @@
    "id": "S02",
    "title": "Amazon Associates Program Policies",
    "url": "https://affiliate-program.amazon.com/help/operating/policies",
-   "used_for": "Qualifying Purchases / session rules; price and availability display limits; link-tag requirement (Participation Requirements 2(b), read line by line 2026-11-20); promotional-claim, program-content and automation limits",
-   "quote": "you must include your Associates ID or “tag” (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site — Participation Requirements 2(b); “a customer clicks through a Special Link on your Site to an Amazon Site” — Commission Income Statement 1(a); “your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API” — 2(b)",
-   "updated": "2026-04-14",
+   "used_for": "the tag parameter on every product link (2(a), 2(b)); price and availability limits; promotional and content limits (3(e), 4, 5, 6(e)–(f), 6(t)–(w), 6(y)); each rule is quoted in data/policy-clause-map.json rather than paraphrased",
+   "quote": "2(a): “Special Links must use the Associates ID we have assigned to you.” 2(b): “you must include your Associates ID or ‘tag’ (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site” and “Special Links may be created by you or made available to you by us”. 6(y): “Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.”",
+   "updated": "page states Updated 2026-04-14",
    "reverified": "2026-11-20"
   },
   {

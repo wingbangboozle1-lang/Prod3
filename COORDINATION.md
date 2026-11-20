@@ -60,6 +60,7 @@
 | ID | Task | Status | Owner | File scope |
 |----|------|--------|-------|------------|
 | T-52 | Shop pass, round 2: (a) fix the duplicate FLG-020…FLG-023 identifiers on `flagged.html` left by T-46; (b) add an audience front door `/start.html` ("what kind of cook are you") so a buyer picks a shelf instead of reading a register; (c) ship one new question-shaped guide for the December gift season, wired into the existing sitemap **and** the existing `feed.xml`; (d) reader-capture decision proposed in the register rather than silently implemented (no email provider exists — FLG-014 stands); (e) add a visual-review workflow so the owner can *look* at every page without installing anything; (f) re-run every gate, PR → main, merge, confirm the live deploy, and fetch the live pages back to prove it | in progress | `arena/f3900cd3-prod3` | `COORDINATION.md`, `flagged.html`, `start.html`, `data/suggestions.json`, `data/open-questions.json`, `articles/*` (new guide only), `feed.xml`, `index.html`, `assets/style.css`, `scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py`, `.github/workflows/snapshots.yml`, `design/pages.json`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html` |
+| T-53 | Tag-parameter remediation and register repair (session `arena/52f418e7-prod3`): read the Associates Program Policies line by line, find that 329 product links carried no `tag=` while 2(b) requires one, implement the fix site-wide with `tools/link_tagger.py` + gate `D41`, emit the tag from all four builders, publish the F register from `data/flagged.json` with `scripts/build_flag_index.py` + gate `D42`, correct one clause letter the FLG-037 pass misplaced (FLG-039) and record the register/published split plus the inverted check (FLG-040), re-record the fifth short-link observation, add Q-28 and SG-43..45, run every gate, PR → main, merge, confirm the live Pages deploy | done (2026-11-20) | `arena/52f418e7-prod3` | `tools/link_tagger.py` (new), `tools/check_site.py`, `scripts/build_flag_index.py` (new), `scripts/build_registers.py`, `scripts/build_decisions.py`, `scripts/build_products.py`, `scripts/build_ideas.py`, `scripts/build_readme.py`, `.github/workflows/pages.yml`, `data/*.json`, `sources.html`, `flagged.html`, `disclosure.html`, `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `products/*`, `DIRECTION.md`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
 
 
 **Renumbered T-47 → T-51 → T-52, 2026-11-20.** Four other sessions merged while this work was open and
@@ -1919,3 +1920,76 @@ A third gate now makes this class of error loud: **`D39-flag-citation`** fails t
 heading on `flagged.html` — which is exactly how the stale `(FLG-035)` reference in `ideas.html` was caught one build after the renumbering.
 
 All ten gates pass on the final tree (39 pages, 5,859 assertions; `crawl_links` 0 broken links, 0 orphans).
+
+### T-53: the tag-parameter remediation (session `arena/52f418e7-prod3`, 2026-11-20)
+
+**Why this task existed.** Four earlier passes had recorded the tracking ID as an owner-only unknown
+(F-09, Q-02, Q-22, Q-24) — "we cannot see the tag from outside the account". That is true of the supplied
+short links and beside the point: reading the Program Policies line by line, Participation Requirements 2(b)
+says &ldquo;you must include your Associates ID or ‘tag’ … as a parameter in the URL of each link you place on your
+Site to an Amazon Site&rdquo;, 2(a) says Special Links must use the assigned ID, and the Commission Income Statement
+disqualifies a purchase that "is not correctly tracked or reported because the links from your site to the
+relevant Amazon Site are not properly formatted". The site published 329 product links with no tag and 23 reader
+CTAs pointed at `link.amazon/<token>`. Every one of those links was both a policy gap and worth nothing. No
+earlier register called that a site defect.
+
+**Implemented, not queued.** `tools/link_tagger.py` rewrites untagged product hrefs to
+`https://www.amazon.com/dp/<observed ASIN>?tag=shopnow047c-20` and `--check` refuses a tree where any
+`/dp/` product anchor lacks the tag; that check is release gate `D41`, run from `tools/check_site.py`. The tag
+is emitted by all four builders (`build_registers.py`, `build_decisions.py`, `build_products.py`, `build_ideas.py`)
+through a shared `href_for()`, so regeneration cannot lose it. Two things are deliberately **not** tagged:
+`/dp/B04G1MEwY` (a 9-character short-link token, published as evidence of an observation, not as a link to a
+Product) and the values stored in `data/*.json`, which are records of what was read. `tools/link_tagger.py`
+also carries a `shape_problems()` guard: a rewrite that would produce a malformed anchor aborts with exit 2
+and writes nothing, and the guard runs inside `--check`, so a hand-truncated tag fails the build too.
+Final count: **372 tagged anchors over 39 HTML pages**.
+
+**Negative tests, because a green gate that cannot fail is decoration.** Stripping the tag from one
+`compare.html` anchor → `D41` reports `1 outbound Amazon product link(s) do not carry tag=shopnow047c-20`.
+Deleting one `<tr>` from the generated F table → `D42` reports `flagged.html is not in step with
+data/flagged.json`. Both restored, both gates green.
+
+**Registers.** `S34` (Associates help topic on checking whether links tag to the account, quoted); `FLG-026`
+status moved to "partly resolved — site side done" with the account half kept open; `FLG-025` gained the
+fourth dated observation; `FLG-039` and `FLG-040` added (below); `Q-28` added (does a manually tagged link
+credit this account? owner, ten minutes, blocking); `SG-43..SG-45` added (automation boundary, naming and
+paid-search boundary, solicited-email condition — each quoting a clause now in `data/policy-clause-map.json`);
+`SG-34` moved to implemented; six citation rows added, all marked "official documentation, quoted not
+paraphrased as fact".
+
+**FLG-039 — a correction to the correction.** The same-day clause-mapping pass (FLG-037) moved several
+citations from Section 2 into Section 6 and recorded the wording in `data/policy-clause-map.json`, which is
+right — but it recorded the cookies/pixels/visitor-data rule as 6(e), and `citations.html` repeated "6(e)
+privacy disclosure". Re-read against the live page, that wording is Participation Requirements **3(e)**
+("Responsibility for Your Site"); **6(e)** is the search-engine clause ("…purchase, register or otherwise use
+any Amazon Mark … for use in any Search Engine", with the Proprietary Terms exclusion on request). The map entry
+was renumbered with a `supersedes_citation` note rather than silently edited, and Sections 1(g), 4, 5, 6(e),
+6(f) and the Commission Income Statement's 2(g) were added from the same read, with verbatim quotes.
+
+**FLG-040 — the register split, and a gate that could not fail.** `data/flagged.json` held 21 F-series findings
+while `flagged.html` published 3 of them: 18 findings existed in a data file with no published definition. The
+check meant to prevent exactly that, `D35-flag-published`, was written `not not _fmissing` — it passed when rows
+were missing and failed when they were not. The condition is corrected, and `scripts/build_flag_index.py` now
+generates the F table on the flag page from the data file (source link or explicit `No official source` marker in
+every row, price figures scrubbed), watched as `D42` and run in `.github/workflows/pages.yml`. The two registers
+were **not** merged: F-rows are findings about the listings, FLG-rows are findings about the program relationship
+and this site, and `DIRECTION.md` now records that question as I-15 rather than answering it by renumbering,
+because a published identifier keeps its meaning.
+
+**Shop polish.** Every inline `style="…"` on the front page and both pillars became a named rule in
+`assets/style.css`; the two thermometer cards gained the same `spec-chips` row the air-fryer cards carry
+(listed values only, seller claims still marked "claimed"); `disclosure.html` gained the plain-words
+"How we link to Amazon" section SG-34 asked for; the front page and `air-fryers.html` no longer say the P-01
+short link "stopped reaching" the listing — a fetch from outside an Amazon login is recorded as an observation,
+with the policy reason given for routing readers to the tagged listing instead.
+
+**Merges, honestly stated.** This branch collided three times with parallel sessions (PRs #46, #52, #55/#56/#60
+landed while this work was in flight) and once a `git pull --rebase` left the tree mid-rebase; a `git merge
+origin/main` was used instead so no session's work was discarded, `data/products.json`, `data/open-questions.json`,
+`data/suggestions.json` and `data/flagged.json` were each rebuilt from the upstream file plus this session's rows
+after auto-merges produced JSON that would not parse, and `FLG-034` was released back to its first publisher under
+the "later addition moves" rule.
+
+**Gates at close:** `scripts/check_site.py` (all checks passed), `tools/check_site.py` (39 pages, 6,154 assertions,
+all additional rules passed), `tools/verify_site.py` (release gate passed), `tools/crawl_links.py` (0 broken links,
+0 dead anchors, 0 orphans), `tools/link_tagger.py --check`, and all nine `--check` freshness gates.

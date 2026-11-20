@@ -1,228 +1,288 @@
 {
-  "generated": "2026-11-19",
-  "session": "arena/a25ccde6-prod3",
-  "premise": "One row per figure the site renders. Each row names the observation, its date, and the official source. A reader can re-run any row.",
-  "rules": [
-    "A figure with no row here does not belong on the site.",
-    "Dated observations are seller statements, not independent measurements.",
-    "No price or availability value is rendered, so none appears here (Program Policies 2(b), S02)."
-  ],
-  "citations": [
-    {
-      "product": "P-01",
-      "brand": "Chefman",
-      "asin": "B0CDY277D3",
-      "observed": "https://link.amazon/B04G1MEwY resolves to https://www.amazon.com/dp/B0CDY277D3",
-      "observed_on": "2026-11-19",
-      "source": "S10",
-      "source_url": "https://www.amazon.com/dp/B0CDY277D3",
-      "used_for": "product identity, title, listed specs, dimensions",
-      "claim_status": "seller statements transcribed from the listing; not independently tested"
-    },
-    {
-      "product": "P-02",
-      "brand": "Emeril",
-      "asin": "B09B7SB46R",
-      "observed": "https://link.amazon/B02NbDxp3 resolves to https://www.amazon.com/dp/B09B7SB46R",
-      "observed_on": "2026-11-19",
-      "source": "S11",
-      "source_url": "https://www.amazon.com/dp/B09B7SB46R",
-      "used_for": "product identity, title, listed specs, dimensions",
-      "claim_status": "seller statements transcribed from the listing; not independently tested"
-    },
-    {
-      "product": "P-03",
-      "brand": "Chefman",
-      "asin": "B08DKYBTPH",
-      "observed": "https://link.amazon/B00hJ57DV resolves to https://www.amazon.com/dp/B08DKYBTPH",
-      "observed_on": "2026-11-19",
-      "source": "S12",
-      "source_url": "https://www.amazon.com/dp/B08DKYBTPH",
-      "used_for": "product identity, title, listed specs, dimensions",
-      "claim_status": "seller statements transcribed from the listing; not independently tested"
-    },
-    {
-      "product": "P-04",
-      "brand": "ThermoMaven",
-      "asin": "B0DHZTCNR5",
-      "observed": "https://link.amazon/B0c8moW59 resolves to https://www.amazon.com/dp/B0DHZTCNR5",
-      "observed_on": "2026-11-19",
-      "source": "S13",
-      "source_url": "https://www.amazon.com/dp/B0DHZTCNR5",
-      "used_for": "product identity, title, listed specs, dimensions",
-      "claim_status": "seller statements transcribed from the listing; not independently tested"
-    },
-    {
-      "product": "P-05",
-      "brand": "CHEF iQ",
-      "asin": "B0DZFD6R9Z",
-      "observed": "https://link.amazon/B0f3GKalj resolves to https://www.amazon.com/dp/B0DZFD6R9Z",
-      "observed_on": "2026-11-19",
-      "source": "S14",
-      "source_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
-      "used_for": "product identity, title, listed specs, dimensions",
-      "claim_status": "seller statements transcribed from the listing; not independently tested"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "Operating Agreement §1 Special Links and Program Content; §5 the required statement; §6 material breach",
-      "observed_on": "2026-11-19",
-      "source": "S01",
-      "used_for": "Operating Agreement §1 Special Links and Program Content; §5 the required statement; §6 material breach",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "Program Policies: 2(a) tag in every link; 2(b) price display only from Amazon-served data, no misleading product claims, no sub-tag tied to an end user, original content required when linking to product lists; 6(e) privacy disclosure; 6(t) no customer reviews or star ratings; 6(v) no obscuring of the referring site; 6(w) no unclear link shortening; 6(y) no price tracking. Clause letters read and quoted 2026-11-20 - see data/policy-clause-map.json",
-      "observed_on": "2026-11-19",
-      "source": "S02",
-      "used_for": "Program Policies: 2(a) tag in every link; 2(b) price display only from Amazon-served data, no misleading product claims, no sub-tag tied to an end user, original content required when linking to product lists; 6(e) privacy disclosure; 6(t) no customer reviews or star ratings; 6(v) no obscuring of the referring site; 6(w) no unclear link shortening; 6(y) no price tracking. Clause letters read and quoted 2026-11-20 - see data/policy-clause-map.json",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact",
-      "correction": "On 2026-11-20 the star-ratings, URL-obscuring and shortener rules were located in Participation Requirements Section 6 (6(t), 6(v), 6(w)), not Section 2. This row previously recorded them as not located under Section 2."
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "FTC Disclosures 101: hard to miss, next to the endorsement, clear language",
-      "observed_on": "2026-11-19",
-      "source": "S03",
-      "used_for": "FTC Disclosures 101: hard to miss, next to the endorsement, clear language",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "Google: mark paid links rel=\"sponsored\"",
-      "observed_on": "2026-11-19",
-      "source": "S04",
-      "used_for": "Google: mark paid links rel=\"sponsored\"",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "Google: people-first content and E-E-A-T questions",
-      "observed_on": "2026-11-19",
-      "source": "S21",
-      "used_for": "Google: people-first content and E-E-A-T questions",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "Google: thin-affiliation policy",
-      "observed_on": "2026-11-19",
-      "source": "S22",
-      "used_for": "Google: thin-affiliation policy",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "NIST: traceability applies to measurement results, not products",
-      "observed_on": "2026-11-19",
-      "source": "S16",
-      "used_for": "NIST: traceability applies to measurement results, not products",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "USDA FSIS: safe minimum internal temperatures",
-      "observed_on": "2026-11-19",
-      "source": "S17",
-      "used_for": "USDA FSIS: safe minimum internal temperatures",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "USDA FSIS: correct thermometer placement",
-      "observed_on": "2026-11-19",
-      "source": "S18",
-      "used_for": "USDA FSIS: correct thermometer placement",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "Google: unique meta descriptions",
-      "observed_on": "2026-11-19",
-      "source": "S24",
-      "used_for": "Google: unique meta descriptions",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "Google: page-experience guidance",
-      "observed_on": "2026-11-19",
-      "source": "S25",
-      "used_for": "Google: page-experience guidance",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "Live site served at https://wingbangboozle1-lang.github.io/Prod3/ (GitHub Pages project path, not an apex domain)",
-      "observed_on": "2026-11-19",
-      "source": "S05",
-      "used_for": "Hosting model and project-site URL pattern stated on the trust pages",
-      "claim_status": "official documentation, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "Submitted tokens are 9 characters; Amazon's ItemIdType table defines an ASIN as a 10-Character alphanumeric identifier, so a 9-character token cannot be an ASIN",
-      "observed_on": "2026-11-19",
-      "source": "S06",
-      "used_for": "Token-length figure in the submitted-links table and FLG-001",
-      "claim_status": "official API documentation, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "Constructing https://www.amazon.com/dp/<9-char token> returned Page Not Found (observation only; does not test the supplied short links)",
-      "observed_on": "2026-11-19",
-      "source": "S15",
-      "used_for": "Observation row in the source register and FLG-011",
-      "claim_status": "dated observation recorded as such; not a test of the supplied links"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "Lighthouse tap-target rule: 48×48px minimum, ~8px spacing between tappable controls",
-      "observed_on": "2026-11-19",
-      "source": "S19",
-      "used_for": "Mobile-first pass figures on the direction and suggestions pages",
-      "claim_status": "official documentation, quoted not paraphrased as fact"
-    },
-    {
-      "product": "site",
-      "brand": "—",
-      "asin": "—",
-      "observed": "GitHub Pages serves a custom 404 page from the repository's 404.html",
-      "observed_on": "2026-11-19",
-      "source": "S23",
-      "used_for": "Custom 404 behaviour on the project site",
-      "claim_status": "official documentation, quoted not paraphrased as fact"
-    }
-  ]
+ "generated": "2026-11-19",
+ "session": "arena/a25ccde6-prod3",
+ "premise": "One row per figure the site renders. Each row names the observation, its date, and the official source. A reader can re-run any row.",
+ "rules": [
+  "A figure with no row here does not belong on the site.",
+  "Dated observations are seller statements, not independent measurements.",
+  "No price or availability value is rendered, so none appears here (Program Policies 2(b), S02)."
+ ],
+ "citations": [
+  {
+   "product": "P-01",
+   "brand": "Chefman",
+   "asin": "B0CDY277D3",
+   "observed": "https://link.amazon/B04G1MEwY resolves to https://www.amazon.com/dp/B0CDY277D3",
+   "observed_on": "2026-11-19",
+   "source": "S10",
+   "source_url": "https://www.amazon.com/dp/B0CDY277D3",
+   "used_for": "product identity, title, listed specs, dimensions",
+   "claim_status": "seller statements transcribed from the listing; not independently tested"
+  },
+  {
+   "product": "P-02",
+   "brand": "Emeril",
+   "asin": "B09B7SB46R",
+   "observed": "https://link.amazon/B02NbDxp3 resolves to https://www.amazon.com/dp/B09B7SB46R",
+   "observed_on": "2026-11-19",
+   "source": "S11",
+   "source_url": "https://www.amazon.com/dp/B09B7SB46R",
+   "used_for": "product identity, title, listed specs, dimensions",
+   "claim_status": "seller statements transcribed from the listing; not independently tested"
+  },
+  {
+   "product": "P-03",
+   "brand": "Chefman",
+   "asin": "B08DKYBTPH",
+   "observed": "https://link.amazon/B00hJ57DV resolves to https://www.amazon.com/dp/B08DKYBTPH",
+   "observed_on": "2026-11-19",
+   "source": "S12",
+   "source_url": "https://www.amazon.com/dp/B08DKYBTPH",
+   "used_for": "product identity, title, listed specs, dimensions",
+   "claim_status": "seller statements transcribed from the listing; not independently tested"
+  },
+  {
+   "product": "P-04",
+   "brand": "ThermoMaven",
+   "asin": "B0DHZTCNR5",
+   "observed": "https://link.amazon/B0c8moW59 resolves to https://www.amazon.com/dp/B0DHZTCNR5",
+   "observed_on": "2026-11-19",
+   "source": "S13",
+   "source_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+   "used_for": "product identity, title, listed specs, dimensions",
+   "claim_status": "seller statements transcribed from the listing; not independently tested"
+  },
+  {
+   "product": "P-05",
+   "brand": "CHEF iQ",
+   "asin": "B0DZFD6R9Z",
+   "observed": "https://link.amazon/B0f3GKalj resolves to https://www.amazon.com/dp/B0DZFD6R9Z",
+   "observed_on": "2026-11-19",
+   "source": "S14",
+   "source_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+   "used_for": "product identity, title, listed specs, dimensions",
+   "claim_status": "seller statements transcribed from the listing; not independently tested"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Operating Agreement §1 Special Links and Program Content; §5 the required statement; §6 material breach",
+   "observed_on": "2026-11-19",
+   "source": "S01",
+   "used_for": "Operating Agreement §1 Special Links and Program Content; §5 the required statement; §6 material breach",
+   "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Program Policies: 2(a) tag in every link; 2(b) price display only from Amazon-served data, no misleading product claims, no sub-tag tied to an end user, original content required when linking to product lists; 3(e) privacy disclosure; 6(t) no customer reviews or star ratings; 6(v) no obscuring of the referring site; 6(w) no unclear link shortening; 6(y) no price tracking. Clause letters read and quoted 2026-11-20 (2(a), 2(b), 3(e), 6(t)-(y)) - see data/policy-clause-map.json",
+   "observed_on": "2026-11-19",
+   "source": "S02",
+   "used_for": "Program Policies: 2(a) tag in every link; 2(b) price display only from Amazon-served data, no misleading product claims, no sub-tag tied to an end user, original content required when linking to product lists; 3(e) privacy disclosure; 6(t) no customer reviews or star ratings; 6(v) no obscuring of the referring site; 6(w) no unclear link shortening; 6(y) no price tracking. Clause letters read and quoted 2026-11-20 (2(a), 2(b), 3(e), 6(t)-(y)) - see data/policy-clause-map.json",
+   "claim_status": "official policy or government guidance, quoted not paraphrased as fact",
+   "correction": "On 2026-11-20 the star-ratings, URL-obscuring and shortener rules were located in Participation Requirements Section 6 (6(t), 6(v), 6(w)), not Section 2. This row previously recorded them as not located under Section 2."
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "FTC Disclosures 101: hard to miss, next to the endorsement, clear language",
+   "observed_on": "2026-11-19",
+   "source": "S03",
+   "used_for": "FTC Disclosures 101: hard to miss, next to the endorsement, clear language",
+   "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Google: mark paid links rel=\"sponsored\"",
+   "observed_on": "2026-11-19",
+   "source": "S04",
+   "used_for": "Google: mark paid links rel=\"sponsored\"",
+   "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Google: people-first content and E-E-A-T questions",
+   "observed_on": "2026-11-19",
+   "source": "S21",
+   "used_for": "Google: people-first content and E-E-A-T questions",
+   "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Google: thin-affiliation policy",
+   "observed_on": "2026-11-19",
+   "source": "S22",
+   "used_for": "Google: thin-affiliation policy",
+   "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "NIST: traceability applies to measurement results, not products",
+   "observed_on": "2026-11-19",
+   "source": "S16",
+   "used_for": "NIST: traceability applies to measurement results, not products",
+   "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "USDA FSIS: safe minimum internal temperatures",
+   "observed_on": "2026-11-19",
+   "source": "S17",
+   "used_for": "USDA FSIS: safe minimum internal temperatures",
+   "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "USDA FSIS: correct thermometer placement",
+   "observed_on": "2026-11-19",
+   "source": "S18",
+   "used_for": "USDA FSIS: correct thermometer placement",
+   "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Google: unique meta descriptions",
+   "observed_on": "2026-11-19",
+   "source": "S24",
+   "used_for": "Google: unique meta descriptions",
+   "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Google: page-experience guidance",
+   "observed_on": "2026-11-19",
+   "source": "S25",
+   "used_for": "Google: page-experience guidance",
+   "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Live site served at https://wingbangboozle1-lang.github.io/Prod3/ (GitHub Pages project path, not an apex domain)",
+   "observed_on": "2026-11-19",
+   "source": "S05",
+   "used_for": "Hosting model and project-site URL pattern stated on the trust pages",
+   "claim_status": "official documentation, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Submitted tokens are 9 characters; Amazon's ItemIdType table defines an ASIN as a 10-Character alphanumeric identifier, so a 9-character token cannot be an ASIN",
+   "observed_on": "2026-11-19",
+   "source": "S06",
+   "used_for": "Token-length figure in the submitted-links table and FLG-001",
+   "claim_status": "official API documentation, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Constructing https://www.amazon.com/dp/<9-char token> returned Page Not Found (observation only; does not test the supplied short links)",
+   "observed_on": "2026-11-19",
+   "source": "S15",
+   "used_for": "Observation row in the source register and FLG-011",
+   "claim_status": "dated observation recorded as such; not a test of the supplied links"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Lighthouse tap-target rule: 48×48px minimum, ~8px spacing between tappable controls",
+   "observed_on": "2026-11-19",
+   "source": "S19",
+   "used_for": "Mobile-first pass figures on the direction and suggestions pages",
+   "claim_status": "official documentation, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "GitHub Pages serves a custom 404 page from the repository's 404.html",
+   "observed_on": "2026-11-19",
+   "source": "S23",
+   "used_for": "Custom 404 behaviour on the project site",
+   "claim_status": "official documentation, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Participation Requirements 2(b) (read on the live page 2026-11-20): “you must include your Associates ID or ‘tag’ (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site”; 2(a): “Special Links must use the Associates ID we have assigned to you”; 2(b) also states “Special Links may be created by you or made available to you by us”. Applied to every product link on the site (372 tagged anchors over 39 pages as counted on 2026-11-20).",
+   "observed_on": "2026-11-20",
+   "source": "S02",
+   "used_for": "the tagged href on every product link, and release gate D41",
+   "claim_status": "official documentation, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Associates Central help topic: “Once you update your site, click the link you want to check and look for your Store ID or Tracking ID in the URL. Most often, it will appear as ‘&tag=(store/tracking ID)’ within the URL.” The Link Checker is “intended for checking links that you have created or modified on your own outside of Associates Central.”",
+   "observed_on": "2026-11-20",
+   "source": "S34",
+   "used_for": "the owner-side confirmation step in FLG-026 and Q-28",
+   "claim_status": "official documentation, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Operating Agreement §5, verbatim: “You must clearly and prominently state the following … on your Site: ‘As an Amazon Associate I earn from qualifying purchases.’” Re-read 2026-11-20; the page still carries the 2025-10-15 update date.",
+   "observed_on": "2026-11-20",
+   "source": "S01",
+   "used_for": "the disclosure strip above the fold and the footer repeat on all 39 HTML pages",
+   "claim_status": "official documentation, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Participation Requirements §5 bars using Special Links or Program Content “to develop machine learning models or related technology” without express prior written approval, and §6(t) bars customer reviews or star ratings except through Creators API or PA API. Read on the live page 2026-11-20.",
+   "observed_on": "2026-11-20",
+   "source": "S02",
+   "used_for": "SG-43: the boundary on any research or generation pipeline",
+   "claim_status": "official documentation, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Participation Requirements §1(g) bars an Amazon trademark or a variant of one in any domain name, subdomain, “tag” or Associates ID, username, group name or social identifier; §6(e)–(f) bar using Amazon Marks in a search engine and let Amazon require written certification that Proprietary Terms were excluded from paid keywords. Read on the live page 2026-11-20.",
+   "observed_on": "2026-11-20",
+   "source": "S02",
+   "used_for": "SG-44: the naming and paid-search boundary before any traffic spend",
+   "claim_status": "official documentation, quoted not paraphrased as fact"
+  },
+  {
+   "product": "site",
+   "brand": "—",
+   "asin": "—",
+   "observed": "Participation Requirements §4 (Promotional Limitations): Special Links may appear in emails, SMS and social direct messages only when “solicited (i.e., opted into by the receiving customer)”, and the associate is the “Sender” for marketing-law purposes. Read on the live page 2026-11-20.",
+   "observed_on": "2026-11-20",
+   "source": "S02",
+   "used_for": "SG-45: the condition on any future reader email list",
+   "claim_status": "official documentation, quoted not paraphrased as fact"
+  }
+ ]
 }

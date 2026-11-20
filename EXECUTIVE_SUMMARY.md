@@ -124,8 +124,8 @@ elsewhere. SG-21 was retired in place rather than deleted, so the change can be 
 gate rule `D20` now fails the build if any two live suggestions share a title.
 
 **Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
-`rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
-31 pages. Every new table row carries a source link or an explicit "No official source" marker,
+`rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of every
+page (31 then; 39 now). Every new table row carries a source link or an explicit "No official source" marker,
 and the gate fails a row that has neither — so "unverified" can never hide.
 
 **Still true, still not this session's to fix.** The five short links carry no visible
@@ -253,3 +253,46 @@ could be downloaded, so no screenshot-based visual check was performed and none 
 **Open for the owner, unchanged:** FLG-001 intended ASINs · FLG-006 Special Link test · FLG-010
 account status · FLG-025/031 link resolution · **FLG-026: no shipped link carries a visible tag
 parameter** · Search Console (Q-18) · analytics endpoint (Q-13).
+## Addendum — 2026-11-20, session `52f418e7`: the one defect that was worth finding
+
+**What the line-by-line pass found.** Read against the Associates Program Policies, the
+site had a money defect, not a wording defect. Participation Requirements 2(b) states:
+&ldquo;you must include your Associates ID or ‘tag’ (appearing as XXXXX-##, or such other
+format as we may designate) as a parameter in the URL of each link you place on your Site to
+an Amazon Site&rdquo;, and 2(a) that &ldquo;Special Links must use the Associates ID we have assigned
+to you&rdquo;. The Commission Income Statement then disqualifies a purchase that &ldquo;is not correctly
+tracked or reported because the links from your site to the relevant Amazon Site are not
+properly formatted&rdquo;. Every product link on this site — 329 of them, plus the five supplied
+short links — carried no tag. So every click was simultaneously a policy gap and worth nothing.
+Earlier passes had recorded the tag as an owner-only unknown (F-09, Q-02) rather than as a
+defect the site itself could fix, which is how it survived four audits.
+
+**What was changed, not queued.** All 372 product anchors across 39 pages now end in
+`?tag=shopnow047c-20`. The tag is emitted by the four builders, so it cannot be lost by
+regenerating a page, and `tools/link_tagger.py --check` runs as gate `D41`: a build that
+drops the tag fails instead of shipping. The JSON registers keep the canonical untagged
+listing URL, because that field is a record of what was read, not a route for a reader; and
+`/dp/B04G1MEwY` — a 9-character short-link token published as evidence of an observation —
+is deliberately left untagged. `disclosure.html` gained a plain-words &ldquo;How we link to
+Amazon&rdquo; section, which is what SG-34 had been asking for.
+
+**What was deliberately not claimed.** Nothing here says the five supplied links are invalid,
+broken or untracked. Three sessions fetched them on 2026-11-20 from outside an Amazon login
+and all reached the homepage; another record from the same day reached the listings. A fetch
+path is not an account report. The links stay recorded, the readers stop depending on them, and
+the one check that settles it is inside the account — open a link, read the destination URL for
+the tag, run it through the Link Checker, look for the click the next day (Q-28, FLG-026).
+
+**Two corrections this pass made about itself.** The `2026-11-20` clause-mapping pass (FLG-037)
+fixed most citation letters but recorded the cookies rule as 6(e); on the live page that wording
+is 3(e), and 6(e) is the search-engine clause. It was renumbered with a `supersedes_citation`
+note and the true 6(e) added, with 1(g), 4, 5 and 6(f) from the same read (FLG-039). And the
+check meant to prove that every register row is published on `flagged.html` was written inverted
+— `not not _fmissing`, which passes when rows are missing. It passed while 18 of the 21 data
+findings had no published home. The condition is fixed, and `scripts/build_flag_index.py` now
+generates the F table on that page from `data/flagged.json`, watched by gate `D42`.
+
+**Gates at this session's close:** `scripts/build_check_site.py`… all of `scripts/check_site.py`,
+`tools/check_site.py` (6,154 assertions on 39 pages), `tools/verify_site.py`, `tools/crawl_links.py`
+(0 broken links, 0 dead anchors, 0 orphans), `tools/link_tagger.py --check`, and all eight
+`--check` freshness gates pass on the merged tree.

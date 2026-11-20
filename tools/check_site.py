@@ -489,16 +489,27 @@ check("D39-flag-citation", not _dangling,
       "cited but not defined on flagged.html: " +
       "; ".join(f"{k} ({', '.join(sorted(v)[:3])})" for k, v in sorted(_dangling.items())))
 
-# D40: every link we place to an Amazon product must carry the associate tag.
+# D41: every link we place to an Amazon product must carry the associate tag.
+# (Published as D40 on 2026-11-20 and renumbered the same day: upstream had taken D40 for the
+# guide-count rule while this row was in flight. One number, one rule.)
 # Associates Program Policies, Participation Requirements 2(b) (read 2026-11-20): "you must include your
 # Associates ID or \u201ctag\u201d ... as a parameter in the URL of each link you place on your Site to an Amazon
 # Site". FLG-026 recorded the requirement as an open owner question for a day; the site-side half was then
 # implemented, because a rule a generator can enforce should not live on a checklist. tools/link_tagger.py
 # applies it and checks it.
-_r40 = _sp2.run([sys.executable, str(ROOT / "tools" / "link_tagger.py"), "--check"],
+_r41 = _sp2.run([sys.executable, str(ROOT / "tools" / "link_tagger.py"), "--check"],
                 capture_output=True, text=True)
-check("D40-outbound-tag", _r40.returncode == 0,
-      f"untagged Amazon links: {(_r40.stdout.strip().splitlines() or ['?'])[-1][:150]}")
+_t41 = [ln for ln in _r41.stdout.strip().splitlines() if "outbound Amazon product link" in ln]
+check("D41-outbound-tag", _r41.returncode == 0,
+      f"untagged Amazon links: {(_t41 or _r41.stdout.strip().splitlines() or ['?'])[-1][:150]}")
+
+# D42: the F half of flagged.html must be in step with data/flagged.json.
+# The page published 3 of the 21 data findings by hand; the rest existed only in the
+# JSON, which is how an id can be cited from a product page and defined nowhere.
+_r42 = _sp2.run([sys.executable, str(ROOT / "scripts" / "build_flag_index.py"), "--check"],
+                capture_output=True, text=True)
+check("D42-flag-index-fresh", _r42.returncode == 0,
+      f"flagged.html F register: {(_r42.stdout.strip() or _r42.stderr.strip()).splitlines()[-1][:160]}")
 
 # D27: the tools pages must exist and be reachable from the front page
 for _tool in ("tools/index.html", "tools/compare-builder.html",
@@ -715,7 +726,7 @@ _fdupes = sorted({i for i in _fids if _fids.count(i) > 1})
 check("D35-flag-unique", not _fdupes, f"flagged.html: duplicate flag id(s) {_fdupes}")
 _fdata = json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))
 _fmissing = [i["id"] for i in _fdata["items"] if i["id"] not in _fh]
-check("D35-flag-published", not not _fmissing,
+check("D35-flag-published", not _fmissing,
       f"flagged.html: data/flagged.json id(s) not published {_fmissing}")
 
 # D36: a heading that advertises an ID range must end at the register's last id.

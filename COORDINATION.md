@@ -2340,6 +2340,15 @@ _(recorded after the PR merges)_
 - **GitHub Pages:** `Deploy GitHub Pages` run `44694421239` — **success** on the merge
   commit. Companion legacy `pages build and deployment` run `44694420462` and the
   screenshot run were still in progress at record time (FLG-024 dual-path context).
+- **This record was delivered by PR #78** (COORDINATION-only): MERGED, merge commit
+  `704dc76b269d5bfc622e864eab951b3d0b660e8`, 2026-11-20T07:23:33Z. Its legacy
+  `pages build and deployment` **success** (repo Pages `build_type` is currently
+  `legacy`, so that is the path that publishes); its `Deploy GitHub Pages` run
+  `44694624299` failed at `deploy-pages` with "No artifacts named github-pages were
+  found" after all gates had passed, and GitHub refused a rerun of that run — the same
+  dual-path artifact race already flagged as FLG-024. The published site was verified
+  from the legacy run's head SHA. No content regression; gates re-run green locally on
+  `704dc76` (42 pages, 6761 assertions).
 ## Session `arena/ba8e7240-prod3` — T-55..T-58 (2026-11-20, 06:52–07:45Z)
 
 Claimed as T-51..T-54; renumbered twice because four sessions merged during this branch and took those IDs

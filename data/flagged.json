@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "premise": "These are the things that could not be confirmed, or that conflict, at the capture date. None of them blocks publication; all of them are published openly instead of being smoothed over.",
   "severity_scale": {
     "high": "Affects a claim a buyer would rely on, or a compliance question that needs the Associates account to settle.",
@@ -778,6 +778,20 @@
       "status": "open — both readings published; seller/manufacturer confirmation needed",
       "sources": [
         "S31"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-043",
+      "severity": "low",
+      "area": "Direction digest vs suggestions register: SG-20 status contradiction",
+      "product": "DIRECTION.md; data/suggestions.json; direction.html",
+      "detail": "The DIRECTION.md ledger index marked SG-20 (\"Pick one product as the site's spine\") as implemented 2026-11-20 while data/suggestions.json, the register that page says it mirrors, marked it proposed. The front page does ship a named starting pick (option A, the dual-basket air fryer) since the shop pass, but no owner decision recording the spine choice appears in the decision log, and SG-20's decision_owner is the owner. The digest now mirrors the register (proposed); the shipped starting pick is recorded in the SG-20 evidence note instead of being promoted to a status the owner has not set.",
+      "why_it_matters": "A reader comparing the digest with the register cannot tell whether the site's lead-product decision was made or assumed. One of the two statements had to be wrong; neither is silently deleted.",
+      "action": "Owner: confirm whether SG-20 option A is the decided spine. If yes, set status implemented in data/suggestions.json with a dated decision-log row; if no, the front-page starting pick is an editorial default and stays as evidence only. The digest will follow either way once regenerated.",
+      "status": "open — digest aligned to the register; owner confirmation pending",
+      "sources": [
+        "S21"
       ],
       "sources_checked": "2026-11-20"
     }

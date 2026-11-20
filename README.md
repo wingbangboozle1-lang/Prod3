@@ -76,7 +76,7 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-13 | 13 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | - |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | dated proposals | 12 |
-| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-044, F-01..F-21 | 60 in the data file |
+| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-044, F-01..F-21 | 61 in the data file |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | 28 |
 <!-- build-registers-table:end -->
 

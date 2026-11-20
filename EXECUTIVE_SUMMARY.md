@@ -14,7 +14,7 @@ The publication site is built and the repository's release gates pass. The reade
 
 ## Five submitted links: what is and is not known
 
-The supplied short-link tokens and their observed redirect targets are recorded separately in `data/products.json`. The observations below were captured on 2026-11-19; the 2026-11-20 re-check is recorded beside them in `data/products.json` (`live_recheck_2026_11_20`). Intended product identity remains unconfirmed for every link. The intended-ASIN, intended-listing, confirmation-date, and confirmation-source fields remain blank by design.
+The supplied short-link tokens and their observed redirect targets are recorded separately in `data/products.json`. The observations below were captured on 2026-11-19; the 2026-11-20 re-checks are recorded beside them in `data/products.json` (`live_recheck_2026_11_20` and `live_recheck_2026_11_20_session_74e655e9`), and the same-day passes disagree — see FLG-017/FLG-023. Intended product identity remains unconfirmed for every link. The intended-ASIN, intended-listing, confirmation-date, and confirmation-source fields remain blank by design.
 
 | Submitted token | Observed listing at snapshot | Category | Intent confirmed? | Source |
 |---|---|---|---|---|

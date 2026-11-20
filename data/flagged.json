@@ -796,6 +796,21 @@
       "sources_checked": "2026-11-20"
     },
     {
+      "id": "FLG-023",
+      "severity": "medium",
+      "area": "Short-link destination records disagree between same-day passes",
+      "product": "data/products.json; Q-22; the five supplied short links",
+      "detail": "Three passes were recorded on 2026-11-20 and all are kept: (1) an earlier session's pass — B04G1MEwY ended at https://www.amazon.com/ twice, the other four ended at their recorded product pages (data/products.json, live_recheck_2026_11_20); (2) session arena/ce911db5-prod3 — B0c8moW59 ended at https://www.amazon.com/ twice (recorded on this flag, in Q-22 and on the coordination board, not in data/products.json — an earlier version of this flag said both records were kept there, which was wrong and is corrected here); (3) session arena/74e655e9-prod3 — B04G1MEwY reached its product page twice, B02NbDxp3 and B00hJ57DV ended at the homepage, B0c8moW59 returned HTTP 500 on one attempt and reached its product page on the next, and B0f3GKalj reached its product page (data/products.json, live_recheck_2026_11_20_session_74e655e9). No final URL in pass 3 carried tag=shopnow047c-20. Nothing is deleted and no tie is broken by seniority.",
+      "why_it_matters": "A signed-out fetch cannot distinguish a profile gate, a transient response or a link-level change, so the disagreement does not establish that the links are invalid, untracked or expired — but a reader cannot tell which observation applies without seeing all of them.",
+      "action": "Run the signed-in check in Q-22 (one signed-in click per link, confirm destination and reporting under shopnow047c-20) and record the dated result beside the three existing passes. Until then all three passes stand as published.",
+      "status": "open — three dated passes published side by side; signed-in check (Q-22) needed to settle",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
       "id": "FLG-044",
       "severity": "medium",
       "area": "Policy citations — one clause letter still wrong after the correction pass",

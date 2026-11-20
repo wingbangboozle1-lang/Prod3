@@ -382,15 +382,15 @@
     {
       "id": "Q-22",
       "group": "Links",
-      "question": "Why did two of the five supplied short links (B04G1MEwY, B0c8moW59) end at the Amazon homepage on 2026-11-20 instead of a product page?",
-      "blocks": "Whether the two homepage-resolving buy buttons can be attributed at all, and whether the other three are stable.",
-      "known": "On 2026-11-19 both ended at a product page. On 2026-11-20 B04G1MEwY ended at https://www.amazon.com/ twice (FLG-017) and B0c8moW59 ended at https://www.amazon.com/ twice (observed independently by session ce911db5), while B02NbDxp3, B00hJ57DV and B0f3GKalj still resolved to their product pages. Another session's same-day record reads B0c8moW59 as still resolving; both dated records are kept in data/products.json and neither is deleted. Two further same-day passes widened the finding: session 6bf60cac recorded the homepage for all five links (FLG-025), session 6c0972fb independently recorded the same for all five (FLG-039), and session d52ad947 again recorded the homepage for B04G1MEwY and B0c8moW59. Every dated record is kept in data/products.json.",
+      "question": "Why do the supplied short links sometimes end at the Amazon homepage instead of a product page — on 2026-11-20, four of the five did so in at least one recorded attempt?",
+      "blocks": "Whether any buy button can be attributed at all when its destination varies within a day, and which links a fresh Special Link should replace.",
+      "known": "On 2026-11-19 all five ended at a product page. Three dated passes on 2026-11-20 disagree and all are kept: (1) an earlier session (data/products.json, live_recheck_2026_11_20) — B04G1MEwY ended at https://www.amazon.com/ twice, the other four ended at their product pages; (2) session arena/ce911db5-prod3 — B0c8moW59 ended at https://www.amazon.com/ twice (kept on FLG-023, this row and the coordination board, not in data/products.json); (3) session arena/74e655e9-prod3 (data/products.json, live_recheck_2026_11_20_session_74e655e9) — B04G1MEwY reached its product page twice, B02NbDxp3 and B00hJ57DV ended at the homepage, B0c8moW59 returned HTTP 500 then reached its product page, and B0f3GKalj reached its product page. No final URL in pass 3 carried tag=shopnow047c-20. Nothing is deleted and no tie is broken.",
       "unknown": "Whether the cause is link expiry, a signed-out fetch versus an enrolled account, a profile gate or a transient response. None can be distinguished from outside the account, so none is asserted.",
       "how_to_find_out": "Signed in, open each of the five links once. Note the final URL, whether it lands on the product or the homepage, and whether it carries tag=shopnow047c-20. Then check Link Reports for a same-day click. If a link still lands on the homepage there, regenerate that Special Link from the product page with SiteStripe and record the new URL.",
       "who": "owner",
       "cost": "15 minutes, signed in",
       "status": "blocking",
-      "changes": "Whether two of the five buy buttons are replaced with freshly generated Special Links, or kept as supplied.",
+      "changes": "Whether the homepage-reaching buy buttons are replaced with freshly generated Special Links, or kept as supplied.",
       "sources": [
         "S01",
         "S02"

@@ -71,6 +71,25 @@
         "intended_asin_changed": false,
         "flag": "FLG-017"
       },
+      "live_recheck_2026_11_20_session_74e655e9": {
+        "date": "2026-11-20",
+        "session": "arena/74e655e9-prod3",
+        "method": "fetch_page of the supplied link.amazon URL from an unsigned session; final URL read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "submitted_link": "https://link.amazon/B04G1MEwY",
+        "attempts": 2,
+        "attempt_results": [
+          "Ended at the product page /dp/B0CDY277D3.",
+          "Ended at the product page /dp/B0CDY277D3."
+        ],
+        "final_url": "https://www.amazon.com/dp/B0CDY277D3",
+        "asin_in_final_url": "B0CDY277D3",
+        "tag_in_final_url": false,
+        "tag_note": "Query string carried lv=shuf, btn_type=ss, gaOptInStatus, btn_ref=srctok, channelId and plpRedirect; no tag= parameter was present.",
+        "matches_2026_11_19_observed_asin": true,
+        "result": "Both attempts ended at the product page. Same-day records disagree: an earlier session's two attempts on 2026-11-20 ended at the Amazon.com homepage (live_recheck_2026_11_20, FLG-017). Both dated records are kept; no tie is broken.",
+        "intended_asin_changed": false,
+        "flag": "FLG-017"
+      },
       "live_recheck_2026_11_20_link_check": {
         "date": "2026-11-20",
         "session": "arena/6bf60cac-prod3 (T-46)",
@@ -215,6 +234,23 @@
         "intended_asin_changed": false,
         "flag": null
       },
+      "live_recheck_2026_11_20_session_74e655e9": {
+        "date": "2026-11-20",
+        "session": "arena/74e655e9-prod3",
+        "method": "fetch_page of the supplied link.amazon URL from an unsigned session; final URL read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "submitted_link": "https://link.amazon/B02NbDxp3",
+        "attempts": 1,
+        "attempt_results": [
+          "Ended at https://www.amazon.com/ (homepage); no /dp/ ASIN in the final URL."
+        ],
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "tag_in_final_url": false,
+        "matches_2026_11_19_observed_asin": false,
+        "result": "Ended at the Amazon.com homepage. Same-day records disagree: the earlier session's 2026-11-20 attempt ended at the product page /dp/B09B7SB46R. Both dated records are kept; no tie is broken.",
+        "intended_asin_changed": false,
+        "flag": "FLG-023"
+      },
       "live_recheck_2026_11_20_link_check": {
         "date": "2026-11-20",
         "session": "arena/6bf60cac-prod3 (T-46)",
@@ -341,6 +377,23 @@
         "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
         "intended_asin_changed": false,
         "flag": null
+      },
+      "live_recheck_2026_11_20_session_74e655e9": {
+        "date": "2026-11-20",
+        "session": "arena/74e655e9-prod3",
+        "method": "fetch_page of the supplied link.amazon URL from an unsigned session; final URL read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "submitted_link": "https://link.amazon/B00hJ57DV",
+        "attempts": 1,
+        "attempt_results": [
+          "Ended at https://www.amazon.com/ (homepage); no /dp/ ASIN in the final URL."
+        ],
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "tag_in_final_url": false,
+        "matches_2026_11_19_observed_asin": false,
+        "result": "Ended at the Amazon.com homepage. Same-day records disagree: the earlier session's 2026-11-20 attempt ended at the product page /dp/B08DKYBTPH. Both dated records are kept; no tie is broken.",
+        "intended_asin_changed": false,
+        "flag": "FLG-023"
       },
       "live_recheck_2026_11_20_link_check": {
         "date": "2026-11-20",
@@ -470,6 +523,25 @@
         "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
         "intended_asin_changed": false,
         "flag": null
+      },
+      "live_recheck_2026_11_20_session_74e655e9": {
+        "date": "2026-11-20",
+        "session": "arena/74e655e9-prod3",
+        "method": "fetch_page of the supplied link.amazon URL from an unsigned session; final URL read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "submitted_link": "https://link.amazon/B0c8moW59",
+        "attempts": 2,
+        "attempt_results": [
+          "HTTP 500 from fetch_page; no destination observed.",
+          "Ended at the product page /dp/B0DHZTCNR5."
+        ],
+        "final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+        "asin_in_final_url": "B0DHZTCNR5",
+        "tag_in_final_url": false,
+        "tag_note": "Query string carried lv=shuf, btn_type=ss, gaOptInStatus, sp_csd, language, btn_ref=srctok, channelId and plpRedirect; no tag= parameter was present.",
+        "matches_2026_11_19_observed_asin": true,
+        "result": "First attempt failed with HTTP 500 (no destination observed); second attempt ended at the product page. Same-day records disagree: the earlier session's record reads the product page (live_recheck_2026_11_20), and session arena/ce911db5-prod3 recorded two homepage attempts (kept on FLG-023, Q-22 and the coordination board, not in this file). All dated records are kept; no tie is broken.",
+        "intended_asin_changed": false,
+        "flag": "FLG-023"
       },
       "live_recheck_2026_11_20_link_check": {
         "date": "2026-11-20",
@@ -606,6 +678,24 @@
         "asin_in_final_url": "B0DZFD6R9Z",
         "matches_2026_11_19_observed_asin": true,
         "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
+        "intended_asin_changed": false,
+        "flag": null
+      },
+      "live_recheck_2026_11_20_session_74e655e9": {
+        "date": "2026-11-20",
+        "session": "arena/74e655e9-prod3",
+        "method": "fetch_page of the supplied link.amazon URL from an unsigned session; final URL read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "submitted_link": "https://link.amazon/B0f3GKalj",
+        "attempts": 1,
+        "attempt_results": [
+          "Ended at the product page /dp/B0DZFD6R9Z."
+        ],
+        "final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "asin_in_final_url": "B0DZFD6R9Z",
+        "tag_in_final_url": false,
+        "tag_note": "Query string carried lv=shuf, sbo, btn_type=ss, gaOptInStatus, language, btn_ref=srctok, channelId and plpRedirect; no tag= parameter was present.",
+        "matches_2026_11_19_observed_asin": true,
+        "result": "Ended at the product page; ASIN matches the 2026-11-19 observation and the earlier same-day record.",
         "intended_asin_changed": false,
         "flag": null
       },

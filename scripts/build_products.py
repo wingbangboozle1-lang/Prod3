@@ -153,6 +153,13 @@ def render(p, flags, products_doc):
     slug = SLUG[pid]
     asin = p["observed_asin"]
     listing = f"https://www.amazon.com/dp/{asin}"
+    # A buy button has to do two jobs, so it is not the same URL as the evidence
+    # link below it. Participation Requirements 2(b) (data/sources.json S34)
+    # requires the assigned Associates ID to appear as a URL parameter on every
+    # link to an Amazon Site, and Commission Income Statement 2(g) (S35)
+    # disqualifies a purchase whose links are "not properly formatted". So the
+    # button carries the tag; the evidence link does not need to.
+    buy = f"https://www.amazon.com/dp/{asin}?tag={TRACKING}&linkCode=sl1"
     short = SHORT_NAME[pid]
     assert p["observed_title"].startswith(short), f"{pid}: short name is not a prefix of the listing title"
 
@@ -194,10 +201,13 @@ def render(p, flags, products_doc):
         f'and what it does not publish. It is not a review: nobody here has used this appliance.</p>',
 
         f'<p><a class="btn primary" rel="sponsored noopener" target="_blank" data-event="outbound_click" '
-        f'data-asin="{asin}" href="{listing}">Open the official listing for {asin}</a></p>',
-        f'<p class="small muted">The supplied short link for this product (<code>{esc(p["submitted_token"])}</code>) '
-        f'is not used as the button. It last landed on the Amazon homepage on 2026-11-20 — see '
-        f'<a href="../flagged.html">FLG-025</a>. The listing link above is the destination this page describes.</p>',
+        f'data-asin="{asin}" href="{buy}">Open the official listing for {asin}</a></p>',
+        f'<p class="small muted">The button goes to the listing link below and carries this site&rsquo;s Associates tag, '
+        f'which is the format the program&rsquo;s Participation Requirements name (see <a href="../flagged.html">FLG-026</a> '
+        f'and <a href="../flagged.html">FLG-032</a>). The supplied short link for this product '
+        f'(<code>{esc(p["submitted_token"])}</code>) is recorded as evidence, not used as the button: it last landed on '
+        f'the Amazon homepage on 2026-11-20 (<a href="../flagged.html">FLG-025</a>). Whether the tag is attached '
+        f'server-side inside the enrolled account is the owner test in <a href="../questions.html">Q-02</a>.</p>',
 
         '<div class="callout"><strong>The honest one-liner.</strong> ' + esc(cot) +
         ' <span class="small">(An editorial judgement about your routine, not a measurement.)</span></div>',

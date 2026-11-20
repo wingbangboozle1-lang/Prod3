@@ -98,7 +98,7 @@ the same four duplicate ids while this branch was open.
 | T-63 | Direction layer: new reviewable suggestions (SG-32..), a copy-ready site design brief on `ideas.html`, new missing-info questions (Q-24..), decision-desk rows for the new choices, `DIRECTION.md` + both executive summaries refreshed, the duplicate README register table removed, `data/flagged.json` brought in line with the published flag page | in progress | `arena/6c0972fb-prod3` | `data/suggestions.json`, `data/open-questions.json`, `data/decisions.json`, `data/flagged.json`, `ideas.html`, `DIRECTION.md`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md` |
 | T-64 | Repair the duplicate flag identifiers on `flagged.html` (FLG-020, FLG-021, FLG-022 and FLG-023 each head two different findings; 59a087a1's new register rows collided with existing published IDs). Second occurrence of each renumbered to a free ID, every cross-reference followed, and a uniqueness rule added to the gate so it cannot recur | in progress | `arena/6c0972fb-prod3` | `flagged.html`, `data/flagged.json`, `data/products.json` (flag refs only), `tools/check_site.py` (new rule), `README.md`, `DIRECTION.md` |
 | T-65 | Final integration for this round: re-run all eight gates on the merged tree, PR → main, merge without waiting, confirm `Deploy GitHub Pages` success by run ID and check the live pages | in progress | `arena/6c0972fb-prod3` | `COORDINATION.md` plus whatever T-60..T-64 already scope |
-| T-57 | Final integration re-verification of the combined tree after PR #37 and the concurrent T-46..T-56 merge (renumbered twice: T-46 → T-51 → T-53 because T-46/T-48/T-51/T-52 were taken upstream, then T-53 → T-57 because session 7878cdbe took T-53..T-56 for its defect/growth/release round; per the one-identifier-one-meaning rule): line-by-line re-check of all registers and published docs; reconcile stale register ranges/counts (README, EXECUTIVE_SUMMARY, direction.html) and stale register generation dates; re-run all gates; PR → main, merge, confirm Pages deploy, record result | in progress | `arena/6f44d8c9-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `direction.html`, `data/suggestions.json`, `data/open-questions.json`, `data/citations.json`, `scripts/build_registers.py`, `COORDINATION.md` |
+| T-57 | Final integration re-verification of the combined tree after PR #37 and the concurrent T-46..T-56 merge (renumbered twice: T-46 → T-51 → T-53 because T-46/T-48/T-51/T-52 were taken upstream, then T-53 → T-57 because session 7878cdbe took T-53..T-56 for its defect/growth/release round; per the one-identifier-one-meaning rule): line-by-line re-check of all registers and published docs; reconcile stale register ranges/counts (README, EXECUTIVE_SUMMARY, direction.html) and stale register generation dates; re-run all gates; PR → main, merge, confirm Pages deploy, record result | done (PR #45 merged as `89849e0`; gates green; Pages deploy run 44693759586 success — see the T-57 merge and deploy record below) | `arena/6f44d8c9-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `direction.html`, `data/suggestions.json`, `data/open-questions.json`, `data/citations.json`, `scripts/build_registers.py`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -2290,6 +2290,23 @@ superiority were made. No product value, link target, or flag was altered.
   (DT-03), analytics endpoint (DT-07), share-debugger check (F-21), and the Pages
   `build_type` one-click fix (FLG-024). No product value, link target, or flag was
   altered by this pass.
+
+## Session `arena/fe5fd1d9-prod3` — PR and merge record (2026-11-20)
+
+- **PR #67** `arena/fe5fd1d9-prod3` → `main`: opened 2026-11-20, merged **2026-11-20T07:18:45Z**
+  as merge commit **d47a3df** ("Merge pull request #67 from wingbangboozle1-lang/arena/fe5fd1d9-prod3").
+  Merged without waiting for review per the standing directive; no conflicts at merge time (the
+  branch had absorbed main 8cc8d58 immediately before).
+- **Pages deploy confirmed:** the `Deploy GitHub Pages` workflow on d47a3df completed with
+  **success**. The redundant legacy `pages build and deployment` run (FLG-024) triggered as
+  documented and does not affect the artifact deploy. Live page re-fetched from
+  https://wingbangboozle1-lang.github.io/Prod3/compare.html after deploy: the buy row reads
+  "Buy (official product pages)" with all five cells linking
+  `https://www.amazon.com/dp/<ASIN>?tag=shopnow047c-20&linkCode=sl1`, the detail-page links resolve
+  to the five generated `products/` pages, the disclosure strip is above the fold, and no price or
+  rating is rendered.
+- **Record closed on the merged tree:** `tools/check_site.py` 42 pages / 6,372 assertions, all
+  freshness gates `--check` OK, release gate passed, crawl 0 broken / 0 dead / 0 orphans.
 ## Session `arena/ba8e7240-prod3` — T-55..T-58 (2026-11-20, 06:52–07:45Z)
 
 Claimed as T-51..T-54; renumbered twice because four sessions merged during this branch and took those IDs

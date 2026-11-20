@@ -3,7 +3,7 @@
 **Repo:** wingbangboozle1-lang/Prod3
 **Session ID:** `arena/33e3e80f-prod3` (branch `arena/33e3e80f-prod3`)
 **Tracking ID:** `shopnow047c-20` (Amazon Associates, as supplied)
-**Last updated:** 2026-11-19
+**Last updated:** 2026-11-20
 
 ## How this board works
 
@@ -45,7 +45,7 @@
 | T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-26 | Final integration integrity pass: reconcile product-intent evidence, link/policy copy, automation claims, and flags; strengthen gates; re-run site and Pages release checks | done (2026-11-20, PR and Pages result below) | `arena/e83cdf55-prod3` | `data/verification.json`, `data/policy-checks.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `flagged.html`, `suggestions.html`, `questions.html`, `docs/verification.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `COORDINATION.md` |
 | T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (stale DIRECTION cross-references and SG-22..30 index vs register, nine-article counts), flag the dual Pages deploy paths as FLG-024, re-run all gates, PR → main, merge, confirm live deploy | done (PR #36, merge commit `a861ed7`; deploy + live check recorded below) | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, Pages repo settings (build_type) |
-| T-46 | Current-tree consistency pass: reconcile stale guidance/register counts, remove outdated rating and analytics claims, refresh release evidence; run all site gates | in progress | `arena/30d1c448-prod3` | `README.md`, `DIRECTION.md`, `direction.html`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
+| T-46 | Current-tree consistency pass: reconcile stale guidance/register counts, remove outdated rating and analytics claims, refresh release evidence; run all site gates | done (2026-11-20, record below; PR/merge/Pages result appended after deploy) | `arena/30d1c448-prod3` | `README.md`, `DIRECTION.md`, `direction.html`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -1295,3 +1295,96 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 - **Live checks after deploy (fetched, not assumed):** the front page and `direction.html` serve the updated content — path chooser shows the canonical “Make it earn / Make it a publication / Narrow and harden” wording with DT references, the snapshot note reads “SG-20..SG-31 … the ID slot between SG-25 and SG-27 is unoccupied, FLG-021”, and the disclosure strip remains above the first heading.
 
 *(final micro-PR: T-26 → T-39 label fix on direction.html + this record)*
+
+---
+
+## Session `arena/30d1c448-prod3` — documentation consistency pass (2026-11-20)
+
+**Branch:** `arena/30d1c448-prod3` (from `main` at `7c1b939`) · **Claimed:** T-46 (claim
+committed and pushed before any edit, per the board rules). Scope was the five documentation
+surfaces only; no data register, generated register page, article, or product/policy claim
+was edited. No external webpage was fetched this session — every count below was verified
+against the repository's own `data/*.json` files, the shipped files, and the gate outputs,
+and the official-source claims in the docs were left unchanged from the previously recorded
+official-source verifications.
+
+### Demonstrable defects found and fixed (stale or contradictory documentation)
+
+1. **README carried two contradictory register tables** (one "as of 2026-11-19", one "as of
+   2026-11-20"), with disagreeing ID ranges (SG-01..SG-31 vs SG-01..SG-30; Q-01..Q-21 in
+   both; FLG-001..FLG-017 vs F-01..F-21 only). Merged into one table matching the data
+   files: suggestions 30 registered rows across SG-01..SG-31 (SG-21 retired in place, so 29
+   live; SG-26 unoccupied — FLG-021), questions Q-01..Q-23 (23 rows), decisions DT-01..DT-10,
+   flagged page FLG-001..FLG-024 with `data/flagged.json` holding 24 rows (F-01..F-21 plus
+   FLG-017/020/021). Also fixed "Q-01..Q-21" on the decisions-page line and the "all 30
+   pages" chrome comment (gate reports 31).
+2. **Article breakdown was wrong in both executive summaries**: "nine question-shaped
+   articles (eight evergreen guides plus the dated Thanksgiving temperature plan)" — the
+   `articles/` directory holds nine files, of which seven are evergreen and two are seasonal
+   (`holiday-kitchen-gift-guide.html`, `thanksgiving-temperature-plan.html`). Corrected to
+   "seven evergreen plus two seasonal pieces"; "Eight guides" in the questions table became
+   "Nine guides".
+3. **Stale gate evidence in `EXECUTIVE_SUMMARY.md`**: "all 30 pages" and "(30 pages, 3541
+   assertions)" described the earlier pass. Annotated as the historical close and added the
+   current tree's verified numbers (31 pages, 3,938 assertions; 31 crawled, 0 broken links,
+   0 dead anchors, 0 orphans); the release-check list now names all eight gates. The same
+   "30 pages" claim in `executive-summary.html` (nav row and disclosure row) is now 31.
+4. **Stale SVG-preview wording in `EXECUTIVE_SUMMARY.md`**: said FLG-016/F-21 mean "the SVG
+   social-preview image is unverified". FLG-016 and the direction page record that the SVG
+   issue is resolved and the outstanding item is the shipped 1200×630 PNG's share-debugger
+   check. Wording corrected to match `flagged.html` / `direction.html`; also "All four
+   release gates" → "All release gates".
+5. **`direction.html`**: removed a duplicated `<h2>` on the open-questions section; relabeled
+   both embedded tables as snapshots (the suggestion snapshot's "all 25 suggestions" and the
+   questions heading's "Q-01 … Q-21" understated the registers) with pointers to the full
+   registers (SG-01..SG-31 with the retired/unoccupied notes, Q-01..Q-23 noting Q-22/Q-23
+   were registered later); fixed "SG-01..SG-25" in the three-registers paragraph; removed a
+   malformed `<p>` sitting inside the suggestion `<table>` (byte-identical duplicate of the
+   SG-19 source note that remains after the table).
+6. **`DIRECTION.md` phantom citation**: the SG-20/SG-21 duplicate discussion ended "That is
+   DT-11 territory and is recorded on `decisions.html`" — DT-11 does not exist
+   (`data/decisions.json` holds DT-01..DT-10). Reworded to state no registered decision row
+   covers the possibility and to point at the SG-21 retired row, which does record it. This
+   is the same defect class as the FLG-021 phantom-ID finding; no ID was invented.
+7. `direction.html` callout date "registers last generated 2026-11-19" → "register pages
+   verified against their data files on 2026-11-20".
+
+### Verification performed (2026-11-20, after the edits)
+
+| Gate | Result |
+|---|---|
+| `scripts/build_registers.py --check` | OK: register pages match data/*.json |
+| `scripts/build_decisions.py --check` | OK: decisions.html matches its data |
+| `scripts/build_chrome.py --check` | OK: chrome current on 31 pages |
+| `scripts/build_sitemap.py --check` | OK: sitemap.xml is up to date |
+| `scripts/check_site.py` | All checks passed (31 pages, product-intent separation, banned phrases, source-required tables, price dating) |
+| `tools/verify_site.py` | Release gate passed (21/21 source cross-references resolve; feed 9 items; product intent separated) |
+| `tools/check_site.py` | 31 pages checked, 3,938 assertions run, all additional rules passed |
+| `tools/crawl_links.py` | 31 pages crawled · 0 broken links, 0 dead anchors, 0 orphans |
+| `git diff --check` | clean |
+
+Counts cited in the fixed docs were checked directly against `data/suggestions.json`
+(30 rows: SG-01..SG-31 minus SG-26, SG-21 retired), `data/open-questions.json` (23 rows
+Q-01..Q-23), `data/decisions.json` (DT-01..DT-10), `data/flagged.json` (24 rows:
+F-01..F-21, FLG-017, FLG-020, FLG-021), `flagged.html` (FLG-001..FLG-024), and `ls articles/`
+(nine article files). No claim about products, prices, ratings, traffic, conversions, or
+compliance status was added, removed, or softened.
+
+### Irregularities (non-blocking)
+
+- The stale-doc defects above are themselves the irregularities; they are fixed in this
+  branch and none of them touched a data register. Register-side irregularities (FLG-001,
+  FLG-006, FLG-010, FLG-017, FLG-020, FLG-021, FLG-024 and the F-series) are unchanged and
+  remain published on `flagged.html`.
+- One adjacent observation, **not changed** (out of scope, not a demonstrable defect): the
+  `direction.html` question snapshot row for Q-17 quotes the register's own text ("Which of
+  the eight guides should be retired…"), which was written when the site had eight articles;
+  the register now has nine. Updating the question's wording is a data-register change and
+  belongs to whoever next edits `data/open-questions.json`.
+
+### Not claimed / not verified here (unchanged owner gates)
+
+FLG-001 intended ASINs · FLG-006 Special Link test · FLG-010 account status · FLG-017 /
+FLG-023 link checks (Q-22) · Search Console (DT-03) · analytics endpoint (DT-07) ·
+share-debugger check (F-21/Q-21) · Pages build_type setting (FLG-024). No new claims about
+traffic, conversion, or product superiority.

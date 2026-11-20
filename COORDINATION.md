@@ -105,6 +105,9 @@ the same four duplicate ids while this branch was open.
 | T-64 **landed 2026-11-20**| Repair the duplicate flag identifiers on `flagged.html` (FLG-020, FLG-021, FLG-022 and FLG-023 each head two different findings; 59a087a1's new register rows collided with existing published IDs). Second occurrence of each renumbered to a free ID, every cross-reference followed, and a uniqueness rule added to the gate so it cannot recur | in progress | `arena/6c0972fb-prod3` | `flagged.html`, `data/flagged.json`, `data/products.json` (flag refs only), `tools/check_site.py` (new rule), `README.md`, `DIRECTION.md` |
 | T-65 **landed 2026-11-20**| Final integration for this round: re-run all eight gates on the merged tree, PR → main, merge without waiting, confirm `Deploy GitHub Pages` success by run ID and check the live pages | in progress | `arena/6c0972fb-prod3` | `COORDINATION.md` plus whatever T-60..T-64 already scope |
 
+| T-59 | Final integration re-verification of the combined tree after PR #37 and the concurrent T-46..T-56 merge (renumbered twice: T-46 → T-51 → T-53 because T-46/T-48/T-51/T-52 were taken upstream, then T-53 → T-59 because session 7878cdbe took T-53..T-56 for its defect/growth/release round; per the one-identifier-one-meaning rule): line-by-line re-check of all registers and published docs; reconcile stale register ranges/counts (README, EXECUTIVE_SUMMARY, direction.html) and stale register generation dates; re-run all gates; PR → main, merge, confirm Pages deploy, record result | in progress | `arena/6f44d8c9-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `direction.html`, `data/suggestions.json`, `data/open-questions.json`, `data/citations.json`, `scripts/build_registers.py`, `COORDINATION.md` |
+| T-58 | Register-integrity + publication-machinery pass (renumbered twice: claim commit named T-25, renumbers T-39 and T-52 both collided with main-side rows; final id T-59): one id one meaning across flagged/suggestions/digest (flagged.html shipped duplicate FLG-020/021; digest rows carried SG-27..SG-30 ids with different meanings → SG-32..SG-35 registered), generated DIRECTION digest (build_digest.py, gate D32), cross-surface id gate D31 + flagged-sync gate D34 (both negative-tested), feed-item titles aligned to guide h1s, self-hosted analytics collector shipped as deployable code (endpoint kept blank), stale cross-refs fixed (SG-19→SG-24 on about.html etc.), exec summary + PR → main, merge, Pages confirm | in progress | `arena/26285b01-prod3` | `flagged.html`, `ideas.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json`, `data/decisions.json`, `data/flagged.json`, `feed.xml`, `scripts/build_digest.py`, `scripts/build_registers.py`, `tools/check_site.py`, `docs/*`, `analytics/collector/*`, `analytics.html`, `about.html`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
+
 ## Verification log (2026-11-19, session 5a4e180c)
 
 All five submitted `link.amazon` tokens were checked against official Amazon pages
@@ -2595,3 +2598,31 @@ Two build-behaviour fixes came out of this round and are worth repeating to othe
 ### Broken-build repair — session `arena/6c0972fb-prod3`, 2026-11-20 (T-67)
 
 `Deploy GitHub Pages` run `44695121743` on merge commit `0569046` (PR #84) **failed**, and runs `44695018843` (PR #80) and `44695015620` (PR #82) failed the same way just before it. Cause was not this session's content: those merges landed generated files that were stale on arrival — `decisions.html`, `README.md` and `products/*.html` were committed out of step with the `data/*.json` registers they are rendered from, so `scripts/build_decisions.py --check`, `scripts/build_readme.py --check` and `D32-product-pages-fresh` failed the release job. The rule in this repository is that generated HTML is committed; the corollary nobody wrote down is that **a merge must re-run the generators after its last rebase**, because a rebase moves the data under a page that was current when it was built. Fix: regenerate all seven outputs on the merged tree and commit them (this branch carries the result). Gates on that tree: `scripts/check_site.py` all passed; `tools/check_site.py` 42 pages / 6,893 assertions, all rules passed; `tools/verify_site.py` release gate passed; `tools/crawl_links.py` 42 pages, 0 broken links, 0 orphans; the seven `--check` freshness modes current. Claim: **T-67**; next free claim **T-68**.
+
+### Session arena/26285b01-prod3 — T-58 claim and collision history (2026-11-20)
+
+Final claim id: **T-58**. (Third collision: the first renumber, T-39, was taken on main mid-session; the second, T-52, was taken while this claim was being rebased onto PRs #36-#51; this id is the next free one after the board maximum.) The claim commit named this task T-25; `origin/main` had meanwhile
+gained PRs #26–#33 (T-25..T-38 taken, including the SG-27..SG-30 register pass and the RSS
+head-link pass this session had planned), so it was first renumbered T-39. During the work,
+PRs #36–#51 merged and a main-side session took T-39 as well, so the claim is renumbered again twice — **T-52**, then **T-58**, each time the next free id after the board maximum, as further sessions merged. No claim row of any other session is
+touched.
+
+**Conflict log (protocol-required).** `git pull --rebase` conflicted on `COORDINATION.md` three
+times on 2026-11-20 as other sessions merged to `main` mid-session. Each time the resolution
+kept **both** sides — upstream rows and session records unchanged, this session's row and log
+appended after them. No other session's work was discarded.
+
+**Scope (as executed).** Register-integrity and publication-machinery work that the post-#35
+tree still lacked: (1) `flagged.html` shipped two FLG-020s and two FLG-021s — two sessions
+merged the same numbers; the later set is renumbered FLG-024..FLG-027 with all cross-references
+updated. (2) The `DIRECTION.md` digest carried SG-27..SG-30 rows whose meanings differed from
+`data/suggestions.json`; they are registered as SG-32..SG-35 (original work credited to session
+arena/2ef30474-prod3), and the digest index is now generated from the register by
+`scripts/build_digest.py`. (3) `ideas.html` cited SG-26 for the SG-31 idea and wrong FLG ids.
+(4) `DIRECTION.md` cited DT-11 before it existed — DT-11 is now registered. (5) New gates D31
+(cross-surface id resolution), D32 (digest freshness), D34 (flagged heading uniqueness + machine
+register sync), each negative-tested. (6) Feed item titles aligned to the published guide h1s
+(one feed title overclaimed what a NIST claim covers). (7) `about.html`'s named-editor paragraph
+cited SG-19 (the tap-target row) for SG-24's subject. (8) A deployable, privacy-preserving
+self-hosted analytics collector ships as code; `ENDPOINT` stays blank until the owner deploys
+and publishes a privacy notice. (9) Executive summary refreshed; all release gates re-run.

@@ -50,7 +50,7 @@ The tools use Python's standard library; no third-party Python dependencies are 
 - `compare.html`, `buying-guide.html` — comparison and decision framework
 - `products/` — five per-product spec pages, generated from `data/products.json` by `scripts/build_products.py`; each prints the listing's own contradictions and shows the blank intended-ASIN field as blank
 - `publishing-plan.html` — twelve dated guide proposals from `data/editorial-plan.json`, with the evidence each needs and whether it exists
-- `articles/` — thirteen question-shaped guides, included in `feed.xml` and `sitemap.xml`
+- `articles/` — the question-shaped guides, included in `feed.xml` and `sitemap.xml`
 - `suggestions.html`, `questions.html`, `direction.html` — proposals, missing-information questions, and decisions
 - `sources.html`, `citations.html`, `flagged.html`, `disclosure.html`, `analytics.html`, `executive-summary.html`, `about.html` — source, disclosure, analytics, and trust pages
 - `suggestions.html`, `questions.html`, and `citations.html` are generated from JSON by `scripts/build_registers.py`; `decisions.html` by `scripts/build_decisions.py`; the masthead/disclosure/footer of every page by `scripts/build_chrome.py`. Do not hand-edit any of them.
@@ -60,7 +60,7 @@ The tools use Python's standard library; no third-party Python dependencies are 
 
 ## Release workflow
 
-`.github/workflows/pages.yml` runs the five `--check` freshness gates, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` and `tools/crawl_links.py` before deploying to GitHub Pages. On 2026-11-20 the same checks passed locally, including 42 HTML pages and 6,949 assertions, with 0 broken links and 0 orphans. That is an internal repository check; it does not re-fetch Amazon listings or verify Associates account settings.
+`.github/workflows/pages.yml` runs the five `--check` freshness gates, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` and `tools/crawl_links.py` before deploying to GitHub Pages. On 2026-11-20 the same checks passed locally, including 39 HTML pages and 5,879 assertions, with 0 broken links and 0 orphans. That is an internal repository check; it does not re-fetch Amazon listings or verify Associates account settings.
 
 **Deploy path note (FLG-024):** this workflow is the only deployer the site has ever shipped through. The repo's Pages build type is still set to `legacy`, so a second, redundant "pages build and deployment" run also triggers on every push to `main` and can fail its deploy step behind the successful artifact deploy without affecting the live site. The automation token cannot change that setting (`PATCH /pages` → HTTP 404); the one-click owner fix is Settings → Pages → Build and deployment → Source: **GitHub Actions**. Judge deploys by the `Deploy GitHub Pages` workflow and the live URL.
 
@@ -73,10 +73,10 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 |---|---|---|---|---|
 | Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-58 | 58 rows |
 | Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-30 | 30 |
-| Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
+| Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-13 | 13 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | - |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | dated proposals | 12 |
-| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-041, F-01..F-21 | 57 in the data file |
+| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-043, F-01..F-21 | 58 in the data file |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | 28 |
 <!-- build-registers-table:end -->
 

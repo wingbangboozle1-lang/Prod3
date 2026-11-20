@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-20",
-  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-31 added 2026-11-20 (session ce911db5) to give the conflict chip its own registered row; SG-26 is absent from this register and was cited by DIRECTION.md — see FLG-029. Session arena/80802891-prod3 (T-27, 2026-11-20, integration merge): SG-20's content, clobbered during PR #17's merge replay, was recovered verbatim from PR #17's own history (commit 7fbef67) and SG-21 restored to its distinct 'spine' proposal — both live again; the SG-21 tombstone is withdrawn and FLG-021 item (3) is resolved. SG-26 is now the reader-facing polish-path row carrying the parallel passes SG-27..SG-31, which resolves FLG-021's gap note. SG-55..SG-58 add the design-brief rows (analytics endpoint, design brief for the next design pass, seasonal clusters as working titles only, publishing cadence — the latter recorded as decided in DT-10). All previously registered rows (SG-27..SG-54) are kept verbatim.",
+  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-31 added 2026-11-20 (session ce911db5) to give the conflict chip its own registered row; SG-26 was absent from this register and cited by DIRECTION.md (gap finding FLG-029) until a row was registered in that slot on 2026-11-20. Session arena/80802891-prod3 (T-27, 2026-11-20, integration merge): SG-20's content, clobbered during PR #17's merge replay, was recovered verbatim from PR #17's own history (commit 7fbef67) and SG-21 restored to its distinct 'spine' proposal — both live again; the SG-21 tombstone is withdrawn and FLG-021 item (3) is resolved. SG-26 is now the reader-facing polish-path row carrying the parallel passes SG-27..SG-31, which resolves FLG-029's gap note. SG-55..SG-58 add the design-brief rows (analytics endpoint, design brief for the next design pass, seasonal clusters as working titles only, publishing cadence — the latter recorded as decided in DT-10). All previously registered rows (SG-27..SG-54) are kept verbatim.",
   "scale": {
     "effort": [
       "S — a short session",
@@ -138,9 +138,9 @@
     },
     {
       "id": "SG-07",
-      "title": "Turn on Search Console before writing guide nine",
+      "title": "Turn on Search Console before writing the next guide",
       "problem": "The next topic is currently chosen by instinct.",
-      "evidence": "No Search Console property exists (F-17). Choosing topics from measured queries is the only way to avoid writing eight more articles for nobody.",
+      "evidence": "No Search Console property exists (F-17). Choosing topics from measured queries is the only way to avoid writing more articles for nobody.",
       "options": [
         "A. Verify the property, wait two weeks, and pick the next three topics from the Queries report.",
         "B. Keep writing on instinct and check the reports later."
@@ -150,7 +150,7 @@
       "confidence": "high",
       "status": "proposed",
       "decision_owner": "owner",
-      "blocks": "every content decision after guide eight"
+      "blocks": "every content decision made without query data"
     },
     {
       "id": "SG-08",
@@ -314,13 +314,13 @@
       "id": "SG-16",
       "title": "Replace the SVG social preview with a raster card, and verify it before relying on it",
       "problem": "Every page referenced assets/og-image.svg as og:image until the publication-polish pass replaced it with a 1200×630 raster card (assets/og-image.png). SVG is not the format social preview tools typically render, so the format risk is resolved; what remains is confirming the card actually renders in a share debugger.",
-      "evidence": "Meta's sharing best-practices documentation asks for JPG or PNG preview images (https://developers.facebook.com/docs/sharing/best-practices — recorded as a to-verify reference; not re-fetched from this network, see F-21). The PNG is now shipped on all 24 pages; the debugger check (Q-21) has not been run.",
+      "evidence": "Meta's sharing best-practices documentation asks for JPG or PNG preview images (https://developers.facebook.com/docs/sharing/best-practices — recorded as a to-verify reference; not re-fetched from this network, see F-21). The PNG is now shipped on every page; the debugger check (Q-21) has not been run.",
       "options": [
         "A. Produce one 1200×637 PNG card from the existing brand type, swap the og:image hrefs, and confirm with a share debugger.",
         "B. Keep SVG and accept that some previews show nothing.",
         "C. Drop og:image entirely."
       ],
-      "recommendation": "A, once someone with a browser can run the share-preview check. The change is one file and nine href lines; the fallback today (a plain-text link preview) is honest but costs the click.",
+      "recommendation": "A, once someone with a browser can run the share-preview check. The change is one file and one href line per page; the fallback today (a plain-text link preview) is honest but costs the click.",
       "effort": "S",
       "confidence": "medium",
       "status": "partly implemented",
@@ -349,11 +349,11 @@
     },
     {
       "id": "SG-18",
-      "title": "Choose guide nine from measured queries, not instinct",
+      "title": "Choose the next guide from measured queries, not instinct",
       "problem": "Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.",
       "evidence": "Search Console is the first-party source for the queries a site actually appears for (https://search.google.com/search-console/about — SG-07 is the verification prerequisite). analytics.html records that no data exists yet.",
       "options": [
-        "A. Hold at 10 guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
+        "A. Hold at the published guide count until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
         "B. Keep the weekly cadence with self-selected topics until data arrives.",
         "C. Retire or merge any guide with zero impressions after 60 days (Q-17)."
       ],
@@ -362,7 +362,7 @@
       "confidence": "medium",
       "status": "proposed",
       "decision_owner": "editorial",
-      "blocks": "the ninth guide only"
+      "blocks": "the next guide only"
     },
     {
       "id": "SG-19",
@@ -414,7 +414,7 @@
       "id": "SG-21",
       "title": "Pick one product as the site's spine and let the other four support it",
       "problem": "Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.",
-      "evidence": "The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google's thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).",
+      "evidence": "The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google's thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22). Status note, 2026-11-20: the front page ships a named starting pick (option A) since the shop pass, but no owner decision is recorded in the decision log and this row still reads proposed — see FLG-043.",
       "options": [
         "A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.",
         "B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.",
@@ -519,7 +519,7 @@
       "id": "SG-26",
       "title": "Run the reader-facing polish path: authorship, navigation, brand, imagery, seasons, and clusters",
       "problem": "Careful data is not the same as a published page. The levers that make a site feel published rather than generated are reader-facing: who wrote it, where the navigation takes you, how the brand sounds, what the imagery is allowed to be, which season the page acknowledges, and which guides cluster together.",
-      "evidence": "The site already ships some of each: one navigation group rendered from scripts/build_chrome.py on all 30 pages, a seasonal front-page section and a holiday cluster (SG-28), typographic listing art under the Program Content image rule (SG-11, S01). What is missing is the named editor (SG-24, Q-05) and any settled imagery policy (DT-04, FLG-008). Google's people-first guidance asks who created the content (S21).",
+      "evidence": "The site already ships some of each: one navigation group rendered from scripts/build_chrome.py on all 30 pages, a seasonal front-page section and a holiday cluster (SG-28), typographic listing art under the Program Content image rule (SG-11, S01). What is missing is the named editor (SG-24, Q-05) and any settled imagery policy (DT-04, FLG-008). Google's people-first guidance asks who created the content (S21). (This row fills the SG-26 slot that FLG-029 documented as a gap.)",
       "options": [
         "A. Run the whole path as one pass once Q-05 (named editor) and DT-04 (imagery) are answered.",
         "B. Run the free levers now — navigation labels, brand voice in the masthead and About copy, seasonal framing, guide clusters — and leave authorship and imagery until the owner answers.",
@@ -700,7 +700,7 @@
     {
       "id": "SG-35",
       "title": "Give the twelve guide proposals a home with a gate, so the writing plan is reviewable",
-      "problem": "The site had nine published guides and no reviewable answer to “what gets written next, and why”. Proposal rules lived in prose on several pages.",
+      "problem": "The site had a shelf of published guides and no reviewable answer to “what gets written next, and why”. Proposal rules lived in prose on several pages.",
       "evidence": "data/editorial-plan.json (12 rows, each with the evidence it needs and whether it exists); publishing-plan.html; gate D31 in tools/check_site.py.",
       "options": [
         "A. Keep the dated twelve-week plan page, gated against its data file.",
@@ -745,11 +745,11 @@
       "id": "SG-37",
       "title": "Publish catchy, trend-led question articles to earn organic traffic",
       "problem": "The 10 guides at the time of writing are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
-      "evidence": "SG-04 chose question-shaped guides over reviews (shipped). SG-18 says guide nine must come from measured queries once Search Console exists (Q-18). Google's thin-affiliation policy treats affiliate pages with no added value as spam (S22), so each trend article must add buying criteria, not just repeat the listing (S21).",
+      "evidence": "SG-04 chose question-shaped guides over reviews (shipped). SG-18 says the next guide must come from measured queries once Search Console exists (Q-18). Google's thin-affiliation policy treats affiliate pages with no added value as spam (S22), so each trend article must add buying criteria, not just repeat the listing (S21).",
       "options": [
         "A. Keep a small seasonal calendar of catchy question articles — Thanksgiving temperature planning, holiday air-fryer gifts, January meal prep, summer grilling thermometers — each answering one buyer question with listed specs.",
         "B. Publish generic \"best air fryer 2026\" listicles, the format every competitor already owns.",
-        "C. Do not write guide nine until Search Console data exists (SG-07), then pick from measured impressions."
+        "C. Do not write the next guide until Search Console data exists (SG-07), then pick from measured impressions."
       ],
       "recommendation": "A for the calendar, with C as the gating rule: no topic gets written without either a seasonal reason or measured query interest. The existing four suggested editorial hypotheses are working titles only — not popularity or superiority claims.",
       "effort": "M",
@@ -893,7 +893,7 @@
       "confidence": "high",
       "status": "proposed",
       "decision_owner": "editorial",
-      "blocks": "guide nine onward",
+      "blocks": "the next guide onward",
       "sources": [
         "S35",
         "S22"
@@ -943,7 +943,7 @@
     {
       "id": "SG-47",
       "title": "Keep internal anchors descriptive — add a gate so the discipline cannot slip",
-      "problem": "A scan on 2026-11-20 found zero generic anchors (“click here”, “read more”, “learn more”) across the published pages, but nothing tests for them, so guide nine could reintroduce them without anyone noticing.",
+      "problem": "A scan on 2026-11-20 found zero generic anchors (“click here”, “read more”, “learn more”) across the published pages, but nothing tests for them, so a future guide could reintroduce them without anyone noticing.",
       "evidence": "Google's link best practices (S34, fetched 2026-11-20) state that good anchor text “is descriptive, reasonably concise, and relevant to the page that it's on and to the page it links to”, and that generic text gives neither readers nor Google context. The scan method is recorded in COORDINATION.md (T-54).",
       "options": [
         "A. Add a check_site rule that fails on the generic anchor texts Google names, then keep writing as now.",
@@ -1208,5 +1208,5 @@
       ]
     }
   ],
-  "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed. | 2026-11-20 (session f3900cd3): this session's four rows were renumbered twice while the branch was open — first written SG-32..SG-35, then SG-36..SG-39, now SG-39..SG-42 — each time because another session had registered different proposals under those ids. Text is unchanged; each moved row carries a dated note. No upstream row was edited."
+  "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 (a merge replay during PR #17 clobbered SG-20's content). The interim retirement was withdrawn the same day when SG-20's original content was recovered from PR #17 commit 7fbef67; SG-20 and SG-21 are live and distinct again. The register keeps retired rows so an ID is never reused."
 }

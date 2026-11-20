@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "session": "arena/a25ccde6-prod3",
   "premise": "One row per figure the site renders. Each row names the observation, its date, and the official source. A reader can re-run any row.",
   "rules": [
@@ -223,6 +223,76 @@
       "source": "S23",
       "used_for": "Custom 404 behaviour on the project site",
       "claim_status": "official documentation, quoted not paraphrased as fact"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "USDA FSIS states Leftovers 165°F (73.9°C) and Casseroles 165°F on its safe minimum internal temperature chart, with no rest time attached",
+      "observed_on": "2026-11-20",
+      "source": "S17",
+      "used_for": "articles/thanksgiving-leftovers-air-fryer.html — the one number that decides a reheating",
+      "claim_status": "official guidance quoted; no cooking outcome claimed"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "USDA FSIS: perishable foods left between 40°F and 140°F for more than 2 hours are listed as a risk factor",
+      "observed_on": "2026-11-20",
+      "source": "S39",
+      "used_for": "articles/thanksgiving-leftovers-air-fryer.html — the two-hour rule",
+      "claim_status": "official guidance quoted"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "USDA FSIS: most food thermometers give an accurate reading within 2 to 4 degrees F; ice water should read 32°F, boiling water 212°F; minimum two-inch insertion; measure in the thickest part away from bone, fat and gristle",
+      "observed_on": "2026-11-20",
+      "source": "S39",
+      "used_for": "articles/check-your-thermometer-at-home.html — the ice-water test and its limits",
+      "claim_status": "official guidance quoted; no test of any listed product performed"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "USDA FSIS: a food thermometer is the only reliable way to ensure food reached a safe minimum internal temperature; colour and firmness are not reliable",
+      "observed_on": "2026-11-20",
+      "source": "S39",
+      "used_for": "both thermometer-facing guides — why measurement beats appearance",
+      "claim_status": "official guidance quoted"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Amazon Program Policies, Participation Requirements 2(a)/2(b): Special Links must use the assigned Associates ID, and the tag must appear as a URL parameter on every link to an Amazon Site",
+      "observed_on": "2026-11-20",
+      "source": "S37",
+      "used_for": "every reader-facing buy button on the site (30 buttons) — the format now used, and gate 7b / P09",
+      "claim_status": "policy quoted from the live page; whether a tag is attached server-side inside the enrolled account remains the owner test (FLG-006, Q-02)"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "Amazon Program Policies, Commission Income Statement 2(e)/2(g): purchases are disqualified for a Redirecting Link and for links that are not properly formatted; Session runs 24 hours, a cart order 89 days, shipment or payment within 180 days",
+      "observed_on": "2026-11-20",
+      "source": "S38",
+      "used_for": "why an untagged button cannot earn, and the windows the empty campaign ledger must respect",
+      "claim_status": "policy quoted; no revenue, conversion or traffic figure is claimed anywhere"
+    },
+    {
+      "product": "site",
+      "brand": "—",
+      "asin": "—",
+      "observed": "FTC Disclosures 101: a material connection must be disclosed clearly and conspicuously, near the claim it qualifies",
+      "observed_on": "2026-11-20",
+      "source": "S03",
+      "used_for": "articles/how-to-read-a-product-listing.html — check 6, and the site's own disclosure placement",
+      "claim_status": "guidance quoted"
     }
   ]
 }

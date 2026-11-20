@@ -202,6 +202,7 @@ def kicker_for(name):
         "tools/compare-builder.html": "Tools",
         "tools/oven-converter.html": "Tools",
         "tools/cook-temperatures.html": "Tools",
+        "products/thermomaven-1-sec.html": "Thermometers",
     }.get(name, "Guides")
 
 

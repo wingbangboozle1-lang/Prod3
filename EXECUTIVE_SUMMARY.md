@@ -4,7 +4,7 @@
 
 **Tracking ID:** `shopnow047c-20` (provided for the project; Associates account enrollment and eligibility are not confirmed — FLG-010).
 
-**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links were fetched three separate times by three sessions, with different results each time: four of five reached product pages, then three of five, then — on the most recent pass (session 6bf60cac, ~07:0x UTC) — **none of the five**, with every final URL reading `https://www.amazon.com/`. All four dated observations are kept side by side in `data/products.json`; none is overwritten and no cause is asserted (FLG-017, FLG-023, FLG-025). Separately, the Associates Program Policies (updated 2026-04-14) §2(b) require the Associates tag as a parameter in each link's URL, and no shipped anchor on this site carries one in the URL the reader receives — recorded as FLG-026, with the caveat that a short-link service may add the tag downstream (Q-24). No price, rating or offer was recorded.
+**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links were fetched three separate times by three sessions, with different results each time: four of five reached product pages, then three of five, then — on the most recent pass (session 6bf60cac, ~07:0x UTC) — **none of the five**, with every final URL reading `https://www.amazon.com/`. All four dated observations are kept side by side in `data/products.json`; none is overwritten and no cause is asserted (FLG-017, FLG-031, FLG-025). Separately, the Associates Program Policies (updated 2026-04-14) §2(b) require the Associates tag as a parameter in each link's URL, and no shipped anchor on this site carries one in the URL the reader receives — recorded as FLG-026, with the caveat that a short-link service may add the tag downstream (Q-24). No price, rating or offer was recorded.
 
 ## Bottom line
 
@@ -51,10 +51,10 @@ lift on hover (mobile-first pass S-20 in effect). The RSS feed no longer
 advertises a price range in the gift-guide description, and its channel title
 drops the overstated channel title the audit flagged. The
 Direction desk was rebuilt as a ledger and now matches `data/suggestions.json` /
-`data/open-questions.json` exactly: 46 suggestion rows across SG-01..SG-47 (SG-21
-retired in place, so 45 live; SG-26 unoccupied) and 29 open questions (Q-01..Q-29).
-Those counts were re-read from the JSON on 2026-11-20 after the final integration
-merge rather than copied forward. Still open: FLG-016 / F-21 — the
+`data/open-questions.json` exactly: 52 suggestion rows (SG-01..SG-53; SG-21 retired
+in place, so 51 live; SG-26 unoccupied) and 30 open questions (Q-01..Q-30).
+Those counts were re-read from the JSON on 2026-11-20 after the integration
+merges rather than copied forward. Still open: FLG-016 / F-21 — the
 social-preview image has never been run through a share debugger (the earlier SVG
 format issue is resolved; the shipped 1200×630 PNG is the asset in question). All
 release gates pass on the current tree.
@@ -150,6 +150,20 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
 (page and assertion counts recorded with the final gate run in `COORDINATION.md`) and `tools/crawl_links.py` (0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
+
+**Gates at the close of this session (T-38, session fe5fd1d9, 2026-11-20):** this session claimed
+per-product detail pages concurrently with T-50, which shipped them first as a generator
+(`scripts/build_products.py`, five pages, its own freshness and coverage gates). The generated
+pages were adopted as canonical and this session's hand-built drafts were retired; what shipped
+on top of T-50 instead: gate rule **D34** (unique FLG callout ids on `flagged.html`),
+de-risking of all five comparison-table buy buttons to the official product pages (the supplied
+short links all landed on the Amazon homepage at the FLG-025 re-check), a dated addendum to
+FLG-019, register rows FLG-030/FLG-031 so every published callout id has a register entry, and
+proposal **SG-39** (consider-if / look-elsewhere-if blocks for the generated pages, draft copy
+preserved on this branch). Full suite green on the merged tree: `build_chrome
+--check`, `build_registers --check`, `build_decisions --check`, `build_products --check`,
+`build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
+and `tools/crawl_links.py` — 0 broken links, 0 dead anchors, 0 orphans.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.
 

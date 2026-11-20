@@ -354,6 +354,103 @@
         "S13"
       ],
       "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-022",
+      "severity": "low",
+      "area": "A generated page shipped a broken script, and no gate was reading scripts",
+      "product": "See flagged.html",
+      "detail": "The decision block on the suggestions register was generated with a literal line break inside a JavaScript string — a syntax error, so the control would have rendered and done nothing. No release check parsed inline JavaScript. Resolved 2026-11-20: the generator emits the break as a character code, and a J-series gate now runs node --check over every inline script and over assets/app.js. The gate was negative-tested: the original defect fails the build, removing it passes. actions/setup-node@v4 was added to the Pages workflow so CI blocks on it too.Evidence: tools/check_site.py J01–J03 · .github/workflows/pages.yml",
+      "why_it_matters": "Recorded on flagged.html; synced into this register by session 2cd3bab9 (T-46) so the JSON and the page agree.",
+      "action": "See flagged.html for the action and owner decision.",
+      "status": "as stated on flagged.html",
+      "sources": [],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-023",
+      "severity": "medium",
+      "area": "Two of the five supplied short links reached the Amazon homepage on 2026-11-20, and one same-day record disagrees",
+      "product": "See flagged.html",
+      "detail": "B04G1MEwY ended at https://www.amazon.com/ on two attempts (FLG-017). Independently, B0c8moW59 also ended at https://www.amazon.com/ on two attempts, while another session recorded the same link reaching /dp/B0DHZTCNR5 that day. Both observations are kept in data/products.json; neither is deleted and no tie is broken by seniority. The other three links resolved to their recorded product pages. This does not establish that the links are invalid, untracked or expired: a fetch cannot tell a signed-out session from a profile gate, a transient response or a link-level change. Decision needed: the signed-in check in Q-22.Basis: Operating Agreement (S01). Program Policies (S02). · observations dated 2026-11-20 in data/products.json",
+      "why_it_matters": "Recorded on flagged.html; synced into this register by session 2cd3bab9 (T-46) so the JSON and the page agree.",
+      "action": "See flagged.html for the action and owner decision.",
+      "status": "as stated on flagged.html",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-024",
+      "severity": "low",
+      "area": "Two GitHub Pages deploy paths ran in parallel; the legacy one failed behind the working one (found 2026-11-20, session T",
+      "product": "See flagged.html",
+      "detail": "After the PR #27 merge, workflow run 44686774699 (“pages build and deployment”, the legacy branch builder) failed at its deploy step, while the repository’s own Deploy GitHub Pages workflow (run 44686775327) succeeded on the same SHA and the live site served the current content (front page fetched and verified after the merge). Cause: the Pages build type was set to legacy (branch main, path /), so a legacy builder raced the artifact deployment on every push; the authoritative artifact deploy is what actually ships the site. Fix attempted: PATCH /repos/…/pages {\"build_type\":\"workflow\"} returned HTTP 404 — the automation token lacks the Administration permission Pages settings require. Manual remedy (owner, one click): repository Settings → Pages → Build and deployment → Source: GitHub Actions. Until then, a red “pages build and deployment” run may appear after each merge; judge deploys by the Deploy GitHub Pages workflow and the live URL, which is what this site has always deployed through.Basis: GitHub Docs — What is GitHub Pages? (S05) — Pages deployment sources; judge deploys by the workflow and live URL",
+      "why_it_matters": "Recorded on flagged.html; synced into this register by session 2cd3bab9 (T-46) so the JSON and the page agree.",
+      "action": "See flagged.html for the action and owner decision.",
+      "status": "as stated on flagged.html",
+      "sources": [],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-025",
+      "severity": "low",
+      "area": "Coordination board record integrity (corrected 2026-11-20, T-46)",
+      "product": "None (process record)",
+      "detail": "COORDINATION.md listed T-20, T-21 and T-22 twice each, once 'in progress' and once 'done'; T-26 had been claimed by two sessions before one was renumbered to T-39; and the T-39 row still read 'in progress' after PR #36 and PR #37 merged.",
+      "why_it_matters": "A reader of the board cannot tell which row is current. A stale duplicate claim can make another session think the work is still open.",
+      "action": "Corrected by session 2cd3bab9: the T-39 row is marked done; the earlier 'in progress' duplicates of T-20, T-21 and T-22 are removed, because the 'done' rows carry the same scope. Owner to review the board history in git.",
+      "status": "corrected in the board; for owner review",
+      "sources": [],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-026",
+      "severity": "low",
+      "area": "Source register: per-row fetch dates",
+      "product": "S10–S15 (Amazon listing and observation rows), data/sources.json",
+      "detail": "data/sources.json has an 'updated' field, which is blank for six Amazon listing rows (S10–S15). That blank is correct: a listing does not publish an update date. The register does not record when each row was fetched. Fetch dates are kept elsewhere: snapshot dates in data/products.json and the 2026-11-20 live re-check.",
+      "why_it_matters": "A reader checking a listing value against its source cannot tell from the register alone which fetch the value came from.",
+      "action": "Owner decision: add a per-row 'fetched' date to data/sources.json, or accept the split between the register and data/products.json. Not changed in this session.",
+      "status": "open — owner decision",
+      "sources": [
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-027",
+      "severity": "low",
+      "area": "RSS feed headlines (corrected 2026-11-20, T-46)",
+      "product": "feed.xml, three guides",
+      "detail": "Three RSS item titles differed from the H1 of the page they link to: 'What ±0.5°F actually means (and what NIST certification covers)', 'Air fryer oven vs toaster oven: the footprint test', and 'The holiday kitchen gift guide: five listing-backed ideas'. The first feed title claimed more than its page does.",
+      "why_it_matters": "A subscriber sees the feed headline before the page. A headline that promises more than the page is a credibility problem, and the mismatch was not caught by any gate.",
+      "action": "Corrected: each feed title now equals the page's H1. A release gate (tools/verify_site.py) now fails when a feed title differs from its H1. Feed descriptions remain editorial summaries.",
+      "status": "corrected; for owner review",
+      "sources": [],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-028",
+      "severity": "medium",
+      "area": "Same-day fetches of the five supplied short links disagree (2026-11-20)",
+      "product": "P-01 to P-05 (data/products.json, live_recheck_2026_11_20_session_2cd3bab9)",
+      "detail": "In this session, fetch_page of all five supplied link.amazon URLs ended at https://www.amazon.com/ (the homepage). Earlier fetches on the same date had reached product pages for P-02, P-03, P-04 and P-05, and P-01 had reached a homepage. The fetch method cannot distinguish a broken link from a signed-out, geographic or request-context difference. Both the earlier and the current observations are kept.",
+      "why_it_matters": "The site describes the links as unverified, so no public claim is wrong. But the record now has contradictory same-day observations, and no fetch-based check can settle whether the links work for a shopper or for the Associates account.",
+      "action": "Owner decision: run the signed-in check in Q-22 (and the Special Link test, FLG-006) in the enrolled Associates workflow. Do not treat any fetch result as the answer.",
+      "status": "open — needs the signed-in check (Q-22)",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "sources_checked": "2026-11-20"
     }
   ]
 }

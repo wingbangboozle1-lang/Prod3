@@ -20,7 +20,7 @@ Product details are attributed as seller/listing statements, not independent tes
 ## Working with it
 
 ```sh
-python3 scripts/build_chrome.py              # masthead, disclosure strip, footer into all 30 pages
+python3 scripts/build_chrome.py              # masthead, disclosure strip, footer into all 31 HTML pages
 python3 scripts/build_decisions.py           # decisions.html from data/decisions.json + registers
 python3 tools/crawl_links.py                 # internal links, anchors, orphans (exit 1)
 python3 tools/verify_site.py                 # release gate: sources, ledger, feed, robots, core checks
@@ -45,7 +45,8 @@ The tools use Python's standard library; no third-party Python dependencies are 
 - `tools/` — comparison builder, oven-to-air-fryer converter, USDA cook-to-temperature card
 - `air-fryers.html`, `meat-thermometers.html` — category hubs
 - `compare.html`, `buying-guide.html` — comparison and decision framework
-- `articles/` — nine question-shaped guides, included in `feed.xml` and `sitemap.xml`
+- `articles/` — nine question-shaped guides, each in `feed.xml`, `sitemap.xml` and the guides hub (`buying-guide.html`); the release gate checks all three
+- `docs/publishing-cadence.md` — the monthly cadence (set 2026-11-20, DT-10), the approver, the next due date and the per-guide checklist
 - `suggestions.html`, `questions.html`, `direction.html` — proposals, missing-information questions, and decisions
 - `sources.html`, `citations.html`, `flagged.html`, `disclosure.html`, `analytics.html`, `executive-summary.html`, `about.html` — source, disclosure, analytics, and trust pages
 - `suggestions.html`, `questions.html`, and `citations.html` are generated from JSON by `scripts/build_registers.py`; `decisions.html` by `scripts/build_decisions.py`; the masthead/disclosure/footer of every page by `scripts/build_chrome.py`. Do not hand-edit any of them.
@@ -79,7 +80,7 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 | Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-10 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows |
-| Flagged findings | `flagged.html` | `data/flagged.json` | FLG-001..FLG-017, F-01..F-21 |
+| Flagged findings | `flagged.html` | `data/flagged.json` | FLG-001..FLG-028 on the page; F-01..F-21 and FLG-017, FLG-020..FLG-028 in the JSON |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
 
 An ID prefix belongs to exactly one register. A proposal, a question and a decision

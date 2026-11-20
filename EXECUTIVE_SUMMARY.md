@@ -4,7 +4,7 @@
 
 **Tracking ID:** `shopnow047c-20` (provided for the project; Associates account enrollment and eligibility are not confirmed — FLG-010).
 
-**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links and both Associates policy pages were fetched again. Four short links still end at the product page recorded on 2026-11-19. `B04G1MEwY` ended at the Amazon.com homepage on two attempts, so it is flagged as FLG-017. This is not an account-side test, and no price, rating, or offer was recorded.
+**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links and both Associates policy pages were fetched again. Same-day fetches disagree. The 2026-11-20 record in `data/products.json` shows product pages for `B02NbDxp3`, `B00hJ57DV`, `B0c8moW59` and `B0f3GKalj`, and the Amazon.com homepage for `B04G1MEwY` (FLG-017). Another session's note records the homepage for `B0c8moW59` too (FLG-023). The check for this addendum found the homepage for all five (FLG-028). Fetches cannot settle which result is right; the signed-in check in Q-22 can. This is not an account-side test, and no price, rating, or offer was recorded.
 
 ## Bottom line
 
@@ -18,10 +18,10 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 | Submitted token | Observed listing at snapshot | Category | Intent confirmed? | Source |
 |---|---|---|---|---|
-| `B04G1MEwY` | Chefman 6 Qt Dual Basket · `B0CDY277D3` (2026-11-19); 2026-11-20 re-check ended at the Amazon homepage — FLG-017 | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
+| `B04G1MEwY` | Chefman 6 Qt Dual Basket · `B0CDY277D3` (2026-11-19); 2026-11-20 re-check ended at the Amazon homepage — FLG-017; this addendum's check also the homepage — FLG-028 | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
 | `B02NbDxp3` | Emeril Lagasse 26QT French Door · `B09B7SB46R` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B09B7SB46R) |
 | `B00hJ57DV` | Chefman 8 Qt TurboFry · `B08DKYBTPH` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B08DKYBTPH) |
-| `B0c8moW59` | ThermoMaven instant-read · `B0DHZTCNR5` | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DHZTCNR5) |
+| `B0c8moW59` | ThermoMaven instant-read · `B0DHZTCNR5` (2026-11-20 records conflict — FLG-023, FLG-028) | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DHZTCNR5) |
 | `B0f3GKalj` | CHEF iQ Sense Gen3 · `B0DZFD6R9Z` | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DZFD6R9Z) |
 
 **Important distinction:** the observed destination is evidence of where a supplied link resolved during that dated check; it does not prove that destination is the product the owner intended or that the link has been tested in the enrolled Associates account. FLG-001 and FLG-006 remain open. Do not describe the supplied short links as invalid: their exact compliance status is unresolved.
@@ -134,6 +134,43 @@ The editorial hypotheses already in the guide plan include “Basket or oven-sty
 | Who owns the cadence and brand decisions? | A proposal register and path chooser exist | No named editor, domain/brand approval, or confirmed publishing capacity | Assign an owner, cadence, and approval process in the decision register | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 
 The proposal ledger, open-question register, and decision log are available on the [Direction page](direction.html). Each suggestion should remain a proposal until its evidence, owner, cost, and decision are recorded.
+
+# Addendum — 2026-11-20, session 2cd3bab9 (T-46)
+
+## What was checked against official sources
+
+Six official pages were fetched and read on 2026-11-20. This is a spot-check of the pages the site relies on most. It is not a line-by-line re-audit of every policy clause.
+
+| Official source | What the page says on 2026-11-20 | Used for |
+|---|---|---|
+| [Operating Agreement (S01)](https://affiliate-program.amazon.com/help/operating/agreement) | "Updated: October 15, 2025". Section 5 requires the statement "As an Amazon Associate I earn from qualifying purchases." | The disclosure uses that exact sentence. Confirmed. |
+| [Program Policies (S02)](https://affiliate-program.amazon.com/help/operating/policies) | "Updated: April 14, 2026". | Policy citations. Only the opening sections were read in this pass. |
+| [FTC, Disclosures 101 (S03)](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) | Brochure dated November 2019: place the disclosure where it is "hard to miss", with the endorsement, not only on an about page. | Supports the strip above the masthead. |
+| [Google, Qualify outbound links (S04)](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) | "Last updated 2025-12-10 UTC". `rel="sponsored"` marks paid placements. | Amazon product links are marked; NIST, USDA and FTC reference links are not affiliate links and are not marked. |
+| [Creators API, GetItems (S06)](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) | ASIN is defined as a "10-Character alphanumeric unique identifier assigned by Amazon." | Supports the ASIN format check and the rule that intended ASINs need an owner record. |
+| [NIST, Metrological Traceability (S16)](https://www.nist.gov/metrology/metrological-traceability) | NIST Technical Note 2156, the NIST traceability policy and FAQ. | Source for the ±0.5°F article. The article says what a NIST claim does not establish. |
+
+## What changed in this pass
+
+- **Guides hub.** `buying-guide.html` now lists all nine guides in four clusters. Before this pass it linked four, so the Thanksgiving plan was not reachable from the hub.
+- **RSS headlines.** Three feed titles now match their page H1s. One of them claimed more than its page does (FLG-027).
+- **Release gate.** `tools/verify_site.py` checks that every guide is in the sitemap, the feed (headline equal to H1) and the hub, and that the cadence is written down. It was negative-tested: removing a hub link and changing a headline both fail the build.
+- **Publishing cadence set.** One guide per calendar month, approver: the site owner, next guide due 2026-12-31 (DT-10, on the owner's instruction). This is a rhythm, not a traffic forecast. See `docs/publishing-cadence.md`.
+- **Link observations.** The 2026-11-20 check for this addendum is recorded as separate, dated observations for all five links. The conflicting same-day records are flagged (FLG-023, FLG-028). The FLG-023 note was corrected, because it said both observations were in `data/products.json` when they were not.
+- **Board hygiene.** T-39 is marked done. Duplicate in-progress rows for T-20 to T-22 were removed (FLG-025).
+- **Source register.** The register has no per-row fetch date (FLG-026, open for the owner).
+
+## Still not established
+
+- The intended ASIN for every link (FLG-001). The fields stay blank.
+- Whether the supplied links work in the enrolled Associates account (FLG-006, Q-02, Q-04, Q-22).
+- Associates account eligibility (FLG-010, Q-23).
+- Search Console (DT-03), the analytics endpoint (DT-07, FLG-015), reader email (DT-08, FLG-014), the named author (Q-05), and the Pages build type (FLG-024).
+- No conversion, commission, demand, ranking or revenue claim is made in this pass.
+
+## Recommended next step
+
+The first owner action is still the signed-in check in Q-22 on all five links, together with the Special Link test in DT-01. Until that result exists, treat every fetch-based link result as unresolved.
 
 ## Release and review status
 

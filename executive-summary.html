@@ -78,7 +78,7 @@
 
 <h2>What is flagged (does not block)</h2>
 <h2>Five supplied links: observed destination is not confirmed intent</h2>
-<p>Targets below are dated observations from the repository's 2026-11-19 records. On 2026-11-20 the five short links were fetched again: four still end at the recorded product page, and <code>B04G1MEwY</code> ended at the Amazon.com homepage (<a href="flagged.html">FLG-017</a>). These observations do not prove which products were intended or validate the Special Links in the enrolled Associates account. The intended-ASIN, official-intended-listing, confirmation-date and confirmation-source fields remain blank until confirmed.</p>
+<p>Targets below are dated observations from the repository's 2026-11-19 records. Same-day checks disagree. The 2026-11-20 record shows product pages for four links (P-02 to P-05) and the Amazon.com homepage for <code>B04G1MEwY</code> (<a href="flagged.html">FLG-017</a>). Another session's note records the homepage for <code>B0c8moW59</code> too (<a href="flagged.html">FLG-023</a>). The check for this addendum found the homepage for all five (<a href="flagged.html">FLG-028</a>). Fetches cannot settle which result is right; the signed-in check in Q-22 can. These observations do not prove which products were intended or validate the Special Links in the enrolled Associates account. The intended-ASIN, official-intended-listing, confirmation-date and confirmation-source fields remain blank until confirmed.</p>
 <div class="table-wrap"><table data-source-required="amazon-listing">
 <thead><tr><th>Submitted token</th><th>Observed listing</th><th>Category</th><th>Intent</th><th>Official source</th></tr></thead><tbody>
 <tr><td><code>B04G1MEwY</code></td><td>Chefman 6 Qt Dual Basket<br><code>B0CDY277D3</code></td><td>Air fryer</td><td>Unconfirmed</td><td><a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">Amazon listing</a></td></tr>
@@ -132,6 +132,36 @@
 <li>The social-preview PNG is present; a share-debugger check remains outstanding. Product photography is not used.</li>
 </ul>
 
+<h2>Addendum — 2026-11-20, session 2cd3bab9 (T-46)</h2>
+<p>Six official pages were fetched and read on 2026-11-20. This is a spot-check of the pages the site relies on most, not a line-by-line re-audit of every clause.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Official source</th><th>What the page says on 2026-11-20</th><th>Used for</th></tr></thead><tbody>
+<tr><td><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">Operating Agreement (S01)</a></td><td>"Updated: October 15, 2025". Section 5 requires the statement "As an Amazon Associate I earn from qualifying purchases."</td><td>The disclosure uses that exact sentence. Confirmed.</td></tr>
+<tr><td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">Program Policies (S02)</a></td><td>"Updated: April 14, 2026".</td><td>Policy citations. Only the opening sections were read in this pass.</td></tr>
+<tr><td><a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers">FTC, Disclosures 101 (S03)</a></td><td>Brochure dated November 2019: place the disclosure where it is "hard to miss", with the endorsement.</td><td>Supports the strip above the masthead.</td></tr>
+<tr><td><a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links">Google, Qualify outbound links (S04)</a></td><td>"Last updated 2025-12-10 UTC". <code>rel="sponsored"</code> marks paid placements.</td><td>Amazon product links are marked; NIST, USDA and FTC reference links are not affiliate links and are not marked.</td></tr>
+<tr><td><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items" rel="sponsored noopener">Creators API, GetItems (S06)</a></td><td>ASIN is defined as a "10-Character alphanumeric unique identifier assigned by Amazon."</td><td>Supports the ASIN format check and the rule that intended ASINs need an owner record.</td></tr>
+<tr><td><a href="https://www.nist.gov/metrology/metrological-traceability">NIST, Metrological Traceability (S16)</a></td><td>NIST Technical Note 2156, the NIST traceability policy and FAQ.</td><td>Source for the ±0.5°F article, which says what a NIST claim does not establish.</td></tr>
+</tbody></table></div>
+<h3>What changed in this pass</h3>
+<ul>
+<li><strong>Guides hub.</strong> <a href="buying-guide.html">The buying guide</a> lists all nine guides in four clusters. It linked four before, so the Thanksgiving plan was not reachable from the hub.</li>
+<li><strong>RSS headlines.</strong> Three feed titles now match their page H1s. One claimed more than its page does (<a href="flagged.html">FLG-027</a>).</li>
+<li><strong>Release gate.</strong> The release gate checks that every guide is in the sitemap, the feed (headline equal to H1) and the hub, and that the cadence is written down. It was negative-tested: removing a hub link and changing a headline both fail the build.</li>
+<li><strong>Publishing cadence set.</strong> One guide per calendar month; approver: the site owner; next guide due 2026-12-31 (DT-10, on the owner's instruction). This is a rhythm, not a traffic forecast.</li>
+<li><strong>Link observations.</strong> The 2026-11-20 check for this addendum is recorded as separate, dated observations for all five links. The conflicting same-day records are flagged (<a href="flagged.html">FLG-023</a>, <a href="flagged.html">FLG-028</a>). The FLG-023 note was corrected, because it said both observations were in <code>data/products.json</code> when they were not.</li>
+<li><strong>Board hygiene.</strong> T-39 is marked done. Duplicate in-progress rows for T-20 to T-22 were removed (<a href="flagged.html">FLG-025</a>).</li>
+<li><strong>Source register.</strong> The register has no per-row fetch date (<a href="flagged.html">FLG-026</a>, open for the owner).</li>
+</ul>
+<h3>Still not established</h3>
+<ul>
+<li>The intended ASIN for every link (FLG-001). The fields stay blank.</li>
+<li>Whether the supplied links work in the enrolled Associates account (FLG-006, Q-02, Q-04, Q-22).</li>
+<li>Associates account eligibility (FLG-010, Q-23).</li>
+<li>Search Console (DT-03), the analytics endpoint (DT-07, FLG-015), reader email (DT-08, FLG-014), the named author (Q-05), and the Pages build type (FLG-024).</li>
+<li>No conversion, commission, demand, ranking or revenue claim is made in this pass.</li>
+</ul>
+<p><strong>Recommended next step:</strong> the first owner action is still the signed-in check in Q-22 on all five links, together with the Special Link test in DT-01. Until that result exists, treat every fetch-based link result as unresolved.</p>
 <h2>Release status</h2>
 <p>On the reviewed repository tree, all of these commands pass: <code>python3 scripts/check_site.py</code>, <code>python3 tools/verify_site.py</code>, <code>python3 scripts/build_registers.py --check</code>, and <code>python3 scripts/build_sitemap.py --check</code>. The coordination record documents a successful Pages deployment at the <a href="https://wingbangboozle1-lang.github.io/Prod3/">project site</a>. These checks validate repository content and structure; they do not establish account eligibility, external indexing, traffic, or conversions.</p>
 <p class="mt"><a href="index.html">← Shop the publication</a> · <a href="sources.html">Source register →</a></p>

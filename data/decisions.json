@@ -140,9 +140,11 @@
       "effort": "S",
       "who": "owner",
       "blocks": "Whether this is a publication or a finished project.",
-      "status": "open",
+      "status": "decided",
       "sources": [],
-      "evidence_status": "unverified"
+      "evidence_status": "unverified",
+      "decided_on": "2026-11-20",
+      "decided_by": "Owner instruction in the 2026-11-20 brief ('Set a publishing cadence'), recorded by session 2cd3bab9 (T-46); cadence written in docs/publishing-cadence.md"
     }
   ],
   "paths": [

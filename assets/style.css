@@ -371,3 +371,8 @@ input,select,textarea,button{font-size:max(16px,1em)}
   font-size:.82rem;line-height:1.6;background:var(--paper-2);border:1px solid var(--line);
   border-radius:10px;padding:14px;margin:10px 0;overflow-x:auto;min-height:64px}
 @media(max-width:720px){.decide-box button{min-height:48px;flex:1 1 auto}}
+
+/* Front-page feature card: the hero spec sits on dark artwork, so its colour belongs
+   in a class rather than an inline style (T-62, 2026-11-20). */
+.spec-hero.on-art { color:#fff; }
+.spec-hero.on-art small { color:#e6d9c8; }

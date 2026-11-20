@@ -8,6 +8,8 @@ Set on the owner's instruction in the 2026-11-20 brief ("Set a publishing cadenc
 - **One guide per calendar month.** Each guide is question-shaped. Monthly is the commitment; the site does not promise more.
 - **Approver:** the site owner. The owner approves each guide before it is merged. The named-author question is still open (Q-05), so guides are published under the site's name, not a person's.
 - **Next guide due:** 2026-12-31 (the December 2026 slot). If a slot is missed, record the miss in the next board entry; do not back-date a guide.
+- **Documented exception, 2026-11-20:** three guides were published on one day — `how-to-read-a-product-listing`, `check-your-thermometer-at-home` and `thanksgiving-leftovers-air-fryer`. Two exist because the calendar forced them (a Thanksgiving reheating guide is worthless a week late, and the probe check is the companion a reader needs before Thursday); the third explains the site's own method to its readers, which is worth doing while the pre-holiday window is open. The monthly default resumes at the December slot. The batch is recorded here rather than hidden, and each guide carries its true publication date of 2026-11-20.
+- **Overlap with `data/editorial-plan.json`:** the plan's 2026-11-23 slot is served by the published Thanksgiving temperature plan, and the 2027-02-15 slot ("wireless probe or instant-read: which fails first in a cold snap") should be re-scoped before writing, because the ice-water guide now answers the part of it that can be answered from official sources.
 
 This is a publishing rhythm, not a forecast. It makes no claim about traffic, search ranking, clicks, conversions or revenue. No such figure is published anywhere on the site.
 

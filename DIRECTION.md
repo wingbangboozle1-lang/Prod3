@@ -15,7 +15,7 @@ options, and recommendations live there.
 | SG-01 | One beat: cooking to a target temperature — both families in one sentence | implemented | owner |
 | SG-02 | Publish the two spec conflicts instead of picking a winner | implemented | editorial |
 | SG-03 | No prices anywhere, with the policy explained on its own page | implemented | editorial |
-| SG-04 | Eight question-shaped guides instead of eight product reviews | implemented | editorial |
+| SG-04 | 8 question-shaped guides instead of 8 product reviews | implemented | editorial |
 | SG-05 | Compliance gate inside the build, not a checklist promise | implemented | editorial |
 | SG-06 | Buy one air fryer and one thermometer to earn original testing | proposed | owner |
 | SG-07 | Search Console verification + sitemap submission before guide nine | proposed | owner |

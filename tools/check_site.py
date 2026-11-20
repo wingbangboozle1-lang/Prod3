@@ -45,7 +45,8 @@ if not (ROOT / "index.html").exists():
 
 pages = (sorted(ROOT.glob("*.html"))
          + sorted((ROOT / "articles").glob("*.html"))
-         + sorted((ROOT / "tools").glob("*.html")))
+         + sorted((ROOT / "tools").glob("*.html"))
+         + sorted((ROOT / "products").glob("*.html")))
 docs = {p.relative_to(ROOT).as_posix(): p.read_text(encoding="utf-8") for p in pages}
 
 titles, descs = {}, {}
@@ -427,6 +428,24 @@ check("D31-flag-id-unique", not _flag_dupes,
 check("D31-flag-count", len(_flag_ids) >= 26,
       f"flagged.html: only {len(_flag_ids)} labelled findings found (expected at least 26)")
 
+# D32: no dangling flag citation.
+# On 2026-11-20 flagged.html stopped defining FLG-022 and FLG-023 while air-fryers.html
+# still cited both, so a reader who followed the reference landed on nothing. A flag whose
+# id is not on the page is a broken promise in the site's most trust-bearing surface.
+# This rule reads every FLG-/F- id cited anywhere in the published HTML and requires it to
+# be defined by a callout label on flagged.html. It is what would have caught the deletion.
+_defined_flags = set(re.findall(r"<strong>((?:FLG|F)-\d{3}) \u2014", docs.get("flagged.html", "")))
+_dangling = {}
+for _name, _html in docs.items():
+    if _name == "flagged.html":
+        continue
+    for _fid in set(re.findall(r"\b((?:FLG|F)-\d{3})\b", _html)):
+        if _fid not in _defined_flags:
+            _dangling.setdefault(_fid, []).append(_name)
+check("D32-flag-citation", not _dangling,
+      "cited but not defined on flagged.html: " +
+      "; ".join(f"{k} ({', '.join(sorted(v)[:3])})" for k, v in sorted(_dangling.items())))
+
 # D27: the tools pages must exist and be reachable from the front page
 for _tool in ("tools/index.html", "tools/compare-builder.html",
               "tools/oven-converter.html", "tools/cook-temperatures.html"):
@@ -461,6 +480,82 @@ check("D30-seasonal-surfaced",
 check("D30-seasonal-lead",
       _front.find("kitchen-gifts-that-get-used.html") < _front.find("thanksgiving-temperature-plan.html"),
       "the December guide should lead the seasonal block while the site says it is December")
+
+
+# D31: the publishing plan page must match data/editorial-plan.json, must be in the
+# sitemap and linked from the decision desk. A plan row edited in one place only is
+# a page that promises something the register does not contain.
+_plan_path = ROOT / "data" / "editorial-plan.json"
+check("D31-plan-data", _plan_path.exists(), "data/editorial-plan.json missing")
+if _plan_path.exists():
+    _plan = json.loads(_plan_path.read_text(encoding="utf-8"))
+    _planpage = docs.get("publishing-plan.html", "")
+    check("D31-plan-page", bool(_planpage), "publishing-plan.html missing from the tree")
+    _rows = _plan.get("proposals", [])
+    check("D31-plan-rows", len(_rows) == 12, f"expected 12 proposed rows, found {len(_rows)}")
+    for _row in _rows:
+        check("D31-plan-title", _row["title"].replace("&", "&amp;") in _planpage or _row["title"] in _planpage,
+              f"proposed row not rendered: {_row['title'][:60]}")
+        _d = _row["week"].split("-")
+        _human = f"{int(_d[2])} {('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')[int(_d[1])-1]} {_d[0]}"
+        check("D31-plan-week", _human in _planpage,
+              f"week {_human} for {_row['title'][:40]} not rendered")
+        check("D31-plan-evidence", _row["evidence_status"] in ("available", "partly blocked", "blocked"),
+              f"{_row['week']}: unknown evidence_status {_row['evidence_status']!r}")
+    check("D31-plan-sitemap", "publishing-plan.html" in (ROOT / "sitemap.xml").read_text(encoding="utf-8"),
+          "publishing-plan.html not in the sitemap")
+    check("D31-plan-linked", "publishing-plan.html" in docs.get("ideas.html", "") and
+          "publishing-plan.html" in docs.get("index.html", ""),
+          "publishing-plan.html is not linked from ideas.html and the front page")
+    # The plan may not smuggle in a traffic, volume or revenue claim.
+    for _pat in (r"\bsearch volume\b(?! appears)", r"\b\d[\d,]* (?:searches|visitors|sales)\b",
+                 r"\bconversion rate\b", r"\bestimated revenue\b"):
+        _m = re.search(_pat, _planpage, re.I)
+        check("D31-plan-no-forecast", not _m, f"publishing-plan.html carries a forecast claim: {_m.group(0) if _m else ''}")
+
+
+# D32: one product page per registered product, each rendered from data/products.json,
+# each in the sitemap and each reachable from its pillar. A page edited by hand instead
+# of through the register fails here.
+_r_pages = _sp2.run([sys.executable, str(ROOT / "scripts" / "build_products.py"), "--check"],
+                          capture_output=True, text=True)
+check("D32-product-pages-fresh", _r_pages.returncode == 0,
+      f"product pages stale: {_r_pages.stdout.strip()[:160]}")
+for _p in products:
+    _slug = {"P-01": "chefman-6-qt-dual-basket", "P-02": "emeril-26qt-french-door",
+             "P-03": "chefman-8-qt-turbofry", "P-04": "thermomaven-1-sec",
+             "P-05": "chef-iq-sense-gen3"}[_p["id"]]
+    _rel = f"products/{_slug}.html"
+    check("D32-product-page-exists", _rel in docs, f"{_rel} missing")
+    check("D32-product-page-sitemap", _rel in (ROOT / "sitemap.xml").read_text(encoding="utf-8"),
+          f"{_rel} not in the sitemap")
+    _pillar = "air-fryers.html" if _p["category"] == "Air Fryers" else "meat-thermometers.html"
+    check("D32-product-page-linked", _rel in docs.get(_pillar, ""),
+          f"{_rel} is not linked from {_pillar}")
+    check("D32-product-page-observed", _p["observed_asin"] in docs.get(_rel, ""),
+          f"{_rel} does not name the observed ASIN")
+    check("D32-product-page-intent-blank", "No official source" in docs.get(_rel, ""),
+          f"{_rel} does not show the blank intended-ASIN field")
+
+
+# D33: a product page must list every flag that names its product, in either register.
+# The first version of build_products.py matched only the "P-04" form and silently dropped
+# every F row; this gate exists so that cannot happen again without failing the release.
+_flags_all = json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))["items"]
+_SLUGS = {"P-01": "chefman-6-qt-dual-basket", "P-02": "emeril-26qt-french-door",
+          "P-03": "chefman-8-qt-turbofry", "P-04": "thermomaven-1-sec",
+          "P-05": "chef-iq-sense-gen3"}
+for _p in products:
+    _rel = f"products/{_SLUGS[_p['id']]}.html"
+    _page = docs.get(_rel, "")
+    _num = _p["id"].split("-")[-1].lstrip("0")
+    _expected = [f["id"] for f in _flags_all
+                 if "All five" in (f.get("product") or "")
+                 or _p["observed_asin"] in (f.get("product") or "")
+                 or any(t.lstrip("0") == _num for t in re.findall(r"P-?(\d+)", f.get("product") or ""))]
+    check("D33-flags-present", len(_expected) > 0, f"{_rel}: no flag names this product at all")
+    for _fid in _expected:
+        check("D33-flag-listed", _fid in _page, f"{_rel}: flag {_fid} names this product but is not listed on its page")
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

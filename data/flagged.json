@@ -766,6 +766,20 @@
         "S05"
       ],
       "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-041",
+      "severity": "high",
+      "area": "Official listing conflict",
+      "product": "P-03 (Chefman 8 Qt TurboFry, B08DKYBTPH)",
+      "detail": "The official listing states two maximum temperatures and two wattages: the title claims a 450°F Hi-Fry setting while the bullets and the specification table state 200–400°F, and one resource bullet says 1000W while the specification table says 120V/1700W. Observed on the official listing page on 2026-11-20 (session 59a087a1, T-46) and recorded in data/products.json and the S31 source quote. The finding was first published on 2026-11-20 (session 59a087a1) as one of the two callouts involved in the id collision documented as FLG-027; the collision repair renumbered those ids, which left this finding without a registered id. Restored as FLG-041 on 2026-11-20 (session aa7b8dd8, T-66) after two further register renumberings. No observation is new; only the id is.",
+      "why_it_matters": "Maximum temperature decides whether the machine can finish recipes that need high heat, and wattage decides preheat and recovery behaviour. A buyer reading one figure would not know the listing itself disagrees.",
+      "action": "The site shows the specification-table values and publishes both readings on the product page and the category hub. Seller or manufacturer to confirm the real maximum temperature and rated wattage of model RJ38-SQSS-8T.",
+      "status": "open — both readings published; seller/manufacturer confirmation needed",
+      "sources": [
+        "S31"
+      ],
+      "sources_checked": "2026-11-20"
     }
   ],
   "alias_records": [

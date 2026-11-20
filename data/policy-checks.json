@@ -43,7 +43,7 @@
       "quote_basis": "Section 6(w) of the Participation Requirements (Content on your Site) prohibits a link shortening service, button, hyperlink or other ad placement used in a manner that makes it unclear you are linking to an Amazon Site. Read and quoted 2026-11-20; the earlier citation to 2(b) was wrong, because Section 2 (\"Links on Your Site\") has only subsections (a) and (b).",
       "status": "partial",
       "automated": true,
-      "evidence": "The site publishes direct amazon.com/dp/<ASIN> destinations wherever a link is written out. Three buy buttons use a supplied link.amazon short code; each names the product in its text and each card carries the full official listing URL as its source line. Whether the supplied short links are acceptable in the enrolled account is FLG-006 / FLG-026 and is unchanged by this clause check.",
+      "evidence": "Recounted against the built HTML on 2026-11-20 (session arena/74e655e9-prod3): 30 product CTA buttons carry data-event=outbound_click and every one points to a direct https://www.amazon.com/dp/<ASIN>?tag=shopnow047c-20&linkCode=sl1 URL; zero buttons use the supplied link.amazon short codes. All 30 are marked rel=sponsored noopener and tagged with data-asin. Across all published pages the supplied short links appear only as recorded evidence (sources, citations, flags, product-page provenance notes), never as buttons. Whether the supplied short links are acceptable in the enrolled account is FLG-006 / FLG-026 and is unchanged by this clause check.",
       "gate": "Owner action: run the FLG-006 test (one Special Link per product, destination and Associates report confirmed) before scaling. Any change of CTA destination is a decision in SG-13, not an automated edit."
     },
     {

@@ -18,7 +18,7 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 | Submitted token | Observed listing at snapshot | Category | Intent confirmed? | Source |
 |---|---|---|---|---|
-| `B04G1MEwY` | Chefman 6 Qt Dual Basket · `B0CDY277D3` (2026-11-19); 2026-11-20 re-checks all ended at the Amazon homepage (every pass that fetched it) — FLG-017 | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
+| `B04G1MEwY` | Chefman 6 Qt Dual Basket · `B0CDY277D3` (2026-11-19); 2026-11-20 re-checks disagree — several passes ended at the Amazon.com homepage (one for all five links), while session `74e655e9` reached product pages for three links — FLG-017/FLG-025/FLG-039 | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
 | `B02NbDxp3` | Emeril Lagasse 26QT French Door · `B09B7SB46R` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B09B7SB46R) |
 | `B00hJ57DV` | Chefman 8 Qt TurboFry · `B08DKYBTPH` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B08DKYBTPH) |
 | `B0c8moW59` | ThermoMaven instant-read · `B0DHZTCNR5` (2026-11-20 re-checks disagree: product page in the first pass, homepage in the later passes — FLG-031/FLG-025) | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DHZTCNR5) |

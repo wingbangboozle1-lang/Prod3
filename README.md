@@ -60,7 +60,7 @@ The tools use Python's standard library; no third-party Python dependencies are 
 
 ## Release workflow
 
-`.github/workflows/pages.yml` runs the five `--check` freshness gates, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` and `tools/crawl_links.py` before deploying to GitHub Pages. On 2026-11-20 the same checks passed locally, including 39 HTML pages and 5,879 assertions, with 0 broken links and 0 orphans. That is an internal repository check; it does not re-fetch Amazon listings or verify Associates account settings.
+`.github/workflows/pages.yml` runs the five `--check` freshness gates, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` and `tools/crawl_links.py` before deploying to GitHub Pages. On 2026-11-20 the same checks passed locally, including 44 HTML pages and 8,721 assertions, with 0 broken links and 0 orphans. That is an internal repository check; it does not re-fetch Amazon listings or verify Associates account settings.
 
 **Deploy path note (FLG-024):** this workflow is the only deployer the site has ever shipped through. The repo's Pages build type is still set to `legacy`, so a second, redundant "pages build and deployment" run also triggers on every push to `main` and can fail its deploy step behind the successful artifact deploy without affecting the live site. The automation token cannot change that setting (`PATCH /pages` → HTTP 404); the one-click owner fix is Settings → Pages → Build and deployment → Source: **GitHub Actions**. Judge deploys by the `Deploy GitHub Pages` workflow and the live URL.
 

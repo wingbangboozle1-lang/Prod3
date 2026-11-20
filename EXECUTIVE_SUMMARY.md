@@ -135,7 +135,7 @@ gate rule `D20` now fails the build if any two live suggestions share a title.
 
 **Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
 `rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
-31 pages. Every new table row carries a source link or an explicit "No official source" marker,
+39 pages. Every new table row carries a source link or an explicit "No official source" marker,
 and the gate fails a row that has neither — so "unverified" can never hide.
 
 **Still true, still not this session's to fix.** The five short links carry no visible
@@ -147,7 +147,7 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 
 **Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
-(37 pages, 5,198 assertions) and `tools/crawl_links.py` (37 pages, 0 broken links, 0 dead
+(39 pages, 5,879 assertions) and `tools/crawl_links.py` (39 pages, 0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.

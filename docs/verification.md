@@ -148,3 +148,34 @@ Corrections made under T-23 (all gates re-run green afterwards):
   `tools/verify_site.py`, `scripts/build_sitemap.py --check`,
   `scripts/build_registers.py --check`; plus a custom crawl of 39 pages / 1998 internal
   hrefs with 0 broken links or anchors, and sitemap + feed link targets all resolving.
+## Live source re-verification (T-27, session arena/80802891-prod3, 2026-11-20)
+
+Each load-bearing quote was re-fetched from its official domain on 2026-11-20 and read against
+`data/sources.json`. All matched; no register value needed changing. Links below are for manual
+review.
+
+| Source | What was checked | Result | URL for manual review |
+|---|---|---|---|
+| S01 Operating Agreement | Update stamp; §5 disclosure sentence; §6 material-breach clause | "Updated: October 15, 2025"; §5 requires "As an Amazon Associate I earn from qualifying purchases." or a substantially similar statement, verbatim as recorded; §6 makes any §5 violation a material breach | https://affiliate-program.amazon.com/help/operating/agreement |
+| S02 Program Policies | Update stamp; Qualifying Purchases definition | "Updated: April 14, 2026"; Qualifying Purchases require a customer click through a Special Link on your Site, as recorded | https://affiliate-program.amazon.com/help/operating/policies |
+| S03 FTC Disclosures 101 | Placement language; page date | "Place it so it's hard to miss." and "The disclosure should be placed with the endorsement message itself." both verbatim; page dated November 2019 | https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers |
+| S04 Google — Qualify outbound links | `rel="sponsored"` definition; last-updated stamp | "Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value." verbatim; "Last updated 2025-12-10 UTC." | https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links |
+| S06 Creators API — GetItems | ItemIdType definition of ASIN | "Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon." verbatim | https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items |
+
+Product pages were not re-fetched by this session: session `arena/70e8475c-prod3` (T-25) re-checked
+all five short links and both policy pages on the same day, 2026-11-20; the only drift found there
+is FLG-017 (B04G1MEwY resolving to the Amazon homepage). T-27 changed no product claim.
+
+## Register recovery (T-27, 2026-11-20)
+
+`data/suggestions.json` SG-20 and SG-21 had carried byte-identical content since PR #17's merge
+replay (the board's own handoff log recorded "SG-21 was restored after a `=======` marker was
+mis-read"). The original content was recovered from PR #17's own commit history: commit
+`7fbef67` (`git show 7fbef67:data/suggestions.json`) carries SG-20 "Ask the Associates account one
+question and let the answer price the whole site" and SG-21 "Pick one product as the site's spine
+and let the other four support it" as two distinct rows. SG-20 was restored verbatim from that
+commit (with one dated sentence appended for the 2026-11-20 link re-check), SG-21 now carries the
+spine proposal, and the interim SG-21 tombstone is withdrawn. Gate rule D20 continues to fail the
+build if two live proposals ever share a title again. Manual review: the Commits tab of
+https://github.com/wingbangboozle1-lang/Prod3/pull/17, or `git show 7fbef67:data/suggestions.json`
+in any checkout of the repository.

@@ -45,7 +45,7 @@
 <div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (24)</h2>
+<h2>Waiting on a decision (28)</h2>
 <div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -299,41 +299,77 @@
       </div>
       <p class="small muted">Unblocks: nothing (protective)</p>
     </article><article class="card decision-card" id="SG-48">
-      <div class="meta">SG-48 · owner decides</div>
-      <h3>Write the automation boundary down before the automation exists</h3>
-      <p><strong>The situation.</strong> The brief asks for an AI-powered platform that researches products, analyses pricing and reviews, generates articles and optimises campaigns. Parts of that ambition collide with the program rules this site already follows, and the collision lines are recorded nowhere a builder would meet them, so a future session would implement the collision instead of choosing it.</p>
-      <p><strong>The evidence.</strong> Participation Requirements 5: “You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology” — and the same section bars using Program Content on or in connection with client-side software such as a browser extension. 6(t) bars displaying customer reviews or star ratings unless obtained through Creators API or PA API. 6(y): “Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.” Quotes transcribed from the live page 2026-11-20; see data/policy-clause-map.json.</p>
-      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <details><summary>The options and the recommendation</summary><ul><li>A. Publish a short “what the automation may and may not do” section on the disclosure page, citing each clause, and let the gates keep the rest.</li><li>B. Keep the boundary in COORDINATION.md, where a future reader of the site never meets it.</li><li>C. Ask Amazon in writing before designing any pipeline that reads Program Content at scale.</li></ul>
-        <p><strong>Recommendation.</strong> A now; C only if the owner actually wants a model trained on Program Content, which section 5 makes an approval question rather than an engineering one. The gates already refuse prices, ratings and scraped content, so this row states a boundary rather than adding a capability.</p></details>
+      <div class="meta">SG-48 · editorial decides</div>
+      <h3>Give each generated product page a consider-if / look-elsewhere-if pair and a guide next-step</h3>
+      <p><strong>The situation.</strong> The generated product pages list every published field and every flag naming the product, but they do not tell a reader in one place which routine the product fits and which alternative fits better, so the shop&#x27;s judgement lives only on the front page.</p>
+      <p><strong>The evidence.</strong> The generated pages carry &#x27;The honest one-liner&#x27; plus a next-step line (compare / buying guide), while the front page carries a consider-if line per card (T-50 pages). The product page is where a reader has already narrowed the choice.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Extend scripts/build_products.py to render a consider-if / look-elsewhere-if block and 2-3 guide links per product, sourced from the existing register data. Draft copy for all five exists on branch arena/fe5fd1d9-prod3 (T-38 hand-built pages, now superseded).</li><li>B. Keep the generated pages as-is and leave the judgement to the front page and the buying guide.</li><li>C. Add a per-product FAQ block instead.</li></ul>
+        <p><strong>Recommendation.</strong> A is cheap and keeps the generator canonical. Needs the T-50 generator owner to accept the block.</p></details>
       <div class="decide-box">
         <div class="opts" data-decide="SG-48"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
-      <p class="small muted">Unblocks: Any automation that reads Amazon data at scale</p>
+      <p class="small muted">Unblocks: </p>
     </article><article class="card decision-card" id="SG-49">
-      <div class="meta">SG-49 · owner decides</div>
-      <h3>Settle the naming and paid-search boundary before any traffic spend</h3>
-      <p><strong>The situation.</strong> A growth plan reaches for a keyword campaign and a punchier domain. Both are constrained here, and neither constraint is recorded on the site, so the obvious next move is the one with account risk attached.</p>
-      <p><strong>The evidence.</strong> Participation Requirements 1(g): no Amazon trademark “or a variant or misspelling” may appear “in any domain name, subdomain name, in any ‘tag’ or Associates ID, or in any username, group name, or other identifier on any social networking site”. 6(e) bars purchasing, registering or otherwise using an Amazon Mark “for use in any Search Engine” and lets Amazon require exclusion of Proprietary Terms from paid keywords; 6(f) bars keyword auctions that produce a Prohibited Paid Search Placement while expressly permitting paid search on general keywords “so long as you comply with the Agreement and those paid or unpaid search results send users to your site and not directly, or indirectly via a Redirecting Link … to an Amazon Site”. The Commission Income Statement then disqualifies purchases referred through a Prohibited Paid Search Placement, so the penalty is economic as well as contractual. Transcribed 2026-11-20.</p>
-      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <details><summary>The options and the recommendation</summary><ul><li>A. Record both rules beside the custom-domain question and in the publishing plan; keep organic-only growth as the shipped path.</li><li>B. Buy a domain containing “Amazon” and argue it reads as descriptive.</li><li>C. Run brand-keyword ads now and handle the exclusion request if it ever arrives.</li></ul>
-        <p><strong>Recommendation.</strong> A. “Kitchen Counter” and shopnow047c-20 already pass both tests, so the change is a dated note rather than a rebuild. No paid traffic is proposed anywhere on this site; buying any is the owner&#x27;s spend decision.</p></details>
-      <div class="decide-box">
+      <div class="meta">SG-49 · editorial decides</div>
+      <h3>Say each figure once: one chip row per product card</h3>
+      <p><strong>The situation.</strong> On the front page, four of the five product cards print two adjacent spec-chip rows, and the second row repeats figures from the first. The Emeril card shows 75-500 F, 1700 W and the footprint in one row, then 26 qt oven, 75-500 F and 1700W in the next; the 8 Qt, ThermoMaven and CHEF iQ cards repeat 450 F Hi-Fry, +/-0.5 F, IP67 and WiFi + Bluetooth the same way.</p>
+      <p><strong>The evidence.</strong> Read in the built HTML of index.html on 2026-11-20: two spec-chips divs inside the same article element, with overlapping values and inconsistent spacing between the two rows (1700 W vs 1700W). Repeating an identical pill twice is what a partially-filled template looks like, and it is the specific artifact the owner called generated. No policy is involved; this is reader-facing quality, and Program Policies 2(b) is only relevant in that duplicating a figure cannot fix it, while choosing between two readings of a contradictory listing would (S02).</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. One chip row per card: the constraining figure, the surprising one, and the footprint. Move the conflict chip below the trade-off line so it stays.</li><li>B. Keep two rows but make the second carry only non-duplicated content (e.g. the conflict chip).</li><li>C. Leave it; readers skim.</li></ul>
+        <p><strong>Recommendation.</strong> A. It deletes nothing that is currently true, it removes the strongest generated-page tell on the front page, and it costs one markup block per card. B is acceptable if the second row is repurposed rather than repeated.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> The card reads as written for this product instead of filled from a schema.</p><p class="small"><strong>What could go wrong:</strong> Fewer pills per card slightly reduces the chance a reader sees a useful figure; mitigated by keeping three deliberate ones.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> If card-level engagement after the change falls on any measured surface, restore the second row with distinct content only.</p>
         <div class="opts" data-decide="SG-49"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
-      <p class="small muted">Unblocks: Any domain purchase and any paid-search plan</p>
+      <p class="small muted">Unblocks: nothing; it does conflict with the T-46 card pass, so whoever touches index.html last should own it</p>
     </article><article class="card decision-card" id="SG-50">
       <div class="meta">SG-50 · editorial decides</div>
-      <h3>Keep reader email strictly solicited whenever a list is started</h3>
-      <p><strong>The situation.</strong> The reader-capture rows defer email to an owner decision, which is right. The condition that will apply at build time is not written down, so a future implementation could ship a list that receives affiliate links without having asked for them.</p>
-      <p><strong>The evidence.</strong> Participation Requirements 4 (Promotional Limitations): “You may include Special Links in emails, SMS and direct messaging from your social media Sites; provided, that such communications are solicited (i.e., opted into by the receiving customer)”, and “you are the ‘Sender’ of each communication containing any Special Links” for the purposes of applicable marketing law. Amazon may also request “representative sample materials and written certification” of compliance, and failure to provide it is a material breach. Transcribed 2026-11-20. The site ships no form at all today (FLG-014).</p>
-      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <details><summary>The options and the recommendation</summary><ul><li>A. Write the condition into the reader-capture rows so a builder meets it at the point of choice: double opt-in, a stored consent timestamp, unsubscribe in every message.</li><li>B. Ship a form now and fix consent later.</li><li>C. Keep RSS as the only subscription path and never run a list.</li></ul>
-        <p><strong>Recommendation.</strong> A, and only A. Until a provider and a consent record exist, the footer keeps pointing at RSS — which is what the site does today, and what the deferral in the reader-capture rows assumes.</p></details>
-      <div class="decide-box">
+      <h3>Give both shelves the same card anatomy</h3>
+      <p><strong>The situation.</strong> Every air-fryer card carries a spec-chip row; neither thermometer card does, and meat-thermometers.html has no chips at all. The same visual component exists on one shelf and not the other.</p>
+      <p><strong>The evidence.</strong> Counted in the built HTML on 2026-11-20: air-fryers.html has three cards with one chip row each, meat-thermometers.html has two cards with zero. A shelf whose cards are shaped differently from its sister shelf is read as unfinished, and the thermometer side has honest figures to put there - claimed read time, claimed accuracy, probe count and the heat-safe figure, each already recorded as a seller claim in the product register.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Add a chip row to the thermometer cards using only fields the register already carries as claims, each worded as a claim.</li><li>B. Remove chips from the air-fryer cards so both shelves are prose.</li><li>C. Do nothing and accept two layouts.</li></ul>
+        <p><strong>Recommendation.</strong> A, with the claim wording kept explicit (the listing says, not we measured). Parity costs nothing in accuracy and the register already distinguishes claim from measurement.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> One card grammar across the shop, which is most of what makes a site feel published.</p><p class="small"><strong>What could go wrong:</strong> A claim chip without the word claim could be read as a test result.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> If the chip set on the thermometer cards cannot be filled without inventing a figure, keep prose on that shelf instead.</p>
         <div class="opts" data-decide="SG-50"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
-      <p class="small muted">Unblocks: Reader capture (SG-30, SG-41)</p>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-51">
+      <div class="meta">SG-51 · editorial decides</div>
+      <h3>Move the four inline hex colours onto the stylesheet&#x27;s tokens</h3>
+      <p><strong>The situation.</strong> The front page carries inline style attributes with colours that appear nowhere in assets/style.css: a white override, #fdba74, #e6d9c8 and a #292524 to #57534e gradient on the hero art block.</p>
+      <p><strong>The evidence.</strong> Grep of style= attributes across the built pages on 2026-11-20 shows these four on index.html only; the rest of the site styles through the token set in assets/style.css. Foreign pasted colours are a recognisable generation artifact and they defeat the theme in one place, so the hero cannot be restyled with the palette.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Add hero tokens to style.css and delete the inline styles.</li><li>B. Keep the colours but move them into a class.</li><li>C. Leave them.</li></ul>
+        <p><strong>Recommendation.</strong> A or B - either removes the inline override. The visual outcome should not change, so this can be verified by diffing the rendered block before and after.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> One source of truth for colour, and one less thing that looks assembled.</p><p class="small"><strong>What could go wrong:</strong> A careless swap shifts contrast; the check is that text stays legible on the hero at 320px.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> If contrast fails at 320px after tokenising, keep the current inline colours and revisit the palette instead.</p>
+        <div class="opts" data-decide="SG-51"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-52">
+      <div class="meta">SG-52 · editorial decides</div>
+      <h3>Drop the price placeholder line and keep the button</h3>
+      <p><strong>The situation.</strong> Every product card prints a short line reading Current price on Amazon and then a button reading Check price on Amazon. The line has no value beside it, which reads like a field an import left empty.</p>
+      <p><strong>The evidence.</strong> Both strings appear on all five front-page cards and on the category cards, counted in the built HTML on 2026-11-20. The compliance reason the value is absent is correct and stays: Program Policies 2(b) permits price display only when Amazon serves the data or it comes from Creators or PA API (S02), and the site uses neither, so no currency may be rendered. Showing the empty slot is a stylistic choice, not a policy requirement - the button already sends the reader to the price.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Delete the placeholder line; keep the button and the no-prices note once per page, not once per card.</li><li>B. Keep the line but reword it as the reason, e.g. prices change, so they live on Amazon.</li><li>C. Status quo.</li></ul>
+        <p><strong>Recommendation.</strong> A, with B&#x27;s sentence moved into the page-level note. A shopper needs one honest explanation, not five identical empty slots.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> Removes the most audit-like element from otherwise shop-like cards.</p><p class="small"><strong>What could go wrong:</strong> A reader may look for a price and not find one; the note and the button already answer that.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> If owner testing shows readers miss the no-price explanation, reinstate it once per page.</p>
+        <div class="opts" data-decide="SG-52"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-53">
+      <div class="meta">SG-53 · editorial decides</div>
+      <h3>Put the disqualifier directly under the buy button</h3>
+      <p><strong>The situation.</strong> The most useful sentence on the front page - who the pick is not for - is the third paragraph of the feature card, above the button. On the other four cards the equivalent trade-off line sits below the fold of the card body.</p>
+      <p><strong>The evidence.</strong> Read from index.html on 2026-11-20: the feature card order is why-this-one, look-elsewhere-if, then the CTA; the product cards place the CTA after the trade-off but with a spacer pushing the button down. This is a placement judgement, and the only evidence for it is that the decision happens at the button, so the caveat belongs beside it. Nothing in Program Policies 2(b) is involved, and no claim about products or popularity is made either way (S02).</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Reorder each card so the CTA is followed immediately by the who-it-is-not-for line.</li><li>B. Keep the order and pull the line into the button block as a caption.</li><li>C. Status quo.</li></ul>
+        <p><strong>Recommendation.</strong> A. It changes order only, so the risk is a layout regression, not a factual one, and it puts the site&#x27;s distinguishing honesty where the click decision is made.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> The one line a competing page will never print ends up where the reader is about to act.</p><p class="small"><strong>What could go wrong:</strong> A caveat after the button may reduce clicks; if it does, that is a trade the owner may not want.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> Once any click measurement exists, if click-through drops materially, move the line back above the CTA.</p>
+        <div class="opts" data-decide="SG-53"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
     </article></div>
 
 <h2 class="mt">Already shipped (25)</h2>

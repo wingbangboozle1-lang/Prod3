@@ -755,6 +755,22 @@ for _name, _html in docs.items():
             check("D36-range-current", int(_m.group(1)) == _last,
                   f"{_name}: range says {_m.group(0)} but the register's last id is {_pre}-{_last:02d}")
 
+# D41: the flag register and the flagged page must agree in both directions.
+# On 2026-11-20 two rows (FLG-028, FLG-029) existed in data/flagged.json with no counterpart on
+# flagged.html, because a renumbering pass edited one side only. flaged.json is what a machine
+# reads and flagged.html is what a human reads; either drifting alone means the site publishes a
+# finding it cannot show evidence for, or holds a record nothing links to.
+_fdata = json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))["items"]
+_fpage = docs.get("flagged.html", "")
+for _row in _fdata:
+    if not _row["id"].startswith("FLG"):
+        continue  # the F-series is machine-only by design (flagged.html says so)
+    check("D41-flag-register-published", _row["id"] in _fpage,
+          f"data/flagged.json row {_row['id']} is not published on flagged.html")
+for _id in sorted(set(re.findall(r"<strong>(FLG-\d{3}) —", _fpage))):
+    check("D41-flag-page-defined", any(r["id"] == _id for r in _fdata),
+          f"flagged.html publishes {_id} with no row in data/flagged.json")
+
 # D40: a stated guide count must equal the number of guides on disk.
 # The tree shipped ten articles while README, buying-guide.html, both executive
 # summaries, Q-17, SG-18 and SG-37 all said "eight" or "nine" -- seven reader-facing
@@ -775,6 +791,36 @@ for _f in ("README.md", "EXECUTIVE_SUMMARY.md"):
     for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _txt, re.I):
         check("D40-guide-count", _m.group(1).lower() == _NUMWORD.get(_guides, ""),
               f"{_f}: says {_m.group(0)!r} but {_guides} guides ship")
+
+# D41: every page advertises the feed, exactly once, at the right relative depth.
+# The RSS autodiscovery link was added page by page during the publication pass
+# (session b8dae8e0): 24 of 34 pages had it, and one page briefly carried two.
+# A hand-added link drifts the way chrome drifts, so it is gated.
+_rss_re = re.compile(r'<link\s+rel="alternate"\s+type="application/rss\+xml"[^>]*>')
+for _name, _html in docs.items():
+    _links = _rss_re.findall(_html)
+    check("D41-rss-once", len(_links) == 1,
+          f"{_name}: {len(_links)} RSS autodiscovery links (expected exactly 1)")
+    if len(_links) == 1:
+        _want = "../feed.xml" if "/" in _name else "feed.xml"
+        _m = re.search(r'href="([^"]+)"', _links[0])
+        _got = _m.group(1) if _m else ""
+        check("D41-rss-autodiscovery", _got == _want,
+              f"{_name}: RSS autodiscovery href={_got!r} (expected {_want!r})")
+
+# D42: every SG/Q id a page mentions must exist in its register.
+# D28/D29 make this true for DIRECTION.md; the pages themselves were unchecked,
+# and a page can drift from a register the moment a register row is renumbered
+# (the 2026-11-20 collisions showed exactly that).
+_sg_ids = {x["id"] for x in json.loads((ROOT / "data/suggestions.json").read_text(encoding="utf-8"))["suggestions"]}
+_q_ids = {q["id"] for q in json.loads((ROOT / "data/open-questions.json").read_text(encoding="utf-8"))["questions"]}
+for _name, _html in docs.items():
+    for _sid in sorted(set(re.findall(r"\bSG-\d{2}\b", _html))):
+        check("D42-sg-refs-resolve", _sid in _sg_ids,
+              f"{_name} references {_sid}, which is not in data/suggestions.json")
+    for _qid in sorted(set(re.findall(r"\bQ-\d{2}\b", _html))):
+        check("D42-q-refs-resolve", _qid in _q_ids,
+              f"{_name} references {_qid}, which is not in data/open-questions.json")
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

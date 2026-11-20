@@ -10,7 +10,7 @@ Runs scripts/check_site.py, then verifies:
    documented in flagged.html
  - data/campaign-ledger.json has no fabricated rows (rows must be empty
    until first-party reports exist; provenance must be dated)
- - feed.xml is well-formed XML with 9 items
+ - feed.xml is well-formed XML with one item per published guide
  - robots.txt references the sitemap
  - product-intent fields: intended ASINs need an owner-confirmation record
 """
@@ -83,8 +83,10 @@ except Exception as e:
 try:
     tree = ET.parse(ROOT / "feed.xml")
     items = tree.getroot().findall(".//item")
-    assert len(items) == 9, f"expected 9 feed items, got {len(items)}"
-    print("OK feed.xml: well-formed, 9 items")
+    # One item per published guide. 2026-11-20: 9 → 11 with the two new
+    # question-shaped guides (are-air-fryers-worth-it, smart-thermometer-questions).
+    assert len(items) == 11, f"expected 11 feed items, got {len(items)}"
+    print("OK feed.xml: well-formed, 11 items")
 except Exception as e:
     errors.append(f"feed.xml: {e}")
 

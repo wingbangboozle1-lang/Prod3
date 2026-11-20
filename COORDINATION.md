@@ -2290,3 +2290,21 @@ superiority were made. No product value, link target, or flag was altered.
   (DT-03), analytics endpoint (DT-07), share-debugger check (F-21), and the Pages
   `build_type` one-click fix (FLG-024). No product value, link target, or flag was
   altered by this pass.
+
+## Session `arena/fe5fd1d9-prod3` — PR and merge record (2026-11-20)
+
+- **PR #67** `arena/fe5fd1d9-prod3` → `main`: opened 2026-11-20, merged **2026-11-20T07:18:45Z**
+  as merge commit **d47a3df** ("Merge pull request #67 from wingbangboozle1-lang/arena/fe5fd1d9-prod3").
+  Merged without waiting for review per the standing directive; no conflicts at merge time (the
+  branch had absorbed main 8cc8d58 immediately before).
+- **Pages deploy confirmed:** the `Deploy GitHub Pages` workflow on d47a3df completed with
+  **success**. The redundant legacy `pages build and deployment` run (FLG-024) triggered as
+  documented and does not affect the artifact deploy. Live page re-fetched from
+  https://wingbangboozle1-lang.github.io/Prod3/compare.html after deploy: the buy row reads
+  "Buy (official product pages)" with all five cells linking
+  `https://www.amazon.com/dp/<ASIN>?tag=shopnow047c-20&linkCode=sl1`, the detail-page links resolve
+  to the five generated `products/` pages, the disclosure strip is above the fold, and no price or
+  rating is rendered.
+- **Record closed on the merged tree:** `tools/check_site.py` 42 pages / 6,372 assertions, all
+  freshness gates `--check` OK, release gate passed, crawl 0 broken / 0 dead / 0 orphans.
+

@@ -726,24 +726,39 @@ for _name, _html in docs.items():
 
 # D40: a stated guide count must equal the number of guides on disk.
 # The tree shipped ten articles while README, buying-guide.html, both executive
-# summaries, Q-17, SG-18 and SG-37 all said "eight" or "nine" -- seven reader-facing
-# places, on a site whose whole claim is that the numbers are checked. The word
-# counts are compared, not the digits, because those are what the copy uses.
+# summaries, Q-14, Q-17, SG-18 and SG-37 all said "eight" or "nine" -- seven
+# reader-facing places, on a site whose whole claim is that the numbers are checked.
+# The first version of this rule was too broad and failed on history: a resolved
+# flag says "Eight articles ended with the same block", which was true when it was
+# written and is not a claim about the current set. So a match is only a failure
+# when its own sentence states a present-tense total -- no past-tense marker in the
+# same sentence -- and a sentence may opt out explicitly with "at the time".
 _NUMWORD = {6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
             11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen"}
 _guides = len(list((ROOT / "articles").glob("*.html")))
-check("D40-guide-count-known", _guides in _NUMWORD, f"{_guides} guides on disk; add the number word to D40")
-for _name, _html in docs.items():
-    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _html, re.I):
-        _said = _m.group(1).lower()
-        _want = _NUMWORD.get(_guides, "")
-        check("D40-guide-count", _said == _want,
-              f"{_name}: says {_m.group(0)!r} but {_guides} guides ship ({_want})")
-for _f in ("README.md", "EXECUTIVE_SUMMARY.md"):
-    _txt = (ROOT / _f).read_text(encoding="utf-8")
-    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _txt, re.I):
+check("D40-guide-count-known", _guides in _NUMWORD,
+      f"{_guides} guides on disk; add the number word to D40")
+_PAST = ("ended", "shipped", "before", "had ", "was ", "were ", "at the time",
+         "previously", "used to", "originally", "no longer", "since")
+_COUNT_RE = re.compile(r"\b(six|seven|eight|nine|ten|eleven|twelve)\s+(?:question-shaped\s+)?(?:guides|articles)\b", re.I)
+
+
+def _count_claims(text, label):
+    for _m in _COUNT_RE.finditer(text):
+        _start = max(text.rfind(". ", 0, _m.start()), text.rfind("| ", 0, _m.start()),
+                     text.rfind("> ", 0, _m.start()), 0)
+        _stop = text.find(". ", _m.end())
+        _sentence = text[_start:_stop if _stop != -1 else _m.end() + 80].lower()
+        if any(_p in _sentence for _p in _PAST):
+            continue
         check("D40-guide-count", _m.group(1).lower() == _NUMWORD.get(_guides, ""),
-              f"{_f}: says {_m.group(0)!r} but {_guides} guides ship")
+              f"{label}: says {_m.group(0)!r} in a present-tense sentence, but {_guides} guides ship")
+
+
+for _name, _html in docs.items():
+    _count_claims(_html, _name)
+for _f in ("README.md", "EXECUTIVE_SUMMARY.md"):
+    _count_claims((ROOT / _f).read_text(encoding="utf-8"), _f)
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

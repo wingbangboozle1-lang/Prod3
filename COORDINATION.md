@@ -1140,3 +1140,5 @@ git diff --check                           clean
 - **GitHub Pages:** `Deploy GitHub Pages` run `44687419004` (`success`) and `pages build and deployment` run `44687418865` (`success`) on `e036edf`. Pages API: `status: built`, source `main:/`, URL https://wingbangboozle1-lang.github.io/Prod3/.
 - **Live check:** `https://wingbangboozle1-lang.github.io/Prod3/feed.xml` lists the guides, including the Thanksgiving guide added on `main`. `suggestions.html` renders from the same `data/suggestions.json` that passed the gates. (The page's "Register updated 2026-11-19" line predates this pass; it is generator text from `main`, logged here as an irregularity rather than edited.)
 - **Collision log:** T-25 was taken by PR #27 (arena/70e8475c), and T-26 by PR #30 (arena/e83cdf55). This session's first two claims were withdrawn and renumbered to T-37. No other session's work was overwritten; the history was kept with `-s ours` merges, not force-pushes.
+
+**PR and merge (T-38).** PR: https://github.com/wingbangboozle1-lang/Prod3/pull/33 (`arena/9f36f5ee-prod3` → `main`). Merge result is recorded in the next integration record after the merge.

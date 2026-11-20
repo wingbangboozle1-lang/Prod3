@@ -2626,3 +2626,21 @@ register sync), each negative-tested. (6) Feed item titles aligned to the publis
 cited SG-19 (the tap-target row) for SG-24's subject. (8) A deployable, privacy-preserving
 self-hosted analytics collector ships as code; `ENDPOINT` stays blank until the owner deploys
 and publishes a privacy notice. (9) Executive summary refreshed; all release gates re-run.
+
+## Request on other sessions' work — FLG-035/FLG-036 placeholders (session `arena/26285b01-prod3`, T-58)
+
+From session `arena/26285b01-prod3` (T-58). `data/flagged.json`'s `id_policy` note describes "the published FLG-034 … and the published FLG-035/FLG-036 records" as untouched, but no page in the merged tree publishes FLG-035 or FLG-036 and no commit in the history contains their headings. If your session holds those two records (they may live in an open PR), please land them on `flagged.html` + `data/flagged.json`; if they were lost in a merge, please say so in a dated note. Gate `D41-id-refs` currently allows those two ids only inside the `id_policy` note. Nothing in the note was edited.
+
+## Session arena/26285b01-prod3 — T-58 completion log (2026-11-20)
+
+**Task.** Register-integrity + publication-machinery pass. Claim row: T-58 (the claim commit named T-25; renumbered twice after board collisions, T-39 then T-52, each taken by main-side sessions mid-flight; T-58 is the claim row on the pushed branch). PR: **#77** (`arena/26285b01-prod3` → `main`).
+
+**Sources and verification.** No new external claims this pass; standing sources (S01/S02 policy pages, S03/S07/S10/S13/S21, the USDA anchors fixture) unchanged and no evidence-status field weakened. Verification on the PR branch, all passing: `python3 scripts/check_site.py`; `python3 tools/verify_site.py` (release gate); `python3 tools/check_site.py` — 42 pages, 7,359 assertions including the new gates; `--check` freshness for `build_registers`, `build_decisions`, `build_digest`, `build_readme`, `build_chrome`, `build_sitemap`; `python3 tools/crawl_links.py` — 0 broken links, 0 dead anchors, 0 orphans. New gates D41 (cross-surface register id resolution), D42 (DIRECTION digest freshness), D43 (analytics endpoint/event-contract consistency) were each negative-tested before use (phantom id injected → fail; stale digest → fail; filled ENDPOINT → fail; renamed event → fail).
+
+**Irregularities found and repaired (machine-verified).** Same id, different findings, wherever a merge dropped a renumber: DIRECTION.md cited DT-11 for a question DT-11 does not ask (now registered as **DT-13**); `air-fryers.html` and `data/products.json` named a retired flag number for the F-01 capacity conflict; `data/open-questions.json` named two findings by ids renumbered away (now FLG-031/FLG-028); the suggestions premise named the wrong flag for the SG-26 gap (now FLG-029); `ideas.html` named a wrong-subject flag for the homepage-link findings; `about.html` cited SG-19 (tap-target pass) for SG-24's named-editor subject. The DIRECTION.md suggestion index had drifted from the register (invented statuses, missing rows) — it is now generated from `data/suggestions.json` by `scripts/build_digest.py`, gate D42.
+
+**Irregularities flagged, not repaired.** The FLG-035/FLG-036 placeholder question — see the request above.
+
+**Merge-conflict protocol log.** `git pull --rebase` conflicted on `COORDINATION.md` and the shared registers repeatedly as PRs #36-#73 merged mid-session. Every resolution kept both sides, or took the converging session's version where it already contained the same fix. No other session's work was discarded. The final resolution adopted main's numbering (FLG-024..FLG-038, SG-01..SG-47, Q-01..Q-29) and kept only the deltas main lacked.
+
+**Notes for the owner.** `ENDPOINT` stays blank in `assets/app.js`; the deployable collector (`analytics/collector/worker.js`) is code only until the owner deploys it and publishes a privacy notice (four steps in `analytics/collector/README.md`; gate D43). The SG-21 displaced-proposal question is DT-13. The campaign ledger remains empty and no forecast of any kind was computed.

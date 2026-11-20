@@ -858,6 +858,32 @@ _r42 = _sp2.run([sys.executable, str(ROOT / "scripts" / "build_digest.py"), "--c
 check("D45-digest-fresh", _r42.returncode == 0,
       f"DIRECTION.md digest stale: {_r42.stdout.strip()[:160]}")
 
+# D43: the analytics halves stay consistent. ENDPOINT may only be filled in
+# with an https URL that analytics.html names (the owner's four deploy steps
+# end there), and the five event names must be identical in assets/app.js,
+# analytics/collector/worker.js and data/campaign-ledger.json. The collector
+# ships as deployable code but is not deployed; no event leaves the reader's
+# browser until ENDPOINT is set.
+_appjs = (ROOT / "assets/app.js").read_text(encoding="utf-8")
+_m43 = re.search(r"var ENDPOINT = '([^']*)';", _appjs)
+check("D43-endpoint-consistency", _m43 is not None, "assets/app.js: ENDPOINT declaration not found")
+if _m43:
+    _ep = _m43.group(1)
+    check("D43-endpoint-consistency", _ep == "" or (_ep.startswith("https://") and _ep in docs.get("analytics.html", "")),
+          f"assets/app.js ENDPOINT {_ep!r} must be blank or an https URL named on analytics.html")
+_events_appjs = re.search(r"var ALLOWED = \[([^\]]*)\]", _appjs)
+_events_worker = re.search(r"EVENTS = \[([^\]]*)\]", (ROOT / "analytics/collector/worker.js").read_text(encoding="utf-8"))
+_events_ledger = json.loads((ROOT / "data/campaign-ledger.json").read_text(encoding="utf-8"))["events_defined"]
+def _names(blob):
+    return sorted(re.findall(r"'([^']+)'", blob)) if blob else []
+check("D43-event-contract",
+      _names(_events_appjs.group(1) if _events_appjs else "") == sorted(_events_ledger)
+      and _names(_events_worker.group(1) if _events_worker else "") == sorted(_events_ledger),
+      "event names differ between assets/app.js, analytics/collector/worker.js and data/campaign-ledger.json")
+_w43 = _sp2.run(["node", "--check", str(ROOT / "analytics/collector/worker.js")], capture_output=True, text=True)
+check("D43-collector-syntax", _w43.returncode == 0, f"analytics/collector/worker.js: {_w43.stderr.strip()[:120]}")
+print("OK analytics endpoint + event contract")
+
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")
 if failures:

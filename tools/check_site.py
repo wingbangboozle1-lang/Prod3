@@ -45,7 +45,8 @@ if not (ROOT / "index.html").exists():
 
 pages = (sorted(ROOT.glob("*.html"))
          + sorted((ROOT / "articles").glob("*.html"))
-         + sorted((ROOT / "tools").glob("*.html")))
+         + sorted((ROOT / "tools").glob("*.html"))
+         + sorted((ROOT / "products").glob("*.html")))
 docs = {p.relative_to(ROOT).as_posix(): p.read_text(encoding="utf-8") for p in pages}
 
 titles, descs = {}, {}
@@ -278,6 +279,19 @@ import subprocess as _sp
 _r = _sp.run([sys.executable, str(ROOT / "scripts" / "build_registers.py"), "--check"],
              capture_output=True, text=True)
 check("D18-registers-fresh", _r.returncode == 0, f"registers stale: {_r.stdout.strip()[:200]}")
+
+# ---- one FLG id must mean one thing on the flagged page ------------------
+# Found by the fe5fd1d9 rebase: two different callouts each carried FLG-020 and
+# FLG-021 after two sessions numbered their flags independently. The later pair
+# was renumbered FLG-025/026; this rule keeps the ids unique from now on.
+_flag_doc = docs.get("flagged.html", "")
+_callout_ids = re.findall(r"<strong>(FLG-\d{3})", _flag_doc)
+check("D31-flag-ids-unique", len(_callout_ids) == len(set(_callout_ids)),
+      f"flagged.html: duplicate callout ids {[i for i in _callout_ids if _callout_ids.count(i) > 1]}")
+# (page-vs-register coverage is deliberately not gated here: data/flagged.json
+# carries the capture-era F-series plus later FLG items, while older callouts on
+# flagged.html are hand-maintained prose. Uniqueness above is the enforced rule;
+# full json coverage of the FLG series is logged for the owner in COORDINATION.md.)
 
 # ---- one suggestion ID must mean one thing ------------------------------
 _sg_ids = re.findall(r"\bSG-\d{2}\b", docs.get("suggestions.html", ""))

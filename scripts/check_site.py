@@ -40,7 +40,8 @@ except Exception as e:
 # 2-4. HTML checks
 html_files = (sorted(ROOT.glob("*.html"))
               + sorted((ROOT / "articles").glob("*.html"))
-              + sorted((ROOT / "tools").glob("*.html")))
+              + sorted((ROOT / "tools").glob("*.html"))
+              + sorted((ROOT / "products").glob("*.html")))
 titles = {}
 for f in html_files:
     html = f.read_text()

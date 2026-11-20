@@ -192,7 +192,7 @@
       <p class="small muted">Unblocks: Reader-capture metrics</p>
     </article></div>
 
-<h2 class="mt">Already shipped (18)</h2>
+<h2 class="mt">Already shipped (19)</h2>
 <p>Listed so the register stays complete, not to take credit. Each one can be reverted if a decision goes the other way.</p>
 <div class="grid mt"><article class="card decision-card" id="SG-01">
       <div class="meta">SG-01 · owner decides</div>
@@ -410,6 +410,18 @@
         <div class="opts" data-decide="SG-31"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-32">
+      <div class="meta">SG-32 · editorial decides</div>
+      <h3>Give every product its own detail page, wired into the shop surfaces</h3>
+      <p><strong>The situation.</strong> A buyer comparing one product had to reconstruct it from category cards, the comparison table and the flag page. A shop has a page per product; this one had a grid.</p>
+      <p><strong>The evidence.</strong> The front page and both category hubs carried one card per product with a three-chip summary only (S10-S14). SG-31 put the listing contradictions on the cards; the missing piece was a per-product page where every published field lives with its source. The comparison table crams five products into columns, so detail loses to layout.</p>
+      <p><span class="badge green">implemented</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Ship one detail page per product under products/: every field the listing publishes in a source-linked table, the published conflicts, a consider-if / look-elsewhere-if, and the guides that answer the next question. Link them from the front-page cards, category hubs, and the comparison table.</li><li>B. Keep the card grid and fold more detail into the comparison table.</li><li>C. Link straight out to Amazon from the cards and publish nothing in between.</li></ul>
+        <p><strong>Recommendation.</strong> A, implemented 2026-11-20 (T-38, session fe5fd1d9). Values are mechanically traced to data/products.json (0 untraced tokens); every flag reference on the five pages resolves to a published FLG-001..FLG-024 entry on flagged.html; chrome, sitemap, both checkers and the crawler cover products/.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-32"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: </p>
     </article></div>
 
 <h2 class="mt" id="decide">Your decision block</h2>

@@ -10,7 +10,8 @@ DATE = "2026-11-20"
 def pages():
     files = (sorted(ROOT.glob("*.html"))
              + sorted((ROOT / "articles").glob("*.html"))
-             + sorted((ROOT / "tools").glob("*.html")))
+             + sorted((ROOT / "tools").glob("*.html"))
+             + sorted((ROOT / "products").glob("*.html")))
     files = [f for f in files if f.name != "404.html"]  # error page: never in the sitemap
     return [f.relative_to(ROOT).as_posix() for f in files]
 
@@ -24,6 +25,11 @@ PRIORITY = {
     "compare.html": "0.9",
     "decisions.html": "0.8",
     "buying-guide.html": "0.8",
+    "products/chefman-6qt-dual-basket.html": "0.9",
+    "products/emeril-lagasse-26qt-french-door.html": "0.9",
+    "products/chefman-8qt-turbofry.html": "0.9",
+    "products/thermomaven-1-sec.html": "0.9",
+    "products/chefiq-sense-gen3.html": "0.9",
 }
 
 

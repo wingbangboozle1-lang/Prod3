@@ -89,7 +89,7 @@ gate rule `D20` now fails the build if any two live suggestions share a title.
 
 **Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
 `rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
-30 pages. Every new table row carries a source link or an explicit "No official source" marker,
+36 pages (36 after the 2026-11-20 product-page pass and the ideas-hub merge, T-38). Every new table row carries a source link or an explicit "No official source" marker,
 and the gate fails a row that has neither — so "unverified" can never hide.
 
 **Still true, still not this session's to fix.** The five short links carry no visible
@@ -103,6 +103,17 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
 (30 pages, 3541 assertions) and `tools/crawl_links.py` (30 pages, 0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
+
+**Gates at the close of the product-page pass (T-38, session fe5fd1d9, 2026-11-20):** the same
+suite on the rebased tree, which also carries the ideas-hub merge (36 pages) — `build_chrome
+--check`, `build_registers --check`, `build_decisions --check`, `build_sitemap --check`,
+`scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` (36 pages, 4,607
+assertions) and `tools/crawl_links.py` (36 pages, 35 reachable, 0 broken links, 0 dead anchors,
+0 orphans) — all pass. A token-level trace check asserts every numeric and model value on the
+five product pages appears in `data/products.json` (0 untraced), and every flag reference on
+the five pages resolves to a published FLG-001..FLG-026 entry on `flagged.html`. The rebase
+also surfaced a duplicate-id defect on the flagged page (two callouts each carried FLG-020 and
+FLG-021); the later pair was renumbered FLG-025/FLG-026 and registered in `data/flagged.json`.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.
 

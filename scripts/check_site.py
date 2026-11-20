@@ -21,6 +21,19 @@ import json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+def is_verification_file(path):
+    """True only for a Search Console HTML verification file (see content/measurement.md §2).
+
+    Narrow by design: the name must be google<token>.html AND the entire body must be the
+    single line "google-site-verification: <token>". Any other root HTML file, including
+    one that merely starts with that line, is a page and is held to the page rules.
+    """
+    if not re.fullmatch(r"google[A-Za-z0-9]+\.html", path.name):
+        return False
+    body = path.read_text(encoding="utf-8", errors="replace").strip()
+    return re.fullmatch(r"google-site-verification: [A-Za-z0-9_.\-]+", body) is not None
+
 errors = []
 
 # 1. products.json
@@ -38,7 +51,7 @@ except Exception as e:
     errors.append(f"products.json: {e}")
 
 # 2-4. HTML checks
-html_files = sorted(ROOT.glob("*.html")) + sorted((ROOT / "articles").glob("*.html"))
+html_files = [f for f in sorted(ROOT.glob("*.html")) if not is_verification_file(f)] + sorted((ROOT / "articles").glob("*.html"))
 titles = {}
 for f in html_files:
     html = f.read_text()

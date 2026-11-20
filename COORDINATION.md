@@ -41,7 +41,7 @@
 | T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | done (PR #14 + #15, live-verified at `bb7d3d2`) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
 | T-23 | Line-by-line verification of data registers and published claims against official sources; fix only demonstrable defects; final integration PR → main, merge, confirm Pages deploy | done (PR #18, https://github.com/wingbangboozle1-lang/Prod3/pull/18) | arena/28d2d6c0-prod3 | `data/sources.json`, `data/analysis.json`, `data/flagged.json`, `data/policy-checks.json`, `sources.html`, `tools/verify_site.py` (source-resolution gate), `COORDINATION.md` |
 | T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
-| T-25 | Final integration session: line-by-line verification of every published table row and register against official sources; fix demonstrable defects; publish the F-series findings and the product-intent record as source-linked tables; extend the release gate to cover the defects found; PR → main → merge → confirm Pages deploy | in progress | `arena/0a1638a1-prod3` (session 0a1638a1) | `data/verification.json`, `data/flagged.json`, `data/analysis.json`, `data/policy-checks.json`, `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `scripts/build_registers.py`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`, `README.md`, `sitemap.xml`, `COORDINATION.md` |
+| T-25 | Final integration session: line-by-line verification of every published table row and register against official sources; fix demonstrable defects; publish the F-series findings and the product-intent record as source-linked tables; extend the release gate to cover the defects found; PR → main → merge → confirm Pages deploy | in review (PR open; Pages verification pending) | `arena/0a1638a1-prod3` (session 0a1638a1) | `data/verification.json`, `data/flagged.json`, `data/analysis.json`, `data/policy-checks.json`, `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `scripts/build_registers.py`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`, `README.md`, `sitemap.xml`, `COORDINATION.md` |
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
@@ -913,3 +913,42 @@ observed destinations are unchanged and still dated 2026-11-19.
    capacity-per-square-inch numbers appear nowhere in any HTML page.
 6. **`data/verification.json` was unreachable** from the site, so the
    product-intent confirmation record the brief asks for was not published.
+
+### Repairs completed in this session
+
+7. **Register repairs.** Duplicate `SG-21` removed and the tail renumbered to
+   SG-21..SG-24 with no gap; SG-07/SG-14 now cite S26/S29; SG-16/SG-18 corrected;
+   C-02/C-04/C-09/C-11/C-12 evidence corrected to the live site; C-11 now records
+   that no Amazon category/storefront link is published and is automated.
+   F-10/F-17/F-21 now carry sources, so every F row has one.
+8. **Published F-series.** `flagged.html` renders the F-register between
+   `F-REGISTER` markers from `data/flagged.json`; every public `F-nn` reference
+   is now a link to its row. `suggestions.html`, `questions.html`, `citations.html`
+   and the SG/Q snapshots on `direction.html` are generated from their JSON.
+9. **Intent record published.** `sources.html` shows the five product-intent rows:
+   observed destination and date beside intended fields that stay "Not confirmed"
+   until the owner confirms in the Associates workflow.
+10. **Open Graph.** Every page declares `og:url`, matching its canonical. `404.html`
+    declares none, because it has no address to offer a sharer.
+11. **Verification-file exemption implemented** in `scripts/check_site.py`,
+    `tools/check_site.py` and `scripts/build_sitemap.py`, as described in
+    `content/measurement.md` §2. Narrow by shape; tested in a scratch copy: a valid
+    file passes and stays out of the sitemap, while a page-shaped `google*.html`
+    still fails.
+12. **New release assertions** in `tools/check_site.py` (R01–R09): `og:url`
+    presence and canonical match; F-register rows match `data/flagged.json`, each
+    with a source; every public and data-file SG/Q/C/F reference resolves; each
+    suggestion's evidence is checkable; intended fields are all-or-nothing and
+    never copied from observation; no verification file in the sitemap.
+
+### Validation at the close of the session
+
+`tools/verify_site.py`, `scripts/check_site.py`, `tools/check_site.py` (3,217
+assertions over 24 pages), `scripts/build_sitemap.py --check` and
+`scripts/build_registers.py --check` all pass. All `data/*.json` parse and
+`git diff --check` is clean.
+
+Open owner actions, unchanged: Search Console property verification (Q-18, DNS or
+the file route), enrolled-dashboard confirmation of tracking ID and short-link
+behaviour (C-10, FLG-006/FLG-010), owner confirmation of intended ASINs (FLG-001),
+and the sharing-debugger check for F-21 / Q-21.

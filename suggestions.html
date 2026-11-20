@@ -9,6 +9,7 @@
 <meta property="og:title" content="Suggestions Register — What to Change and What It Waits On | Kitchen Counter">
 <meta property="og:description" content="Every proposed change to Kitchen Counter with its problem, evidence, options, recommendation and decision owner, plus what has already shipped.">
 <meta property="og:type" content="article">
+<meta property="og:url" content="https://wingbangboozle1-lang.github.io/Prod3/suggestions.html">
 <meta property="og:image" content="https://wingbangboozle1-lang.github.io/Prod3/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -37,12 +38,12 @@
 
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (10)</h2>
+<h2>Waiting on a decision (9)</h2>
 <div class="grid mt"><article class="card">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
       <p><strong>Problem.</strong> The highest-value content in this niche — what the thing is like to live with — cannot be written honestly without the thing.</p>
-      <p><strong>Evidence.</strong> FTC: &quot;You can&#x27;t talk about your experience with a product you haven&#x27;t tried&quot; (S22). Google&#x27;s E-E-A-T guidance rewards demonstrated experience (S14).</p>
+      <p><strong>Evidence.</strong> FTC: &quot;You can&#x27;t talk about your experience with a product you haven&#x27;t tried&quot; (S03). Google&#x27;s E-E-A-T guidance rewards demonstrated experience (S21).</p>
       <p><strong>Options.</strong></p><ul><li>A. Buy one unit per family out of the commission budget and document a fixed set of tests: heat-up time, evenness with a thermocouple grid, basket clean-up time, counter footprint.</li><li>B. Stay specification-only, and be the site that is scrupulous about it.</li><li>C. Accept review units only if the site discloses the gift.</li></ul>
       <p><strong>Recommendation.</strong> B until the site earns anything, then A. A is the only durable moat in this niche, but it should be funded by the site, not by a credit card.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence low</span></p>
@@ -51,7 +52,7 @@
       <div class="meta">SG-07 · owner decides</div>
       <h3>Turn on Search Console before writing guide nine</h3>
       <p><strong>Problem.</strong> The next topic is currently chosen by instinct.</p>
-      <p><strong>Evidence.</strong> No Search Console property exists (F-17). Choosing topics from measured queries is the only way to avoid writing eight more articles for nobody.</p>
+      <p><strong>Evidence.</strong> No Search Console property exists (<a href="flagged.html#F-17">F-17</a>). Search Console is the source of query, impression and click data (S26, S29). Choosing topics from measured queries is the only way to avoid writing eight more articles for nobody.</p>
       <p><strong>Options.</strong></p><ul><li>A. Verify the property, wait two weeks, and pick the next three topics from the Queries report.</li><li>B. Keep writing on instinct and check the reports later.</li></ul>
       <p><strong>Recommendation.</strong> A. It costs one DNS or file verification and it changes the entire content plan from guessing to reading. The site already carries the metadata needed for indexing.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
@@ -60,7 +61,7 @@
       <div class="meta">SG-13 · owner decides</div>
       <h3>Test one short link inside the enrolled Associates workflow before trusting the format</h3>
       <p><strong>Problem.</strong> The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.</p>
-      <p><strong>Evidence.</strong> Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links&#x27; own status is unresolved (F-13).</p>
+      <p><strong>Evidence.</strong> Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site labels every product button as going to Amazon and carries rel=&quot;sponsored&quot;, so the destination is not hidden from the reader; but the supplied short links&#x27; own status in the enrolled workflow is unresolved (<a href="flagged.html#F-13">F-13</a>), and the site claims neither compliance nor failure.</p>
       <p><strong>Options.</strong></p><ul><li>A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.</li><li>B. Switch every link to direct /dp/ URLs and drop the short form.</li><li>C. Declare the short links non-compliant and remove them.</li></ul>
       <p><strong>Recommendation.</strong> A for the short form as provenance, with the site continuing to publish direct URLs either way. C is a claim the evidence does not support.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
@@ -69,11 +70,11 @@
       <div class="meta">SG-16 · editorial decides</div>
       <h3>Replace the SVG social preview with a raster card, and verify it before relying on it</h3>
       <p><strong>Problem.</strong> Every page referenced assets/og-image.svg as og:image until the publication-polish pass replaced it with a 1200×630 raster card (assets/og-image.png). SVG is not the format social preview tools typically render, so the format risk is resolved; what remains is confirming the card actually renders in a share debugger.</p>
-      <p><strong>Evidence.</strong> Meta&#x27;s sharing best-practices documentation asks for JPG or PNG preview images (https://developers.facebook.com/docs/sharing/best-practices — recorded as a to-verify reference; not re-fetched from this network, see F-21). The PNG is now shipped on all 24 pages; the debugger check (Q-21) has not been run.</p>
+      <p><strong>Evidence.</strong> Meta&#x27;s sharing best-practices documentation asks for Open Graph meta tags so the Facebook Crawler scrapes title, description and preview image, and asks that the Sharing Debugger tool be used to test how the page is viewed by the scraper (S28). It asks for images at least 1080 px wide; the shipped PNG is 1200 px and every page now carries the four properties the Open Graph protocol requires, og:url included (S27). The debugger check (Q-21) has not been run.</p>
       <p><strong>Options.</strong></p><ul><li>A. Produce one 1200×637 PNG card from the existing brand type, swap the og:image hrefs, and confirm with a share debugger.</li><li>B. Keep SVG and accept that some previews show nothing.</li><li>C. Drop og:image entirely.</li></ul>
-      <p><strong>Recommendation.</strong> A, once someone with a browser can run the share-preview check. The change is one file and nine href lines; the fallback today (a plain-text link preview) is honest but costs the click.</p>
+      <p><strong>Recommendation.</strong> A, once someone with a browser can run the sharing-debugger check. The card and the required metadata are shipped; the one file and one href change that option A still describes were completed on 2026-11-20, and the fallback today (a plain-text link preview) is honest but costs the click.</p>
       <p><span class="badge grey">partly implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
-      <p class="small muted">Blocks: nothing — flagged as F-21 for review</p>
+      <p class="small muted">Blocks: nothing — flagged as <a href="flagged.html#F-21">F-21</a> for review</p>
     </article><article class="card">
       <div class="meta">SG-17 · owner decides</div>
       <h3>Make the Product Advertising API the only path to displayed prices</h3>
@@ -87,7 +88,7 @@
       <div class="meta">SG-18 · editorial decides</div>
       <h3>Choose guide nine from measured queries, not instinct</h3>
       <p><strong>Problem.</strong> Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.</p>
-      <p><strong>Evidence.</strong> Search Console is the first-party source for the queries a site actually appears for (https://search.google.com/search-console/about — SG-07 is the verification prerequisite). analytics.html records that no data exists yet.</p>
+      <p><strong>Evidence.</strong> Search Console is the first-party source for the queries a site actually appears for: its Search Analytics report shows which queries bring users to the site and how often searchers click through (S29). SG-07 is the verification prerequisite. analytics.html records that no data exists yet.</p>
       <p><strong>Options.</strong></p><ul><li>A. Hold at eight guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.</li><li>B. Keep the weekly cadence with self-selected topics until data arrives.</li><li>C. Retire or merge any guide with zero impressions after 60 days (Q-17).</li></ul>
       <p><strong>Recommendation.</strong> A, with C as the pruning rule. Cadence only after measurement — otherwise the site scales guesses.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
@@ -103,15 +104,6 @@
       <p class="small muted">Blocks: Which guides get written next</p>
     </article><article class="card">
       <div class="meta">SG-21 · owner decides</div>
-      <h3>Pick one product as the site&#x27;s spine and let the other four support it</h3>
-      <p><strong>Problem.</strong> Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.</p>
-      <p><strong>Evidence.</strong> The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google&#x27;s thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.</li><li>B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.</li><li>C. Keep the current two-family balance and expand only when the analytics say which family reads better.</li></ul>
-      <p><strong>Recommendation.</strong> A. Air fryers have the wider search intent and three products to compare, which is enough for a comparison table that earns its place. Revisit at the first Search Console report.</p>
-      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
-      <p class="small muted">Blocks: Which guides get written next</p>
-    </article><article class="card">
-      <div class="meta">SG-22 · owner decides</div>
       <h3>Write the first-hand answer only after someone has actually used the appliance for a month</h3>
       <p><strong>Problem.</strong> The most useful sentence on any appliance site — what it is like after the novelty wears off — cannot be written from a listing. Writing it anyway is the exact practice the FTC warns about.</p>
       <p><strong>Evidence.</strong> FTC Disclosures 101: you cannot talk about your experience with a product you have not tried (S03). Google&#x27;s people-first guidance rewards demonstrated experience (S21).</p>
@@ -120,7 +112,7 @@
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence low</span></p>
       <p class="small muted">Blocks: Nothing today; it is the ceiling on how good the content can get</p>
     </article><article class="card">
-      <div class="meta">SG-24 · owner decides</div>
+      <div class="meta">SG-23 · owner decides</div>
       <h3>Give the site a named editor before giving it a voice</h3>
       <p><strong>Problem.</strong> An anonymous publication can be accurate and still be untrustworthy, because nobody is accountable for the errors.</p>
       <p><strong>Evidence.</strong> Google&#x27;s people-first guidance asks who created the content and whether it is written by someone with first-hand knowledge (S21).</p>
@@ -136,7 +128,7 @@
       <div class="meta">SG-01 · owner decides</div>
       <h3>Narrow the site to one question: air fryer, or thermometer — not both</h3>
       <p><strong>Problem.</strong> Five products across two families read as a list of things someone had links for, not a publication with a beat.</p>
-      <p><strong>Evidence.</strong> The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google&#x27;s thin-affiliation policy specifically targets affiliate pages whose only reason to exist is the links (S12).</p>
+      <p><strong>Evidence.</strong> The set divides 3 air fryers / 2 thermometers across four brands (<a href="flagged.html#F-08">F-08</a>). Google&#x27;s thin-affiliation policy specifically targets affiliate pages whose only reason to exist is the links (S22).</p>
       <p><strong>Options.</strong></p><ul><li>A. Keep both, and make the beat &quot;cooking to a target temperature&quot; — the air fryer gets food hot, the thermometer proves it is done. This is what the site currently does.</li><li>B. Narrow to air fryers, and treat the thermometers as one comparison article.</li><li>C. Split into two sites later, if either earns enough traffic to justify it.</li></ul>
       <p><strong>Recommendation.</strong> A for now. It is the only framing in which both product families belong in the same sentence, and it gives every guide an obvious place to link back to. Revisit at the first Search Console data drop.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
@@ -144,7 +136,7 @@
     </article><article class="card">
       <div class="meta">SG-02 · editorial decides</div>
       <h3>Publish the two spec conflicts instead of picking a winner</h3>
-      <p><strong>Problem.</strong> P1&#x27;s capacity is stated as both 6 liters and 6 quarts; P2&#x27;s preset count is both 24 and 25.</p>
+      <p><strong>Problem.</strong> P-01&#x27;s capacity is stated as both 6 liters and 6 quarts; P-02&#x27;s preset count is both 24 and 25.</p>
       <p><strong>Evidence.</strong> Program Policies 2(b) prohibits inaccurate or misleading product claims (S02). Choosing one number at random is exactly that.</p>
       <p><strong>Options.</strong></p><ul><li>A. Show both readings and name the conflict. A buyer learns the listing is sloppy, which is useful.</li><li>B. Publish the headline number only and say nothing.</li><li>C. Leave the field blank entirely.</li></ul>
       <p><strong>Recommendation.</strong> A. It costs one sentence and it is the only option that is both accurate and useful. B is the option every competitor picks, which is the reason to not pick it.</p>
@@ -163,7 +155,7 @@
       <div class="meta">SG-04 · editorial decides</div>
       <h3>Answer eight buyer questions, not eight product reviews</h3>
       <p><strong>Problem.</strong> Product pages answer &quot;what is it&quot;; buyers arrive with &quot;which one, and will it fit&quot;.</p>
-      <p><strong>Evidence.</strong> People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S14). A product question has a real answer; a review of an untouched product does not (S22).</p>
+      <p><strong>Evidence.</strong> People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S03).</p>
       <p><strong>Options.</strong></p><ul><li>A. Eight question-shaped guides, each answerable from published specifications and USDA targets.</li><li>B. Five long product reviews written without handling the products.</li><li>C. One long &quot;best air fryers 2026&quot; listicle.</li></ul>
       <p><strong>Recommendation.</strong> A. C is the format that reads as generated, because every site in the niche already has it and none of them can differentiate inside it.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence high</span></p>
@@ -172,7 +164,7 @@
       <div class="meta">SG-05 · engineering decides</div>
       <h3>Build the compliance gate into the build, not into a checklist</h3>
       <p><strong>Problem.</strong> Disclosure placement and rel=&quot;sponsored&quot; are the two things that are easy to forget on page fourteen.</p>
-      <p><strong>Evidence.</strong> Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=&quot;sponsored&quot; on paid links (S11).</p>
+      <p><strong>Evidence.</strong> Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=&quot;sponsored&quot; on paid links (S04).</p>
       <p><strong>Options.</strong></p><ul><li>A. Generate every page from one template that always emits the disclosure strip, and run a checker that fails on any Amazon link without rel=&quot;sponsored&quot;.</li><li>B. A written checklist someone reads before publishing.</li></ul>
       <p><strong>Recommendation.</strong> A. A checklist is a promise; a failing build is a fact. The checker is in tools/check_site.py and runs in CI.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
@@ -190,7 +182,7 @@
       <div class="meta">SG-09 · engineering decides</div>
       <h3>Give every page a unique title and description, and test that the build rejects duplicates</h3>
       <p><strong>Problem.</strong> Duplicate titles and descriptions are the most common self-inflicted indexing problem for generated sites.</p>
-      <p><strong>Evidence.</strong> Google: &quot;Create unique descriptions for each page on your site&quot;; identical descriptions on every page are named as a problem (S13).</p>
+      <p><strong>Evidence.</strong> Google: &quot;Create unique descriptions for each page on your site&quot;; identical descriptions on every page are named as a problem (S24).</p>
       <p><strong>Options.</strong></p><ul><li>A. Generate each page&#x27;s title and description from its own content, and fail the build on a duplicate.</li><li>B. One site-wide description.</li></ul>
       <p><strong>Recommendation.</strong> A. B is the specific failure mode the guidance names.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
@@ -199,7 +191,7 @@
       <div class="meta">SG-10 · design decides</div>
       <h3>Make the front page a publication front page, and keep the dashboards one click away in the footer</h3>
       <p><strong>Problem.</strong> The verification machinery is genuinely interesting to the owner and irrelevant to a buyer.</p>
-      <p><strong>Evidence.</strong> Page-experience guidance (S14); the reader came for a question, not an audit trail.</p>
+      <p><strong>Evidence.</strong> Page-experience guidance (S25); the reader came for a question, not an audit trail.</p>
       <p><strong>Options.</strong></p><ul><li>A. Front page leads with the products and the guides; the register, gate, ledger and flagged pages sit in a single footer group.</li><li>B. Front page leads with the source register, because that is what makes this site different.</li><li>C. Two sites.</li></ul>
       <p><strong>Recommendation.</strong> A. The audit trail is the site&#x27;s credibility, not its pitch. It should be exhaustively present and never in the way.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
@@ -217,7 +209,7 @@
       <div class="meta">SG-12 · design decides</div>
       <h3>Put a three-question chooser above the comparison table</h3>
       <p><strong>Problem.</strong> A comparison table asks the reader to hold eleven columns in their head and decide.</p>
-      <p><strong>Evidence.</strong> The three air fryers differ along three axes that are decidable from the listing: form (basket vs oven), capacity, and counter depth. Nothing else materially separates them (S03, S04, S05).</p>
+      <p><strong>Evidence.</strong> The three air fryers differ along three axes that are decidable from the listing: form (basket vs oven), capacity, and counter depth. Nothing else materially separates them (S10-S12).</p>
       <p><strong>Options.</strong></p><ul><li>A. Three questions, each with two or three answers, resolving to one product with a stated reason.</li><li>B. A filterable table.</li><li>C. Nothing — let the table speak.</li></ul>
       <p><strong>Recommendation.</strong> A. It is the only one of the three that produces a recommendation rather than a dataset.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
@@ -226,7 +218,7 @@
       <div class="meta">SG-14 · owner decides</div>
       <h3>Start the campaign ledger empty, with defined columns, and fill it only from first-party reports</h3>
       <p><strong>Problem.</strong> Every affiliate dashboard invites a fabricated conversion rate on day one.</p>
-      <p><strong>Evidence.</strong> No first-party performance data exists (F-10). A number without provenance is worse than a blank.</p>
+      <p><strong>Evidence.</strong> No first-party performance data exists (<a href="flagged.html#F-10">F-10</a>). Search Console is where first-party search-performance data comes from (S26, S29). A number without provenance is worse than a blank.</p>
       <p><strong>Options.</strong></p><ul><li>A. An empty ledger with fixed columns — timestamp, source, channel, eligible sessions, clicks, reported orders, provenance — filled only after launch, from the Associates report.</li><li>B. Estimated figures marked as estimates.</li></ul>
       <p><strong>Recommendation.</strong> A. B ages badly: the estimate outlives the label.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
@@ -235,7 +227,7 @@
       <div class="meta">SG-15 · editorial decides</div>
       <h3>Lead every shop page with the products, and keep the verification record one click away</h3>
       <p><strong>Problem.</strong> The front page opened with the process (verification framing) instead of the picks, so a first-time buyer landed on an audit rather than a shop.</p>
-      <p><strong>Evidence.</strong> Google&#x27;s people-first guidance asks that content exist for readers, not for crawlers (S12). The compliance record stays reachable in the footer group, where the release gates already require it.</p>
+      <p><strong>Evidence.</strong> Google&#x27;s people-first guidance asks that content exist for readers, not for crawlers (S21). The compliance record stays reachable in the footer group, where the release gates already require it.</p>
       <p><strong>Options.</strong></p><ul><li>A. Product-first front page: hero question, five cards with CTAs, chooser, then the data table and trust row.</li><li>B. Keep the audit-first layout; readers who care will scroll.</li><li>C. Split into two sites — shop vs. process.</li></ul>
       <p><strong>Recommendation.</strong> A. Implemented 2026-11-19: the front page now leads with the five picks and their CTAs; disclosure stays above the fold and every dashboard page remains in the footer group. The chooser pointer was kept deliberately humble — a starting point, not a test verdict.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
@@ -250,16 +242,16 @@
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
       <p class="small muted">Blocks: nothing</p>
     </article><article class="card">
-      <div class="meta">SG-23 · editorial decides</div>
+      <div class="meta">SG-22 · editorial decides</div>
       <h3>Make one page the definitive answer to &quot;how big is it really&quot;</h3>
       <p><strong>Problem.</strong> Every air fryer buyer asks the same question and every listing answers it badly: nominal quarts, no interior measurements, no clearance figure.</p>
-      <p><strong>Evidence.</strong> The three air-fryer listings publish exterior dimensions only; interior cavity sizes and required clearances are not stated (S10-S12, F-12). Nominal capacity is a headline figure, not a usable volume.</p>
+      <p><strong>Evidence.</strong> The three air-fryer listings publish exterior dimensions only; interior cavity sizes and required clearances are not stated (S10-S12, <a href="flagged.html#F-12">F-12</a>). Nominal capacity is a headline figure, not a usable volume.</p>
       <p><strong>Options.</strong></p><ul><li>A. Publish a measurements page that shows the listed external size, the arithmetic for counter area, and an explicit blank where interior size and clearance belong.</li><li>B. Email the three manufacturers and publish their replies with dates.</li><li>C. Skip it and point at the listings.</li></ul>
       <p><strong>Recommendation.</strong> A now — the arithmetic is already verified and the blanks are the honest part. B is the upgrade once an owner has an address to write from.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
       <p class="small muted">Blocks: Nothing</p>
     </article><article class="card">
-      <div class="meta">SG-25 · engineering decides</div>
+      <div class="meta">SG-24 · engineering decides</div>
       <h3>Stop calling it a decision log until decisions are actually recorded there</h3>
       <p><strong>Problem.</strong> The Direction page once presented eight suggestions that nobody had been asked to approve. A register that lists proposals as if they were decisions teaches the reader to discount the whole page.</p>
       <p><strong>Evidence.</strong> This audit found direction.html carrying SG-01..SG-08 with meanings different from data/suggestions.json (I-01), and no dated decisions at all.</p>

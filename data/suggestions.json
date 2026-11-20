@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-19",
-  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree.",
+  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added the six proposals that are now SG-20..SG-24 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. Session arena/0a1638a1-prod3 removed a duplicated SG-21 row — it had been restored byte-identical during an earlier merge-conflict resolution — and renumbered the tail so the identifiers run without a gap (the former final four rows are now SG-21..SG-24) and one identifier names one proposal. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree.",
   "scale": {
     "effort": [
       "S — a short session",
@@ -18,7 +18,7 @@
       "id": "SG-01",
       "title": "Narrow the site to one question: air fryer, or thermometer — not both",
       "problem": "Five products across two families read as a list of things someone had links for, not a publication with a beat.",
-      "evidence": "The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google's thin-affiliation policy specifically targets affiliate pages whose only reason to exist is the links (S12).",
+      "evidence": "The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google's thin-affiliation policy specifically targets affiliate pages whose only reason to exist is the links (S22).",
       "options": [
         "A. Keep both, and make the beat \"cooking to a target temperature\" — the air fryer gets food hot, the thermometer proves it is done. This is what the site currently does.",
         "B. Narrow to air fryers, and treat the thermometers as one comparison article.",
@@ -34,7 +34,7 @@
     {
       "id": "SG-02",
       "title": "Publish the two spec conflicts instead of picking a winner",
-      "problem": "P1's capacity is stated as both 6 liters and 6 quarts; P2's preset count is both 24 and 25.",
+      "problem": "P-01's capacity is stated as both 6 liters and 6 quarts; P-02's preset count is both 24 and 25.",
       "evidence": "Program Policies 2(b) prohibits inaccurate or misleading product claims (S02). Choosing one number at random is exactly that.",
       "options": [
         "A. Show both readings and name the conflict. A buyer learns the listing is sloppy, which is useful.",
@@ -69,7 +69,7 @@
       "id": "SG-04",
       "title": "Answer eight buyer questions, not eight product reviews",
       "problem": "Product pages answer \"what is it\"; buyers arrive with \"which one, and will it fit\".",
-      "evidence": "People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S14). A product question has a real answer; a review of an untouched product does not (S22).",
+      "evidence": "People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S03).",
       "options": [
         "A. Eight question-shaped guides, each answerable from published specifications and USDA targets.",
         "B. Five long product reviews written without handling the products.",
@@ -86,7 +86,7 @@
       "id": "SG-05",
       "title": "Build the compliance gate into the build, not into a checklist",
       "problem": "Disclosure placement and rel=\"sponsored\" are the two things that are easy to forget on page fourteen.",
-      "evidence": "Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=\"sponsored\" on paid links (S11).",
+      "evidence": "Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=\"sponsored\" on paid links (S04).",
       "options": [
         "A. Generate every page from one template that always emits the disclosure strip, and run a checker that fails on any Amazon link without rel=\"sponsored\".",
         "B. A written checklist someone reads before publishing."
@@ -102,7 +102,7 @@
       "id": "SG-06",
       "title": "Buy one air fryer and one thermometer, and earn the right to say \"we used it\"",
       "problem": "The highest-value content in this niche — what the thing is like to live with — cannot be written honestly without the thing.",
-      "evidence": "FTC: \"You can't talk about your experience with a product you haven't tried\" (S22). Google's E-E-A-T guidance rewards demonstrated experience (S14).",
+      "evidence": "FTC: \"You can't talk about your experience with a product you haven't tried\" (S03). Google's E-E-A-T guidance rewards demonstrated experience (S21).",
       "options": [
         "A. Buy one unit per family out of the commission budget and document a fixed set of tests: heat-up time, evenness with a thermocouple grid, basket clean-up time, counter footprint.",
         "B. Stay specification-only, and be the site that is scrupulous about it.",
@@ -119,7 +119,7 @@
       "id": "SG-07",
       "title": "Turn on Search Console before writing guide nine",
       "problem": "The next topic is currently chosen by instinct.",
-      "evidence": "No Search Console property exists (F-17). Choosing topics from measured queries is the only way to avoid writing eight more articles for nobody.",
+      "evidence": "No Search Console property exists (F-17). Search Console is the source of query, impression and click data (S26, S29). Choosing topics from measured queries is the only way to avoid writing eight more articles for nobody.",
       "options": [
         "A. Verify the property, wait two weeks, and pick the next three topics from the Queries report.",
         "B. Keep writing on instinct and check the reports later."
@@ -152,7 +152,7 @@
       "id": "SG-09",
       "title": "Give every page a unique title and description, and test that the build rejects duplicates",
       "problem": "Duplicate titles and descriptions are the most common self-inflicted indexing problem for generated sites.",
-      "evidence": "Google: \"Create unique descriptions for each page on your site\"; identical descriptions on every page are named as a problem (S13).",
+      "evidence": "Google: \"Create unique descriptions for each page on your site\"; identical descriptions on every page are named as a problem (S24).",
       "options": [
         "A. Generate each page's title and description from its own content, and fail the build on a duplicate.",
         "B. One site-wide description."
@@ -168,7 +168,7 @@
       "id": "SG-10",
       "title": "Make the front page a publication front page, and keep the dashboards one click away in the footer",
       "problem": "The verification machinery is genuinely interesting to the owner and irrelevant to a buyer.",
-      "evidence": "Page-experience guidance (S14); the reader came for a question, not an audit trail.",
+      "evidence": "Page-experience guidance (S25); the reader came for a question, not an audit trail.",
       "options": [
         "A. Front page leads with the products and the guides; the register, gate, ledger and flagged pages sit in a single footer group.",
         "B. Front page leads with the source register, because that is what makes this site different.",
@@ -202,7 +202,7 @@
       "id": "SG-12",
       "title": "Put a three-question chooser above the comparison table",
       "problem": "A comparison table asks the reader to hold eleven columns in their head and decide.",
-      "evidence": "The three air fryers differ along three axes that are decidable from the listing: form (basket vs oven), capacity, and counter depth. Nothing else materially separates them (S03, S04, S05).",
+      "evidence": "The three air fryers differ along three axes that are decidable from the listing: form (basket vs oven), capacity, and counter depth. Nothing else materially separates them (S10-S12).",
       "options": [
         "A. Three questions, each with two or three answers, resolving to one product with a stated reason.",
         "B. A filterable table.",
@@ -219,7 +219,7 @@
       "id": "SG-13",
       "title": "Test one short link inside the enrolled Associates workflow before trusting the format",
       "problem": "The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.",
-      "evidence": "Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
+      "evidence": "Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site labels every product button as going to Amazon and carries rel=\"sponsored\", so the destination is not hidden from the reader; but the supplied short links' own status in the enrolled workflow is unresolved (F-13), and the site claims neither compliance nor failure.",
       "options": [
         "A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.",
         "B. Switch every link to direct /dp/ URLs and drop the short form.",
@@ -236,7 +236,7 @@
       "id": "SG-14",
       "title": "Start the campaign ledger empty, with defined columns, and fill it only from first-party reports",
       "problem": "Every affiliate dashboard invites a fabricated conversion rate on day one.",
-      "evidence": "No first-party performance data exists (F-10). A number without provenance is worse than a blank.",
+      "evidence": "No first-party performance data exists (F-10). Search Console is where first-party search-performance data comes from (S26, S29). A number without provenance is worse than a blank.",
       "options": [
         "A. An empty ledger with fixed columns — timestamp, source, channel, eligible sessions, clicks, reported orders, provenance — filled only after launch, from the Associates report.",
         "B. Estimated figures marked as estimates."
@@ -252,7 +252,7 @@
       "id": "SG-15",
       "title": "Lead every shop page with the products, and keep the verification record one click away",
       "problem": "The front page opened with the process (verification framing) instead of the picks, so a first-time buyer landed on an audit rather than a shop.",
-      "evidence": "Google's people-first guidance asks that content exist for readers, not for crawlers (S12). The compliance record stays reachable in the footer group, where the release gates already require it.",
+      "evidence": "Google's people-first guidance asks that content exist for readers, not for crawlers (S21). The compliance record stays reachable in the footer group, where the release gates already require it.",
       "options": [
         "A. Product-first front page: hero question, five cards with CTAs, chooser, then the data table and trust row.",
         "B. Keep the audit-first layout; readers who care will scroll.",
@@ -269,13 +269,13 @@
       "id": "SG-16",
       "title": "Replace the SVG social preview with a raster card, and verify it before relying on it",
       "problem": "Every page referenced assets/og-image.svg as og:image until the publication-polish pass replaced it with a 1200×630 raster card (assets/og-image.png). SVG is not the format social preview tools typically render, so the format risk is resolved; what remains is confirming the card actually renders in a share debugger.",
-      "evidence": "Meta's sharing best-practices documentation asks for JPG or PNG preview images (https://developers.facebook.com/docs/sharing/best-practices — recorded as a to-verify reference; not re-fetched from this network, see F-21). The PNG is now shipped on all 24 pages; the debugger check (Q-21) has not been run.",
+      "evidence": "Meta's sharing best-practices documentation asks for Open Graph meta tags so the Facebook Crawler scrapes title, description and preview image, and asks that the Sharing Debugger tool be used to test how the page is viewed by the scraper (S28). It asks for images at least 1080 px wide; the shipped PNG is 1200 px and every page now carries the four properties the Open Graph protocol requires, og:url included (S27). The debugger check (Q-21) has not been run.",
       "options": [
         "A. Produce one 1200×637 PNG card from the existing brand type, swap the og:image hrefs, and confirm with a share debugger.",
         "B. Keep SVG and accept that some previews show nothing.",
         "C. Drop og:image entirely."
       ],
-      "recommendation": "A, once someone with a browser can run the share-preview check. The change is one file and nine href lines; the fallback today (a plain-text link preview) is honest but costs the click.",
+      "recommendation": "A, once someone with a browser can run the sharing-debugger check. The card and the required metadata are shipped; the one file and one href change that option A still describes were completed on 2026-11-20, and the fallback today (a plain-text link preview) is honest but costs the click.",
       "effort": "S",
       "confidence": "medium",
       "status": "partly implemented",
@@ -303,7 +303,7 @@
       "id": "SG-18",
       "title": "Choose guide nine from measured queries, not instinct",
       "problem": "Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.",
-      "evidence": "Search Console is the first-party source for the queries a site actually appears for (https://search.google.com/search-console/about — SG-07 is the verification prerequisite). analytics.html records that no data exists yet.",
+      "evidence": "Search Console is the first-party source for the queries a site actually appears for: its Search Analytics report shows which queries bring users to the site and how often searchers click through (S29). SG-07 is the verification prerequisite. analytics.html records that no data exists yet.",
       "options": [
         "A. Hold at eight guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
         "B. Keep the weekly cadence with self-selected topics until data arrives.",
@@ -352,23 +352,6 @@
     },
     {
       "id": "SG-21",
-      "title": "Pick one product as the site's spine and let the other four support it",
-      "problem": "Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.",
-      "evidence": "The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google's thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).",
-      "options": [
-        "A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.",
-        "B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.",
-        "C. Keep the current two-family balance and expand only when the analytics say which family reads better."
-      ],
-      "recommendation": "A. Air fryers have the wider search intent and three products to compare, which is enough for a comparison table that earns its place. Revisit at the first Search Console report.",
-      "effort": "M",
-      "confidence": "medium",
-      "status": "proposed",
-      "decision_owner": "owner",
-      "blocks": "Which guides get written next"
-    },
-    {
-      "id": "SG-22",
       "title": "Write the first-hand answer only after someone has actually used the appliance for a month",
       "problem": "The most useful sentence on any appliance site — what it is like after the novelty wears off — cannot be written from a listing. Writing it anyway is the exact practice the FTC warns about.",
       "evidence": "FTC Disclosures 101: you cannot talk about your experience with a product you have not tried (S03). Google's people-first guidance rewards demonstrated experience (S21).",
@@ -385,7 +368,7 @@
       "blocks": "Nothing today; it is the ceiling on how good the content can get"
     },
     {
-      "id": "SG-23",
+      "id": "SG-22",
       "title": "Make one page the definitive answer to \"how big is it really\"",
       "problem": "Every air fryer buyer asks the same question and every listing answers it badly: nominal quarts, no interior measurements, no clearance figure.",
       "evidence": "The three air-fryer listings publish exterior dimensions only; interior cavity sizes and required clearances are not stated (S10-S12, F-12). Nominal capacity is a headline figure, not a usable volume.",
@@ -402,7 +385,7 @@
       "blocks": "Nothing"
     },
     {
-      "id": "SG-24",
+      "id": "SG-23",
       "title": "Give the site a named editor before giving it a voice",
       "problem": "An anonymous publication can be accurate and still be untrustworthy, because nobody is accountable for the errors.",
       "evidence": "Google's people-first guidance asks who created the content and whether it is written by someone with first-hand knowledge (S21).",
@@ -419,7 +402,7 @@
       "blocks": "Nothing; it changes how much a reader should trust the page"
     },
     {
-      "id": "SG-25",
+      "id": "SG-24",
       "title": "Stop calling it a decision log until decisions are actually recorded there",
       "problem": "The Direction page once presented eight suggestions that nobody had been asked to approve. A register that lists proposals as if they were decisions teaches the reader to discount the whole page.",
       "evidence": "This audit found direction.html carrying SG-01..SG-08 with meanings different from data/suggestions.json (I-01), and no dated decisions at all.",

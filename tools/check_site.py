@@ -26,6 +26,19 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+def is_verification_file(path):
+    """True only for a Search Console HTML verification file (see content/measurement.md §2).
+
+    Narrow by design: the name must be google<token>.html AND the entire body must be the
+    single line "google-site-verification: <token>". Any other root HTML file, including
+    one that merely starts with that line, is a page and is held to the page rules.
+    """
+    if not re.fullmatch(r"google[A-Za-z0-9]+\.html", path.name):
+        return False
+    body = path.read_text(encoding="utf-8", errors="replace").strip()
+    return re.fullmatch(r"google-site-verification: [A-Za-z0-9_.\-]+", body) is not None
+
 DISCLOSURE = "As an Amazon Associate I earn from qualifying purchases."
 
 failures = []
@@ -43,7 +56,7 @@ if not (ROOT / "index.html").exists():
     print("no site found — run this from the repository root after checkout")
     sys.exit(2)
 
-pages = sorted(ROOT.glob("*.html")) + sorted((ROOT / "articles").glob("*.html"))
+pages = [f for f in sorted(ROOT.glob("*.html")) if not is_verification_file(f)] + sorted((ROOT / "articles").glob("*.html"))
 docs = {p.relative_to(ROOT).as_posix(): p.read_text(encoding="utf-8") for p in pages}
 
 titles, descs = {}, {}
@@ -275,6 +288,75 @@ import os
 for img in (ROOT / "assets").rglob("*.png"):
     kb = os.path.getsize(img) / 1024
     check("A13-img-weight", kb < 400, f"{img.name}: {kb:.0f} KB (over 400 KB)")
+
+# ---- register consistency (T-25) -----------------------------------------
+# og:url: every indexable page declares its canonical address as og:url. The
+# error page declares none, because it has no address to offer a sharer.
+for name, html in docs.items():
+    canon = re.search(r'<link rel="canonical" href="([^"]+)"', html)
+    ogu = re.search(r'<meta property="og:url" content="([^"]+)"', html)
+    if name == "404.html":
+        check("R01-og-url-404", ogu is None, f"{name}: error page must not declare og:url")
+        continue
+    check("R01-og-url", bool(ogu), f"{name}: no og:url")
+    if ogu and canon:
+        check("R02-og-url-canonical", ogu.group(1) == canon.group(1),
+              f"{name}: og:url {ogu.group(1)} differs from canonical {canon.group(1)}")
+
+# Register IDs: each register's rows are the ones the JSON defines, and every
+# SG-/Q-/C-/F- reference anywhere (public pages or data files) resolves.
+_flag_items = json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))["items"]
+_f_ids = {i["id"] for i in _flag_items}
+_f_rows = dict(re.findall(r'<tr id="(F-\d\d)">(.*?)</tr>', docs["flagged.html"], re.S))
+check("R03-f-register-rows", set(_f_rows) == _f_ids,
+      f"flagged.html rows {sorted(set(_f_rows) ^ _f_ids)} differ from data/flagged.json")
+for i in _flag_items:
+    check("R04-f-row-source", bool(i.get("sources")), f"{i['id']}: no source IDs in data/flagged.json")
+    for sid in i.get("sources", []):
+        check("R04b-f-source-defined", sid in _source_ids, f"{i['id']}: cites undefined source {sid}")
+    body = _f_rows.get(i["id"], "")
+    check("R04c-f-row-link", 'href="https://' in body, f"{i['id']}: rendered row carries no https source link")
+
+_ids = {
+    "F": _f_ids,
+    "SG": {s["id"] for s in json.loads((ROOT / "data" / "suggestions.json").read_text(encoding="utf-8"))["suggestions"]},
+    "Q": {q["id"] for q in json.loads((ROOT / "data" / "open-questions.json").read_text(encoding="utf-8"))["questions"]},
+    "C": {c["id"] for c in json.loads((ROOT / "data" / "policy-checks.json").read_text(encoding="utf-8"))["checks"]},
+}
+_ref_re = re.compile(r"(?<![A-Za-z0-9])(F|SG|Q|C)-\d\d(?!\d)")
+for name, html in docs.items():
+    for ref in sorted({m.group(0) for m in _ref_re.finditer(html)}):
+        kind = ref.split("-")[0]
+        check("R05-public-ref-resolves", ref in _ids[kind], f"{name}: references {ref}, not defined in its register")
+for f in sorted((ROOT / "data").glob("*.json")):
+    for ref in sorted({m.group(0) for m in _ref_re.finditer(f.read_text(encoding="utf-8"))}):
+        kind = ref.split("-")[0]
+        check("R06-data-ref-resolves", ref in _ids[kind], f"{f.name}: references {ref}, not defined in its register")
+
+# Suggestions: every row's evidence points at something a reader can check: a
+# source ID, a URL, an F-register finding, or a file in this repository.
+_EVIDENCE_OK = re.compile(r"\bS\d\d\b|https?://|\bF-\d\d\b|[\w/.-]+\.(?:html|json|md|py)\b")
+for s in json.loads((ROOT / "data" / "suggestions.json").read_text(encoding="utf-8"))["suggestions"]:
+    check("R07-sg-evidence", bool(_EVIDENCE_OK.search(s.get("evidence", ""))),
+          f"{s['id']}: evidence names no source, finding or file")
+
+# Intent and observation never contradict. An intended field is either empty
+# (no owner decision yet) or complete, with a confirmation date and a source;
+# an observation is never copied into an intended field.
+for r in json.loads((ROOT / "data" / "verification.json").read_text(encoding="utf-8"))["records"]:
+    intent = r["intended"]
+    if any(v is not None for v in intent.values()):
+        check("R08-intent-complete", all(intent.get(k) for k in ("asin", "listing_url", "confirmation_date", "source")),
+              f"{r['product']}: intended fields partly filled without a full confirmation")
+    check("R08b-intent-not-copied", intent.get("asin") in (None, "") or intent.get("asin") != r["observed"].get("resolved_asin")
+          or intent.get("source"),
+          f"{r['product']}: observed ASIN copied into intended field without a confirmation source")
+
+# Verification files: a root google*.html is exempt from the page rules only
+# when it is one; it must never appear in the sitemap.
+_sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
+for vf in sorted(ROOT.glob("google*.html")):
+    check("R09-verification-not-in-sitemap", vf.name not in _sitemap, f"{vf.name} listed in sitemap.xml")
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

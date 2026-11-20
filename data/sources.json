@@ -162,7 +162,40 @@
       "used_for": "Page-experience expectations behind the mobile-first and performance rules",
       "quote": "Google's core systems reward pages that provide a great page experience.",
       "updated": "fetched 2026-11-19"
+    },
+    {
+      "id": "S26",
+      "title": "Google Search Console Help — About Search Console",
+      "url": "https://support.google.com/webmasters/answer/9128668",
+      "used_for": "What Search Console actually provides and therefore what the site is missing: search traffic data showing which queries surface the site and how often searchers click through. Basis for F-10, F-17, SG-07, SG-18, Q-07, Q-17 and Q-18.",
+      "quote": "View Google Search traffic data for your site: how often your site appears in Google Search, which search queries show your site, how often searchers click through for those queries, and more.",
+      "updated": "fetched 2026-11-20"
+    },
+    {
+      "id": "S27",
+      "title": "The Open Graph protocol — required properties",
+      "url": "https://ogp.me/",
+      "used_for": "The four properties the protocol requires on every page (og:title, og:type, og:image, og:url) and the recommendation to carry og:image:alt when an image is specified. Basis for F-21, SG-16 and the A15 gate rule.",
+      "quote": "The four required properties for every page are: og:title … og:type … og:image … og:url … og:image:alt — A description of what is in the image (not a caption). If the page specifies an og:image it should specify og:image:alt.",
+      "updated": "fetched 2026-11-20"
+    },
+    {
+      "id": "S28",
+      "title": "Meta for Developers — Sharing best practices",
+      "url": "https://developers.facebook.com/docs/sharing/best-practices",
+      "used_for": "What a share crawler needs in order to render a card, and the sharing-debugger step that F-21 and Q-21 still owe. Basis for SG-16, F-21, Q-21.",
+      "quote": "Use Open Graph meta tags to ensure the Facebook Crawler scrapes useful information, such as title, description, and preview image … Use the Sharing Debugger tool to test how your websites are viewed by our scraper … Use images that are at least 1080 pixels in width for best display on high resolution devices.",
+      "updated": "fetched 2026-11-20",
+      "note": "Page states 'Updated: Feb 23, 2022'. It does not say JPG or PNG; the earlier to-verify wording in data/suggestions.json claimed it did, and that claim was corrected when the page was fetched."
+    },
+    {
+      "id": "S29",
+      "title": "Google Search Console — about (product page)",
+      "url": "https://search.google.com/search-console/about",
+      "used_for": "Search Console as the first-party source of query, impression and click data, and the owner-side verification step that stands between the site and any query data (SG-07, SG-18, Q-07, Q-18).",
+      "quote": "Optimize your content with Search Analytics: See which queries bring users to your site. Analyze your site's impressions, clicks, and position on Google Search.",
+      "updated": "fetched 2026-11-20"
     }
   ],
-  "note": "\"verified\"/\"updated\" fields record when a page was fetched or its listed update date; a fetch date is not an endorsement of the page's product claims. Listing sources are seller pages: specs, ratings, and prices transcribed from them are seller statements. Amazon page availability and content can change. Session a25ccde6 added the Google people-first, thin-affiliation, custom-404, snippet and page-experience sources (S21-S25) after finding that the people-first and thin-affiliation sources had been cited in the data registers without ever being defined (audit I-03). Those additions were renumbered after the merge to avoid colliding with this branch's tap-target source."
+  "note": "\"verified\"/\"updated\" fields record when a page was fetched or its listed update date; a fetch date is not an endorsement of the page's product claims. Listing sources are seller pages: specs, ratings, and prices transcribed from them are seller statements. Amazon page availability and content can change. Session a25ccde6 added the Google people-first, thin-affiliation, custom-404, snippet and page-experience sources (S21-S25) after finding that the people-first and thin-affiliation sources had been cited in the data registers without ever being defined (audit I-03). Those additions were renumbered after the merge to avoid colliding with this branch's tap-target source. Session arena/0a1638a1-prod3 added S26-S29 (Search Console, Open Graph, Meta sharing best practices) after the register audit found F-10, F-17 and F-21 carrying no source at all and two suggestion rows citing bare URLs that no source record covered."
 }

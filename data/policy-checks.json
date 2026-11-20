@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "premise": "Automate what can be automated and put a gate in front of what cannot. Every check below states which side of that line it sits on.",
   "checks": [
     {
@@ -21,8 +21,8 @@
       "quote_basis": "\"Place it so it's hard to miss... Disclosures are likely to be missed if they appear only on an ABOUT ME or profile page, at the end of posts or videos, or anywhere that requires a person to click MORE.\"",
       "status": "met",
       "automated": true,
-      "evidence": "Above-the-fold strip under the masthead on all pages, plus a disclosure line immediately above each outbound product button. The footer repeat is supplementary, not the primary disclosure.",
-      "gate": "none"
+      "evidence": "An above-the-fold strip sits directly under the masthead on all 24 pages, before the first h1, and the footer repeats it. On the shop pages the product section also carries a trust row naming Amazon as the destination, and every product button is labelled 'Check price on Amazon' or 'Check price'. The disclosure is therefore page-level rather than repeated per button — which is a judgment call, not a mechanical one, so it is stated here rather than assumed.",
+      "gate": "Editorial check that a future button is never placed further from the page's disclosure than the buttons already on that page. The automated rule proves the strip is above the h1; it cannot prove the reader saw it."
     },
     {
       "id": "C-03",
@@ -43,8 +43,8 @@
       "quote_basis": "Section 2(b) prohibits using a link-shortening service or placement in a manner that makes it unclear you are linking to an Amazon Site.",
       "status": "met",
       "automated": true,
-      "evidence": "Outbound buttons go to https://www.amazon.com/dp/<ASIN> directly, are labelled \"View on Amazon\", and sit under a line that names Amazon as the destination. The supplied link.amazon short links are recorded in the data file as provenance but are not used as the user-facing destination.",
-      "gate": "none"
+      "evidence": "Every outbound product button points at the supplied https://link.amazon/<token> short link, is labelled as going to Amazon, opens in a new tab and carries rel=\"sponsored noopener\"; the https://www.amazon.com/dp/<ASIN> pages appear beside it as the evidence link for the specs in the same row. No Amazon anchor on the site hides its destination behind an opaque redirector. Whether the supplied short-link format satisfies section 2(b) in the enrolled workflow is a separate and still-unresolved question — FLG-006, F-13 and Q-04 — and the site claims neither compliance nor failure.",
+      "gate": "Owner action: test one supplied short link inside the enrolled Associates workflow and confirm the destination and the click report (Q-04)."
     },
     {
       "id": "C-05",
@@ -65,7 +65,7 @@
       "quote_basis": "Section 2(b) prohibition on inaccurate or misleading product claims, with the 64 GB / 128 GB example.",
       "status": "partial",
       "automated": true,
-      "evidence": "Every published specification is copied from the listing and tagged with a source id and a capture date. Where the listing contradicts itself (P1 capacity units, P2 preset count) both readings are shown and the conflict is named rather than resolved silently.",
+      "evidence": "Every published specification is copied from the listing and tagged with a source id and a capture date. Where the listing contradicts itself (P-01 capacity units, P-02 preset count) both readings are shown and the conflict is named rather than resolved silently.",
       "gate": "Human review of editorial prose before each new guide is published. The automated check can prove a claim is cited; it cannot prove the citation supports the claim."
     },
     {
@@ -98,8 +98,8 @@
       "quote_basis": "Section 2(a) requires Special Links to carry the assigned Associates ID; the ASIN is the checkable product identifier.",
       "status": "met",
       "automated": true,
-      "evidence": "data/products.json stores intended.asin, intended.confirmation_date and intended.source in one object and observed.resolved_asin, observed.resolved_status and observed.captured in another. All five agree today, and the data file records each agreement explicitly rather than assuming it.",
-      "gate": "Re-resolve the five short links with every content release and record the date."
+      "evidence": "data/products.json keeps the product-intent fields (intended_asin, intended_listing_url, confirmation_date, intent_source) separate from the observation fields (observed_asin, observed_redirect_target) and from the dated citation block, which carries its own intended_value and intended_confirmed_by fields. All four intent fields are null for all five products because the owner has not confirmed them in the Associates workflow, and the release gate fails the build if any of them is filled in without that confirmation. The observed destinations are dated 2026-11-19 and are never treated as confirmation of intent.",
+      "gate": "Re-resolve the five short links with every content release and record the date. A later fetch is recorded in its own block (see data/verification.json) and never overwrites the original dated observation."
     },
     {
       "id": "C-10",
@@ -119,9 +119,9 @@
       "source": "S02",
       "quote_basis": "Section 2(b): when linking to pages with product lists you must have additional original content relevant to the Special Link.",
       "status": "met",
-      "automated": false,
-      "evidence": "The only category link on the site points at the Air Fryers storefront (S15) and appears inside the comparison guide, which carries its own analysis. No bare list links are published.",
-      "gate": "Review any future category link before it ships."
+      "automated": true,
+      "evidence": "No link into a product list, storefront, search page, bestsellers page or department page is published anywhere on the site: every Amazon link resolves to a single /dp/<ASIN> product listing. The Category column in the comparison table is plain text, not a link. The section 2(b) requirement that a link into a product list carry additional original content is therefore not engaged by the current tree.",
+      "gate": "The build fails if any Amazon link points at a search, storefront, bestsellers or department page instead of a single product listing. Any future category link is reviewed before it ships."
     },
     {
       "id": "C-12",
@@ -131,8 +131,8 @@
       "quote_basis": "The people-first content guidance and the page-experience guidance both penalise interruption over substance.",
       "status": "met",
       "automated": true,
-      "evidence": "Each guide opens with the answer, then the reasoning, and only then the product cards. Product cards are capped at two per article by the build.",
-      "gate": "none"
+      "evidence": "Every guide opens with the answer, then the reasoning, and only then names a product. Six of the eight guides carry no outbound product link at all; the gift guide carries one per product, because a gift guide that will not name the gift is useless. No page on the site carries more than five outbound product buttons, and the release gate fails the build if one does.",
+      "gate": "Editorial review if a new page introduces a product-led layout ahead of the answer."
     },
     {
       "id": "C-13",

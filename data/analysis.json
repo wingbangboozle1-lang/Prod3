@@ -1,16 +1,16 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "premise": "The one piece of analysis on this site that no listing can supply, and that is derived entirely from published dimensions. Capacity per square inch of counter footprint. It is arithmetic, not testing, and it is labelled as arithmetic.",
-  "method": "For each appliance with a published footprint, multiply the listed depth by the listed width in inches to get counter area, then divide the listed nominal capacity by that area. The result is quarts of nominal capacity per square inch of counter. Every input is copied from the product's own listing on 2026-11-19; no input is estimated. Sources are the official listing pages recorded as S10-S14 in data/sources.json; the arithmetic is reproducible from the figures shown.",
+  "method": "For each appliance with a published footprint, multiply the listed depth by the listed width in inches to get counter area, then divide the listed nominal capacity by that area. The result is quarts of nominal capacity per square inch of counter. Every input is copied from the product's own listing on 2026-11-19; no input is estimated. Sources are the official listing pages recorded as S10-S14 in data/sources.json; the arithmetic is reproducible from the figures shown. Where two densities are compared, the difference is measured against the lower of the two.",
   "caveats": [
     "Nominal capacity is the manufacturer's headline figure, not a measured usable volume. A basket and an oven of the same nominal capacity do not hold the same food.",
     "Counter area is the footprint as listed. It excludes clearance for opening a door, pulling a basket out, or a wall behind the unit. Real clearance needs are larger, and the oven-style machine needs far more front clearance than a basket drawer.",
     "Two of the five products have no published dimensions and are excluded rather than estimated (F-04).",
-    "A higher number is not better. It means more nominal capacity per inch of counter, which may mean a taller unit, not a better one."
+    "A higher number is not better. It means more nominal capacity for each inch of counter, which may mean a taller unit, not a better one."
   ],
   "products": [
     {
-      "id": "P1",
+      "id": "P-01",
       "label": "Chefman 6 Qt Dual Basket",
       "depth_in": 13.38,
       "width_in": 11.81,
@@ -24,7 +24,7 @@
       ]
     },
     {
-      "id": "P2",
+      "id": "P-02",
       "label": "Emeril Lagasse 26QT French Door",
       "depth_in": 16.9,
       "width_in": 15.8,
@@ -38,7 +38,7 @@
       ]
     },
     {
-      "id": "P3",
+      "id": "P-03",
       "label": "Chefman TurboFry 8 Qt",
       "depth_in": 12.75,
       "width_in": 13.5,
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "id": "P4",
+      "id": "P-04",
       "label": "ThermoMaven 1 Sec Thermometer",
       "depth_in": null,
       "width_in": null,
@@ -66,7 +66,7 @@
       ]
     },
     {
-      "id": "P5",
+      "id": "P-05",
       "label": "CHEF iQ Sense",
       "depth_in": null,
       "width_in": null,
@@ -81,10 +81,9 @@
     }
   ],
   "findings": [
-    "The oven-style machine (P2) delivers about 2.6 times the nominal capacity per square inch of counter that P1 does, and about 2.1 times what P3 does. That is the arithmetic behind the intuition that an oven-style air fryer uses counter space efficiently: it is a box, and a box fills its footprint.",
-    "P1 and P3 are within 22 percent of each other on capacity per square inch, despite P3 holding two quarts more nominal capacity. P1's two-drawer design spreads the same kind of volume across a wider, shallower body.",
-    "Depth, not area, is the number that usually decides the purchase. P2 needs 16.9 in of front-to-back counter depth; P3 needs 12.75 in. On a standard 24 in deep counter, P2 leaves about 7 in behind it and P1 about 10.6 in.",
-    "Depth, not area, is the number that usually decides the purchase. P2 needs 16.9 in of front-to-back counter depth; P3 needs 12.75 in. On a nominal 24 in deep counter, P2 leaves about 7.1 in behind it and P1 about 10.6 in."
+    "The oven-style machine (P-02) delivers about 2.6 times the nominal capacity per square inch of counter that P-01 does, and about 2.1 times what P-03 does. That is the arithmetic behind the intuition that an oven-style air fryer uses counter space efficiently: it is a box, and a box fills its footprint.",
+    "P-01 and P-03 are within 22.4 percent of each other on capacity per square inch, despite P-03 holding two quarts more nominal capacity. P-01's two-drawer design spreads the same kind of volume across a wider, shallower body.",
+    "Depth, not area, is the number that usually decides the purchase. P-02 needs 16.9 in of front-to-back counter depth; P-03 needs 12.75 in. On a nominal 24 in deep counter, P-02 leaves about 7.1 in behind it and P-01 about 10.6 in."
   ],
   "corrections": [
     "The counter-depth arithmetic compares each unit's listed depth against a nominal 24 in counter. 24 in is a common North American base-cabinet depth quoted as a reference point here, not a measured standard for any particular kitchen.",

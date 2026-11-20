@@ -2560,6 +2560,23 @@ Deploy record appended after merge.
   worktree (`git worktree add` + every gate, not inferred). Read as a Pages deployment racing my merge's run
   within the same minute. If the live site lags `main`, re-run that workflow rather than editing content.
 
+### CI post-mortem for the two red Pages runs (07:2xZ), with the rule it implies
+
+`Deploy GitHub Pages` failed on `76b267f`, `f98e185` (this session's board PR #80) and `0569046`, and the job's
+step list shows the failure at **"Regenerated surfaces are current"**, not at the deploy step. Reproduced in a
+clean worktree at `f98e185`: `build_decisions.py --check` and `build_readme.py --check` both fail there, while
+every gate passes at `origin/main` `02b767d`. Cause, precisely: a branch that carries generated pages merges
+`main` (auto-merge, no conflict, because `data/*.json` changed in someone else's region), keeps **its own**
+regenerated `decisions.html`/`README.md`, and looks green locally — then GitHub builds the *merge commit*, where
+the new data sits beside the older generated page. Nothing in the content was wrong; the page was a build of the
+wrong input.
+
+- **Rule for anyone carrying generated surfaces:** re-run the generators *after* the last merge from `main`, then
+  re-run `--check` on the merged tree, and only then push. Checking before the merge proves nothing about the
+  merge commit, which is what CI builds and what Pages publishes.
+- No content fix was warranted, so none was made: the failures cleared themselves at `02b767d`, verified green on
+  all eleven checks in a clean worktree rather than inferred from the absence of new red runs.
+
 ### Identifier collision note, resolved rather than left ambiguous
 
 The board had reached **T-65** by the time this branch merged, and three sessions renumbered into T-55..T-58

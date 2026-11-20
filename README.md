@@ -11,6 +11,7 @@ Product details are attributed as seller/listing statements, not independent tes
 | Item | Status |
 |---|---|
 | Products | 5 submitted short-link tokens; 5 observed destinations; intended ASIN/listing confirmation remains blank for all 5 |
+| Tracked links | 5 of 5 supplied short links ended at the Amazon homepage in the latest 2026-11-20 check, while all 5 official `/dp/<ASIN>` pages rendered the correct product (FLG-025). The cause is not established and the links are **not** declared invalid. Each product card carries a verified direct-listing link as a fallback. |
 | Pages | 31 HTML (front page, 2 pillars, compare, buying guide, decision desk, ideas & review hub, 4 tool pages, 9 articles, 11 trust pages, 404 — not in sitemap) |
 | Intended ASINs confirmed | 0 of 5 (blank until owner confirms — see FLG-001) |
 | Analytics | Five event types defined; four can be counted locally, none is sent to a server; no endpoint, Search Console property, or email provider configured |
@@ -61,25 +62,15 @@ The tools use Python's standard library; no third-party Python dependencies are 
 
 The checks enforce site structure, disclosures, sponsored-link marking, source references, price restrictions, data provenance, and generated-page consistency. Historical audit details and the supporting official policy links are on [`sources.html`](sources.html), [`citations.html`](citations.html), and [`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md).
 
-## Registers (current data as of 2026-11-19)
-
-| Register | Page | Data | IDs |
-|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-31 (SG-21 retired in place; the ID slot between SG-25 and SG-27 is unoccupied — FLG-021) |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
-| Decisions | `direction.html` | `DIRECTION.md` | dated rows |
-| Flagged findings | `flagged.html` | `data/flagged.json` | F-01..F-21 |
-| Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
-
 ## Registers (current data as of 2026-11-20)
 
 | Register | Page | Data | IDs |
 |---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-30 (SG-21 retired) |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-31 — SG-21 retired in place; the ID slot between SG-25 and SG-27 is unoccupied (FLG-021) |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-23 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-10 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows |
-| Flagged findings | `flagged.html` | `data/flagged.json` | FLG-001..FLG-017, F-01..F-21 |
+| Flagged findings | `flagged.html` | `data/flagged.json` | FLG-001..FLG-025, F-01..F-21 |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
 
 An ID prefix belongs to exactly one register. A proposal, a question and a decision

@@ -45,7 +45,7 @@
 <div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (12)</h2>
+<h2>Waiting on a decision (13)</h2>
 <div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -74,7 +74,7 @@
       <div class="meta">SG-13 · owner decides</div>
       <h3>Test one short link inside the enrolled Associates workflow before trusting the format</h3>
       <p><strong>The situation.</strong> The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.</p>
-      <p><strong>The evidence.</strong> Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links&#x27; own status is unresolved (F-13).</p>
+      <p><strong>The evidence.</strong> Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links&#x27; own status is unresolved (F-13). Destination behaviour is also unresolved: on 2026-11-20 three separate checks recorded all five supplied links ending at the Amazon homepage, four of five ending at their product page, and two of five ending at the homepage (FLG-017, FLG-023, FLG-025). The same day&#x27;s control fetches of all five official /dp/&lt;ASIN&gt; pages rendered the correct product every time.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
       <details><summary>The options and the recommendation</summary><ul><li>A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.</li><li>B. Switch every link to direct /dp/ URLs and drop the short form.</li><li>C. Declare the short links non-compliant and remove them.</li></ul>
         <p><strong>Recommendation.</strong> A for the short form as provenance, with the site continuing to publish direct URLs either way. C is a claim the evidence does not support.</p></details>
@@ -190,6 +190,18 @@
         <div class="opts" data-decide="SG-30"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: Reader-capture metrics</p>
+    </article><article class="card decision-card" id="SG-32">
+      <div class="meta">SG-32 · editorial decides</div>
+      <h3>Publish the counter-space arithmetic as a sourced table, with its inputs shown</h3>
+      <p><strong>The situation.</strong> data/analysis.json held the site&#x27;s only original calculation, but nothing on the site published it, and the brief asks for the analysis and findings to be visible in tables.</p>
+      <p><strong>The evidence.</strong> The inputs are the listed depth and width of B0CDY277D3 (13.38 x 11.81 in), B09B7SB46R (16.9 x 15.8 in) and B08DKYBTPH (12.75 x 13.5 in), each re-checked against its own official listing on 2026-11-20, and the listed nominal capacity. The arithmetic is reproducible from the published figures.</p>
+      <p><span class="badge grey">implemented 2026-11-20</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Publish it as a table on compare.html with every input, the method and the caveats next to it.</li><li>B. Keep it internal and point to it from the decision desk only.</li><li>C. Drop the calculation and keep the page purely descriptive.</li></ul>
+        <p><strong>Recommendation.</strong> A. It is arithmetic the reader can redo, the inputs are dated official reads, and the compact score-style labels the build bans on reader pages are avoided by writing the figure out in full and ranking no product by it.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-32"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing — the calculation is now on compare.html</p>
     </article></div>
 
 <h2 class="mt">Already shipped (18)</h2>

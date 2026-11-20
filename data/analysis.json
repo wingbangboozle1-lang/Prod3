@@ -82,12 +82,16 @@
   ],
   "findings": [
     "The oven-style machine (P2) delivers about 2.6 times the nominal capacity per square inch of counter that P1 does, and about 2.1 times what P3 does. That is the arithmetic behind the intuition that an oven-style air fryer uses counter space efficiently: it is a box, and a box fills its footprint.",
-    "P1 and P3 are within 22 percent of each other on capacity per square inch, despite P3 holding two quarts more nominal capacity. P1's two-drawer design spreads the same kind of volume across a wider, shallower body.",
-    "Depth, not area, is the number that usually decides the purchase. P2 needs 16.9 in of front-to-back counter depth; P3 needs 12.75 in. On a standard 24 in deep counter, P2 leaves about 7 in behind it and P1 about 10.6 in.",
+    "P1 and P3 are about 22 percent apart on capacity per square inch, despite P3 holding two quarts more nominal capacity. P1's two-drawer design spreads the same kind of volume across a wider, shallower body.",
     "Depth, not area, is the number that usually decides the purchase. P2 needs 16.9 in of front-to-back counter depth; P3 needs 12.75 in. On a nominal 24 in deep counter, P2 leaves about 7.1 in behind it and P1 about 10.6 in."
   ],
   "corrections": [
     "The counter-depth arithmetic compares each unit's listed depth against a nominal 24 in counter. 24 in is a common North American base-cabinet depth quoted as a reference point here, not a measured standard for any particular kitchen.",
-    "No measurement, timing or durability claim on this page comes from handling a unit. It is arithmetic on published figures."
-  ]
+    "No measurement, timing or durability claim on this page comes from handling a unit. It is arithmetic on published figures.",
+    "The \"within 22 percent\" wording was corrected to \"about 22 percent apart\": 0.0464818 / 0.0379706 = 1.2241, so the two basket-style fryers are 22.4 percent apart, which is not within 22 percent."
+  ],
+  "reconfirmed_on": "2026-11-20",
+  "reconfirmation_note": "On 2026-11-20 each of the three appliances with published dimensions was re-checked against its own official Amazon listing page: B0CDY277D3 (13.38\"D x 11.81\"W x 10.63\"H, capacity field 6 litres, 1700 W), B09B7SB46R (16.9\"D x 15.8\"W x 14.8\"H, capacity 24.6 litres, 1700 W) and B08DKYBTPH (12.75\"D x 13.5\"W x 10\"H, 8 quarts, 1700 W). All three matched the register. The two thermometers still publish no dimensions, so they stay excluded rather than estimated.",
+  "published_on": "compare.html",
+  "publication_note": "Published as a table on compare.html on 2026-11-20 with every input shown, so a reader can reproduce the arithmetic. The compact score-style phrasings the build bans (\"qt/in\", \"capacity per inch\") are deliberately not used; the figure is written out as \"quarts of nominal capacity per square inch of counter area\". No product is ranked by the number."
 }

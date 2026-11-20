@@ -232,7 +232,7 @@
       "id": "SG-13",
       "title": "Test one short link inside the enrolled Associates workflow before trusting the format",
       "problem": "The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.",
-      "evidence": "Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
+      "evidence": "Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13). Destination behaviour is also unresolved: on 2026-11-20 three separate checks recorded all five supplied links ending at the Amazon homepage, four of five ending at their product page, and two of five ending at the homepage (FLG-017, FLG-023, FLG-025). The same day's control fetches of all five official /dp/<ASIN> pages rendered the correct product every time.",
       "options": [
         "A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.",
         "B. Switch every link to direct /dp/ URLs and drop the short form.",
@@ -557,6 +557,24 @@
         "reversible": "yes",
         "falsifier": "If click data shows no interaction with the chip, keep the headline spec and drop the chip."
       }
+    },
+    {
+      "id": "SG-32",
+      "title": "Publish the counter-space arithmetic as a sourced table, with its inputs shown",
+      "problem": "data/analysis.json held the site's only original calculation, but nothing on the site published it, and the brief asks for the analysis and findings to be visible in tables.",
+      "evidence": "The inputs are the listed depth and width of B0CDY277D3 (13.38 x 11.81 in), B09B7SB46R (16.9 x 15.8 in) and B08DKYBTPH (12.75 x 13.5 in), each re-checked against its own official listing on 2026-11-20, and the listed nominal capacity. The arithmetic is reproducible from the published figures.",
+      "options": [
+        "A. Publish it as a table on compare.html with every input, the method and the caveats next to it.",
+        "B. Keep it internal and point to it from the decision desk only.",
+        "C. Drop the calculation and keep the page purely descriptive."
+      ],
+      "recommendation": "A. It is arithmetic the reader can redo, the inputs are dated official reads, and the compact score-style labels the build bans on reader pages are avoided by writing the figure out in full and ranking no product by it.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "implemented 2026-11-20",
+      "decision_owner": "editorial",
+      "blocks": "nothing — the calculation is now on compare.html",
+      "notes": "Registered as SG-32 on 2026-11-20 (session arena/0f115b2d-prod3) to replace the digest's broken reference, which pointed at SG-18 (\"choose guide nine from measured queries\") — a different subject. The duplicated depth finding in analysis.json was removed and the \"within 22 percent\" wording corrected to \"about 22 percent apart\" (the two are 22.4 percent apart)."
     }
   ],
   "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title."

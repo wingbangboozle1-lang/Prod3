@@ -540,6 +540,28 @@
         "S01",
         "S02"
       ]
+    },
+    {
+      "id": "Q-31",
+      "group": "Links and attribution",
+      "question": "Does a tag added to a product URL outside Associates Central credit this account, and does the click show up in the reports?",
+      "blocks": "Whether the tagging shipped on 2026-11-20 is the final answer or a placeholder for links generated inside the account (Q-02, Q-24, FLG-039).",
+      "known": "Participation Requirements 2(b) prescribes the tag as a URL parameter and states that Special Links “may be created by you or made available to you by us”, so a self-built tagged link is a permitted format. Every product link on this site now carries ?tag=shopnow047c-20 (369 anchors), and gate D41 fails the build if one does not (FLG-026).",
+      "unknown": "Whether the tracking ID sits on an enrolled, eligible account; whether this account credits a manually tagged link; whether the reported click count moves after a test click. Commission Income Statement 2(g) is why the cost of not checking is lost earnings rather than a visible break.",
+      "how_to_find_out": "Associates Central → Link Checker: paste one tagged product URL from the live site and confirm the tool reports this tracking ID — Amazon documents the tool for links “created or modified on your own outside of Associates Central” (S40). Then open the live page, click while signed in, and read the click report the next day. Record both dates here; the same pass answers Q-02 and Q-24.",
+      "who": "owner",
+      "cost": "10 minutes, signed in",
+      "status": "blocking",
+      "changes": "Whether the five product paths stay as tagged listing URLs or are replaced by links generated in the account.",
+      "sources": [
+        "S02",
+        "S37",
+        "S38",
+        "S40",
+        "S01"
+      ],
+      "evidence_status": "observed",
+      "note": "Added 2026-11-20 by session 52f418e7. Drafted as Q-28, then Q-30; both numbers were taken upstream while this branch was in flight, so this row moved twice and nothing else was renumbered."
     }
   ],
   "sources_note": "Each question carries the registered source IDs of the official document that speaks to it, or an empty list plus evidence_status='unverified' when no official document settles it. Nothing is cited that does not answer the question."

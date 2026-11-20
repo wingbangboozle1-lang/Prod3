@@ -71,6 +71,9 @@ options, and recommendations live there.
 | SG-56 | Design brief for the next design pass: the concrete asks that beat the generated look | proposed | design |
 | SG-57 | Seasonal topic clusters: working titles for the next cluster, chosen as moments, not products | proposed | editorial |
 | SG-58 | Publishing cadence: one question-shaped guide a month, joined to the sitemap and the feed on day one | implemented | owner |
+| SG-59 | Write the automation boundary down before the automation exists | proposed | owner |
+| SG-60 | Settle the naming and paid-search boundary before any traffic spend | proposed | owner |
+| SG-61 | Keep reader email strictly solicited whenever a list is started | proposed | editorial |
 <!-- sg-index:end -->
 
 **Gap, 2026-11-20 (FLG-029) — since resolved:** the ID slot between SG-25 and SG-27 was unoccupied in `data/suggestions.json`, and this digest once listed a "one generated chrome for all pages" row carrying an id that does not exist in the register; the finding is published as FLG-029 on `flagged.html`. Nothing was reconstructed to fill a number. A row was registered in the slot on 2026-11-20 — SG-26, the reader-facing polish path — and `scripts/build_digest.py` generates the table above from the register so the index cannot drift again.
@@ -91,7 +94,7 @@ SG-19. The ledger is the single source of truth.
 
 ## Open questions — what must be answered before deciding
 
-Thirty questions are registered in `data/open-questions.json` (Q-01…Q-30). Each carries
+Thirty-one questions are registered in `data/open-questions.json` (Q-01…Q-31). Each carries
 `known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only` / `open`).
 
@@ -220,7 +223,7 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 |---|---|---|---|
 | 2026-11-20 | Recover SG-20's clobbered content from PR #17 history (commit `7fbef67`) and restore SG-21 to its distinct "spine" proposal | PR #17 commit `7fbef67`, verifiable in git history | Two real proposals again in the suggestions register; the interim SG-21 tombstone is withdrawn; gate D20 keeps duplicate live titles impossible |
 | 2026-11-20 | Checked the path chooser against the one-identifier rule after the integration merge | Audit finding I-01 (an identifier means one thing) | The `direction.html` mirror now carries the canonical Path A/B/C wording (T-39 reconciliation), so page and desk agree and no second path set remains |
-| 2026-11-20 | Fill the SG-26 slot with the reader-facing polish path (it carries the parallel passes SG-27..SG-30 registered by session ce911db5, kept verbatim, plus SG-31), and add the design-brief rows SG-55..SG-58 (analytics endpoint, design brief, seasonal clusters as working titles only, publishing cadence) | The project brief of 2026-11-20; S01, S02, S21, S22, S24, S25 | Suggestions register reaches SG-01..SG-58; SG-56/SG-57 feed the next design prompt through the Direction page's design-brief section |
+| 2026-11-20 | Fill the SG-26 slot with the reader-facing polish path (it carries the parallel passes SG-27..SG-30 registered by session ce911db5, kept verbatim, plus SG-31), and add the design-brief rows SG-55..SG-58 (analytics endpoint, design brief, seasonal clusters as working titles only, publishing cadence) | The project brief of 2026-11-20; S01, S02, S21, S22, S24, S25 | Suggestions register reaches SG-01 through SG-58 as it then stood; SG-56/SG-57 feed the next design prompt through the Direction page's design-brief section |
 
 ### Design brief (feed to the next design prompt)
 

@@ -200,11 +200,7 @@ def kicker_for(name):
         "tools/compare-builder.html": "Tools",
         "tools/oven-converter.html": "Tools",
         "tools/cook-temperatures.html": "Tools",
-        "products/chefman-6qt-dual-basket.html": "Air fryers",
-        "products/emeril-lagasse-26qt-french-door.html": "Air fryers",
-        "products/chefman-8qt-turbofry.html": "Air fryers",
         "products/thermomaven-1-sec.html": "Thermometers",
-        "products/chefiq-sense-gen3.html": "Thermometers",
     }.get(name, "Guides")
 
 

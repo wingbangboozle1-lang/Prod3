@@ -25,11 +25,6 @@ PRIORITY = {
     "compare.html": "0.9",
     "decisions.html": "0.8",
     "buying-guide.html": "0.8",
-    "products/chefman-6qt-dual-basket.html": "0.9",
-    "products/emeril-lagasse-26qt-french-door.html": "0.9",
-    "products/chefman-8qt-turbofry.html": "0.9",
-    "products/thermomaven-1-sec.html": "0.9",
-    "products/chefiq-sense-gen3.html": "0.9",
 }
 
 

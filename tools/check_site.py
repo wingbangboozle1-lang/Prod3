@@ -285,7 +285,7 @@ check("D18-registers-fresh", _r.returncode == 0, f"registers stale: {_r.stdout.s
 # FLG-021 after two sessions numbered their flags independently. The later pair
 # was renumbered FLG-025/026; this rule keeps the ids unique from now on.
 _flag_doc = docs.get("flagged.html", "")
-_callout_ids = re.findall(r"<strong>(FLG-\d{3})", _flag_doc)
+_callout_ids = re.findall(r"<strong>(FLG-\d{3}) — ", _flag_doc)
 check("D31-flag-ids-unique", len(_callout_ids) == len(set(_callout_ids)),
       f"flagged.html: duplicate callout ids {[i for i in _callout_ids if _callout_ids.count(i) > 1]}")
 # (page-vs-register coverage is deliberately not gated here: data/flagged.json

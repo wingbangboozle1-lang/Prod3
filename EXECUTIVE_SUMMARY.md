@@ -107,7 +107,7 @@ gate rule `D20` now fails the build if any two live suggestions share a title.
 
 **Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
 `rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
-36 pages (36 after the 2026-11-20 product-page pass and the ideas-hub merge, T-38). Every new table row carries a source link or an explicit "No official source" marker,
+37 pages (37 after the 2026-11-20 product-page and publishing-plan passes; T-50 shipped the product pages, this session's T-38 record below describes what it contributed on top). Every new table row carries a source link or an explicit "No official source" marker,
 and the gate fails a row that has neither — so "unverified" can never hide.
 
 **Still true, still not this session's to fix.** The five short links carry no visible
@@ -122,16 +122,19 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 (30 pages, 3541 assertions) and `tools/crawl_links.py` (30 pages, 0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
 
-**Gates at the close of the product-page pass (T-38, session fe5fd1d9, 2026-11-20):** the same
-suite on the rebased tree, which also carries the ideas-hub merge (36 pages) — `build_chrome
---check`, `build_registers --check`, `build_decisions --check`, `build_sitemap --check`,
-`scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` (36 pages, 4,729
-assertions) and `tools/crawl_links.py` (36 pages, 35 reachable, 0 broken links, 0 dead anchors,
-0 orphans) — all pass. A token-level trace check asserts every numeric and model value on the
-five product pages appears in `data/products.json` (0 untraced), and every flag reference on
-the five pages resolves to a published FLG-001..FLG-026 entry on `flagged.html`. The rebase
-also surfaced a duplicate-id defect on the flagged page (two callouts each carried FLG-020 and
-FLG-021); the later pair was renumbered FLG-025/FLG-026 and registered in `data/flagged.json`.
+**Gates at the close of this session (T-38, session fe5fd1d9, 2026-11-20):** this session claimed
+per-product detail pages concurrently with T-50, which shipped them first as a generator
+(`scripts/build_products.py`, five pages, its own freshness and coverage gates). The generated
+pages were adopted as canonical and this session's hand-built drafts were retired; what shipped
+on top of T-50 instead: gate rule **D31** (unique FLG callout ids on `flagged.html`),
+de-risking of all five comparison-table buy buttons to the official product pages (the supplied
+short links all landed on the Amazon homepage at the FLG-025 re-check), a dated addendum to
+FLG-019, register rows FLG-030/FLG-031 so every published callout id has a register entry, and
+proposal **SG-39** (consider-if / look-elsewhere-if blocks for the generated pages, draft copy
+preserved on this branch). Full suite green on the merged tree (37 pages): `build_chrome
+--check`, `build_registers --check`, `build_decisions --check`, `build_products --check`,
+`build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
+and `tools/crawl_links.py` — 0 broken links, 0 dead anchors, 0 orphans.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.
 

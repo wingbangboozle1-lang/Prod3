@@ -23,8 +23,7 @@ def pages():
     return (sorted(ROOT.glob("*.html"))
             + sorted((ROOT / "products").glob("*.html"))
             + sorted((ROOT / "articles").glob("*.html"))
-            + sorted((ROOT / "tools").glob("*.html"))
-            + sorted((ROOT / "products").glob("*.html")))
+            + sorted((ROOT / "tools").glob("*.html")))
 
 
 def main():

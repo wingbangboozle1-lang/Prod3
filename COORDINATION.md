@@ -47,6 +47,9 @@
 | T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (stale DIRECTION cross-references and SG-22..30 index vs register, nine-article counts), flag the dual Pages deploy paths as FLG-024, re-run all gates, PR → main, merge, confirm live deploy | done (PR #36, merge commit `a861ed7`; deploy + live check recorded below) | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, Pages repo settings (build_type) |
 | T-46 | Final integration round (session 59a087a1): live line-by-line re-verification of the five published listings against the official Amazon pages (specs only — no prices, ratings or offers recorded), register the official sources that are missing so no register row is left "No official source" where a genuine official source exists, publication-polish fixes, re-run every gate, PR → main, merge, confirm Pages deploy | in progress | `arena/59a087a1-prod3` | `data/products.json`, `data/sources.json`, `data/citations.json`, `data/decisions.json`, `data/open-questions.json`, `data/flagged.json`, `data/verification.json`, `articles/*`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `tools/check_site.py`, `tools/verify_site.py`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
 | T-47 | Integration pass after PR #38 (T-46, session 59a087a1) landed first: re-run all gates on the merged tree; re-check the Pages deploy and live pages; record the duplicate `FLG-021` callout on `flagged.html` as an owner decision (not renumbered); no site content change; PR → main, merge, confirm live deploy | done (PR and merge record below) | `arena/cafc55da-prod3` | `COORDINATION.md` only |
+| T-48 | 2026-11-20 buyer-facing link check: all five supplied short links re-tested; all five now end at the Amazon homepage. Record dated observation separately (superseding neither 2026-11-19 record nor the other same-day record); publish FLG-025; refresh summaries. | done (see log below; renumbered from a colliding T-46 claim — upstream T-46 is session 59a087a1) | `arena/6bf60cac-prod3` | `data/products.json`, `data/verification.json`, `data/flagged.json`, `flagged.html`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
+| T-49 | Publishing plan: twelve dated guide proposals with the evidence each needs, rendered from `data/editorial-plan.json` and gated (D31); four blocked rows named rather than filled by inference. New suggestions SG-32..SG-35, questions Q-24..Q-26, decisions DT-11..DT-12 | done (renumbered from a colliding T-47 claim — upstream T-47 is session cafc55da) | `arena/6bf60cac-prod3` | `publishing-plan.html`, `data/editorial-plan.json`, `data/suggestions.json`, `data/open-questions.json`, `data/decisions.json`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `scripts/build_decisions.py`, `tools/check_site.py` |
+| T-50 | One generated page per product (`products/*.html`) from `data/products.json` + `data/flagged.json`, with intended-vs-observed kept separate and the blank intent field shown as blank; linked from both pillars and the front page; three new gates and a CI freshness step | done (2026-11-20) | `arena/6bf60cac-prod3` | `scripts/build_products.py`, `products/*`, `scripts/build_chrome.py`, `scripts/build_sitemap.py`, `scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py`, `.github/workflows/pages.yml`, `index.html`, `air-fryers.html`, `meat-thermometers.html` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -1346,3 +1349,56 @@ FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled Associates w
 - **Pages:** `Deploy GitHub Pages` run `44690336381` — success; companion `pages build and deployment` run `44690335588` — success. Pages API `status: built`, source `main:/`.
 - **Micro-PR:** this record itself is merged in the follow-up PR that carries it.
 
+
+## Session `arena/6bf60cac-prod3` — T-48…T-50 (2026-11-20)
+
+**Renumbering.** Other sessions claimed T-46 (59a087a1) and T-47 (cafc55da) while this branch was open.
+This session's three rows were therefore renumbered **T-48…T-50**; nothing published by another session
+was deleted or overwritten, and the conflicting page rebuilds were merged by keeping upstream's text and
+re-applying only this session's additions.
+
+### What was checked, line by line
+
+| Check | Method | Result |
+|---|---|---|
+| Five supplied short links | `fetch_page` of each `link.amazon` URL, final URL read | **All five ended at `https://www.amazon.com/`** on this pass. Four dated observations now exist and disagree; all are kept (FLG-025) |
+| Program Policies §2(b) tag requirement | Live read of <https://affiliate-program.amazon.com/help/operating/policies> (updated 2026-04-14) | Text quoted verbatim in `data/verification.json`; required to appear as a URL parameter |
+| Tag presence on shipped links | Regex over all HTML | 23 `link.amazon` buy anchors, 192 `amazon.com` anchors, **0 anchors carrying `tag=`** (FLG-026) |
+| Operating Agreement §5 disclosure sentence | Live read of the Agreement | Sentence present above the first heading and in the footer on all 37 pages |
+| Flag register integrity | Ids compared between `data/flagged.json` and `flagged.html` | Four ids named two findings each after the merge; page-only callouts renumbered to FLG-030/031, register ids untouched (FLG-027) |
+
+### Defects found and fixed
+
+| Defect | Evidence | Fix |
+|---|---|---|
+| `FLG-020` and `FLG-021` each published two different findings | Two callouts per id on `flagged.html` | Later pair renumbered FLG-028/FLG-029 with the old wording kept and the change dated |
+| Post-merge, `FLG-022` and `FLG-023` also doubled (upstream register vs page-only callouts) | `git show HEAD:flagged.html` | Page-only callouts renumbered FLG-030/FLG-031; the register's ids kept |
+| No page per product — five products existed only inside comparison pages | Tree listing | `products/*.html` generated from `data/products.json` by `scripts/build_products.py`, linked from both pillars and the front page |
+| No reviewable answer to "what gets written next" | 9 articles, no plan | `publishing-plan.html` + `data/editorial-plan.json`, gated by D31 |
+| A buy button promised a destination no link reached on 2026-11-20 | FLG-025 vs the button label | Registered as SG-32 and DT-11 rather than quietly changed: the wording choice belongs to the owner |
+
+### New gates (each negative-tested)
+
+- **D31** — the publishing plan may not drift from `data/editorial-plan.json`, must be in the sitemap and linked, and may not carry a forecast claim. Negative test: changing one row title in the JSON without re-rendering fails `D31-plan-title`.
+- **D32** — one page per registered product, each in the sitemap, linked from its pillar, naming its observed ASIN and showing the blank intent field. Negative test: editing a product page by hand fails `build_products.py --check`.
+- `P17-unique-descriptions` caught two product pages sharing a meta description; the description now leads with the product name.
+
+### Verification on the merged tree
+
+```
+scripts/build_chrome.py --check        OK (37 pages)
+scripts/build_registers.py --check     OK
+scripts/build_decisions.py --check     OK
+scripts/build_products.py --check      OK
+scripts/build_sitemap.py --check       OK (36 URLs)
+scripts/check_site.py                  All checks passed
+tools/verify_site.py                   Release gate passed
+tools/check_site.py                    37 pages · 5,219 assertions · all rules passed
+tools/crawl_links.py                   37 pages crawled · 36 reachable · no broken links/anchors/orphans
+```
+
+### Not claimed
+
+Associates account status (FLG-010) · intended ASINs (FLG-001) · Special Link validity or per-link tag
+presence (FLG-006, Q-24) · cause of the four disagreeing link observations (Q-25) · Search Console ·
+analytics endpoint · any traffic, click, conversion or revenue figure.

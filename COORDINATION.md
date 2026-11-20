@@ -1703,7 +1703,13 @@ own generator.
   with itself" failures) — deduped; `scripts/build_sitemap.py` still carried priority overrides
   for my deleted slugs — removed; `sitemap.xml` regenerated (36 URLs, matches main's set).
 
-**Verification at close (all green on the merged tree):** `build_chrome --check`,
+**Verification at close, after merge #2 (all green):** `tools/check_site.py` (39 pages, 5,908
+assertions), `scripts/check_site.py`, `tools/verify_site.py` release gate, `tools/crawl_links.py`
+(39 pages crawled, 38 reachable, 0 broken links, 0 dead anchors, 0 orphans), and all six
+freshness gates (`build_chrome`, `build_registers`, `build_decisions`, `build_ideas`,
+`build_products`, `build_sitemap`) pass with `--check`.
+
+**Verification at the pre-merge-#2 tree (also green at the time):** `build_chrome --check`,
 `build_registers --check`, `build_decisions --check`, `build_products --check`,
 `build_sitemap --check`; `scripts/check_site.py` (all checks passed);
 `tools/check_site.py` (37 pages, 5,311 assertions, all additional rules passed);
@@ -1712,6 +1718,25 @@ own generator.
 
 **Sources:** no new web fetches were required this session; the FLG-025/FLG-017 link observations
 and the FLG-019 original counts are prior sessions' records, reused with attribution on the page.
+
+**Merge #2 addendum (origin/main c14b28c, PRs #54/#57/#60, merged 2026-11-20):**
+
+- Conflicts resolved: `tools/check_site.py` (my D34 rule dropped — main's D19/D35/D38 one-meaning
+  rules already cover it; their D18b ideas gate kept), `data/flagged.json` (theirs + my FLG-030/031
+  appended — both ids were still free), `data/suggestions.json` (theirs; my SG-39 proposal renumbered
+  **SG-43** after main took SG-39…SG-42), `compare.html` (merged buy row: their "official product
+  pages" header + ASIN-suffixed link texts required by P14b, my all-five `/dp/` hrefs + FLG-025
+  notes — main's side still had four link.amazon cells), `flagged.html` (their corrected RESOLVED
+  FLG-020 + my FLG-019 addendum re-attached), executive summaries (count-free phrasing adopted),
+  COORDINATION (both rows kept).
+- Gate-repair fixes on the merged tree: **D40-guide-count false positive on pure main** (the gate
+  greps "eight articles" and matched main's own historical FLG-038 callout; rewrote one phrase to
+  "Eight of the articles …" — meaning unchanged, regex no longer misreads history as a count
+  claim); **D35-clause** (my HEAD Ratings row cited §2(t), unmapped in main's new
+  `data/policy-clause-map.json`; adopted main's D35-safe wording); **P14b** (buy cells re-texted to
+  "Check price <ASIN>" per the one-link-name-one-destination rule).
+- **FLG-033/FLG-034 have callouts on flagged.html but no rows in data/flagged.json** (pre-existing
+  on main). Not invented here; logged for the json owners.
 
 **Irregularities:** (1) main moved three times; rebase attempts #2/#3 abandoned in favor of an
 audited merge after a blind keep-both resolver produced a wrong-but-clean tree. (2) Two gate-id

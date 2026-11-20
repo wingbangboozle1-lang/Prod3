@@ -45,7 +45,7 @@
 <div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (17)</h2>
+<h2>Waiting on a decision (18)</h2>
 <div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -238,18 +238,6 @@
         <div class="opts" data-decide="SG-37"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: Q-18 (Search Console verification) before any topic is chosen from data; Q-24 registers the discovery question itself</p>
-    </article><article class="card decision-card" id="SG-39">
-      <div class="meta">SG-39 · editorial decides</div>
-      <h3>Give each generated product page a consider-if / look-elsewhere-if pair and a guide next-step</h3>
-      <p><strong>The situation.</strong> The generated product pages list every published field and every flag naming the product, but they do not tell a reader in one place which routine the product fits and which alternative fits better, so the shop&#x27;s judgement lives only on the front page.</p>
-      <p><strong>The evidence.</strong> The generated pages carry &#x27;The honest one-liner&#x27; plus a next-step line (compare / buying guide), while the front page carries a consider-if line per card (S10-S14, T-50 pages). The two surfaces answer different questions; the product page is where a reader has already narrowed the choice.</p>
-      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
-      <details><summary>The options and the recommendation</summary><ul><li>A. Extend scripts/build_products.py to render a consider-if / look-elsewhere-if block and 2-3 guide links per product, sourced from the existing register data. Draft copy for all five exists on branch arena/fe5fd1d9-prod3 (T-38, session fe5fd1d9, now superseded by the generated pages).</li><li>B. Keep the generated pages as-is and leave the judgement to the front page and the buying guide.</li><li>C. Add a per-product FAQ block instead.</li></ul>
-        <p><strong>Recommendation.</strong> A is cheap and keeps the generator canonical; the draft copy is register-traced (0 untraced tokens when written). Needs the T-50 owner-of-generator to accept the block.</p></details>
-      <div class="decide-box">
-        <div class="opts" data-decide="SG-39"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
-      </div>
-      <p class="small muted">Unblocks: </p>
     </article><article class="card decision-card" id="SG-41">
       <div class="meta">SG-41 · owner decides</div>
       <h3>Decide what a reader-capture path would be, before writing any signup copy</h3>
@@ -262,6 +250,18 @@
         <div class="opts" data-decide="SG-41"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: Reader-capture metrics; any signup form on any page</p>
+    </article><article class="card decision-card" id="SG-43">
+      <div class="meta">SG-43 · editorial decides</div>
+      <h3>Give each generated product page a consider-if / look-elsewhere-if pair and a guide next-step</h3>
+      <p><strong>The situation.</strong> The generated product pages list every published field and every flag naming the product, but they do not tell a reader in one place which routine the product fits and which alternative fits better, so the shop&#x27;s judgement lives only on the front page.</p>
+      <p><strong>The evidence.</strong> The generated pages carry &#x27;The honest one-liner&#x27; plus a next-step line (compare / buying guide), while the front page carries a consider-if line per card (T-50 pages). The product page is where a reader has already narrowed the choice.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Extend scripts/build_products.py to render a consider-if / look-elsewhere-if block and 2-3 guide links per product, sourced from the existing register data. Draft copy for all five exists on branch arena/fe5fd1d9-prod3 (T-38 hand-built pages, now superseded).</li><li>B. Keep the generated pages as-is and leave the judgement to the front page and the buying guide.</li><li>C. Add a per-product FAQ block instead.</li></ul>
+        <p><strong>Recommendation.</strong> A is cheap and keeps the generator canonical. Needs the T-50 generator owner to accept the block.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-43"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: </p>
     </article></div>
 
 <h2 class="mt">Already shipped (24)</h2>

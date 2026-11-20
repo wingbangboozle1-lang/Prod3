@@ -71,12 +71,12 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 <!-- build-registers-table:start -->
 | Register | Page | Data | IDs | Count |
 |---|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-42 (SG-21 retired in place); unoccupied: SG-26 | 41 rows |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-43 (SG-21 retired in place); unoccupied: SG-26 | 42 rows |
 | Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-27 | 27 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | - |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | dated proposals | 12 |
-| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-017..FLG-038, F-01..F-21 | 32 in the data file |
+| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-017..FLG-038, F-01..F-21 | 34 in the data file |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | 21 |
 <!-- build-registers-table:end -->
 

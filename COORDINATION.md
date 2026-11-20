@@ -1427,4 +1427,15 @@ analytics endpoint · any traffic, click, conversion or revenue figure.
 
 - Pending: PR number, merge commit, Pages run ID after merge.
 
+### PR and deploy record — session `arena/6bf60cac-prod3` (2026-11-20)
 
+| Item | Result |
+|---|---|
+| PR #43 (T-48…T-50) | https://github.com/wingbangboozle1-lang/Prod3/pull/43 — merged with `gh pr merge 43 --merge`, `mergedAt` 2026-11-20T06:50:35Z, merge commit `2c8d152` |
+| Deploy after #43 | `Deploy GitHub Pages` run 44690664027 **success**; `pages build and deployment` run 44690663053 **success**, both on `2c8d152` |
+| PR #48 (D33 follow-up) | https://github.com/wingbangboozle1-lang/Prod3/pull/48 — merged with `gh pr merge 48 --merge`, `mergedAt` 2026-11-20T06:52:21Z, merge commit `f483b89` |
+| Deploy after #48 | `Deploy GitHub Pages` **success** and `pages build and deployment` **success** on `a5d3c3a` |
+| Live check | `publishing-plan.html` and `products/thermomaven-1-sec.html` both read from the live URL. The product page lists all nine flags that name it (F-03, F-04, F-05, F-06, F-07, F-12, FLG-021, FLG-025, FLG-026) and shows the intended-ASIN field as blank. |
+| Defect found by reading the live page | The first product-page renderer matched only the `P-04` reference form and dropped every `F-*` row (`P4`). Fixed in PR #48 and protected by gate **D33**, which is negative-tested. |
+| Pages build type | Still `legacy` (`gh api /repos/…/pages` → `"build_type":"legacy"`). `PATCH /pages {"build_type":"workflow"}` still returns **HTTP 404** — unchanged from FLG-024; the owner's one-click fix remains open. Both deploy runs green on this round, so nothing is broken by it today. |
+| Merge/close discipline | Both merges used the explicit PR number, no `--auto`, no approval wait, and no other session's branch was touched. |

@@ -1339,3 +1339,10 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 
 FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled Associates workflow · FLG-010 Associates account status · FLG-015 empty campaign ledger (no first-party reports) · DT-03 Search Console · DT-07 analytics endpoint · DT-10 / Q-14 publishing cadence (owner decision) · F-21 / Q-21 share-debugger check.
 
+### T-47 merge and deploy record (arena/cafc55da-prod3)
+
+- **PR #39:** https://github.com/wingbangboozle1-lang/Prod3/pull/39 (`arena/cafc55da-prod3` → `main`)
+- **Merge result:** merged with `gh pr merge 39 --merge`, merge commit `cbae5c9c431a39f6451ebae5d807bdcc2e4341b8`, 2026-11-20T06:47:47Z. Not waited on for approval, per the project instructions.
+- **Pages:** `Deploy GitHub Pages` run `44690336381` — success; companion `pages build and deployment` run `44690335588` — success. Pages API `status: built`, source `main:/`.
+- **Micro-PR:** this record itself is merged in the follow-up PR that carries it.
+

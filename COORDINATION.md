@@ -1377,6 +1377,19 @@ rating, or account data was added; no owner-only gate was claimed.
   all gates green locally on the repaired tree (44 pages, 8,375 assertions; 0 broken links,
   0 dead anchors, 0 orphans). The deploy result for this repair PR is appended below once its
   run has completed.
+- **Repair PR #99** ("T-74 deploy repair: move the direction.html design brief out of the chrome
+  footer region + deploy record"): merged as **`1520bc5`** (2026-11-20).
+- **`Deploy GitHub Pages` run `44699180452`** for `1520bc5`: **success**. Pages API reports
+  `built`, `html_url` https://wingbangboozle1-lang.github.io/Prod3/ — and `build_type` still
+  `legacy`, so the FLG-024 owner one-click fix (Settings → Pages → Source: GitHub Actions)
+  remains open; per the standing instruction the deploy is judged by the `Deploy GitHub Pages`
+  run and the live URL, both green here.
+- **Live checks after deploy (fetched, not assumed):** the front page serves the disclosure
+  strip above the first heading with Tracking ID `shopnow047c-20`, five product cards whose
+  buy buttons open the product page with the site's tag, the FLG-006/FLG-031/FLG-039 flag
+  references, and no prices or ratings; `direction.html` serves the design brief in its H1 and
+  body (the relocated section is intact), the SG-20-onward / FLG-029 history note, and the
+  verified-against-data callout. (This record page's own deploy run is not separately claimed.)
 
 ### Not claimed / not verified here (unchanged owner gates)
 

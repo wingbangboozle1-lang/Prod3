@@ -376,3 +376,13 @@ input,select,textarea,button{font-size:max(16px,1em)}
    in a class rather than an inline style (T-62, 2026-11-20). */
 .spec-hero.on-art { color:#fff; }
 .spec-hero.on-art small { color:#e6d9c8; }
+
+/* Four classes the front page and both shelves already use, which had no rule
+   after the 2026-11-20 merge: the wide table/grid wrappers, the neutral artwork
+   swatch on the chooser card, and the footprint line under the feature card.
+   A class in the markup with no definition is a layout that silently falls back,
+   so these belong in the stylesheet rather than back in inline styles. */
+.article-wide{max-width:1040px}
+.article-table{max-width:1000px}
+.product-art.neutral{background:linear-gradient(135deg,#292524,#57534e)}
+.feature .feature-art .sub.footprint{margin-top:22px}

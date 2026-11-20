@@ -2235,3 +2235,18 @@ the sitemap), **369 product anchors carrying `tag=shopnow047c-20`**, `tools/chec
 0 orphans, `tools/link_tagger.py --check` OK, and all nine `--check` freshness gates OK. `direction.html`
 had to have its heading range bumped to `Q-01 … Q-30` — which is gate `D36-range-current` doing its
 job on a hand-written page, not a number that was forgotten.
+
+**One more thing the `-X theirs` merge cost, and how it was caught.** The strategy that keeps
+upstream whole silently drops *this* branch's edits to the same file. Two of them went unnoticed
+by every gate: `assets/style.css` lost the four rules that `.article-wide`, `.article-table`,
+`.product-art.neutral` and `.sub.footprint` need — the classes stayed in the markup, so the shelves
+fell back to `72ch` and nothing failed — and `air-fryers.html` reverted to saying the P-01 short link
+&ldquo;stopped reaching it … until it is re-tested&rdquo;, which is the phrasing this session replaced
+because a fetch is not a verdict. Found by diffing the working tree against `origin/main` for the
+*presence of my own strings* rather than trusting a green build, then re-applied:
+`git diff --stat origin/main...HEAD` is not enough — check that your sentences are still there.
+
+**Gate-coverage note for the next session:** no rule in `tools/check_site.py` currently fails a
+page for using a class that the stylesheet does not define. That is the class of defect this
+round nearly shipped, and it is cheap to close (`P18`-style scan: collect `class="…"` tokens from
+`*.html`, subtract tokens defined in `assets/style.css`, ignore the JS-set ones).

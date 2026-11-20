@@ -450,7 +450,7 @@
       <div class="meta">SG-28 · engineering decides</div>
       <h3>Ship the RSS feed and advertise it on every page</h3>
       <p><strong>The situation.</strong> feed.xml was linked from the head of only some pages. A reader arriving on a guide or a comparison page had no discoverable subscription path there.</p>
-      <p><strong>The evidence.</strong> feed.xml is well-formed and lists the guides (tools/verify_site.py). On origin/main at c49de86, 20 of 30 HTML pages had no rel=&quot;alternate&quot; feed link in their head. T-26 adds it to those 20, so all 30 pages carry it. The head is hand-written, so the link sits outside the build-chrome markers.</p>
+      <p><strong>The evidence.</strong> feed.xml is well-formed and lists the guides (tools/verify_site.py). At the time this row was written, 20 of the then-30 HTML pages had no rel=&quot;alternate&quot; feed link in their head; the pass added it to those 20, so every page then published carried it. Page counts move as pages are added, so the count is not restated here. The head is hand-written, so the link sits outside the build-chrome markers.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
       <details><summary>The options and the recommendation</summary><ul><li>A. Feed link in every head, plus the footer link (T-26).</li><li>B. Footer link only.</li><li>C. No feed; email signup instead (see SG-30).</li></ul>
         <p><strong>Recommendation.</strong> A. RSS needs no provider and no consent flow.</p></details>

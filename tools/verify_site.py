@@ -10,11 +10,14 @@ Runs scripts/check_site.py, then verifies:
    documented in flagged.html
  - data/campaign-ledger.json has no fabricated rows (rows must be empty
    until first-party reports exist; provenance must be dated)
- - feed.xml is well-formed XML and carries one item per published article
+ - feed.xml is well-formed XML with one item per guide file in articles/
  - robots.txt references the sitemap
  - product-intent fields: intended ASINs need an owner-confirmation record
+ - publishing coverage: every guide in articles/ is in sitemap.xml, in feed.xml
+   (headline equal to the page H1) and linked from buying-guide.html; the
+   publishing cadence is written down (docs/publishing-cadence.md)
 """
-import json, re, subprocess, sys
+import html as htmlmod, json, re, subprocess, sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -83,17 +86,21 @@ except Exception as e:
 try:
     tree = ET.parse(ROOT / "feed.xml")
     items = tree.getroot().findall(".//item")
-    _articles = sorted((ROOT / "articles").glob("*.html"))
-    assert len(items) == len(_articles), f"feed carries {len(items)} items but {len(_articles)} articles are published"
+    n_guides = len(list((ROOT / "articles").glob("*.html")))
+    assert len(items) == n_guides, f"feed.xml has {len(items)} items; articles/ has {n_guides} guides"
+    # Added 2026-11-20 (T-52): counting items is not enough. A feed can hold the right
+    # number of items while one points at a page that does not exist, or omits the guide
+    # that was just published. Both are now failures.
     _links = set()
     for _it in items:
-        _l = _it.find("link").text
-        assert _l.startswith("https://wingbangboozle1-lang.github.io/Prod3/articles/"), f"unexpected feed link {_l}"
-        _links.add(_l.rsplit("/", 1)[-1])
-    _missing = sorted({a.name for a in _articles} - _links)
+        _loc = _it.find("link").text
+        assert _loc.startswith("https://wingbangboozle1-lang.github.io/Prod3/articles/"), f"unexpected feed link {_loc}"
+        _name = _loc.rsplit("/", 1)[-1]
+        assert (ROOT / "articles" / _name).exists(), f"feed.xml links a missing article: {_name}"
+        _links.add(_name)
+    _missing = sorted({a.name for a in (ROOT / "articles").glob("*.html")} - _links)
     assert not _missing, f"published article(s) absent from the feed: {_missing}"
-    _dates = [i.find("pubDate").text for i in items]
-    print(f"OK feed.xml: well-formed, {len(items)} items, one per published article, every link canonical")
+    print(f"OK feed.xml: well-formed, {len(items)} items = {n_guides} guides, every link resolves")
 except Exception as e:
     errors.append(f"feed.xml: {e}")
 
@@ -123,6 +130,40 @@ try:
     print("OK product intent: intended fields blank or owner-confirmed; observed kept separate")
 except Exception as e:
     errors.append(f"product intent gate: {e}")
+
+try:
+    # Publishing coverage (T-48). A new guide is not done until the sitemap,
+    # the feed and the guides hub all reach it, and its headline in the feed is
+    # the same headline the reader sees on the page.
+    base = "https://wingbangboozle1-lang.github.io/Prod3/"
+    ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+    locs = {e.text.strip() for e in ET.parse(ROOT / "sitemap.xml").getroot().findall(".//s:loc", ns)}
+    channel = ET.parse(ROOT / "feed.xml").getroot().find("channel")
+    feed_items = {i.find("link").text.strip(): i for i in channel.findall("item")}
+    hub = (ROOT / "buying-guide.html").read_text(encoding="utf-8")
+    guides = sorted((ROOT / "articles").glob("*.html"))
+    for g in guides:
+        text = g.read_text(encoding="utf-8")
+        url = base + f"articles/{g.name}"
+        assert url in locs, f"{g.name} is missing from sitemap.xml"
+        assert url in feed_items, f"{g.name} is missing from feed.xml"
+        assert f'href="articles/{g.name}"' in hub, f"{g.name} is not linked from buying-guide.html"
+        h1 = htmlmod.unescape(re.sub(r"<[^>]+>", "", re.search(r"<h1[^>]*>(.*?)</h1>", text, re.S).group(1))).strip()
+        t = feed_items[url].find("title").text.strip()
+        assert t == h1, f"{g.name}: feed headline {t!r} differs from H1 {h1!r}"
+    extra = set(feed_items) - {base + f"articles/{g.name}" for g in guides}
+    assert not extra, f"feed.xml lists items with no guide file: {sorted(extra)}"
+    print(f"OK publishing coverage: {len(guides)} guides in sitemap, feed (headline = H1) and guides hub")
+except Exception as e:
+    errors.append(f"publishing coverage: {e}")
+
+try:
+    cad = (ROOT / "docs/publishing-cadence.md").read_text(encoding="utf-8").lower()
+    for needle in ("one guide per calendar month", "next guide due:", "approver:"):
+        assert needle in cad, f"publishing-cadence.md lacks {needle!r}"
+    print("OK publishing cadence: monthly, next due date and approver written down")
+except Exception as e:
+    errors.append(f"publishing cadence: {e}")
 
 if errors:
     print("\nFAIL:")

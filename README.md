@@ -71,17 +71,3 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 | Register | Page | Data | IDs | Count |
 |---|---|---|---|---|
 | Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-42 (SG-21 retired in place; SG-26 is unoccupied — FLG-021) | 41 rows, 1 retired |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-27 | 27 |
-| Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
-| Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | — |
-| Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | 12 dated proposals | 12 |
-| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-031, F-01..F-21 | 29 in the data file |
-| Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | — |
-
-One table, not two. An earlier revision carried a 2026-11-19 table and a 2026-11-20 table side by
-side whose ID ranges disagreed with each other and with the pages; both were replaced by counts read
-from the JSON registers, and the counts were then re-read after later sessions added SG-32..SG-35,
-Q-24..Q-26 and DT-11..DT-12.
-
-An ID prefix belongs to exactly one register. A proposal, a question and a decision
-are never given the same identifier, so no reader has to guess which page is authoritative.

@@ -475,15 +475,15 @@
       "severity": "high",
       "area": "Outbound link format",
       "product": "All five (P-01..P-05)",
-      "detail": "Fourth dated observation on 2026-11-20 (session 6c0972fb, independent of session 6bf60cac's same-day check): each of the five supplied link.amazon short links ended at the Amazon homepage with no /dp/ ASIN and no tag in the URL the reader receives. Participation Requirements 2(a)/2(b) (S34) require the assigned Associates ID as a URL parameter on every link to an Amazon Site, and Commission Income Statement 2(g) (S35) disqualifies purchases whose links are “not properly formatted”; 2(e) disqualifies a Redirecting Link that bounces a customer through an intermediate site without an affirmative click there. Every reader-facing product button now goes to the official product page with this site's tag, and two gate rules (scripts/check_site.py 7b, tools/check_site.py P09) fail the build if a button loses its tag, its product target, or returns to a shortener.",
+      "detail": "Fourth dated observation on 2026-11-20 (session 6c0972fb, independent of session 6bf60cac's same-day check): each of the five supplied link.amazon short links ended at the Amazon homepage with no /dp/ ASIN and no tag in the URL the reader receives. Participation Requirements 2(a)/2(b) (S37) require the assigned Associates ID as a URL parameter on every link to an Amazon Site, and Commission Income Statement 2(g) (S38) disqualifies purchases whose links are “not properly formatted”; 2(e) disqualifies a Redirecting Link that bounces a customer through an intermediate site without an affirmative click there. Every reader-facing product button now goes to the official product page with this site's tag, and two gate rules (scripts/check_site.py 7b, tools/check_site.py P09) fail the build if a button loses its tag, its product target, or returns to a shortener.",
       "why_it_matters": "A button that lands a buyer on a homepage loses the sale and earns nothing; a link with no tag cannot be attributed even when it lands correctly. Both were true at once before this change.",
       "action": "Owner: the signed-in test in Q-02 / Q-22 — generate a Special Link per product with SiteStripe, click it, and confirm the destination plus a matching row in the click reports. If the supplied links do carry the tag inside the enrolled account, restoring them is one line per button.",
       "status": "open — site response shipped, owner test still required",
       "sources": [
         "S01",
         "S02",
-        "S34",
-        "S35"
+        "S37",
+        "S38"
       ],
       "sources_checked": "2026-11-20"
     },

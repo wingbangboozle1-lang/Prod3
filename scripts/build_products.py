@@ -154,9 +154,9 @@ def render(p, flags, products_doc):
     asin = p["observed_asin"]
     listing = f"https://www.amazon.com/dp/{asin}"
     # A buy button has to do two jobs, so it is not the same URL as the evidence
-    # link below it. Participation Requirements 2(b) (data/sources.json S34)
+    # link below it. Participation Requirements 2(b) (data/sources.json S37)
     # requires the assigned Associates ID to appear as a URL parameter on every
-    # link to an Amazon Site, and Commission Income Statement 2(g) (S35)
+    # link to an Amazon Site, and Commission Income Statement 2(g) (S38)
     # disqualifies a purchase whose links are "not properly formatted". So the
     # button carries the tag; the evidence link does not need to.
     buy = f"https://www.amazon.com/dp/{asin}?tag={TRACKING}&linkCode=sl1"

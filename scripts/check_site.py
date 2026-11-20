@@ -156,8 +156,8 @@ for f in html_files:
 print("OK data-source-required tables")
 
 # 7b. buy-button link hygiene (added 2026-11-20, T-60): a reader-facing product button must
-#     be a tagged product link. Participation Requirements 2(a)/2(b) (S34) require the assigned
-#     Associates ID as a URL parameter; Commission Income Statement 2(g) (S35) disqualifies
+#     be a tagged product link. Participation Requirements 2(a)/2(b) (S37) require the assigned
+#     Associates ID as a URL parameter; Commission Income Statement 2(g) (S38) disqualifies
 #     purchases whose links are "not properly formatted". Negative-tested the same day: it named
 #     two untagged hand-written buttons and five untagged generated pages before they were fixed.
 _asin_by_token = {p0["submitted_token"]: p0["observed_asin"] for p0 in json.loads((ROOT / "data/products.json").read_text())["products"]}
@@ -182,7 +182,7 @@ for f in html_files:
         if asin and m.group(1) != asin:
             errors.append(f"{rel}: buy button targets {m.group(1)} but is labelled {asin}")
         if f"tag={TRACKING}" not in href:
-            errors.append(f"{rel}: buy button carries no Associates tag, so it cannot earn (S34 2(b)): {href}")
+            errors.append(f"{rel}: buy button carries no Associates tag, so it cannot earn (S37 2(b)): {href}")
 print(f"OK buy-button link hygiene ({buy_buttons} tagged product buttons)")
 
 # 8. price blocks must be dated

@@ -1355,6 +1355,29 @@ rating, or account data was added; no owner-only gate was claimed.
   (30 pages, 3,631 assertions), `tools/crawl_links.py` (30 pages crawled, 0 broken links,
   0 dead anchors, 0 orphans).
 
+
+### Merge and deploy record (T-74)
+
+- **PR #58** (`arena/30d1c448-prod3` → `main`): https://github.com/wingbangboozle1-lang/Prod3/pull/58
+  — merged 2026-11-20 as merge commit **`bb4f7d3`** ("Merge pull request #58 from
+  wingbangboozle1-lang/arena/30d1c448-prod3"), after six origin/main reconciliations
+  (002ab81 → 8cc8d58 → ef84eef → 6455932 → 55cbc4a → d20a025), every one resolved keeping
+  both sides' work.
+- **`Deploy GitHub Pages` run `44698580964`** for `bb4f7d3`: **failure** — step "Regenerated
+  surfaces are current" failed; the release gate and deploy steps were skipped. Cause: the
+  merged main tree carried upstream's "Design brief for the next design pass" section inside
+  the `build-chrome` footer region on `direction.html` (PR #97's own deploy run `44698151942`
+  failed the same way before this merge; PR #96's run `44697996184` was green). The freshness
+  gate correctly refused to ship a page the chrome builder would rewrite. No deploy was
+  published from this run; the failure is recorded rather than retried away.
+- **Repair (this change):** the design-brief section was moved out of the generated footer
+  region into the page body **verbatim** (the builder rewrites region interiors — running it
+  in place would have discarded the section, exactly the "brief vanishing" failure upstream
+  fixed on `ideas.html` in `build_ideas.py`). `build_chrome.py` then regenerated the region;
+  all gates green locally on the repaired tree (44 pages, 8,375 assertions; 0 broken links,
+  0 dead anchors, 0 orphans). The deploy result for this repair PR is appended below once its
+  run has completed.
+
 ### Not claimed / not verified here (unchanged owner gates)
 
 FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled workflow · FLG-010

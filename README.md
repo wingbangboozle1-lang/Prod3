@@ -1,94 +1,64 @@
 # Prod3 — Kitchen Counter
 
-**Kitchen Counter — Listed specs, plainly told.** A publication-style Amazon
-affiliate site covering air fryers and meat thermometers. Tracking ID:
-`shopnow047c-20` (owner-supplied; account eligibility unverified — FLG-010).
-Published to GitHub Pages on merge to `main` (project site: https://wingbangboozle1-lang.github.io/Prod3/)
+**Kitchen Counter — Listed specs, plainly told.** A publication-style Amazon affiliate site covering air fryers and meat thermometers. The owner-supplied tracking ID is `shopnow047c-20`; its assignment and account eligibility have not been verified (FLG-010).
 
-The 2026-11-19 audits (T-12 and the b84724ea compliance pass) set the claim
-policy: specs are **seller statements from dated listing snapshots**,
-attributed as such; accuracy/NIST wording is quoted as claim, never as test
-result; **no prices are displayed at all** (Program Policies §2(b): price and
-availability may be shown only from Amazon-served or PA-API data); the demo
-email signup was removed. A third audit (session a25ccde6) removed customer star
-ratings entirely — Program Policies §2(t) allows them only from Creators/PA API
-data — and added a citation log so every rendered figure has a dated source.
-Release gates enforce these rules (banned phrases,
-currency-amount ban, claim markers, sponsored coverage, canonicals, source-linked
-data tables).
+**Published site:** https://wingbangboozle1-lang.github.io/Prod3/ · GitHub Pages deploys from `main`.
 
-## Status at a glance
+Product details are attributed as seller/listing statements, not independent tests. Customer ratings and prices are not displayed. Product snapshots and source checks recorded in the data files are dated; verify the current listing before relying on time-sensitive details. The five observed redirect destinations do not establish the owner's intended ASINs or prove Special Link compliance. Those fields are kept separate in `data/products.json` and unresolved findings appear on [`flagged.html`](flagged.html).
 
-| | |
+## Current status
+
+| Item | Status |
 |---|---|
-| Submitted tokens that are ASINs | 0 of 5 (they are 9-char short-link tokens; an ASIN is 10 chars) |
-| Observed destinations | B0CDY277D3, B09B7SB46R, B08DKYBTPH, B0DHZTCNR5, B0DZFD6R9Z |
-| Intended ASINs confirmed | 0 of 5 (blank until owner confirms — see FLG-001) |
-| Pages | 24 HTML (front page, 2 pillars, compare, guide, 8 articles, 10 trust pages incl. suggestions/questions/citations, 404 page — not in sitemap) |
-| Gates | `tools/check_site.py`, `scripts/check_site.py`, `tools/verify_site.py`, `scripts/build_registers.py --check` (non-zero exit on violation) |
+| Products | 5 submitted short-link tokens; 5 observed destinations; intended ASIN/listing confirmation remains blank for all 5 |
+| Content | 24 HTML documents; eight question-shaped guides, plus comparison, buying guide, category pages, and trust/decision pages |
+| Analytics | Five event types defined; four can be counted locally, none is sent to a server; no endpoint, Search Console property, or email provider configured |
+| Campaign ledger | Empty by design; add data only from authorized first-party reports |
+| Release checks | `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`, `scripts/build_sitemap.py --check`, `scripts/build_registers.py --check` |
 
 ## Working with it
 
-```
-python3 tools/verify_site.py            # whole-tree release gate (exit 3 on violation)
-python3 scripts/build_registers.py      # rebuild suggestions.html, questions.html, citations.html
-python3 scripts/build_registers.py --check  # exit 1 if a register is stale
-python3 scripts/check_site.py           # data + HTML gate (exit 1 on violation)
-python3 scripts/build_sitemap.py        # rewrite sitemap.xml from the tree
-python3 scripts/build_sitemap.py --check # exit 1 if sitemap is stale
+```sh
+python3 tools/verify_site.py                 # source cross-references, ledger, feed, robots, and core checks
+python3 tools/check_site.py                  # complementary site assertions
+python3 scripts/check_site.py                 # product/data/HTML checks
+python3 scripts/build_registers.py           # rebuild suggestions, questions, and citations pages
+python3 scripts/build_registers.py --check   # fail when generated pages are stale
+python3 scripts/build_sitemap.py              # regenerate sitemap.xml
+python3 scripts/build_sitemap.py --check     # fail when sitemap is stale
 python3 tools/amazon_intake.py --link 'https://link.amazon/B04G1MEwY' --validate-only
-python3 tools/amazon_intake.py --asin B0CDY277D3 --offline   # exit 0, queued for API
+python3 tools/amazon_intake.py --asin B0CDY277D3 --offline
 ```
 
-No third-party dependencies: the standard library only.
+The tools use Python's standard library; no third-party Python dependencies are required.
 
-## Layout
+## Site map
 
-- `index.html` — publication front page, buyer-first (question hero, five product cards with CTAs and source links, 3-question chooser, category tiles, seasonal guides, data table, RSS capture)
-- `air-fryers.html`, `meat-thermometers.html` — category pillars
-- `compare.html`, `buying-guide.html` — comparison + decision framework
-- `articles/` — 8 question-shaped guides (also in `feed.xml` + `sitemap.xml`)
-- `disclosure.html`, `sources.html`, `citations.html`, `flagged.html`, `suggestions.html`, `questions.html`, `direction.html`, `executive-summary.html`, `about.html`, `analytics.html` — trust surfaces
-- `suggestions.html` / `questions.html` / `citations.html` are **generated** from `data/*.json` by `scripts/build_registers.py`; do not hand-edit them
-- `assets/product-art/` — typographic listing cards rendered from each product's own numbers (no photography)
-- `data/` — `products.json` (intent vs observed, never merged), `sources.json`, `campaign-ledger.json` (empty until first-party reports)
-- `assets/` — `style.css`, `app.js` (privacy-preserving measurement), `og-image.svg`, `favicon.svg`
-- `data/citations.json` — one row per rendered figure, with its observation date and source
-- `COORDINATION.md` — shared task board · `DIRECTION.md` — decision digest + pointers to the three registers
+- `index.html` — buyer-first front page with product cards, chooser, category links, guides, comparison data, and RSS link.
+- `air-fryers.html`, `meat-thermometers.html` — category hubs.
+- `compare.html`, `buying-guide.html` — comparison and decision framework.
+- `articles/` — eight question-shaped guides, included in `feed.xml` and `sitemap.xml`.
+- `suggestions.html`, `questions.html`, `direction.html` — proposals, missing-information questions, and decisions.
+- `sources.html`, `citations.html`, `flagged.html`, `disclosure.html`, `analytics.html`, `executive-summary.html`, `about.html` — source, disclosure, analytics, and trust pages.
+- `suggestions.html`, `questions.html`, and `citations.html` are generated from JSON by `scripts/build_registers.py`; do not hand-edit them.
+- `data/products.json` keeps intended product/link confirmation separate from observed redirect information; `data/sources.json` and `data/citations.json` hold source and claim mappings; `data/campaign-ledger.json` is empty until authorized first-party reports exist.
+- `assets/app.js` counts local browser events only; the self-hosted analytics endpoint is not configured. `assets/og-image.png` is the shipped 1200×630 social preview; external share-debugger rendering is not verified.
+- `COORDINATION.md` is the task board; `DIRECTION.md` is the decision digest.
 
-## Release gates
+## Release workflow
 
-Three checks run in `.github/workflows/pages.yml` before anything is deployed:
+`.github/workflows/pages.yml` runs `tools/verify_site.py`, `tools/check_site.py`, sitemap freshness, and generated-register freshness before deploying to GitHub Pages. On 2026-11-20 the same checks passed locally, including 24 HTML pages and 2,516 assertions. That is an internal repository check; it does not re-fetch Amazon listings or verify Associates account settings.
 
-```bash
-python3 scripts/check_site.py          # structure, disclosure presence, sitemap coverage
-python3 tools/verify_site.py           # runs the above + feed, robots, ledger provenance
-python3 tools/check_site.py            # complementary rules (see below)
-python3 scripts/build_sitemap.py --check
-```
+The checks enforce site structure, disclosures, sponsored-link marking, source references, price restrictions, data provenance, and generated-page consistency. Historical audit details and the supporting official policy links are on [`sources.html`](sources.html), [`citations.html`](citations.html), and [`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md).
 
-`tools/check_site.py` exists because three defects reached the published site in its first
-version and the earlier gates did not catch them:
-
-| Rule | Defect it caught |
-| --- | --- |
-| `P10-no-price` | 40 currency amounts rendered on 8 pages while `disclosure.html` claimed the site stores no prices. Program Policies §2(b) permits price display only when Amazon serves the data. |
-| `P07-sponsored` | The old check inspected only `link.amazon` hrefs, so 35 evidence links to `amazon.com/dp/<ASIN>` and 7 to the Associates help pages were unqualified. |
-| `P01-disclosure` / `P02-disclosure-footer` | The exact Agreement §5 sentence was missing from all 20 pages; only paraphrases were present. |
-
-It also enforces one `<h1>`, unique titles and descriptions, absolute canonicals, no first-hand
-experience claims, no placeholders, descriptive link text, and that the campaign ledger stays empty
-until a real first-party report exists.
-
-## Registers (as of 2026-11-19, session a25ccde6)
+## Registers (current data as of 2026-11-19)
 
 | Register | Page | Data | IDs |
 |---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-20 |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-17 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-25 |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
 | Decisions | `direction.html` | `DIRECTION.md` | dated rows |
-| Flagged irregularities | `flagged.html` | `data/flagged.json` | FLG-001..FLG-015, F-01..F-20 |
-| Citation log | `citations.html` | `data/citations.json` | one row per figure |
+| Flagged findings | `flagged.html` | `data/flagged.json` | F-01..F-21 |
+| Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
 
-An ID prefix belongs to exactly one register. A proposal, a question and a decision
-are never given the same identifier, so no reader has to guess which page is authoritative.
+Each register has its own ID prefix so proposals, questions, decisions, and flagged findings are distinguishable.

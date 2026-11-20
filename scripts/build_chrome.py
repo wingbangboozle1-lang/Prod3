@@ -164,6 +164,8 @@ def pages():
         out.append((p, 1))
     for p in sorted((ROOT / "tools").glob("*.html")):
         out.append((p, 1))
+    for p in sorted((ROOT / "products").glob("*.html")):
+        out.append((p, 1))
     return out
 
 
@@ -189,6 +191,11 @@ def kicker_for(name):
         "about.html": "Trust",
         "executive-summary.html": "Trust",
         "404.html": "Not found",
+        "products/chefman-6-qt-dual-basket.html": "Air fryers",
+        "products/emeril-26qt-french-door.html": "Air fryers",
+        "products/chefman-8-qt-turbofry.html": "Air fryers",
+        "products/thermomaven-1-sec.html": "Thermometers",
+        "products/chef-iq-sense-gen3.html": "Thermometers",
         "tools/index.html": "Tools",
         "tools/compare-builder.html": "Tools",
         "tools/oven-converter.html": "Tools",

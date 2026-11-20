@@ -45,7 +45,8 @@ if not (ROOT / "index.html").exists():
 
 pages = (sorted(ROOT.glob("*.html"))
          + sorted((ROOT / "articles").glob("*.html"))
-         + sorted((ROOT / "tools").glob("*.html")))
+         + sorted((ROOT / "tools").glob("*.html"))
+         + sorted((ROOT / "products").glob("*.html")))
 docs = {p.relative_to(ROOT).as_posix(): p.read_text(encoding="utf-8") for p in pages}
 
 titles, descs = {}, {}
@@ -471,6 +472,30 @@ if _plan_path.exists():
                  r"\bconversion rate\b", r"\bestimated revenue\b"):
         _m = re.search(_pat, _planpage, re.I)
         check("D31-plan-no-forecast", not _m, f"publishing-plan.html carries a forecast claim: {_m.group(0) if _m else ''}")
+
+
+# D32: one product page per registered product, each rendered from data/products.json,
+# each in the sitemap and each reachable from its pillar. A page edited by hand instead
+# of through the register fails here.
+_r_pages = _sp2.run([sys.executable, str(ROOT / "scripts" / "build_products.py"), "--check"],
+                          capture_output=True, text=True)
+check("D32-product-pages-fresh", _r_pages.returncode == 0,
+      f"product pages stale: {_r_pages.stdout.strip()[:160]}")
+for _p in products:
+    _slug = {"P-01": "chefman-6-qt-dual-basket", "P-02": "emeril-26qt-french-door",
+             "P-03": "chefman-8-qt-turbofry", "P-04": "thermomaven-1-sec",
+             "P-05": "chef-iq-sense-gen3"}[_p["id"]]
+    _rel = f"products/{_slug}.html"
+    check("D32-product-page-exists", _rel in docs, f"{_rel} missing")
+    check("D32-product-page-sitemap", _rel in (ROOT / "sitemap.xml").read_text(encoding="utf-8"),
+          f"{_rel} not in the sitemap")
+    _pillar = "air-fryers.html" if _p["category"] == "Air Fryers" else "meat-thermometers.html"
+    check("D32-product-page-linked", _rel in docs.get(_pillar, ""),
+          f"{_rel} is not linked from {_pillar}")
+    check("D32-product-page-observed", _p["observed_asin"] in docs.get(_rel, ""),
+          f"{_rel} does not name the observed ASIN")
+    check("D32-product-page-intent-blank", "No official source" in docs.get(_rel, ""),
+          f"{_rel} does not show the blank intended-ASIN field")
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

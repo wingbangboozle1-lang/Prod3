@@ -759,15 +759,29 @@ _NUMWORD = {6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
             15: "fifteen", 16: "sixteen"}
 _guides = len(list((ROOT / "articles").glob("*.html")))
 check("D40-guide-count-known", _guides in _NUMWORD, f"{_guides} guides on disk; add the number word to D40")
+# T-58 (2026-11-20): the scan also matches an adjective between the number and
+# the noun ("ten published guides") and the two number words the copy now uses
+# for larger shelves (thirteen/fourteen). Q-17's "ten published guides" sailed
+# through the original pattern while thirteen guides shipped.
+_GUIDE_PAT = (r"\b(six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen)"
+              r"\s+(?:published\s+)?(?:question-shaped\s+)?(?:guides|articles)\b")
 for _name, _html in docs.items():
+<<<<<<< HEAD
     for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _html, re.I):
+=======
+    for _m in re.finditer(_GUIDE_PAT, _html, re.I):
+>>>>>>> ce94cbd (T-58: gates D41 (digest mirror) and a stronger D40)
         _said = _m.group(1).lower()
         _want = _NUMWORD.get(_guides, "")
         check("D40-guide-count", _said == _want,
               f"{_name}: says {_m.group(0)!r} but {_guides} guides ship ({_want})")
 for _f in ("README.md", "EXECUTIVE_SUMMARY.md"):
     _txt = (ROOT / _f).read_text(encoding="utf-8")
+<<<<<<< HEAD
     for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _txt, re.I):
+=======
+    for _m in re.finditer(_GUIDE_PAT, _txt, re.I):
+>>>>>>> ce94cbd (T-58: gates D41 (digest mirror) and a stronger D40)
         check("D40-guide-count", _m.group(1).lower() == _NUMWORD.get(_guides, ""),
               f"{_f}: says {_m.group(0)!r} but {_guides} guides ship")
 
@@ -884,6 +898,45 @@ check("D43-event-contract",
 _w43 = _sp2.run(["node", "--check", str(ROOT / "analytics/collector/worker.js")], capture_output=True, text=True)
 check("D43-collector-syntax", _w43.returncode == 0, f"analytics/collector/worker.js: {_w43.stderr.strip()[:120]}")
 print("OK analytics endpoint + event contract")
+
+# D46 (T-58, 2026-11-20): direction.html's embedded suggestion snapshot and
+# register-range lines are the one mirror surface no generator owns.
+# D45/build_digest.py keeps DIRECTION.md's index fresh; direction.html still
+# carries hand-pasted snapshot rows (a stale title survived there while the
+# digest was already generated) and the SG-01..SG-N / Q-01..Q-N summary lines
+# (Q-01..Q-29 shipped while the register reached Q-30). This rule fails the
+# build until both match the registers.
+import html as _htmlmod
+
+def _norm(s):
+    return re.sub(r"\s+", " ", _htmlmod.unescape(s)).strip()
+
+_reg46 = json.loads((ROOT / "data" / "suggestions.json").read_text(encoding="utf-8"))
+if isinstance(_reg46, dict):
+    _reg46 = next(v for v in _reg46.values() if isinstance(v, list))
+_regmap46 = {s["id"]: (s["title"].strip(), s["status"].strip()) for s in _reg46}
+_q46 = json.loads((ROOT / "data" / "open-questions.json").read_text(encoding="utf-8"))
+if isinstance(_q46, dict):
+    _q46 = next(v for v in _q46.values() if isinstance(v, list))
+_qmax46 = max(int(q["id"].split("-")[1]) for q in _q46)
+_sgmax46 = max(int(i.split("-")[1]) for i in _regmap46)
+
+_dirhtml46 = (ROOT / "direction.html").read_text(encoding="utf-8")
+for _m in re.finditer(r"<tr><td><strong>(SG-\d+)</strong></td><td>(.*?)<br>", _dirhtml46, re.S):
+    _sid, _pt = _m.group(1), _norm(re.sub(r"<[^>]+>", "", _m.group(2)))
+    if _sid in _regmap46:
+        check("D46-snapshot-title", _pt == _norm(_regmap46[_sid][0]),
+              f"direction.html {_sid} snapshot title differs from the register: {_pt!r} vs {_regmap46[_sid][0]!r}")
+
+for _name46, _txt46 in (("DIRECTION.md", (ROOT / "DIRECTION.md").read_text(encoding="utf-8")),
+                        ("direction.html", _dirhtml46)):
+    for _m in re.finditer(r"SG-01\.\.SG-(\d+)", _txt46):
+        check("D46-range-current", int(_m.group(1)) == _sgmax46,
+              f"{_name46}: states SG-01..SG-{_m.group(1)} but the register reaches SG-{_sgmax46:02d}")
+    for _m in re.finditer(r"Q-01(?:\.|…)\s*Q-(\d+)", _txt46):
+        check("D46-range-current", int(_m.group(1)) == _qmax46,
+              f"{_name46}: states Q-01..Q-{_m.group(1)} but the register reaches Q-{_qmax46}")
+
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

@@ -379,10 +379,10 @@
    "severity": "high",
    "area": "Special Link tag parameter",
    "product": "All five buy links plus 192 evidence links",
-   "detail": "Program Policies (updated 2026-04-14) §2(b) require the Associates ID or tag as a parameter in the URL of each link placed on a site to an Amazon Site, and §2(a) require Special Links to use the assigned Associates ID. None of the 23 shipped link.amazon buy anchors and none of the 192 shipped amazon.com anchors contains a tag parameter in the URL the reader receives; 0 anchors carry tag=shopnow047c-20. 2026-11-20 (session 52f418e7): the site-side fix was implemented rather than queued — a policy requirement that a generator can enforce should not wait on a person.",
+   "detail": "Program Policies (updated 2026-04-14) §2(b) require the Associates ID or tag as a parameter in the URL of each link placed on a site to an Amazon Site, and §2(a) require Special Links to use the assigned Associates ID. None of the 23 shipped link.amazon buy anchors and none of the 192 shipped amazon.com anchors contains a tag parameter in the URL the reader receives; 0 anchors carry tag=shopnow047c-20. 2026-11-20 (session 52f418e7): the site-side fix was implemented rather than queued — a policy requirement that a generator can enforce should not wait on a person. 2026-11-20 (session 52f418e7): the site-side half was implemented rather than queued. A written requirement a generator can enforce should not wait on a person; the owner-side half, which cannot be automated from here, stays open.",
    "why_it_matters": "If a click is not tagged, Amazon cannot attribute it and the click cannot earn. The rule is quoted in the Program Policies, so this is the one link question with a written, checkable requirement behind it.",
-   "action": "Owner: open any product link on the live site and read the destination URL for the tag (S34 gives the exact procedure), then run one tagged link through the Link Checker and confirm a click appears in the account's reports before scaling. Re-test the five supplied short links at the same time (Q-02, Q-24); this record still does not assert that they are non-compliant — a short-link service may attach the tag downstream.",
-   "status": "partly resolved — the site-side half is done: 329 product links across 36 pages now carry tag=shopnow047c-20, and tools/link_tagger.py --check runs as release gate D38 so an untagged product link fails the build. Open: the account-side confirmation.",
+   "action": "Owner: open any product link on the live site and read the destination URL for the tag (S34 is the documented procedure), run one tagged link through the Link Checker, and confirm a click appears in the reports before scaling. Re-test the five supplied short links in the same pass (Q-02, Q-24). This record still does not assert the short links are non-compliant — a link shortener may attach the tag downstream.",
+   "status": "partly resolved — the site-side half is done: every product link on all 39 published pages carries (372 tagged anchors as counted on 2026-11-20) tag=shopnow047c-20, and tools/link_tagger.py --check runs as release gate D40, so an untagged product link fails the build. Open: the account-side confirmation (Q-28).",
    "sources": [
     "S01",
     "S02"
@@ -457,7 +457,7 @@
    "sources_checked": "2026-11-20"
   },
   {
-   "id": "FLG-034",
+   "id": "FLG-035",
    "severity": "low",
    "area": "Register integrity — flag numbering",
    "product": "data/flagged.json; flagged.html",

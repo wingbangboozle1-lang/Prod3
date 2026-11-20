@@ -45,7 +45,7 @@
 <div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (17)</h2>
+<h2>Waiting on a decision (19)</h2>
 <div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -238,9 +238,45 @@
         <div class="opts" data-decide="SG-41"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: Reader-capture metrics; any signup form on any page</p>
+    </article><article class="card decision-card" id="SG-43">
+      <div class="meta">SG-43 · owner decides</div>
+      <h3>Write the automation rules down before the automation exists: what a research pipeline may not do</h3>
+      <p><strong>The situation.</strong> The project brief asks for an AI-powered platform that researches products, analyses pricing and reviews, generates articles and optimises campaigns. Parts of that ambition collide with the program rules this site already follows, and the collision lines are recorded nowhere a reader would see. A future session would then build the collision rather than choose it.</p>
+      <p><strong>The evidence.</strong> Participation Requirements §5 (read 2026-11-20): Special Links and Program Content may not be used “to develop machine learning models or related technology” without Amazon&#x27;s express prior written approval. The IP License in the same document excludes “any use of data mining, robots, or similar data gathering and extraction tools” over Program Content; §(t) bars displaying customer reviews or star ratings unless obtained through Creators API or PA API; §(y) prohibits price tracking or price alerting on the Site unless otherwise agreed. Source: S02.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Publish a short “what the automation may and may not do” page citing each clause, and gate the build on it.</li><li>B. Keep the rules in COORDINATION.md, where no future reader of the site will meet them.</li><li>C. Ask Amazon for written approval before designing any pipeline that reads Program Content at scale.</li></ul>
+        <p><strong>Recommendation.</strong> A now; C only if the owner actually wants a model trained on Amazon content. The gates already refuse prices, ratings and scraped content, so this is a boundary stated once in public rather than a new capability.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-43"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Any automation that reads Amazon data at scale</p>
+    </article><article class="card decision-card" id="SG-44">
+      <div class="meta">SG-44 · owner decides</div>
+      <h3>Settle the naming and paid-search guardrails before any traffic spend</h3>
+      <p><strong>The situation.</strong> A growth plan usually reaches for a keyword campaign and a punchier domain. Both are constrained by the program rules, and neither constraint is recorded on the site, so the obvious next move is the one that risks the account.</p>
+      <p><strong>The evidence.</strong> Participation Requirements §1(g): no Amazon trademark, or a variant or misspelling of one, may appear in any domain name, subdomain, “tag” or Associates ID, username, group name or other social identifier. §4(e)–(f) bar paid placements bidding on Proprietary Terms and let Amazon require written certification that those terms were excluded. §2(b) requires removing any mention of a limited-time promotion as soon as it ends. Sources: S02, S01.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Record both rules beside Q-16 (custom domain) and in the publishing plan; keep organic-only growth as the shipped path.</li><li>B. Buy a domain containing “Amazon” and argue it reads as descriptive.</li><li>C. Run brand-keyword ads now and handle the exclusion requirement if it is ever raised.</li></ul>
+        <p><strong>Recommendation.</strong> A. “Kitchen Counter” already passes both tests, so the change is one dated note, not a rebuild. No paid traffic is proposed here; that is the owner&#x27;s spend decision (Q-09).</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-44"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Any domain purchase and any paid-search plan (Q-16)</p>
+    </article><article class="card decision-card" id="SG-45">
+      <div class="meta">SG-45 · editorial decides</div>
+      <h3>Keep reader email strictly solicited whenever the list is started</h3>
+      <p><strong>The situation.</strong> SG-30 and SG-41 defer email capture to an owner decision, which is right. The condition that will apply at build time is not written down, so a future implementation could ship a list that carries affiliate links to people who never asked for them.</p>
+      <p><strong>The evidence.</strong> Participation Requirements §4 (read 2026-11-20): Special Links may appear in “emails, SMS and direct messaging from your social media Sites; provided, that such communications are solicited (i.e., opted into by the receiving customer)” and comply with the Agreement, the Trademark Guidelines and the Brand Usage Guidelines; and “you are the ‘Sender’ of each communication containing any Special Links” for CAN-SPAM purposes. Source: S02. The site ships no form at all today (FLG-014).</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Write the condition into the reader-capture rows so a builder meets it at the point of choice: double opt-in, a stored consent timestamp, unsubscribe in every message.</li><li>B. Ship a form now and fix consent later.</li><li>C. Keep RSS as the only path and never run a list.</li></ul>
+        <p><strong>Recommendation.</strong> A, and only A. Until a provider and a consent record exist, the footer keeps pointing at RSS — which is what the site does today, and what SG-41&#x27;s decision block assumes.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-45"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Reader capture (SG-30, SG-41)</p>
     </article></div>
 
-<h2 class="mt">Already shipped (24)</h2>
+<h2 class="mt">Already shipped (25)</h2>
 <p>Listed so the register stays complete, not to take credit. Each one can be reverted if a decision goes the other way.</p>
 <div class="grid mt"><article class="card decision-card" id="SG-01">
       <div class="meta">SG-01 · owner decides</div>
@@ -462,10 +498,10 @@
       <div class="meta">SG-34 · owner decides</div>
       <h3>State the tag-parameter requirement once, in plain words, on the disclosure page</h3>
       <p><strong>The situation.</strong> Program Policies §2(b) require the Associates tag as a parameter in each link&#x27;s URL. The site&#x27;s disclosure page explains that a commission may be earned but never tells the reader (or the owner) what makes a click attributable.</p>
-      <p><strong>The evidence.</strong> Program Policies (updated 2026-04-14) §2(a) and §2(b), quoted in data/verification.json link_compliance_2026_11_20; FLG-026. Zero shipped anchors carry tag=shopnow047c-20. Implemented 2026-11-20 (session 52f418e7): disclosure.html now carries a “How we link to Amazon” section quoting Participation Requirements 2(b), and every product link on the site carries the tag.</p>
+      <p><strong>The evidence.</strong> Program Policies (updated 2026-04-14) §2(a) and §2(b), quoted in data/verification.json link_compliance_2026_11_20; FLG-026. Zero shipped anchors carry tag=shopnow047c-20. Implemented 2026-11-20 (session 52f418e7): every product link on the site carries the tag, per Participation Requirements 2(b).</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
       <details><summary>The options and the recommendation</summary><ul><li>A. Add a short “How a click is credited” paragraph with the quoted requirement and the observed fact.</li><li>B. Leave it to the flag register.</li><li>C. Remove the tracking-ID line from the disclosure strip as too technical.</li></ul>
-        <p><strong>Recommendation.</strong> A. It is the one compliance statement on this site that a reader can check against the policy text, and it is one paragraph. Shipped on 2026-11-20; the gate (D38) keeps it true.</p></details>
+        <p><strong>Recommendation.</strong> A. It is the one compliance statement on this site that a reader can check against the policy text, and it is one paragraph. Shipped 2026-11-20; gate D40 keeps it true. The plain-words paragraph on disclosure.html is still to write.</p></details>
       <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> Makes the disclosure specific instead of ceremonial, and gives the owner a written rule to test against.</p><p class="small"><strong>What could go wrong:</strong> Quoting a policy clause wrongly is worse than not quoting it; the quote must be copied verbatim and dated.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> If the policy page changes the clause, the paragraph is corrected or removed the same day.</p>
         <div class="opts" data-decide="SG-34"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>

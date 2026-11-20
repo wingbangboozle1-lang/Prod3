@@ -227,10 +227,10 @@
    "product": "site",
    "brand": "—",
    "asin": "—",
-   "observed": "Participation Requirements 2(b): the Associates ID or tag must appear as a URL parameter on each link placed on the Site to an Amazon Site; 2(a): Special Links must use the assigned Associates ID. Applied to all 329 product links on 2026-11-20.",
+   "observed": "Participation Requirements 2(b): the Associates ID or tag must appear as a URL parameter on each link placed on the Site to an Amazon Site; 2(a): Special Links must use the assigned Associates ID. Applied to every product link on the site on 2026-11-20 (372 tagged anchors over 39 pages).",
    "observed_on": "2026-11-20",
    "source": "S02",
-   "used_for": "the tagged href on every product link, and release gate D38",
+   "used_for": "the tagged href on every product link, and release gate D40",
    "claim_status": "official documentation, quoted not paraphrased as fact"
   },
   {

@@ -488,6 +488,17 @@ check("D39-flag-citation", not _dangling,
       "cited but not defined on flagged.html: " +
       "; ".join(f"{k} ({', '.join(sorted(v)[:3])})" for k, v in sorted(_dangling.items())))
 
+# D40: every link we place to an Amazon product must carry the associate tag.
+# Associates Program Policies, Participation Requirements 2(b) (read 2026-11-20): "you must include your
+# Associates ID or \u201ctag\u201d ... as a parameter in the URL of each link you place on your Site to an Amazon
+# Site". FLG-026 recorded the requirement as an open owner question for a day; the site-side half was then
+# implemented, because a rule a generator can enforce should not live on a checklist. tools/link_tagger.py
+# applies it and checks it.
+_r40 = _sp2.run([sys.executable, str(ROOT / "tools" / "link_tagger.py"), "--check"],
+                capture_output=True, text=True)
+check("D40-outbound-tag", _r40.returncode == 0,
+      f"untagged Amazon links: {(_r40.stdout.strip().splitlines() or ['?'])[-1][:150]}")
+
 # D27: the tools pages must exist and be reachable from the front page
 for _tool in ("tools/index.html", "tools/compare-builder.html",
               "tools/oven-converter.html", "tools/cook-temperatures.html"):

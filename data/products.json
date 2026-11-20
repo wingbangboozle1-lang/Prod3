@@ -2,7 +2,7 @@
  "tracking_id": "shopnow047c-20",
  "verified_on": "2026-11-19",
  "verification_method": "Snapshot method: values transcribed from dated official Amazon listing snapshots (amazon.com/dp/<ASIN>) supplied for this project on 2026-11-19. A 2026-11-19 re-fetch returned dynamic, option-dependent content and was not used to overwrite values. Seller statements are recorded as claims, not as independently verified measurements. Anything not readable on the snapshot is null and flagged.",
- "note": "intended_* fields are the product-intent confirmation record. observed_* fields are the measured redirect target. The two are never merged. intended_* stay null until the owner confirms in the Associates workflow. dp_token_result records an observation only: constructing /dp/<token> from a 9-character token returned Page Not Found on 2026-11-19; that does not test or establish the status of the supplied link.amazon short links (FLG-011).",
+ "note": "intended_* fields are the product-intent confirmation record. observed_* fields are the measured redirect target. The two are never merged. intended_* stay null until the owner confirms in the Associates workflow. dp_token_result records an observation only: constructing /dp/<token> from a 9-character token returned Page Not Found on 2026-11-19; that does not test or establish the status of the supplied link.amazon short links (FLG-011). Site-rendered product links are tagged per Participation Requirements 2(b) — see link_tagging (2026-11-20).",
  "products": [
   {
    "id": "P-01",
@@ -84,7 +84,7 @@
     "note": "Third dated observation for this link. Neither earlier observation is overwritten."
    },
    "site_outbound_url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
-   "site_outbound_url_note": "Reader CTAs and citation links on this site point at the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link is kept in this record as the submitted input; it is not the path a reader is sent through, because its tagging cannot be confirmed from outside the account."
+   "site_outbound_url_note": "Reader CTAs and citation links on this site point at the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link stays in this record as the submitted input; it is not the path a reader is sent through, because its tagging cannot be confirmed from outside the account."
   },
   {
    "id": "P-02",
@@ -167,7 +167,7 @@
     "note": "Third dated observation for this link. Neither earlier observation is overwritten."
    },
    "site_outbound_url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
-   "site_outbound_url_note": "Reader CTAs and citation links on this site point at the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link is kept in this record as the submitted input; it is not the path a reader is sent through, because its tagging cannot be confirmed from outside the account."
+   "site_outbound_url_note": "Reader CTAs and citation links on this site point at the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link stays in this record as the submitted input; it is not the path a reader is sent through, because its tagging cannot be confirmed from outside the account."
   },
   {
    "id": "P-03",
@@ -248,7 +248,7 @@
     "note": "Third dated observation for this link. Neither earlier observation is overwritten."
    },
    "site_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
-   "site_outbound_url_note": "Reader CTAs and citation links on this site point at the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link is kept in this record as the submitted input; it is not the path a reader is sent through, because its tagging cannot be confirmed from outside the account."
+   "site_outbound_url_note": "Reader CTAs and citation links on this site point at the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link stays in this record as the submitted input; it is not the path a reader is sent through, because its tagging cannot be confirmed from outside the account."
   },
   {
    "id": "P-04",
@@ -327,7 +327,7 @@
     "note": "Third dated observation for this link. Neither earlier observation is overwritten."
    },
    "site_outbound_url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
-   "site_outbound_url_note": "Reader CTAs and citation links on this site point at the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link is kept in this record as the submitted input; it is not the path a reader is sent through, because its tagging cannot be confirmed from outside the account."
+   "site_outbound_url_note": "Reader CTAs and citation links on this site point at the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link stays in this record as the submitted input; it is not the path a reader is sent through, because its tagging cannot be confirmed from outside the account."
   },
   {
    "id": "P-05",
@@ -407,26 +407,25 @@
     "note": "Third dated observation for this link. Neither earlier observation is overwritten."
    },
    "site_outbound_url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
-   "site_outbound_url_note": "Reader CTAs and citation links on this site point at the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link is kept in this record as the submitted input; it is not the path a reader is sent through, because its tagging cannot be confirmed from outside the account."
+   "site_outbound_url_note": "Reader CTAs and citation links on this site point at the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link stays in this record as the submitted input; it is not the path a reader is sent through, because its tagging cannot be confirmed from outside the account."
   }
  ],
  "price_snapshot_note": "price_observed fields are archival snapshots dated 2026-11-19. Observation time and delivery location were not recorded; prices are not current offers. See FLG-012.",
  "claim_basis": "Specs, ratings, and prices are seller/listing statements from the snapshot. Claim-marked fields (accuracy, certification, response time, heat-safe ratings, function names) are marketing claims the site has not tested. See FLG-009.",
  "citation_policy": "Every value rendered on the site must trace to one of: (a) a dated fetch of the official listing, (b) a dated fetch of an official policy page, or (c) arithmetic over (a) that states its inputs. Values with no such trace are left blank and published on flagged.html. See data/citations.json.",
  "verified_on_live_recheck": "2026-11-20",
- "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-023 and FLG-025.",
+ "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-031 and FLG-025.",
  "link_tagging": {
   "date": "2026-11-20",
   "session": "arena/52f418e7-prod3",
-  "rule": "Associates Program Policies, Participation Requirements 2(b): “you must include your Associates ID or “tag” (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site”. §2(a): “Special Links must use the Associates ID we have assigned to you.” Commission Income Statement 1(a) makes a click through a Special Link the condition of a Qualifying Purchase. Operating Agreement §1 requires the special tagged link formats.",
+  "rule": "Associates Program Policies, Participation Requirements 2(b): “you must include your Associates ID or “tag” (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site”. §2(a): “Special Links must use the Associates ID we have assigned to you.” Commission Income Statement 1(a) makes a click through a Special Link the condition of a Qualifying Purchase; Operating Agreement §1 requires the special tagged link formats.",
   "source": [
    "S02",
    "S01",
    "S34"
   ],
-  "price_snapshot_note": "price_observed fields are archival snapshots dated 2026-11-19. Observation time and delivery location were not recorded; prices are not current offers. See FLG-012.",
-  "claim_basis": "Specs, ratings, and prices are seller/listing statements from the snapshot. Claim-marked fields (accuracy, certification, response time, heat-safe ratings, function names) are marketing claims the site has not tested. See FLG-009.",
-  "citation_policy": "Every value rendered on the site must trace to one of: (a) a dated fetch of the official listing, (b) a dated fetch of an official policy page, or (c) arithmetic over (a) that states its inputs. Values with no such trace are left blank and published on flagged.html. See data/citations.json.",
-  "verified_on_live_recheck": "2026-11-20",
-  "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-031 and FLG-025."
+  "before": "329 product links on the 37 published pages then in the tree carried no tag parameter; 23 reader CTAs ran through the supplied link.amazon short links, whose tagging cannot be read from outside the account (FLG-026 recorded the requirement as an open owner question).",
+  "after": "Every product link the site places now ends in ?tag=shopnow047c-20 (372 tagged anchors over 39 pages as counted on 2026-11-20), emitted by the three builders (scripts/build_registers.py, build_decisions.py, build_products.py) and applied to the hand-written pages by tools/link_tagger.py, which also runs as release gate D40. The JSON registers keep the canonical untagged URL as the record, so the observation is not altered; a link to a 9-character token path (/dp/B04G1MEwY, source S15) stays untagged because it is evidence of an observation, not a link to a Product.",
+  "not_claimed": "Whether a tag added outside Associates Central is accepted for this account, and whether the supplied short links attach the tag downstream, can only be settled in the account (S34 gives the click-and-read procedure and the Link Checker). FLG-026 stays open for that half. Nothing here asserts that the supplied links are invalid."
+ }
 }

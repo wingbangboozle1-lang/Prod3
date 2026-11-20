@@ -869,7 +869,7 @@
         "B. Add FAQPage markup anyway so AI answer engines can extract the questions and answers.",
         "C. Add the markup but hide it from readers."
       ],
-      "recommendation": "A — the nine guides already answer questions in visible prose, which is what people-first guidance rewards. B duplicates every answer in a second surface to maintain, for no search-feature benefit. C is hidden-text abuse under Google's spam policies (S22) and is rejected outright.",
+      "recommendation": "A — the guides already answer questions in visible prose, which is what people-first guidance rewards. B duplicates every answer in a second surface to maintain, for no search-feature benefit. C is hidden-text abuse under Google's spam policies (S22) and is rejected outright.",
       "effort": "S",
       "confidence": "high",
       "status": "proposed",

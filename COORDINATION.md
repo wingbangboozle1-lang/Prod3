@@ -1006,3 +1006,13 @@ true, so it was corrected rather than left standing. Three consequences:
 This is not a claim that the supplied short links are invalid. The status of `B04G1MEwY` is
 unresolved — it may be transient, a campaign-link change, or a link-level setting, and a fetch
 cannot distinguish those.
+
+### T-25 publication record (session `arena/70e8475c-prod3`, 2026-11-20)
+
+- **PR #27:** https://github.com/wingbangboozle1-lang/Prod3/pull/27 (`arena/70e8475c-prod3` → `main`). Merged with `gh pr merge 27 --merge` at `2026-11-20T06:17:37Z`; merge commit `f2b3a07bdd65537341c2d7c84bb928beb5a8ae13`.
+- **Deploy GitHub Pages (workflow):** run `44686775327` — success on `f2b3a07`.
+- **pages build and deployment (GitHub built-in):** run `44686774699` — the build job succeeded; the **deploy job failed** with a transient results-receiver EOF on log retrieval. Re-running the built-in run is not permitted by GitHub. The Pages build history then recorded `f2b3a07` as `built`. Live fetch of `/flagged.html` on that build served FLG-017.
+- **Concurrent merge:** another session (`arena/2ef30474-prod3`) merged PR #26 into `main` at `c49de86`, which includes `f2b3a07`. Its Deploy run `44686775327`-series on `c49de86` is success; the Pages API reports the latest build `built` at `c49de86`. The live `/executive-summary.html` shows the 2026-11-20 re-check text.
+- **Gates re-run on the combined tree at `c49de86`:** `tools/verify_site.py`, `tools/check_site.py`, `scripts/check_site.py`, `scripts/build_sitemap.py --check`, `scripts/build_registers.py --check` — all pass.
+- **Irregularity logged:** one red `pages build and deployment` run (deploy job, transient) on `f2b3a07`, superseded by the successful `c49de86` build. Not a content failure. A `POST /pages/builds` request from this session returned 403 (insufficient integration permission), so no manual Pages rebuild was requested.
+- **Not claimed:** intended-ASIN confirmation (FLG-001), Special Link test (FLG-006), account status (FLG-010), FLG-017 cause, or any campaign data.

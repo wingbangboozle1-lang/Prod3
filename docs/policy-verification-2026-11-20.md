@@ -147,7 +147,7 @@ exists, it is quoted above, and it is a question for the owner's legal review ra
 | `data/policy-checks.json` | C-04 restated with the located §6(w) text; C-01 corrected to "§5 names the sentence, §6 makes it a material breach"; C-05, C-06, C-11, C-13 given the located subsection text; six new rows **C-15..C-20** for §6(t), §6(y), §6(s), §6(g)+§4, §6(n)+§6(p), §1 + CIS §5 | Not claimed by another session |
 | `compare.html` | The Ratings footnote no longer cites §2(t); it cites §6(t) and drops the claim that the API returns a rating to print | Not claimed |
 | `ideas.html` | Rejected-idea rows corrected to §6(t), and a new rejected row for **price-drop alerts** on the §6(y) ground; a new block of paste-ready design inputs for the next polish pass | Not claimed |
-| `DIRECTION.md` | Dated rows: the citation correction, the five new policy-register rows, and the design-brief publication. The digest's suggestion index was also re-mirrored to the full register (it stopped at SG-31 while SG-32..SG-35 already existed) and its open-questions count corrected | Not claimed |
+| `DIRECTION.md` | Dated rows: the citation correction, the new policy-register rows, and the design-brief publication. The digest's suggestion index was rebuilt from the final register — it had drifted at SG-32 while upstream filled SG-32..SG-42 — and the open-questions count corrected | Not claimed |
 
 ### 4a. Register nits found while working, listed rather than fixed
 
@@ -160,7 +160,8 @@ exists, it is quoted above, and it is a question for the owner's legal review ra
   week and will change again; the assertion should be derived from the `articles/` directory (requested in §6).
 - `data/flagged.json` holds FLG-017 with `status: open` while `data/products.json` records a later same-day
   observation; §7a adds a third. Nothing here picks a winner — the flags exist so a human can.
-| `data/suggestions.json` + regenerated `suggestions.html` | **SG-36..SG-41**, six design-brief rows in the register's own format, each with the defect, the evidence, the options and a recommendation | suggestions.json is free; the generator was run unmodified |
+| `data/suggestions.json` + regenerated `suggestions.html` | **SG-43..SG-48**, six design-brief rows in the register (they arrived as SG-36..SG-41 and were
+renumbered on rebase when upstream filled those IDs with different proposals)'s own format, each with the defect, the evidence, the options and a recommendation | suggestions.json is free; the generator was run unmodified |
 
 Left alone because an active parallel session (`arena/59a087a1-prod3`, T-46, claiming `data/citations.json`,
 `data/flagged.json`, `flagged.html`, `README.md`, `index.html`, `air-fryers.html`, `meat-thermometers.html`,
@@ -292,7 +293,7 @@ they do. This is the list that separates "we can build it" from "we can ship it"
 | Q-G | Is there a Search Console property, verified, with the sitemap submitted? | A verified property, a submitted `sitemap.xml`, and 28 days of query data | owner | Choosing guides from measured queries instead of hypotheses (SG-07, SG-18) |
 | Q-H | Who is the author, and what have they actually done? | A name, a real bio, and a statement of what they have used versus only read | owner + editorial | Every byline stays organisational; no experience claim can appear; "not a lab" stays in the hero |
 | Q-I | What is the review-and-merge authority for flagged rows? | A rule: which flags an agent may close unilaterally (a wrong section number) and which need a human (anything touching account status, links, money) | owner | FLG-020-style closures; whether this memo's §6 requests get applied by the next session or by a human |
-| Q-J | What does "polished" mean to the owner, measurably? | A pick among the SG-36..SG-41 rows, plus one reference site the owner would call good, and one they would call slop | owner | Whether the shop-page fixes ship as a set or a subset; a design brief with no reference point produces more of what is already there |
+| Q-J | What does "polished" mean to the owner, measurably? | A pick among the SG-43..SG-48 rows, plus one reference site the owner would call good, and one they would call slop | owner | Whether the shop-page fixes ship as a set or a subset; a design brief with no reference point produces more of what is already there |
 
 ## 9. Missing information that no one has asked for yet
 
@@ -337,5 +338,32 @@ These are gaps the registers do not currently carry. They are the ones that hurt
   the slop the owner objects to. Guides are cheap to write and expensive to be believed; without Q-G there is
   no measurement to choose topics by, and §1 makes thin pages an eligibility problem, not just a taste one.
 
-The register rows SG-36..SG-41 implement the polish part of A and B; they are marked *proposed*, and a mark on
+The register rows SG-43..SG-48 implement the polish part of A and B; they are marked *proposed*, and a mark on
 `suggestions.html` is a preference, not a change.
+
+## 11. What upstream changed while this branch was open (re-read at merge time, not assumed)
+
+A parallel session merged several passes during this work. Each request in §6 was re-checked against the
+merged tree rather than left standing:
+
+| Request | State at merge |
+|---|---|
+| Front-page duplicate spec-chip rows (§5 item 1) | **Done upstream** — each of the four affected cards now carries one chip row. SG-43 is therefore a confirmation task, not a change request. |
+| `suggestions.html` / `questions.html` / `citations.html` self-dating from a literal | **Done upstream** — the "Register updated 2026-11-19" string no longer appears on any register page. |
+| `tools/verify_site.py` hardcoded feed count | **Done upstream** — it now derives the expected count from `articles/` and additionally fails if a guide is missing from the sitemap, the feed or the guides hub. The tree has 10 guides and 10 feed items. |
+| `README.md` duplicated register table (§6 item 3) | **Done upstream** — one generated table remains, produced by `scripts/build_readme.py`; this round's regeneration moved its counts to 47 suggestion rows and 27 questions. |
+| `citations.html` and `data/citations.json` still say the §2(t)/§2(v) wording "was not located" | **Still open** — owned by the active T-46 claim. It is now a false negative on the record: the clauses are §6(t) and §6(v). |
+| `flagged.html` FLG-020 "citations not located (UNVERIFIED)" | **Still open** — same owner; closable as resolved-with-correction. |
+| Thermometer cards have no chips; four inline hex colours remain on the front page | **Still open** — `meat-thermometers.html` renders zero chip rows against one per card on the air-fryer shelf, and `index.html` still carries `#fff`, `#fdba74`, `#e6d9c8` and the `#292524→#57534e` gradient inline. SG-44 and SG-45 cover exactly these. |
+
+The pattern is worth stating plainly for whoever reads this after the merge: on this repository a cross-scope
+*request* is reliable, because the file owner is already editing it, and a cross-scope *edit* is how two
+sessions end up publishing two meanings for one ID — which happened to these six rows and cost a renumbering.
+
+## 12. Reviewer's checklist for this round
+
+- [ ] Read §3 of this memo against the live pages before accepting any renumbering of a citation.
+- [ ] Decide Q-A, Q-B, Q-C — the three that nothing else can proceed on.
+- [ ] Mark SG-43..SG-48 on `suggestions.html` (Do this / Maybe / No) and copy the block back; that is the
+      design brief's approval step, and no page changes without it.
+- [ ] Close or keep FLG-020 once the citations row is corrected by its owner.

@@ -2508,6 +2508,44 @@ Deploy record appended after merge.
 **Next free claim: T-66** — checked against `origin/main` with `git grep "| T-66 "`: no row exists for T-66 or T-67, only this session's earlier *suggestion* that the next session claim from T-66. T-60..T-65 are this session's; rows T-52/T-56/T-57..T-62 from other sessions have landed alongside them.
 
 **Post-PR note (same session, minutes later).** The rebase that made PR #75 mergeable silently dropped the mirrored register rows again — a `data/flagged.json` conflict resolved to the upstream side, which is the right rule for a file another session owns but wrong for an append. Re-applied by a small standalone script (`mirror_flags.py`: derive the register rows from the page's own callouts, publish the two page callouts the register already held), which also fixed three things the same round exposed: mirrored `basis_note` text must not re-cite source ids (gate D15 reads prose citations), `direction.html` carries a hand-written `Q-01 … Q-29` range the D36 gate polices, and its open-question table needed the Q-30 row so the widened range is honest. **Advice for whoever appends to a shared JSON next:** keep the append in its own idempotent script that re-runs after every rebase, not only in a commit.
+
+### T-53 round 3 — third merge, ids that moved again, and the clause map repaired (session `arena/52f418e7-prod3`, 2026-11-20)
+
+Main moved a third time (PRs #75 and #81) while this round was open. Same rule applied: the
+published record keeps its number, the later addition moves.
+
+| Register | Draft id | Landed on | Why |
+|---|---|---|---|
+| Question | `Q-28` → `Q-30` | **`Q-31`** | `Q-28` went to the indexing-status question, `Q-30` to the Core Web Vitals question |
+| Suggestions | `SG-43..45` → `SG-48..50` | **`SG-54`, `SG-55`, `SG-56`** | the seasonal block, FAQ-schema, AI-draft fact-check, Web-Vitals and anchor-name rows took the earlier numbers |
+| Flags | `FLG-039/040` | **`FLG-041`, `FLG-042`** (held) | upstream's register ends at `FLG-040`, so these were free on the merged tree |
+| Source | `S34` | **`S40`** (held) | `S34..S39` are taken; `S40` was free and is the Associates tagging help topic |
+
+**`data/policy-clause-map.json` was rebuilt rather than merged.** The text merge produced JSON that
+would not parse (each side had appended clauses), so the file is upstream's 22 entries plus this
+session's five, with the cookies entry moved from `6(e)` to `3(e)` and a `supersedes_citation` note
+saying why. That mislabel is *still on main* — upstream's `FLG-037` pass recorded
+&ldquo;disclosing … the use of cookies, pixels, and other technologies&rdquo; under 6(e), and the live
+page carries that wording under **3(e)** while **6(e)** is the search-engine/Proprietary-Terms
+clause. The added entries are `1(g)`, the Section 5 machine-learning clause, `6(e)`, `6(f)` and
+Commission Income Statement `2(g)` — 27 clauses in total, each with the wording transcribed on
+2026-11-20. `D35-clause-known` is what forces every published letter to exist in that file, which is
+why `SG-54..SG-56` cite clauses instead of prose.
+
+**Two more things worth reading before taking a merge on this repo.** `-X theirs` also reverted
+`direction.html`'s heading range, and `D36-range-current` failed on it twice in one session (`Q-01 …
+Q-29`, then `Q-01 … Q-30`) — a hand-written page cannot keep a register range in a heading by hand,
+so whoever owns that page should generate the two headings the way `build_flag_index.py` generates
+the F table. And the assertion count is a published number in three places
+(`README.md`, `EXECUTIVE_SUMMARY.md`, `data/citations.json`); it moved 6,154 → 6,630 → 7,120 across
+these merges, so re-run `tools/check_site.py` and re-sync the docs as the last step before the commit,
+not the first.
+
+**Final state of this round:** 42 HTML pages, 369 product anchors carrying `tag=shopnow047c-20`,
+`tools/check_site.py` 42 pages / 7,120 assertions / all additional rules, `scripts/check_site.py` all
+checks passed, `tools/verify_site.py` release gate passed, `tools/crawl_links.py` 0 broken links /
+0 dead anchors / 0 orphans, `tools/link_tagger.py --check` OK, `data/policy-clause-map.json` 27
+clauses, and all nine `--check` freshness gates green.
 ## Session `arena/ba8e7240-prod3` — T-66..T-69 (2026-11-20, 06:52–07:45Z)
 
 Claimed as T-51..T-54; renumbered twice because four sessions merged during this branch and took those IDs

@@ -809,6 +809,37 @@
         "S02"
       ],
       "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-044",
+      "severity": "medium",
+      "area": "Policy citations — one clause letter still wrong after the correction pass",
+      "product": "data/policy-clause-map.json; citations.html",
+      "detail": "The 2026-11-20 clause-mapping pass (FLG-037) moved several citations out of Section 2 of the Participation Requirements into Section 6 and recorded the wording in data/policy-clause-map.json. One entry landed in the wrong place: the cookies, pixels and visitor-data disclosure requirement was recorded as 6(e), and citations.html repeated “6(e) privacy disclosure”. Re-read against the live page the same day, that wording is Section 3 item (e) (“Responsibility for Your Site”); Section 6 item (e) is a different rule — not purchasing, registering or otherwise using an Amazon Mark “for use in any Search Engine”, with the Proprietary Terms exclusion on request. Both rules are real; the letter attached to the first one was not.",
+      "why_it_matters": "The clause map exists so a reader can open the policy page and find the quoted words under the quoted number. One misplaced letter makes the whole map look inferred, which is the opposite of what it is for — and this site's only claim to authority is that its citations were actually read.",
+      "action": "Corrected 2026-11-20 (session 52f418e7): the map entry is renumbered to 3(e) with a supersedes_citation note rather than silently edited; 6(e) now carries the search-engine wording it actually holds; and 1(g), 4, 5, 6(f) and Commission Income Statement 2(g) were added from the same read so the guardrail rows cite letters that exist in the map. Owner: nothing. Renumbered on publication twice: first filed as FLG-039 and FLG-040, then as FLG-041 and FLG-042, because parallel sessions took those numbers while this branch was in flight. Under the board rule the later addition moves, and the rows that were published first keep their numbers.",
+      "status": "resolved on the site 2026-11-20; recorded so the correction is visible",
+      "sources": [
+        "S02",
+        "S37",
+        "S38"
+      ],
+      "evidence_status": "verified",
+      "sources_checked": "2026-11-20",
+      "quote": "Participation Requirements 3(e): “disclosing on your Site accurately and adequately … the use of cookies, pixels, and other technologies by you and third parties …” | 6(e): “You will not (and you will not seek to) purchase, register or otherwise use any Amazon Mark … for use in any Search Engine …”"
+    },
+    {
+      "id": "FLG-042",
+      "severity": "low",
+      "area": "Register integrity — published rows versus data rows",
+      "product": "data/flagged.json; flagged.html; assets/style.css",
+      "detail": "data/flagged.json held the 21 F-series findings while flagged.html published 3 of them, so 18 findings existed in a machine-readable file with no definition on the page readers are sent to. The check written to prevent that, D35-flag-published in tools/check_site.py, was inverted: it read `not not _fmissing`, which passes when rows are missing and fails when they are all published. The F half is now generated from the data file by scripts/build_flag_index.py and watched as gate D42, one row per finding, each carrying a source link or an explicit “No official source” marker. The second half of this record is what the merge process cost: a `git merge -X theirs` kept upstream's copy of every file both sides touched, which dropped this session's four stylesheet rules for classes still used in the markup (.article-wide, .article-table, .product-art.neutral, .sub.footprint) and reverted one sentence of reader copy. No gate failed. The rules are restored and the wording re-applied.",
+      "why_it_matters": "An inverted gate is worse than no gate, and a class in the markup with no definition in the stylesheet is a layout that silently falls back while every check reports green. Both are defects a build can own but no build was owning.",
+      "action": "Owner or integration pass: decide whether the FLG callouts should also be generated from the data file (recorded as I-15 in DIRECTION.md, not answered by renumbering published ids). Suggested gate for the next session: collect the class tokens used in *.html, subtract those defined in assets/style.css and those set by assets/app.js, and fail on the remainder. The D35 condition itself is corrected and negative-tested (deleting one generated row failed D42, then restored). Renumbered on publication twice: first filed as FLG-039 and FLG-040, then as FLG-041 and FLG-042, because parallel sessions took those numbers while this branch was in flight. Under the board rule the later addition moves, and the rows that were published first keep their numbers.",
+      "status": "partly resolved 2026-11-20 — F register published and gated; the class-coverage gate is not",
+      "sources": [],
+      "evidence_status": "unverified",
+      "sources_checked": "2026-11-20"
     }
   ],
   "alias_records": [

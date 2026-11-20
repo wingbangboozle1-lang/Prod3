@@ -36,6 +36,7 @@ jobs:
           python3 scripts/build_sitemap.py --check
           python3 scripts/build_readme.py --check
           python3 scripts/build_ideas.py --check
+          python3 scripts/build_flag_index.py --check
 
       - name: Release gate (structure, disclosure, sources)
         run: |

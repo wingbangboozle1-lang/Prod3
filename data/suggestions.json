@@ -1206,6 +1206,75 @@
         "S21",
         "S22"
       ]
+    },
+    {
+      "title": "Write the automation boundary down before the automation exists",
+      "problem": "The brief asks for an AI-powered platform that researches products, analyses pricing and reviews, generates articles and optimises campaigns. Parts of that ambition collide with the program rules this site already follows, and the collision lines are recorded nowhere a builder would meet them, so a future session would implement the collision instead of choosing it.",
+      "evidence": "Participation Requirements 5: “You will not, without or express prior written approval, use, or allow any third party to use, any Special Links or Program Content to develop machine learning models or related technology” — the same section bars using Program Content on or in connection with client-side software such as a browser extension. 6(t) bars displaying customer reviews or star ratings unless obtained through Creators API or PA API. 6(y): “Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.” Quotes transcribed from the live page 2026-11-20 and recorded in data/policy-clause-map.json. Sources: S02, S37, S38.",
+      "options": [
+        "A. Publish a short “what the automation may and may not do” section on the disclosure page, citing each clause, and let the gates keep the rest.",
+        "B. Keep the boundary in COORDINATION.md, where a future reader of the site never meets it.",
+        "C. Ask Amazon in writing before designing any pipeline that reads Program Content at scale."
+      ],
+      "recommendation": "A now; C only if the owner actually wants a model trained on Program Content, which section 5 makes an approval question rather than an engineering one. The gates already refuse prices, ratings and scraped content, so this row states a boundary rather than adding a capability.",
+      "effort": "S",
+      "confidence": "high",
+      "decision_owner": "owner",
+      "sources": [
+        "S02",
+        "S37",
+        "S38"
+      ],
+      "blocks": "Any automation that reads Amazon data at scale",
+      "id": "SG-59",
+      "status": "proposed",
+      "note": "Added 2026-11-20 by session 52f418e7 from a line-by-line re-read of the Participation Requirements. Drafted as SG-43, SG-44 and SG-45, then SG-48..SG-50; each of those numbers was taken by a parallel session while this branch was in flight, so the rows moved rather than the earlier records."
+    },
+    {
+      "title": "Settle the naming and paid-search boundary before any traffic spend",
+      "problem": "A growth plan reaches for a keyword campaign and a punchier domain. Both are constrained here, and neither constraint is recorded on the site, so the obvious next move is the one with account risk attached.",
+      "evidence": "Participation Requirements 1(g): no Amazon trademark “or a variant or misspelling” may appear “in any domain name, subdomain name, in any ‘tag’ or Associates ID, or in any username, group name, or other identifier on any social networking site”. 6(e) bars purchasing, registering or otherwise using an Amazon Mark “for use in any Search Engine” and lets Amazon require exclusion of Proprietary Terms from paid keywords; 6(f) bars keyword auctions that produce a Prohibited Paid Search Placement while expressly permitting paid search on general keywords “so long as you comply with the Agreement and those paid or unpaid search results send users to your site and not directly, or indirectly via a Redirecting Link … to an Amazon Site”. The Commission Income Statement then disqualifies purchases referred through a Prohibited Paid Search Placement, so the penalty is economic as well as contractual. Transcribed 2026-11-20.",
+      "options": [
+        "A. Record both rules beside the custom-domain question and in the publishing plan; keep organic-only growth as the shipped path.",
+        "B. Buy a domain containing “Amazon” and argue it reads as descriptive.",
+        "C. Run brand-keyword ads now and handle the exclusion request if it ever arrives."
+      ],
+      "recommendation": "“Kitchen Counter” and shopnow047c-20 already pass both tests, so the change is a dated note rather than a rebuild. Recommend A. No paid traffic is proposed anywhere on this site; buying any is the owner's spend decision.",
+      "effort": "S",
+      "confidence": "high",
+      "decision_owner": "owner",
+      "sources": [
+        "S02",
+        "S37",
+        "S38",
+        "S01"
+      ],
+      "blocks": "Any domain purchase and any paid-search plan",
+      "id": "SG-60",
+      "status": "proposed",
+      "note": "Added 2026-11-20 by session 52f418e7 from a line-by-line re-read of the Participation Requirements. Drafted as SG-43, SG-44 and SG-45, then SG-48..SG-50; each of those numbers was taken by a parallel session while this branch was in flight, so the rows moved rather than the earlier records."
+    },
+    {
+      "title": "Keep reader email strictly solicited whenever a list is started",
+      "problem": "The reader-capture rows defer email to an owner decision, which is right. The condition that will apply at build time is not written down, so a future implementation could ship a list that receives affiliate links without having asked for them.",
+      "evidence": "Participation Requirements 4 (Promotional Limitations): “You may include Special Links in emails, SMS and direct messaging from your social media Sites; provided, that such communications are solicited (i.e., opted into by the receiving customer)”, and “you are the ‘Sender’ of each communication containing any Special Links” for the purposes of applicable marketing law. Amazon may also request “representative sample materials and written certification” of compliance, and failure to provide it is a material breach. Transcribed 2026-11-20. The site ships no form at all today (FLG-014).",
+      "options": [
+        "A. Write the condition into the reader-capture rows so a builder meets it at the point of choice: double opt-in, a stored consent timestamp, unsubscribe in every message.",
+        "B. Ship a form now and fix consent later.",
+        "C. Keep RSS as the only subscription path and never run a list."
+      ],
+      "recommendation": "A, and only A. Until a provider and a consent record exist, the footer keeps pointing at RSS — which is what the site does today, and what the deferral in the reader-capture rows assumes.",
+      "effort": "S",
+      "confidence": "high",
+      "decision_owner": "editorial",
+      "sources": [
+        "S02",
+        "S37"
+      ],
+      "blocks": "Reader capture (SG-30, SG-41)",
+      "id": "SG-61",
+      "status": "proposed",
+      "note": "Added 2026-11-20 by session 52f418e7 from a line-by-line re-read of the Participation Requirements. Drafted as SG-43, SG-44 and SG-45, then SG-48..SG-50; each of those numbers was taken by a parallel session while this branch was in flight, so the rows moved rather than the earlier records."
     }
   ],
   "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 (a merge replay during PR #17 clobbered SG-20's content). The interim retirement was withdrawn the same day when SG-20's original content was recovered from PR #17 commit 7fbef67; SG-20 and SG-21 are live and distinct again. The register keeps retired rows so an ID is never reused."

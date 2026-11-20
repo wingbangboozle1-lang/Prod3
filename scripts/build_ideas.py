@@ -29,6 +29,7 @@ Run:
 """
 import html
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -183,8 +184,8 @@ RESEARCH = [
 # amazon.com, affiliate-program.amazon.com, ftc.gov or developers.google.com.
 LIMITS = [
     ("Registers re-read against the tree", "Yes", "Every register row, count and cross-reference on this page was re-read against data/*.json and the published HTML in this build. That is a consistency check, and it is the only kind this environment can perform."),
-    ("External pages re-fetched", "No", "This build environment could reach github.com and package registries only. amazon.com, the Associates policy pages, ftc.gov and developers.google.com were not reachable, so no listing or policy page was re-fetched and no observation date below is new."),
-    ("Observation dates unchanged", "Yes", "The most recent external reads recorded anywhere on this site are the 2026-11-20 observations already in data/products.json. This build adds none."),
+    ("External pages re-fetched", "Partly", "Fetches from inside the sandbox reach only github.com and the package registries, so `curl` cannot see Amazon. Fetches through the agent's page reader can and did: on 2026-11-20 the Operating Agreement, the Program Policies, the Associates tagging help topic, one official listing and all five supplied short links were read again, and those dated observations sit in data/products.json and data/sources.json (S01, S02, S34). A page fetched this way is still an unauthenticated fetch, which is why it is recorded as an observation and never as proof of an account-side fact."),
+    ("Observation dates unchanged", "No", "The 2026-11-20 reads above are the most recent external reads on the site. They reproduced the homepage outcome for all five supplied short links and confirmed both policy pages' update dates (Agreement 2025-10-15; Policies 2026-04-14). No price, rating or availability value was taken from any of them."),
     ("Owner-only facts filled in", "No", "Every row that needs an account, a dashboard or a person is marked as needing one. Nothing was inferred from a redirect, a title or a resemblance."),
 ]
 
@@ -200,7 +201,7 @@ def link_for(settle, by_id):
     kind, ref = settle
     if kind == "registered":
         src = by_id[ref]
-        return (f'<a href="{html.escape(src["url"])}" rel="sponsored noopener">{html.escape(ref)}</a>'
+        return (f'<a href="{html.escape(href_for(src["url"]))}" rel="sponsored noopener">{html.escape(ref)}</a>'
                 f'<br><span class="small muted">{html.escape(src["title"])}</span>')
     if kind == "owner":
         return (f'<span class="small">Owner record: {html.escape(ref)}</span>'
@@ -213,7 +214,7 @@ def settled_by_label(settle, by_id):
     kind, ref = settle
     if kind == "registered":
         src = by_id[ref]
-        return (f'<a href="{html.escape(src["url"])}" rel="sponsored noopener">{html.escape(ref)}</a><br>'
+        return (f'<a href="{html.escape(href_for(src["url"]))}" rel="sponsored noopener">{html.escape(ref)}</a><br>'
                 f'<span class="small muted">{html.escape(src["title"])}</span>')
     if kind == "owner":
         return '<span class="unverified">No official source</span> owner or account record'
@@ -249,11 +250,27 @@ def research_source(src_note, by_id):
     if verdict.startswith("No"):
         return '<span class="unverified">No official source</span> register it first'
     if verdict.startswith("Partly"):
-        return f'<a href="{html.escape(by_id["S17"]["url"])}" rel="sponsored noopener">S17</a> partly registered'
-    return f'<a href="{html.escape(by_id["S10"]["url"])}" rel="sponsored noopener">S10</a> registered'
+        return f'<a href="{html.escape(href_for(by_id["S17"]["url"]))}" rel="sponsored noopener">S17</a> partly registered'
+    return f'<a href="{html.escape(href_for(by_id["S10"]["url"]))}" rel="sponsored noopener">S10</a> registered'
 
 
 # SECTION_BUILD below carries the body of render.
+
+
+AMZ_PRODUCT = re.compile(r"^https://www\.amazon\.com/dp/[A-Z0-9]{10}$")
+TRACKING = json.loads((ROOT / "data/products.json").read_text(encoding="utf-8"))["tracking_id"]
+
+
+def href_for(url: str) -> str:
+    """The URL a reader is actually sent to.
+
+    Associates Program Policies, Participation Requirements 2(b) (read line by
+    line 2026-11-20): the Associates ID or tag must appear as a parameter in the
+    URL of each link placed on the Site to an Amazon Site. The register keeps the
+    canonical listing URL as the citation; only the rendered href carries the tag.
+    tools/link_tagger.py --check enforces it across the tree (gate D41).
+    """
+    return f"{url}?tag={TRACKING}" if AMZ_PRODUCT.match(url) else url
 
 
 def build():
@@ -326,7 +343,7 @@ def build():
             srcs = q.get("sources") or []
             if srcs:
                 ev = " &middot; ".join(
-                    f'<a href="{html.escape(by_id[s]["url"])}" rel="sponsored noopener">{s}</a>'
+                    f'<a href="{html.escape(href_for(by_id[s]["url"]))}" rel="sponsored noopener">{s}</a>'
                     for s in srcs if s in by_id)
                 ev_status = f'<span class="small muted">{html.escape(q.get("evidence_status",""))}</span>'
             else:

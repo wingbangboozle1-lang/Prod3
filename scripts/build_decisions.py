@@ -24,11 +24,34 @@ release gate enforces both halves; see tools/check_site.py rule P25.
 """
 import html
 import json
+import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BASE = "https://wingbangboozle1-lang.github.io/Prod3"
+TRACKING = json.loads((ROOT / "data/products.json").read_text(encoding="utf-8"))["tracking_id"]
+
+AMZ_PRODUCT = re.compile(r"^https://www\.amazon\.com/dp/[A-Z0-9]{10}$")
+
+
+def href_for(url: str) -> str:
+    """The URL a reader is actually sent to.
+
+    Associates Program Policies, Participation Requirements 2(b) (read line by
+    line on 2026-11-20 at
+    https://affiliate-program.amazon.com/help/operating/policies): "you must
+    include your Associates ID or \u201ctag\u201d (appearing as XXXXX-##, or such other
+    format as we may designate) as a parameter in the URL of each link you place
+    on your Site to an Amazon Site". The register keeps the canonical listing URL
+    as the citation; only the rendered href carries the tag, so a reader who
+    follows a citation lands on the same official page while every click through
+    the site stays attributable. Policy pages and help topics are not Product
+    links, so they are left alone. tools/link_tagger.py enforces the same rule
+    across the published tree (tools/check_site.py gate D38).
+    """
+    return f"{url}?tag={TRACKING}" if AMZ_PRODUCT.match(url) else url
+
 
 HEAD = """<!DOCTYPE html>
 <html lang="en">
@@ -89,7 +112,7 @@ def source_links(ids, sources_by_id):
         # Any Amazon property must carry rel="sponsored" on this site, including
         # policy documents that earn no commission. scripts/check_site.py enforces it.
         rel_attr = "sponsored noopener" if "amazon.com" in s["url"] else "noopener"
-        out.append(f'<a href="{esc(s["url"])}" rel="{rel_attr}">{label}</a>')
+        out.append(f'<a href="{esc(href_for(s["url"]))}" rel="{rel_attr}">{label}</a>')
     return "<br>".join(out)
 
 

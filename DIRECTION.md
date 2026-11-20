@@ -60,11 +60,12 @@ options, and recommendations live there.
 | SG-45 | Fact-check any AI-assisted draft line by line before it ships, and say how the site is made | proposed | owner |
 | SG-46 | Measure Core Web Vitals once, then gate new frontend effects on the result | proposed | editorial |
 | SG-47 | Keep internal anchors descriptive — add a gate so the discipline cannot slip | proposed | engineering |
-| SG-48 | Say each figure once: one chip row per product card | proposed | editorial |
-| SG-49 | Give both shelves the same card anatomy | proposed | editorial |
-| SG-50 | Move the four inline hex colours onto the stylesheet's tokens | proposed | editorial |
-| SG-51 | Drop the price placeholder line and keep the button | proposed | editorial |
-| SG-52 | Put the disqualifier directly under the buy button | proposed | editorial |
+| SG-48 | Give each generated product page a consider-if / look-elsewhere-if pair and a guide next-step | proposed | editorial |
+| SG-49 | Say each figure once: one chip row per product card | proposed | editorial |
+| SG-50 | Give both shelves the same card anatomy | proposed | editorial |
+| SG-51 | Move the four inline hex colours onto the stylesheet's tokens | proposed | editorial |
+| SG-52 | Drop the price placeholder line and keep the button | proposed | editorial |
+| SG-53 | Put the disqualifier directly under the buy button | proposed | editorial |
 
 SG-43..SG-47 were added 2026-11-20 (session `arena/7878cdbe-prod3`, T-54; renumbered twice while
 this branch was queued — first from SG-32..SG-36 after upstream 6bf60cac/8692a390 registered
@@ -173,7 +174,7 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | 2026-11-20 | Publish one question-shaped guide a calendar month; approver: the site owner; next guide due 2026-12-31 (DT-10, owner instruction in the 2026-11-20 brief) | Owner instruction · `docs/publishing-cadence.md` · `data/decisions.json` DT-10 | The commitment is a rhythm, not a traffic or revenue forecast; `tools/verify_site.py` now fails a guide that is missing from the sitemap, the feed (headline = H1) or the guides hub |
 | 2026-11-20 | Correct the section number under the no-ratings decision: the clause is Participation Requirements **§6(t)**, read on the live Program Policies page today. §2 has subsections (a) and (b) only. The 2026-11-19 decision stands; its citation did not | Program Policies, fetched and read 2026-11-20 (header: Updated April 14, 2026) | `compare.html` footnote and policy check C-15 now cite §6(t); the row above is kept as written, and FLG-020's "not located" text is superseded by a located clause |
 | 2026-11-20 | Add five rows to the machine-readable policy register for the clauses that bind an automated publisher: no price tracking or alerting (§6(y)), no artificial clicks or impressions "by way of a robot or software program or otherwise" (§6(s)), no incentive for using Special Links and none of it inside Amazon customer content (§6(g), §6(p)), no framing and no altered Program Content (§6(a), §6(n)), and original-content plus public-availability eligibility (§1) with the dual-attribution limit (Commission Income Statement §5) | Program Policies, read 2026-11-20 · `data/policy-checks.json` C-16..C-20 | `ideas.html` now rejects price-drop alerts and synthetic traffic on the clause that forbids them, rather than on taste |
-| 2026-11-20 | Publish the shop-polish defects found by reading the built HTML as five register rows (SG-48..SG-52; they arrived as SG-36..SG-41, moved to SG-43..SG-48, and settled here as upstream filled each range first — one ID, one meaning); the sixth idea, dating the seasonal block, was withdrawn as a duplicate of upstream's SG-43, which words the same request betteras SG-48..SG-52 and renumbered when upstream filled those IDs) instead of editing the pages under another session's active claim | `data/suggestions.json` · `docs/policy-verification-2026-11-20.md` | A redesign prompt can be assembled from named, checkable defects; the front page itself waits for the T-46 claim to clear |
+| 2026-11-20 | Publish the shop-polish defects found by reading the built HTML as five register rows (SG-49..SG-53; they arrived as SG-36..SG-41, moved to SG-43..SG-48, and settled here as upstream filled each range first — one ID, one meaning); the sixth idea, dating the seasonal block, was withdrawn as a duplicate of upstream's SG-43, which words the same request betteras SG-49..SG-53 and renumbered when upstream filled those IDs) instead of editing the pages under another session's active claim | `data/suggestions.json` · `docs/policy-verification-2026-11-20.md` | A redesign prompt can be assembled from named, checkable defects; the front page itself waits for the T-46 claim to clear |
 | 2026-11-20 | Re-mirror the digest index to the full register (SG-01..SG-48, SG-21 retired, the SG-25/SG-27 gap documented) and correct the open-questions count in this file | `data/suggestions.json`, `data/open-questions.json` | The digest and the register name the same rows again |
 
 ## Audit findings, session a25ccde6 (2026-11-19)

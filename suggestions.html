@@ -45,7 +45,7 @@
 <div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (23)</h2>
+<h2>Waiting on a decision (28)</h2>
 <div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -322,6 +322,66 @@
         <div class="opts" data-decide="SG-48"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: </p>
+    </article><article class="card decision-card" id="SG-49">
+      <div class="meta">SG-49 · editorial decides</div>
+      <h3>Say each figure once: one chip row per product card</h3>
+      <p><strong>The situation.</strong> On the front page, four of the five product cards print two adjacent spec-chip rows, and the second row repeats figures from the first. The Emeril card shows 75-500 F, 1700 W and the footprint in one row, then 26 qt oven, 75-500 F and 1700W in the next; the 8 Qt, ThermoMaven and CHEF iQ cards repeat 450 F Hi-Fry, +/-0.5 F, IP67 and WiFi + Bluetooth the same way.</p>
+      <p><strong>The evidence.</strong> Read in the built HTML of index.html on 2026-11-20: two spec-chips divs inside the same article element, with overlapping values and inconsistent spacing between the two rows (1700 W vs 1700W). Repeating an identical pill twice is what a partially-filled template looks like, and it is the specific artifact the owner called generated. No policy is involved; this is reader-facing quality, and Program Policies 2(b) is only relevant in that duplicating a figure cannot fix it, while choosing between two readings of a contradictory listing would (S02).</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. One chip row per card: the constraining figure, the surprising one, and the footprint. Move the conflict chip below the trade-off line so it stays.</li><li>B. Keep two rows but make the second carry only non-duplicated content (e.g. the conflict chip).</li><li>C. Leave it; readers skim.</li></ul>
+        <p><strong>Recommendation.</strong> A. It deletes nothing that is currently true, it removes the strongest generated-page tell on the front page, and it costs one markup block per card. B is acceptable if the second row is repurposed rather than repeated.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> The card reads as written for this product instead of filled from a schema.</p><p class="small"><strong>What could go wrong:</strong> Fewer pills per card slightly reduces the chance a reader sees a useful figure; mitigated by keeping three deliberate ones.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> If card-level engagement after the change falls on any measured surface, restore the second row with distinct content only.</p>
+        <div class="opts" data-decide="SG-49"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing; it does conflict with the T-46 card pass, so whoever touches index.html last should own it</p>
+    </article><article class="card decision-card" id="SG-50">
+      <div class="meta">SG-50 · editorial decides</div>
+      <h3>Give both shelves the same card anatomy</h3>
+      <p><strong>The situation.</strong> Every air-fryer card carries a spec-chip row; neither thermometer card does, and meat-thermometers.html has no chips at all. The same visual component exists on one shelf and not the other.</p>
+      <p><strong>The evidence.</strong> Counted in the built HTML on 2026-11-20: air-fryers.html has three cards with one chip row each, meat-thermometers.html has two cards with zero. A shelf whose cards are shaped differently from its sister shelf is read as unfinished, and the thermometer side has honest figures to put there - claimed read time, claimed accuracy, probe count and the heat-safe figure, each already recorded as a seller claim in the product register.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Add a chip row to the thermometer cards using only fields the register already carries as claims, each worded as a claim.</li><li>B. Remove chips from the air-fryer cards so both shelves are prose.</li><li>C. Do nothing and accept two layouts.</li></ul>
+        <p><strong>Recommendation.</strong> A, with the claim wording kept explicit (the listing says, not we measured). Parity costs nothing in accuracy and the register already distinguishes claim from measurement.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> One card grammar across the shop, which is most of what makes a site feel published.</p><p class="small"><strong>What could go wrong:</strong> A claim chip without the word claim could be read as a test result.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> If the chip set on the thermometer cards cannot be filled without inventing a figure, keep prose on that shelf instead.</p>
+        <div class="opts" data-decide="SG-50"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-51">
+      <div class="meta">SG-51 · editorial decides</div>
+      <h3>Move the four inline hex colours onto the stylesheet&#x27;s tokens</h3>
+      <p><strong>The situation.</strong> The front page carries inline style attributes with colours that appear nowhere in assets/style.css: a white override, #fdba74, #e6d9c8 and a #292524 to #57534e gradient on the hero art block.</p>
+      <p><strong>The evidence.</strong> Grep of style= attributes across the built pages on 2026-11-20 shows these four on index.html only; the rest of the site styles through the token set in assets/style.css. Foreign pasted colours are a recognisable generation artifact and they defeat the theme in one place, so the hero cannot be restyled with the palette.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Add hero tokens to style.css and delete the inline styles.</li><li>B. Keep the colours but move them into a class.</li><li>C. Leave them.</li></ul>
+        <p><strong>Recommendation.</strong> A or B - either removes the inline override. The visual outcome should not change, so this can be verified by diffing the rendered block before and after.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> One source of truth for colour, and one less thing that looks assembled.</p><p class="small"><strong>What could go wrong:</strong> A careless swap shifts contrast; the check is that text stays legible on the hero at 320px.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> If contrast fails at 320px after tokenising, keep the current inline colours and revisit the palette instead.</p>
+        <div class="opts" data-decide="SG-51"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-52">
+      <div class="meta">SG-52 · editorial decides</div>
+      <h3>Drop the price placeholder line and keep the button</h3>
+      <p><strong>The situation.</strong> Every product card prints a short line reading Current price on Amazon and then a button reading Check price on Amazon. The line has no value beside it, which reads like a field an import left empty.</p>
+      <p><strong>The evidence.</strong> Both strings appear on all five front-page cards and on the category cards, counted in the built HTML on 2026-11-20. The compliance reason the value is absent is correct and stays: Program Policies 2(b) permits price display only when Amazon serves the data or it comes from Creators or PA API (S02), and the site uses neither, so no currency may be rendered. Showing the empty slot is a stylistic choice, not a policy requirement - the button already sends the reader to the price.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Delete the placeholder line; keep the button and the no-prices note once per page, not once per card.</li><li>B. Keep the line but reword it as the reason, e.g. prices change, so they live on Amazon.</li><li>C. Status quo.</li></ul>
+        <p><strong>Recommendation.</strong> A, with B&#x27;s sentence moved into the page-level note. A shopper needs one honest explanation, not five identical empty slots.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> Removes the most audit-like element from otherwise shop-like cards.</p><p class="small"><strong>What could go wrong:</strong> A reader may look for a price and not find one; the note and the button already answer that.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> If owner testing shows readers miss the no-price explanation, reinstate it once per page.</p>
+        <div class="opts" data-decide="SG-52"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-53">
+      <div class="meta">SG-53 · editorial decides</div>
+      <h3>Put the disqualifier directly under the buy button</h3>
+      <p><strong>The situation.</strong> The most useful sentence on the front page - who the pick is not for - is the third paragraph of the feature card, above the button. On the other four cards the equivalent trade-off line sits below the fold of the card body.</p>
+      <p><strong>The evidence.</strong> Read from index.html on 2026-11-20: the feature card order is why-this-one, look-elsewhere-if, then the CTA; the product cards place the CTA after the trade-off but with a spacer pushing the button down. This is a placement judgement, and the only evidence for it is that the decision happens at the button, so the caveat belongs beside it. Nothing in Program Policies 2(b) is involved, and no claim about products or popularity is made either way (S02).</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Reorder each card so the CTA is followed immediately by the who-it-is-not-for line.</li><li>B. Keep the order and pull the line into the button block as a caption.</li><li>C. Status quo.</li></ul>
+        <p><strong>Recommendation.</strong> A. It changes order only, so the risk is a layout regression, not a factual one, and it puts the site&#x27;s distinguishing honesty where the click decision is made.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> The one line a competing page will never print ends up where the reader is about to act.</p><p class="small"><strong>What could go wrong:</strong> A caveat after the button may reduce clicks; if it does, that is a trade the owner may not want.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> Once any click measurement exists, if click-through drops materially, move the line back above the CTA.</p>
+        <div class="opts" data-decide="SG-53"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
     </article></div>
 
 <h2 class="mt">Already shipped (24)</h2>

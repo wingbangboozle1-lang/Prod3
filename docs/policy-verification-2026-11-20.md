@@ -160,7 +160,7 @@ exists, it is quoted above, and it is a question for the owner's legal review ra
   week and will change again; the assertion should be derived from the `articles/` directory (requested in §6).
 - `data/flagged.json` holds FLG-017 with `status: open` while `data/products.json` records a later same-day
   observation; §7a adds a third. Nothing here picks a winner — the flags exist so a human can.
-| `data/suggestions.json` + regenerated `suggestions.html` | **SG-48..SG-52**, six design-brief rows in the register (they arrived as SG-48..SG-52 and were
+| `data/suggestions.json` + regenerated `suggestions.html` | **SG-49..SG-53**, six design-brief rows in the register (they arrived as SG-49..SG-53 and were
 renumbered on rebase when upstream filled those IDs with different proposals)'s own format, each with the defect, the evidence, the options and a recommendation | suggestions.json is free; the generator was run unmodified |
 
 Left alone because an active parallel session (`arena/59a087a1-prod3`, T-46, claiming `data/citations.json`,
@@ -293,7 +293,7 @@ they do. This is the list that separates "we can build it" from "we can ship it"
 | Q-G | Is there a Search Console property, verified, with the sitemap submitted? | A verified property, a submitted `sitemap.xml`, and 28 days of query data | owner | Choosing guides from measured queries instead of hypotheses (SG-07, SG-18) |
 | Q-H | Who is the author, and what have they actually done? | A name, a real bio, and a statement of what they have used versus only read | owner + editorial | Every byline stays organisational; no experience claim can appear; "not a lab" stays in the hero |
 | Q-I | What is the review-and-merge authority for flagged rows? | A rule: which flags an agent may close unilaterally (a wrong section number) and which need a human (anything touching account status, links, money) | owner | FLG-020-style closures; whether this memo's §6 requests get applied by the next session or by a human |
-| Q-J | What does "polished" mean to the owner, measurably? | A pick among the SG-48..SG-52 rows, plus one reference site the owner would call good, and one they would call slop | owner | Whether the shop-page fixes ship as a set or a subset; a design brief with no reference point produces more of what is already there |
+| Q-J | What does "polished" mean to the owner, measurably? | A pick among the SG-49..SG-53 rows, plus one reference site the owner would call good, and one they would call slop | owner | Whether the shop-page fixes ship as a set or a subset; a design brief with no reference point produces more of what is already there |
 
 ## 9. Missing information that no one has asked for yet
 
@@ -338,7 +338,7 @@ These are gaps the registers do not currently carry. They are the ones that hurt
   the slop the owner objects to. Guides are cheap to write and expensive to be believed; without Q-G there is
   no measurement to choose topics by, and §1 makes thin pages an eligibility problem, not just a taste one.
 
-The register rows SG-48..SG-52 implement the polish part of A and B; they are marked *proposed*, and a mark on
+The register rows SG-49..SG-53 implement the polish part of A and B; they are marked *proposed*, and a mark on
 `suggestions.html` is a preference, not a change.
 
 ## 11. What upstream changed while this branch was open (re-read at merge time, not assumed)
@@ -371,6 +371,6 @@ sessions end up publishing two meanings for one ID — which happened to these s
 
 - [ ] Read §3 of this memo against the live pages before accepting any renumbering of a citation.
 - [ ] Decide Q-A, Q-B, Q-C — the three that nothing else can proceed on.
-- [ ] Mark SG-48..SG-52 on `suggestions.html` (Do this / Maybe / No) and copy the block back; that is the
+- [ ] Mark SG-49..SG-53 on `suggestions.html` (Do this / Maybe / No) and copy the block back; that is the
       design brief's approval step, and no page changes without it.
 - [ ] Close or keep FLG-020 once the citations row is corrected by its owner.

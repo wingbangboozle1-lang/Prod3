@@ -64,10 +64,10 @@ are the reasons a buyer might not trust the page yet.</div>
 <h2 class="mt">The seven decisions this site actually needs, in the order they unblock each other</h2>
 <p class="lede section-sub">Five kitchen tools, one site, and a short list of choices that are still open. Everything else on this page is the evidence behind these seven. Read down; stop when you have answered the ones you can answer today.</p>
 <div class="grid cols-4 mt">
-<div class="card"><p class="kicker" style="margin:0">Proposals open</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">21</p><p class="small muted">plus 3 blocking questions</p></div>
+<div class="card"><p class="kicker" style="margin:0">Proposals open</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">26</p><p class="small muted">plus 3 blocking questions</p></div>
 <div class="card"><p class="kicker" style="margin:0">Answerable today</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">4</p><p class="small muted">about half an hour, one login each</p></div>
 <div class="card"><p class="kicker" style="margin:0">Waiting on an account</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">13</p><p class="small muted">only the owner can settle</p></div>
-<div class="card"><p class="kicker" style="margin:0">Already shipped</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">25</p><p class="small muted">SG-01&hellip;SG-48 on the register</p></div>
+<div class="card"><p class="kicker" style="margin:0">Already shipped</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">25</p><p class="small muted">SG-01&hellip;SG-53 on the register</p></div>
 </div>
 <h2 class="mt">1. The seven, in order</h2>
 <p>Each row says what is being decided, what is known, what would settle it, and who can settle it. The first four are answerable in about half an hour with one signed-in browser.</p>
@@ -132,14 +132,32 @@ are the reasons a buyer might not trust the page yet.</div>
 <h2 class="mt">5. Where the detail lives</h2>
 <p>This brief is the reading order. The working documents are behind it, and nothing on them is implemented by being read.</p>
 <div class="grid cols-2 mt">
-<a class="card tile" href="suggestions.html"><h3>The suggestions register (SG-01&hellip;SG-48)</h3><p class="small">All 47 proposals with evidence, options, cost and risk. 25 are already shipped; 21 are open.</p></a>
+<a class="card tile" href="suggestions.html"><h3>The suggestions register (SG-01&hellip;SG-53)</h3><p class="small">All 52 proposals with evidence, options, cost and risk. 25 are already shipped; 26 are open.</p></a>
 <a class="card tile" href="questions.html"><h3>The open-questions register (Q-01&hellip;Q-29)</h3><p class="small">All 29 questions: what is known, what is not, how to find out. 13 need only the owner.</p></a>
 <a class="card tile" href="decisions.html"><h3>The decision desk</h3><p class="small">The same material assembled as decisions, with what settles each one and a path chooser.</p></a>
 <a class="card tile" href="flagged.html"><h3>Flagged for review</h3><p class="small">Every irregularity found, including the ones that are still open, with the source for each.</p></a>
 </div>
-<p class="small muted mt">Generated from <code>data/suggestions.json</code> and <code>data/open-questions.json</code> by <code>scripts/build_ideas.py</code>. The counts above are computed at build time, so this page cannot drift from the registers again. Last built against 47 suggestions and 29 questions.</p>
+<p class="small muted mt">Generated from <code>data/suggestions.json</code> and <code>data/open-questions.json</code> by <code>scripts/build_ideas.py</code>. The counts above are computed at build time, so this page cannot drift from the registers again. Last built against 52 suggestions and 29 questions.</p>
 </section>
 <!-- build-ideas:brief:end -->
+
+<h2 id="design-brief">Design brief inputs for the next polish pass</h2>
+<p>Every line below was found today by reading the served pages, and each one is a <em>generated-looking</em>
+tell rather than a copywriting preference. They are written here so a design prompt can be assembled from facts:
+paste this section into the next session and say "fix these, keep the compliance gates green". None of them
+adds a claim about a product, a price, or a test.</p>
+<div class="table-wrap"><table data-source-required="design">
+<caption>Sources: the built HTML of this repository, read 2026-11-20, and the Amazon policy text cited by section number. Nothing in this table depends on traffic data.</caption>
+<thead><tr><th>Input</th><th>What is on the page today</th><th>What to ask for instead</th><th>Register row</th><th>Source read today</th></tr></thead>
+<tbody>
+<tr><td>Say each number once</td><td>Four of five front-page cards print two adjacent chip rows that repeat the same figures — the Emeril card shows <code>75–500°F · 1700 W</code> in one row and <code>75–500°F · 1700W</code> in the next</td><td>One chip row per card, three distinct figures: the number that constrains the choice, the one that surprises, and the footprint</td><td><a href="suggestions.html#SG-49">SG-49</a></td><td class="small"><a href="https://wingbangboozle1-lang.github.io/Prod3/index.html">front page</a></td></tr>
+<tr><td>One card shape across both shelves</td><td>Every air-fryer card carries a chip row; neither thermometer card does, and the thermometer shelf has no chips at all</td><td>Identical anatomy for all five products, so the shelf reads as designed rather than half-written</td><td><a href="suggestions.html#SG-50">SG-50</a></td><td class="small"><a href="https://wingbangboozle1-lang.github.io/Prod3/meat-thermometers.html">thermometer shelf</a></td></tr>
+<tr><td>Colours come from the palette</td><td>Four inline hex styles on the front page (<code>#fff</code>, <code>#fdba74</code>, <code>#e6d9c8</code>, a <code>#292524→#57534e</code> gradient) that appear nowhere in <code>assets/style.css</code></td><td>Tokens in the stylesheet; no inline colour on a product surface. Pasted colours are the most recognisable template artifact</td><td><a href="suggestions.html#SG-51">SG-51</a></td><td class="small"><a href="https://wingbangboozle1-lang.github.io/Prod3/index.html">front page</a></td></tr>
+<tr><td>Do not say the price sentence twice</td><td>Each card carries a "Current price on Amazon" line <em>and</em> a "Check price on Amazon" button; the line reads as an import that lost its value</td><td>Keep the button, drop the line. No policy change: still no currency rendered anywhere, and the gate stays green</td><td><a href="suggestions.html#SG-52">SG-52</a></td><td class="small"><a href="https://wingbangboozle1-lang.github.io/Prod3/air-fryers.html">air-fryer shelf</a></td></tr>
+<tr><td>Put the disqualifier where the decision is</td><td>"Look elsewhere if…" is the third paragraph of the feature card, below the button</td><td>The trade-off line sits directly under the CTA on every card. Telling a reader who a product is not for is the one thing a competitor page will not do</td><td><a href="suggestions.html#SG-53">SG-53</a></td><td class="small"><a href="https://wingbangboozle1-lang.github.io/Prod3/index.html">feature card</a></td></tr>
+<tr><td>Date the seasonal block, and plan its removal</td><td>Two dated tiles on the front page, no stated review date, and Thanksgiving 2026 falls on Thursday 2026-11-26</td><td>A visible "in season until" label on the block and a scheduled replacement guide for 2026-11-27, so the page does not go stale the day after</td><td><a href="suggestions.html#SG-49">SG-49</a></td><td class="small"><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">Program Policies, read 2026-11-20</a></td></tr>
+</tbody></table>
+
 
 <h2>What is worth doing next, ranked</h2>
 <p>Ranked by how much it changes a reader's willingness to trust the page or click a link, per hour

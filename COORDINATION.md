@@ -2493,6 +2493,7 @@ session, section by section, rather than searched for by a remembered section nu
 | T-67 | Design-brief desk: paste-ready inputs for the next polish pass, published as reviewable register rows (SG-49..SG-53, five rows after two renumberings and one withdrawal as a duplicate of SG-43) plus two rejected-on-policy ideas on `ideas.html` | needs review (owner marks Do this / Maybe / No) | `arena/ba8e7240-prod3` | `data/suggestions.json`, `ideas.html`, `DIRECTION.md`, regenerated `suggestions.html` / `decisions.html` |
 | T-68 | Cross-scope requests against files under other sessions' active claims (front-page chips, shelf anatomy, inline colours, price placeholder, disqualifier position, seasonal dating) | logged, not executed here | `arena/ba8e7240-prod3` | `COORDINATION.md` only |
 | T-69 | Integration: ten gates re-run on the merged tree, PR → main, merge, Pages deploy confirmed | done (PR #68, merged as 371d8b1) | `arena/ba8e7240-prod3` | `COORDINATION.md` |
+| T-70 | Independent verification round (session `arena/1fbc2432-prod3`; claim renumbered six times after colliding with T-46/PR #38, T-47/PR #39, T-48/PR #43, the T-52 lineage, T-57/PR #70 and T-66/aa7b8dd8) — **row restored 2026-11-20**: the board rewrite in PR #83 dropped this row and its completion record, both of which were merged by PR #79 (merge commit `971aaac`); nothing below was changed, the row is re-added verbatim per the FLG-032 duplicate-row handling | done (PR #79, merge commit `971aaac`; both Pages deploy paths success; record below) | `arena/1fbc2432-prod3` | `COORDINATION.md`, `data/recheck-2026-11-20-1fbc2432.json` (new), `data/suggestions.json` (SG-54), `data/flagged.json` (FLG-025 reproduction note), `flagged.html` (FLG-025 callout), `direction.html` (register-range line), `DIRECTION.md` (SG-54 mirror row), regenerated generated pages |
 
 ### What was verified, and what it changed
 
@@ -2637,3 +2638,78 @@ FLG-033 source-register fetch dates · remaining FLG-032 duplicates. No new clai
 conversion, or product superiority.
 
 *(merge result and deploy confirmation recorded below after the PR merges)*
+
+## Session `arena/1fbc2432-prod3` — T-70 independent verification round (2026-11-20)
+
+Claim note: this session claimed the next free board ID six times and collided each time —
+T-46 (`arena/59a087a1-prod3`, PR #38), T-47 (`arena/cafc55da-prod3`, PR #39), T-48
+(`arena/6bf60cac-prod3`, PR #43), T-53 (the T-52 lineage, PRs #44–#53), T-57
+(`arena/6f44d8c9-prod3`, PR #70) and T-66 (session aa7b8dd8, PRs #80–#82). Its proposal row was
+renumbered through the register collisions the same way (SG-39 → SG-48 → SG-49 → **SG-54**,
+taken in turn by PRs #52, #72 and #78). Every collision was resolved by renumbering this
+session's claim while keeping the other sessions' rows untouched, and the abandoned remote
+claim commit (`22bcd7f`) was merged into this branch rather than force-pushed away. After each
+merge, upstream's newer register state was taken and this session re-applied only what `main`
+still lacked. The T-70 id itself was later claimed in parallel by session `arena/d52ad947-prod3`
+(PRs #80–#83 lineage); both rows now sit on the board — the documented FLG-032 duplicate-id
+defect — and neither session's record was discarded.
+
+### New dated observations (fetched 2026-11-20, this session's network path; recorded in `data/recheck-2026-11-20-1fbc2432.json`)
+
+1. **All five supplied short links ended at the Amazon homepage** (page title read;
+   `B02NbDxp3` twice in-session) — fetched before main's T-60 recheck merged, agreeing with it
+   and with every earlier 2026-11-20 observation; recorded on FLG-025 as an additional
+   same-day reproduction so no session owns the ordinal.
+2. **Diagnostic:** the direct listing `https://www.amazon.com/dp/B09B7SB46R` served the Emeril
+   26QT product page with the recorded title and browse path — the drift is in short-link
+   resolution, not dead listings.
+3. **Official policy pages read verbatim** (this session could reach the official hosts):
+   Operating Agreement updated 2025-10-15 (§5 exact sentence); Program Policies updated
+   2026-04-14 — §2(a), §2(b) (tag, price, claims, product lists, sub-tags), Participation
+   Requirements §6(t)/(v)/(w), §6(y), IP License section 2 item (h) (ASIN storage) and §4
+   Agent Terms; FTC Disclosures 101 (November 2019); Google Qualify Outbound Links (updated
+   2025-12-10).
+
+### Independent confirmation of the merged clause correction
+
+This session's verbatim reads agree with the clause-letter correction already on `main`
+(commit `7c49a3e`, FLG-020 resolved): ratings = Participation Requirements §6(t),
+URL-obscuring = §6(v), shortener = §6(w), and §2(b) carries the tag, price, misleading-claims,
+product-list and sub-tag clauses. The recheck file records the confirming evidence instead of
+re-editing the corrected registers.
+
+### Edits applied (each traceable to the recheck file)
+
+1. **SG-54 registered** (`data/suggestions.json`; mirrored in `DIRECTION.md` and the
+   `direction.html` range line): before any automated Amazon listing or price refresh, use the
+   Product Advertising API or make the fetcher identify itself under the IP License Agent Terms
+   (§4, read verbatim). Recommendation: A long-term, B until the PA API is approved; C is
+   non-compliant — do not implement.
+2. **FLG-025 additional same-day reproduction** appended in `data/flagged.json` and the
+   `flagged.html` callout (ordinal-free phrasing; nothing overwritten).
+3. **`data/recheck-2026-11-20-1fbc2432.json`** created — the dated record of every official
+   page this session fetched, with verbatim quotes.
+4. Regenerated surfaces after the data edits. No CTA destination changed (T-60's tagged
+   Special Links are kept as merged); `data/products.json` untouched.
+
+### Gates and merge record
+
+**Gates on the final merged tree (all green):** all seven `--check` freshness gates (chrome on
+42 pages, registers, decisions, products, sitemap, README table, ideas brief);
+`scripts/check_site.py`; `tools/verify_site.py`; `tools/check_site.py` (42 pages, 6,913
+assertions, including the D35 clause-citation gate and the J-series script gates);
+`tools/crawl_links.py` (42 pages crawled, 41 reachable from index, 0 broken links, 0 dead
+anchors, 0 orphans).
+
+**PR and merge:** PR **#79** opened from this branch and merged without waiting — merge commit
+`971aaac`. The T-70 claim itself collided in flight with PRs #80–#85 landing on main; each
+landing was merged into this branch before the push, with upstream register state taken
+verbatim and this session's additions re-applied only where main still lacked them.
+
+**Pages deploy (both paths, PR #79):** `Deploy GitHub Pages` run `44695805030` — success;
+`pages build and deployment` (dynamic) run `44695804382` — success. Deploys for the follow-on
+merges (#83) also succeeded (`44696238266` + dynamic run), so the live site carries the merged
+tree; main's tree contains the recheck file, SG-54 and the FLG-025 reproduction note.
+
+**Task status: T-70 done (this session's row).** The board rewrite in PR #83 dropped this row
+and record; they are restored here verbatim, with that session's rows untouched.

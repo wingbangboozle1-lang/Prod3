@@ -356,31 +356,103 @@
       "sources_checked": "2026-11-20"
     },
     {
-      "id": "FLG-022",
-      "severity": "medium",
-      "area": "Official listing conflict — capacity",
-      "product": "P-01 (Chefman 6 Qt Dual Basket)",
-      "detail": "The official listing's title and bullets state 6 quarts (2 × 3 qt). Its Item details table states Capacity: 6 liters. These are not the same figure (6 L ≈ 6.3 qt). The site shows the title/bullet figure and the table figure side by side and does not choose between them.",
-      "why_it_matters": "A buyer comparing capacity against a baking pan or a portion need may rely on the wrong number.",
-      "action": "Owner or seller: confirm the capacity of the listed unit. Until then, use the basket size (2 × 3 qt) and not a total-volume claim.",
-      "status": "open — conflict published, not resolved",
+      "id": "FLG-025",
+      "severity": "high",
+      "area": "Outbound links (buy buttons)",
+      "product": "All five (P-01..P-05)",
+      "detail": "On 2026-11-20 (session 6bf60cac, T-46) all five supplied link.amazon URLs were fetched again and every one ended at https://www.amazon.com/ — the Amazon homepage — rather than at a product page. That is a wider result than either earlier same-day record (session 70e8475c: one of five; session ce911db5: two of five) and wider than 2026-11-19, when all five read as /dp/ product pages.",
+      "why_it_matters": "A reader who presses a buy button is meant to reach the product. If the final destination is the Amazon homepage, the reader has to search for the product again, and the site's own claim that a button opens the listing is wrong at the moment of the click.",
+      "action": "Owner: click each of the five links signed in to Associates, record the landing page, and replace the href with a freshly generated SiteStripe Special Link once it is confirmed (DT-01). Do not treat this as proof that the links are invalid: the destination depends on Amazon's redirect, which changed between observations.",
+      "status": "open — third dated observation recorded; no record overwritten",
       "sources": [
-        "S29"
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S15"
       ],
       "sources_checked": "2026-11-20"
     },
     {
-      "id": "FLG-023",
-      "severity": "medium",
-      "area": "Official listing conflict — temperature and wattage",
-      "product": "P-03 (Chefman 8 Qt TurboFry)",
-      "detail": "Title: 450°F Hi-Fry claim. Bullets and specification table: 200–400°F. Resource bullet: 1000W. Specification table: 120V / 1700W. The site shows the specification-table range (200–400°F) and 1700W as the primary values, and publishes the title claim and the 1000W bullet as conflicts.",
-      "why_it_matters": "Maximum temperature and power draw both affect whether the unit suits high-heat recipes and a given circuit.",
-      "action": "Seller or manufacturer: confirm the maximum temperature and wattage of model RJ38-SQSS-8T. Until then, do not state either conflicting value as fact.",
-      "status": "open — conflicts published, not resolved",
+      "id": "FLG-026",
+      "severity": "high",
+      "area": "Special Link tag parameter",
+      "product": "All five buy links plus 192 evidence links",
+      "detail": "Program Policies (updated 2026-04-14) §2(b) require the Associates ID or tag as a parameter in the URL of each link placed on a site to an Amazon Site, and §2(a) require Special Links to use the assigned Associates ID. None of the 23 shipped link.amazon buy anchors and none of the 192 shipped amazon.com anchors contains a tag parameter in the URL the reader receives; 0 anchors carry tag=shopnow047c-20.",
+      "why_it_matters": "If a click is not tagged, Amazon cannot attribute it and the click cannot earn. The rule is quoted in the Program Policies, so this is the one link question with a written, checkable requirement behind it.",
+      "action": "Owner: read the redirect chain of one supplied link in the Associates workflow and confirm whether the tag is attached by the short-link service. If it is not, replace all five buy hrefs with tagged SiteStripe links. This record does not assert that the short links are non-compliant — the tag may be added downstream (Q-02).",
+      "status": "open — requirement quoted from the official policy; per-link status needs the owner's signed-in report",
       "sources": [
-        "S31"
+        "S01",
+        "S02"
       ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-027",
+      "severity": "medium",
+      "area": "Flag register integrity",
+      "product": "flagged.html (site-wide)",
+      "detail": "Two flag identifiers each named two different findings on the published page: FLG-020 was used for both the unlocated Program Policies citations and the DIRECTION.md question-id mismatch, and FLG-021 for both the source-register gap and the nonexistent suggestion id. The page said an identifier names one thing while showing two.",
+      "why_it_matters": "A reader who is sent to a flag by its id can land on the wrong finding, which is the one behaviour a review register must not have.",
+      "action": "The later pair was renumbered FLG-028 and FLG-029 in place, with the old wording kept and the change dated. No finding was deleted, merged or re-graded.",
+      "status": "fixed in place 2026-11-20 (T-46); prior wording retained in each row",
+      "sources": [
+        "S02"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-028",
+      "severity": "low",
+      "area": "Register history",
+      "product": "DIRECTION.md",
+      "detail": "Previously published as a second FLG-020: DIRECTION.md described questions whose subjects did not exist in the open-questions register (the digest listed an account-status question as Q-08 while the register carried it elsewhere).",
+      "why_it_matters": "A digest that cites ids which do not exist sends the reader to a page that cannot answer them.",
+      "action": "The account-status question was registered as Q-23 and the link question as Q-22; the digest was corrected. Renumbered from FLG-020 to FLG-028 on 2026-11-20 so one id names one finding.",
+      "status": "fixed 2026-11-20; id renumbered",
+      "sources": [
+        "S02"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-029",
+      "severity": "low",
+      "area": "Register history",
+      "product": "data/suggestions.json, DIRECTION.md",
+      "detail": "Previously published as a second FLG-021: the digest cited a suggestion id absent from the register, and the register itself skips the SG-26 slot.",
+      "why_it_matters": "A cited proposal that does not exist cannot be reviewed.",
+      "action": "The gap is documented rather than reconstructed, because the original wording of the missing row is unknown. Renumbered from FLG-021 to FLG-029 on 2026-11-20.",
+      "status": "open — SG-26 slot intentionally left unoccupied and documented",
+      "sources": [
+        "S02"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-032",
+      "severity": "medium",
+      "area": "Coordination board: duplicate task identifiers",
+      "product": "COORDINATION.md",
+      "detail": "The board has two or more rows for each of T-12 to T-23 (T-16 and T-17 have three and four). Each duplicate pair has a different scope. Some duplicates are marked superseded or done, but the rows are not removed. Session 2cd3bab9 wrote earlier that the duplicate in-progress rows for T-20 to T-22 had been removed. That was wrong: they are marked superseded, not deleted.",
+      "why_it_matters": "The board rule is one identifier, one meaning. A reader who looks up T-17 finds four different tasks.",
+      "action": "Owner or the next integration session: decide whether superseded rows are kept as history or consolidated. Rows of other sessions are not edited in this pass.",
+      "status": "open — duplicates recorded; no rows removed or renumbered in this pass",
+      "sources": [],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-033",
+      "severity": "low",
+      "area": "Source register: no consistent per-row fetch date",
+      "product": "data/sources.json; sources.html",
+      "detail": "Of the 29 source entries, 23 have no verified value. The updated field mixes publication or update dates (for example 2025-10-15, 2019-11) with fetch dates (for example 'fetched 2026-11-19').",
+      "why_it_matters": "A reader cannot tell when a page was last read, or whether a quotation still matches the page.",
+      "action": "Owner or integration session: add a fetch-date field to each source entry, separate from the publisher's update date. Until then, treat each quotation as dated to the date of the record only where one is stated.",
+      "status": "open — recorded; no source entry changed in this pass",
+      "sources": [],
       "sources_checked": "2026-11-20"
     }
   ]

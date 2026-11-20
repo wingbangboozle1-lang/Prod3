@@ -144,9 +144,39 @@
       "effort": "S",
       "who": "owner",
       "blocks": "Whether this is a publication or a finished project.",
-      "status": "open",
+      "status": "decided",
       "sources": [],
       "evidence_status": "unverified"
+    },
+    {
+      "id": "DT-11",
+      "title": "Decide what a buy button promises while the supplied links are unresolved",
+      "why": "On 2026-11-20 all five supplied short links ended at the Amazon homepage (FLG-025), and none of the shipped anchors carries a tag parameter even though Program Policies §2(b) require one (FLG-026). The buttons still read “Check price on Amazon”.",
+      "recommendation": "Add the dated one-line caveat now (SG-32). Replace the hrefs only when Q-24 and Q-25 are answered by the owner's signed-in test. Do not describe the supplied links as invalid in the meantime.",
+      "effort": "S",
+      "who": "editorial, then owner",
+      "blocks": "Any claim that a button opens the listing it names.",
+      "status": "open",
+      "sources": [
+        "S01",
+        "S02",
+        "S15"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "DT-12",
+      "title": "Choose whether the twelve-week writing plan is a promise or a proposal",
+      "why": "publishing-plan.html lists twelve dated rows. Four are partly or wholly blocked on evidence that does not exist. A reader cannot tell from the page whether a blocked row will be written anyway.",
+      "recommendation": "Keep it a proposal list, re-ordered from measured queries once Search Console is live, and demote rather than rewrite a row that earns nothing. If the owner prefers a commitment, the page must say which rows will ship even without their evidence — which this repository would not recommend.",
+      "effort": "S",
+      "who": "owner",
+      "blocks": "The publishing cadence and the wording of the plan page.",
+      "status": "open",
+      "sources": [
+        "S21"
+      ],
+      "evidence_status": "observed"
     }
   ],
   "paths": [

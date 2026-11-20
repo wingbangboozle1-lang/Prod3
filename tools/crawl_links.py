@@ -21,6 +21,7 @@ SKIP_PREFIX = ("http://", "https://", "mailto:", "tel:", "data:", "javascript:",
 
 def pages():
     return (sorted(ROOT.glob("*.html"))
+            + sorted((ROOT / "products").glob("*.html"))
             + sorted((ROOT / "articles").glob("*.html"))
             + sorted((ROOT / "tools").glob("*.html")))
 

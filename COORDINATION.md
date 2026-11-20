@@ -51,7 +51,7 @@
 | T-49 | Publishing plan: twelve dated guide proposals with the evidence each needs, rendered from `data/editorial-plan.json` and gated (D31); four blocked rows named rather than filled by inference. New suggestions SG-32..SG-35, questions Q-24..Q-26, decisions DT-11..DT-12 | done (renumbered from a colliding T-47 claim — upstream T-47 is session cafc55da) | `arena/6bf60cac-prod3` | `publishing-plan.html`, `data/editorial-plan.json`, `data/suggestions.json`, `data/open-questions.json`, `data/decisions.json`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `scripts/build_decisions.py`, `tools/check_site.py` |
 | T-50 | One generated page per product (`products/*.html`) from `data/products.json` + `data/flagged.json`, with intended-vs-observed kept separate and the blank intent field shown as blank; linked from both pillars and the front page; three new gates and a CI freshness step | done (2026-11-20) | `arena/6bf60cac-prod3` | `scripts/build_products.py`, `products/*`, `scripts/build_chrome.py`, `scripts/build_sitemap.py`, `scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py`, `.github/workflows/pages.yml`, `index.html`, `air-fryers.html`, `meat-thermometers.html` |
 | T-51 | Design + content suggestions round (renumbered from T-48 because T-48 was already in use on main by session arena/6bf60cac-prod3; both rows kept, no work discarded): add shopfront-design (SG-36), trend-led-article (SG-37), and review-before-build (SG-38) suggestions to the register; add the missing-info discovery question Q-27; refresh the executive summary; run every release gate; PR `arena/8692a390-prod3` → main (#42); merge; confirm Pages deploys; record PR link and merge result here | in progress | `arena/8692a390-prod3` | `data/suggestions.json`, `data/open-questions.json`, `scripts/build_registers.py`, `suggestions.html`, `questions.html`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
-| T-52 | Session 2cd3bab9 pass after PR #43 and PR #42 (T-48 and T-51 already taken upstream; renumbered again): verify on the merged tree the guides hub (nine guides), feed titles against H1s, the publishing-coverage gate and the monthly cadence; set DT-10 decided (owner instruction); spot-check six official sources; record the same-day link check (agrees with the third dated check under FLG-025, no product record changed); log duplicate board IDs (FLG-032) and the source fetch-date gap (FLG-035); refresh the executive-summary addendum; PR → main, merge, confirm Pages | in progress | `arena/2cd3bab9-prod3` | `buying-guide.html`, `feed.xml`, `tools/verify_site.py`, `docs/publishing-cadence.md`, `data/decisions.json`, `data/flagged.json`, `flagged.html`, `decisions.html` (generated), `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
+| T-52 | Session 2cd3bab9 pass after PR #43 and PR #42 (T-48 and T-51 already taken upstream; renumbered again): verify on the merged tree the guides hub (nine guides), feed titles against H1s, the publishing-coverage gate and the monthly cadence; set DT-10 decided (owner instruction); spot-check six official sources; record the same-day link check (agrees with the third dated check under FLG-025, no product record changed); log duplicate board IDs (FLG-032) and the source fetch-date gap (FLG-037); refresh the executive-summary addendum; PR → main, merge, confirm Pages | in progress | `arena/2cd3bab9-prod3` | `buying-guide.html`, `feed.xml`, `tools/verify_site.py`, `docs/publishing-cadence.md`, `data/decisions.json`, `data/flagged.json`, `flagged.html`, `decisions.html` (generated), `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
 
 ## Session `arena/f3900cd3-prod3` — T-52 (claimed as T-47, renumbered twice)
 
@@ -1684,8 +1684,8 @@ against the current tree, not copied from the earlier attempt.
 
 1. **Wrong clause letters (10 places).** `2(t)` / `2(v)` / shortener-under-`2(b)` do not exist; corrected to **6(t) / 6(v) / 6(w)** in
    `compare`, `ideas`, `direction`, `disclosure`, `citations` (generator + page), `data/citations.json`, `data/policy-checks.json`,
-   `data/open-questions.json`, `data/suggestions.json`, `DIRECTION.md`, and the FLG-020 callout. Published as **FLG-035**.
-2. **Identical article closers (8 articles, byte-identical).** Replaced with a topic-specific next step each. Published as **FLG-036**.
+   `data/open-questions.json`, `data/suggestions.json`, `DIRECTION.md`, and the FLG-020 callout. Published as **FLG-037**.
+2. **Identical article closers (8 articles, byte-identical).** Replaced with a topic-specific next step each. Published as **FLG-038**.
 3. **Duplicated spec pills on every front-page card.** Second copy was the same three values HTML-entity-encoded; removed.
 4. **Published flags with no data record (21).** Enumerated in `data/flagged.json` under `alias_records` with their published titles, explicitly
    marked as narrative callouts with no data record, so a reader's page and the data file agree on which flags exist.
@@ -1731,7 +1731,7 @@ session's work:
   the merge); upstream's count was from before the merge.
 - `README.md` — upstream's new `D37` gate then failed on the register table, which had drifted as
   the registers grew. Corrected to the real counts: SG-01..SG-38 (37 rows, 1 retired), Q-01..Q-27
-  (27), FLG-001..FLG-036 plus 21 alias records. This is the gate doing its job on the first run.
+  (27), FLG-001..FLG-038 plus 21 alias records. This is the gate doing its job on the first run.
 
 Final gates on the merged tree: `build_chrome --check`, `build_registers --check`,
 `build_decisions --check`, `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`,
@@ -1758,7 +1758,7 @@ generated surfaces; regenerated only by their own builders if a builder input ch
 - **Claim history.** T-46 was taken on `main` by PR #38 (session 59a087a1). T-48 was taken by PR #43 (session 6bf60cac). This session's task is T-52.
 - **Merge.** `origin/main` (at `2c8d152`) merged into `arena/2cd3bab9-prod3`. Upstream rows, FLG entries, product records and generated pages are kept. My earlier T-46/T-48 rows and session log are not carried forward.
 - **Decision.** DT-10 marked decided (owner instruction, one guide a month, owner approver, next due 2026-12-31). DT-12 remains open.
-- **Flags.** FLG-032 (duplicate board task IDs T-12 to T-23; earlier wording that the T-20 to T-22 duplicates were removed is corrected: they are superseded, not deleted). FLG-035 (no consistent per-row fetch date in the source register). The FLG-022/023 identifier collision and the RSS-title mismatch are already resolved upstream, so no new flag is raised for them.
+- **Flags.** FLG-032 (duplicate board task IDs T-12 to T-23; earlier wording that the T-20 to T-22 duplicates were removed is corrected: they are superseded, not deleted). FLG-037 (no consistent per-row fetch date in the source register). The FLG-022/023 identifier collision and the RSS-title mismatch are already resolved upstream, so no new flag is raised for them.
 - **Gates.** build_chrome, build_registers, build_decisions, build_sitemap `--check`; verify_site; scripts/check_site.py; tools/check_site.py; tools/crawl_links.py. All pass on the merged tree.
 - **Not done.** Source spot-check for S05, S10–S15, S17–S19, S21–S25. Pages deploy outcome for this merge: pending at the time of writing.
 - **PR and merge.** Recorded below once merged.
@@ -1902,3 +1902,20 @@ Gates on this tree: all eight pass (39 pages, 5,906 assertions).
 | T-43 | done — M-01..M-15 missing-information table + ten research directions, in the brief |
 | T-44 | done — duplicate spec strip removed; unique product-named link text on every outbound link |
 | T-45 | done — PR #53 merged, both deploy paths green, record above |
+
+### T-51 follow-up: second flag-id collision (post-merge, session `arena/d42249a7-prod3`)
+
+After PR #54 merged (`9c367f3`), the live `flagged.html` showed that two flags had been published as **FLG-035** and **FLG-036** for different
+subjects while this session's policy-citation and article-duplication findings held the same two numbers in `data/flagged.json`. Gate `D32` did not
+catch it because the two sets of headings did not coexist in the same build until the merge.
+
+Fix: the two **late additions** were renumbered to **FLG-037** (policy clause letters) and **FLG-038** (repeated article block and duplicated
+card markup). The published FLG-034 (listing-conflict ids lost in an earlier renumbering) and the published FLG-035/FLG-036 records are untouched.
+The renumbering rule applied throughout: **a record that was already published keeps its number; the later addition moves.** All references
+(`EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `decisions.html`, `ideas.html`, `scripts/build_ideas.py`, `data/flagged.json`,
+`flagged.html`) were updated together and the generated pages rebuilt.
+
+A third gate now makes this class of error loud: **`D39-flag-citation`** fails the build when a page cites a flag id that is not defined as a
+heading on `flagged.html` — which is exactly how the stale `(FLG-035)` reference in `ideas.html` was caught one build after the renumbering.
+
+All ten gates pass on the final tree (39 pages, 5,859 assertions; `crawl_links` 0 broken links, 0 orphans).

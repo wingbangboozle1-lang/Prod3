@@ -555,6 +555,66 @@ for _p in products:
     for _fid in _expected:
         check("D33-flag-listed", _fid in _page, f"{_rel}: flag {_fid} names this product but is not listed on its page")
 
+# D37: the README register table must agree with the data files. It carried two
+# contradicting tables and then stale ranges (Q-01..Q-21 while the register held
+# Q-23) that nothing checked, so a reader could not tell which count was current.
+_readme = (ROOT / "README.md").read_text(encoding="utf-8")
+for _pre, _fn, _key, _page in (
+        ("SG", "suggestions.json", "suggestions", "suggestions.html"),
+        ("Q", "open-questions.json", "questions", "questions.html"),
+        ("DT", "decisions.json", "decisions", "decisions.html")):
+    _ids = json.loads((ROOT / "data" / _fn).read_text(encoding="utf-8"))[_key]
+    _last = f"{_pre}-{max(int(i['id'].split('-')[1]) for i in _ids):02d}"
+    check("D37-readme-range", f"{_pre}-01..{_last}" in _readme,
+          f"README.md register table does not show {_pre}-01..{_last} for {_page}")
+
+# D34: a register row may not cite a source inline and omit it from its own
+# `sources` list. Found by reading on 2026-11-20: Q-01 cited S03/S21 while
+# declaring only S22, SG-09 attributed Google's meta-description guidance to the
+# Emeril listing (S13), and 15 more rows cited evidence they did not declare.
+# The reader-facing register links only the declared ids, so an undeclared
+# citation is a source the reader cannot follow.
+for _fn, _key, _fields in (
+        ("open-questions.json", "questions", ("question", "known", "unknown", "how_to_find_out")),
+        ("suggestions.json", "suggestions", ("title", "problem", "evidence", "recommendation"))):
+    for _row in json.loads((ROOT / "data" / _fn).read_text(encoding="utf-8"))[_key]:
+        _text = " ".join(str(_row.get(k, "")) for k in _fields)
+        _cite = set(re.findall(r"\bS\d{2}\b", _text))
+        _declared = set(_row.get("sources") or [])
+        _undeclared = sorted(_cite - _declared)
+        check("D34-citation-declared", not _undeclared,
+              f"{_fn}: {_row['id']} cites {_undeclared} inline but does not list them in sources")
+
+# D35: one flag id, one subject. flagged.html published two different FLG-020
+# callouts and two different FLG-021 callouts after a merge renumbered one pair,
+# so the same id named both a policy-citation gap and a digest defect. Also
+# checks the reverse: every id in data/flagged.json must be published.
+_fh = docs.get("flagged.html", "")
+_fids = re.findall(r"<strong>(FLG-\d{3}) —", _fh)
+_fdupes = sorted({i for i in _fids if _fids.count(i) > 1})
+check("D35-flag-unique", not _fdupes, f"flagged.html: duplicate flag id(s) {_fdupes}")
+_fdata = json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))
+_fmissing = [i["id"] for i in _fdata["items"] if i["id"] not in _fh]
+check("D35-flag-published", not not _fmissing,
+      f"flagged.html: data/flagged.json id(s) not published {_fmissing}")
+
+# D36: a heading that advertises an ID range must end at the register's last id.
+# ideas.html and direction.html both carried headings with stale ranges
+# (SG-01..SG-26, SG-01..SG-25, FLG-001..FLG-020) that excluded rows published in
+# the very registers they linked to. Only headings are checked: historical prose
+# that names an old range as history is accurate and must not fail the build.
+_ranges = {
+    "SG": [s["id"] for s in json.loads((ROOT / "data" / "suggestions.json").read_text(encoding="utf-8"))["suggestions"]],
+    "Q": [q["id"] for q in json.loads((ROOT / "data" / "open-questions.json").read_text(encoding="utf-8"))["questions"]],
+}
+for _name, _html in docs.items():
+    for _pre, _ids in _ranges.items():
+        _last = max(int(i.split("-")[1]) for i in _ids)
+        _heads = " ".join(re.findall(r"<h[123][^>]*>(.*?)</h[123]>", _html, re.S))
+        for _m in re.finditer(_pre + r"-01\s*(?:\.\.|…+)\s*" + _pre + r"-(\d{2})", _heads):
+            check("D36-range-current", int(_m.group(1)) == _last,
+                  f"{_name}: range says {_m.group(0)} but the register's last id is {_pre}-{_last:02d}")
+
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")
 if failures:

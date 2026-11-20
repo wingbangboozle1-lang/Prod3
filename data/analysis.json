@@ -83,8 +83,7 @@
   "findings": [
     "The oven-style machine (P2) delivers about 2.6 times the nominal capacity per square inch of counter that P1 does, and about 2.1 times what P3 does. That is the arithmetic behind the intuition that an oven-style air fryer uses counter space efficiently: it is a box, and a box fills its footprint.",
     "P1 and P3 are within 22 percent of each other on capacity per square inch, despite P3 holding two quarts more nominal capacity. P1's two-drawer design spreads the same kind of volume across a wider, shallower body.",
-    "Depth, not area, is the number that usually decides the purchase. P2 needs 16.9 in of front-to-back counter depth; P3 needs 12.75 in. On a standard 24 in deep counter, P2 leaves about 7 in behind it and P1 about 10.6 in.",
-    "Depth, not area, is the number that usually decides the purchase. P2 needs 16.9 in of front-to-back counter depth; P3 needs 12.75 in. On a nominal 24 in deep counter, P2 leaves about 7.1 in behind it and P1 about 10.6 in."
+    "Depth, not area, is the number that usually decides the purchase. P2 needs 16.9 in of front-to-back counter depth; P3 needs 12.75 in; P1 needs 13.38 in. Against a nominal 24 in counter that leaves about 7.1 in behind P2, 11.25 in behind P3 and 10.6 in behind P1. 24 in is a common North American base-cabinet depth quoted as a reference point, not a measured standard for any kitchen."
   ],
   "corrections": [
     "The counter-depth arithmetic compares each unit's listed depth against a nominal 24 in counter. 24 in is a common North American base-cabinet depth quoted as a reference point here, not a measured standard for any particular kitchen.",

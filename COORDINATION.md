@@ -968,7 +968,6 @@ Scope: live re-check only. No intended-ASIN, price, rating, or account value was
 
 **Remaining owner-side gates:** FLG-001 (intended ASIN per link), FLG-006 (Special Link test), FLG-010 (account), FLG-017 (B04G1MEwY link check in Associates workflow).
 
-<<<<<<< HEAD
 ### Merge with `origin/main` during this session — what happened and how it was resolved
 
 While this session was working, three other PRs merged to `main` (#24, #25, #27). Merging
@@ -1018,7 +1017,6 @@ cannot distinguish those.
 - **Gates re-run on the combined tree at `c49de86`:** `tools/verify_site.py`, `tools/check_site.py`, `scripts/check_site.py`, `scripts/build_sitemap.py --check`, `scripts/build_registers.py --check` — all pass.
 - **Irregularity logged:** one red `pages build and deployment` run (deploy job, transient) on `f2b3a07`, superseded by the successful `c49de86` build. Not a content failure. A `POST /pages/builds` request from this session returned 403 (insufficient integration permission), so no manual Pages rebuild was requested.
 - **Not claimed:** intended-ASIN confirmation (FLG-001), Special Link test (FLG-006), account status (FLG-010), FLG-017 cause, or any campaign data.
-=======
 ## Session arena/e83cdf55-prod3 — T-26 (2026-11-20)
 
 Scope: integrity pass on product-intent provenance, policy-record copy, and gates. Board row T-25 was already taken by `arena/70e8475c-prod3` and merged (PR #27), so this claim is recorded as T-26.
@@ -1039,4 +1037,3 @@ Scope: integrity pass on product-intent provenance, policy-record copy, and gate
 
 **Not claimed:** Associates enrollment, intended ASINs, Special Link validity, tracking-report attribution, Search Console, analytics volume, or live traffic.
 
->>>>>>> 9f134a7 (T-26: correct intent provenance (verification.json), reconcile C-04/C-09 with built CTAs, add intent gate, publish FLG-018/019, rerun release gates)

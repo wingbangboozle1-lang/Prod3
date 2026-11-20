@@ -788,3 +788,69 @@ regenerated; all gates green.
 - This closes T-23 for session `arena/28d2d6c0-prod3`. Residual open items are unchanged and
   owner-side: FLG-001, FLG-006, FLG-010, FLG-015 (ledger), FLG-016/Q-21 (share debugger),
   and the open questions on `questions.html`.
+
+---
+
+## Session `arena/2ef30474-prod3` — shop-first rebuild + decision desk (2026-11-20)
+
+**Branch:** `arena/2ef30474-prod3` (from `af089d0`, the merge of PR #21)
+**Tracking ID:** `shopnow047c-20`
+**Claimed at:** 2026-11-20 (claim committed and pushed before any edit, per the board rules)
+
+The brief for this session is editorial and structural, not another compliance sweep:
+make the site **read like a shop**, give search engines **one canonical home**, and add a
+**decision desk** where every outstanding choice can be reviewed before anything is built.
+T-12/T-23 already handled disclosure placement, price policy, and source resolution; this
+session does not reopen them.
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-30 | Editorial voice pass: rewrite shop surfaces so products lead and the register reads as a publication (no claim, price or compliance wording weakened) | in progress | arena/2ef30474-prod3 | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css`, `assets/brand.js` (new), `assets/app.js` |
+| T-31 | Brand + navigation pass: one masthead group, consistent active state, publication framing, favicon/social card | in progress | arena/2ef30474-prod3 | `assets/brand.js` (new), `assets/style.css`, `assets/favicon.svg`, all `*.html` mastheads |
+| T-32 | Decision desk: one page where suggestions, open questions, missing information and paths can be reviewed and chosen | in progress | arena/2ef30474-prod3 | `decisions.html` (new), `DIRECTION.md`, `COORDINATION.md` |
+| T-33 | Register defect: `SG-20` and `SG-21` carry identical proposals (verified below) | in progress | arena/2ef30474-prod3 | `data/suggestions.json`, `suggestions.html` (generated), `direction.html` |
+| T-34 | Three working decision tools: comparison builder, measurement converter, oven-to-air-fryer cheat sheet | in progress | arena/2ef30474-prod3 | `tools/*.html` (new), `assets/decision-tools.js` (new) |
+| T-35 | Seasonality module: which guide a reader should see by month, stated as editorial judgement not demand data | in progress | arena/2ef30474-prod3 | `assets/brand.js`, `index.html`, `articles/holiday-kitchen-gift-guide.html` |
+| T-36 | Gate extension for the new surfaces; then integration PR → `main`, merge, confirm Pages | in progress | arena/2ef30474-prod3 | `tools/check_site.py`, `scripts/build_sitemap.py`, `.github/workflows/pages.yml`, all |
+
+**Non-overlap:** no other session has a live claim (every earlier row is `done`, and its
+branch is merged). If a session appears while this one is running, this scope is
+`index.html`, the two pillars, `compare.html`, `buying-guide.html`, `decisions.html`,
+`tools/`, `assets/brand.js`, `assets/decision-tools.js`, `assets/style.css`,
+`data/suggestions.json` and the generated register pages. The **articles/** directory
+(body prose), `data/products.json`, `data/sources.json` and `flagged.html` are **not**
+in this session's scope for content changes; add a cross-scope request instead of editing.
+
+### T-33 — the defect, verified before fixing
+
+```
+$ python3 -c "import json;d=json.load(open('data/suggestions.json'));\
+[print(s['id'],s['status'],'|',s['title']) for s in d['suggestions']]"
+SG-20 proposed | Pick one product as the site's spine and let the other four support it
+SG-21 proposed | Pick one product as the site's spine and let the other four support it
+```
+
+Two different IDs name one proposal, which is exactly the failure the a25ccde6 audit
+fixed for SG-01..SG-08 (I-01 on `direction.html`). Either the second row is a duplicate
+to delete or it is a lost proposal. The decision is logged here and published on
+`decisions.html` as a reproduced, not silently repaired, irregularity.
+
+### Verification run for this session
+
+Every external claim touched by new copy is re-checked against the source register before
+it ships. Sources used, as already registered (no new source IDs invented):
+
+| Claim used in new copy | Source | Status |
+|---|---|---|
+| Price/availability may be shown only when Amazon serves it or via Creators/PA API | S02 §2(b) | re-read live 2026-11-20 |
+| Special Links must carry the Associates `tag` parameter in the URL | S02 §2(b) | re-read live 2026-11-20 |
+| Program Content licence ends; images come from Creators/PA API | S02 IP License | re-read live 2026-11-20 |
+| Qualify paid outbound links with `rel="sponsored"` | S04 | registered |
+| Disclosure must be clear and conspicuous | S03 | registered |
+| Safe minimum internal temperatures, probe placement | S17, S18 | registered |
+| NIST traceability wording | S16 | registered |
+
+Observed redirect targets re-fetched 2026-11-20 from the live short links and confirmed
+identical to the register for P-01 (`B0CDY277D3`) and P-05 (`B0DZFD6R9Z`); the remaining
+three were confirmed in the same way in this session's table run below. No new product
+fact, price, rating or test result is introduced by this session's copy.

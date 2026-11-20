@@ -35,20 +35,20 @@
 </nav>
 <!-- build-chrome:header:end -->
 <main id="main"><div class="article" style="max-width:1000px">
-<p class="kicker">Executive summary</p>
-<h1>Kitchen Counter: listed specs, plainly told</h1>
-<p class="byline">Kitchen Counter · Updated 2026-11-20 · Tracking ID shopnow047c-20</p>
+<p class="kicker">Executive summary · decision brief</p>
+<h1>Kitchen Counter: a buyer-first kitchen publication</h1>
+<p class="byline">Status reviewed 2026-11-20 · Snapshot records dated 2026-11-19 · Tracking ID shopnow047c-20</p>
 
-<h2>What it is</h2>
-<p>A shop-front Amazon affiliate site covering two kitchen categories — air fryers (3 products) and meat thermometers (2 products). The front page leads with products, not process; every dashboard surface is reachable from the footer and one navigation group. Eight question-shaped guides, a comparison table, a buying guide, and a 3-question chooser help visitors decide.</p>
+<div class="callout"><strong>Bottom line:</strong> the publication is built and its repository release gates pass. It presents five products, buyer guides, sourcing and disclosures. The intended products behind all five supplied short links remain unconfirmed; the Associates account workflow, aggregate analytics, Search Console data and conversion reports are not connected. Recommendation—not a recorded owner decision: clear the account/link checks before scaling, then keep publishing and use measured query and first-party report data to guide the next topics.</div>
 
-<h2>What is sourced — and what is not (audit 2026-11-19)</h2>
+<h2>What is ready</h2>
+<p>The front page leads with products and buyer questions, not the verification process. Visitors can browse two categories, compare five listings, use a three-question chooser, read a buying guide and eight question-shaped articles, and subscribe to the RSS feed in their own reader. The source register, citation log, suggestions, open questions, analytics status and flagged findings remain reachable from the footer and navigation.</p>
 <ul>
-<li>Specs and ratings are transcribed from dated official listing snapshots and cited to them. They are <em>seller statements</em>, not independent Kitchen Counter tests. No price appears anywhere on the site (Program Policies §2(b)); any price observations live solely in internal data files with date-only metadata (FLG-007/012).</li>
-<li>The five supplied <code>link.amazon</code> links were recorded as supplied. During the audit they resolved to listings B0CDY277D3, B09B7SB46R, B08DKYBTPH (Air Fryers) and B0DHZTCNR5, B0DZFD6R9Z (Meat Thermometers); observed destinations are kept separate from blank intended-ASIN fields (FLG-001).</li>
-<li>Policy and guidance pages cited: Amazon Operating Agreement and Program Policies, FTC Disclosures 101, Google <code>rel="sponsored"</code>, GitHub Pages docs, plus NIST traceability and USDA FSIS temperature/placement guidance.</li>
-<li>Disclosure strip above the fold on every page with the required “As an Amazon Associate I earn from qualifying purchases.” statement plus conditional commission wording; <code>rel="sponsored"</code> on every Amazon link (FLG-010 documents that account status is unverified).</li>
-<li>The demo email signup with a fake confirmation was removed; measurement is local-count only with no endpoint (FLG-014, <a href="analytics.html">Analytics &amp; privacy</a>).</li>
+<li>The Associates disclosure appears above the first heading and again in each page footer; every Amazon link is marked <code>rel="sponsored"</code>.</li>
+<li>Seller-listed specifications are presented as seller claims, not independent test results. Listing conflicts are kept visible.</li>
+<li>No prices or customer ratings are presented on the site. Amazon program policies are linked in the <a href="sources.html">source register</a>.</li>
+<li>The five event names are defined. Four event counters are local to each visitor's browser; signup is reserved for a provider-confirmed response. No event endpoint or shared totals are configured.</li>
+<li>The campaign ledger is empty by design. No click, order, commission, conversion score, or revenue forecast is claimed.</li>
 </ul>
 
 <h2>What changed on 2026-11-20 — the shop-first pass</h2>
@@ -76,26 +76,63 @@
 <p>Fix only the first one and the site can earn. Fix the first two and it can learn. All three are on the <a href="decisions.html">decision desk</a> with their cost and the source each rests on.</p>
 
 <h2>What is flagged (does not block)</h2>
+<h2>Five supplied links: observed destination is not confirmed intent</h2>
+<p>Targets below are dated observations from the repository's 2026-11-19 records. On 2026-11-20 the five short links were fetched again: four still end at the recorded product page, and <code>B04G1MEwY</code> ended at the Amazon.com homepage (<a href="flagged.html">FLG-017</a>). These observations do not prove which products were intended or validate the Special Links in the enrolled Associates account. The intended-ASIN, official-intended-listing, confirmation-date and confirmation-source fields remain blank until confirmed.</p>
+<div class="table-wrap"><table data-source-required="amazon-listing">
+<thead><tr><th>Submitted token</th><th>Observed listing</th><th>Category</th><th>Intent</th><th>Official source</th></tr></thead><tbody>
+<tr><td><code>B04G1MEwY</code></td><td>Chefman 6 Qt Dual Basket<br><code>B0CDY277D3</code></td><td>Air fryer</td><td>Unconfirmed</td><td><a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">Amazon listing</a></td></tr>
+<tr><td><code>B02NbDxp3</code></td><td>Emeril Lagasse 26QT French Door<br><code>B09B7SB46R</code></td><td>Air fryer</td><td>Unconfirmed</td><td><a href="https://www.amazon.com/dp/B09B7SB46R" rel="sponsored noopener">Amazon listing</a></td></tr>
+<tr><td><code>B00hJ57DV</code></td><td>Chefman 8 Qt TurboFry<br><code>B08DKYBTPH</code></td><td>Air fryer</td><td>Unconfirmed</td><td><a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener">Amazon listing</a></td></tr>
+<tr><td><code>B0c8moW59</code></td><td>ThermoMaven instant-read<br><code>B0DHZTCNR5</code></td><td>Meat thermometer</td><td>Unconfirmed</td><td><a href="https://www.amazon.com/dp/B0DHZTCNR5" rel="sponsored noopener">Amazon listing</a></td></tr>
+<tr><td><code>B0f3GKalj</code></td><td>CHEF iQ Sense Gen3<br><code>B0DZFD6R9Z</code></td><td>Meat thermometer</td><td>Unconfirmed</td><td><a href="https://www.amazon.com/dp/B0DZFD6R9Z" rel="sponsored noopener">Amazon listing</a></td></tr>
+</tbody></table></div>
+<p class="small muted">Do not call the supplied short links invalid: exact compliance status is unresolved. Their observed redirect targets and intended products are separate fields. See <a href="flagged.html">FLG-001 and FLG-006</a> and the official <a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">Amazon Associates Operating Agreement</a>.</p>
+
+<h2>Decision-ready view: knowns and gaps</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Decision area</th><th>Known now</th><th>Still missing</th><th>Authoritative basis</th></tr></thead><tbody>
+<tr><td>Product and link selection</td><td>Five dated observed destinations; intent fields blank</td><td>Owner-confirmed ASIN/listing and account-side Special Link test/report</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">Amazon Associates Operating Agreement</a></td></tr>
+<tr><td>Affiliate disclosure</td><td>Disclosure strip and footer statement are present in the site</td><td>Associates account enrollment/eligibility is unverified; endorsements still need context-specific review</td><td><a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="sponsored noopener">FTC Disclosures 101</a></td></tr>
+<tr><td>Traffic and SEO</td><td>Canonical URLs, robots.txt, sitemap, RSS, and eight guides are in the repository</td><td>Search Console verification, indexing state, query impressions/clicks, and traffic evidence</td><td><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="sponsored noopener">Google people-first content guidance</a></td></tr>
+<tr><td>Measurement and privacy</td><td>Five event names defined; four local browser counters; blank endpoint; no email provider</td><td>Hosting, origin controls, retention, notice, access controls, and real provider/endpoint test</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">Amazon Associates Operating Agreement</a></td></tr>
+<tr><td>Revenue potential</td><td>Empty campaign ledger with provenance fields</td><td>Eligible sessions, clicks, reported orders, current commission terms, and attributable earnings</td><td><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">Amazon Associates Program Policies</a></td></tr>
+<tr><td>Original testing</td><td>Current product copy is based on seller-listed snapshots, not hands-on tests</td><td>Product access, budget, test method, conditions, and editorial capacity</td><td><a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="sponsored noopener">Google Search spam policies</a></td></tr>
+</tbody></table></div>
+
+<h2>Ranked suggestions (proposals, not decisions)</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Priority</th><th>Suggestion</th><th>How to discover missing information</th><th>Source</th></tr></thead><tbody>
+<tr><td>1 · Compliance gate</td><td>Confirm each intended product and test one Special Link per product in the enrolled Associates workflow before scaling.</td><td>Record intended ASIN, official listing URL, date, confirmation source, and a separate observed redirect; verify destination and tracking report.</td><td><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">Operating Agreement</a></td></tr>
+<tr><td>2 · Measure responsibly</td><td>Choose a host for a self-managed analytics endpoint; do not imply the static site has aggregate click data.</td><td>Decide event payload, allowed origin, retention, access, notice and test; only enable transmission when those are documented.</td><td><a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="sponsored noopener">FTC disclosure guidance</a></td></tr>
+<tr><td>3 · Make it findable</td><td>Verify the site in Search Console and submit the existing sitemap before judging organic performance.</td><td>Save verification and submission results; later choose guide topics from dated query/impression data rather than assumed demand.</td><td><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="sponsored noopener">Google helpful-content guidance</a></td></tr>
+<tr><td>4 · Publish steadily</td><td>Maintain a realistic cadence of useful, question-led articles; update RSS and sitemap with each guide.</td><td>Use the existing questions as editorial hypotheses; review search queries and authorized Associates reports before optimizing.</td><td><a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="sponsored noopener">Google spam policies</a></td></tr>
+<tr><td>5 · Earn expertise</td><td>Consider original tests only if products and a reproducible protocol are available; otherwise clearly compare listing claims.</td><td>Before any test claim, record unit, method, conditions, results, limitations and any relevant connection.</td><td><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="sponsored noopener">Google people-first guidance</a></td></tr>
+<tr><td>6 · Finish publication polish</td><td>Check the shipped 1200×630 PNG in a share debugger; then decide whether to change brand or domain.</td><td>Record the debugger result and an owner-approved brand/domain decision; the image is shipped but external preview validation is outstanding.</td><td><a href="https://developers.google.com/search/docs/appearance/snippet" rel="sponsored noopener">Google snippet guidance</a></td></tr>
+</tbody></table></div>
+<p>Suggested editorial hypotheses—not popularity or search-volume claims: “Basket or oven-style air fryer: what should you compare?”, “A no-hype checklist for comparing air fryer capacity”, “How to assess cleanup and counter-space trade-offs”, and “Questions to ask before buying a multi-function kitchen appliance.”</p>
+
+<h2>Questions to answer before choosing a path</h2>
+<ol>
+<li><strong>Which product did the owner intend for each submitted link?</strong> Confirm in the Associates account; record the intended listing separately from the observed redirect.</li>
+<li><strong>Is the tracking ID enrolled and eligible, and do the links report correctly?</strong> Check Associates Central and test one link per product before broader use.</li>
+<li><strong>What audience and query data exists?</strong> Verify Search Console, submit the sitemap, then review actual impressions and queries; none are present in this repository.</li>
+<li><strong>What analytics host, retention, and privacy notice should be used?</strong> GitHub Pages is static and cannot receive the current events; no endpoint, email provider, or site-wide counts are configured.</li>
+<li><strong>Who will own the publishing cadence, brand, and testing budget?</strong> The repo has proposals, not an approved owner, domain, schedule, or product-testing plan.</li>
+<li><strong>What first-party campaign reports are available?</strong> Add a dated ledger row only when eligible sessions, clicks, or reported orders are obtained from an authorized report.</li>
+</ol>
+<p>Discoveries and decision ownership are tracked in the <a href="direction.html">suggestions and path chooser</a> and <a href="questions.html">open-question register</a>. No one path has been marked chosen.</p>
+
+<h2>Flagged items and limits</h2>
 <ul>
-<li>FLG-001: intended ASIN per short link unconfirmed (owner confirmation needed).</li>
-<li>FLG-002/003/013: three listing-internal conflicts (preset count; battery life + warranty; accessories count).</li>
-<li>FLG-004/005: two listings cross-promote other models.</li>
-<li>FLG-006: short-link compliance unresolved — test one Special Link per product before scaling. FLG-011: the /dp/&lt;token&gt; Page-Not-Found check was investigated and dismissed as link evidence.</li>
-<li>FLG-007/012: prices drift; snapshot metadata is date-only.</li>
-<li>FLG-008: no product photography used (compliant path).</li>
-<li>FLG-009: ThermoMaven accuracy/NIST wording is seller claim, not test.</li>
-<li>FLG-010: Associates account status unverified.</li>
-<li>FLG-014: email signup not connected. FLG-015: campaign ledger empty by design.</li>
-<li>FLG-016: SVG social-preview image unverified in share previewers (F-21).</li>
+<li><a href="flagged.html">FLG-001:</a> intended products remain unconfirmed; <a href="flagged.html">FLG-006:</a> short-link compliance is unresolved; <a href="flagged.html">FLG-010:</a> Associates account status is unverified.</li>
+<li>Listing-internal conflicts and seller claims are flagged in the register; no independent test or certificate review is represented.</li>
+<li>No current pricing, customer ratings, commissions, search demand, conversions, or revenue estimates are claimed.</li>
+<li>The social-preview PNG is present; a share-debugger check remains outstanding. Product photography is not used.</li>
 </ul>
 
-<h2>What happens next</h2>
-<p>Choose a path on the <a href="direction.html">Direction</a> page: steady publication (weekly question-shaped guides, next topic chosen from measured Search Console queries — SG-18), conversion focus (raster preview image + a real analytics endpoint + a real email provider — SG-16/SG-04/SG-06), or hold until FLG-001/006/010 are resolved. The retired “weekly price re-check” idea now appears only as SG-17, which makes the Product Advertising API the single compliant path to displayed prices. Measurement is privacy-preserving (four events counted locally; reader_signup reserved for a confirmed provider response; no endpoint configured) and the campaign ledger stays empty — rows are added only from authorized first-party reports. No conversion score or revenue forecast is presented.</p>
-
-<h2>Shop-polish pass (T-17/T-18, 2026-11-19)</h2>
-<p>The reader-facing surface now leads with the shop, not the audit. The front page opens on a buyer question, followed by five product cards — seller-listed spec chips, a “consider if” line, ratings dated at capture, a “Check price on Amazon” CTA, and a source link under every card — then the chooser, a seasonal guide row, and the data table. The stylesheet adds 44&nbsp;px tap targets, visible focus states, and card lift on hover. The RSS feed no longer advertises a price range and drops the overstated channel title the audit flagged. The Direction desk was rebuilt as a full ledger (SG-01…18 with statuses; Q-01…21 with discovery paths) that now matches the machine registries exactly. All four release gates pass on the rebuilt tree.</p>
-
-<p class="mt"><a href="index.html">← Front page</a> · <a href="sources.html">Source register →</a></p>
+<h2>Release status</h2>
+<p>On the reviewed repository tree, all of these commands pass: <code>python3 scripts/check_site.py</code>, <code>python3 tools/verify_site.py</code>, <code>python3 scripts/build_registers.py --check</code>, and <code>python3 scripts/build_sitemap.py --check</code>. The coordination record documents a successful Pages deployment at the <a href="https://wingbangboozle1-lang.github.io/Prod3/">project site</a>. These checks validate repository content and structure; they do not establish account eligibility, external indexing, traffic, or conversions.</p>
+<p class="mt"><a href="index.html">← Shop the publication</a> · <a href="sources.html">Source register →</a></p>
 </div></main>
 
 <!-- build-chrome:footer:start -->

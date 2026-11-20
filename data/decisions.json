@@ -9,16 +9,17 @@
   "decisions": [
     {
       "id": "DT-01",
-      "title": "Make every outbound product link a tagged Special Link, or keep the supplied short links",
-      "why": "Amazon's Program Policies require an Associates ID or tag as a parameter in the URL of each link to an Amazon site. The five supplied link.amazon short links carry no visible tag in the URL a reader receives, and the enrolled-account test has not been run.",
-      "recommendation": "Owner runs one signed-in click per product through SiteStripe, confirms the destination and that a click is reported, then replaces the hrefs with the tagged links if the report works. Do not describe the supplied short links as invalid; their status is unresolved, not disproven.",
+      "title": "Re-establish a working, tagged Special Link for the Chefman dual basket, then for all five",
+      "why": "On 2026-11-20 the supplied short link B04G1MEwY stopped reaching its product page and ended at the Amazon.com homepage (two independent sessions, FLG-017); it reached B0CDY277D3 earlier the same day. Separately, none of the five short links carries a visible tag parameter in the URL a reader receives, and Program Policies require an Associates ID or tag in the URL of each link to an Amazon site.",
+      "recommendation": "Owner opens SiteStripe, generates a fresh tagged link for each of the five products, clicks each one while signed in, and confirms both the destination and that the click is reported. Replace the hrefs only after the click appears in the report. Until then the site sends readers to the product page directly and says why. Do not describe the supplied short links as invalid: B04G1MEwY's status is unresolved, not disproven.",
       "effort": "S",
       "who": "owner",
-      "blocks": "Any traffic push. A click that is not tagged earns nothing.",
+      "blocks": "Every click that is meant to earn. Currently the highest-value five minutes on the board.",
       "status": "open",
       "sources": [
         "S01",
-        "S02"
+        "S02",
+        "S15"
       ],
       "evidence_status": "verified"
     },

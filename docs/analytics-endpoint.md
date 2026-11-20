@@ -1,7 +1,7 @@
 # Analytics endpoint contract
 
 Status: **local measurement implemented; server collection not configured** (owner decision required — see FLG-015 and `analytics.html`).
-Last reconciled with code: 2026-11-19, session arena/8eac4288-prod3.
+Last reconciled with code: 2026-11-20, session arena/71a41253-prod3. The five-event names and emission conditions were checked against `assets/app.js` in this repository; no server endpoint is configured.
 
 ## What ships today (`assets/app.js`)
 

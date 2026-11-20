@@ -41,9 +41,10 @@
 
 <p>This page is where the site's next moves are chosen. Each suggestion carries a status: <strong>implemented</strong> means it shipped and you can inspect it; <strong>proposed</strong> means it waits for a path. Each open question carries the concrete action that would answer it — and who can take that action. Nothing here is a claim about popularity, traffic, or product superiority.</p>
 
-<div class="callout"><strong>Changed in this pass (2026-11-19, shop-polish):</strong> the front page now leads with the five product cards, CTAs, chooser, seasonal guides, and the data table — SG-15 is implemented. The old “weekly price re-check” row contradicted the no-prices policy (Program Policies 2(b)); it is retired and replaced by SG-17, which makes the Product Advertising API the only compliant path to displayed prices. A new open item, <a href="flagged.html">F-21</a>, records that the SVG social-preview image is unverified in share previewers (SG-16 / Q-21).</div>
+<div class="callout"><strong>Current status (registers last generated 2026-11-19):</strong> the front page leads with product cards, chooser, seasonal guides, and comparison data. SG-17 keeps price display off unless compliant Amazon-served or API data is configured. F-21 / Q-21 concern whether the shipped 1200×630 PNG social-preview image renders in external share debuggers; the former SVG format issue is resolved. The complete suggestion list is in the <a href="suggestions.html">Suggestions register</a>.</div>
 
-<h2>Suggestion ledger (SG-01 … SG-18)</h2>
+<h2>Selected suggestion snapshot (SG-01 … SG-19)</h2>
+<p class="small muted">This embedded snapshot is not the full or authoritative list. Suggestions SG-20..SG-25 were added later; the complete current register, including options and recommendations, is <a href="suggestions.html">Suggestions (SG-01..SG-25)</a>.</p>
 <div class="table-wrap"><table>
 <thead><tr><th>#</th><th>Suggestion</th><th>Status</th><th>Effort</th><th>Confidence</th><th>Decided by</th></tr></thead>
 <tbody>
@@ -68,7 +69,7 @@
 <tr><td><strong>SG-19</strong></td><td>Mobile-first tap-target pass: every control ≥44px, 48px at touch widths, ≥8px spacing<br><span class="muted small">Affiliate traffic is majority mobile; small overlapping targets are a mis-tap generator. Shipped by session 65474d4f (S-20), recorded as SG-19.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>high</td><td>engineering</td></tr>
 <p class="small muted">Source for SG-19: Google, <em>Tap targets are not sized appropriately</em> — targets below 48×48px that overlap a neighbour fail the audit; ~8px spacing recommended. Recorded as <a href="sources.html">S19 in the source register</a>.</p>
 </tbody></table></div>
-<p class="small muted">Full problem statements, options, and recommendations for every row live in <code>data/suggestions.json</code> — the ledger above is the index, not the argument.</p>
+<p class="small muted">The embedded rows above are a historical snapshot through SG-19, not a complete index. Full problem statements, options, statuses, and recommendations for all 25 suggestions live in the generated <a href="suggestions.html">Suggestions register</a> from <code>data/suggestions.json</code>.</p>
 
 <p class="small muted">Source for SG-19: Google, <em>Tap targets are not sized appropriately</em> — targets below 48×48px that overlap a neighbour fail the audit; ~8px spacing recommended. Recorded as <a href="sources.html">S19 in the source register</a>.</p>
 
@@ -95,7 +96,7 @@
 <tr><td><strong>Q-18</strong></td><td>Does the owner have Search Console access for this GitHub Pages site, and will they verify it this month?</td><td><span class="pill">owner</span></td><td>blocking</td><td>Owner adds the property in Search Console, verifies via DNS or file upload, submits sitemap.xml, and reports back. Ten minutes, once.</td></tr>
 <tr><td><strong>Q-19</strong></td><td>Is the Associates account eligible for Product Advertising API access today?</td><td><span class="pill">owner</span></td><td>owner-only</td><td>Associates Central → Account Settings → Product Advertising API. If the tab is missing, the account is not yet eligible; record the date checked.</td></tr>
 <tr><td><strong>Q-20</strong></td><td>Which email provider, consent language, and retention period will the owner accept for reader capture?</td><td><span class="pill">owner</span></td><td>queued</td><td>Owner picks a provider (or declines); editorial drafts the consent line and privacy note; the form ships only after the endpoint responds. analytics.html gets an update in the same commit.</td></tr>
-<tr><td><strong>Q-21</strong></td><td>Does the SVG og-image actually render in the share previewers the site cares about?</td><td><span class="pill">editorial</span></td><td>queued</td><td>Run any public share debugger on the live URL and screenshot the result; if no card appears, ship the 1200×637 PNG per SG-16 and re-check.</td></tr>
+<tr><td><strong>Q-21</strong></td><td>Does the shipped 1200×630 PNG og-image render in the share previewers the site cares about?</td><td><span class="pill">editorial</span></td><td>queued</td><td>Run a public share debugger on the live URL and record the result. The PNG is already shipped; no asset replacement is implied unless the check shows a specific issue.</td></tr>
 </tbody></table></div>
 <p class="small muted"><strong>owner-only</strong> questions cannot be answered from outside your Amazon Associates and Search Console accounts — and several of them (Q-02, Q-04, Q-08, Q-09, Q-18, Q-19) cost minutes each: they are the shortest path to unblocking the board. <strong>blocking</strong> means a real decision waits on it; <strong>queued</strong> means before the next release; <strong>watch</strong> means traffic will answer it.</p>
 

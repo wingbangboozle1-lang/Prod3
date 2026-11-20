@@ -44,7 +44,7 @@
 
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (10)</h2>
+<h2>Waiting on a decision (12)</h2>
 <div class="grid mt"><article class="card">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -135,9 +135,27 @@
       <p><strong>Recommendation.</strong> A if the owner is willing to be named, B otherwise. C is not on the table. Until then the About page should state that the desk is unnamed rather than leave the reader to notice.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
       <p class="small muted">Blocks: Nothing; it changes how much a reader should trust the page</p>
+    </article><article class="card">
+      <div class="meta">SG-29 · owner decides</div>
+      <h3>Connect Google Search Console once the owner has an account</h3>
+      <p><strong>Problem.</strong> The site has a sitemap, and robots.txt points to it, but no search engine has been told the site exists, and nobody has checked how it is indexed.</p>
+      <p><strong>Evidence.</strong> sitemap.xml and robots.txt are present and gated (tools/verify_site.py). No Search Console property, verification file or submission exists in the repo. The index page&#x27;s link label that read &quot;Search Console is connected&quot; was changed to &quot;Search Console setup&quot; on 2026-11-20 (T-26). This environment has no Search Console account, so nothing here was verified.</p>
+      <p><strong>Options.</strong></p><ul><li>A. Owner adds the URL-prefix property https://wingbangboozle1-lang.github.io/Prod3/, verifies it, and submits sitemap.xml.</li><li>B. Defer until the owner decides on a custom domain.</li><li>C. Ask an agent with account access to do it.</li></ul>
+      <p><strong>Recommendation.</strong> A. It takes the owner about 10 minutes and gives the first measured search queries. Until then, the next guide topic is not chosen from search data (see SG-18).</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <p class="small muted">Blocks: SG-18 (measured-query guide selection)</p>
+    </article><article class="card">
+      <div class="meta">SG-30 · owner decides</div>
+      <h3>Decide how readers stay in touch: RSS only, or an email provider with consent</h3>
+      <p><strong>Problem.</strong> The site has no way to capture readers who want new guides by email. The removed demo form was never connected, so there is no email list and no consent record.</p>
+      <p><strong>Evidence.</strong> FLG-014: no email provider, endpoint or consent flow exists. reader_signup is reserved and fires only on a confirmed provider response (assets/app.js). The footer points to RSS.</p>
+      <p><strong>Options.</strong></p><ul><li>A. Keep RSS as the only subscription path (current).</li><li>B. Add a double-opt-in email provider with a stated privacy notice.</li><li>C. Defer until traffic from SG-29 shows whether a list is worth running.</li></ul>
+      <p><strong>Recommendation.</strong> A for now. B needs an owner-chosen provider and consent text. Neither exists yet, so none is implied on the site.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
+      <p class="small muted">Blocks: Reader-capture metrics</p>
     </article></div>
 
-<h2 class="mt">Already shipped (15)</h2>
+<h2 class="mt">Already shipped (17)</h2>
 <p>Listed so the register stays complete, not to take credit. Each one can be reverted if a decision goes the other way.</p>
 <div class="grid mt"><article class="card">
       <div class="meta">SG-01 · owner decides</div>
@@ -272,6 +290,24 @@
       <p><strong>Evidence.</strong> This audit found direction.html carrying SG-01..SG-08 with meanings different from data/suggestions.json (I-01), and no dated decisions at all.</p>
       <p><strong>Options.</strong></p><ul><li>A. Three registers: proposals, questions, decisions, each generated from its own data file with its own ID prefix.</li><li>B. One long page with three sections.</li><li>C. Only a decisions page, with proposals kept in the repo.</li></ul>
       <p><strong>Recommendation.</strong> A, which is what now ships. The generator makes it impossible for a proposal to be silently presented as a decision again.</p>
+      <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <p class="small muted">Blocks: Nothing</p>
+    </article><article class="card">
+      <div class="meta">SG-27 · engineering decides</div>
+      <h3>One name for the Direction page, in the nav and the footer</h3>
+      <p><strong>Problem.</strong> The primary nav called this page &quot;Direction&quot; while the footer called it &quot;Decision log&quot;. A reader who clicked one and looked for the other could not tell they were the same page.</p>
+      <p><strong>Evidence.</strong> Before the shop-first rebuild (commit 9032a35), every page&#x27;s primary nav said &quot;Direction&quot; and the footer said &quot;Decision log&quot;. On origin/main at c49de86, the primary nav no longer carries a Direction label, and the footer names the page &quot;Decision log&quot;. Checked 2026-11-20 by grep across all HTML.</p>
+      <p><strong>Options.</strong></p><ul><li>A. One name in the nav and footer (shipped upstream in 9032a35; the footer name is kept).</li><li>B. Nav says &quot;Direction&quot; and footer says &quot;Direction&quot;.</li><li>C. Split into two pages with separate names.</li></ul>
+      <p><strong>Recommendation.</strong> A, which is in place. Keep the footer name so the register and the link text match.</p>
+      <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <p class="small muted">Blocks: Nothing</p>
+    </article><article class="card">
+      <div class="meta">SG-28 · engineering decides</div>
+      <h3>Ship the RSS feed and advertise it on every page</h3>
+      <p><strong>Problem.</strong> feed.xml was linked from the head of only some pages. A reader arriving on a guide or a comparison page had no discoverable subscription path there.</p>
+      <p><strong>Evidence.</strong> feed.xml is well-formed and lists the guides (tools/verify_site.py). On origin/main at c49de86, 20 of 30 HTML pages had no rel=&quot;alternate&quot; feed link in their head. T-26 adds it to those 20, so all 30 pages carry it. The head is hand-written, so the link sits outside the build-chrome markers.</p>
+      <p><strong>Options.</strong></p><ul><li>A. Feed link in every head, plus the footer link (T-26).</li><li>B. Footer link only.</li><li>C. No feed; email signup instead (see SG-30).</li></ul>
+      <p><strong>Recommendation.</strong> A. RSS needs no provider and no consent flow.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
       <p class="small muted">Blocks: Nothing</p>
     </article></div>

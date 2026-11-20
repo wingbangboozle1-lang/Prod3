@@ -311,6 +311,21 @@
       "status": "open — run a share debugger on the live URL to confirm the card renders (format concern resolved 2026-11-19)",
       "sources": [],
       "sources_checked": "2026-11-19"
+    },
+    {
+      "id": "FLG-017",
+      "severity": "medium",
+      "area": "Short-link re-check",
+      "product": "P-01 (link.amazon/B04G1MEwY)",
+      "detail": "On 2026-11-20 the submitted short link link.amazon/B04G1MEwY ended at the amazon.com homepage, not a product page. The /dp/B0CDY277D3 listing still loads with a matching title. The other four short links resolved to their recorded /dp/ ASINs the same day. Recorded in data/products.json (live_recheck_2026_11_20) and flagged.html.",
+      "why_it_matters": "A buyer who clicks the supplied link could land on a generic page. The 2026-11-19 observed destination for P-01 is not re-confirmed through the short link today.",
+      "action": "Owner: open the short link in a normal browser and in the enrolled Associates workflow, and record the landing ASIN. Do not infer the redirect from the /dp/ page alone. This does not show the link is invalid.",
+      "status": "open — short-link redirect not re-confirmed on 2026-11-20; /dp/ page matches",
+      "sources": [
+        "S15",
+        "S10"
+      ],
+      "sources_checked": "2026-11-20"
     }
   ]
 }

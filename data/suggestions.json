@@ -435,6 +435,74 @@
    "status": "implemented",
    "decision_owner": "engineering",
    "blocks": "Nothing"
+  },
+  {
+   "id": "SG-27",
+   "title": "One name for the Direction page, in the nav and the footer",
+   "problem": "The primary nav called this page \"Direction\" while the footer called it \"Decision log\". A reader who clicked one and looked for the other could not tell they were the same page.",
+   "evidence": "Before the shop-first rebuild (commit 9032a35), every page's primary nav said \"Direction\" and the footer said \"Decision log\". On origin/main at c49de86, the primary nav no longer carries a Direction label, and the footer names the page \"Decision log\". Checked 2026-11-20 by grep across all HTML.",
+   "options": [
+    "A. One name in the nav and footer (shipped upstream in 9032a35; the footer name is kept).",
+    "B. Nav says \"Direction\" and footer says \"Direction\".",
+    "C. Split into two pages with separate names."
+   ],
+   "recommendation": "A, which is in place. Keep the footer name so the register and the link text match.",
+   "effort": "S",
+   "confidence": "high",
+   "status": "implemented",
+   "decision_owner": "engineering",
+   "blocks": "Nothing"
+  },
+  {
+   "id": "SG-28",
+   "title": "Ship the RSS feed and advertise it on every page",
+   "problem": "feed.xml was linked from the head of only some pages. A reader arriving on a guide or a comparison page had no discoverable subscription path there.",
+   "evidence": "feed.xml is well-formed and lists the guides (tools/verify_site.py). On origin/main at c49de86, 20 of 30 HTML pages had no rel=\"alternate\" feed link in their head. T-26 adds it to those 20, so all 30 pages carry it. The head is hand-written, so the link sits outside the build-chrome markers.",
+   "options": [
+    "A. Feed link in every head, plus the footer link (T-26).",
+    "B. Footer link only.",
+    "C. No feed; email signup instead (see SG-30)."
+   ],
+   "recommendation": "A. RSS needs no provider and no consent flow.",
+   "effort": "S",
+   "confidence": "high",
+   "status": "implemented",
+   "decision_owner": "engineering",
+   "blocks": "Nothing"
+  },
+  {
+   "id": "SG-29",
+   "title": "Connect Google Search Console once the owner has an account",
+   "problem": "The site has a sitemap, and robots.txt points to it, but no search engine has been told the site exists, and nobody has checked how it is indexed.",
+   "evidence": "sitemap.xml and robots.txt are present and gated (tools/verify_site.py). No Search Console property, verification file or submission exists in the repo. The index page's link label that read \"Search Console is connected\" was changed to \"Search Console setup\" on 2026-11-20 (T-26). This environment has no Search Console account, so nothing here was verified.",
+   "options": [
+    "A. Owner adds the URL-prefix property https://wingbangboozle1-lang.github.io/Prod3/, verifies it, and submits sitemap.xml.",
+    "B. Defer until the owner decides on a custom domain.",
+    "C. Ask an agent with account access to do it."
+   ],
+   "recommendation": "A. It takes the owner about 10 minutes and gives the first measured search queries. Until then, the next guide topic is not chosen from search data (see SG-18).",
+   "effort": "S",
+   "confidence": "high",
+   "status": "proposed",
+   "decision_owner": "owner",
+   "blocks": "SG-18 (measured-query guide selection)"
+  },
+  {
+   "id": "SG-30",
+   "title": "Decide how readers stay in touch: RSS only, or an email provider with consent",
+   "problem": "The site has no way to capture readers who want new guides by email. The removed demo form was never connected, so there is no email list and no consent record.",
+   "evidence": "FLG-014: no email provider, endpoint or consent flow exists. reader_signup is reserved and fires only on a confirmed provider response (assets/app.js). The footer points to RSS.",
+   "options": [
+    "A. Keep RSS as the only subscription path (current).",
+    "B. Add a double-opt-in email provider with a stated privacy notice.",
+    "C. Defer until traffic from SG-29 shows whether a list is worth running."
+   ],
+   "recommendation": "A for now. B needs an owner-chosen provider and consent text. Neither exists yet, so none is implied on the site.",
+   "effort": "M",
+   "confidence": "medium",
+   "status": "proposed",
+   "decision_owner": "owner",
+   "blocks": "Reader-capture metrics"
   }
  ],
  "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title."

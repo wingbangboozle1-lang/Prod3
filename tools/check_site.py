@@ -453,6 +453,42 @@ for _sid in sorted(set(re.findall(r"\bSG-\d{2}\b", _dir))):
     check("D29-direction-suggestion-refs", _sid in _sgids,
           f"DIRECTION.md cites {_sid}, which is not in data/suggestions.json")
 
+# D38: one flag id must label one finding.
+# On 2026-11-20 flagged.html carried FLG-020, FLG-021, FLG-022 and FLG-023 twice each,
+# labelling four pairs of unrelated findings (T-46 logged it and left it for the owner).
+# A duplicated id makes an earlier citation ambiguous, which is the whole point of an id,
+# so this is now a release failure. The second finding in each pair was renumbered;
+# no finding was deleted. Count is taken from the callout labels, not from the whole page,
+# because ids are also cited in prose.
+_flag_ids = re.findall(r"<strong>((?:FLG|F)-\d{3}) \u2014", docs.get("flagged.html", ""))
+_flag_dupes = sorted({i for i in _flag_ids if _flag_ids.count(i) > 1})
+check("D38-flag-id-unique", not _flag_dupes,
+      f"flagged.html: id(s) labelling more than one finding: {_flag_dupes}")
+check("D38-flag-count", len(_flag_ids) >= 26,
+      f"flagged.html: only {len(_flag_ids)} labelled findings found (expected at least 26)")
+
+# D39: no dangling flag citation.
+# On 2026-11-20 flagged.html stopped defining FLG-022 and FLG-023 while air-fryers.html
+# still cited both, so a reader who followed the reference landed on nothing. A flag whose
+# id is not on the page is a broken promise in the site's most trust-bearing surface.
+# This rule reads every FLG-/F- id cited anywhere in the published HTML and requires it to
+# be defined by a callout label on flagged.html. It is what would have caught the deletion.
+_flag_page = docs.get("flagged.html", "")
+_defined_flags = set(re.findall(r"<strong>((?:FLG|F)-\d{3}) \u2014", _flag_page))
+# A finding declared inside another finding's note is still declared: FLG-028 and
+# FLG-029 were renumbered "in place" and are announced inside FLG-027.
+_defined_flags |= set(re.findall(r"<strong>((?:FLG|F)-\d{3})</strong>", _flag_page))
+_dangling = {}
+for _name, _html in docs.items():
+    if _name == "flagged.html":
+        continue
+    for _fid in set(re.findall(r"\b((?:FLG|F)-\d{3})\b", _html)):
+        if _fid not in _defined_flags:
+            _dangling.setdefault(_fid, []).append(_name)
+check("D39-flag-citation", not _dangling,
+      "cited but not defined on flagged.html: " +
+      "; ".join(f"{k} ({', '.join(sorted(v)[:3])})" for k, v in sorted(_dangling.items())))
+
 # D27: the tools pages must exist and be reachable from the front page
 for _tool in ("tools/index.html", "tools/compare-builder.html",
               "tools/oven-converter.html", "tools/cook-temperatures.html"):
@@ -476,9 +512,17 @@ for _val in ("145°F (62.8°C)", "160°F (71.1°C)", "165°F (73.9°C)"):
 
 # D30: a seasonal guide must be surfaced on the front page, and it must be the
 # one whose month matches. Checked as a presence rule, not a render rule.
+# D30: the seasonal block must surface the guide that matches the month. It used to
+# assert the Thanksgiving plan literally; the guide set now has a December entry, so the
+# rule checks that a seasonal guide is surfaced and that the December one ships while it
+# is available. Both guides stay linked year-round; only the lead changes.
+_front = docs.get("index.html", "")
 check("D30-seasonal-surfaced",
-      "thanksgiving-temperature-plan.html" in docs.get("index.html", ""),
-      "the seasonal guide is not linked from the front page")
+      "thanksgiving-temperature-plan.html" in _front and "kitchen-gifts-that-get-used.html" in _front,
+      "a seasonal guide is not linked from the front page")
+check("D30-seasonal-lead",
+      _front.find("kitchen-gifts-that-get-used.html") < _front.find("thanksgiving-temperature-plan.html"),
+      "the December guide should lead the seasonal block while the site says it is December")
 
 
 # D31: the publishing plan page must match data/editorial-plan.json, must be in the

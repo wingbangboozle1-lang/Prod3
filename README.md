@@ -71,7 +71,7 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 <!-- build-registers-table:start -->
 | Register | Page | Data | IDs | Count |
 |---|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-38 (SG-21 retired in place); unoccupied: SG-26 | 37 rows |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-42 (SG-21 retired in place); unoccupied: SG-26 | 41 rows |
 | Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-27 | 27 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | - |
@@ -87,3 +87,4 @@ that went stale the moment another session added rows. The table above is now ge
 
 An ID prefix belongs to exactly one register. A proposal, a question and a decision
 are never given the same identifier, so no reader has to guess which page is authoritative.
+

@@ -81,7 +81,7 @@ MISSING = [
      "Sign in and build one Special Link with SiteStripe, then read the URL it produces. If it carries tag=shopnow047c-20, the finding is confirmed for the supplied links by contrast, not by inference.",
      "5 min, signed in"),
     ("M-05", "Why two supplied links ended at the Amazon homepage on 2026-11-20",
-     "B04G1MEwY ended at https://www.amazon.com/ on two attempts; B0c8moW59 did the same in one session while another that day reached its product page. Both observations are kept and neither is treated as proof (FLG-017, FLG-023).",
+     "B04G1MEwY ended at https://www.amazon.com/ on two attempts; B0c8moW59 did the same in one session while another that day reached its product page. Both observations are kept and neither is treated as proof (FLG-017, FLG-031).",
      ("owner", "a signed-in browser"),
      "Click each link while signed in to the account that owns it. A signed-out fetch cannot tell a profile gate from a transient response, which is why the site published the disagreement instead of a verdict.",
      "15 min, signed in"),

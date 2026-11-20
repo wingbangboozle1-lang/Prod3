@@ -26,13 +26,13 @@
   <div class="wrap">
     <a class="brand" href="index.html">Kitchen Counter<small>The kitchen-gear desk</small></a>
     <nav class="nav" aria-label="Primary">
-      <a href="index.html">Shop</a><a href="air-fryers.html">Air fryers</a><a href="meat-thermometers.html">Thermometers</a><a href="compare.html">Compare</a><a href="buying-guide.html">Guides</a><a href="decisions.html">Decision desk</a>
+      <a href="index.html">Shop</a><a href="start.html">Start here</a><a href="air-fryers.html">Air fryers</a><a href="meat-thermometers.html">Thermometers</a><a href="compare.html">Compare</a><a href="buying-guide.html">Guides</a><a href="decisions.html">Decision desk</a>
     </nav>
   </div>
 </header>
 <div class="disclosure" role="note"><div class="wrap"><strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. If a qualifying purchase is credited, Kitchen Counter may earn a commission at no extra cost to you. Tracking ID: <strong>shopnow047c-20</strong>. Prices change &mdash; confirm on Amazon. <a href="disclosure.html">How we make money</a>.</div></div>
 <nav class="shelf" aria-label="Sections">
-  <div class="wrap"><span class="shelf-label">Decision desk</span><a href="buying-guide.html">Buying guide</a><a href="tools/index.html">Decision tools</a><a href="articles/holiday-kitchen-gift-guide.html">Gift guide</a><a href="feed.xml">RSS</a></div>
+  <div class="wrap"><span class="shelf-label">Decision desk</span><a href="buying-guide.html">Buying guide</a><a href="tools/index.html">Decision tools</a><a href="articles/holiday-kitchen-gift-guide.html">Gift guide</a><a href="articles/kitchen-gifts-that-get-used.html">December picks</a><a href="feed.xml">RSS</a></div>
 </nav>
 <!-- build-chrome:header:end -->
 <main id="main"><div class="article" style="max-width:1100px">
@@ -64,7 +64,7 @@
 <tr>
   <td><strong>Q-02</strong></td>
   <td><strong>Do the five Special Links actually carry tag=shopnow047c-20?</strong><br><span class="small muted">Blocks: Any claim that the site earns anything. If the tag is missing, clicks earn nothing.</span></td>
-  <td><span class="small">The 2026-11-19 observation records each supplied short link reaching one of five ASINs (S10-S14). The resolved URLs carried query parameters but no visible tag= value in what was served to that session (F-09, FLG-023).</span></td>
+  <td><span class="small">The 2026-11-19 observation records each supplied short link reaching one of five ASINs (S10-S14). The resolved URLs carried query parameters but no visible tag= value in what was served to that session (F-09, FLG-031).</span></td>
   <td><span class="small">Whether the Associates ID is attached server-side, which is invisible from outside the account.</span></td>
   <td><span class="small">Sign in to Associates, open a product page with SiteStripe active, and read the Get Link panel for one of the five. Confirm the tag field. Then make one test click and confirm it appears in the Click Reports within 24 hours.</span></td>
   <td><span class="small">owner · 5 minutes</span><br><span class="badge grey">owner-only</span></td>
@@ -307,7 +307,7 @@
 <tr>
   <td><strong>Q-25</strong></td>
   <td><strong>Why did all five supplied links end at the Amazon homepage on the third check, when four of five reached product pages earlier the same day?</strong><br><span class="small muted">Blocks: Nothing structurally, but it decides whether the buy buttons should keep pointing at the short links.</span></td>
-  <td><span class="small">Four dated observations exist: 2026-11-19 all five reached product pages; 2026-11-20 session 70e8475c one of five reached the homepage; session ce911db5 two of five; session 6bf60cac all five (FLG-017, FLG-023, FLG-025). No record is overwritten.</span></td>
+  <td><span class="small">Four dated observations exist: 2026-11-19 all five reached product pages; 2026-11-20 session 70e8475c one of five reached the homepage; session ce911db5 two of five; session 6bf60cac all five (FLG-017, FLG-031, FLG-025). No record is overwritten.</span></td>
   <td><span class="small">Whether the change is geographic, time-of-day, a per-fetch rate limit, a change on Amazon&#x27;s side, or something about the fetching client. No logs are available to the site.</span></td>
   <td><span class="small">Owner clicks all five while signed in, at three times of day, and records the landing page each time. Comparing those with the site&#x27;s records is the only test that separates a link problem from a fetch-method problem.</span></td>
   <td><span class="small">owner · 15 minutes across one day</span><br><span class="badge grey">blocking</span></td>
@@ -349,7 +349,7 @@ the screen said, and the rest of the register becomes decidable.</p>
 <thead><tr><th>#</th><th>Do this</th><th>You end up with</th><th>Then unblocks</th></tr></thead>
 <tbody>
 <tr><td><strong>Q-23</strong></td><td>Associates Central → Account Settings. Is <code>shopnow047c-20</code> listed, and is the account in good standing?</td><td>Yes or no, with the date</td><td>Whether the disclosure describes a live relationship, and whether any link can earn at all</td></tr>
-<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the two homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-023)</td></tr>
+<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-025)</td></tr>
 <tr><td><strong>Q-18</strong></td><td>Add the site as a Search Console property, verify it, submit <code>sitemap.xml</code>.</td><td>A verified property and a submitted sitemap</td><td>Choosing the next guide from measured queries instead of instinct</td></tr>
 <tr><td><strong>Q-19</strong></td><td>Associates Central → Product Advertising API. Is the tab available?</td><td>Available, or not yet</td><td>Whether prices and ratings can ever be displayed compliantly</td></tr>
 </tbody></table></div>

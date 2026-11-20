@@ -47,10 +47,10 @@
 | T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (stale DIRECTION cross-references and SG-22..30 index vs register, nine-article counts), flag the dual Pages deploy paths as FLG-024, re-run all gates, PR → main, merge, confirm live deploy | done (PR #36, merge commit `a861ed7`; deploy + live check recorded below) | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, Pages repo settings (build_type) |
 | T-46 | Final integration round (session 59a087a1): live line-by-line re-verification of the five published listings against the official Amazon pages (specs only — no prices, ratings or offers recorded), register the official sources that are missing so no register row is left "No official source" where a genuine official source exists, publication-polish fixes, re-run every gate, PR → main, merge, confirm Pages deploy | done (PR #38, merged) | `arena/59a087a1-prod3` | `data/products.json`, `data/sources.json`, `data/citations.json`, `data/decisions.json`, `data/open-questions.json`, `data/flagged.json`, `data/verification.json`, `articles/*`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `tools/check_site.py`, `tools/verify_site.py`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
 | T-47 | Integration pass after PR #38 (T-46, session 59a087a1) landed first: re-run all gates on the merged tree; re-check the Pages deploy and live pages; record the duplicate `FLG-021` callout on `flagged.html` as an owner decision (not renumbered); no site content change; PR → main, merge, confirm live deploy | done (PR and merge record below) | `arena/cafc55da-prod3` | `COORDINATION.md` only |
-| T-48 | Shop-voice and publication polish: rewrite the reader-facing copy on the shop surfaces so the site reads like a shop and a magazine, not an audit register — without weakening any compliance element (disclosure above fold, sponsored links, no prices, source links, claim boundaries) | in progress | `arena/37c5f395-prod3` | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css` |
-| T-49 | Two new question-shaped evergreen guides plus findability plumbing (Article/FAQPage JSON-LD, RSS feed 9→11 items, sitemap rebuild, internal wiring); feed-count gate updated to match | in progress | `arena/37c5f395-prod3` | `articles/are-air-fryers-worth-it.html` (new), `articles/wireless-thermometer-questions.html` (new), `feed.xml`, `tools/verify_site.py`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `sitemap.xml` (regenerated) |
-| T-50 | Decision-desk register refresh (new suggestion and question rows incl. missing-information discovery) + flag-register ID integrity: one FLG id, one meaning — resolve the duplicate FLG-020/021/022/023 callouts by renumbering, update every cross-reference | in progress | `arena/37c5f395-prod3` | `data/suggestions.json`, `data/open-questions.json`, `data/flagged.json`, `flagged.html`, `README.md`, `DIRECTION.md`, `scripts/build_registers.py`, `suggestions.html`, `questions.html`, `decisions.html` (regenerated) |
-| T-51 | Line-by-line verification pass, all release gates, executive summary + README refresh, integration PR → main, merge, confirm Pages deploy, board record | in progress | `arena/37c5f395-prod3` | `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` (+ verification across the tree) |
+| T-48 | Shop-voice and publication polish: rewrite the reader-facing copy on the shop surfaces so the site reads like a shop and a magazine, not an audit register — without weakening any compliance element (disclosure above fold, sponsored links, no prices, source links, claim boundaries) | done (record below) | `arena/37c5f395-prod3` | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `buying-guide.html`, `assets/style.css` |
+| T-49 | Two new question-shaped evergreen guides plus findability plumbing (Article/FAQPage JSON-LD, RSS feed 9→11 items, sitemap rebuild, internal wiring); feed-count gate updated to match | done (record below) | `arena/37c5f395-prod3` | `articles/are-air-fryers-worth-it.html` (new), `articles/wireless-thermometer-questions.html` (new), `feed.xml`, `tools/verify_site.py`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `sitemap.xml` (regenerated) |
+| T-50 | Decision-desk register refresh (new suggestion and question rows incl. missing-information discovery) + flag-register ID integrity: one FLG id, one meaning — resolve the duplicate FLG-020/021/022/023 callouts by renumbering, update every cross-reference | done (record below) | `arena/37c5f395-prod3` | `data/suggestions.json`, `data/open-questions.json`, `data/flagged.json`, `flagged.html`, `README.md`, `DIRECTION.md`, `scripts/build_registers.py`, `suggestions.html`, `questions.html`, `decisions.html` (regenerated) |
+| T-51 | Line-by-line verification pass, all release gates, executive summary + README refresh, integration PR → main, merge, confirm Pages deploy, board record | done (record below) | `arena/37c5f395-prod3` | `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` (+ verification across the tree) |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -98,6 +98,25 @@ via direct fetch. Findings (full detail in `data/products.json`):
 - FLG-015 — Campaign ledger empty by design; no first-party reports yet.
 - FLG-016 — Social preview card not yet confirmed in an external share debugger (F-21/Q-21); PNG format shipped.
 - FLG-017 — B04G1MEwY resolves to the Amazon homepage on 2026-11-20; it resolved to B0CDY277D3 on 2026-11-19 (session 70e8475c). Cause not established; may be transient; owner check in the Associates workflow.
+- FLG-018 — Intent provenance was corrected (2026-11-20): intended-ASIN fields blank again, owner-confirmation gate added.
+- FLG-019 — The policy record described direct `/dp/` destinations the buttons do not use; corrected.
+- FLG-020 — Program Policies §2(t)/§2(v)/§2(b) clauses cited by the site were not located in the 2026-04-14 policy page (UNVERIFIED).
+- FLG-021 — Source register gaps (S07/S08/S09/S20 undefined) and one P-04 listing quotation not re-confirmed.
+- FLG-022 — P-01 (B0CDY277D3) listing states two capacities: title/bullets 6 qt (2×3 qt) vs details table 6 liters.
+- FLG-023 — P-03 (B08DKYBTPH) listing conflicts: 450°F title vs 200–400°F specs; 1000W bullet vs 1700W table.
+- FLG-024 — Dual GitHub Pages deploy paths; the legacy builder can fail behind the working artifact deploy. Owner one-click fix: Settings → Pages → Source: GitHub Actions.
+- FLG-025 — DIRECTION.md question ids once named subjects the register did not hold (resolved 2026-11-20; gate D28 now enforces).
+- FLG-026 — A suggestion id cited by the digest did not exist and the register skips SG-26 (resolved as far as possible; not reconstructed).
+- FLG-027 — A generated page shipped a broken script (resolved 2026-11-20; J-gates now parse every script).
+- FLG-028 — Two of the five supplied short links reached the Amazon homepage on 2026-11-20, one with a disagreeing same-day record (Q-22). Not a finding that the links are invalid.
+
+**Flag-ID renumber note (2026-11-20, T-50).** Four callouts on `flagged.html` used to repeat earlier
+FLG numbers (one ID, two findings). The meanings held in `data/flagged.json` kept FLG-020…FLG-023;
+the later callouts were renumbered FLG-025…FLG-028 (020→025 digest question-ids, 021→026 SG-gap,
+022→027 broken script, 023→028 homepage links) and every cross-reference in `README.md`,
+`DIRECTION.md`, `direction.html`, `ideas.html`, `data/suggestions.json`, `data/open-questions.json`
+and `scripts/build_registers.py` was updated. Historical session records above keep the IDs as they
+read at the time.
 - FLG-024 — Dual GitHub Pages deploy paths: the legacy branch builder races the artifact deploy and failed behind it (run 44686774699) while the live site served current content; settings change blocked by token permissions — owner one-click fix documented on `flagged.html` (session 09d7261c).
 
 ## Cross-scope requests
@@ -1350,3 +1369,57 @@ FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled Associates w
 - **Pages:** `Deploy GitHub Pages` run `44690336381` — success; companion `pages build and deployment` run `44690335588` — success. Pages API `status: built`, source `main:/`.
 - **Micro-PR:** this record itself is merged in the follow-up PR that carries it.
 
+
+## Session arena/37c5f395-prod3 — T-48…T-51 (2026-11-20)
+
+Scope: the publication-quality round the brief asked for — read like a shop, not an audit;
+catchy question-shaped content a real person would search for; decision-ready suggestion and
+question registers; everything re-verified line by line against the registered sources. All
+compliance gates kept exactly as they were (disclosure above the first heading on every page,
+`rel="sponsored"` on every Amazon anchor, no currency anywhere, source links on every
+data-table row, claim boundaries unchanged).
+
+| ID | Task | Status | Files touched |
+|----|------|--------|---------------|
+| T-48 | Shop-voice and publication polish on the front page: hero rewritten, feature figure corrected to "2 × 3 qt" (no total volume stated while FLG-022 is open), duplicate spec-chip rows removed from the four cards, one broken sentence ("When Search Console setup") fixed | done | `index.html` |
+| T-49 | Two question-shaped evergreen guides — `articles/are-air-fryers-worth-it.html`, `articles/smart-thermometer-questions.html` — each with Article + FAQPage JSON-LD mirroring the visible FAQ; RSS feed 9 → 11 items (`tools/verify_site.py` count updated); wired into the front-page guide grid, buying guide, and category read-next boxes; sitemap rebuilt (32 URLs) | done | `articles/*` (2 new), `feed.xml`, `tools/verify_site.py`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `sitemap.xml` |
+| T-50 | Flag-register ID integrity: one FLG id, one meaning. Four duplicated callouts renumbered to FLG-025…FLG-028; every cross-reference updated (mapping note on `flagged.html` and in this board). Register refresh: SG-32…SG-35 and Q-24…Q-25 registered; DIRECTION.md digest mirrored; generator byline drift noted | done | `flagged.html`, `data/flagged.json` (unchanged — its meanings kept), `data/suggestions.json`, `data/open-questions.json`, `README.md`, `DIRECTION.md`, `direction.html`, `ideas.html`, `scripts/build_registers.py`, `suggestions.html`, `questions.html`, `citations.html`, `decisions.html` (regenerated) |
+| T-51 | Line-by-line verification pass and close-out: USDA whole-cut wording aligned with the site's own chart (145°F + 3-minute rest), stale live counts corrected (Q-14 "eight guides" → eleven; Q-17 "the eight guides" → "the published guides"; README register ranges; both executive summaries), dated addendum added to both executive summaries | done | `articles/smart-thermometer-questions.html`, `data/open-questions.json`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `direction.html`, `questions.html`, `decisions.html` (regenerated) |
+
+### Verification performed (2026-11-20, final tree)
+
+Every figure introduced this round traces to `data/products.json` (itself sourced to the five
+official listings in `data/sources.json`, read 2026-11-19/20): footprints 12.75/13.38/16.9 in,
+basket layout 2×3 qt vs 8 qt vs 26 qt, ranges 200–450 / 200–400 (+450 Hi-Fry claim) / 75–500°F,
+1700W at 120V, thermometer claims attributed as seller claims, the battery/warranty conflict
+(FLG-003) and the capacity/temperature conflicts (FLG-022/023) quoted as both readings. The
+USDA figures in the new thermometer guide match `assets/decision-tools.js` (145/160/165°F) and
+now carry the 3-minute whole-muscle rest the chart includes. New JSON-LD parses (gate D15);
+no price, rating, promo, or first-hand-experience phrasing anywhere (gates P10–P12, D10).
+
+```
+tools/verify_site.py                 Release gate passed (feed: 11 items)
+scripts/check_site.py                All checks passed
+tools/check_site.py                  33 pages · 4,308 assertions · all rules passed
+scripts/build_sitemap.py --check     OK (32 URLs)
+scripts/build_registers.py --check   OK
+scripts/build_chrome.py --check      OK (33 pages)
+scripts/build_decisions.py --check   OK
+tools/crawl_links.py                 33 pages crawled · 32 reachable from index.html
+                                     no broken links, no dead anchors, no orphans
+```
+
+### What is deliberately NOT claimed here
+
+No test results, no prices, no ratings, no traffic, no conversion or revenue figures. The
+campaign ledger stays empty. Intended ASINs stay blank (FLG-001); short-link compliance stays
+unresolved (FLG-006 — nothing here says the supplied links are invalid); account status stays
+unverified (FLG-010). The two new guide topics are editorial hypotheses, not measured demand
+(Q-24/Q-25 register the measurements that would settle it).
+
+### Sources for this round
+
+No new external sources were needed: every product figure re-uses the S-series already in
+`data/sources.json` (the five official listings plus USDA FSIS and the policy pages), and the
+new suggestion/question rows carry no `(Sxx)` citations rather than inventing any. Q-24/Q-25
+are registered with `evidence_status: unverified`, which is the honest state of both.

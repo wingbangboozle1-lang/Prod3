@@ -399,7 +399,6 @@
     },
     {
       "id": "Q-24",
-<<<<<<< HEAD
       "group": "Links",
       "question": "Does the link.amazon redirect attach tag=shopnow047c-20 to the destination URL?",
       "blocks": "Whether the five buy links can be credited at all. Every earning claim depends on it.",
@@ -467,18 +466,6 @@
       "cost": "Five minutes",
       "status": "owner-only",
       "changes": "Whether fetch observations continue to be published as findings, or only as dated notes carrying an explicit \"not a reader test\" caveat.",
-=======
-      "group": "Commercial",
-      "question": "Is a signed-out fetch of a Special Link a meaningful test of that link at all?",
-      "blocks": "How the site talks about its own link checks, and whether repeated homepage results should change anything on the page.",
-      "known": "Three dated observations of the same five links disagree, and all were made by unauthenticated automated fetches (FLG-017, FLG-023, FLG-028). The repo has never made a signed-in observation.",
-      "unknown": "Whether Amazon serves different destinations to signed-out or automated sessions, and therefore whether any fetch-based result describes what a reader experiences.",
-      "how_to_find_out": "Owner clicks each link once, signed in, in a normal browser, and records the final URL and whether the Associates report shows the click. That is the only observation this project can treat as representative.",
-      "who": "owner",
-      "cost": "Five minutes",
-      "status": "owner-only",
-      "changes": "Whether fetch observations keep being published as findings at all, or only as dated notes with an explicit \"not a reader test\" caveat.",
->>>>>>> 9457f9c (T-46: shop-voice front page and category copy, homepage link notice where buy buttons are, resolve FLG-020 with located policy text (2(w)), DT-11 + Q-24 registered)
       "sources": [
         "S01"
       ],

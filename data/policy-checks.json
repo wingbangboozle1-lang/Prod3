@@ -40,11 +40,7 @@
       "area": "Link integrity",
       "requirement": "Do not obscure that a link goes to an Amazon Site. Participation Requirements §2(w): you will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site. §2(v) separately bars cloaking or obscuring the URL of your Site (S02, read 2026-11-20).",
       "source": "S02",
-<<<<<<< HEAD
       "quote_basis": "Section 2(w), verbatim, read 2026-11-20: \"You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.\"",
-=======
-      "quote_basis": "Section 2(w) (verbatim, 2026-11-20): \"You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.\"",
->>>>>>> 9457f9c (T-46: shop-voice front page and category copy, homepage link notice where buy buttons are, resolve FLG-020 with located policy text (2(w)), DT-11 + Q-24 registered)
       "status": "partial",
       "automated": true,
       "evidence": "S02 Participation Requirements §2(v), §2(w); live page 2026-11-20",

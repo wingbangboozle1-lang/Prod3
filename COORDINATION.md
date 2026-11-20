@@ -2337,7 +2337,7 @@ _(recorded after the PR merges)_
 - **GitHub Pages:** `Deploy GitHub Pages` run `44694421239` — **success** on the merge
   commit. Companion legacy `pages build and deployment` run `44694420462` and the
   screenshot run were still in progress at record time (FLG-024 dual-path context).
-## Session `arena/ba8e7240-prod3` — T-55..T-58 (2026-11-20, 06:52–07:45Z)
+## Session `arena/ba8e7240-prod3` — T-66..T-69 (2026-11-20, 06:52–07:45Z)
 
 Claimed as T-51..T-54; renumbered twice because four sessions merged during this branch and took those IDs
 (see the collision note at the end). Everything in this round is grounded in pages fetched and read during the
@@ -2346,10 +2346,10 @@ session, section by section, rather than searched for by a remembered section nu
 
 | ID | Task | Status | Owner | File scope |
 |----|------|--------|-------|------------|
-| T-55 | Policy-citation precision pass: independent re-read of the live Program Policies (page header: updated 2026-04-14) and the Operating Agreement; correct the mis-numbered clauses; add the automation clauses to `data/policy-checks.json`; extend `data/policy-clause-map.json` so gate D35 accepts them | done | `arena/ba8e7240-prod3` | `data/policy-checks.json`, `data/policy-clause-map.json`, `compare.html`, `docs/policy-verification-2026-11-20.md` |
-| T-56 | Design-brief desk: paste-ready inputs for the next polish pass, published as reviewable register rows (SG-49..SG-53, five rows after two renumberings and one withdrawal as a duplicate of SG-43) plus two rejected-on-policy ideas on `ideas.html` | needs review (owner marks Do this / Maybe / No) | `arena/ba8e7240-prod3` | `data/suggestions.json`, `ideas.html`, `DIRECTION.md`, regenerated `suggestions.html` / `decisions.html` |
-| T-57 | Cross-scope requests against files under other sessions' active claims (front-page chips, shelf anatomy, inline colours, price placeholder, disqualifier position, seasonal dating) | logged, not executed here | `arena/ba8e7240-prod3` | `COORDINATION.md` only |
-| T-58 | Integration: ten gates re-run on the merged tree, PR → main, merge, Pages deploy confirmed | done (PR #68) | `arena/ba8e7240-prod3` | `COORDINATION.md` |
+| T-66 | Policy-citation precision pass: independent re-read of the live Program Policies (page header: updated 2026-04-14) and the Operating Agreement; correct the mis-numbered clauses; add the automation clauses to `data/policy-checks.json`; extend `data/policy-clause-map.json` so gate D35 accepts them | done | `arena/ba8e7240-prod3` | `data/policy-checks.json`, `data/policy-clause-map.json`, `compare.html`, `docs/policy-verification-2026-11-20.md` |
+| T-67 | Design-brief desk: paste-ready inputs for the next polish pass, published as reviewable register rows (SG-49..SG-53, five rows after two renumberings and one withdrawal as a duplicate of SG-43) plus two rejected-on-policy ideas on `ideas.html` | needs review (owner marks Do this / Maybe / No) | `arena/ba8e7240-prod3` | `data/suggestions.json`, `ideas.html`, `DIRECTION.md`, regenerated `suggestions.html` / `decisions.html` |
+| T-68 | Cross-scope requests against files under other sessions' active claims (front-page chips, shelf anatomy, inline colours, price placeholder, disqualifier position, seasonal dating) | logged, not executed here | `arena/ba8e7240-prod3` | `COORDINATION.md` only |
+| T-69 | Integration: ten gates re-run on the merged tree, PR → main, merge, Pages deploy confirmed | done (PR #68, merged as 371d8b1) | `arena/ba8e7240-prod3` | `COORDINATION.md` |
 
 ### What was verified, and what it changed
 
@@ -2375,7 +2375,7 @@ Six rows were added to the policy register rather than six new flags, so the aut
 instead of after publication. Two ideas on `ideas.html` are rejected *on a clause* rather than on taste:
 price-drop alerts (§6(y)) and synthetic clicks or prefetching (§6(s) + CIS §5).
 
-### T-57 — cross-scope requests; three were executed upstream while this branch was open
+### T-68 — cross-scope requests; three were executed upstream while this branch was open
 
 1. `data/citations.json` + `citations.html` "not located" wording → **done upstream**; the published row now
    reads §2(a)/§2(b)/6(e) with an explicit `correction` field naming 6(t)/6(v)/6(w). Request withdrawn as
@@ -2405,7 +2405,7 @@ landing, so the behaviour is not stable across attempts. No price or rating was 
 policy. Consequence: the open test is not "is the short link broken" but "does the click arrive tagged" — SG-13,
 owner-only, signed in.
 
-### Gates (T-58)
+### Gates (T-69)
 
 Ten gates green on the final tree: `build_sitemap.py`, `build_registers.py`, `build_chrome.py`,
 `build_decisions.py`, `build_ideas.py`, `build_readme.py` (each with `--check`), `scripts/check_site.py`,
@@ -2419,7 +2419,7 @@ Deploy record appended after merge.
   `arena/6c0972fb-prod3` / `arena/6f44d8c9-prod3` (PRs #65, #45) in this file. Resolved by keeping both sides;
   only conflict markers removed.
 - `arena/2cd3bab9-prod3` and `arena/f3900cd3-prod3` took **T-51/T-52** (and f3900cd3 a second **T-52**) while
-  this branch was open → this session's rows are **T-55..T-58**. Their rows are untouched.
+  this branch was open → this session's rows are **T-66..T-69**. Their rows are untouched.
 - Upstream filled **SG-36..SG-42**, then **SG-43..SG-47**, with different proposals → this session's rows moved
   SG-36..SG-41 → SG-43..SG-48 → **SG-49..SG-53**, and every in-page reference was updated in the same commit.
   One ID, one meaning; where two sessions proposed the same thing, this session's row was withdrawn.
@@ -2427,3 +2427,24 @@ Deploy record appended after merge.
   a `data/policy-checks.json` union produced invalid JSON. Both registers were **rebuilt from the upstream file
   programmatically** instead, and `flagged.html` was restored to upstream's version because they fixed the D40
   count line themselves. Lesson for the next session: union-merge prose, rebuild structured files.
+
+### Deploy record (T-69)
+
+- **PR #68 merged into `main` as `371d8b1`** at 07:22Z (merge commit, no squash, so both lineages stay readable).
+- `Deploy GitHub Pages` run `44694516195` → success in 34s; `pages build and deployment` `44694514695` → success.
+- Live verification by fetching the served page, not by trusting the run status: `ideas.html` renders the
+  generated brief with **"SG-01…SG-53 on the register"** and **26** open proposals, so this round's five design
+  rows and the renumbering are both published. `suggestions.html`, `questions.html`, `citations.html`,
+  `decisions.html` and `direction.html` are served from the merged tree.
+- **A deploy-step failure landed on `main` immediately after mine, and it is not a content defect.** Commit
+  `704dc76` (PR #78) shows `Deploy GitHub Pages` → failure at step "Deploy to GitHub Pages" after 21s, while
+  `pages build and deployment` for that same SHA succeeded, and all ten gates pass at that SHA in a clean
+  worktree (`git worktree add` + every gate, not inferred). Read as a Pages deployment racing my merge's run
+  within the same minute. If the live site lags `main`, re-run that workflow rather than editing content.
+
+### Identifier collision note, resolved rather than left ambiguous
+
+The board had reached **T-65** by the time this branch merged, and three sessions renumbered into T-55..T-58
+while this work was open. So this session's four rows are published as **T-66..T-69** in this section, and the
+main-table rows reading T-55..T-58 belong to other sessions. Same rule as the register IDs: one identifier, one
+meaning, and the earlier number is stated instead of being silently reused.

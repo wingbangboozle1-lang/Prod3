@@ -20,7 +20,7 @@ Product details are attributed as seller/listing statements, not independent tes
 ## Working with it
 
 ```sh
-python3 scripts/build_chrome.py              # masthead, disclosure strip, footer into all 30 pages
+python3 scripts/build_chrome.py              # masthead, disclosure strip, footer into all 31 pages
 python3 scripts/build_decisions.py           # decisions.html from data/decisions.json + registers
 python3 tools/crawl_links.py                 # internal links, anchors, orphans (exit 1)
 python3 tools/verify_site.py                 # release gate: sources, ledger, feed, robots, core checks
@@ -41,7 +41,7 @@ The tools use Python's standard library; no third-party Python dependencies are 
 ## Site map
 
 - `index.html` — shop front: a named starting pick with a "look elsewhere if", the rest of the short list, the chooser, the seasonal block, all guides, the full data table
-- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-10), every unanswered question (Q-01..Q-21) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
+- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-10), every unanswered question (Q-01..Q-23) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
 - `tools/` — comparison builder, oven-to-air-fryer converter, USDA cook-to-temperature card
 - `air-fryers.html`, `meat-thermometers.html` — category hubs
 - `compare.html`, `buying-guide.html` — comparison and decision framework
@@ -61,25 +61,16 @@ The tools use Python's standard library; no third-party Python dependencies are 
 
 The checks enforce site structure, disclosures, sponsored-link marking, source references, price restrictions, data provenance, and generated-page consistency. Historical audit details and the supporting official policy links are on [`sources.html`](sources.html), [`citations.html`](citations.html), and [`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md).
 
-## Registers (current data as of 2026-11-19)
-
-| Register | Page | Data | IDs |
-|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-31 (SG-21 retired in place; the ID slot between SG-25 and SG-27 is unoccupied — FLG-021) |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
-| Decisions | `direction.html` | `DIRECTION.md` | dated rows |
-| Flagged findings | `flagged.html` | `data/flagged.json` | F-01..F-21 |
-| Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
-
 ## Registers (current data as of 2026-11-20)
 
 | Register | Page | Data | IDs |
 |---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-30 (SG-21 retired) |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-31 (SG-21 retired in place; SG-26 unoccupied — FLG-021) |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-23 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-10 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows |
-| Flagged findings | `flagged.html` | `data/flagged.json` | FLG-001..FLG-017, F-01..F-21 |
+| Flagged for review | `flagged.html` | hand-maintained page, cross-checked by `tools/verify_site.py` | FLG-001..FLG-024 |
+| Capture findings (F rows on the decision desk) | `decisions.html` | `data/flagged.json` | F-01..F-21 (plus FLG-017/020/021 cross-references) |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
 
 An ID prefix belongs to exactly one register. A proposal, a question and a decision

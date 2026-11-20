@@ -127,7 +127,7 @@
     },
     {
       "id": "SG-07",
-      "title": "Turn on Search Console before writing guide nine",
+      "title": "Turn on Search Console before writing the next guide",
       "problem": "The next topic is currently chosen by instinct.",
       "evidence": "No Search Console property exists (F-17). Choosing topics from measured queries is the only way to avoid writing eight more articles for nobody.",
       "options": [
@@ -139,7 +139,7 @@
       "confidence": "high",
       "status": "proposed",
       "decision_owner": "owner",
-      "blocks": "every content decision after guide eight"
+      "blocks": "every new content decision"
     },
     {
       "id": "SG-08",
@@ -317,11 +317,11 @@
     },
     {
       "id": "SG-18",
-      "title": "Choose guide nine from measured queries, not instinct",
+      "title": "Choose the next guide from measured queries, not instinct",
       "problem": "Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.",
       "evidence": "Search Console is the first-party source for the queries a site actually appears for (https://search.google.com/search-console/about — SG-07 is the verification prerequisite). analytics.html records that no data exists yet.",
       "options": [
-        "A. Hold at eight guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
+        "A. Hold at nine guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
         "B. Keep the weekly cadence with self-selected topics until data arrives.",
         "C. Retire or merge any guide with zero impressions after 60 days (Q-17)."
       ],
@@ -330,7 +330,7 @@
       "confidence": "medium",
       "status": "proposed",
       "decision_owner": "editorial",
-      "blocks": "the ninth guide only"
+      "blocks": "the next guide only"
     },
     {
       "id": "SG-19",

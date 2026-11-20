@@ -18,7 +18,7 @@ options, and recommendations live there.
 | SG-04 | Eight question-shaped guides instead of eight product reviews | implemented | editorial |
 | SG-05 | Compliance gate inside the build, not a checklist promise | implemented | editorial |
 | SG-06 | Buy one air fryer and one thermometer to earn original testing | proposed | owner |
-| SG-07 | Search Console verification + sitemap submission before guide nine | proposed | owner |
+| SG-07 | Search Console verification + sitemap submission before the next guide | proposed | owner |
 | SG-08 | Privacy-preserving outbound-click counter, local counts only | implemented | editorial |
 | SG-09 | Unique title + meta description on every page | implemented | editorial |
 | SG-10 | Publication front page; dashboard surfaces one click away in the footer | implemented | editorial |
@@ -29,7 +29,7 @@ options, and recommendations live there.
 | SG-15 | Every shop page leads with products; verification record one click away | implemented 2026-11-19 | editorial |
 | SG-16 | Raster (PNG) social preview card replacing the SVG; verify in a share debugger | proposed | editorial |
 | SG-17 | Product Advertising API as the only path to displayed prices (retires the old price-re-check idea) | proposed | owner |
-| SG-18 | Guide nine chosen from measured queries, not instinct | proposed | editorial |
+| SG-18 | The next guide chosen from measured queries, not instinct | proposed | editorial |
 | SG-19 | Mobile-first tap-target pass ≥44/48px, ≥8px spacing (S-20, session 65474d4f; Google Lighthouse guidance, source S19) | implemented 2026-11-19 | engineering |
 | SG-20 | Pick one product as the site's spine and let the other four support it | implemented 2026-11-20 (dual-basket air fryer is the front-page starting pick) | owner |
 | SG-21 | — | **retired 2026-11-20**: byte-identical duplicate of SG-20, kept as a retired row so the change is auditable | — |
@@ -72,7 +72,7 @@ Owner-only, cheapest first — these unblock the most:
 | Q-19 | Is the account eligible for the Product Advertising API? | 5 min in Associates Central |
 | Q-02 | Do the five Special Links carry `tag=shopnow047c-20`? | One signed-in click each |
 | Q-04 | Is the `link.amazon` short-link format acceptable in this account's enrollment? | Same session as Q-02 (FLG-006) |
-| Q-22 | Why did two of the five links end at the Amazon homepage on 2026-11-20? | 15 min, signed in (FLG-017) |
+| Q-22 | Why do the supplied short links sometimes end at the Amazon homepage (four of five at least once on 2026-11-20)? | 15 min, signed in (FLG-017/023) |
 | Q-18 | Will the owner verify the site in Search Console this month? | 10 min |
 | Q-05 | Who is the named author, and what is their experience? | One decision |
 | Q-09 | What is the 90-day target outcome? | One decision |
@@ -114,7 +114,7 @@ so the page and the data cannot disagree.
 
 - [ ] **Path A — Make it earn:** DT-01 one signed-in Special Link test per product, DT-07 the
       analytics endpoint, DT-03 Search Console verified and the sitemap submitted — then one
-      guide, chosen from search data. Guide nine and any brand or domain change wait.
+      guide, chosen from search data. The next guide and any brand or domain change wait.
 - [ ] **Path B — Make it a publication:** DT-05 buy one air fryer and one thermometer (SG-06),
       publish the measurements as method, name the author, fix the cadence at one guide a
       month (DT-10). Costs money before it earns any.

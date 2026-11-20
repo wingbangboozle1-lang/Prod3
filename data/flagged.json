@@ -317,7 +317,7 @@
       "severity": "medium",
       "area": "Short-link re-check",
       "product": "P-01 (link.amazon/B04G1MEwY)",
-      "detail": "On 2026-11-20 the submitted short link link.amazon/B04G1MEwY ended at the amazon.com homepage, not a product page. The /dp/B0CDY277D3 listing still loads with a matching title. The other four short links resolved to their recorded /dp/ ASINs the same day. Recorded in data/products.json (live_recheck_2026_11_20) and flagged.html.",
+      "detail": "On 2026-11-20 the submitted short link link.amazon/B04G1MEwY ended at the amazon.com homepage in an earlier session's two attempts, not a product page. The /dp/B0CDY277D3 listing still loads with a matching title. In that same pass the other four short links resolved to their recorded /dp/ ASINs; later same-day passes disagree for B02NbDxp3, B00hJ57DV and B0c8moW59 (FLG-023). A third pass on 2026-11-20 (session arena/74e655e9-prod3) reached B0CDY277D3 on both attempts with no tag= parameter in the final URL. All dated records are kept side by side; no tie is broken. Recorded in data/products.json (live_recheck_2026_11_20 and live_recheck_2026_11_20_session_74e655e9) and flagged.html.",
       "why_it_matters": "A buyer who clicks the supplied link could land on a generic page. The 2026-11-19 observed destination for P-01 is not re-confirmed through the short link today.",
       "action": "Owner: open the short link in a normal browser and in the enrolled Associates workflow, and record the landing ASIN. Do not infer the redirect from the /dp/ page alone. This does not show the link is invalid.",
       "status": "open — short-link redirect not re-confirmed on 2026-11-20; /dp/ page matches",

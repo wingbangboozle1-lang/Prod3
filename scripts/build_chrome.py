@@ -34,6 +34,7 @@ DISCLOSURE_SENTENCE = "As an Amazon Associate I earn from qualifying purchases."
 # Top-level navigation: one group, four editorial destinations plus the desk.
 NAV = [
     ("Shop", "index.html"),
+    ("Start here", "start.html"),
     ("Air fryers", "air-fryers.html"),
     ("Thermometers", "meat-thermometers.html"),
     ("Compare", "compare.html"),
@@ -50,6 +51,7 @@ SHELF = [
     ("Buying guide", "buying-guide.html"),
     ("Decision tools", "tools/index.html"),
     ("Gift guide", "articles/holiday-kitchen-gift-guide.html"),
+    ("December picks", "articles/kitchen-gifts-that-get-used.html"),
     ("RSS", "feed.xml"),
 ]
 
@@ -69,6 +71,7 @@ FOOTER_GROUPS = [
     ]),
     ("Decision desk", [
         ("Ideas &amp; review", "ideas.html"),
+        ("Publishing plan", "publishing-plan.html"),
         ("Suggestions", "suggestions.html"),
         ("Open questions", "questions.html"),
         ("Information we still need", "decisions.html"),
@@ -163,6 +166,8 @@ def pages():
         out.append((p, 1))
     for p in sorted((ROOT / "tools").glob("*.html")):
         out.append((p, 1))
+    for p in sorted((ROOT / "products").glob("*.html")):
+        out.append((p, 1))
     return out
 
 
@@ -175,6 +180,7 @@ def kicker_for(name):
         "compare.html": "Compare",
         "buying-guide.html": "Guides",
         "ideas.html": "Decision desk",
+        "publishing-plan.html": "Decision desk",
         "decisions.html": "Decision desk",
         "suggestions.html": "Decision desk",
         "questions.html": "Decision desk",
@@ -187,6 +193,11 @@ def kicker_for(name):
         "about.html": "Trust",
         "executive-summary.html": "Trust",
         "404.html": "Not found",
+        "products/chefman-6-qt-dual-basket.html": "Air fryers",
+        "products/emeril-26qt-french-door.html": "Air fryers",
+        "products/chefman-8-qt-turbofry.html": "Air fryers",
+        "products/thermomaven-1-sec.html": "Thermometers",
+        "products/chef-iq-sense-gen3.html": "Thermometers",
         "tools/index.html": "Tools",
         "tools/compare-builder.html": "Tools",
         "tools/oven-converter.html": "Tools",

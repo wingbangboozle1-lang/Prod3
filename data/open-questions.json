@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-19",
-  "premise": "A decision made on missing information is a guess wearing a suit. Each entry states what is known, what is not, why it blocks a decision, and the cheapest concrete action that would answer it. Q-22 and Q-23 were added 2026-11-20 by session ce911db5; the account-status question had been described in DIRECTION.md but never registered (FLG-025).",
+  "generated": "2026-11-20",
+  "premise": "A decision made on missing information is a guess wearing a suit. Each entry states what is known, what is not, why it blocks a decision, and the cheapest concrete action that would answer it. Q-22 and Q-23 were added 2026-11-20 by session ce911db5; the account-status question had been described in DIRECTION.md but never registered (FLG-020).",
   "status_scale": {
     "blocking": "A decision is on hold until this is answered.",
     "queued": "Should be answered before the next content release.",
@@ -13,7 +13,7 @@
       "group": "Positioning",
       "question": "Is this one publication about cooking to a target temperature, or two sites — air fryers and thermometers?",
       "blocks": "Every content, navigation and brand decision that follows.",
-      "known": "The five products are three air fryers and two thermometers across four brands (S03-S21). The current site treats \"food hot, then food proven done\" as the unifying beat.",
+      "known": "The five products are three air fryers and two thermometers across four brands (S10-S14). The current site treats \"food hot, then food proven done\" as the unifying beat.",
       "unknown": "Whether the owner intends to sell more of one family than the other, which would settle it commercially rather than editorially.",
       "how_to_find_out": "Look at the Associates dashboard's ordered-items report after 30 days of traffic. If one family produces under 10% of orders, narrow.",
       "who": "owner",
@@ -21,6 +21,11 @@
       "status": "watch",
       "changes": "Whether the site keeps two category hubs or collapses to one.",
       "sources": [
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
         "S22"
       ],
       "evidence_status": "verified"
@@ -30,7 +35,7 @@
       "group": "Commercial",
       "question": "Do the five Special Links actually carry tag=shopnow047c-20?",
       "blocks": "Any claim that the site earns anything. If the tag is missing, clicks earn nothing.",
-      "known": "The links resolve correctly to five ASINs (S16). The resolved URLs carried query parameters but no visible tag= value in what was served to this session (F-09).",
+      "known": "The 2026-11-19 observation records each supplied short link reaching one of five ASINs (S10-S14). The resolved URLs carried query parameters but no visible tag= value in what was served to that session (F-09, FLG-031).",
       "unknown": "Whether the Associates ID is attached server-side, which is invisible from outside the account.",
       "how_to_find_out": "Sign in to Associates, open a product page with SiteStripe active, and read the Get Link panel for one of the five. Confirm the tag field. Then make one test click and confirm it appears in the Click Reports within 24 hours.",
       "who": "owner",
@@ -38,7 +43,12 @@
       "status": "owner-only",
       "changes": "If the tag is absent, every outbound link needs regenerating before any traffic is worth attracting.",
       "sources": [
-        "S02"
+        "S02",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14"
       ],
       "evidence_status": "verified"
     },
@@ -47,7 +57,7 @@
       "group": "Commercial",
       "question": "What commission rate applies to each of the five products, under the account's current rate card?",
       "blocks": "Any prioritisation of one product over another. Without it, \"which product should the site push\" has no answer.",
-      "known": "The Associates Program Commission Income Statement sets rates by product category and can change (S02).",
+      "known": "The Commission Income Statement is published as part of the Associates Program Policies and sets rates by product category; it can change (S02).",
       "unknown": "The applicable rate for Kitchen & Dining small appliances as it applies to this account today. That figure is account-specific and was not available to this session.",
       "how_to_find_out": "Read the current Commission Income Statement in the Associates dashboard and record the fixed and variable rates for the categories the five ASINs sit in.",
       "who": "owner",
@@ -55,7 +65,8 @@
       "status": "owner-only",
       "changes": "Whether the air fryers or the thermometers get the prime navigation slot, and whether the layout should favour the higher-ticket item.",
       "sources": [
-        "S01"
+        "S01",
+        "S02"
       ],
       "evidence_status": "verified"
     },
@@ -64,7 +75,7 @@
       "group": "Compliance",
       "question": "Is the link.amazon short-link format acceptable in this account's enrolled workflow?",
       "blocks": "Whether the supplied links can ever be the published destination.",
-      "known": "Program Policies 2(b) prohibits a shortening service used so that it is unclear the link goes to an Amazon Site (S02). The site currently publishes direct amazon.com/dp/ URLs, so clarity is not in question there.",
+      "known": "Program Policies 6(w) prohibits a shortening service used so that it is unclear the link goes to an Amazon Site (S02; clause read and quoted 2026-11-20). The site currently publishes direct amazon.com/dp/ URLs, so clarity is not in question there.",
       "unknown": "Whether these particular links resolve visibly and are accepted in the enrolled workflow. Their compliance status is not established either way — nothing here calls them invalid (F-13).",
       "how_to_find_out": "Run SG-13: click one link while signed in, confirm the destination and confirm the click is reported. Repeat if it passes.",
       "who": "owner",
@@ -89,7 +100,8 @@
       "status": "owner-only",
       "changes": "Every byline, the about page, and whether the site can ever use an experience-led voice.",
       "sources": [
-        "S21"
+        "S21",
+        "S03"
       ],
       "evidence_status": "verified"
     },
@@ -106,7 +118,8 @@
       "status": "queued",
       "changes": "Whether the content plan stays specification-led indefinitely.",
       "sources": [
-        "S21"
+        "S21",
+        "S22"
       ],
       "evidence_status": "verified"
     },
@@ -114,7 +127,7 @@
       "id": "Q-07",
       "group": "Measurement",
       "question": "Which analytics will actually be installed, given no cookies and no personal data?",
-      "blocks": "Choosing the next article and knowing whether any of the published guides worked.",
+      "blocks": "Choosing the ninth article and knowing whether any of the first eight worked.",
       "known": "No analytics endpoint and no Search Console property exist (F-17). The site ships a cookie-free, network-free client-side counter (SG-08).",
       "unknown": "Whether the owner has hosting that can run a small endpoint, and whether they want one at all.",
       "how_to_find_out": "Decide between: Search Console only (zero cost, query data, no page-level behaviour); a self-hosted endpoint (needs a host); or nothing.",
@@ -142,7 +155,8 @@
       "status": "queued",
       "changes": "The column definitions in the campaign ledger.",
       "sources": [
-        "S01"
+        "S01",
+        "S02"
       ],
       "evidence_status": "verified"
     },
@@ -166,7 +180,7 @@
       "group": "Product",
       "question": "Should P4 point at the newer ASIN the listing itself recommends?",
       "blocks": "Whether the site sends readers to a superseded model.",
-      "known": "The P4 listing displays \"There is a newer model of this item\" and links ASIN B0GL7Z4KP4 (S06). The supplied short link resolves to B0DHZTCNR5 (F-03).",
+      "known": "The P-04 listing displays \"There is a newer model of this item\" and links ASIN B0GL7Z4KP4 (S13). The supplied short link resolves to B0DHZTCNR5 (F-03).",
       "unknown": "Whether the owner deliberately chose the older ASIN, or supplied a stale link.",
       "how_to_find_out": "Compare the two listings directly and decide. If the newer one is chosen, update intended.asin and record the change with a date — never edit observed.",
       "who": "owner",
@@ -174,7 +188,8 @@
       "changes": "One outbound link and one product page.",
       "status": "owner-only",
       "sources": [
-        "S12"
+        "S12",
+        "S13"
       ],
       "evidence_status": "verified"
     },
@@ -222,15 +237,17 @@
       "cost": "one configuration change",
       "status": "queued",
       "changes": "Whether SG-08 ever moves from a browser counter to a real denominator.",
-      "sources": [],
+      "sources": [
+        "S02"
+      ],
       "evidence_status": "unverified"
     },
     {
       "id": "Q-14",
       "group": "Content",
       "question": "What is the publishing cadence, and who writes the next guide?",
-      "blocks": "Whether the site grows or stalls at eight articles.",
-      "known": "Eleven guides are published (ten evergreen plus the dated Thanksgiving plan). Nothing in the repository schedules a twelfth.",
+      "blocks": "Whether the site grows or stalls at fifteen articles.",
+      "known": "Fifteen guides are published (articles/*.html). Nothing in the repository schedules a sixteenth.",
       "unknown": "Whether the owner writes, or the agent drafts for approval, and how often.",
       "how_to_find_out": "Pick a cadence the owner will actually keep — one a fortnight beats three a week followed by silence. Write it in the repository so the next session honours it.",
       "who": "owner",
@@ -274,16 +291,17 @@
       "status": "owner-only",
       "changes": "Every absolute URL on the site.",
       "sources": [
-        "S05"
+        "S05",
+        "S02"
       ],
       "evidence_status": "verified"
     },
     {
       "id": "Q-17",
       "group": "Content",
-      "question": "Which of the published guides should be retired if Search Console shows no impressions after 60 days?",
+      "question": "Which of the ten published guides should be retired if Search Console shows no impressions after 60 days?",
       "blocks": "Nothing yet. It is the question that stops a site accumulating pages nobody reads.",
-      "known": "No impression or query data exists yet (F-17).",
+      "known": "Fifteen guides are published (articles/*.html) and no impression or query data exists yet (F-17).",
       "unknown": "Which pages, if any, will fail to earn an impression. That number cannot be guessed.",
       "how_to_find_out": "After 60 days, sort the Pages report by impressions. Any page with zero impressions earns a rewrite, a merge, or a removal — decided with data, not taste.",
       "who": "owner",
@@ -399,33 +417,112 @@
     },
     {
       "id": "Q-24",
-      "group": "Measurement",
-      "question": "What does PageSpeed Insights report for the live front page and one guide page?",
-      "blocks": "Any performance-driven change. The brief requires measurement before optimization, so no performance work is justified until a dated measurement exists.",
-      "known": "The site is static HTML, CSS and JavaScript with no third-party loaded assets (gate A12), and every image is under 400 KB (gate A13). Those are properties of the source tree, not measurements of the deployed pages.",
-      "unknown": "The actual Lighthouse and field scores of the deployed pages. Nothing has been measured, and nothing is invented here.",
-      "how_to_find_out": "Run PageSpeed Insights (or Lighthouse) on the live front page URL and one article URL. Record the date, the scores and the top opportunities in data/verification.json. SG-34 holds the proposal.",
-      "who": "engineering",
-      "cost": "15 minutes",
-      "status": "queued",
-      "changes": "Whether SG-34 becomes work or is closed as already green.",
-      "sources": [],
-      "evidence_status": "unverified"
+      "group": "Links",
+      "question": "Does the link.amazon redirect attach tag=shopnow047c-20 to the destination URL?",
+      "blocks": "Whether the five buy links can be credited at all. Every earning claim depends on it.",
+      "known": "Program Policies §2(b) require the tag as a parameter in the URL of each link to an Amazon Site. None of the 23 shipped link.amazon anchors and none of 192 amazon.com anchors contain a tag parameter (FLG-026).",
+      "unknown": "Whether the short-link service appends the tag during the redirect. This is not visible from a plain fetch, because the fetch follows to a page that does not display the referrer's tag.",
+      "how_to_find_out": "Signed in to Associates, click one supplied link once in a normal browser. In the Associates report, check that the click appears within the reporting window, then open the same link with the redirect chain visible (browser dev tools → Network → preserve log) and read whether tag= appears on the amazon.com URL.",
+      "who": "owner",
+      "cost": "10 minutes, signed in",
+      "status": "owner-only",
+      "changes": "Whether the buy buttons can stay pointed at the supplied short links or must be replaced with freshly generated Special Links (DT-01).",
+      "sources": [
+        "S01",
+        "S02"
+      ],
+      "evidence_status": "observed"
     },
     {
       "id": "Q-25",
-      "group": "Distribution",
-      "question": "Do the FAQPage rich results actually appear for the new guides once they are indexed?",
-      "blocks": "SG-32 — the rollout of FAQ structured data to the older guides.",
-      "known": "Two guides ship FAQPage JSON-LD that mirrors their visible FAQ text; block validity is enforced by gate D15. Whether a search engine shows a rich result is its own decision.",
-      "unknown": "Whether the deployed pages earn the rich result in search, and how long that takes.",
-      "how_to_find_out": "After Q-18 (Search Console), read the Enhancements reports for FAQ and note what appears and when. If nothing appears, revise the markup or drop the pattern — do not assume success.",
+      "group": "Links",
+      "question": "Why did all five supplied links end at the Amazon homepage on the third check, when four of five reached product pages earlier the same day?",
+      "blocks": "Nothing structurally, but it decides whether the buy buttons should keep pointing at the short links.",
+      "known": "Four dated observations exist: 2026-11-19 all five reached product pages; 2026-11-20 session 70e8475c one of five reached the homepage; session ce911db5 two of five; session 6bf60cac all five (FLG-017, FLG-031, FLG-025). No record is overwritten.",
+      "unknown": "Whether the change is geographic, time-of-day, a per-fetch rate limit, a change on Amazon's side, or something about the fetching client. No logs are available to the site.",
+      "how_to_find_out": "Owner clicks all five while signed in, at three times of day, and records the landing page each time. Comparing those with the site's records is the only test that separates a link problem from a fetch-method problem.",
       "who": "owner",
-      "cost": "5 minutes once indexed",
+      "cost": "15 minutes across one day",
+      "status": "blocking",
+      "changes": "Whether the site describes the supplied links as working, unresolved, or in need of replacement.",
+      "sources": [
+        "S15",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "evidence_status": "observed"
+    },
+    {
+      "id": "Q-26",
+      "group": "Editorial",
+      "question": "Who signs off the twelve-week plan, and what happens to a row whose evidence never arrives?",
+      "blocks": "The publishing cadence, and whether the plan page stays honest as weeks pass.",
+      "known": "Twelve rows are proposed in data/editorial-plan.json with dated calendar hooks; four are partly or wholly blocked on a figure no source publishes.",
+      "unknown": "Whether the owner wants a blocked row dropped, replaced, or held in place with its gap named. Each choice produces a different page.",
+      "how_to_find_out": "A decision on the plan page itself: mark each row Do this / Maybe / No (the same control the ideas register uses), and record the choice.",
+      "who": "owner",
+      "cost": "10 minutes to read the table",
       "status": "queued",
-      "changes": "Whether the FAQ pattern is rolled out (SG-32) or revised.",
-      "sources": [],
-      "evidence_status": "unverified"
+      "changes": "Whether the plan page describes proposals or commitments.",
+      "sources": [
+        "S21"
+      ],
+      "evidence_status": "observed"
+    },
+    {
+      "id": "Q-27",
+      "group": "Content",
+      "question": "Which of the trend-led article topics earns impressions, and should guide nine be one of them?",
+      "blocks": "Choosing the ninth article from measured demand (SG-18, SG-37); depends on Q-18 first.",
+      "known": "No Search Console impressions or query data exist yet (F-17). Q-18 must be answered before any topic can be chosen from data.",
+      "unknown": "Which question clusters around air fryers and meat thermometers actually bring qualified visitors, and whether a seasonal topic or a specification topic wins.",
+      "how_to_find_out": "After Q-18 is answered (Search Console verified and sitemap submitted), review the Queries report after enough data accrues, pick a cluster with impressions and no dedicated page, and write guide nine around it.",
+      "who": "owner",
+      "cost": "10 minutes after Q-18",
+      "status": "queued",
+      "changes": "The topic and timing of guide nine.",
+      "sources": [
+        "S21",
+        "S24"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "Q-28",
+      "group": "Measurement",
+      "question": "Is any of this site in Google's index yet, and which pages?",
+      "blocks": "Judging whether any guide is discoverable at all; choosing between publishing more (SG-18's pipeline) and fixing discoverability first. Until this is answered, any statement about organic traffic is a guess.",
+      "known": "The site ships unique canonicals, a robots.txt pointing at sitemap.xml, a sitemap and an RSS feed — all enforced by the repo's gates. Coordination records show GitHub Pages deployments since 2026-11-19.",
+      "unknown": "Whether Google has crawled or indexed any URL; which pages, if any, appear for brand or topic queries. Nothing hosted on the site itself can answer this.",
+      "how_to_find_out": "Two steps. (1) Public, no account: a site:wingbangboozle1-lang.github.io/Prod3 query — a rough, incomplete indication; record the date and the result count, not a claim of completeness. (2) Authoritative: Search Console → property → Pages report, after Q-18's verification — it lists indexed and excluded URLs with reasons (S26).",
+      "who": "any session (step 1); owner (step 2)",
+      "cost": "2 minutes (step 1); 5 minutes after verification (step 2)",
+      "status": "queued",
+      "changes": "Whether “publish and wait” is a plan or a hope, and whether the next guide should be written at all before indexing is confirmed.",
+      "sources": [
+        "S26"
+      ],
+      "evidence_status": "verified"
+    },
+    {
+      "id": "Q-29",
+      "group": "Measurement",
+      "question": "What do Core Web Vitals measure on this site today, on a mid-range phone?",
+      "blocks": "SG-46 (the proposed CWV gate) and any decision to add visual effects; until measured, the mobile-first and light-page claims (S-20 pass) are design statements, not records.",
+      "known": "The stylesheet is one local file with system fonts (no webfonts, no @import), pages load one local script each, and there are no third-party asset requests on shop pages — verified by a URL scan on 2026-11-20 (T-54 log). Tap targets were audited at 48px (S-20).",
+      "unknown": "LCP, INP and CLS as actually measured. No dated lab or field result exists anywhere in the repository.",
+      "how_to_find_out": "pagespeed.web.dev — enter the live URL, choose mobile, and record the dated metric values on analytics.html; Lighthouse in Chrome gives the same lab metrics. No account is required.",
+      "who": "any session",
+      "cost": "about 5 minutes",
+      "status": "queued",
+      "changes": "Turns “the site is light” from a design claim into a dated measurement, and sets the baseline that SG-46's gate would compare future changes against.",
+      "sources": [
+        "S25"
+      ],
+      "evidence_status": "verified"
     }
   ],
   "sources_note": "Each question carries the registered source IDs of the official document that speaks to it, or an empty list plus evidence_status='unverified' when no official document settles it. Nothing is cited that does not answer the question."

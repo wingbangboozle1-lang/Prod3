@@ -15,7 +15,7 @@ options, and recommendations live there.
 | SG-01 | One beat: cooking to a target temperature — both families in one sentence | implemented | owner |
 | SG-02 | Publish the two spec conflicts instead of picking a winner | implemented | editorial |
 | SG-03 | No prices anywhere, with the policy explained on its own page | implemented | editorial |
-| SG-04 | Eight question-shaped guides instead of eight product reviews | implemented | editorial |
+| SG-04 | 8 question-shaped guides instead of 8 product reviews | implemented | editorial |
 | SG-05 | Compliance gate inside the build, not a checklist promise | implemented | editorial |
 | SG-06 | Buy one air fryer and one thermometer to earn original testing | proposed | owner |
 | SG-07 | Search Console verification + sitemap submission before guide nine | proposed | owner |
@@ -37,17 +37,26 @@ options, and recommendations live there.
 | SG-23 | Make one page the definitive answer to "how big is it really" | implemented | editorial |
 | SG-24 | Give the site a named editor before giving it a voice | proposed | owner |
 | SG-25 | Stop calling it a decision log until decisions are actually recorded there | implemented | engineering |
-| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-026 gap note below; the registered SG-27..SG-31 rows (this session re-mirrored them verbatim) are the canonical ones | — |
-**Gap, 2026-11-20 (FLG-026):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
+| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-021 gap note below; the registered SG-27..SG-31 rows (this session re-mirrored them verbatim) are the canonical ones | — |
+**Gap, 2026-11-20 (FLG-021):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
 | SG-27 | One name for the Direction page, in the nav and the footer | implemented | engineering |
 | SG-28 | Ship the RSS feed and advertise it on every page | implemented | engineering |
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
 | SG-30 | Decide how readers stay in touch: RSS only, or an email provider with consent | proposed | owner |
 | SG-31 | Put the listing's own contradiction on the product card, not only the flag page | implemented 2026-11-20 | editorial |
-| SG-32 | Roll FAQ structured data out to the remaining question-shaped guides | proposed | editorial |
-| SG-33 | Give the earlier guides a dated voice refresh | proposed | editorial |
-| SG-34 | Measure the live site with PageSpeed Insights before any performance work | proposed | engineering |
-| SG-35 | Make the seasonal block data-driven so it cannot go stale by hand | proposed | engineering |
+| SG-43 | Give the seasonal block a retirement date and a successor, before Thanksgiving ends | proposed | editorial |
+| SG-44 | Do not add FAQ markup expecting a Google FAQ rich result — that feature is gone | proposed | editorial |
+| SG-45 | Fact-check any AI-assisted draft line by line before it ships, and say how the site is made | proposed | owner |
+| SG-46 | Measure Core Web Vitals once, then gate new frontend effects on the result | proposed | editorial |
+| SG-47 | Keep internal anchors descriptive — add a gate so the discipline cannot slip | proposed | engineering |
+
+SG-43..SG-47 were added 2026-11-20 (session `arena/7878cdbe-prod3`, T-54; renumbered twice while
+this branch was queued — first from SG-32..SG-36 after upstream 6bf60cac/8692a390 registered
+SG-32..SG-38, then from SG-39..SG-43 after upstream PR #52 registered SG-39..SG-42) with sources
+verified that day:
+S34 (Google link best practices), S35 (Google search-doc changelog: the FAQ rich result was
+deprecated 2026-05-07/08 and its documentation removed June 2026), S36 (Google generative-AI
+content guidance, page updated 2026-10-01). The rows above mirror `data/suggestions.json` verbatim.
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
@@ -57,11 +66,11 @@ SG-19. The ledger is the single source of truth.
 
 ## Open questions — what must be answered before deciding
 
-Twenty-five questions are registered in `data/open-questions.json` (Q-01…Q-25). Each carries
+Twenty-three questions are registered in `data/open-questions.json` (Q-01…Q-23). Each carries
 `known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only`).
 
-**Correction, 2026-11-20 (FLG-025).** This digest used to list Q-08 as the account-status question
+**Correction, 2026-11-20 (FLG-020).** This digest used to list Q-08 as the account-status question
 and Q-05 as "which query set converts". Neither matched the register: Q-08 is "what counts as a
 session for the ledger" and Q-05 is "who is the named author". The account-status question had never
 been registered at all, so it was added as **Q-23** rather than renumbered into a used id. Every id
@@ -87,8 +96,7 @@ Q-08 (what counts as a session), Q-10 (newer ASIN swap for P4), Q-11 (P1 capacit
 Q-12 (brand and visual sign-off), Q-13 (endpoint storage schema), Q-14 (cadence and who writes),
 Q-15 (disclosure reach when a reader never scrolls), Q-16 (custom domain), Q-17 (retire
 zero-impression guides), Q-20 (email provider and consent), Q-21 (does the PNG preview render in
-a share debugger), Q-24 (PageSpeed measurement of the live pages), Q-25 (do the FAQ rich results
-appear once indexed).
+a share debugger).
 
 ## The SG-20 / SG-21 duplicate — reproduced and resolved
 
@@ -140,13 +148,13 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 |---|---|---|---|
 | 2026-11-19 | Publish both readings when a listing contradicts itself | S02 | Preset count, battery life, warranty and accessory count shown as conflicts |
 | 2026-11-19 | Display no price while neither Amazon-served nor PA-API data is used | S02 §2(b) | Price slots read "Current price on Amazon"; the gate fails on a currency amount |
-| 2026-11-19 | Remove customer star ratings and rating counts from every page | S02 §2(t) | Ratings replaced with a policy note in the comparison table |
+| 2026-11-19 | Remove customer star ratings and rating counts from every page | S02 §6(t) *(recorded as the Section 2 letter until corrected 2026-11-20)* | Ratings replaced with a policy note in the comparison table |
 | 2026-11-19 | Mark every outbound Amazon link `rel="sponsored"` and open in a new tab | S04 | The gate walks every anchor |
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |
 | 2026-11-20 | Reconcile the path chooser on `direction.html` and in this file with the canonical paths in `data/decisions.json` (DT-01..DT-10); retire the stale “Steady publication / Conversion focus / Hold” wording and its wrong SG-04/SG-06 citations | session T-39 audit | The digest and the decision desk cannot disagree about what the three paths are |
-| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-026, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
-| 2026-11-20 | Renumber the four duplicated flag IDs so one FLG id means one finding (the later callouts became FLG-025..FLG-028; FLG-020..023 keep the meanings held in `data/flagged.json`); register this round's suggestions (SG-32..SG-35) and questions (Q-24..Q-25) | session T-50 integration · `flagged.html`, `data/suggestions.json`, `data/open-questions.json`, `README.md`, this file | Every cross-reference updated; the flag register is safe to review against |
+| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-021, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
+| 2026-11-20 | Publish one question-shaped guide a calendar month; approver: the site owner; next guide due 2026-12-31 (DT-10, owner instruction in the 2026-11-20 brief) | Owner instruction · `docs/publishing-cadence.md` · `data/decisions.json` DT-10 | The commitment is a rhythm, not a traffic or revenue forecast; `tools/verify_site.py` now fails a guide that is missing from the sitemap, the feed (headline = H1) or the guides hub |
 
 ## Audit findings, session a25ccde6 (2026-11-19)
 

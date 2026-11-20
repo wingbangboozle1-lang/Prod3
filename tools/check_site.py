@@ -20,6 +20,7 @@ missing, each of which a real defect slipped past recently:
 Run:  python3 tools/check_site.py     (exit 0 = pass, 1 = fail, 2 = no site)
 """
 
+import hashlib
 import json
 import re
 import sys
@@ -45,10 +46,23 @@ if not (ROOT / "index.html").exists():
 
 pages = (sorted(ROOT.glob("*.html"))
          + sorted((ROOT / "articles").glob("*.html"))
-         + sorted((ROOT / "tools").glob("*.html")))
+         + sorted((ROOT / "tools").glob("*.html"))
+         + sorted((ROOT / "products").glob("*.html")))
 docs = {p.relative_to(ROOT).as_posix(): p.read_text(encoding="utf-8") for p in pages}
 
 titles, descs = {}, {}
+
+
+def _link_names(html):
+    """link text -> [outbound hrefs]. Used by the P14b uniqueness rule."""
+    out = {}
+    for m in re.finditer(r'<a\b[^>]*href="(https?://[^"]*)"[^>]*>(.*?)</a>', html, re.S):
+        text = re.sub(r"<[^>]+>", "", m.group(2)).strip()
+        href = m.group(1)
+        if not text or "amazon" not in href:
+            continue
+        out.setdefault(text, []).append(href)
+    return out
 
 for name, html in docs.items():
 
@@ -100,9 +114,18 @@ for name, html in docs.items():
         check("P08-noopener", "noopener" in tag,
               f"{name}: Amazon link without noopener → {href.group(1) if href else '?'}")
         if href:
+            # P09, tightened 2026-11-20 (T-60). The old form ("… or sponsored in tag")
+            # passed every link.amazon anchor that merely carried the attribute, so it
+            # could not fail. The rule is now the one the policy text supports: a
+            # reader-facing buy button (marked data-asin) must not be a redirecting
+            # shortener, because Participation Requirements 2(b) (S34) requires the tag
+            # as a URL parameter and Commission Income Statement 2(g) (S35)
+            # disqualifies improperly formatted links. Evidence rows that merely
+            # display the submitted link are untouched.
+            is_button = "data-asin=" in tag or 'data-event="outbound_click"' in tag
             check("P09-no-shortener",
-                  "link.amazon/" not in href.group(1) or "sponsored" in tag,
-                  f"{name}: shortened link qualifier missing → {href.group(1)}")
+                  not is_button or "link.amazon/" not in href.group(1),
+                  f"{name}: buy button routes a buyer through a redirecting short link → {href.group(1)}")
 
     # ---- no currency amount, anywhere
     for m in re.finditer(r"[$£€]\s?\d", html):
@@ -132,6 +155,16 @@ for name, html in docs.items():
         text = re.sub(r"<[^>]+>", "", m.group(2)).strip()
         check("P14-link-text", text.lower() not in ("click here", "here", "read more", "link"),
               f"{name}: non-descriptive link text {text!r} → {m.group(1)[:60]}")
+
+    # ---- one link name must not point at several products ----------------
+    # A table that ends five rows with a bare "Listing" link gives a screen
+    # reader, and anyone scanning the links panel, five identically-named
+    # destinations. The visible table position carries the meaning; the link
+    # name does not. Evidence links are named by ASIN instead.
+    for label, hrefs in _link_names(html).items():
+        if len(set(hrefs)) > 1:
+            check("P14b-unique-link-name", False,
+                  f"{name}: link text {label!r} points at {len(set(hrefs))} different destinations")
 
     # ---- internal targets exist on disk
     for target in re.findall(r'(?:href|src)="([^"#:]+)(?:#[^"]*)?"', html):
@@ -279,9 +312,25 @@ _r = _sp.run([sys.executable, str(ROOT / "scripts" / "build_registers.py"), "--c
              capture_output=True, text=True)
 check("D18-registers-fresh", _r.returncode == 0, f"registers stale: {_r.stdout.strip()[:200]}")
 
-# ---- one suggestion ID must mean one thing ------------------------------
-_sg_ids = re.findall(r"\bSG-\d{2}\b", docs.get("suggestions.html", ""))
-check("D19-register-ids", len(_sg_ids) == len(set(_sg_ids)) or True, "")
+# ---- the reader brief on ideas.html must match the registers ---------------
+_rb = _sp.run([sys.executable, str(ROOT / "scripts" / "build_ideas.py"), "--check"],
+              capture_output=True, text=True)
+check("D18b-ideas-fresh", _rb.returncode == 0, f"ideas brief stale: {_rb.stdout.strip()[:200]}")
+
+# ---- one identifier must mean one thing ----------------------------------
+# This rule used to end in `or True`, so it could never fail. It was written for
+# SG ids but the defect that actually shipped was in the FLG register: on
+# 2026-11-20 flagged.html carried two different cards numbered FLG-020 and two
+# numbered FLG-021, so a reader following "FLG-020" from citations.html (the
+# Program Policies citation gap) landed on a card about DIRECTION.md question
+# ids instead. Each id is now counted where it is DEFINED (a card or heading),
+# not where it is merely referenced, and a repeat fails the release.
+for _page, _prefix in (("suggestions.html", "SG"), ("flagged.html", "FLG")):
+    _html = docs.get(_page, "")
+    _defined = re.findall(rf"\b{_prefix}-\d{{2,3}}\s*(?:—|</strong>|<)", _html)
+    _dupes = sorted({i for i in _defined if _defined.count(i) > 1})
+    check(f"D19-{_prefix.lower()}-one-meaning", not _dupes,
+          f"{_page}: identifier(s) defined more than once: {', '.join(_dupes)}")
 
 
 # J01-J04: every inline script (and assets/app.js) must parse.
@@ -413,6 +462,42 @@ for _sid in sorted(set(re.findall(r"\bSG-\d{2}\b", _dir))):
     check("D29-direction-suggestion-refs", _sid in _sgids,
           f"DIRECTION.md cites {_sid}, which is not in data/suggestions.json")
 
+# D38: one flag id must label one finding.
+# On 2026-11-20 flagged.html carried FLG-020, FLG-021, FLG-022 and FLG-023 twice each,
+# labelling four pairs of unrelated findings (T-46 logged it and left it for the owner).
+# A duplicated id makes an earlier citation ambiguous, which is the whole point of an id,
+# so this is now a release failure. The second finding in each pair was renumbered;
+# no finding was deleted. Count is taken from the callout labels, not from the whole page,
+# because ids are also cited in prose.
+_flag_ids = re.findall(r"<strong>((?:FLG|F)-\d{3}) \u2014", docs.get("flagged.html", ""))
+_flag_dupes = sorted({i for i in _flag_ids if _flag_ids.count(i) > 1})
+check("D38-flag-id-unique", not _flag_dupes,
+      f"flagged.html: id(s) labelling more than one finding: {_flag_dupes}")
+check("D38-flag-count", len(_flag_ids) >= 26,
+      f"flagged.html: only {len(_flag_ids)} labelled findings found (expected at least 26)")
+
+# D39: no dangling flag citation.
+# On 2026-11-20 flagged.html stopped defining FLG-022 and FLG-023 while air-fryers.html
+# still cited both, so a reader who followed the reference landed on nothing. A flag whose
+# id is not on the page is a broken promise in the site's most trust-bearing surface.
+# This rule reads every FLG-/F- id cited anywhere in the published HTML and requires it to
+# be defined by a callout label on flagged.html. It is what would have caught the deletion.
+_flag_page = docs.get("flagged.html", "")
+_defined_flags = set(re.findall(r"<strong>((?:FLG|F)-\d{3}) \u2014", _flag_page))
+# A finding declared inside another finding's note is still declared: FLG-028 and
+# FLG-029 were renumbered "in place" and are announced inside FLG-027.
+_defined_flags |= set(re.findall(r"<strong>((?:FLG|F)-\d{3})</strong>", _flag_page))
+_dangling = {}
+for _name, _html in docs.items():
+    if _name == "flagged.html":
+        continue
+    for _fid in set(re.findall(r"\b((?:FLG|F)-\d{3})\b", _html)):
+        if _fid not in _defined_flags:
+            _dangling.setdefault(_fid, []).append(_name)
+check("D39-flag-citation", not _dangling,
+      "cited but not defined on flagged.html: " +
+      "; ".join(f"{k} ({', '.join(sorted(v)[:3])})" for k, v in sorted(_dangling.items())))
+
 # D27: the tools pages must exist and be reachable from the front page
 for _tool in ("tools/index.html", "tools/compare-builder.html",
               "tools/oven-converter.html", "tools/cook-temperatures.html"):
@@ -436,9 +521,239 @@ for _val in ("145°F (62.8°C)", "160°F (71.1°C)", "165°F (73.9°C)"):
 
 # D30: a seasonal guide must be surfaced on the front page, and it must be the
 # one whose month matches. Checked as a presence rule, not a render rule.
+# D30: the seasonal block must surface the guide that matches the month. It used to
+# assert the Thanksgiving plan literally; the guide set now has a December entry, so the
+# rule checks that a seasonal guide is surfaced and that the December one ships while it
+# is available. Both guides stay linked year-round; only the lead changes.
+_front = docs.get("index.html", "")
 check("D30-seasonal-surfaced",
-      "thanksgiving-temperature-plan.html" in docs.get("index.html", ""),
-      "the seasonal guide is not linked from the front page")
+      "thanksgiving-temperature-plan.html" in _front and "kitchen-gifts-that-get-used.html" in _front,
+      "a seasonal guide is not linked from the front page")
+check("D30-seasonal-lead",
+      _front.find("kitchen-gifts-that-get-used.html") < _front.find("thanksgiving-temperature-plan.html"),
+      "the December guide should lead the seasonal block while the site says it is December")
+
+
+# D31: the publishing plan page must match data/editorial-plan.json, must be in the
+# sitemap and linked from the decision desk. A plan row edited in one place only is
+# a page that promises something the register does not contain.
+_plan_path = ROOT / "data" / "editorial-plan.json"
+check("D31-plan-data", _plan_path.exists(), "data/editorial-plan.json missing")
+if _plan_path.exists():
+    _plan = json.loads(_plan_path.read_text(encoding="utf-8"))
+    _planpage = docs.get("publishing-plan.html", "")
+    check("D31-plan-page", bool(_planpage), "publishing-plan.html missing from the tree")
+    _rows = _plan.get("proposals", [])
+    check("D31-plan-rows", len(_rows) == 12, f"expected 12 proposed rows, found {len(_rows)}")
+    for _row in _rows:
+        check("D31-plan-title", _row["title"].replace("&", "&amp;") in _planpage or _row["title"] in _planpage,
+              f"proposed row not rendered: {_row['title'][:60]}")
+        _d = _row["week"].split("-")
+        _human = f"{int(_d[2])} {('Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec')[int(_d[1])-1]} {_d[0]}"
+        check("D31-plan-week", _human in _planpage,
+              f"week {_human} for {_row['title'][:40]} not rendered")
+        check("D31-plan-evidence", _row["evidence_status"] in ("available", "partly blocked", "blocked"),
+              f"{_row['week']}: unknown evidence_status {_row['evidence_status']!r}")
+    check("D31-plan-sitemap", "publishing-plan.html" in (ROOT / "sitemap.xml").read_text(encoding="utf-8"),
+          "publishing-plan.html not in the sitemap")
+    check("D31-plan-linked", "publishing-plan.html" in docs.get("ideas.html", "") and
+          "publishing-plan.html" in docs.get("index.html", ""),
+          "publishing-plan.html is not linked from ideas.html and the front page")
+    # The plan may not smuggle in a traffic, volume or revenue claim.
+    for _pat in (r"\bsearch volume\b(?! appears)", r"\b\d[\d,]* (?:searches|visitors|sales)\b",
+                 r"\bconversion rate\b", r"\bestimated revenue\b"):
+        _m = re.search(_pat, _planpage, re.I)
+        check("D31-plan-no-forecast", not _m, f"publishing-plan.html carries a forecast claim: {_m.group(0) if _m else ''}")
+
+
+# D32: one product page per registered product, each rendered from data/products.json,
+# each in the sitemap and each reachable from its pillar. A page edited by hand instead
+# of through the register fails here.
+_r_pages = _sp2.run([sys.executable, str(ROOT / "scripts" / "build_products.py"), "--check"],
+                          capture_output=True, text=True)
+check("D32-product-pages-fresh", _r_pages.returncode == 0,
+      f"product pages stale: {_r_pages.stdout.strip()[:160]}")
+for _p in products:
+    _slug = {"P-01": "chefman-6-qt-dual-basket", "P-02": "emeril-26qt-french-door",
+             "P-03": "chefman-8-qt-turbofry", "P-04": "thermomaven-1-sec",
+             "P-05": "chef-iq-sense-gen3"}[_p["id"]]
+    _rel = f"products/{_slug}.html"
+    check("D32-product-page-exists", _rel in docs, f"{_rel} missing")
+    check("D32-product-page-sitemap", _rel in (ROOT / "sitemap.xml").read_text(encoding="utf-8"),
+          f"{_rel} not in the sitemap")
+    _pillar = "air-fryers.html" if _p["category"] == "Air Fryers" else "meat-thermometers.html"
+    check("D32-product-page-linked", _rel in docs.get(_pillar, ""),
+          f"{_rel} is not linked from {_pillar}")
+    check("D32-product-page-observed", _p["observed_asin"] in docs.get(_rel, ""),
+          f"{_rel} does not name the observed ASIN")
+    check("D32-product-page-intent-blank", "No official source" in docs.get(_rel, ""),
+          f"{_rel} does not show the blank intended-ASIN field")
+
+
+# D33: a product page must list every flag that names its product, in either register.
+# The first version of build_products.py matched only the "P-04" form and silently dropped
+# every F row; this gate exists so that cannot happen again without failing the release.
+_flags_all = json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))["items"]
+_SLUGS = {"P-01": "chefman-6-qt-dual-basket", "P-02": "emeril-26qt-french-door",
+          "P-03": "chefman-8-qt-turbofry", "P-04": "thermomaven-1-sec",
+          "P-05": "chef-iq-sense-gen3"}
+for _p in products:
+    _rel = f"products/{_SLUGS[_p['id']]}.html"
+    _page = docs.get(_rel, "")
+    _num = _p["id"].split("-")[-1].lstrip("0")
+    _expected = [f["id"] for f in _flags_all
+                 if "All five" in (f.get("product") or "")
+                 or _p["observed_asin"] in (f.get("product") or "")
+                 or any(t.lstrip("0") == _num for t in re.findall(r"P-?(\d+)", f.get("product") or ""))]
+    check("D33-flags-present", len(_expected) > 0, f"{_rel}: no flag names this product at all")
+    for _fid in _expected:
+        check("D33-flag-listed", _fid in _page, f"{_rel}: flag {_fid} names this product but is not listed on its page")
+
+# ---------------------------------------------------------------------------
+# D35: every Program Policies clause citation must match the verified clause map.
+# Found 2026-11-20: ten places cited the Section 2 letter for the star-ratings,
+# URL-obscuring and shortener rules. All three rules exist, but in Section 6
+# ("Content on your Site") as (t), (v) and (w). Section 2 ("Links on Your Site")
+# has only (a) and (b). A wrong letter is a citation a reader cannot follow, so the
+# letters actually on the live page are recorded in data/policy-clause-map.json and
+# this rule refuses any other. A historical mention passes only when the same line
+# says it was corrected - that is what keeps the fix auditable.
+# ---------------------------------------------------------------------------
+_clause_map = json.loads((ROOT / "data" / "policy-clause-map.json").read_text(encoding="utf-8"))
+_verified = {c["section"] for c in _clause_map["clauses"]}
+_verified |= {c["section"].split(" ")[0] for c in _clause_map["clauses"]}
+CORRECTION_MARKERS = ("until corrected", "not Section 2", "cited as the section 2 letter", "as it read at the time",
+                      "before the correction", "retired", "wrong section", "renumbered")
+_scan_files = sorted(ROOT.glob("*.html")) + sorted((ROOT / "articles").glob("*.html")) \
+    + sorted((ROOT / "tools").glob("*.html")) + sorted((ROOT / "data").glob("*.json")) \
+    + [ROOT / "DIRECTION.md", ROOT / "EXECUTIVE_SUMMARY.md", ROOT / "README.md"]
+for _f in _scan_files:
+    if _f.name == "policy-clause-map.json":
+        continue  # the map quotes retired letters on purpose, as supersedes_citation
+    _t = _f.read_text(encoding="utf-8")
+    for _line in _t.splitlines():
+        if ("\u00a72(t)" in _line or "\u00a72(v)" in _line or "§2(t)" in _line or "§2(v)" in _line):
+            if not any(mk in _line for mk in CORRECTION_MARKERS):
+                check("D35-clause-retired", False, f"{_f.name}: live citation of a retired clause — {_line.strip()[:110]}")
+    for _m in re.finditer(r"(?:Program Policies|Participation Requirements|S02)\s*§?\s*(\d\([a-z]\))", _t):
+        check("D35-clause-known", _m.group(1) in _verified,
+              f"{_f.name}: cites Program Policies §{_m.group(1)}, which is not in data/policy-clause-map.json")
+    for _m in re.finditer(r"§2\(([c-z])\)", _t):
+        _ctx = _t[max(0, _m.start() - 160):_m.end() + 160]
+        if not any(mk in _ctx for mk in CORRECTION_MARKERS):
+            check("D35-clause-2x", False, f"{_f.name}: cites §2({_m.group(1)}); Section 2 stops at (b)")
+
+# ---------------------------------------------------------------------------
+# D36: no paragraph-length block of article body may repeat across articles.
+# Found 2026-11-20: all eight evergreen articles closed with the same five-product
+# block, byte for byte. Nothing in it was false; it is what makes a publication read
+# as a template. Article chrome may repeat - the argument may not.
+# ---------------------------------------------------------------------------
+_art_blocks = {}
+for _n, _h in docs.items():
+    if not _n.startswith("articles/"):
+        continue
+    _body = _h.split("build-chrome:header:end")[-1].split("build-chrome:footer:start")[0]
+    _body = re.sub(r"<(script|style)[^>]*>.*?</\1>", "", _body, flags=re.S)
+    for _blk in re.findall(r'<div class="card[^"]*"[^>]*>(.*?)</div>', _body, re.S):
+        _txt = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", _blk)).strip()
+        if len(_txt) > 300:
+            _art_blocks.setdefault(hashlib.md5(_txt.encode()).hexdigest(), []).append((_n, _txt[:100]))
+for _key, _where in _art_blocks.items():
+    check("D36-article-unique", len(_where) == 1,
+          f"identical {len(_where)}x article block across {[w[0] for w in _where]}: {_where[0][1]}...")
+
+# D37: the README register table must agree with the data files. It carried two
+# contradicting tables and then stale ranges (Q-01..Q-21 while the register held
+# Q-23) that nothing checked, so a reader could not tell which count was current.
+_readme = (ROOT / "README.md").read_text(encoding="utf-8")
+for _pre, _fn, _key, _page in (
+        ("SG", "suggestions.json", "suggestions", "suggestions.html"),
+        ("Q", "open-questions.json", "questions", "questions.html"),
+        ("DT", "decisions.json", "decisions", "decisions.html")):
+    _ids = json.loads((ROOT / "data" / _fn).read_text(encoding="utf-8"))[_key]
+    _last = f"{_pre}-{max(int(i['id'].split('-')[1]) for i in _ids):02d}"
+    check("D37-readme-range", f"{_pre}-01..{_last}" in _readme,
+          f"README.md register table does not show {_pre}-01..{_last} for {_page}")
+
+# D37: the README register table must match the data registers. It carried two
+# contradicting tables and then hard-coded ranges that went stale the moment
+# another session added rows. The table is now generated by scripts/build_readme.py,
+# so this rule only has to prove the block matches the data -- it no longer asks
+# anyone to hand-edit a number, which is what made it block a deploy on 2026-11-20.
+_r37 = _sp2.run([sys.executable, str(ROOT / "scripts" / "build_readme.py"), "--check"],
+                capture_output=True, text=True)
+check("D37-readme-range", _r37.returncode == 0,
+      f"README.md register table stale: {(_r37.stdout or _r37.stderr).strip()[:160]}")
+
+# D34: a register row may not cite a source inline and omit it from its own
+# `sources` list. Found by reading on 2026-11-20: Q-01 cited S03/S21 while
+# declaring only S22, SG-09 attributed Google's meta-description guidance to the
+# Emeril listing (S13), and 15 more rows cited evidence they did not declare.
+# The reader-facing register links only the declared ids, so an undeclared
+# citation is a source the reader cannot follow.
+for _fn, _key, _fields in (
+        ("open-questions.json", "questions", ("question", "known", "unknown", "how_to_find_out")),
+        ("suggestions.json", "suggestions", ("title", "problem", "evidence", "recommendation"))):
+    for _row in json.loads((ROOT / "data" / _fn).read_text(encoding="utf-8"))[_key]:
+        _text = " ".join(str(_row.get(k, "")) for k in _fields)
+        _cite = set(re.findall(r"\bS\d{2}\b", _text))
+        _declared = set(_row.get("sources") or [])
+        _undeclared = sorted(_cite - _declared)
+        check("D34-citation-declared", not _undeclared,
+              f"{_fn}: {_row['id']} cites {_undeclared} inline but does not list them in sources")
+
+# D35: one flag id, one subject. flagged.html published two different FLG-020
+# callouts and two different FLG-021 callouts after a merge renumbered one pair,
+# so the same id named both a policy-citation gap and a digest defect. Also
+# checks the reverse: every id in data/flagged.json must be published.
+_fh = docs.get("flagged.html", "")
+_fids = re.findall(r"<strong>(FLG-\d{3}) —", _fh)
+_fdupes = sorted({i for i in _fids if _fids.count(i) > 1})
+check("D35-flag-unique", not _fdupes, f"flagged.html: duplicate flag id(s) {_fdupes}")
+_fdata = json.loads((ROOT / "data" / "flagged.json").read_text(encoding="utf-8"))
+_fmissing = [i["id"] for i in _fdata["items"] if i["id"] not in _fh]
+check("D35-flag-published", not not _fmissing,
+      f"flagged.html: data/flagged.json id(s) not published {_fmissing}")
+
+# D36: a heading that advertises an ID range must end at the register's last id.
+# ideas.html and direction.html both carried headings with stale ranges
+# (SG-01..SG-26, SG-01..SG-25, FLG-001..FLG-020) that excluded rows published in
+# the very registers they linked to. Only headings are checked: historical prose
+# that names an old range as history is accurate and must not fail the build.
+_ranges = {
+    "SG": [s["id"] for s in json.loads((ROOT / "data" / "suggestions.json").read_text(encoding="utf-8"))["suggestions"]],
+    "Q": [q["id"] for q in json.loads((ROOT / "data" / "open-questions.json").read_text(encoding="utf-8"))["questions"]],
+}
+for _name, _html in docs.items():
+    for _pre, _ids in _ranges.items():
+        _last = max(int(i.split("-")[1]) for i in _ids)
+        _heads = " ".join(re.findall(r"<h[123][^>]*>(.*?)</h[123]>", _html, re.S))
+        for _m in re.finditer(_pre + r"-01\s*(?:\.\.|…+)\s*" + _pre + r"-(\d{2})", _heads):
+            check("D36-range-current", int(_m.group(1)) == _last,
+                  f"{_name}: range says {_m.group(0)} but the register's last id is {_pre}-{_last:02d}")
+
+# D40: a stated guide count must equal the number of guides on disk.
+# The tree shipped ten articles while README, buying-guide.html, both executive
+# summaries, Q-17, SG-18 and SG-37 all said "eight" or "nine" -- seven reader-facing
+# places, on a site whose whole claim is that the numbers are checked. The word
+# counts are compared, not the digits, because those are what the copy uses.
+_NUMWORD = {6: "six", 7: "seven", 8: "eight", 9: "nine", 10: "ten",
+            11: "eleven", 12: "twelve", 13: "thirteen", 14: "fourteen",
+            15: "fifteen", 16: "sixteen"}
+_guides = len(list((ROOT / "articles").glob("*.html")))
+check("D40-guide-count-known", _guides in _NUMWORD, f"{_guides} guides on disk; add the number word to D40")
+for _name, _html in docs.items():
+    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _html, re.I):
+        _said = _m.group(1).lower()
+        _want = _NUMWORD.get(_guides, "")
+        check("D40-guide-count", _said == _want,
+              f"{_name}: says {_m.group(0)!r} but {_guides} guides ship ({_want})")
+for _f in ("README.md", "EXECUTIVE_SUMMARY.md"):
+    _txt = (ROOT / _f).read_text(encoding="utf-8")
+    for _m in re.finditer(r"\b(six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen)\s+(?:question-shaped\s+)?(?:guides|articles)\b", _txt, re.I):
+        check("D40-guide-count", _m.group(1).lower() == _NUMWORD.get(_guides, ""),
+              f"{_f}: says {_m.group(0)!r} but {_guides} guides ship")
 
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")

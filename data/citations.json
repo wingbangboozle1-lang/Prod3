@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "session": "arena/a25ccde6-prod3",
   "premise": "One row per figure the site renders. Each row names the observation, its date, and the official source. A reader can re-run any row.",
   "rules": [
@@ -67,21 +67,22 @@
       "product": "site",
       "brand": "—",
       "asin": "—",
-      "observed": "Operating Agreement §1 Special Links; §5 the required statement; §6 material breach",
+      "observed": "Operating Agreement §1 Special Links and Program Content; §5 the required statement; §6 material breach",
       "observed_on": "2026-11-19",
       "source": "S01",
-      "used_for": "Operating Agreement §1 Special Links; §5 the required statement; §6 material breach",
+      "used_for": "Operating Agreement §1 Special Links and Program Content; §5 the required statement; §6 material breach",
       "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
     },
     {
       "product": "site",
       "brand": "—",
       "asin": "—",
-      "observed": "Program Policies: 2(a) tag in every link; 2(b) no unclear shortening, no price display without Amazon-served data; 2(t) and 2(v) wording not located in Section 2 on 2026-11-20 (FLG-020)",
+      "observed": "Program Policies: 2(a) tag in every link; 2(b) price display only from Amazon-served data, no misleading product claims, no sub-tag tied to an end user, original content required when linking to product lists; 6(e) privacy disclosure; 6(t) no customer reviews or star ratings; 6(v) no obscuring of the referring site; 6(w) no unclear link shortening; 6(y) no price tracking. Clause letters read and quoted 2026-11-20 - see data/policy-clause-map.json",
       "observed_on": "2026-11-19",
       "source": "S02",
-      "used_for": "Program Policies: 2(a) tag in every link; 2(b) no unclear shortening, no price display without Amazon-served data; 2(t) and 2(v) wording not located in Section 2 on 2026-11-20 (FLG-020)",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+      "used_for": "Program Policies: 2(a) tag in every link; 2(b) price display only from Amazon-served data, no misleading product claims, no sub-tag tied to an end user, original content required when linking to product lists; 6(e) privacy disclosure; 6(t) no customer reviews or star ratings; 6(v) no obscuring of the referring site; 6(w) no unclear link shortening; 6(y) no price tracking. Clause letters read and quoted 2026-11-20 - see data/policy-clause-map.json",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact",
+      "correction": "On 2026-11-20 the star-ratings, URL-obscuring and shortener rules were located in Participation Requirements Section 6 (6(t), 6(v), 6(w)), not Section 2. This row previously recorded them as not located under Section 2."
     },
     {
       "product": "site",

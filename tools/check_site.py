@@ -50,6 +50,18 @@ docs = {p.relative_to(ROOT).as_posix(): p.read_text(encoding="utf-8") for p in p
 
 titles, descs = {}, {}
 
+
+def _link_names(html):
+    """link text -> [outbound hrefs]. Used by the P14b uniqueness rule."""
+    out = {}
+    for m in re.finditer(r'<a\b[^>]*href="(https?://[^"]*)"[^>]*>(.*?)</a>', html, re.S):
+        text = re.sub(r"<[^>]+>", "", m.group(2)).strip()
+        href = m.group(1)
+        if not text or "amazon" not in href:
+            continue
+        out.setdefault(text, []).append(href)
+    return out
+
 for name, html in docs.items():
 
     # ---- disclosure: present, and above the first <h1>
@@ -132,6 +144,16 @@ for name, html in docs.items():
         text = re.sub(r"<[^>]+>", "", m.group(2)).strip()
         check("P14-link-text", text.lower() not in ("click here", "here", "read more", "link"),
               f"{name}: non-descriptive link text {text!r} → {m.group(1)[:60]}")
+
+    # ---- one link name must not point at several products ----------------
+    # A table that ends five rows with a bare "Listing" link gives a screen
+    # reader, and anyone scanning the links panel, five identically-named
+    # destinations. The visible table position carries the meaning; the link
+    # name does not. Evidence links are named by ASIN instead.
+    for label, hrefs in _link_names(html).items():
+        if len(set(hrefs)) > 1:
+            check("P14b-unique-link-name", False,
+                  f"{name}: link text {label!r} points at {len(set(hrefs))} different destinations")
 
     # ---- internal targets exist on disk
     for target in re.findall(r'(?:href|src)="([^"#:]+)(?:#[^"]*)?"', html):

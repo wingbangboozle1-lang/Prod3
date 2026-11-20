@@ -284,6 +284,25 @@ _sg_ids = re.findall(r"\bSG-\d{2}\b", docs.get("suggestions.html", ""))
 check("D19-register-ids", len(_sg_ids) == len(set(_sg_ids)) or True, "")
 
 
+# J01-J04: every inline script (and assets/app.js) must parse.
+# On 2026-11-20 a generated page emitted a literal newline inside a JS string; no
+# gate read the scripts, so the defect would have shipped as a dead control.
+import shutil as _shutil, subprocess as _spj, tempfile as _tf
+_node = _shutil.which("node")
+for name, html in docs.items():
+    for js in re.findall(r"<script(?![^>]*application/ld\+json)(?![^>]*src=)[^>]*>(.*?)</script>", html, re.S):
+        check("J01-script-not-empty", bool(js.strip()), f"{name}: empty inline script")
+        if _node:
+            with _tf.NamedTemporaryFile("w", suffix=".js", delete=False) as fh:
+                fh.write(js); _tmp = fh.name
+            _r = _spj.run([_node, "--check", _tmp], capture_output=True, text=True)
+            check("J02-script-syntax", _r.returncode == 0,
+                  f"{name}: inline script does not parse — {(_r.stderr.strip().splitlines() or ['?'])[-1][:140]}")
+if _node:
+    for _asset in ("assets/app.js",):
+        _r = _spj.run([_node, "--check", str(ROOT / _asset)], capture_output=True, text=True)
+        check("J03-asset-syntax", _r.returncode == 0, f"{_asset}: does not parse")
+
 # ---- accessibility basics ------------------------------------------------
 # A missing lang, an image without alt, or an empty link name is the kind of
 # defect that makes a page unusable with a screen reader and is cheap to gate.
@@ -379,6 +398,20 @@ for _q in json.loads((ROOT / "data" / "open-questions.json").read_text(encoding=
     for _sid in _q.get("sources", []):
         check("D26-question-source-known", _sid in _source_ids,
               f"{_q['id']}: cites undefined source {_sid}")
+
+# D28: DIRECTION.md must cite only question ids that exist in the register.
+# On 2026-11-20 the digest listed Q-08 as the account-status question and Q-05 as a
+# query-set question; neither was true, and the account-status question had never
+# been registered. A digest that renames questions is worse than no digest.
+_dir = (ROOT / "DIRECTION.md").read_text(encoding="utf-8")
+_qids = {q["id"] for q in json.loads((ROOT / "data/open-questions.json").read_text(encoding="utf-8"))["questions"]}
+for _qid in sorted(set(re.findall(r"\bQ-\d{2}\b", _dir))):
+    check("D28-direction-question-refs", _qid in _qids,
+          f"DIRECTION.md cites {_qid}, which is not in data/open-questions.json")
+_sgids = {x["id"] for x in json.loads((ROOT / "data/suggestions.json").read_text(encoding="utf-8"))["suggestions"]}
+for _sid in sorted(set(re.findall(r"\bSG-\d{2}\b", _dir))):
+    check("D29-direction-suggestion-refs", _sid in _sgids,
+          f"DIRECTION.md cites {_sid}, which is not in data/suggestions.json")
 
 # D27: the tools pages must exist and be reachable from the front page
 for _tool in ("tools/index.html", "tools/compare-builder.html",

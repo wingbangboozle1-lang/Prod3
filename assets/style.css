@@ -321,3 +321,53 @@ input,select,textarea,button{font-size:max(16px,1em)}
   a{color:#000;text-decoration:underline}
   .card,.table-wrap{box-shadow:none;border-color:#ccc}
 }
+
+/* ------------------------------------------------------------------
+   Shopper card internals (2026-11-20 pass)
+   The card used to be one paragraph of prose. A shopper scans, so the
+   headline figure is large, the trade-off gets its own line behind a
+   neutral rule, and a listing that contradicts itself says so on the
+   card instead of only on the flag page.
+   ------------------------------------------------------------------ */
+.spec-hero{font-family:var(--sans);font-size:1.9rem;font-weight:800;line-height:1.05;letter-spacing:-.03em;
+  color:var(--ink);margin:.2em 0 .15em}
+.spec-hero small{display:block;font-size:.72rem;font-weight:600;letter-spacing:.02em;text-transform:none;
+  color:var(--ink-faint);margin-top:6px;line-height:1.4}
+.tradeoff{font-family:var(--sans);font-size:.87rem;color:var(--ink-soft);border-left:3px solid var(--line-strong);
+  padding:7px 12px;border-radius:0 8px 8px 0;margin:8px 0;background:#fbf8f3}
+.tradeoff strong{color:var(--ink)}
+.conflict-chip{display:inline-block;font-family:var(--sans);font-size:.74rem;font-weight:700;line-height:1.45;
+  background:var(--warn-wash);border:1px solid #efd4b4;border-left:4px solid var(--gold);
+  border-radius:8px;padding:7px 10px;color:#5c3a10;margin:8px 0 0}
+
+/* ---------- At-a-glance decision banner (compare page) ---------- */
+.at-a-glance{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--accent);
+  border-radius:var(--radius);padding:22px 24px;margin:22px 0 26px;box-shadow:var(--shadow)}
+.at-a-glance h2{font-size:1.25rem;margin-bottom:.2em}
+.at-a-glance .grid>div{background:var(--paper);border-radius:12px;padding:14px 16px;border:1px solid var(--line)}
+.at-a-glance strong{font-family:var(--sans);font-size:.95rem;display:block;margin-bottom:6px}
+.at-a-glance p{font-size:.92rem;margin:.2em 0}
+
+/* ------------------------------------------------------------------
+   Decision cards (Ideas & review, suggestions register)
+   A register exists so a human can choose. A card you cannot act on
+   is a document; these rules make it a control. Marks are local only.
+   ------------------------------------------------------------------ */
+.decision-card .meta{font-family:var(--sans);font-size:.74rem;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.decision-card details{margin:10px 0 4px;border-top:1px solid var(--line);padding-top:10px}
+.decision-card summary{font-family:var(--sans);font-weight:700;font-size:.88rem;cursor:pointer;color:var(--ink-soft)}
+.decision-card summary:hover{color:var(--accent-dark)}
+.decide-box{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:14px 0 6px}
+.decide-box p{margin:.25em 0 .5em}
+.decide-box .opts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.decide-box button{font-family:var(--sans);font-weight:700;font-size:.85rem;padding:9px 15px;min-height:44px;
+  border-radius:999px;border:2px solid var(--line-strong);background:#fff;color:var(--ink);cursor:pointer}
+.decide-box button:hover{border-color:var(--ink)}
+.decide-box button[aria-pressed="true"]{background:var(--good);border-color:var(--good);color:#fff}
+.decide-box button[data-v="maybe"][aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#231a08}
+.decide-box button[data-v="no"][aria-pressed="true"]{background:var(--ink-soft);border-color:var(--ink-soft);color:#fff}
+.decide-out{white-space:pre-wrap;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.82rem;line-height:1.6;background:var(--paper-2);border:1px solid var(--line);
+  border-radius:10px;padding:14px;margin:10px 0;overflow-x:auto;min-height:64px}
+@media(max-width:720px){.decide-box button{min-height:48px;flex:1 1 auto}}

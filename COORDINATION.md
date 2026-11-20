@@ -1141,6 +1141,73 @@ git diff --check                           clean
 - **Live check:** `https://wingbangboozle1-lang.github.io/Prod3/feed.xml` lists the guides, including the Thanksgiving guide added on `main`. `suggestions.html` renders from the same `data/suggestions.json` that passed the gates. (The page's "Register updated 2026-11-19" line predates this pass; it is generator text from `main`, logged here as an irregularity rather than edited.)
 - **Collision log:** T-25 was taken by PR #27 (arena/70e8475c), and T-26 by PR #30 (arena/e83cdf55). This session's first two claims were withdrawn and renumbered to T-37. No other session's work was overwritten; the history was kept with `-s ours` merges, not force-pushes.
 
+
+## Session arena/ce911db5-prod3 — T-40…T-45 (2026-11-20), rebased onto `68fb159`
+
+**Renumeration.** Other sessions had already taken T-26 (PR #30) and T-31…T-39 while this branch was
+open. This session's six rows are therefore **T-40…T-45**. Nothing published by another session was
+deleted: on rebase, the conflicting page rebuilds (`index.html`, `air-fryers.html`,
+`meat-thermometers.html`, `compare.html`) were resolved **in favour of the mainline version**, and only
+this session's additive changes were re-applied on top.
+
+| ID | Task | Status | Files touched |
+|----|------|--------|---------------|
+| T-40 | Shopper card anatomy: headline spec, plain trade-off line, and a conflict chip carrying both readings where a listing contradicts itself | done | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `assets/style.css` |
+| T-41 | Card art regenerated at 2x and re-compressed; still typographic label art, never a photograph of the product | done | `assets/product-art/*.png` |
+| T-42 | `compare.html` at-a-glance banner: pick by the constraining spec, not by a declared winner | done | `compare.html`, `assets/style.css` |
+| T-43 | Review surface: `ideas.html` (ranked moves, rejected ideas with reasons, decision block) wired into the Decision desk nav and footer; per-row **Do this / Maybe / No** marks plus a copyable decision block on the suggestions register; four-question half-hour short list on the questions register | done | `ideas.html` (new), `scripts/build_registers.py`, `scripts/build_chrome.py`, `suggestions.html`, `questions.html`, `assets/style.css` |
+| T-44 | Two register defects found by reading and fixed: `DIRECTION.md` named question ids whose subjects did not exist (FLG-020), and cited a suggestion id absent from the register while the register skipped a number (FLG-021). Account-status question registered as Q-23; link question as Q-22 | done | `DIRECTION.md`, `data/open-questions.json`, `data/suggestions.json` |
+| T-45 | Three new gates, each negative-tested: `D28`/`D29` (the digest may not cite a `Q-`/`SG-` id that is not in its data), `J01–J03` (`node --check` over every inline script and `assets/app.js`), plus `actions/setup-node@v4` in the Pages workflow | done | `tools/check_site.py`, `.github/workflows/pages.yml` |
+
+### Live observation, 2026-11-20 (T-41 / Q-22)
+
+| Supplied link | Final URL read | vs 2026-11-19 | vs the other same-day record |
+|---|---|---|---|
+| `B04G1MEwY` | `https://www.amazon.com/` (homepage), 2 attempts | changed | agrees (FLG-017) |
+| `B02NbDxp3` | `/dp/B09B7SB46R` | same ASIN | agrees |
+| `B00hJ57DV` | `/dp/B08DKYBTPH` | same ASIN | agrees |
+| `B0c8moW59` | `https://www.amazon.com/` (homepage), **2 attempts** | changed | **disagrees** — the other record reads `/dp/B0DHZTCNR5` |
+| `B0f3GKalj` | `/dp/B0DZFD6R9Z` | same ASIN | agrees |
+
+Both records are kept side by side; no tie is broken by seniority. Cause unestablished and not
+asserted. Published as FLG-023 and registered as Q-22.
+
+### Why this pass changed the shop pages at all
+
+The cards previously carried a paragraph of prose each. Three fields were added and nothing was removed:
+the largest honest figure (capacity, or probe count), a trade-off line naming who the product does *not*
+suit, and — for the two listings that contradict themselves — a chip carrying both readings with a link
+to the flag row. No price, no star rating, and no test claim was introduced; the conflict text is copied
+from `data/products.json`, not invented. Measured figures added to the front page are the listed
+dimensions and the stated temperature ranges only.
+
+### Verification on the final tree
+
+```
+tools/verify_site.py                 Release gate passed
+tools/check_site.py                  31 pages · 3891 assertions · all rules passed
+scripts/check_site.py                All checks passed
+scripts/build_sitemap.py --check     OK (30 URLs)
+scripts/build_registers.py --check   OK
+scripts/build_chrome.py --check      OK
+scripts/build_decisions.py --check   OK
+tools/crawl_links.py                 31 pages crawled · 30 reachable from index.html
+                                     no broken links, no dead anchors, no orphans
+```
+
+Negative tests run this session: injecting the original JS defect fails `J02`; citing a phantom `SG-26`
+from the digest failed `D29` before the digest was corrected, which is how FLG-021 was found.
+
+### Flagged for owner review (do not block the deploy)
+
+- **FLG-020** — `DIRECTION.md` question ids did not match the register; account-status question now Q-23.
+- **FLG-021** — a cited suggestion id is absent and the register skips SG-26; not reconstructed.
+- **FLG-022** — a generated decision block shipped a JS syntax error; a gate now parses every script.
+- **FLG-023** — two of five links reached the Amazon homepage on 2026-11-20 and one same-day record
+  disagrees. Not a finding that the links are invalid.
+- Unchanged and owner-side: FLG-001 (intended ASINs), FLG-006 (Special Link test), FLG-010 (account
+  status), Search Console (Q-18), analytics endpoint, email provider, share-debugger check (Q-21).
+
 **PR and merge (T-38).** PR: https://github.com/wingbangboozle1-lang/Prod3/pull/33 (`arena/9f36f5ee-prod3` → `main`). Merge result is recorded in the next integration record after the merge.
 ### T-38 integration record (session `arena/9f36f5ee-prod3`, 2026-11-20)
 

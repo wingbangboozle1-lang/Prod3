@@ -33,7 +33,9 @@ options, and recommendations live there.
 | SG-19 | Mobile-first tap-target pass ≥44/48px, ≥8px spacing (S-20, session 65474d4f; Google Lighthouse guidance, source S19) | implemented 2026-11-19 | engineering |
 | SG-20 | Pick one product as the site's spine and let the other four support it | implemented 2026-11-20 (dual-basket air fryer is the front-page starting pick) | owner |
 | SG-21 | — | **retired 2026-11-20**: byte-identical duplicate of SG-20, kept as a retired row so the change is auditable | — |
-| SG-26 | One generated chrome for all pages: masthead, disclosure strip, footer | implemented 2026-11-20 | editorial |
+| SG-31 | Put the listing's own contradiction on the product card, not only the flag page | implemented 2026-11-20 | editorial |
+
+**Gap, 2026-11-20 (FLG-021):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
 | SG-27 | Nav labels shortened to six, with a second-level shelf and an active state on every page | implemented 2026-11-20 | editorial |
 | SG-28 | Ship three working decision tools instead of describing them | implemented 2026-11-20 | editorial |
 | SG-29 | Surface the seasonal guide from the calendar, labelled as editorial judgement not traffic data | implemented 2026-11-20 | editorial |
@@ -47,27 +49,37 @@ SG-19. The ledger is the single source of truth.
 
 ## Open questions — what must be answered before deciding
 
-Twenty-one questions are registered in `data/open-questions.json`. Each carries
-`known`, `unknown`, `how_to_find_out`, `who`, and a status
+Twenty-three questions are registered in `data/open-questions.json` (Q-01…Q-23). Each carries
+`known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only`).
+
+**Correction, 2026-11-20 (FLG-020).** This digest used to list Q-08 as the account-status question
+and Q-05 as "which query set converts". Neither matched the register: Q-08 is "what counts as a
+session for the ledger" and Q-05 is "who is the named author". The account-status question had never
+been registered at all, so it was added as **Q-23** rather than renumbered into a used id. Every id
+below is the register's own subject; `tools/check_site.py` fails the build if this file cites an id
+that does not exist.
 
 Owner-only, cheapest first — these unblock the most:
 
-| # | Question | Cost |
-|---|----------|------|
-| Q-08 | Is tracking ID `shopnow047c-20` on an enrolled, eligible Associates account? | 5 min in Associates Central |
+| # | Question (as registered) | Cost |
+|---|--------------------------|------|
+| Q-23 | Is `shopnow047c-20` on an enrolled, eligible Associates account? | 5 min in Associates Central |
 | Q-19 | Is the account eligible for the Product Advertising API? | 5 min in Associates Central |
 | Q-02 | Do the five Special Links carry `tag=shopnow047c-20`? | One signed-in click each |
-| Q-04 | Is the `link.amazon` short-link format acceptable in this account’s enrollment? | Same session as Q-02 (FLG-006) |
+| Q-04 | Is the `link.amazon` short-link format acceptable in this account's enrollment? | Same session as Q-02 (FLG-006) |
+| Q-22 | Why did two of the five links end at the Amazon homepage on 2026-11-20? | 15 min, signed in (FLG-017) |
 | Q-18 | Will the owner verify the site in Search Console this month? | 10 min |
-| Q-01 | What product did the owner intend for each short link? (FLG-001) | One confirmation per link |
+| Q-05 | Who is the named author, and what is their experience? | One decision |
+| Q-09 | What is the 90-day target outcome? | One decision |
 
-Queued / watch (full text in the JSON and on `direction.html`): Q-03 (commission rates),
-Q-05 (which query set converts — data required), Q-06 (test purchases), Q-07 (which analytics
-endpoint and retention), Q-09 (90-day target), Q-10 (newer ASIN swap for P4), Q-11 (P1 litres),
-Q-12 (brand/visual sign-off), Q-13 (endpoint storage schema), Q-14 (cadence owner), Q-15
-(disclosure reach), Q-16 (custom domain), Q-17 (retire zero-impression guides), Q-20 (email
-provider + consent), Q-21 (does the SVG preview render anywhere).
+Queued / watch, in register order (full text in the JSON and on `decisions.html`): Q-01 (one beat or
+two), Q-03 (commission rates), Q-06 (test purchases), Q-07 (which analytics can be installed),
+Q-08 (what counts as a session), Q-10 (newer ASIN swap for P4), Q-11 (P1 capacity in litres),
+Q-12 (brand and visual sign-off), Q-13 (endpoint storage schema), Q-14 (cadence and who writes),
+Q-15 (disclosure reach when a reader never scrolls), Q-16 (custom domain), Q-17 (retire
+zero-impression guides), Q-20 (email provider and consent), Q-21 (does the PNG preview render in
+a share debugger).
 
 ## The SG-20 / SG-21 duplicate — reproduced and resolved
 

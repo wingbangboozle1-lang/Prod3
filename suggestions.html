@@ -42,275 +42,383 @@
 
 <p>This is the review desk. Every proposal carries its problem, the evidence behind it, the options considered, a recommendation, and the person who decides. Machine-readable copy: <code>data/suggestions.json</code>. The questions that block these proposals live on <a href="questions.html">Open questions</a>; what was actually decided is on the <a href="direction.html">decision log</a>.</p>
 
+<div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
 <h2>Waiting on a decision (12)</h2>
-<div class="grid mt"><article class="card">
+<div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
-      <p><strong>Problem.</strong> The highest-value content in this niche — what the thing is like to live with — cannot be written honestly without the thing.</p>
-      <p><strong>Evidence.</strong> FTC: &quot;You can&#x27;t talk about your experience with a product you haven&#x27;t tried&quot; (S03). Google&#x27;s E-E-A-T guidance rewards demonstrated experience (S21).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Buy one unit per family out of the commission budget and document a fixed set of tests: heat-up time, evenness with a thermocouple grid, basket clean-up time, counter footprint.</li><li>B. Stay specification-only, and be the site that is scrupulous about it.</li><li>C. Accept review units only if the site discloses the gift.</li></ul>
-      <p><strong>Recommendation.</strong> B until the site earns anything, then A. A is the only durable moat in this niche, but it should be funded by the site, not by a credit card.</p>
+      <p><strong>The situation.</strong> The highest-value content in this niche — what the thing is like to live with — cannot be written honestly without the thing.</p>
+      <p><strong>The evidence.</strong> FTC: &quot;You can&#x27;t talk about your experience with a product you haven&#x27;t tried&quot; (S03). Google&#x27;s E-E-A-T guidance rewards demonstrated experience (S21).</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence low</span></p>
-      <p class="small muted">Blocks: the honest writing of any &quot;what it is like to live with&quot; page</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Buy one unit per family out of the commission budget and document a fixed set of tests: heat-up time, evenness with a thermocouple grid, basket clean-up time, counter footprint.</li><li>B. Stay specification-only, and be the site that is scrupulous about it.</li><li>C. Accept review units only if the site discloses the gift.</li></ul>
+        <p><strong>Recommendation.</strong> B until the site earns anything, then A. A is the only durable moat in this niche, but it should be funded by the site, not by a credit card.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-06"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: the honest writing of any &quot;what it is like to live with&quot; page</p>
+    </article><article class="card decision-card" id="SG-07">
       <div class="meta">SG-07 · owner decides</div>
       <h3>Turn on Search Console before writing guide nine</h3>
-      <p><strong>Problem.</strong> The next topic is currently chosen by instinct.</p>
-      <p><strong>Evidence.</strong> No Search Console property exists (F-17). Choosing topics from measured queries is the only way to avoid writing eight more articles for nobody.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Verify the property, wait two weeks, and pick the next three topics from the Queries report.</li><li>B. Keep writing on instinct and check the reports later.</li></ul>
-      <p><strong>Recommendation.</strong> A. It costs one DNS or file verification and it changes the entire content plan from guessing to reading. The site already carries the metadata needed for indexing.</p>
+      <p><strong>The situation.</strong> The next topic is currently chosen by instinct.</p>
+      <p><strong>The evidence.</strong> No Search Console property exists (F-17). Choosing topics from measured queries is the only way to avoid writing eight more articles for nobody.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: every content decision after guide eight</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Verify the property, wait two weeks, and pick the next three topics from the Queries report.</li><li>B. Keep writing on instinct and check the reports later.</li></ul>
+        <p><strong>Recommendation.</strong> A. It costs one DNS or file verification and it changes the entire content plan from guessing to reading. The site already carries the metadata needed for indexing.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-07"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: every content decision after guide eight</p>
+    </article><article class="card decision-card" id="SG-13">
       <div class="meta">SG-13 · owner decides</div>
       <h3>Test one short link inside the enrolled Associates workflow before trusting the format</h3>
-      <p><strong>Problem.</strong> The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.</p>
-      <p><strong>Evidence.</strong> A shortener clause is cited to Program Policies (S02), but the wording was not found in section 2(b) of the text read on 2026-11-20 (UNVERIFIED, see FLG-020). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links&#x27; own status is unresolved (F-13).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.</li><li>B. Switch every link to direct /dp/ URLs and drop the short form.</li><li>C. Declare the short links non-compliant and remove them.</li></ul>
-      <p><strong>Recommendation.</strong> A for the short form as provenance, with the site continuing to publish direct URLs either way. C is a claim the evidence does not support.</p>
+      <p><strong>The situation.</strong> The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.</p>
+      <p><strong>The evidence.</strong> Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links&#x27; own status is unresolved (F-13).</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: confidence in attribution on the supplied links</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.</li><li>B. Switch every link to direct /dp/ URLs and drop the short form.</li><li>C. Declare the short links non-compliant and remove them.</li></ul>
+        <p><strong>Recommendation.</strong> A for the short form as provenance, with the site continuing to publish direct URLs either way. C is a claim the evidence does not support.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-13"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: confidence in attribution on the supplied links</p>
+    </article><article class="card decision-card" id="SG-16">
       <div class="meta">SG-16 · editorial decides</div>
       <h3>Replace the SVG social preview with a raster card, and verify it before relying on it</h3>
-      <p><strong>Problem.</strong> Every page referenced assets/og-image.svg as og:image until the publication-polish pass replaced it with a 1200×630 raster card (assets/og-image.png). SVG is not the format social preview tools typically render, so the format risk is resolved; what remains is confirming the card actually renders in a share debugger.</p>
-      <p><strong>Evidence.</strong> Meta&#x27;s sharing best-practices documentation asks for JPG or PNG preview images (https://developers.facebook.com/docs/sharing/best-practices — recorded as a to-verify reference; not re-fetched from this network, see F-21). The PNG is now shipped on all 24 pages; the debugger check (Q-21) has not been run.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Produce one 1200×637 PNG card from the existing brand type, swap the og:image hrefs, and confirm with a share debugger.</li><li>B. Keep SVG and accept that some previews show nothing.</li><li>C. Drop og:image entirely.</li></ul>
-      <p><strong>Recommendation.</strong> A, once someone with a browser can run the share-preview check. The change is one file and nine href lines; the fallback today (a plain-text link preview) is honest but costs the click.</p>
+      <p><strong>The situation.</strong> Every page referenced assets/og-image.svg as og:image until the publication-polish pass replaced it with a 1200×630 raster card (assets/og-image.png). SVG is not the format social preview tools typically render, so the format risk is resolved; what remains is confirming the card actually renders in a share debugger.</p>
+      <p><strong>The evidence.</strong> Meta&#x27;s sharing best-practices documentation asks for JPG or PNG preview images (https://developers.facebook.com/docs/sharing/best-practices — recorded as a to-verify reference; not re-fetched from this network, see F-21). The PNG is now shipped on all 24 pages; the debugger check (Q-21) has not been run.</p>
       <p><span class="badge grey">partly implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
-      <p class="small muted">Blocks: nothing — flagged as F-21 for review</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Produce one 1200×637 PNG card from the existing brand type, swap the og:image hrefs, and confirm with a share debugger.</li><li>B. Keep SVG and accept that some previews show nothing.</li><li>C. Drop og:image entirely.</li></ul>
+        <p><strong>Recommendation.</strong> A, once someone with a browser can run the share-preview check. The change is one file and nine href lines; the fallback today (a plain-text link preview) is honest but costs the click.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-16"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing — flagged as F-21 for review</p>
+    </article><article class="card decision-card" id="SG-17">
       <div class="meta">SG-17 · owner decides</div>
       <h3>Make the Product Advertising API the only path to displayed prices</h3>
-      <p><strong>Problem.</strong> An earlier draft suggestion proposed a weekly re-check that updated dated prices on the pages. That is exactly what Program Policies 2(b) restricts, and the audit removed the prices; the proposal is retired and replaced by this one.</p>
-      <p><strong>Evidence.</strong> Program Policies 2(b): price and availability may be displayed only when served by Amazon or obtained through the Product Advertising API (S02). PA-API access requires an account with qualifying recent sales (Amazon Associates Help, account-eligibility page — owner-checked inside the account).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Keep publishing no prices; every card says “Current price on Amazon” (status quo).</li><li>B. Once the account qualifies, wire PA-API responses into the build with the required attribution, and let the gate verify the data is API-served.</li><li>C. Display manually refreshed price text. Not offered as a real option — it violates 2(b).</li></ul>
-      <p><strong>Recommendation.</strong> A now; B the moment the account is eligible. This supersedes the old “weekly price re-check” row that used to sit on direction.html.</p>
+      <p><strong>The situation.</strong> An earlier draft suggestion proposed a weekly re-check that updated dated prices on the pages. That is exactly what Program Policies 2(b) restricts, and the audit removed the prices; the proposal is retired and replaced by this one.</p>
+      <p><strong>The evidence.</strong> Program Policies 2(b): price and availability may be displayed only when served by Amazon or obtained through the Product Advertising API (S02). PA-API access requires an account with qualifying recent sales (Amazon Associates Help, account-eligibility page — owner-checked inside the account).</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: any future price display</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Keep publishing no prices; every card says “Current price on Amazon” (status quo).</li><li>B. Once the account qualifies, wire PA-API responses into the build with the required attribution, and let the gate verify the data is API-served.</li><li>C. Display manually refreshed price text. Not offered as a real option — it violates 2(b).</li></ul>
+        <p><strong>Recommendation.</strong> A now; B the moment the account is eligible. This supersedes the old “weekly price re-check” row that used to sit on direction.html.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-17"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: any future price display</p>
+    </article><article class="card decision-card" id="SG-18">
       <div class="meta">SG-18 · editorial decides</div>
       <h3>Choose guide nine from measured queries, not instinct</h3>
-      <p><strong>Problem.</strong> Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.</p>
-      <p><strong>Evidence.</strong> Search Console is the first-party source for the queries a site actually appears for (https://search.google.com/search-console/about — SG-07 is the verification prerequisite). analytics.html records that no data exists yet.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Hold at eight guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.</li><li>B. Keep the weekly cadence with self-selected topics until data arrives.</li><li>C. Retire or merge any guide with zero impressions after 60 days (Q-17).</li></ul>
-      <p><strong>Recommendation.</strong> A, with C as the pruning rule. Cadence only after measurement — otherwise the site scales guesses.</p>
+      <p><strong>The situation.</strong> Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.</p>
+      <p><strong>The evidence.</strong> Search Console is the first-party source for the queries a site actually appears for (https://search.google.com/search-console/about — SG-07 is the verification prerequisite). analytics.html records that no data exists yet.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
-      <p class="small muted">Blocks: the ninth guide only</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Hold at eight guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.</li><li>B. Keep the weekly cadence with self-selected topics until data arrives.</li><li>C. Retire or merge any guide with zero impressions after 60 days (Q-17).</li></ul>
+        <p><strong>Recommendation.</strong> A, with C as the pruning rule. Cadence only after measurement — otherwise the site scales guesses.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-18"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: the ninth guide only</p>
+    </article><article class="card decision-card" id="SG-20">
       <div class="meta">SG-20 · owner decides</div>
       <h3>Pick one product as the site&#x27;s spine and let the other four support it</h3>
-      <p><strong>Problem.</strong> Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.</p>
-      <p><strong>Evidence.</strong> The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google&#x27;s thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.</li><li>B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.</li><li>C. Keep the current two-family balance and expand only when the analytics say which family reads better.</li></ul>
-      <p><strong>Recommendation.</strong> A. Air fryers have the wider search intent and three products to compare, which is enough for a comparison table that earns its place. Revisit at the first Search Console report.</p>
+      <p><strong>The situation.</strong> Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.</p>
+      <p><strong>The evidence.</strong> The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google&#x27;s thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
-      <p class="small muted">Blocks: Which guides get written next</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.</li><li>B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.</li><li>C. Keep the current two-family balance and expand only when the analytics say which family reads better.</li></ul>
+        <p><strong>Recommendation.</strong> A. Air fryers have the wider search intent and three products to compare, which is enough for a comparison table that earns its place. Revisit at the first Search Console report.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-20"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Which guides get written next</p>
+    </article><article class="card decision-card" id="SG-21">
       <div class="meta">SG-21 · owner decides</div>
       <h3>[RETIRED — duplicate of SG-20] Pick one product as the site&#x27;s spine and let the other four support it</h3>
-      <p><strong>Problem.</strong> Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.</p>
-      <p><strong>Evidence.</strong> The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google&#x27;s thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.</li><li>B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.</li><li>C. Keep the current two-family balance and expand only when the analytics say which family reads better.</li></ul>
-      <p><strong>Recommendation.</strong> A. Air fryers have the wider search intent and three products to compare, which is enough for a comparison table that earns its place. Revisit at the first Search Console report. (Retired 2026-11-20 — this row duplicated SG-20 exactly; act on SG-20.)</p>
+      <p><strong>The situation.</strong> Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.</p>
+      <p><strong>The evidence.</strong> The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google&#x27;s thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).</p>
       <p><span class="badge grey">retired</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
-      <p class="small muted">Blocks: Which guides get written next</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.</li><li>B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.</li><li>C. Keep the current two-family balance and expand only when the analytics say which family reads better.</li></ul>
+        <p><strong>Recommendation.</strong> A. Air fryers have the wider search intent and three products to compare, which is enough for a comparison table that earns its place. Revisit at the first Search Console report. (Retired 2026-11-20 — this row duplicated SG-20 exactly; act on SG-20.)</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-21"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Which guides get written next</p>
+    </article><article class="card decision-card" id="SG-22">
       <div class="meta">SG-22 · owner decides</div>
       <h3>Write the first-hand answer only after someone has actually used the appliance for a month</h3>
-      <p><strong>Problem.</strong> The most useful sentence on any appliance site — what it is like after the novelty wears off — cannot be written from a listing. Writing it anyway is the exact practice the FTC warns about.</p>
-      <p><strong>Evidence.</strong> FTC Disclosures 101: you cannot talk about your experience with a product you have not tried (S03). Google&#x27;s people-first guidance rewards demonstrated experience (S21).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Buy one unit of the spine product and publish a dated 30-day note, clearly separated from the listing-sourced pages.</li><li>B. Stay listing-only and say so on every page, as now.</li><li>C. Invite owner-supplied notes without claiming testing.</li></ul>
-      <p><strong>Recommendation.</strong> A once there is traffic to justify the purchase, and never before. Until then the site&#x27;s honest position is that it has not touched the products, which is already stated on every card.</p>
+      <p><strong>The situation.</strong> The most useful sentence on any appliance site — what it is like after the novelty wears off — cannot be written from a listing. Writing it anyway is the exact practice the FTC warns about.</p>
+      <p><strong>The evidence.</strong> FTC Disclosures 101: you cannot talk about your experience with a product you have not tried (S03). Google&#x27;s people-first guidance rewards demonstrated experience (S21).</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence low</span></p>
-      <p class="small muted">Blocks: Nothing today; it is the ceiling on how good the content can get</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Buy one unit of the spine product and publish a dated 30-day note, clearly separated from the listing-sourced pages.</li><li>B. Stay listing-only and say so on every page, as now.</li><li>C. Invite owner-supplied notes without claiming testing.</li></ul>
+        <p><strong>Recommendation.</strong> A once there is traffic to justify the purchase, and never before. Until then the site&#x27;s honest position is that it has not touched the products, which is already stated on every card.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-22"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Nothing today; it is the ceiling on how good the content can get</p>
+    </article><article class="card decision-card" id="SG-24">
       <div class="meta">SG-24 · owner decides</div>
       <h3>Give the site a named editor before giving it a voice</h3>
-      <p><strong>Problem.</strong> An anonymous publication can be accurate and still be untrustworthy, because nobody is accountable for the errors.</p>
-      <p><strong>Evidence.</strong> Google&#x27;s people-first guidance asks who created the content and whether it is written by someone with first-hand knowledge (S21).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Publish a real byline with a short, factual author note and a contact address.</li><li>B. Keep the organizational voice and say plainly that no individual is named.</li><li>C. Publish a pen name, which trades one honesty problem for a worse one.</li></ul>
-      <p><strong>Recommendation.</strong> A if the owner is willing to be named, B otherwise. C is not on the table. Until then the About page should state that the desk is unnamed rather than leave the reader to notice.</p>
+      <p><strong>The situation.</strong> An anonymous publication can be accurate and still be untrustworthy, because nobody is accountable for the errors.</p>
+      <p><strong>The evidence.</strong> Google&#x27;s people-first guidance asks who created the content and whether it is written by someone with first-hand knowledge (S21).</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: Nothing; it changes how much a reader should trust the page</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Publish a real byline with a short, factual author note and a contact address.</li><li>B. Keep the organizational voice and say plainly that no individual is named.</li><li>C. Publish a pen name, which trades one honesty problem for a worse one.</li></ul>
+        <p><strong>Recommendation.</strong> A if the owner is willing to be named, B otherwise. C is not on the table. Until then the About page should state that the desk is unnamed rather than leave the reader to notice.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-24"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Nothing; it changes how much a reader should trust the page</p>
+    </article><article class="card decision-card" id="SG-29">
       <div class="meta">SG-29 · owner decides</div>
       <h3>Connect Google Search Console once the owner has an account</h3>
-      <p><strong>Problem.</strong> The site has a sitemap, and robots.txt points to it, but no search engine has been told the site exists, and nobody has checked how it is indexed.</p>
-      <p><strong>Evidence.</strong> sitemap.xml and robots.txt are present and gated (tools/verify_site.py). No Search Console property, verification file or submission exists in the repo. The index page&#x27;s link label that read &quot;Search Console is connected&quot; was changed to &quot;Search Console setup&quot; on 2026-11-20 (T-26). This environment has no Search Console account, so nothing here was verified.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Owner adds the URL-prefix property https://wingbangboozle1-lang.github.io/Prod3/, verifies it, and submits sitemap.xml.</li><li>B. Defer until the owner decides on a custom domain.</li><li>C. Ask an agent with account access to do it.</li></ul>
-      <p><strong>Recommendation.</strong> A. It takes the owner about 10 minutes and gives the first measured search queries. Until then, the next guide topic is not chosen from search data (see SG-18).</p>
+      <p><strong>The situation.</strong> The site has a sitemap, and robots.txt points to it, but no search engine has been told the site exists, and nobody has checked how it is indexed.</p>
+      <p><strong>The evidence.</strong> sitemap.xml and robots.txt are present and gated (tools/verify_site.py). No Search Console property, verification file or submission exists in the repo. The index page&#x27;s link label that read &quot;Search Console is connected&quot; was changed to &quot;Search Console setup&quot; on 2026-11-20 (T-26). This environment has no Search Console account, so nothing here was verified.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: SG-18 (measured-query guide selection)</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Owner adds the URL-prefix property https://wingbangboozle1-lang.github.io/Prod3/, verifies it, and submits sitemap.xml.</li><li>B. Defer until the owner decides on a custom domain.</li><li>C. Ask an agent with account access to do it.</li></ul>
+        <p><strong>Recommendation.</strong> A. It takes the owner about 10 minutes and gives the first measured search queries. Until then, the next guide topic is not chosen from search data (see SG-18).</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-29"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: SG-18 (measured-query guide selection)</p>
+    </article><article class="card decision-card" id="SG-30">
       <div class="meta">SG-30 · owner decides</div>
       <h3>Decide how readers stay in touch: RSS only, or an email provider with consent</h3>
-      <p><strong>Problem.</strong> The site has no way to capture readers who want new guides by email. The removed demo form was never connected, so there is no email list and no consent record.</p>
-      <p><strong>Evidence.</strong> FLG-014: no email provider, endpoint or consent flow exists. reader_signup is reserved and fires only on a confirmed provider response (assets/app.js). The footer points to RSS.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Keep RSS as the only subscription path (current).</li><li>B. Add a double-opt-in email provider with a stated privacy notice.</li><li>C. Defer until traffic from SG-29 shows whether a list is worth running.</li></ul>
-      <p><strong>Recommendation.</strong> A for now. B needs an owner-chosen provider and consent text. Neither exists yet, so none is implied on the site.</p>
+      <p><strong>The situation.</strong> The site has no way to capture readers who want new guides by email. The removed demo form was never connected, so there is no email list and no consent record.</p>
+      <p><strong>The evidence.</strong> FLG-014: no email provider, endpoint or consent flow exists. reader_signup is reserved and fires only on a confirmed provider response (assets/app.js). The footer points to RSS.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
-      <p class="small muted">Blocks: Reader-capture metrics</p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Keep RSS as the only subscription path (current).</li><li>B. Add a double-opt-in email provider with a stated privacy notice.</li><li>C. Defer until traffic from SG-29 shows whether a list is worth running.</li></ul>
+        <p><strong>Recommendation.</strong> A for now. B needs an owner-chosen provider and consent text. Neither exists yet, so none is implied on the site.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-30"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Reader-capture metrics</p>
     </article></div>
 
-<h2 class="mt">Already shipped (17)</h2>
+<h2 class="mt">Already shipped (18)</h2>
 <p>Listed so the register stays complete, not to take credit. Each one can be reverted if a decision goes the other way.</p>
-<div class="grid mt"><article class="card">
+<div class="grid mt"><article class="card decision-card" id="SG-01">
       <div class="meta">SG-01 · owner decides</div>
       <h3>Narrow the site to one question: air fryer, or thermometer — not both</h3>
-      <p><strong>Problem.</strong> Five products across two families read as a list of things someone had links for, not a publication with a beat.</p>
-      <p><strong>Evidence.</strong> The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google&#x27;s thin-affiliation policy specifically targets affiliate pages whose only reason to exist is the links (S22).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Keep both, and make the beat &quot;cooking to a target temperature&quot; — the air fryer gets food hot, the thermometer proves it is done. This is what the site currently does.</li><li>B. Narrow to air fryers, and treat the thermometers as one comparison article.</li><li>C. Split into two sites later, if either earns enough traffic to justify it.</li></ul>
-      <p><strong>Recommendation.</strong> A for now. It is the only framing in which both product families belong in the same sentence, and it gives every guide an obvious place to link back to. Revisit at the first Search Console data drop.</p>
+      <p><strong>The situation.</strong> Five products across two families read as a list of things someone had links for, not a publication with a beat.</p>
+      <p><strong>The evidence.</strong> The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google&#x27;s spam policies on thin affiliation (S22) specifically targets affiliate pages whose only reason to exist is the links (S21).</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
-      <p class="small muted">Blocks: nothing — the site is live on option A</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Keep both, and make the beat &quot;cooking to a target temperature&quot; — the air fryer gets food hot, the thermometer proves it is done. This is what the site currently does.</li><li>B. Narrow to air fryers, and treat the thermometers as one comparison article.</li><li>C. Split into two sites later, if either earns enough traffic to justify it.</li></ul>
+        <p><strong>Recommendation.</strong> A for now. It is the only framing in which both product families belong in the same sentence, and it gives every guide an obvious place to link back to. Revisit at the first Search Console data drop.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-01"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing — the site is live on option A</p>
+    </article><article class="card decision-card" id="SG-02">
       <div class="meta">SG-02 · editorial decides</div>
       <h3>Publish the two spec conflicts instead of picking a winner</h3>
-      <p><strong>Problem.</strong> P1&#x27;s capacity is stated as both 6 liters and 6 quarts; P2&#x27;s preset count is both 24 and 25.</p>
-      <p><strong>Evidence.</strong> Program Policies 2(b) prohibits inaccurate or misleading product claims (S02). Choosing one number at random is exactly that.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Show both readings and name the conflict. A buyer learns the listing is sloppy, which is useful.</li><li>B. Publish the headline number only and say nothing.</li><li>C. Leave the field blank entirely.</li></ul>
-      <p><strong>Recommendation.</strong> A. It costs one sentence and it is the only option that is both accurate and useful. B is the option every competitor picks, which is the reason to not pick it.</p>
+      <p><strong>The situation.</strong> P1&#x27;s capacity is stated as both 6 liters and 6 quarts; P2&#x27;s preset count is both 24 and 25.</p>
+      <p><strong>The evidence.</strong> Program Policies 2(b) prohibits inaccurate or misleading product claims (S02). Choosing one number at random is exactly that.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Show both readings and name the conflict. A buyer learns the listing is sloppy, which is useful.</li><li>B. Publish the headline number only and say nothing.</li><li>C. Leave the field blank entirely.</li></ul>
+        <p><strong>Recommendation.</strong> A. It costs one sentence and it is the only option that is both accurate and useful. B is the option every competitor picks, which is the reason to not pick it.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-02"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-03">
       <div class="meta">SG-03 · owner decides</div>
       <h3>Publish no prices, anywhere, and say why on a dedicated page</h3>
-      <p><strong>Problem.</strong> Affiliate sites show prices to feel current. Amazon&#x27;s policies restrict that sharply.</p>
-      <p><strong>Evidence.</strong> Program Policies 2(b): price and availability may be shown only if Amazon serves the data or it comes through the Product Advertising / Creators API (S02).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Show no prices. Link out. Explain the rule on a page so readers do not think the site is hiding something.</li><li>B. Join the Product Advertising API and display live prices with the required attribution.</li><li>C. Scrape and show prices, refreshing often.</li></ul>
-      <p><strong>Recommendation.</strong> A now, B when the account qualifies. C violates the policy the site is built to respect.</p>
+      <p><strong>The situation.</strong> Affiliate sites show prices to feel current. Amazon&#x27;s policies restrict that sharply.</p>
+      <p><strong>The evidence.</strong> Program Policies 2(b): price and availability may be shown only if Amazon serves the data or it comes through the Product Advertising / Creators API (S02).</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Show no prices. Link out. Explain the rule on a page so readers do not think the site is hiding something.</li><li>B. Join the Product Advertising API and display live prices with the required attribution.</li><li>C. Scrape and show prices, refreshing often.</li></ul>
+        <p><strong>Recommendation.</strong> A now, B when the account qualifies. C violates the policy the site is built to respect.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-03"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-04">
       <div class="meta">SG-04 · editorial decides</div>
       <h3>Answer eight buyer questions, not eight product reviews</h3>
-      <p><strong>Problem.</strong> Product pages answer &quot;what is it&quot;; buyers arrive with &quot;which one, and will it fit&quot;.</p>
-      <p><strong>Evidence.</strong> People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S22).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Eight question-shaped guides, each answerable from published specifications and USDA targets.</li><li>B. Five long product reviews written without handling the products.</li><li>C. One long &quot;best air fryers 2026&quot; listicle.</li></ul>
-      <p><strong>Recommendation.</strong> A. C is the format that reads as generated, because every site in the niche already has it and none of them can differentiate inside it.</p>
+      <p><strong>The situation.</strong> Product pages answer &quot;what is it&quot;; buyers arrive with &quot;which one, and will it fit&quot;.</p>
+      <p><strong>The evidence.</strong> People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S21).</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Eight question-shaped guides, each answerable from published specifications and USDA targets.</li><li>B. Five long product reviews written without handling the products.</li><li>C. One long &quot;best air fryers 2026&quot; listicle.</li></ul>
+        <p><strong>Recommendation.</strong> A. C is the format that reads as generated, because every site in the niche already has it and none of them can differentiate inside it.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-04"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-05">
       <div class="meta">SG-05 · engineering decides</div>
       <h3>Build the compliance gate into the build, not into a checklist</h3>
-      <p><strong>Problem.</strong> Disclosure placement and rel=&quot;sponsored&quot; are the two things that are easy to forget on page fourteen.</p>
-      <p><strong>Evidence.</strong> Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=&quot;sponsored&quot; on paid links (S04).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Generate every page from one template that always emits the disclosure strip, and run a checker that fails on any Amazon link without rel=&quot;sponsored&quot;.</li><li>B. A written checklist someone reads before publishing.</li></ul>
-      <p><strong>Recommendation.</strong> A. A checklist is a promise; a failing build is a fact. The checker is in tools/check_site.py and runs in CI.</p>
+      <p><strong>The situation.</strong> Disclosure placement and rel=&quot;sponsored&quot; are the two things that are easy to forget on page fourteen.</p>
+      <p><strong>The evidence.</strong> Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=&quot;sponsored&quot; on paid links (S04).</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Generate every page from one template that always emits the disclosure strip, and run a checker that fails on any Amazon link without rel=&quot;sponsored&quot;.</li><li>B. A written checklist someone reads before publishing.</li></ul>
+        <p><strong>Recommendation.</strong> A. A checklist is a promise; a failing build is a fact. The checker is in tools/check_site.py and runs in CI.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-05"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-08">
       <div class="meta">SG-08 · engineering decides</div>
       <h3>Add a working outbound-click counter that stores nothing about the reader</h3>
-      <p><strong>Problem.</strong> There is no way to tell whether a guide is read or merely visited.</p>
-      <p><strong>Evidence.</strong> Program Policies 2(b) forbids tying a sub-tag or ID to an individual user (S02). So the counter must be aggregate by construction, not by policy.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Client-side counter: one integer per product in localStorage, no identifier, no network call. Honest but per-browser.</li><li>B. A self-hosted endpoint that logs a path and a product id and discards the IP.</li><li>C. A third-party analytics script.</li></ul>
-      <p><strong>Recommendation.</strong> A is shipped because it touches nothing and cannot leak. B is the upgrade once there is a host to run it on — it is the only option that gives a real denominator. C is the option that turns a small site into a privacy policy.</p>
+      <p><strong>The situation.</strong> There is no way to tell whether a guide is read or merely visited.</p>
+      <p><strong>The evidence.</strong> Program Policies 2(b) forbids tying a sub-tag or ID to an individual user (S02). So the counter must be aggregate by construction, not by policy.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Client-side counter: one integer per product in localStorage, no identifier, no network call. Honest but per-browser.</li><li>B. A self-hosted endpoint that logs a path and a product id and discards the IP.</li><li>C. A third-party analytics script.</li></ul>
+        <p><strong>Recommendation.</strong> A is shipped because it touches nothing and cannot leak. B is the upgrade once there is a host to run it on — it is the only option that gives a real denominator. C is the option that turns a small site into a privacy policy.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-08"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-09">
       <div class="meta">SG-09 · engineering decides</div>
       <h3>Give every page a unique title and description, and test that the build rejects duplicates</h3>
-      <p><strong>Problem.</strong> Duplicate titles and descriptions are the most common self-inflicted indexing problem for generated sites.</p>
-      <p><strong>Evidence.</strong> Google: &quot;Create unique descriptions for each page on your site&quot;; identical descriptions on every page are named as a problem (S24).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Generate each page&#x27;s title and description from its own content, and fail the build on a duplicate.</li><li>B. One site-wide description.</li></ul>
-      <p><strong>Recommendation.</strong> A. B is the specific failure mode the guidance names.</p>
+      <p><strong>The situation.</strong> Duplicate titles and descriptions are the most common self-inflicted indexing problem for generated sites.</p>
+      <p><strong>The evidence.</strong> Google: &quot;Create unique descriptions for each page on your site&quot;; identical descriptions on every page are named as a problem (S13).</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Generate each page&#x27;s title and description from its own content, and fail the build on a duplicate.</li><li>B. One site-wide description.</li></ul>
+        <p><strong>Recommendation.</strong> A. B is the specific failure mode the guidance names.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-09"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-10">
       <div class="meta">SG-10 · design decides</div>
       <h3>Make the front page a publication front page, and keep the dashboards one click away in the footer</h3>
-      <p><strong>Problem.</strong> The verification machinery is genuinely interesting to the owner and irrelevant to a buyer.</p>
-      <p><strong>Evidence.</strong> Page-experience guidance (S25); the reader came for a question, not an audit trail.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Front page leads with the products and the guides; the register, gate, ledger and flagged pages sit in a single footer group.</li><li>B. Front page leads with the source register, because that is what makes this site different.</li><li>C. Two sites.</li></ul>
-      <p><strong>Recommendation.</strong> A. The audit trail is the site&#x27;s credibility, not its pitch. It should be exhaustively present and never in the way.</p>
+      <p><strong>The situation.</strong> The verification machinery is genuinely interesting to the owner and irrelevant to a buyer.</p>
+      <p><strong>The evidence.</strong> Page-experience guidance (S25); the reader came for a question, not an audit trail.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Front page leads with the products and the guides; the register, gate, ledger and flagged pages sit in a single footer group.</li><li>B. Front page leads with the source register, because that is what makes this site different.</li><li>C. Two sites.</li></ul>
+        <p><strong>Recommendation.</strong> A. The audit trail is the site&#x27;s credibility, not its pitch. It should be exhaustively present and never in the way.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-10"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-11">
       <div class="meta">SG-11 · design decides</div>
       <h3>Use typographic hero art and labelled placeholders, and never a generated photograph of a product</h3>
-      <p><strong>Problem.</strong> The site needs to look published; it has no rights to product photography.</p>
-      <p><strong>Evidence.</strong> The Operating Agreement treats images as Program Content (S01). A generated image of a product is a fabricated claim about what the buyer will receive.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Typographic hero, illustrated placeholders that clearly are not photographs, and a one-line note saying so.</li><li>B. Generate photorealistic images of the products.</li><li>C. Take the listing&#x27;s own images and host them.</li></ul>
-      <p><strong>Recommendation.</strong> A. B is fabrication and C is a rights problem the operating agreement does not solve for you.</p>
+      <p><strong>The situation.</strong> The site needs to look published; it has no rights to product photography.</p>
+      <p><strong>The evidence.</strong> The Operating Agreement treats images as Program Content (S01). A generated image of a product is a fabricated claim about what the buyer will receive.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Typographic hero, illustrated placeholders that clearly are not photographs, and a one-line note saying so.</li><li>B. Generate photorealistic images of the products.</li><li>C. Take the listing&#x27;s own images and host them.</li></ul>
+        <p><strong>Recommendation.</strong> A. B is fabrication and C is a rights problem the operating agreement does not solve for you.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-11"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-12">
       <div class="meta">SG-12 · design decides</div>
       <h3>Put a three-question chooser above the comparison table</h3>
-      <p><strong>Problem.</strong> A comparison table asks the reader to hold eleven columns in their head and decide.</p>
-      <p><strong>Evidence.</strong> The three air fryers differ along three axes that are decidable from the listing: form (basket vs oven), capacity, and counter depth. Nothing else materially separates them (S03, S04, S05).</p>
-      <p><strong>Options.</strong></p><ul><li>A. Three questions, each with two or three answers, resolving to one product with a stated reason.</li><li>B. A filterable table.</li><li>C. Nothing — let the table speak.</li></ul>
-      <p><strong>Recommendation.</strong> A. It is the only one of the three that produces a recommendation rather than a dataset.</p>
+      <p><strong>The situation.</strong> A comparison table asks the reader to hold eleven columns in their head and decide.</p>
+      <p><strong>The evidence.</strong> The three air fryers differ along three axes that are decidable from the listing: form (basket vs oven), capacity, and counter depth. Nothing else materially separates them (S03, S04, S05).</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Three questions, each with two or three answers, resolving to one product with a stated reason.</li><li>B. A filterable table.</li><li>C. Nothing — let the table speak.</li></ul>
+        <p><strong>Recommendation.</strong> A. It is the only one of the three that produces a recommendation rather than a dataset.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-12"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-14">
       <div class="meta">SG-14 · owner decides</div>
       <h3>Start the campaign ledger empty, with defined columns, and fill it only from first-party reports</h3>
-      <p><strong>Problem.</strong> Every affiliate dashboard invites a fabricated conversion rate on day one.</p>
-      <p><strong>Evidence.</strong> No first-party performance data exists (F-10). A number without provenance is worse than a blank.</p>
-      <p><strong>Options.</strong></p><ul><li>A. An empty ledger with fixed columns — timestamp, source, channel, eligible sessions, clicks, reported orders, provenance — filled only after launch, from the Associates report.</li><li>B. Estimated figures marked as estimates.</li></ul>
-      <p><strong>Recommendation.</strong> A. B ages badly: the estimate outlives the label.</p>
+      <p><strong>The situation.</strong> Every affiliate dashboard invites a fabricated conversion rate on day one.</p>
+      <p><strong>The evidence.</strong> No first-party performance data exists (F-10). A number without provenance is worse than a blank.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. An empty ledger with fixed columns — timestamp, source, channel, eligible sessions, clicks, reported orders, provenance — filled only after launch, from the Associates report.</li><li>B. Estimated figures marked as estimates.</li></ul>
+        <p><strong>Recommendation.</strong> A. B ages badly: the estimate outlives the label.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-14"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-15">
       <div class="meta">SG-15 · editorial decides</div>
       <h3>Lead every shop page with the products, and keep the verification record one click away</h3>
-      <p><strong>Problem.</strong> The front page opened with the process (verification framing) instead of the picks, so a first-time buyer landed on an audit rather than a shop.</p>
-      <p><strong>Evidence.</strong> Google&#x27;s people-first guidance asks that content exist for readers, not for crawlers (S21). The compliance record stays reachable in the footer group, where the release gates already require it.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Product-first front page: hero question, five cards with CTAs, chooser, then the data table and trust row.</li><li>B. Keep the audit-first layout; readers who care will scroll.</li><li>C. Split into two sites — shop vs. process.</li></ul>
-      <p><strong>Recommendation.</strong> A. Implemented 2026-11-19: the front page now leads with the five picks and their CTAs; disclosure stays above the fold and every dashboard page remains in the footer group. The chooser pointer was kept deliberately humble — a starting point, not a test verdict.</p>
+      <p><strong>The situation.</strong> The front page opened with the process (verification framing) instead of the picks, so a first-time buyer landed on an audit rather than a shop.</p>
+      <p><strong>The evidence.</strong> Google&#x27;s people-first guidance asks that content exist for readers, not for crawlers (S21). The compliance record stays reachable in the footer group, where the release gates already require it.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Product-first front page: hero question, five cards with CTAs, chooser, then the data table and trust row.</li><li>B. Keep the audit-first layout; readers who care will scroll.</li><li>C. Split into two sites — shop vs. process.</li></ul>
+        <p><strong>Recommendation.</strong> A. Implemented 2026-11-19: the front page now leads with the five picks and their CTAs; disclosure stays above the fold and every dashboard page remains in the footer group. The chooser pointer was kept deliberately humble — a starting point, not a test verdict.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-15"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-19">
       <div class="meta">SG-19 · engineering decides</div>
       <h3>Mobile-first tap-target pass: every control ≥44px (48px at touch widths) with ≥8px spacing</h3>
-      <p><strong>Problem.</strong> Affiliate traffic is majority mobile; a 32px button with a 2px gap is a mis-tap generator.</p>
-      <p><strong>Evidence.</strong> Google&#x27;s Lighthouse tap-targets audit flags targets below 48×48px that overlap neighbours (~8px spacing recommended). Recorded as S19 in data/sources.json by session 65474d4f.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Enlarge hit areas via CSS only; no copy or link changes.</li><li>B. Redesign the layout per breakpoint.</li><li>C. Do nothing.</li></ul>
-      <p><strong>Recommendation.</strong> A. Shipped 2026-11-19 by session 65474d4f (S-20): nav 44/48px, full-width hero CTAs under 600px, chooser pills ≥48px, footer links ≥32px with roomy padding. This session&#x27;s shop-polish pass inherited the rules and added focus-visible outlines and card lift.</p>
+      <p><strong>The situation.</strong> Affiliate traffic is majority mobile; a 32px button with a 2px gap is a mis-tap generator.</p>
+      <p><strong>The evidence.</strong> Google&#x27;s Lighthouse tap-targets audit flags targets below 48×48px that overlap neighbours (~8px spacing recommended). Recorded as S19 in data/sources.json by session 65474d4f.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Enlarge hit areas via CSS only; no copy or link changes.</li><li>B. Redesign the layout per breakpoint.</li><li>C. Do nothing.</li></ul>
+        <p><strong>Recommendation.</strong> A. Shipped 2026-11-19 by session 65474d4f (S-20): nav 44/48px, full-width hero CTAs under 600px, chooser pills ≥48px, footer links ≥32px with roomy padding. This session&#x27;s shop-polish pass inherited the rules and added focus-visible outlines and card lift.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-19"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-23">
       <div class="meta">SG-23 · editorial decides</div>
       <h3>Make one page the definitive answer to &quot;how big is it really&quot;</h3>
-      <p><strong>Problem.</strong> Every air fryer buyer asks the same question and every listing answers it badly: nominal quarts, no interior measurements, no clearance figure.</p>
-      <p><strong>Evidence.</strong> The three air-fryer listings publish exterior dimensions only; interior cavity sizes and required clearances are not stated (S10-S12, F-12). Nominal capacity is a headline figure, not a usable volume.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Publish a measurements page that shows the listed external size, the arithmetic for counter area, and an explicit blank where interior size and clearance belong.</li><li>B. Email the three manufacturers and publish their replies with dates.</li><li>C. Skip it and point at the listings.</li></ul>
-      <p><strong>Recommendation.</strong> A now — the arithmetic is already verified and the blanks are the honest part. B is the upgrade once an owner has an address to write from.</p>
+      <p><strong>The situation.</strong> Every air fryer buyer asks the same question and every listing answers it badly: nominal quarts, no interior measurements, no clearance figure.</p>
+      <p><strong>The evidence.</strong> The three air-fryer listings publish exterior dimensions only; interior cavity sizes and required clearances are not stated (S10-S12, F-12). Nominal capacity is a headline figure, not a usable volume.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: Nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Publish a measurements page that shows the listed external size, the arithmetic for counter area, and an explicit blank where interior size and clearance belong.</li><li>B. Email the three manufacturers and publish their replies with dates.</li><li>C. Skip it and point at the listings.</li></ul>
+        <p><strong>Recommendation.</strong> A now — the arithmetic is already verified and the blanks are the honest part. B is the upgrade once an owner has an address to write from.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-23"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Nothing</p>
+    </article><article class="card decision-card" id="SG-25">
       <div class="meta">SG-25 · engineering decides</div>
       <h3>Stop calling it a decision log until decisions are actually recorded there</h3>
-      <p><strong>Problem.</strong> The Direction page once presented eight suggestions that nobody had been asked to approve. A register that lists proposals as if they were decisions teaches the reader to discount the whole page.</p>
-      <p><strong>Evidence.</strong> This audit found direction.html carrying SG-01..SG-08 with meanings different from data/suggestions.json (I-01), and no dated decisions at all.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Three registers: proposals, questions, decisions, each generated from its own data file with its own ID prefix.</li><li>B. One long page with three sections.</li><li>C. Only a decisions page, with proposals kept in the repo.</li></ul>
-      <p><strong>Recommendation.</strong> A, which is what now ships. The generator makes it impossible for a proposal to be silently presented as a decision again.</p>
+      <p><strong>The situation.</strong> The Direction page once presented eight suggestions that nobody had been asked to approve. A register that lists proposals as if they were decisions teaches the reader to discount the whole page.</p>
+      <p><strong>The evidence.</strong> This audit found direction.html carrying SG-01..SG-08 with meanings different from data/suggestions.json (I-01), and no dated decisions at all.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: Nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. Three registers: proposals, questions, decisions, each generated from its own data file with its own ID prefix.</li><li>B. One long page with three sections.</li><li>C. Only a decisions page, with proposals kept in the repo.</li></ul>
+        <p><strong>Recommendation.</strong> A, which is what now ships. The generator makes it impossible for a proposal to be silently presented as a decision again.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-25"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Nothing</p>
+    </article><article class="card decision-card" id="SG-27">
       <div class="meta">SG-27 · engineering decides</div>
       <h3>One name for the Direction page, in the nav and the footer</h3>
-      <p><strong>Problem.</strong> The primary nav called this page &quot;Direction&quot; while the footer called it &quot;Decision log&quot;. A reader who clicked one and looked for the other could not tell they were the same page.</p>
-      <p><strong>Evidence.</strong> Before the shop-first rebuild (commit 9032a35), every page&#x27;s primary nav said &quot;Direction&quot; and the footer said &quot;Decision log&quot;. On origin/main at c49de86, the primary nav no longer carries a Direction label, and the footer names the page &quot;Decision log&quot;. Checked 2026-11-20 by grep across all HTML.</p>
-      <p><strong>Options.</strong></p><ul><li>A. One name in the nav and footer (shipped upstream in 9032a35; the footer name is kept).</li><li>B. Nav says &quot;Direction&quot; and footer says &quot;Direction&quot;.</li><li>C. Split into two pages with separate names.</li></ul>
-      <p><strong>Recommendation.</strong> A, which is in place. Keep the footer name so the register and the link text match.</p>
+      <p><strong>The situation.</strong> The primary nav called this page &quot;Direction&quot; while the footer called it &quot;Decision log&quot;. A reader who clicked one and looked for the other could not tell they were the same page.</p>
+      <p><strong>The evidence.</strong> Before the shop-first rebuild (commit 9032a35), every page&#x27;s primary nav said &quot;Direction&quot; and the footer said &quot;Decision log&quot;. On origin/main at c49de86, the primary nav no longer carries a Direction label, and the footer names the page &quot;Decision log&quot;. Checked 2026-11-20 by grep across all HTML.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: Nothing</p>
-    </article><article class="card">
+      <details><summary>The options and the recommendation</summary><ul><li>A. One name in the nav and footer (shipped upstream in 9032a35; the footer name is kept).</li><li>B. Nav says &quot;Direction&quot; and footer says &quot;Direction&quot;.</li><li>C. Split into two pages with separate names.</li></ul>
+        <p><strong>Recommendation.</strong> A, which is in place. Keep the footer name so the register and the link text match.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-27"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Nothing</p>
+    </article><article class="card decision-card" id="SG-28">
       <div class="meta">SG-28 · engineering decides</div>
       <h3>Ship the RSS feed and advertise it on every page</h3>
-      <p><strong>Problem.</strong> feed.xml was linked from the head of only some pages. A reader arriving on a guide or a comparison page had no discoverable subscription path there.</p>
-      <p><strong>Evidence.</strong> feed.xml is well-formed and lists the guides (tools/verify_site.py). On origin/main at c49de86, 20 of 30 HTML pages had no rel=&quot;alternate&quot; feed link in their head. T-26 adds it to those 20, so all 30 pages carry it. The head is hand-written, so the link sits outside the build-chrome markers.</p>
-      <p><strong>Options.</strong></p><ul><li>A. Feed link in every head, plus the footer link (T-26).</li><li>B. Footer link only.</li><li>C. No feed; email signup instead (see SG-30).</li></ul>
-      <p><strong>Recommendation.</strong> A. RSS needs no provider and no consent flow.</p>
+      <p><strong>The situation.</strong> feed.xml was linked from the head of only some pages. A reader arriving on a guide or a comparison page had no discoverable subscription path there.</p>
+      <p><strong>The evidence.</strong> feed.xml is well-formed and lists the guides (tools/verify_site.py). On origin/main at c49de86, 20 of 30 HTML pages had no rel=&quot;alternate&quot; feed link in their head. T-26 adds it to those 20, so all 30 pages carry it. The head is hand-written, so the link sits outside the build-chrome markers.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
-      <p class="small muted">Blocks: Nothing</p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Feed link in every head, plus the footer link (T-26).</li><li>B. Footer link only.</li><li>C. No feed; email signup instead (see SG-30).</li></ul>
+        <p><strong>Recommendation.</strong> A. RSS needs no provider and no consent flow.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-28"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: Nothing</p>
+    </article><article class="card decision-card" id="SG-31">
+      <div class="meta">SG-31 · editorial decides</div>
+      <h3>Put the listing&#x27;s own contradiction on the product card, not only on the flag page</h3>
+      <p><strong>The situation.</strong> Two listings contradict themselves on preset count, accessory count, battery life and warranty. Those conflicts are published on flagged.html, which a shopper never opens, so the most useful thing the site knows about those listings is invisible at the point of choice.</p>
+      <p><strong>The evidence.</strong> The conflicts are recorded in data/products.json (P-02 presets 24 vs 25; P-02 accessories six vs seven; P-05 battery 50 vs 70 hours and warranty 2 vs 3 years) and published as FLG-002, FLG-003 and FLG-013. Program Policies 2(b) prohibits inaccurate or misleading product claims, which is the reason both readings are kept rather than one chosen.</p>
+      <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Add a one-line conflict chip to the card: “Listing conflicts: presets 24 vs 25 · accessories 6 vs 7”, linking to the flag row.</li><li>B. Keep the card clean and trust the reader to visit the flag page.</li><li>C. Drop the conflicting fields from the site entirely.</li></ul>
+        <p><strong>Recommendation.</strong> A — it is implemented on the front page and both category pages as of 2026-11-20. It costs one line per affected product, adds no new claim, and is the cheapest honest differentiator the site has.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> A shopper sees the site&#x27;s honesty exactly where the decision is made, instead of on a page they will not open.</p><p class="small"><strong>What could go wrong:</strong> A conflict chip with no source reads as a slur on the seller, so each one links to the flag row and the official listing.</p><p class="small"><strong>Reversible:</strong> yes · <strong>What would prove it wrong:</strong> If click data shows no interaction with the chip, keep the headline spec and drop the chip.</p>
+        <div class="opts" data-decide="SG-31"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
     </article></div>
+
+<h2 class="mt" id="decide">Your decision block</h2>
+<p>Mark a card <em>Do this</em>, <em>Maybe</em> or <em>No</em>. The marks stay in this browser and
+appear here as one block of text you can copy back. A mark is a preference; nothing is implemented
+by being marked.</p>
+<div class="card"><pre id="decide-out" class="decide-out">No marks yet. Choose Do this / Maybe / No on a card above.</pre>
+<p class="small"><button type="button" class="btn ghost" id="decide-copy">Copy this block</button> <button type="button" class="btn ghost" id="decide-clear">Clear my marks</button></p>
+<p class="small muted">Stored only in this browser under <code>kc-decisions-v1</code>. No cookie, no identifier, no request to any server.</p></div>
 
 <h2 class="mt">How a suggestion becomes a change</h2>
 <ol>
@@ -323,6 +431,49 @@
 <p class="mt"><a href="questions.html">Open questions →</a> · <a href="direction.html">Decision log and path chooser →</a></p>
 </div></main>
 
+<script>
+(function(){
+  var KEY='kc-decisions-v1', LABEL={do:'Do this',maybe:'Maybe',no:'No'};
+  var store={}; try{ store=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ store={}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(store)); }catch(e){} }
+  var out=document.getElementById('decide-out');
+  function render(){
+    if(!out) return;
+    var ids=Object.keys(store);
+    if(!ids.length){ out.textContent='No marks yet. Choose Do this / Maybe / No on a card above.'; return; }
+    var head='Decisions ('+new Date().toISOString().slice(0,10)+'):';
+    out.textContent=[head].concat(ids.map(function(id){ return id+' = '+LABEL[store[id]]; })).join(String.fromCharCode(10));
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-decide]'), function(group){
+    var id=group.getAttribute('data-decide');
+    Array.prototype.forEach.call(group.querySelectorAll('button'), function(btn){
+      var v=btn.getAttribute('data-v');
+      if(store[id]===v) btn.setAttribute('aria-pressed','true');
+      btn.addEventListener('click', function(){
+        if(store[id]===v){ delete store[id]; } else { store[id]=v; }
+        Array.prototype.forEach.call(group.querySelectorAll('button'), function(b){
+          b.setAttribute('aria-pressed', store[id]===b.getAttribute('data-v') ? 'true':'false');
+        });
+        save(); render();
+      });
+    });
+  });
+  var cp=document.getElementById('decide-copy');
+  if(cp) cp.addEventListener('click', function(){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(out.textContent);
+      cp.textContent='Copied'; setTimeout(function(){ cp.textContent='Copy this block'; },1500);
+    }
+  });
+  var cl=document.getElementById('decide-clear');
+  if(cl) cl.addEventListener('click', function(){
+    store={}; save();
+    Array.prototype.forEach.call(document.querySelectorAll('[data-decide] button'), function(b){ b.setAttribute('aria-pressed','false'); });
+    render();
+  });
+  render();
+})();
+</script>
 <!-- build-chrome:footer:start -->
 <footer>
   <div class="wrap">
@@ -333,7 +484,7 @@
         <p class="small">New guides by <a href="feed.xml">RSS</a>. No email signup: we could not connect one honestly, so we did not ship a fake form.</p>
         <p id="local-counts" class="small" hidden></p>
       </div>
-      <div><h4>Shop</h4><ul><li><a href="air-fryers.html">Air fryers</a></li><li><a href="meat-thermometers.html">Meat thermometers</a></li><li><a href="compare.html">Compare all five</a></li><li><a href="buying-guide.html">Buying guide</a></li></ul></div><div><h4>Guides</h4><ul><li><a href="articles/basket-or-oven-air-fryer.html">Basket or oven?</a></li><li><a href="articles/air-fryer-capacity-checklist.html">Capacity checklist</a></li><li><a href="articles/cleanup-counter-space.html">Cleanup &amp; counter space</a></li><li><a href="articles/questions-before-multi-function.html">Before you buy</a></li><li><a href="buying-guide.html">All guides</a></li></ul></div><div><h4>Decision desk</h4><ul><li><a href="suggestions.html">Suggestions</a></li><li><a href="questions.html">Open questions</a></li><li><a href="decisions.html">Information we still need</a></li><li><a href="direction.html">Decision log</a></li></ul></div><div><h4>Trust</h4><ul><li><a href="disclosure.html">Disclosure</a></li><li><a href="sources.html">Sources</a></li><li><a href="citations.html">Citations</a></li><li><a href="flagged.html">Flagged for review</a></li><li><a href="analytics.html">Analytics &amp; privacy</a></li><li><a href="executive-summary.html">Executive summary</a></li><li><a href="about.html">About</a></li></ul></div>
+      <div><h4>Shop</h4><ul><li><a href="air-fryers.html">Air fryers</a></li><li><a href="meat-thermometers.html">Meat thermometers</a></li><li><a href="compare.html">Compare all five</a></li><li><a href="buying-guide.html">Buying guide</a></li></ul></div><div><h4>Guides</h4><ul><li><a href="articles/basket-or-oven-air-fryer.html">Basket or oven?</a></li><li><a href="articles/air-fryer-capacity-checklist.html">Capacity checklist</a></li><li><a href="articles/cleanup-counter-space.html">Cleanup &amp; counter space</a></li><li><a href="articles/questions-before-multi-function.html">Before you buy</a></li><li><a href="buying-guide.html">All guides</a></li></ul></div><div><h4>Decision desk</h4><ul><li><a href="ideas.html">Ideas &amp; review</a></li><li><a href="suggestions.html">Suggestions</a></li><li><a href="questions.html">Open questions</a></li><li><a href="decisions.html">Information we still need</a></li><li><a href="direction.html">Decision log</a></li></ul></div><div><h4>Trust</h4><ul><li><a href="disclosure.html">Disclosure</a></li><li><a href="sources.html">Sources</a></li><li><a href="citations.html">Citations</a></li><li><a href="flagged.html">Flagged for review</a></li><li><a href="analytics.html">Analytics &amp; privacy</a></li><li><a href="executive-summary.html">Executive summary</a></li><li><a href="about.html">About</a></li></ul></div>
     </div>
     <p class="foot-disclosure"><strong>Affiliate disclosure:</strong> As an Amazon Associate I earn from qualifying purchases. Tracking ID: shopnow047c-20. If a qualifying purchase is credited, Kitchen Counter may earn a commission at no extra cost to you. Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates. Where the listings contradict themselves, both readings are published on <a href="flagged.html">Flagged for Review</a>.</p>
   </div>

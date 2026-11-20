@@ -6,6 +6,6 @@
   "rows": [],
   "provenance": [
     {"date": "2026-11-19", "event": "ledger_created", "detail": "Ledger initialized empty by session 5a4e180c. No sessions, clicks, or orders reported yet."},
-    {"date": "2026-11-20", "event": "schema_paired", "detail": "Session arena/47f4e1e5-prod3 (T-72) paired this file with data/campaigns.json: shared tracking id, cross-pointers both ways, rows still empty in both. No row, figure or forecast added."}
+    {"date": "2026-11-20", "event": "schema_paired", "detail": "Session arena/47f4e1e5-prod3 (T-79) paired this file with data/campaigns.json: shared tracking id, cross-pointers both ways, rows still empty in both. No row, figure or forecast added."}
   ]
 }

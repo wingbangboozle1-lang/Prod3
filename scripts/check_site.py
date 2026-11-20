@@ -185,7 +185,7 @@ for f in html_files:
             errors.append(f"{rel}: buy button carries no Associates tag, so it cannot earn (S37 2(b)): {href}")
 print(f"OK buy-button link hygiene ({buy_buttons} tagged product buttons)")
 
-# 7c. outbound_click coverage (M01, T-72 session 47f4e1e5): analytics.html tells the
+# 7c. outbound_click coverage (M01, T-79 session 47f4e1e5): analytics.html tells the
 #     reader the event is "activation of a supplied product link", so the shipped script
 #     must bind every countable product link — rel="sponsored" plus an Amazon product URL —
 #     not only the buy buttons that happen to carry data-event. Before this rule the

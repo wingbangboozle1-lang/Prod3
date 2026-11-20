@@ -1,7 +1,7 @@
 # Analytics endpoint contract
 
 Status: **local measurement implemented; server collection not configured** (owner decision required — see FLG-015 and `analytics.html`).
-Last reconciled with code: 2026-11-20, session arena/47f4e1e5-prod3 (T-72). The five-event names and emission conditions were checked against `assets/app.js` in this repository; no server endpoint is configured.
+Last reconciled with code: 2026-11-20, session arena/47f4e1e5-prod3 (T-79). The five-event names and emission conditions were checked against `assets/app.js` in this repository; no server endpoint is configured.
 
 ## What ships today (`assets/app.js`)
 
@@ -17,7 +17,7 @@ The five events defined in `data/campaign-ledger.json` (`events_defined`):
 | `chooser_complete` | Yes | Window event `kc:chooser-complete` fired by the three-question chooser |
 | `reader_signup` | **No, by design** | Only after an email provider dispatches `kc:reader-signup-confirmed`. No provider is connected, so it never fires. |
 
-Coverage rule (T-72): every countable product link in the published HTML is bound by the selector above, so the population `outbound_click` measures is the same population the buy-button hygiene rule counts. The release gate (`scripts/check_site.py`, rule M01) fails if the binding is narrowed back to `data-event`-marked links only.
+Coverage rule (T-79): every countable product link in the published HTML is bound by the selector above, so the population `outbound_click` measures is the same population the buy-button hygiene rule counts. The release gate (`scripts/check_site.py`, rule M01) fails if the binding is narrowed back to `data-event`-marked links only.
 
 The footer counter shows these local counts only. It is a single-device counter, not a visitor total.
 

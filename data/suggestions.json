@@ -50,7 +50,10 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "editorial",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S02"
+      ]
     },
     {
       "id": "SG-03",
@@ -67,7 +70,10 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "owner",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S02"
+      ]
     },
     {
       "id": "SG-04",
@@ -84,7 +90,10 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "editorial",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S21"
+      ]
     },
     {
       "id": "SG-05",
@@ -102,7 +111,8 @@
       "decision_owner": "engineering",
       "blocks": "nothing",
       "sources": [
-        "S21"
+        "S01",
+        "S04"
       ]
     },
     {
@@ -122,7 +132,8 @@
       "decision_owner": "owner",
       "blocks": "the honest writing of any \"what it is like to live with\" page",
       "sources": [
-        "S21"
+        "S21",
+        "S03"
       ]
     },
     {
@@ -156,13 +167,16 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "engineering",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S02"
+      ]
     },
     {
       "id": "SG-09",
       "title": "Give every page a unique title and description, and test that the build rejects duplicates",
       "problem": "Duplicate titles and descriptions are the most common self-inflicted indexing problem for generated sites.",
-      "evidence": "Google: \"Create unique descriptions for each page on your site\"; identical descriptions on every page are named as a problem (S13).",
+      "evidence": "Google: \"Create unique descriptions for each page on your site\"; identical descriptions on every page are named as a problem (S24).",
       "options": [
         "A. Generate each page's title and description from its own content, and fail the build on a duplicate.",
         "B. One site-wide description."
@@ -174,6 +188,7 @@
       "decision_owner": "engineering",
       "blocks": "nothing",
       "sources": [
+        "S24",
         "S21"
       ]
     },
@@ -192,7 +207,10 @@
       "confidence": "medium",
       "status": "implemented",
       "decision_owner": "design",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S25"
+      ]
     },
     {
       "id": "SG-11",
@@ -209,7 +227,10 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "design",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S01"
+      ]
     },
     {
       "id": "SG-12",
@@ -226,7 +247,12 @@
       "confidence": "medium",
       "status": "implemented",
       "decision_owner": "design",
-      "blocks": "nothing"
+      "blocks": "nothing",
+      "sources": [
+        "S03",
+        "S04",
+        "S05"
+      ]
     },
     {
       "id": "SG-13",
@@ -243,7 +269,10 @@
       "confidence": "high",
       "status": "proposed",
       "decision_owner": "owner",
-      "blocks": "confidence in attribution on the supplied links"
+      "blocks": "confidence in attribution on the supplied links",
+      "sources": [
+        "S02"
+      ]
     },
     {
       "id": "SG-14",
@@ -313,7 +342,10 @@
       "confidence": "high",
       "status": "proposed",
       "decision_owner": "owner",
-      "blocks": "any future price display"
+      "blocks": "any future price display",
+      "sources": [
+        "S02"
+      ]
     },
     {
       "id": "SG-18",
@@ -349,6 +381,7 @@
       "decision_owner": "engineering",
       "blocks": "nothing",
       "sources": [
+        "S19",
         "S21"
       ]
     },
@@ -369,7 +402,13 @@
       "decision_owner": "owner",
       "blocks": "Which guides get written next",
       "sources": [
-        "S21"
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S21",
+        "S22"
       ]
     },
     {
@@ -390,7 +429,13 @@
       "blocks": "Which guides get written next",
       "retired_note": "Verified duplicate on 2026-11-20: SG-20 and SG-21 carried byte-identical title, problem, evidence, options, recommendation, effort, confidence, owner and blocks fields. SG-21 is retained here as a retired row rather than deleted, so the register shows what happened instead of silently shrinking. Action SG-20, never both.",
       "sources": [
-        "S21"
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
+        "S21",
+        "S22"
       ]
     },
     {
@@ -410,7 +455,8 @@
       "decision_owner": "owner",
       "blocks": "Nothing today; it is the ceiling on how good the content can get",
       "sources": [
-        "S21"
+        "S21",
+        "S03"
       ]
     },
     {
@@ -428,7 +474,12 @@
       "confidence": "high",
       "status": "implemented",
       "decision_owner": "editorial",
-      "blocks": "Nothing"
+      "blocks": "Nothing",
+      "sources": [
+        "S10",
+        "S11",
+        "S12"
+      ]
     },
     {
       "id": "SG-24",

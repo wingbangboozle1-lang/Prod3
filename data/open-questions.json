@@ -13,7 +13,7 @@
       "group": "Positioning",
       "question": "Is this one publication about cooking to a target temperature, or two sites — air fryers and thermometers?",
       "blocks": "Every content, navigation and brand decision that follows.",
-      "known": "The five products are three air fryers and two thermometers across four brands (S03-S21). The current site treats \"food hot, then food proven done\" as the unifying beat.",
+      "known": "The five products are three air fryers and two thermometers across four brands (S10-S14). The current site treats \"food hot, then food proven done\" as the unifying beat.",
       "unknown": "Whether the owner intends to sell more of one family than the other, which would settle it commercially rather than editorially.",
       "how_to_find_out": "Look at the Associates dashboard's ordered-items report after 30 days of traffic. If one family produces under 10% of orders, narrow.",
       "who": "owner",
@@ -21,6 +21,11 @@
       "status": "watch",
       "changes": "Whether the site keeps two category hubs or collapses to one.",
       "sources": [
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14",
         "S22"
       ],
       "evidence_status": "verified"
@@ -30,7 +35,7 @@
       "group": "Commercial",
       "question": "Do the five Special Links actually carry tag=shopnow047c-20?",
       "blocks": "Any claim that the site earns anything. If the tag is missing, clicks earn nothing.",
-      "known": "The links resolve correctly to five ASINs (S16). The resolved URLs carried query parameters but no visible tag= value in what was served to this session (F-09).",
+      "known": "The 2026-11-19 observation records each supplied short link reaching one of five ASINs (S10-S14). The resolved URLs carried query parameters but no visible tag= value in what was served to that session (F-09, FLG-023).",
       "unknown": "Whether the Associates ID is attached server-side, which is invisible from outside the account.",
       "how_to_find_out": "Sign in to Associates, open a product page with SiteStripe active, and read the Get Link panel for one of the five. Confirm the tag field. Then make one test click and confirm it appears in the Click Reports within 24 hours.",
       "who": "owner",
@@ -38,7 +43,12 @@
       "status": "owner-only",
       "changes": "If the tag is absent, every outbound link needs regenerating before any traffic is worth attracting.",
       "sources": [
-        "S02"
+        "S02",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14"
       ],
       "evidence_status": "verified"
     },
@@ -47,7 +57,7 @@
       "group": "Commercial",
       "question": "What commission rate applies to each of the five products, under the account's current rate card?",
       "blocks": "Any prioritisation of one product over another. Without it, \"which product should the site push\" has no answer.",
-      "known": "The Associates Program Commission Income Statement sets rates by product category and can change (S02).",
+      "known": "The Commission Income Statement is published as part of the Associates Program Policies and sets rates by product category; it can change (S02).",
       "unknown": "The applicable rate for Kitchen & Dining small appliances as it applies to this account today. That figure is account-specific and was not available to this session.",
       "how_to_find_out": "Read the current Commission Income Statement in the Associates dashboard and record the fixed and variable rates for the categories the five ASINs sit in.",
       "who": "owner",
@@ -55,7 +65,8 @@
       "status": "owner-only",
       "changes": "Whether the air fryers or the thermometers get the prime navigation slot, and whether the layout should favour the higher-ticket item.",
       "sources": [
-        "S01"
+        "S01",
+        "S02"
       ],
       "evidence_status": "verified"
     },
@@ -89,7 +100,8 @@
       "status": "owner-only",
       "changes": "Every byline, the about page, and whether the site can ever use an experience-led voice.",
       "sources": [
-        "S21"
+        "S21",
+        "S03"
       ],
       "evidence_status": "verified"
     },
@@ -106,7 +118,8 @@
       "status": "queued",
       "changes": "Whether the content plan stays specification-led indefinitely.",
       "sources": [
-        "S21"
+        "S21",
+        "S22"
       ],
       "evidence_status": "verified"
     },
@@ -142,7 +155,8 @@
       "status": "queued",
       "changes": "The column definitions in the campaign ledger.",
       "sources": [
-        "S01"
+        "S01",
+        "S02"
       ],
       "evidence_status": "verified"
     },
@@ -166,7 +180,7 @@
       "group": "Product",
       "question": "Should P4 point at the newer ASIN the listing itself recommends?",
       "blocks": "Whether the site sends readers to a superseded model.",
-      "known": "The P4 listing displays \"There is a newer model of this item\" and links ASIN B0GL7Z4KP4 (S06). The supplied short link resolves to B0DHZTCNR5 (F-03).",
+      "known": "The P-04 listing displays \"There is a newer model of this item\" and links ASIN B0GL7Z4KP4 (S13). The supplied short link resolves to B0DHZTCNR5 (F-03).",
       "unknown": "Whether the owner deliberately chose the older ASIN, or supplied a stale link.",
       "how_to_find_out": "Compare the two listings directly and decide. If the newer one is chosen, update intended.asin and record the change with a date — never edit observed.",
       "who": "owner",
@@ -174,7 +188,8 @@
       "changes": "One outbound link and one product page.",
       "status": "owner-only",
       "sources": [
-        "S12"
+        "S12",
+        "S13"
       ],
       "evidence_status": "verified"
     },
@@ -222,7 +237,9 @@
       "cost": "one configuration change",
       "status": "queued",
       "changes": "Whether SG-08 ever moves from a browser counter to a real denominator.",
-      "sources": [],
+      "sources": [
+        "S02"
+      ],
       "evidence_status": "unverified"
     },
     {
@@ -274,7 +291,8 @@
       "status": "owner-only",
       "changes": "Every absolute URL on the site.",
       "sources": [
-        "S05"
+        "S05",
+        "S02"
       ],
       "evidence_status": "verified"
     },

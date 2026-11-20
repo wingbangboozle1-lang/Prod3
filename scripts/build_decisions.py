@@ -161,13 +161,13 @@ def render():
 
     # ---- Section 3: reproduce first, then fix
     parts.append('<h2 class="mt">3. Irregularities, reproduced before they are repaired</h2>')
-    parts.append('<p>Two things are wrong on this site right now. Both are published here rather than quietly corrected, because a fix nobody can check is just a different story.</p>')
+    parts.append('<p>Both defects below were reproduced here before they were repaired, because a fix nobody can check is just a different story. One is settled; the other still needs a check only the owner can run.</p>')
 
-    parts.append(f'''<div class="callout warn"><strong>Register defect: reproduced, then resolved the same day.</strong>
-Two different identifiers name one proposal:
-<code>SG-20</code> and <code>SG-21</code> both read &ldquo;{esc(dup[0]["title"]) if dup else ""}&rdquo;.
-The same failure — one ID, two meanings — was fixed for SG-01..SG-08 in an earlier audit, so this is a
-recurrence, not a one-off. Until it is settled, treat SG-21 as an alias of SG-20 and do not action it twice.
+    parts.append(f'''<div class="callout"><strong>Register defect: reproduced, then resolved the same day.</strong>
+Two different identifiers named one proposal: <code>SG-20</code> and <code>SG-21</code> both read
+&ldquo;{esc(dup[0]["title"]) if dup else ""}&rdquo;. The same failure — one ID, two meanings — was fixed for the
+first eight proposals in an earlier audit, so this was a recurrence, not a one-off. <strong>Settled:</strong> do not
+treat SG-21 as an open choice; action SG-20 only.
 <strong>What was done:</strong> SG-21 was retired in place rather than deleted, marked as a duplicate of SG-20, and
 kept in <a href="suggestions.html">the suggestions register</a> so the change is auditable. A new gate rule
 (<code>D20</code>) now fails the build if two live proposals ever share a title again. What the owner may still want

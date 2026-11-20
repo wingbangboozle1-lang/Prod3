@@ -45,7 +45,7 @@
 <div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (28)</h2>
+<h2>Waiting on a decision (29)</h2>
 <div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -382,6 +382,18 @@
         <div class="opts" data-decide="SG-53"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-54">
+      <div class="meta">SG-54 · owner decides</div>
+      <h3>Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms</h3>
+      <p><strong>The situation.</strong> The roadmap wants automated refreshes of listing and price data, but the Associates IP License now carries explicit Agent Terms: software that accesses Program Content must identify itself in its user-agent string, must not conceal that it is an agent, and must not circumvent human-verification measures. A scheduled scraper of Amazon listing pages built into CI would breach those terms even if the copied values were handled carefully afterwards.</p>
+      <p><strong>The evidence.</strong> Associates Program Policies → IP License and Usage Requirements §4 (Agent Terms), read verbatim on the live page on 2026-11-20 (session 1fbc2432, T-66; data/recheck-2026-11-20-1fbc2432.json carries the quotes): an agent must identify itself (&quot;Agent/[agent name]&quot; in the request user-agent string), must not mimic human speed or keystroke patterns, must respond truthfully to human-verification prompts, and must not circumvent such measures. PA API access has separate credential requirements (§2). The site today records listing values only from dated manual fetches (data/products.json verification_method); no automated Amazon fetch exists in CI. Drafted as SG-39 and renumbered through the register collisions (SG-39 taken by PR #52 lineage, SG-48 by PR #72, SG-49 by PR #78) before landing at SG-54.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Enroll in the Product Advertising API (owner account action) and refresh prices, availability and star ratings only through it, with the required date/time stamp and disclaimer whenever displayed.</li><li>B. Keep manual dated fetches only; if an automated fetch of Amazon pages is ever added, configure it to identify itself per the Agent Terms and halt immediately on any anti-bot measure.</li><li>C. Add a scheduled scraper of listing pages without agent identification.</li></ul>
+        <p><strong>Recommendation.</strong> A long-term, B until the PA API is approved. C is non-compliant with the Agent Terms and endangers the Associates account; do not implement.</p></details>
+      <div class="decide-box">
+        <div class="opts" data-decide="SG-54"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: any future automation of listing or price data (follow-on to DT-02)</p>
     </article></div>
 
 <h2 class="mt">Already shipped (24)</h2>

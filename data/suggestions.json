@@ -840,6 +840,106 @@
       "status": "implemented",
       "decision_owner": "editorial",
       "blocks": "nothing"
+    },
+    {
+      "id": "SG-43",
+      "title": "Give the seasonal block a retirement date and a successor, before Thanksgiving ends",
+      "problem": "The front page's seasonal block is hand-edited HTML. The 2026-11-20 wording fix (PR #38) made it accurate for this week — the block now says Thanksgiving is Thursday, 26 November — but nothing retires it: on 2026-11-27 the shop would still open on Thanksgiving. Stale seasonal copy is the exact generated-site smell this project is trying to avoid.",
+      "evidence": "index.html hardcodes the block, its “Right now” label and its dated paragraph; the only related gate (D30 in tools/check_site.py) checks that the Thanksgiving guide is linked from the front page and cannot expire. The holiday gift guide beneath it already carries the December theme, so a successor slot exists.",
+      "options": [
+        "A. Rotate the block by hand on a calendar date — an owner task that recurs every season.",
+        "B. Move the seasonal block into a dated JSON and generate it, so build_chrome renders the current slot and a gate fails when a dated slot is past its end date.",
+        "C. Drop the seasonal block entirely."
+      ],
+      "recommendation": "B — generation plus a dated gate makes staleness impossible to ship silently, and it is the same pattern the rest of the chrome already uses. Fallback: if B is not built by 2026-11-26, rotate by hand that day (A).",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "front-page timeliness after 2026-11-26",
+      "sources": []
+    },
+    {
+      "id": "SG-44",
+      "title": "Do not add FAQ markup expecting a Google FAQ rich result — that feature is gone",
+      "problem": "Adding FAQPage JSON-LD to the guides is advice that still circulates in older SEO guides. If the site followed it, effort would go into markup whose only search-feature payoff has ended, and future guides would inherit a dead pattern — one of the tells of a site built from stale templates.",
+      "evidence": "Google's own changelog (S35, fetched 2026-11-20): a deprecation notice added 2026-05-08 states the FAQ rich result “will no longer appear in Google Search starting May 7, 2026”, and the June 2026 entry records that the feature documentation was removed — the old documentation URL now redirects to the changelog.",
+      "options": [
+        "A. Keep question-shaped headings and visible answers in prose; add no FAQPage markup; revisit only if Google restores the feature.",
+        "B. Add FAQPage markup anyway so AI answer engines can extract the questions and answers.",
+        "C. Add the markup but hide it from readers."
+      ],
+      "recommendation": "A — the nine guides already answer questions in visible prose, which is what people-first guidance rewards. B duplicates every answer in a second surface to maintain, for no search-feature benefit. C is hidden-text abuse under Google's spam policies (S22) and is rejected outright.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "guide nine onward",
+      "sources": [
+        "S35",
+        "S22"
+      ]
+    },
+    {
+      "id": "SG-45",
+      "title": "Fact-check any AI-assisted draft line by line before it ships, and say how the site is made",
+      "problem": "The publication is intended to scale with AI assistance. Without an explicit review step, a hallucinated specification could reach a product card — the exact failure this site's registers exist to prevent — and pages produced for search engines rather than readers are a named spam category.",
+      "evidence": "Google's guidance on generative AI content (S36, page updated 2026-10-01, fetched 2026-11-20) states that generative outputs “may contain inaccuracies (also known as hallucinations)” and that it is critical to manually fact-check before publishing; the scaled content abuse policy (S22) covers unoriginal content “no matter how it's created”; the same page recommends sharing how content was created.",
+      "options": [
+        "A. Write the rule into docs/verification.md and about.html: every AI-assisted draft is checked line by line against the dated listing snapshots and policy records before it ships, and the about page states how the site is produced.",
+        "B. Keep the fact-checking practice informal, depending on each session's judgement.",
+        "C. Publish drafts unreviewed and correct after reader reports."
+      ],
+      "recommendation": "A — one page of documentation and it matches the gates the repo already runs. C violates the spam policy and the site's own accuracy rules. B is how the SG-20/SG-21 duplicate happened.",
+      "effort": "M",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "owner",
+      "blocks": "scaling content production (Q-14 cadence, SG-18 topic pipeline)",
+      "sources": [
+        "S36",
+        "S22"
+      ]
+    },
+    {
+      "id": "SG-46",
+      "title": "Measure Core Web Vitals once, then gate new frontend effects on the result",
+      "problem": "The site has never recorded a Core Web Vitals measurement. “Deliberately light” is a design claim, not a measurement, and any future effect could erode it silently — the hover lift on product cards already exists.",
+      "evidence": "Google's page-experience guidance (S25, fetched 2026-11-20) states Core Web Vitals are used by Google's ranking systems and recommends site owners achieve good Core Web Vitals; its self-assessment checklist asks whether pages have good Core Web Vitals and display well on mobile. PageSpeed Insights requires no account.",
+      "options": [
+        "A. Run pagespeed.web.dev on the front page and one guide (mobile), record the dated results on analytics.html, and require a fresh dated pass with any new frontend effect.",
+        "B. Skip measurement and rely on the light stylesheet.",
+        "C. Add heavier visual effects first and measure later."
+      ],
+      "recommendation": "A — it is free, minutes-scale, and turns a design claim into a dated record that future sessions can compare against. C inverts the evidence order every other decision on this site follows.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "any new animation, script or image weight on the shop pages",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "SG-47",
+      "title": "Keep internal anchors descriptive — add a gate so the discipline cannot slip",
+      "problem": "A scan on 2026-11-20 found zero generic anchors (“click here”, “read more”, “learn more”) across the published pages, but nothing tests for them, so guide nine could reintroduce them without anyone noticing.",
+      "evidence": "Google's link best practices (S34, fetched 2026-11-20) state that good anchor text “is descriptive, reasonably concise, and relevant to the page that it's on and to the page it links to”, and that generic text gives neither readers nor Google context. The scan method is recorded in COORDINATION.md (T-54).",
+      "options": [
+        "A. Add a check_site rule that fails on the generic anchor texts Google names, then keep writing as now.",
+        "B. Leave anchor quality to code review.",
+        "C. Rewrite existing anchors for keywords beyond Google's guidance."
+      ],
+      "recommendation": "A — one regex in an existing gate converts today's clean scan into a standing guarantee, which is how every other discipline on this site is enforced. C is unneeded: the scan is already clean.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "engineering",
+      "blocks": "nothing (protective)",
+      "sources": [
+        "S34"
+      ]
     }
   ],
   "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed. | 2026-11-20 (session f3900cd3): this session's four rows were renumbered twice while the branch was open — first written SG-32..SG-35, then SG-36..SG-39, now SG-39..SG-42 — each time because another session had registered different proposals under those ids. Text is unchanged; each moved row carries a dated note. No upstream row was edited."

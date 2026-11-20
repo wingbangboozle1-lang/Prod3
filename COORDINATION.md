@@ -101,6 +101,11 @@ the same four duplicate ids while this branch was open.
 | T-63 **landed 2026-11-20**| Direction layer: new reviewable suggestions (SG-32..), a copy-ready site design brief on `ideas.html`, new missing-info questions (Q-24..), decision-desk rows for the new choices, `DIRECTION.md` + both executive summaries refreshed, the duplicate README register table removed, `data/flagged.json` brought in line with the published flag page | in progress | `arena/6c0972fb-prod3` | `data/suggestions.json`, `data/open-questions.json`, `data/decisions.json`, `data/flagged.json`, `ideas.html`, `DIRECTION.md`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md` |
 | T-64 **landed 2026-11-20**| Repair the duplicate flag identifiers on `flagged.html` (FLG-020, FLG-021, FLG-022 and FLG-023 each head two different findings; 59a087a1's new register rows collided with existing published IDs). Second occurrence of each renumbered to a free ID, every cross-reference followed, and a uniqueness rule added to the gate so it cannot recur | in progress | `arena/6c0972fb-prod3` | `flagged.html`, `data/flagged.json`, `data/products.json` (flag refs only), `tools/check_site.py` (new rule), `README.md`, `DIRECTION.md` |
 | T-65 **landed 2026-11-20**| Final integration for this round: re-run all eight gates on the merged tree, PR → main, merge without waiting, confirm `Deploy GitHub Pages` success by run ID and check the live pages | in progress | `arena/6c0972fb-prod3` | `COORDINATION.md` plus whatever T-60..T-64 already scope |
+| T-75 | Shop-voice and publication polish on the front page (originally claimed T-48 before the collision note below): hero rewritten, feature figure corrected to "2 × 3 qt" so no disputed total volume is stated as fact, one broken sentence fixed | done (record below) | `arena/37c5f395-prod3` | `index.html` |
+| T-76 | Two question-shaped evergreen guides — `articles/are-air-fryers-worth-it.html`, `articles/smart-thermometer-questions.html` — in the current guide template (Article + BreadcrumbList JSON-LD, byline), wired into the front-page grid, the buying-guide clusters and the category read-next boxes; feed items added (items = guides, the gate self-counts); sitemap regenerated | done (record below) | `arena/37c5f395-prod3` | `articles/*` (2 new), `feed.xml`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `sitemap.xml` |
+| T-77 | Decision-register addition SG-55 (dated voice refresh for the 2026-11-19 guide batch) + defect fixes found on the merged tree: duplicated read-next entries on `air-fryers.html`, D40 guide-count words extended to thirteen–sixteen (the regex previously could not see "All thirteen guides"), stale guide counts corrected in Q-14/Q-17, the front page, README and both executive summaries | done (record below) | `arena/37c5f395-prod3` | `data/suggestions.json`, `data/open-questions.json`, `tools/check_site.py`, `air-fryers.html`, `index.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html` |
+| T-78 | Integration: reconcile this session's in-flight work with the T-46..T-65 rounds that landed first (their flag-ID scheme, registers and generators kept as mainline; this session's parallel FLG renumbering, FAQPage markup and SG-32..35/Q-24..25 rows dropped as superseded — see the record below), re-run all gates, PR → main, merge, confirm Pages | done (record below) | `arena/37c5f395-prod3` | `COORDINATION.md` (+ the tree) |
+| T-57 | Final integration re-verification of the combined tree after PR #37 and the concurrent T-46..T-56 merge (renumbered twice: T-46 → T-51 → T-53 because T-46/T-48/T-51/T-52 were taken upstream, then T-53 → T-57 because session 7878cdbe took T-53..T-56 for its defect/growth/release round; per the one-identifier-one-meaning rule): line-by-line re-check of all registers and published docs; reconcile stale register ranges/counts (README, EXECUTIVE_SUMMARY, direction.html) and stale register generation dates; re-run all gates; PR → main, merge, confirm Pages deploy, record result | in progress | `arena/6f44d8c9-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `direction.html`, `data/suggestions.json`, `data/open-questions.json`, `data/citations.json`, `scripts/build_registers.py`, `COORDINATION.md` |
 
 | T-58 | Register-integrity + publication-machinery pass (renumbered twice: claim commit named T-25, renumbers T-39 and T-52 both collided with main-side rows; final id T-59): one id one meaning across flagged/suggestions/digest (flagged.html shipped duplicate FLG-020/021; digest rows carried SG-27..SG-30 ids with different meanings → SG-32..SG-35 registered), generated DIRECTION digest (build_digest.py, gate D32), cross-surface id gate D31 + flagged-sync gate D34 (both negative-tested), feed-item titles aligned to guide h1s, self-hosted analytics collector shipped as deployable code (endpoint kept blank), stale cross-refs fixed (SG-19→SG-24 on about.html etc.), exec summary + PR → main, merge, Pages confirm | done (PR #77; see the merge record below) | `arena/26285b01-prod3` | `flagged.html`, `ideas.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json`, `data/decisions.json`, `data/flagged.json`, `feed.xml`, `scripts/build_digest.py`, `scripts/build_registers.py`, `tools/check_site.py`, `docs/*`, `analytics/collector/*`, `analytics.html`, `about.html`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
 
@@ -1767,7 +1772,7 @@ and the FLG-019 original counts are prior sessions' records, reused with attribu
 - Main added three guides (T-61/T-62), sources S37-S39 (T-60), flags FLG-039/040, SG-43…SG-47.
   Site is now 42 pages / 41 sitemap URLs.
 - Conflicts resolved: `data/flagged.json` (theirs + FLG-030/031, still free), `data/suggestions.json`
-  (theirs + my proposal as **SG-48**; a first renumber pass mistakenly renamed main's SG-43
+  (theirs + my proposal as **SG-55**; a first renumber pass mistakenly renamed main's SG-43
   seasonal row — caught by gate D29 (DIRECTION.md cites SG-43) and fixed: main's row restored,
   my proposal appended as SG-48), `compare.html` (their buy cells now tagged
   `?tag=shopnow047c-20` product URLs — adopted; no short-link cells remain anywhere),
@@ -2822,6 +2827,104 @@ account status · signed-in link check (Q-22) · Search Console · analytics end
 share-debugger check (F-21/Q-21) · Pages `build_type` setting (FLG-024, owner one-click) ·
 FLG-033 source-register fetch dates · remaining FLG-032 duplicates. No new claims about traffic,
 conversion, or product superiority.
+
+### Independent confirmation of the merged clause correction
+
+This session's verbatim reads agree with the clause-letter correction already on `main`
+(commit `7c49a3e`, FLG-020 resolved): ratings = Participation Requirements §6(t),
+URL-obscuring = §6(v), shortener = §6(w), and §2(b) carries the tag, price, misleading-claims,
+product-list and sub-tag clauses. The recheck file records the confirming evidence instead of
+re-editing the corrected registers.
+
+### Edits applied (each traceable to the recheck file)
+
+1. **SG-54 registered** (`data/suggestions.json`; mirrored in `DIRECTION.md` and the
+   `direction.html` range line): before any automated Amazon listing or price refresh, use the
+   Product Advertising API or make the fetcher identify itself under the IP License Agent Terms
+   (§4, read verbatim). Recommendation: A long-term, B until the PA API is approved; C is
+   non-compliant — do not implement.
+2. **FLG-025 additional same-day reproduction** appended in `data/flagged.json` and the
+   `flagged.html` callout (ordinal-free phrasing; nothing overwritten).
+3. **`data/recheck-2026-11-20-1fbc2432.json`** created — the dated record of every official
+   page this session fetched, with verbatim quotes.
+4. Regenerated surfaces after the data edits. No CTA destination changed (T-60's tagged
+   Special Links are kept as merged); `data/products.json` untouched.
+
+### Gates and merge record
+
+To be appended below after the final gate run and merge.
+## Session arena/37c5f395-prod3 — T-75…T-78 (2026-11-20), renumbered three times after board collisions
+
+**Collision, handled without discarding anyone's work.** This session claimed **T-48…T-51** at a time
+when the board's highest row was T-47, and shipped four commits to its branch. While it worked, the
+T-46…T-65 rounds (sessions 6bf60cac, 2cd3bab9, 8692a390, 7878cdbe, 6c0972fb, 6f44d8c9) landed on
+`main` and took T-48…T-57 for different subjects. Per the one-identifier-one-meaning rule this
+session's rows were renumbered **T-66…T-69** — and when sessions 6c0972fb/1fbc2432 took T-66/67 and SG-48 a second time during the final integration, and when sessions d52ad947/aa7b8dd8 took T-70…T-74 a third time during final integration, to **T-75…T-78** (the suggestion kept **SG-55**, still unclaimed upstream); the commit subjects on the branch still say T-48…T-51 and
+are left as the historical record of when they were written. Nothing published on `main` was discarded
+in the merge: every conflict was resolved in favour of the merged mainline, and this session's unique
+work was re-applied on top.
+
+**What this session kept (its own work, re-based onto the mainline conventions):**
+
+1. **Shop-voice front page (T-75).** Hero: "Five kitchen tools, sorted by the cook they belong to." —
+   clearer lede, less defensive honesty note ("We read listings for a living; we do not run a lab…"),
+   the mainline's intent-fork CTAs kept. The featured pick's headline figure now reads **2 × 3 qt**
+   (the undisputed basket sizes) instead of "6 qt total", because F-01 keeps both readings open. One
+   broken sentence ("When Search Console setup…") fixed earlier in the round.
+2. **Two question-shaped guides (T-76).** `are-air-fryers-worth-it.html` and
+   `smart-thermometer-questions.html` — topics neither the 2026-11-19 batch nor the T-61 round covers
+   ("Are air fryers worth it?" is the category's evergreen question). Both carry the current guide
+   template: Article JSON-LD with publisher + description, BreadcrumbList, the dated byline, and the
+   USDA figures aligned with `assets/decision-tools.js` (145/160/165 °F, plus the 3-minute whole-muscle
+   rest the chart carries). Wired into the front-page grid, the buying-guide clusters ("fifteen" now),
+   and the category read-next boxes. Feed items added; the publishing-coverage gate self-counts.
+3. **SG-55 (T-77).** A dated voice refresh for the 2026-11-19 guide batch, as a reviewable proposal.
+4. **Defects found while merging and fixed (T-77):** `air-fryers.html` read-next listed the same two
+   links twice (duplicated block, the very FLG-038 class of defect — removed); the D40 count regex
+   could not see "Thirteen guides" because the word list stopped at "twelve" (extended to sixteen);
+   Q-14/Q-17, the front page, README and both executive summaries said "thirteen guides" while fifteen
+   ship (corrected).
+
+**What this session deliberately DROPPED from its in-flight work, and why (T-69):**
+
+1. **A parallel FLG renumbering.** This session had independently renumbered the four duplicated flag
+   callouts to FLG-025…FLG-028. The T-64 round fixed the same duplication on `main` with a different
+   scheme (FLG-027 records the duplication; the displaced callouts became FLG-028…FLG-031). The
+   mainline scheme is kept everywhere; this session's numbering exists only in its early commit
+   subjects and in this note. No finding was lost — both schemes preserved every callout.
+2. **FAQPage JSON-LD on the two new guides.** The round's own findability add-on was dropped after
+   reading **SG-44** on the merged register ("Do not add FAQ markup expecting a Google FAQ rich result —
+   that feature is gone"). The visible FAQ text stays; the markup does not. The guides ship Article +
+   BreadcrumbList only, matching the other thirteen.
+3. **Register rows SG-32…SG-35 and Q-24…Q-25 as this session wrote them.** The mainline register had
+   grown to SG-47 / Q-29 with rows covering the same ground at those numbers (PageSpeed → Q-29/SG-46,
+   seasonal block → SG-43, FAQ rollout → contradicted by SG-44). Only the genuinely new proposal —
+   the guide-voice refresh — was re-registered, as **SG-55**. Duplicates were not re-added.
+
+### Verification on the merged tree (2026-11-20)
+
+```
+tools/check_site.py                  44 pages · 6,609 assertions · all rules passed
+scripts/check_site.py                All checks passed
+tools/verify_site.py                 Release gate passed (feed items = guides on disk)
+build_chrome/registers/decisions/products/sitemap/readme/ideas --check   all current
+tools/crawl_links.py                 44 pages crawled · 43 reachable from index.html
+                                     no broken links, no dead anchors, no orphans
+```
+
+Every figure in the two new guides traces to `data/products.json` / `data/sources.json` (the five
+official listings) or to the USDA rows in `assets/decision-tools.js`. No price, rating, promo or
+first-hand-experience phrasing was introduced (P10–P12, D10 gates green). The campaign ledger is
+untouched and still empty. No new external source was registered this round; the guides cite only
+S-ids that already exist.
+
+### Not claimed (unchanged owner gates)
+
+Intended ASINs (FLG-001) · Special-link compliance (FLG-006/FLG-026, Q-24) · account status
+(FLG-010) · the all-five-homepage link behaviour (FLG-025/FLG-031, Q-25) · Search Console (Q-28) ·
+Core Web Vitals (Q-29) · share-debugger check (Q-21/F-21) · Pages `build_type` (FLG-024). Nothing in
+this round claims traffic, demand or conversion for the two new guide topics: they are editorial
+hypotheses until Q-27/Q-28 return data.
 
 *(merge result and deploy confirmation recorded below after the PR merges)*
 

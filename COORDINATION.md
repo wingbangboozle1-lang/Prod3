@@ -40,7 +40,7 @@
 | T-21 | Expand Direction section: suggestions, open questions, missing-info discovery, path chooser | done | `arena/33e3e80f-prod3` | `direction.html`, `DIRECTION.md`, `data/suggestions.json`, `data/open-questions.json` |
 | T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | done (PR #14 + #15, live-verified at `bb7d3d2`) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
 | T-23 | Line-by-line verification of data registers and published claims against official sources; fix only demonstrable defects; final integration PR → main, merge, confirm Pages deploy | done (PR #18, https://github.com/wingbangboozle1-lang/Prod3/pull/18) | arena/28d2d6c0-prod3 | `data/sources.json`, `data/analysis.json`, `data/flagged.json`, `data/policy-checks.json`, `sources.html`, `tools/verify_site.py` (source-resolution gate), `COORDINATION.md` |
-| T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | in progress | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
+| T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -793,4 +793,14 @@ regenerated; all gates green.
 
 ### Session arena/f4694e48-prod3 — T-24 claim
 
-Claimed the executive-summary refresh only. Scope: `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, and this task-board row/log. The current summary contains demonstrable stale statements (claims that ratings are shown on cards, refers to the shipped PNG as an SVG, and mismatches the implemented event schema); this task will reconcile it to the repository state and existing source register without changing product data or making new external claims.
+Claimed and completed the executive-summary refresh only. Scope: `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, and this task-board row/log. Corrected stale statements about ratings, the shipped PNG social card, and event/endpoint behavior. The summary now distinguishes dated observations from unconfirmed intent and includes ranked proposals, discovery questions, and official-source links without changing product data or claiming new live verifications.
+
+#### T-24 completion record (session `arena/f4694e48-prod3`, 2026-11-20)
+
+- Refreshed `EXECUTIVE_SUMMARY.md` and `executive-summary.html` to match the checked-in site and existing source register. Product rows link to each official Amazon listing. Fact, recommendation, and question tables include an official source column.
+- Reconciled obsolete assertions: ratings are not displayed on cards; the shipped share image is PNG (external debugger check still open); the analytics endpoint is blank; five events are defined, four are counted locally, and `reader_signup` is reserved for provider confirmation; no aggregate analytics, verified search data, clicks, orders, revenue, or forecasts are claimed.
+- Added buyer and owner decision support: ranked compliance/measurement/discoverability/editorial recommendations, missing-information questions and ways to discover answers. Suggestions remain proposals; no path is marked chosen.
+- Reviewed existing registry evidence (last recorded verification 2026-11-19). This task did not fetch current Amazon listings or access Associates Central, Search Console, an analytics provider, or a share debugger. The status date is 2026-11-20; no new live verification is represented.
+- Official references used in the summary: Amazon Associates Operating Agreement and Program Policies; five official product listing URLs; FTC Disclosures 101; Google sponsored-link, people-first content, spam policy, and snippet guidance. URLs are recorded in `data/sources.json` and linked inline.
+- Gates (all pass): `python3 scripts/check_site.py` (24 HTML pages), `python3 tools/verify_site.py` (21 sources resolve and publish), `python3 scripts/build_registers.py --check`, `python3 scripts/build_sitemap.py --check`, and `git diff --check`.
+- Remaining owner/external gates: FLG-001 intended product confirmation; FLG-006 Special Link workflow and reporting test; FLG-010 Associates account status; Search Console verification; selection and configuration of analytics/email infrastructure; social-preview debugger check. These remain visible on the review pages and do not justify invented values.

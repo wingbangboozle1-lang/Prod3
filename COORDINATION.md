@@ -98,7 +98,7 @@ the same four duplicate ids while this branch was open.
 | T-57 | Final integration re-verification of the combined tree after PR #37 and the concurrent T-46..T-56 merge (renumbered twice: T-46 → T-51 → T-53 because T-46/T-48/T-51/T-52 were taken upstream, then T-53 → T-57 because session 7878cdbe took T-53..T-56 for its defect/growth/release round; per the one-identifier-one-meaning rule): line-by-line re-check of all registers and published docs; reconcile stale register ranges/counts (README, EXECUTIVE_SUMMARY, direction.html) and stale register generation dates; re-run all gates; PR → main, merge, confirm Pages deploy, record result | in progress | `arena/6f44d8c9-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `direction.html`, `data/suggestions.json`, `data/open-questions.json`, `data/citations.json`, `scripts/build_registers.py`, `COORDINATION.md` |
 
 | T-55 | | Policy-citation precision pass. Independent re-read of the live Associates Program Policies (updated 2026-04-14) and the Operating Agreement: the customer-review, URL-obscuring, link-shortener and price-alert clauses exist, but under Participation Requirements **§6(t), §6(v), §6(w), §6(y)** — not §2(t)/§2(v)/§2(b). Correct the wrong section numbers in every published row this session may edit, and extend the machine-readable policy register with the clauses that constrain an automated publisher (no artificial clicks, no incentives, no framing, no Special Links in Amazon UGC, no altering Program Content, no dual attribution, original-content eligibility). Rows in T-46-owned files are logged as cross-scope requests, not edited | done (2026-11-20, renumbered from T-51; see the collision log below) | `arena/ba8e7240-prod3` | `data/policy-checks.json`, `compare.html`, `ideas.html`, `DIRECTION.md`, `docs/policy-verification-2026-11-20.md`, `COORDINATION.md` (own rows only) |
-| T-56 | | Design-brief desk: paste-ready inputs for the next polish pass, published as reviewable register rows (SG-43..SG-48; renumbered from SG-36..SG-41 when upstream took those IDs) with problem, evidence, options and recommendation, plus a rejected-idea row for price alerts on the policy ground that founds it. Nothing is implemented by being listed | done (2026-11-20, renumbered from T-51; see the collision log below) | `arena/ba8e7240-prod3` | `data/suggestions.json`, `suggestions.html` (regenerated), `ideas.html`, `docs/policy-verification-2026-11-20.md` |
+| T-56 | | Design-brief desk: paste-ready inputs for the next polish pass, published as reviewable register rows (SG-48..SG-52, five rows after two renumberings and one withdrawal as a duplicate of SG-43; renumbered from SG-48..SG-52 when upstream took those IDs) with problem, evidence, options and recommendation, plus a rejected-idea row for price alerts on the policy ground that founds it. Nothing is implemented by being listed | done (2026-11-20, renumbered from T-51; see the collision log below) | `arena/ba8e7240-prod3` | `data/suggestions.json`, `suggestions.html` (regenerated), `ideas.html`, `docs/policy-verification-2026-11-20.md` |
 | T-57 | | Reader-facing defects found by reading the rendered front page (duplicate spec-chip rows repeating the same figures on four of five cards; the thermometer cards carry no chips while the air-fryer cards do; four leaked inline hex styles outside the palette). **Cross-scope request only** — `index.html`, `air-fryers.html`, `meat-thermometers.html` and `assets/style.css` are claimed under T-46 (`arena/59a087a1-prod3`, active claim, last commit 2026-11-20 06:46Z) | needs review (request logged; renumbered from T-53) | `arena/ba8e7240-prod3` | `COORDINATION.md` only |
 | T-58 | | Integration for this round: every gate re-run on the merged tree, PR → main, merge, Pages deploy confirmed live against the pre-merge tree | done (2026-11-20, renumbered from T-51; see the collision log below) | `arena/ba8e7240-prod3` | `COORDINATION.md` only |
 
@@ -2107,8 +2107,10 @@ eligibility floor under an at-volume publishing plan.
 
 ### T-56 — design brief, published as reviewable rows
 
-**SG-43..SG-48** in `data/suggestions.json` (arrived as SG-36..SG-41 and renumbered on rebase when upstream
-took those IDs for different proposals; register regenerated, `decisions.html` open-proposal count 15 → 21).
+**SG-48..SG-52** in `data/suggestions.json` (five rows; they arrived as SG-36..SG-41, moved to SG-43..SG-48,
+and settled here as upstream filled each range in turn; register regenerated, `decisions.html` open-proposal
+count 15 → 22). A sixth proposal — dating the seasonal block — was withdrawn as a duplicate of upstream's
+SG-43, which words the same request better than mine did.
 Each row names a defect read in the built HTML today: duplicated spec-chip rows repeating the same figures on
 four of five front-page cards; no chips on the thermometer cards while the air-fryer cards have them; four
 inline hex colours absent from `assets/style.css`; a price placeholder line duplicating the button under it;
@@ -2126,7 +2128,7 @@ price-drop alerts and synthetic/automated clicking — rejected on §6(y) and §
 3. `README.md`: the "as of 2026-11-19" register table is stale (it lists SG-01..SG-31 while the register holds
    SG-01..SG-48); two tables with different ranges are published side by side. Requested earlier by
    `arena/9f36f5ee-prod3`, still open.
-4. `index.html`, `air-fryers.html`, `meat-thermometers.html`, `assets/style.css`: SG-43..SG-48, with cards named
+4. `index.html`, `air-fryers.html`, `meat-thermometers.html`, `assets/style.css`: SG-48..SG-52, with cards named
    in the memo §5. Deliberately **not** edited here while T-46 holds those files.
 5. `scripts/build_registers.py`: the three register pages print "Register updated 2026-11-19" from a literal
    while the data carries `generated` (now 2026-11-20). One-line fix: read the field.
@@ -2154,7 +2156,9 @@ Gates at the merge commit: the four `--check` freshness gates, `scripts/check_si
 - `arena/2cd3bab9-prod3` and `arena/f3900cd3-prod3` took **T-51/T-52** (and f3900cd3 a second **T-52**) while
   this branch was open → this session's rows moved to **T-55..T-58**. Their rows are untouched.
 - Upstream filled **SG-36..SG-42** with different proposals → this session's six rows renumbered to
-  **SG-43..SG-48** on rebase, and every in-page reference to them updated in the same commit. One ID, one meaning.
+  **SG-48..SG-52** on the second rebase (upstream had filled SG-36..SG-47 with nine different proposals in the
+meantime), and every in-page reference updated in the same commit. One ID, one meaning — and where two sessions
+proposed the same thing, the row is withdrawn rather than published twice.
 - `compare.html` conflicted with f3900cd3's Buy-row rewrite (they moved P-01 to a direct `/dp/` address and
   added `aria-label`s; that change is kept) — my fix there is only the Ratings footnote sentence. Both survive.
 - `ideas.html` conflicted with their generated `build-ideas:brief` block — theirs kept in full; this session's

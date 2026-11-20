@@ -71,10 +71,8 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 <!-- build-registers-table:start -->
 | Register | Page | Data | IDs | Count |
 |---|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-47 (SG-21 retired in place); unoccupied: SG-26 | 46 rows |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-52 (SG-21 retired in place); unoccupied: SG-26 | 51 rows |
 | Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-29 | 29 |
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-48 (SG-21 retired in place); unoccupied: SG-26 | 47 rows |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-27 | 27 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | - |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | dated proposals | 12 |

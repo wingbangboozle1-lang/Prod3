@@ -160,7 +160,7 @@ print("OK data-source-required tables")
 #     Associates ID as a URL parameter; Commission Income Statement 2(g) (S35) disqualifies
 #     purchases whose links are "not properly formatted". Negative-tested the same day: it named
 #     two untagged hand-written buttons and five untagged generated pages before they were fixed.
-_asin_by_token = {p0["submitted_token"]: p0["observed_asin"] for p0 in _json.loads((ROOT / "data/products.json").read_text())["products"]}
+_asin_by_token = {p0["submitted_token"]: p0["observed_asin"] for p0 in json.loads((ROOT / "data/products.json").read_text())["products"]}
 buy_buttons = 0
 for f in html_files:
     _html = f.read_text(); rel = f.relative_to(ROOT)

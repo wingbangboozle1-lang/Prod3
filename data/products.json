@@ -118,7 +118,7 @@
           "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
           "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
           "intended_asin_changed": false,
-          "flag": "FLG-034",
+          "flag": "FLG-039",
           "token": "B04G1MEwY"
         }
       ]
@@ -235,7 +235,7 @@
           "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
           "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
           "intended_asin_changed": false,
-          "flag": "FLG-034",
+          "flag": "FLG-039",
           "token": "B02NbDxp3"
         }
       ]
@@ -354,7 +354,7 @@
           "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
           "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
           "intended_asin_changed": false,
-          "flag": "FLG-034",
+          "flag": "FLG-039",
           "token": "B00hJ57DV"
         }
       ]
@@ -467,7 +467,7 @@
           "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
           "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
           "intended_asin_changed": false,
-          "flag": "FLG-034",
+          "flag": "FLG-039",
           "token": "B0c8moW59"
         }
       ]
@@ -584,7 +584,7 @@
           "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
           "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
           "intended_asin_changed": false,
-          "flag": "FLG-034",
+          "flag": "FLG-039",
           "token": "B0f3GKalj"
         }
       ]
@@ -599,9 +599,9 @@
   "link_policy_2026_11_20": {
     "date": "2026-11-20",
     "session": "arena/6c0972fb-prod3",
-    "flag": "FLG-034",
+    "flag": "FLG-039",
     "decision": "Every reader-facing product button points at https://www.amazon.com/dp/<observed ASIN>?tag=shopnow047c-20&linkCode=sl1 — 30 buttons across the front page, both category shelves, the comparison table, the gift guide and the five generated product pages. None uses a link.amazon short link and none is untagged.",
-    "basis": "Program Policies, Participation Requirements 2(a) (S34) and 2(b); Commission Income Statement 2(g) and 2(e) (S35). Observed 2026-11-20: no short link delivered a URL carrying a tag, and all five delivered the Amazon homepage.",
+    "basis": "Amazon Associates Program Policies page (data/sources.json S34, Participation Requirements 2(a)): 'Special Links must use the Associates ID we have assigned to you', and 2(b): 'you must include your Associates ID or tag (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site'. Commission Income Statement 2(g) (data/sources.json S35, also the Program Policies page) disqualifies 'any Product purchase that is not correctly tracked or reported because the links from your site to the relevant Amazon Site are not properly formatted', and 2(e) disqualifies a Redirecting Link. Observed 2026-11-20: none of the five short links delivered a URL carrying a tag, and all five delivered the Amazon homepage.",
     "limits": "A fetch from outside the account cannot see whether Amazon attaches a tag server-side, and cannot confirm the tracking ID belongs to an eligible enrolled account (FLG-010). The owner test (FLG-006, Q-02, Q-22) settles both.",
     "gates": "scripts/check_site.py rule 7b and tools/check_site.py P09 fail the build if a button loses its tag, loses its product target, or returns to a shortener. Both were negative-tested the same day: they named two untagged hand-written buttons and five untagged generated pages before the fix.",
     "sources": [
@@ -612,7 +612,7 @@
   "integration_repair_2026-11-20": {
     "date": "2026-11-20",
     "session": "arena/6c0972fb-prod3",
-    "flag": "FLG-035",
+    "flag": "FLG-040",
     "what": "Restored the five official_listing_check_2026_11_20 blocks (added by session 59a087a1 in 56cddb5, sources S29-S33) that commit ffcb419 dropped when it rewrote data/products.json, and corrected the README register ranges that were failing gate D37 on main.",
     "why": "flagged.html and air-fryers.html publish the conflicts those blocks document, and the register is the only place a reader can trace a published spec value back to its dated check. Nothing ffcb419 added was changed."
   }

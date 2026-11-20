@@ -2163,4 +2163,28 @@ superiority were made. No product value, link target, or flag was altered.
 
 ### Merge and deploy record (T-57)
 
-_(recorded after the PR merges)_
+- **PR:** #45 — `arena/6f44d8c9-prod3` → `main` — https://github.com/wingbangboozle1-lang/Prod3/pull/45
+- **Outcome:** MERGED. Merge commit `89849e0bdad81ab23f4811a51a5d82df8d60a10a`, merged
+  2026-11-20T07:16:28Z (merged without waiting for approval, per the owner instruction).
+- **Rebases required:** the branch was rebased five times onto `origin/main` as
+  concurrent sessions merged PRs #42–#66 ahead of it (T-46, T-47, T-48, T-49, T-50,
+  T-51/T-54/T-55, T-52, T-56, T-60–T-65). Every rebase resolved conflicts keeping both
+  sessions' work; no upstream work was discarded. This task renumbered T-46 → T-51 →
+  T-53 → **T-57** under the board's one-identifier-one-meaning rule (T-46/T-48/T-51/T-52
+  taken by other sessions, then T-53..T-56 by session `7878cdbe`).
+- **Gates at merge:** all release gates green on the merged tree —
+  `build_chrome.py --check`, `build_registers.py --check`, `build_decisions.py --check`,
+  `build_products.py --check`, `build_readme.py --check`, `build_ideas.py --check`,
+  `build_sitemap.py --check`, `scripts/check_site.py`, `tools/verify_site.py`,
+  `tools/check_site.py` (42 pages, 6,363 assertions), `tools/crawl_links.py`
+  (no broken links, no dead anchors, no orphans).
+- **Deploy:** `Deploy GitHub Pages` workflow run **44693759586** on the merge commit
+  `89849e0` — status `completed`, conclusion `success` (started 2026-11-20T07:16:31Z,
+  finished 07:16:50Z). Live site: https://wingbangboozle1-lang.github.io/Prod3/
+  (Pages source `main`, build type still `legacy` — see FLG-024; the artifact
+  workflow is the authoritative deployer).
+- **Remaining owner gates unchanged:** intended ASINs (FLG-001), Associates account
+  eligibility (FLG-010), Special Link test (FLG-006), Search Console verification
+  (DT-03), analytics endpoint (DT-07), share-debugger check (F-21), and the Pages
+  `build_type` one-click fix (FLG-024). No product value, link target, or flag was
+  altered by this pass.

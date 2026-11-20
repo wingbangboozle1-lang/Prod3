@@ -3037,3 +3037,14 @@ and record; they are restored here verbatim, with that session's rows untouched.
 - **Standing caution for later integrators:** when squashing or replaying multi-session branches,
   re-run `scripts/check_site.py` (marker scan) and read back the live page after deploy; two
   separate integrations on 2026-11-20 silently lost or garbled committed content.
+
+
+### Merge and deploy record — T-78 (2026-11-20)
+
+- **PR #88** — https://github.com/wingbangboozle1-lang/Prod3/pull/88 — merged to `main` with `gh pr merge 88 --merge` as merge commit **`a5a100e`**. Three earlier merge attempts hit in-flight upstream merges (PRs #76/#77/#83/#89/#92/#94 landed during the round); each retry re-merged `origin/main`, re-ran every gate, and kept both sides' work (the collision chain is recorded above).
+- **Pages deploy** — `Deploy GitHub Pages` run **`44697488609`** (triggered by the PR #88 merge push) completed **success**.
+- **Live verification (2026-11-20, fetched from the deployed site after the run):**
+  - `https://wingbangboozle1-lang.github.io/Prod3/index.html` — new hero and the "2 × 3 quart baskets" feature figure are live;
+  - `…/articles/are-air-fryers-worth-it.html` — live, full text, disclosure above the first heading, Amazon anchors carrying the tag;
+  - `…/articles/smart-thermometer-questions.html` — live, full text, same.
+- This record itself is merged in the follow-up micro-PR that carries it, per the board convention.

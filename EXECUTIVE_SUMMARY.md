@@ -107,7 +107,7 @@ anchors, 0 orphans) all pass on the merged tree.
 **Gates at the close of the product-page pass (T-38, session fe5fd1d9, 2026-11-20):** the same
 suite on the rebased tree, which also carries the ideas-hub merge (36 pages) — `build_chrome
 --check`, `build_registers --check`, `build_decisions --check`, `build_sitemap --check`,
-`scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` (36 pages, 4,607
+`scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` (36 pages, 4,729
 assertions) and `tools/crawl_links.py` (36 pages, 35 reachable, 0 broken links, 0 dead anchors,
 0 orphans) — all pass. A token-level trace check asserts every numeric and model value on the
 five product pages appears in `data/products.json` (0 untraced), and every flag reference on

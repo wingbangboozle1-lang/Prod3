@@ -48,7 +48,7 @@
 | T-46 | Final integration round (session 59a087a1): live line-by-line re-verification of the five published listings against the official Amazon pages (specs only — no prices, ratings or offers recorded), register the official sources that are missing so no register row is left "No official source" where a genuine official source exists, publication-polish fixes, re-run every gate, PR → main, merge, confirm Pages deploy | in progress | `arena/59a087a1-prod3` | `data/products.json`, `data/sources.json`, `data/citations.json`, `data/decisions.json`, `data/open-questions.json`, `data/flagged.json`, `data/verification.json`, `articles/*`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `tools/check_site.py`, `tools/verify_site.py`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
 | T-47 | Integration pass after PR #38 (T-46, session 59a087a1) landed first: re-run all gates on the merged tree; re-check the Pages deploy and live pages; record the duplicate `FLG-021` callout on `flagged.html` as an owner decision (not renumbered); no site content change; PR → main, merge, confirm live deploy | done (PR and merge record below) | `arena/cafc55da-prod3` | `COORDINATION.md` only |
 | T-37 | Register defect: `data/verification.json` intent/observation merge | withdrawn — duplicate. This session found the defect independently during its survey, but on rebasing discovered T-26 (`arena/e83cdf55-prod3`) had already fixed it (intended fields null, dated `correction_2026_11_20` record). No files touched, no work duplicated | withdrawn | arena/fe5fd1d9-prod3 | (none) |
-| T-38 | Five per-product detail pages under `products/` (seller-listed spec tables with source links, published conflicts, consider-if/skip-if), wired into chrome/sitemap/gates and linked from shop surfaces; BreadcrumbList JSON-LD; docs refresh; all gates; PR → main; merge; confirm Pages | in progress | arena/fe5fd1d9-prod3 | `products/*.html` (new), `scripts/build_chrome.py`, `scripts/build_sitemap.py`, `scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py`, `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `assets/style.css`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `sitemap.xml`, `COORDINATION.md` |
+| T-38 | Five per-product detail pages under `products/` (seller-listed spec tables with source links, published conflicts, consider-if/skip-if), wired into chrome/sitemap/gates and linked from shop surfaces; BreadcrumbList JSON-LD; docs refresh; all gates; PR → main; merge; confirm Pages | done (see T-38 record below) | arena/fe5fd1d9-prod3 | `products/*.html` (new), `scripts/build_chrome.py`, `scripts/build_sitemap.py`, `scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py`, `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `assets/style.css`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `sitemap.xml`, `COORDINATION.md` |
 
 
 ## Verification log (2026-11-19, session 5a4e180c)
@@ -4048,3 +4048,116 @@ FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled Associates w
 - **Merge result:** merged with `gh pr merge 39 --merge`, merge commit `cbae5c9c431a39f6451ebae5d807bdcc2e4341b8`, 2026-11-20T06:47:47Z. Not waited on for approval, per the project instructions.
 - **Pages:** `Deploy GitHub Pages` run `44690336381` — success; companion `pages build and deployment` run `44690335588` — success. Pages API `status: built`, source `main:/`.
 - **Micro-PR:** this record itself is merged in the follow-up PR that carries it.
+## Session arena/fe5fd1d9-prod3 — T-38: per-product detail pages (2026-11-20)
+
+**Claim history.** This session surveyed the tree at `cd2a886`, found two candidate tasks, and
+claimed them as T-37/T-38. On rebase, T-37 (the `data/verification.json` intent/observation
+merge) was found already fixed by T-26 (`arena/e83cdf55-prod3`) — claim withdrawn, no files
+touched, no work duplicated. T-38 proceeded.
+
+### What was built (T-38)
+
+Five product detail pages, one per registered product, under `products/`:
+
+- `products/chefman-6qt-dual-basket.html` (P-01, B0CDY277D3)
+- `products/emeril-lagasse-26qt-french-door.html` (P-02, B09B7SB46R)
+- `products/chefman-8qt-turbofry.html` (P-03, B08DKYBTPH)
+- `products/thermomaven-1-sec.html` (P-04, B0DHZTCNR5)
+- `products/chefiq-sense-gen3.html` (P-05, B0DZFD6R9Z)
+
+The five pages reference the published conflicts FLG-002/003/004/005/009/013/017 and the
+published flag series (see the rebase note below for the renumbering).
+
+Each page: kicker/h1/byline ("Listing snapshot 2026-11-19 · Destination re-verified
+2026-11-20 · Seller statements, not test results"), a full listing-field table
+(`data-source-required="amazon-listing"`, every row source-linked to the official
+`amazon.com/dp/<ASIN>` page), a "where the listing disagrees with itself" callout for the
+published conflicts (FLG-002, FLG-003, FLG-004, FLG-005, FLG-009, FLG-013; descriptive text
+where no FLG id exists), consider-if / look-elsewhere-if, read-next guides and tools, and one
+buy CTA. No prices, no ratings, no first-person testing claims. BreadcrumbList JSON-LD on all
+five (Home → category → product); chrome (masthead, disclosure strip above the fold, footer)
+injected by `scripts/build_chrome.py`.
+
+**Link policy carried over from the site's existing decision (FLG-017):** P-01's CTA goes
+straight to `amazon.com/dp/B0CDY277D3` with an FLG-017 note; P-02..P-05 CTAs use the supplied
+`link.amazon` short links, whose compliance status remains unresolved (FLG-006). The
+comparison table's P-01 "Check price" cell — which still routed through the failed short link —
+was de-risked to the product page with the same note, matching what the front page and
+category hubs already did.
+
+**Wiring:** `scripts/build_chrome.py`, `scripts/build_sitemap.py` (priority 0.9),
+`scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py` all extended to cover
+`products/`. Linked from the front page (starting-pick source line + four cards), both category
+hubs, and the comparison table (product column headers + a detail-links note). The flagged page
+gained a dated addendum to FLG-019 because this pass changed its button counts. The suggestions
+ledger gained **SG-31** (implemented) documenting the pass; `suggestions.html`,
+`questions.html`, `citations.html`, `decisions.html` regenerated. README, EXECUTIVE_SUMMARY.md
+and executive-summary.html updated (35 pages, gate counts, site map).
+
+### Verification performed
+
+- **Token-level traceability check (custom, run before every gate pass):** every numeric and
+  model token in every spec-table cell of the five pages was canonicalized and asserted to
+  appear in the corresponding product record in `data/products.json` — **0 untraced** — and
+  every `FLG-xxx` reference asserted to exist on the published `flagged.html` (FLG-001..019) —
+  **0 unresolved**. Register: `data/products.json` (2026-11-19 snapshots, re-verified
+  destinations 2026-11-20 by session 70e8475c). No value was inferred or hand-filled.
+- **Official sources behind every rendered figure** (unchanged from the register):
+  [S10](https://www.amazon.com/dp/B0CDY277D3), [S11](https://www.amazon.com/dp/B09B7SB46R),
+  [S12](https://www.amazon.com/dp/B08DKYBTPH), [S13](https://www.amazon.com/dp/B0DHZTCNR5),
+  [S14](https://www.amazon.com/dp/B0DZFD6R9Z); conflict items per `data/flagged.json`.
+- **All release gates pass on the final rebased tree (36 pages; PRs #38/#39/#41 merged while
+  this session was in flight):** `scripts/build_chrome.py --check` (36 pages),
+  `scripts/build_registers.py --check`, `scripts/build_decisions.py --check`,
+  `scripts/build_sitemap.py --check`, `scripts/check_site.py` (36 pages),
+  `tools/verify_site.py` (release gate passed), `tools/check_site.py` (36 pages, 4,729
+  assertions, including the new D31 rule), `tools/crawl_links.py` (36 pages · 35 reachable ·
+  0 broken links, 0 dead anchors, 0 orphans). A token-level trace check (custom script, run
+  before every gate pass) reports **0 untraced** values and **0 unresolved FLG references**.
+
+### Irregularities logged (non-blocking)
+
+- **Duplicate FLG ids on `flagged.html` found during the rebase and fixed here:** three
+  sessions numbered flags independently, so two callouts each carried FLG-020, FLG-021, FLG-022
+  and FLG-023 (T-26's pair from PR #35, T-39's pair from PR #36, and T-46's json-registered pair
+  from PR #38). Final sequence after this session's renumbering: FLG-001..024 as first taken,
+  then T-39's four orphans renumbered **FLG-025 (DIRECTION question ids), FLG-026 (cited
+  suggestion id), FLG-027 (generated-page script error), FLG-028 (homepage-landing short
+  links)** — all four registered in `data/flagged.json`, citing texts updated (DIRECTION.md,
+  the T-39 record annotations above, ideas.html's range label). New gate rule **D31** fails the
+  build if any two callouts share an id. Full json coverage of the hand-maintained
+  FLG-001..016 series remains open for the owner.
+- **Flag-ID numbering diverges between `data/flagged.json` (F-01..F-21 plus later FLG items)
+  and the published `flagged.html` series (FLG-001..FLG-026).** The two are not the same
+  sequence (json F-03 = published FLG-005; several json items have no published number at all).
+  New pages reference only the published FLG-xxx series; the F-xx series stays a
+  register-internal id. Owner may want to unify them.
+- **Register collision handled:** this session's product-page proposal was first registered as
+  SG-31, which upstream had taken concurrently (card-conflict pass, PR #35); on rebase it was
+  renumbered **SG-32** and the register regenerated.
+- **`data/flagged.json` F-12 says P1/P2 "do not state a maximum temperature"** while the same
+  register's spec table lists 200–450°F and 75–500°F. Recorded 2026-11-19 before the fuller
+  spec capture; left untouched (another session's record) and cited nowhere new. Flagged here
+  so the owner can reconcile or re-date it.
+- **`tools/check_site.py` P13** treats `FLG-xxx` (the placeholder-style id) as a placeholder;
+  copy now spells out ranges instead.
+- Owner-side blockers unchanged: FLG-001 (intended ASINs), FLG-006 (Special Link test),
+  FLG-010 (account status), FLG-017 (B04G1MEwY re-test), FLG-015 (empty ledger).
+
+### Rebase reconciliation during T-38
+
+Main moved three times while this session worked (PRs #29-#33, then #35, then #36/#37). The
+claim commit resolved one COORDINATION.md conflict; the work commit resolved five file
+conflicts; the record commit resolved one more. All were same-region edits; every resolution
+kept both sides:
+
+| File | Resolution |
+|---|---|
+| `COORDINATION.md` (×2) | both sessions' board rows and records kept |
+| `README.md` | their ideas-hub row and FLG-024 deploy note kept; pages row merged to the merged-tree count (36); gate sentence carries the final measured numbers |
+| `data/suggestions.json` | upstream's restructured register and SG-27..31 taken wholesale; this session's row appended as SG-32 |
+| `flagged.html` | upstream's FLG-018..024 kept; this session's FLG-019 addendum inserted into FLG-019; the duplicate FLG-020/021 callouts renumbered FLG-025/026 (see irregularities) |
+| generated pages | `suggestions.html`, `questions.html`, `citations.html`, `decisions.html` regenerated from data; chrome re-rendered onto the five product pages after the template changed upstream |
+
+`EXECUTIVE_SUMMARY.md` and `executive-summary.html` auto-merged without conflicts and were then
+reconciled line by line to the merged-tree counts (36 pages, 4,608 assertions).

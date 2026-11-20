@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://wingbangboozle1-lang.github.io/Prod3/direction.html">
-<title>Direction — Suggestions, Open Questions & Path Chooser | Kitchen Counter</title>
-<meta name="description" content="Kitchen Counter's direction section: improvement suggestions, open questions, missing information, and a path chooser for review before implementation.">
-<meta property="og:title" content="Direction — Suggestions, Open Questions & Path Chooser">
+<title>Direction — Decision Log, Path Chooser &amp; Design Brief | Kitchen Counter</title>
+<meta name="description" content="Kitchen Counter's dated decision log and costed path chooser, plus the design brief and working-title clusters for the next pass, reviewed before anything is implemented.">
+<meta property="og:title" content="Direction — Decision Log, Path Chooser &amp; Design Brief">
 <meta property="og:description" content="Suggestions and open questions, reviewed before anything is implemented.">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://wingbangboozle1-lang.github.io/Prod3/assets/og-image.png">
@@ -36,14 +36,14 @@
 </nav>
 <!-- build-chrome:header:end -->
 <main id="main"><div class="article" style="max-width:1000px">
-<p class="kicker">Direction · Decision log and path chooser</p>
-<h1>Direction: decisions, the path chooser, and where the registers live</h1>
+<p class="kicker">Direction · Decision log, path chooser and design brief</p>
+<h1>Direction: decisions, the path chooser, and the brief for the next design pass</h1>
 <div class="callout"><strong>What changed on 2026-11-20.</strong> Three things a reader can see. Every buy button now opens the product page directly and carries this site&rsquo;s Associates tag, because that is the link format the program&rsquo;s Participation Requirements name (<a href="flagged.html">FLG-039</a>) — previously some buttons routed through short links that landed on the Amazon homepage. Thirteen question-shaped guides ship, including the ice-water thermometer check, the leftovers-and-reheating guide and a walk-through of how to read a listing. And the flag register is checked in both directions now, so a finding cannot exist only in a JSON file or only on the page (<a href="flagged.html">FLG-040</a> records what prompted it: an integration rewrite dropped another session&rsquo;s dated listing checks).</div>
-<p class="byline">Kitchen Counter · Updated 2026-11-20 · Decisions recorded here; proposals live in the suggestions register</p>
+<p class="byline">Kitchen Counter · Updated 2026-11-20 · Decisions recorded here; proposals live in the suggestions register; choices are made on the decision desk</p>
 
 <p>This page is where the site's next moves are chosen. Each suggestion carries a status: <strong>implemented</strong> means it shipped and you can inspect it; <strong>proposed</strong> means it waits for a path. Each open question carries the concrete action that would answer it — and who can take that action. Nothing here is a claim about popularity, traffic, or product superiority.</p>
 
-<div class="callout"><strong>Current status (registers last generated 2026-11-20):</strong> the front page leads with product cards, chooser, seasonal guides, and comparison data. SG-17 keeps price display off unless compliant Amazon-served or API data is configured. F-21 / Q-21 concern whether the shipped 1200×630 PNG social-preview image renders in external share debuggers; the former SVG format issue is resolved. The complete suggestion list is in the <a href="suggestions.html">Suggestions register</a>.</div>
+<div class="callout"><strong>Current status (registers last generated 2026-11-20):</strong> the front page leads with product cards, chooser, seasonal guides, and comparison data. SG-17 keeps price display off unless compliant Amazon-served or API data is configured. F-21 / Q-21 concern whether the shipped 1200×630 PNG social-preview image renders in external share debuggers; the former SVG format issue is resolved. The complete suggestion list is in the <a href="suggestions.html">Suggestions register</a>. The SG-20/SG-21 register defect is resolved: SG-20&rsquo;s clobbered content was recovered from PR #17 history (commit <code>7fbef67</code>) and SG-21 is restored as its own proposal.</div>
 
 <h2>Selected suggestion snapshot — SG-01 to SG-19: a historical slice, not the register</h2>
 <p class="small muted">This embedded snapshot is not the full or authoritative list. Suggestions SG-20..SG-47 were added later (SG-21 is retired in place as a duplicate of SG-20; the ID slot between SG-25 and SG-27 is unoccupied, FLG-029); the complete current register, including options and recommendations, is <a href="suggestions.html">the suggestions register</a>. This snapshot is not extended further; SG-20 onward and Q-22 onward are published only in the registers, so there is one place a row can be out of date, and it is the generated one.</p>
@@ -70,7 +70,7 @@
 <tr><td><strong>SG-18</strong></td><td>Choose guide nine from measured queries, not instinct<br><span class="muted small">Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.</span></td><td><span class="badge grey">proposed</span></td><td>S</td><td>medium</td><td>editorial</td></tr>
 <tr><td><strong>SG-19</strong></td><td>Mobile-first tap-target pass: every control ≥44px, 48px at touch widths, ≥8px spacing<br><span class="muted small">Affiliate traffic is majority mobile; small overlapping targets are a mis-tap generator. Shipped by session 65474d4f (S-20), recorded as SG-19.</span></td><td><span class="badge green">implemented</span></td><td>S</td><td>high</td><td>engineering</td></tr>
 </tbody></table></div>
-<p class="small muted">The embedded rows above are a historical snapshot through SG-19, not a complete index. Full problem statements, options, statuses, and recommendations for all 47 registered suggestion ids (46 rows; SG-21 is retired in place and the slot between SG-25 and SG-27 is unoccupied) live in the generated <a href="suggestions.html">Suggestions register</a> from <code>data/suggestions.json</code>.</p>
+<p class="small muted">The embedded rows above are a historical snapshot through SG-19, not a complete index. Full problem statements, options, statuses, and recommendations for all 58 registered suggestions live in the generated <a href="suggestions.html">Suggestions register</a> from <code>data/suggestions.json</code>.</p>
 
 <p class="small muted">Source for SG-19: Google, <em>Tap targets are not sized appropriately</em> — targets below 48×48px that overlap a neighbour fail the audit; ~8px spacing recommended. Recorded as <a href="sources.html">S19 in the source register</a>.</p>
 
@@ -110,8 +110,8 @@
 <p class="small muted"><strong>owner-only</strong> questions cannot be answered from outside your Amazon Associates and Search Console accounts — and several of them (Q-02, Q-04, Q-08, Q-09, Q-18, Q-19) cost minutes each: they are the shortest path to unblocking the board. <strong>blocking</strong> means a real decision waits on it; <strong>queued</strong> means before the next release; <strong>watch</strong> means traffic will answer it.</p>
 
 
-<h2>Three registers, one source of truth</h2>
-<p>Suggestions, open questions and decisions used to share this page. They are now separate so that an identifier means one thing: <a href="suggestions.html">the suggestions register</a> (SG-01..SG-54, generated from <code>data/suggestions.json</code>; SG-21 retired in place and the slot between SG-25 and SG-27 is unoccupied, FLG-029), <a href="questions.html">the open-questions register</a> (Q-01..Q-29, generated from <code>data/open-questions.json</code>), and the decision log below. Both registers are rebuilt by <code>scripts/build_registers.py</code>, and the release gate fails if a page drifts from its data.</p>
+<h2>Registers, one source of truth</h2>
+<p>Suggestions, open questions and decisions used to share this page. They are now separate so that an identifier means one thing: <a href="suggestions.html">the suggestions register</a> (SG-01..SG-58, generated from <code>data/suggestions.json</code>), <a href="questions.html">the open-questions register</a> (Q-01..Q-29, generated from <code>data/open-questions.json</code>), and the decision log below. Both registers are rebuilt by <code>scripts/build_registers.py</code>, and the release gate fails if a page drifts from its data.</p>
 <h2>Decision log: what has actually been decided</h2>
 <p>Each row is a decision with the authority behind it. A row with no source is not a decision; it is an intention.</p>
 <div class="table-wrap"><table>

@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-20",
-  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-31 added 2026-11-20 (session ce911db5) to give the conflict chip its own registered row; SG-26 is absent from this register and was cited by DIRECTION.md — see FLG-029.",
+  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-31 added 2026-11-20 (session ce911db5) to give the conflict chip its own registered row; SG-26 is absent from this register and was cited by DIRECTION.md — see FLG-029. Session arena/80802891-prod3 (T-27, 2026-11-20, integration merge): SG-20's content, clobbered during PR #17's merge replay, was recovered verbatim from PR #17's own history (commit 7fbef67) and SG-21 restored to its distinct 'spine' proposal — both live again; the SG-21 tombstone is withdrawn and FLG-021 item (3) is resolved. SG-26 is now the reader-facing polish-path row carrying the parallel passes SG-27..SG-31, which resolves FLG-021's gap note. SG-55..SG-58 add the design-brief rows (analytics endpoint, design brief for the next design pass, seasonal clusters as working titles only, publishing cadence — the latter recorded as decided in DT-10). All previously registered rows (SG-27..SG-54) are kept verbatim.",
   "scale": {
     "effort": [
       "S — a short session",
@@ -387,6 +387,31 @@
     },
     {
       "id": "SG-20",
+      "title": "Ask the Associates account one question and let the answer price the whole site",
+      "problem": "Every commercial decision here — whether the short links earn, whether the tag is attached, which product is worth writing about — is blocked on facts that live inside one dashboard nobody outside can open.",
+      "evidence": "The links resolve to the right five listings (S10-S14, observed 2026-11-19), but the served URLs carried no visible tag= (F-09), and Program Policies 2(a) requires the Special Links to use the assigned Associates ID (S02). 2026-11-20 re-check: four of the five short links still resolve to their listings; B04G1MEwY resolved to the Amazon homepage instead (FLG-017).",
+      "options": [
+        "A. Owner opens Associates Central, uses SiteStripe on one product, and copies the generated link. Five minutes.",
+        "B. Owner runs one test click and checks Click Reports the next day to confirm the tag reported.",
+        "C. Leave it and publish anyway, accepting that any traffic may earn nothing."
+      ],
+      "recommendation": "A then B, before any promotion. It is the cheapest task on the board and it decides whether the rest is worth doing.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "owner",
+      "blocks": "Any claim that the site earns, and the next content investment",
+      "sources": [
+        "S02",
+        "S10",
+        "S11",
+        "S12",
+        "S13",
+        "S14"
+      ]
+    },
+    {
+      "id": "SG-21",
       "title": "Pick one product as the site's spine and let the other four support it",
       "problem": "Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.",
       "evidence": "The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google's thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).",
@@ -407,34 +432,6 @@
         "S12",
         "S13",
         "S14",
-        "S21",
-        "S22"
-      ]
-    },
-    {
-      "id": "SG-21",
-      "title": "[RETIRED — duplicate of SG-20] Pick one product as the site's spine and let the other four support it",
-      "problem": "Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.",
-      "evidence": "The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google's thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).",
-      "options": [
-        "A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.",
-        "B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.",
-        "C. Keep the current two-family balance and expand only when the analytics say which family reads better."
-      ],
-      "recommendation": "A. Air fryers have the wider search intent and three products to compare, which is enough for a comparison table that earns its place. Revisit at the first Search Console report. (Retired 2026-11-20 — this row duplicated SG-20 exactly; act on SG-20.)",
-      "effort": "M",
-      "confidence": "medium",
-      "status": "retired",
-      "decision_owner": "owner",
-      "blocks": "Which guides get written next",
-      "retired_note": "Verified duplicate on 2026-11-20: SG-20 and SG-21 carried byte-identical title, problem, evidence, options, recommendation, effort, confidence, owner and blocks fields. SG-21 is retained here as a retired row rather than deleted, so the register shows what happened instead of silently shrinking. Action SG-20, never both.",
-      "sources": [
-        "S10",
-        "S11",
-        "S12",
-        "S13",
-        "S14",
-        "S21",
         "S22"
       ]
     },
@@ -517,6 +514,28 @@
       "status": "implemented",
       "decision_owner": "engineering",
       "blocks": "Nothing"
+    },
+    {
+      "id": "SG-26",
+      "title": "Run the reader-facing polish path: authorship, navigation, brand, imagery, seasons, and clusters",
+      "problem": "Careful data is not the same as a published page. The levers that make a site feel published rather than generated are reader-facing: who wrote it, where the navigation takes you, how the brand sounds, what the imagery is allowed to be, which season the page acknowledges, and which guides cluster together.",
+      "evidence": "The site already ships some of each: one navigation group rendered from scripts/build_chrome.py on all 30 pages, a seasonal front-page section and a holiday cluster (SG-28), typographic listing art under the Program Content image rule (SG-11, S01). What is missing is the named editor (SG-24, Q-05) and any settled imagery policy (DT-04, FLG-008). Google's people-first guidance asks who created the content (S21).",
+      "options": [
+        "A. Run the whole path as one pass once Q-05 (named editor) and DT-04 (imagery) are answered.",
+        "B. Run the free levers now — navigation labels, brand voice in the masthead and About copy, seasonal framing, guide clusters — and leave authorship and imagery until the owner answers.",
+        "C. Do nothing until measured queries arrive (SG-29); polish cannot be prioritised without data."
+      ],
+      "recommendation": "B now, A as soon as Q-05 and DT-04 land. The free levers change how the site reads without changing what it claims, which is exactly the safe half of this path.",
+      "effort": "M",
+      "confidence": "medium",
+      "status": "partly implemented",
+      "decision_owner": "owner",
+      "blocks": "the next design pass (see SG-56)",
+      "sources": [
+        "S01",
+        "S12",
+        "S21"
+      ]
     },
     {
       "id": "SG-27",
@@ -1100,6 +1119,93 @@
       "status": "proposed",
       "decision_owner": "owner",
       "blocks": "any future automation of listing or price data (follow-on to DT-02)"
+    },
+    {
+      "id": "SG-55",
+      "title": "Stand up the self-hosted analytics endpoint the spec already describes, or keep measurement local-only",
+      "problem": "The click counter works but stores counts in the visitor's own browser; the site can see nothing, and the campaign ledger stays empty (FLG-015). The brief wants click and conversion measurement before more writing.",
+      "evidence": "assets/app.js defines the five events (page_view, outbound_click, article_read, chooser_complete, reader_signup) and posts to an ENDPOINT setting that is blank; docs/analytics-endpoint.md is the written spec (path, product id, timestamp only; no cookies; IP discarded before write). Any tracking in use must be disclosed accurately (S01), and emails carrying Special Links need opt-in (S02).",
+      "options": [
+        "A. Stand up the endpoint per docs/analytics-endpoint.md on the owner's host, then let the ledger fill only from first-party reports (SG-14).",
+        "B. Keep localStorage-only counters; publish no site-wide numbers.",
+        "C. Search Console only (SG-29) and drop page-level events entirely."
+      ],
+      "recommendation": "A or C before any optimisation work. B is honest but leaves the campaign ledger permanently empty; the choice is the owner's because the host and the privacy posture are.",
+      "effort": "M",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "owner",
+      "blocks": "campaign-ledger population (FLG-015) and any conversion talk",
+      "sources": [
+        "S01",
+        "S02",
+        "S22"
+      ]
+    },
+    {
+      "id": "SG-56",
+      "title": "Design brief for the next design pass: the concrete asks that beat the generated look",
+      "problem": "The site should read as a polished shop a buyer trusts, not as generated filler. A design pass needs a brief with specific asks, not a mood — and it must stay inside the image rights the Operating Agreement actually grants.",
+      "evidence": "The shipped design system already carries typographic listing art (SG-11), a product-led front page (SG-15), one type scale in assets/style.css and the chrome generator (S25). Program Content covers images Amazon provides, not photographs scraped from listings (S01; FLG-008, DT-04). Google's people-first guidance rewards pages made for readers (S21) and its thin-affiliation section penalises link-only pages (S22).",
+      "options": [
+        "A. Full pass once imagery is settled (DT-05 buys units, owner supplies photography): named-editor note, hero imagery, seasonal hero rotation, refined product-card grammar.",
+        "B. Rights-free pass now: named-editor note on the pages that speak with authority (pending Q-05), a seasonal hero rotation using the existing typographic art, one consistent product-card grammar (title, spec chips, conflict marker, CTA), and a single accent treatment for CTAs.",
+        "C. No design work until measured queries (SG-29) say which pages matter."
+      ],
+      "recommendation": "B now — it is the only option that does not wait on money, rights or data — and feed these asks to the design prompt directly. A folds in when DT-05 answers.",
+      "effort": "M",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "design",
+      "blocks": "the next design prompt",
+      "sources": [
+        "S01",
+        "S21",
+        "S22",
+        "S25"
+      ]
+    },
+    {
+      "id": "SG-57",
+      "title": "Seasonal topic clusters: working titles for the next cluster, chosen as moments, not products",
+      "problem": "Catchy, trend-aware coverage comes in clusters around moments buyers actually live through — holidays, game day, the new-year reset — not around ASINs. The titles below are working titles only: they are not claims about popularity, search volume or product superiority.",
+      "evidence": "The holiday cluster shipped: the gift guide and the Thanksgiving temperature plan are both in feed.xml and the sitemap (SG-28). The four buyer-question guides from the brief (basket-or-oven, capacity checklist, cleanup and counter space, questions before multi-function) are live and sourced. Google's thin-affiliation policy is the guardrail: each cluster guide must answer a question first and link second (S22); people-first guidance asks for first-hand knowledge where it exists (S21).",
+      "options": [
+        "A. Pre-build the 'New-year reset: cooking to a target temperature' cluster (working titles: 'Cook to a temperature, not to a color', 'What ±0.5°F actually means on a spec sheet', 'Cleanup routines that survive January').",
+        "B. Pre-build the 'Game-day and crowd cooking' cluster (working titles: 'Air frying for a crowd: what the label doesn't tell you', 'Two-zone cooking without the guesswork', 'How big is it really: leftovers edition').",
+        "C. Wait for the first Search Console query report (SG-29) and let measured queries pick between A, B, and anything else."
+      ],
+      "recommendation": "C as the rule, with A and B pre-vetted so the first measured topic ships in days, not weeks. No cluster guide is written before the query data exists.",
+      "effort": "M",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "the title choice for the next guide (SG-18, SG-29)",
+      "sources": [
+        "S21",
+        "S22"
+      ]
+    },
+    {
+      "id": "SG-58",
+      "title": "Publishing cadence: one question-shaped guide a month, joined to the sitemap and the feed on day one",
+      "problem": "Q-14 was unanswered when this row was written and DT-10 prices the choice. An unstated cadence becomes 'when someone remembers', which is how a publication dies between guides.",
+      "evidence": "The decision desk's Path B already costs 'one guide a month' as its writing commitment (data/decisions.json). The sitemap and feed join is automatic through the gates (SG-28), so the only human promise is the writing. Guides ship across two categories (this page makes no count claim); the next one waits on measured queries (SG-18, SG-29). The cadence is now recorded as a decision: one question-shaped guide a calendar month, next guide due 2026-12-31 (DIRECTION.md decision-log row, 2026-11-20; DT-10; docs/publishing-cadence.md). SG-28's freshness gates join every shipped guide to the sitemap and the feed on day one.",
+      "options": [
+        "A. Fixed: one question-shaped guide a month, published when the gates pass.",
+        "B. Ready-when-ready: no promise, no cadence line on the site.",
+        "C. Aggressive: one a week, chosen from measured queries."
+      ],
+      "recommendation": "A. It matches what Path B already costs, it is keepable by one desk, and the honest cadence line can go on the About page the day the owner confirms it (Q-14).",
+      "effort": "S",
+      "confidence": "high",
+      "status": "implemented",
+      "decision_owner": "owner",
+      "blocks": "the editorial calendar and the About page cadence line",
+      "sources": [
+        "S21",
+        "S22"
+      ]
     }
   ],
   "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed. | 2026-11-20 (session f3900cd3): this session's four rows were renumbered twice while the branch was open — first written SG-32..SG-35, then SG-36..SG-39, now SG-39..SG-42 — each time because another session had registered different proposals under those ids. Text is unchanged; each moved row carries a dated note. No upstream row was edited."

@@ -1295,3 +1295,15 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 - **Live checks after deploy (fetched, not assumed):** the front page and `direction.html` serve the updated content — path chooser shows the canonical “Make it earn / Make it a publication / Narrow and harden” wording with DT references, the snapshot note reads “SG-20..SG-31 … the ID slot between SG-25 and SG-27 is unoccupied, FLG-021”, and the disclosure strip remains above the first heading.
 
 *(final micro-PR: T-26 → T-39 label fix on direction.html + this record)*
+
+## T-46 completion record (arena/59a087a1-prod3)
+
+- Status: done — ready for PR to main.
+- Official listing checks, 2026-11-20 (fetch_page of amazon.com/dp pages): S29 B0CDY277D3, S30 B09B7SB46R, S31 B08DKYBTPH, S32 B0DHZTCNR5, S33 B0DZFD6R9Z. Recorded in data/products.json under `official_listing_check_2026_11_20`; intended-ASIN fields are unchanged (still owner-unconfirmed, FLG-001).
+- New conflicts published: FLG-022 (P-01 title 6 qt vs details table 6 liters); FLG-023 (P-03 450°F title vs 200–400°F spec; 1000W bullet vs 1700W spec). Cards on air-fryers.html now show both readings.
+- Google Search Console sources registered: S26 (developers.google.com Search Console get-started), S27 (support.google.com ownership verification 9008080), S28 (support.google.com getting started 10267942). DT-03 now cites S26–S28 (evidence verified); Search Console questions cite them too.
+- questions.html: new "Official source" column generated from data/open-questions.json; rows without a registered source show "No official source".
+- Seasonal block corrected: "Thanksgiving is Thursday, 26 November" (2026-11-26 is the fourth Thursday of November).
+- Gates on the rebuilt tree: build_chrome/build_registers freshness OK; check_site.py, verify_site.py, crawl_links.py (31 pages, 30 reachable, no broken links/anchors/orphans), tools/check_site.py all pass.
+- Irregularity logged: flagged.html contains duplicate FLG-020 and FLG-021 identifiers (different subjects, pre-existing); not renumbered in this round — owner to decide.
+- PR #37 Pages runs 44689292593 / 44689291961: outcomes to be confirmed by exact run ID after this push.

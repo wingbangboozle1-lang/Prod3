@@ -207,6 +207,21 @@ def render_questions():
     for q in qs:
         groups.setdefault(q["group"], []).append(q)
 
+    src_by_id = {s["id"]: s for s in json.loads((ROOT / "data/sources.json").read_text(encoding="utf-8"))["sources"]}
+
+    def qsource(q):
+        ids = q.get("sources", [])
+        if not ids:
+            return '<span class="unverified">No official source</span>'
+        out = []
+        for sid in ids:
+            s = src_by_id.get(sid)
+            if not s:
+                raise SystemExit(f"questions.html: cites unregistered source {sid}")
+            rel = "sponsored noopener" if "amazon.com" in s["url"] else "noopener"
+            out.append(f'<a href="{html.escape(s["url"])}" rel="{rel}">{html.escape(sid)}</a>')
+        return " · ".join(out)
+
     def row(q):
         return f'''<tr>
   <td><strong>{html.escape(q["id"])}</strong></td>
@@ -215,6 +230,7 @@ def render_questions():
   <td><span class="small">{html.escape(q.get("unknown", "—"))}</span></td>
   <td><span class="small">{html.escape(q.get("how_to_find_out", "—"))}</span></td>
   <td><span class="small">{html.escape(q.get("who", "—"))} · {html.escape(q.get("cost", "—"))}</span><br><span class="badge grey">{html.escape(q.get("status", "—"))}</span></td>
+  <td class="small">{qsource(q)}</td>
 </tr>'''
 
     sections = []
@@ -222,7 +238,7 @@ def render_questions():
         rows = "\n".join(row(q) for q in items)
         sections.append(f'''<h2>{html.escape(g)} ({len(items)})</h2>
 <div class="table-wrap"><table>
-<thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th></tr></thead>
+<thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
 <tbody>
 {rows}
 </tbody></table></div>''')

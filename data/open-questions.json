@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-20",
-  "premise": "A decision made on missing information is a guess wearing a suit. Each entry states what is known, what is not, why it blocks a decision, and the cheapest concrete action that would answer it. Q-22 and Q-23 were added 2026-11-20 by session ce911db5; the account-status question had been described in DIRECTION.md but never registered (FLG-020).",
+  "premise": "A decision made on missing information is a guess wearing a suit. Each entry states what is known, what is not, why it blocks a decision, and the cheapest concrete action that would answer it. Q-22 and Q-23 were added 2026-11-20 by session ce911db5; the account-status question had been described in DIRECTION.md but never registered (FLG-028).",
   "status_scale": {
     "blocking": "A decision is on hold until this is answered.",
     "queued": "Should be answered before the next content release.",

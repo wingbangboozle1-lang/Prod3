@@ -42,6 +42,7 @@
 | T-23 | Line-by-line verification of data registers and published claims against official sources; fix only demonstrable defects; final integration PR → main, merge, confirm Pages deploy | done (PR #18, https://github.com/wingbangboozle1-lang/Prod3/pull/18) | arena/28d2d6c0-prod3 | `data/sources.json`, `data/analysis.json`, `data/flagged.json`, `data/policy-checks.json`, `sources.html`, `tools/verify_site.py` (source-resolution gate), `COORDINATION.md` |
 | T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
+| T-26 | Publication-polish pass: one nav label for the Direction/Decision-log page (nav + footer agree), RSS `rel="alternate"` in every page head, register SG-27..SG-30 with evidence-based status. (Renumbered from a T-25 claim that collided with arena/70e8475c-prod3's T-25 re-check, merged in PR #27; that re-check is not repeated here.) | in progress | arena/e52053d1-prod3 | `*.html` (nav label + feed head link only), `articles/*.html`, `scripts/build_registers.py`, `data/suggestions.json`, `data/flagged.json`, `suggestions.html`, `questions.html`, `citations.html` (generated), `COORDINATION.md` |
 | T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
@@ -862,3 +863,8 @@ Scope: live re-check only. No intended-ASIN, price, rating, or account value was
 - Not claimed: Associates account status, Special Link test in the enrolled workflow, and any campaign report.
 
 **Remaining owner-side gates:** FLG-001 (intended ASIN per link), FLG-006 (Special Link test), FLG-010 (account), FLG-017 (B04G1MEwY link check in Associates workflow).
+
+
+## Session arena/e52053d1-prod3 — T-26 claim (2026-11-20)
+
+**Collision logged.** This session first claimed T-25 and built a link re-check. Before pushing, `origin/main` gained PR #27 (`arena/70e8475c-prod3`), which already holds T-25 for the same 2026-11-20 re-check and FLG-017. Rebase conflicted on this file. Resolution: the T-25 claim and the duplicate re-check/FLG-017 work were dropped from this branch (kept as patches only, not pushed). The other session's work is kept unchanged. This session now holds **T-26** for the non-overlapping parts.

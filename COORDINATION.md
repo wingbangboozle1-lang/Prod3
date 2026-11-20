@@ -1347,3 +1347,47 @@ FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled Associates w
 - **Pages:** `Deploy GitHub Pages` run `44690336381` — success; companion `pages build and deployment` run `44690335588` — success. Pages API `status: built`, source `main:/`.
 - **Micro-PR:** this record itself is merged in the follow-up PR that carries it.
 
+
+## Session `arena/1fbc2432-prod3` — T-48 independent verification round (2026-11-20)
+
+Claim note: this session first claimed the next free board ID twice and collided both times
+(T-46 with `arena/59a087a1-prod3` / PR #38, then T-47 with `arena/cafc55da-prod3` / PR #39);
+both collisions were resolved by renumbering this session's claim to **T-48** and keeping the
+other sessions' rows untouched. The abandoned remote claim commit (`22bcd7f`) was merged into
+this branch rather than force-pushed away.
+
+### New dated observations (all fetched 2026-11-20, this session's network path; recorded in `data/recheck-2026-11-20-1fbc2432.json`)
+
+1. **All five supplied short links landed on the Amazon.com homepage.** `link.amazon/B04G1MEwY`,
+   `/B02NbDxp3` (reproduced twice in-session), `/B00hJ57DV`, `/B0c8moW59`, `/B0f3GKalj` each ended
+   at `https://www.amazon.com/` (page title "Amazon.com. Spend less. Smile more."), not at a
+   `/dp/` product page. The 2026-11-19 product-page destinations were not reproduced for any of
+   the five in this pass; FLG-017 (P-01) is consistent with these results.
+2. **Diagnostic: the official listing itself is live.** `https://www.amazon.com/dp/B09B7SB46R`
+   served the Emeril Lagasse 26QT product page with the recorded title (browse path Home &
+   Kitchen → … → Air Fryers), so the homepage landings are an observation about short-link
+   resolution, not evidence that any listing is gone. No claim of invalidity is made (FLG-006,
+   FLG-011 unchanged); the remedy is still the owner-side Special Link test (SG-13 option A).
+3. **Official policy pages re-verified verbatim:** Operating Agreement updated 2025-10-15 (§5
+   disclosure sentence exact); Program Policies updated 2026-04-14 — §2(b) price/availability
+   clause, §2(b) tag-parameter and misleading-claims clauses, §2(b) sub-tag clause, product-list
+   original-content clause, and **§6(t) ratings, §6(v) URL-obscuring, §6(w) shortener** all read
+   verbatim; IP License §2(h) (ASINs may be stored indefinitely) and the new **Agent Terms**
+   (§4 of the IP License) noted for any future automated listing access.
+4. **FTC Disclosures 101** (November 2019) and **Google Qualify Outbound Links** (updated
+   2025-12-10) re-read verbatim; both match the registered quotes in `data/sources.json` (S03, S04).
+
+### Defects found, and fixes to be applied (each edit follows this log)
+
+| # | Defect | Evidence before | Fix | Files |
+|---|---|---|---|---|
+| D-1 | The site cites the shortener clause at "§2(b)", but on the live restructured page it is Participation Requirements §6(w); ratings §2(t) and URL-obscuring §2(v) are §6(t) and §6(v). FLG-020 asked for exactly this location. | `policy-checks.json` C-04 requirement says "(UNVERIFIED, see FLG-020)"; `citations.json` S02 entry says "2(t) and 2(v) wording not located"; `suggestions.json` SG-13 evidence cites "2(b)" for the shortener | Cite the verified locations (§6(t)/(v)/(w)) with the 2026-11-20 verbatim basis; mark FLG-020 resolved (located and cited — not inferred; verbatim text recorded) | `data/policy-checks.json`, `data/citations.json`, `data/suggestions.json`, `data/flagged.json`, regenerated `citations.html`, `flagged.html`, `suggestions.html` |
+| D-2 | 18 reader-facing "Check price" CTAs still route through `link.amazon`, whose destinations all landed on the Amazon homepage in this pass; the site already routes P-01 direct for the same reason (FLG-017 note) — the other four cards contradict that treatment | 18 anchors on `index.html` (4), `air-fryers.html` (2), `meat-thermometers.html` (2), `compare.html` (5), `articles/holiday-kitchen-gift-guide.html` (5) | Route all reader CTAs direct to `https://www.amazon.com/dp/<ASIN>` with a dated note; this completes SG-13's standing recommendation ("the site continuing to publish direct URLs either way"); the short links stay in the registers as provenance (`citations.html`, `sources.html` anchors unchanged) | those five HTML files |
+| D-3 | `index.html` product cards each carry two near-duplicate `spec-chips` rows (redundant content, reads machine-assembled) | 4 duplicated chip rows on the front page; category pages have one row per card | Remove the lower duplicate row in each of the four cards | `index.html` |
+| D-4 | New flag needed for observation 1 | No register row for the all-five-homepage result | Add **FLG-025** to `data/flagged.json` + regenerated `flagged.html`; update the stale FLG-017-only notes and the front-page table caption | `data/flagged.json`, `flagged.html`, `index.html`, `air-fryers.html`, `meat-thermometers.html`, `compare.html`, `articles/holiday-kitchen-gift-guide.html` |
+
+Scope note (cross-file): `data/products.json` is **not** edited — the 2026-11-20 recheck evidence
+lives in the new recheck file and in FLG-025, so the register stays untouched while its owner
+session's scope is respected. The registers edited here belong to sessions whose own completion
+records say done (PRs #30/#38 merged); each edit above is a demonstrable defect fix against a
+dated official source, per the board's rules.

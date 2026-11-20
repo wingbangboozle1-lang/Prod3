@@ -7,7 +7,7 @@
       "area": "Disclosure",
       "requirement": "State \"As an Amazon Associate I earn from qualifying purchases.\" clearly and prominently on the site.",
       "source": "S01",
-      "quote_basis": "Section 5 names that exact statement and makes a violation of Section 5 a material breach.",
+      "quote_basis": "Section 5 (\"Identifying Yourself as an Associate\") names the sentence. The material-breach consequence sits in Section 6 (Term and Termination), not Section 5: \"any violation of Section 5 and as specified in the Program Policies will be deemed a material breach of this Agreement.\" Both read on the live page 2026-11-20; the row previously attributed both halves to Section 5.",
       "status": "met",
       "automated": true,
       "evidence": "The exact sentence appears in a strip directly under the masthead on every generated page, and again in the footer. tools/check_site.py fails the build if any page is missing it.",
@@ -51,7 +51,7 @@
       "area": "Pricing",
       "requirement": "Show price and availability only if Amazon serves that data, or it is obtained through the Product Advertising / Creators API.",
       "source": "S02",
-      "quote_basis": "Section 2(b) permits displaying price and availability only in those two cases.",
+      "quote_basis": "Section 2(b) permits displaying price and availability only in those two cases. The same subsection adds that a price shown in a comparison format alongside non-Amazon prices must show the lowest \"new\" price and, where Amazon provides it, the lowest \"used\" Amazon price - read on the live page 2026-11-20, and a condition on any future decision to display prices.",
       "status": "met",
       "automated": true,
       "evidence": "The site stores no price and renders none — no price, no discount, no promotional code, no delivery estimate, anywhere. Prices are visible only on the Amazon page after a click. A checker rule fails the build if a currency pattern appears in generated HTML.",
@@ -155,8 +155,80 @@
       "automated": false,
       "evidence": "Where the listing itself displays a badge such as Amazon's Choice or a sales figure, it is quoted with the capture date and attributed to the listing. No editorial page claims a product is best-selling, trending or better.",
       "gate": "Editorial review of any new superlative."
+    },
+    {
+      "id": "C-15",
+      "area": "Ratings and reviews",
+      "requirement": "Do not display Amazon customer reviews or star ratings, in part or in whole, unless a link to them was obtained through Creators API or PA API (Participation Requirements section 6(t)).",
+      "source": "S02",
+      "quote_basis": "Section 6(t), verbatim from the live page 2026-11-20: no customer review or star rating may be displayed or used \"in part or in whole\" unless a link to it was obtained through Creators API or PA API, under the License terms. The permission is a link to the review, not a rating value to print.",
+      "status": "met",
+      "automated": true,
+      "evidence": "No star rating, rating count or review text appears anywhere on the site; tools/check_site.py rule D10 fails the build on a rendered rating pattern. The 2026-11-19 decision to remove ratings now rests on a located clause rather than a remembered one.",
+      "gate": "D10-no-ratings (tools/check_site.py)."
+    },
+    {
+      "id": "C-16",
+      "area": "Pricing",
+      "requirement": "No price tracking and no price alerting functionality on the site, unless otherwise agreed by Amazon (Participation Requirements section 6(y)).",
+      "source": "S02",
+      "quote_basis": "Section 6(y), verbatim: \"Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.\" Read on the live page 2026-11-20.",
+      "status": "met",
+      "automated": false,
+      "evidence": "The site stores no price and offers no watch, alert, notify-me, back-in-stock or drop-tracking feature, so it complies by absence. The row exists to keep it that way: price alerts are the most commonly proposed return-visitor feature in affiliate plans, and this one is not buildable here without an agreement with Amazon.",
+      "gate": "Refused on this row at proposal time, not deferred. Recorded on ideas.html as an idea the site will not do."
+    },
+    {
+      "id": "C-17",
+      "area": "Automation",
+      "requirement": "Do not artificially generate clicks or impressions on the site, or create Sessions on an Amazon Site, by way of a robot or software program or otherwise (Participation Requirements section 6(s)).",
+      "source": "S02",
+      "quote_basis": "Section 6(s), verbatim: \"You will not artificially generate clicks or impressions on your Site or create Sessions on an Amazon Site, whether by way of a robot or software program or otherwise.\" Read 2026-11-20. Section 5 of the Commission Income Statement adds that tags \"should only be used to benefit from Amazon Associates commissions\", and that claiming the same traffic through another program by manipulating or combining attribution links may end in withheld commissions.",
+      "status": "met",
+      "automated": true,
+      "evidence": "Nothing on the site clicks its own links. The only outbound automation is a passive listener that counts a real visitor's click in that visitor's browser (assets/app.js); it opens no window, prefetches no Amazon URL and sends nothing to any server. The link checker resolves internal targets only; the intake tool records where a supplied link lands as a dated source observation, not as a click event. Any future automated promotion must respect this row: no self-clicking crawler, no synthetic traffic, no prefetch of Special Links.",
+      "gate": "If any automation capable of reaching a URL is added, gate it: outbound requests from CI must be limited to listing reads and must never carry a tag parameter."
+    },
+    {
+      "id": "C-18",
+      "area": "Incentives and channels",
+      "requirement": "Offer no consideration, reward or incentive for using Special Links; keep Special Links out of Amazon's customer-generated content; send email and direct messages only to people who opted in (sections 6(g) and 6(p), and section 4).",
+      "source": "S02",
+      "quote_basis": "Section 6(g) bars offering \"any consideration, reward, or incentive (including any money, rebate, discount, points, donation to charity or other organization, or other benefit) for using Special Links\". Section 6(p) bars Special Links in content placed on an Amazon Site, naming a customer review, forum, Wish List or guide. Section 4 permits Special Links in emails, SMS and direct messaging from your social media Sites only where \"such communications are solicited (i.e., opted into by the receiving customer)\".",
+      "status": "met",
+      "automated": false,
+      "evidence": "No giveaway, rebate, cashback, discount or points offer is tied to a link anywhere; nothing is posted to Amazon; the site sends no email and ships no signup form. The row constrains future plans as much as present state: a lead magnet attached to a newsletter carrying Special Links needs a real opt-in record, and a share-to-unlock mechanic must not become an incentive to click.",
+      "gate": "Review at proposal time. Reader capture stays open because no provider is connected; when one is, the opt-in record is what makes section 4 hold."
+    },
+    {
+      "id": "C-19",
+      "area": "Program Content",
+      "requirement": "Do not add to, delete from or otherwise alter Program Content; do not frame an Amazon Site; do not use Program Content to imply endorsement (sections 6(a), 6(n) and 6(d)).",
+      "source": "S02",
+      "quote_basis": "Section 6(a): Program Content may not be added to, deleted from or otherwise altered \"in any way, including by adding additional information\", except proportional resizing of an image or truncation that does not materially alter meaning. Section 6(n) forbids framing an Amazon Site or any part of it within your Site, including in an embedded web view, while noting that displaying a Special Link per section 2 is not a violation. Section 6(d) forbids using Program Content, including a name or likeness in it, so as to imply endorsement, sponsorship or a commercial tie-in.",
+      "status": "partial",
+      "automated": false,
+      "evidence": "No Amazon page is embedded or framed and no Amazon image, banner or API block is displayed: the product cards are typographic label art made for this site, and listing text is quoted with attribution rather than rendered as Program Content. Whether editorial judgement printed beside a quoted spec field counts as \"adding additional information\" to Program Content is a reading the owner should confirm rather than assume, which is why this row is partial and not met.",
+      "gate": "Keep the standing rule that Program Content is never rendered as a widget. Any API-supplied image or block is checked against 6(a) before it ships, not after."
+    },
+    {
+      "id": "C-20",
+      "area": "Eligibility",
+      "requirement": "The Site must contain original content, be publicly available, and be identified in the Associates application; third-party material must carry significant commentary, analysis or transformation (Participation Requirements section 1).",
+      "source": "S02",
+      "quote_basis": "Section 1: \"Your Site(s) must contain original content and be publicly available via the website address provided in the application. Original content utilizing third-party materials must contain significant commentary, analysis, or transformation to any materials you include.\" The same section requires the Site to be identified in the application and lists unsuitable sites, including those carrying false, deceptive, libelous or defamatory materials.",
+      "status": "partial",
+      "automated": false,
+      "evidence": "The original value today is the dated register: every figure traced to a named listing snapshot, both readings published where a listing contradicts itself, and comparison built from spec fields rather than adjectives. The site is publicly available at the Pages URL. Unresolved: whether this address is registered in the account, and whether volume publishing of generated guides would still satisfy the significant-commentary test. That is the eligibility floor under the automation brief, and it is why each planned guide is gated on a human-verified source row rather than on word count.",
+      "gate": "One row per guide in the editorial plan: the named official source, the dated capture, and what the site added that the listing does not contain. A guide that cannot fill those three is not published."
     }
   ],
   "last_corrected": "2026-11-20",
-  "clause_verification": "Clause numbers and quoted wording were re-read from the live Program Policies page (page states Updated 2026-04-14) and the Operating Agreement (2025-10-15) on 2026-11-20. Corrections: the customer-ratings rule is Section 6 item (t); URL obscuring is 6(v); the shortener rule is 6(w). Earlier drafts attached those three rules to Section 2, which on that page is titled \"Links on Your Site\" and has subsections (a) and (b) only. Every clause cited here is recorded with its quotation in data/policy-clause-map.json, and gate D35 fails the release if a clause letter that is not in that map is cited."
+  "clause_verification": "Clause numbers and quoted wording were re-read from the live Program Policies page (page states Updated 2026-04-14) and the Operating Agreement (2025-10-15) on 2026-11-20. Corrections: the customer-ratings rule is Section 6 item (t); URL obscuring is 6(v); the shortener rule is 6(w). Earlier drafts attached those three rules to Section 2, which on that page is titled \"Links on Your Site\" and has subsections (a) and (b) only. Every clause cited here is recorded with its quotation in data/policy-clause-map.json, and gate D35 fails the release if a clause letter that is not in that map is cited.",
+  "citation_correction_2026_11_20": {
+    "what": "Three clauses were cited to a Section 2 letter that does not exist, and two of them were then recorded on this site as impossible to find. A second pass, reading the page section by section instead of searching for a remembered number, located all of them.",
+    "detail": "Section 2 (\"Links on Your Site\") has subsections (a) and (b) only. The reviews/ratings, URL-obscuring and link-shortener clauses are sections 6(t), 6(v) and 6(w); price alerts are 6(y); synthetic traffic is 6(s); incentives are 6(g). The price, comparison-format, misleading-claims, sub-tag, product-list and tag-as-parameter rules really are 2(b) and were cited correctly.",
+    "method": "Every clause is transcribed from the page served on 2026-11-20 at https://affiliate-program.amazon.com/help/operating/policies (header: Updated April 14, 2026) and recorded clause by clause in data/policy-clause-map.json; gate D35 refuses a citation whose letter is not in that map.",
+    "not_claimed": "Nothing here asserts that this account is enrolled, that the tracking ID is valid, or that the supplied short links comply. Those stay owner-only."
+  }
 }

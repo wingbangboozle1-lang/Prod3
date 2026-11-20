@@ -47,6 +47,31 @@
 | T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (stale DIRECTION cross-references and SG-22..30 index vs register, nine-article counts), flag the dual Pages deploy paths as FLG-024, re-run all gates, PR → main, merge, confirm live deploy | done (PR #36, merge commit `a861ed7`; deploy + live check recorded below) | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, Pages repo settings (build_type) |
 | T-46 | Final integration round (session 59a087a1): live line-by-line re-verification of the five published listings against the official Amazon pages (specs only — no prices, ratings or offers recorded), register the official sources that are missing so no register row is left "No official source" where a genuine official source exists, publication-polish fixes, re-run every gate, PR → main, merge, confirm Pages deploy | in progress | `arena/59a087a1-prod3` | `data/products.json`, `data/sources.json`, `data/citations.json`, `data/decisions.json`, `data/open-questions.json`, `data/flagged.json`, `data/verification.json`, `articles/*`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `tools/check_site.py`, `tools/verify_site.py`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
 
+## Session `arena/f3900cd3-prod3` — T-47 (claimed 2026-11-20)
+
+**Session ID:** `arena/f3900cd3-prod3` · **Branch:** `arena/f3900cd3-prod3` · **Base:** `372afb0` (main after PR #38)
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-47 | Shop pass, round 2: (a) fix the duplicate FLG-020…FLG-023 identifiers on `flagged.html` left by T-46; (b) add an audience front door `/start.html` ("what kind of cook are you") so a buyer picks a shelf instead of reading a register; (c) ship one new question-shaped guide for the December gift season, wired into the existing sitemap **and** the existing `feed.xml`; (d) reader-capture decision proposed in the register rather than silently implemented (no email provider exists — FLG-014 stands); (e) add a visual-review workflow so the owner can *look* at every page without installing anything; (f) re-run every gate, PR → main, merge, confirm the live deploy, and fetch the live pages back to prove it | in progress | `arena/f3900cd3-prod3` | `COORDINATION.md`, `flagged.html`, `start.html`, `data/suggestions.json`, `data/open-questions.json`, `articles/*` (new guide only), `feed.xml`, `index.html`, `assets/style.css`, `scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py`, `.github/workflows/snapshots.yml`, `design/pages.json`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html` |
+
+**Scope notes, so a later session is not surprised:**
+
+- **No overlap is claimed with T-46's scope.** `data/products.json`, `data/sources.json`,
+  `data/citations.json`, `data/decisions.json`, `data/verification.json`, `air-fryers.html`,
+  `meat-thermometers.html`, `buying-guide.html`, `scripts/build_chrome.py` and
+  `scripts/build_registers.py` are **not** in this scope. Where this pass needs a new
+  suggestion or question, it appends a row; it does not renumber or rewrite existing rows.
+- **`flagged.html` is in scope only to remove an ambiguity T-46 flagged itself**: FLG-020,
+  FLG-021, FLG-022 and FLG-023 each label two different findings. Renumbering the second
+  finding under each id is a correction, not a new claim; the text of every finding is kept.
+- **`feed.xml` change is an append**: the December guide becomes item 10. The existing nine
+  items and the file header are untouched.
+- **This session does not touch owner-only gates**: Associates account status (FLG-010),
+  intended ASINs (FLG-001), Special Link test (FLG-006), analytics endpoint, Search Console.
+- If a later session needs a file in the scope above, log the request here rather than editing it.
+
+
 ## Verification log (2026-11-19, session 5a4e180c)
 
 All five submitted `link.amazon` tokens were checked against official Amazon pages

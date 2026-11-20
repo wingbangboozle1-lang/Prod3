@@ -43,6 +43,7 @@
 | T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
 | T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
+| T-26 | Final integration integrity pass: reconcile product-intent evidence, link/policy copy, automation claims, and flags; strengthen gates; re-run site and Pages release checks | done (2026-11-20, PR and Pages result below) | `arena/e83cdf55-prod3` | `data/verification.json`, `data/policy-checks.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `flagged.html`, `suggestions.html`, `questions.html`, `docs/verification.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -1030,3 +1031,24 @@ live site, and corrected:
 Both rows now pass gate rules `D23`/`D25` (every decision and question either resolves its
 sources or is explicitly marked unverified). This is a correction to this session's own
 publication, found after deploy rather than before it — recorded here rather than quietly fixed.
+
+## Session arena/e83cdf55-prod3 — T-26 (2026-11-20)
+
+Scope: integrity pass on product-intent provenance, policy-record copy, and gates. Board row T-25 was already taken by `arena/70e8475c-prod3` and merged (PR #27), so this claim is recorded as T-26.
+
+**Defects found and corrected**
+
+- `data/verification.json`: 2026-11-19 `intended.asin` values were copied from observed redirects and cited S16 (NIST traceability FAQ). All five intended fields are blank now; observed fields are unchanged; `agrees` is replaced by `comparison_to_intent: "not performed"`. Logged as FLG-018.
+- `data/policy-checks.json` C-04: said buttons go directly to `/dp/`. Built HTML: 25 CTAs use the supplied `link.amazon` URLs; 138 separate `/dp/` source links. C-04 and C-09 are now `partial` with accurate evidence and gates. Logged as FLG-019.
+- C-09 said all five intended/observed values "agree"; intended values are null, so no agreement is claimed.
+
+**Gate added:** `tools/verify_site.py` now fails when an intended ASIN lacks `owner_confirmation_ref`, when its source is S16, or when `observed.agrees` returns. Negative test: exit 3 on an injected S16 intent.
+
+**Sources:** S01 Operating Agreement; S02 Program Policies; S04 Google outbound-link guidance (`rel="sponsored"`); S16 NIST (cited only as a reference that does not support intent).
+
+**Verification performed:** `scripts/check_site.py` passed; `tools/check_site.py` passed (24 pages, 2,608 assertions); `tools/verify_site.py` passed (intent gate included); `scripts/build_registers.py --check` and `scripts/build_sitemap.py --check` passed; `git diff --check` clean.
+
+**Irregularities (non-blocking, on flagged.html):** FLG-001 intended ASINs unconfirmed; FLG-006 short-link compliance unresolved (not called invalid or compliant); FLG-010 account status unverified; FLG-017 B04G1MEwY 2026-11-20 homepage result (recorded by T-25, not overwritten); FLG-018/019 corrections above.
+
+**Not claimed:** Associates enrollment, intended ASINs, Special Link validity, tracking-report attribution, Search Console, analytics volume, or live traffic.
+

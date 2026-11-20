@@ -54,7 +54,7 @@ def build_table():
         sg_note = " (SG-21 retired in place)"
     miss = gaps(sg_n)
     if miss:
-        sg_note += "; unoccupied: " + ", ".join("SG-%02d" % n for n in miss)
+        sg_note += "; unoccupied: " + ", ".join("SG-%02d" % n for n in miss) + " (see FLG-029)"
 
     rows = [
         ("Suggestions", "`suggestions.html`", "`data/suggestions.json`",

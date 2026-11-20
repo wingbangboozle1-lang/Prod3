@@ -101,8 +101,13 @@ def render():
     sources = json.loads((ROOT / "data/sources.json").read_text(encoding="utf-8"))
     by_id = {s["id"]: s for s in sources["sources"]}
 
-    sg_open = [s for s in suggestions["suggestions"] if s["status"] != "implemented"]
-    sg_done = [s for s in suggestions["suggestions"] if s["status"] == "implemented"]
+    # "Open" means proposed: a row that is retired in place is neither open nor
+    # shipped, and counting it as open (the earlier behaviour) overstated the
+    # work waiting on the owner. "Shipped" includes partly implemented, because
+    # part of it is live.
+    sg_open = [s for s in suggestions["suggestions"] if s["status"] == "proposed"]
+    sg_done = [s for s in suggestions["suggestions"] if s["status"] in ("implemented", "partly implemented")]
+    sg_retired = [s for s in suggestions["suggestions"] if s["status"] == "retired"]
     q_all = questions["questions"]
     q_owner = [q for q in q_all if q.get("who") == "owner"]
     q_block = [q for q in q_all if q.get("status") == "blocking"]
@@ -120,7 +125,7 @@ def render():
 
     parts.append(f'''<div class="grid cols-4 mt">
   <div class="card"><p class="kicker" style="margin:0">Decisions to make</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">{len(decisions["decisions"])}</p><p class="small muted">DT rows below</p></div>
-  <div class="card"><p class="kicker" style="margin:0">Proposals open</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">{len(sg_open)}</p><p class="small muted">{len(sg_done)} already shipped</p></div>
+  <div class="card"><p class="kicker" style="margin:0">Proposals open</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">{len(sg_open)}</p><p class="small muted">{len(sg_done)} already shipped &middot; {len(sg_retired)} retired in place</p></div>
   <div class="card"><p class="kicker" style="margin:0">Questions unanswered</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">{len(q_all)}</p><p class="small muted">{len(q_owner)} need the owner&rsquo;s accounts</p></div>
   <div class="card"><p class="kicker" style="margin:0">Blocking today</p><p style="font-size:2rem;font-weight:800;margin:.2em 0 0">{len(q_block)}</p><p class="small muted">A choice is on hold until answered</p></div>
 </div>''')

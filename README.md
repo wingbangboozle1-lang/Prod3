@@ -20,7 +20,7 @@ Product details are attributed as seller/listing statements, not independent tes
 ## Working with it
 
 ```sh
-python3 scripts/build_chrome.py              # masthead, disclosure strip, footer into all 30 pages
+python3 scripts/build_chrome.py              # masthead, disclosure strip, footer into all 31 pages
 python3 scripts/build_decisions.py           # decisions.html from data/decisions.json + registers
 python3 tools/crawl_links.py                 # internal links, anchors, orphans (exit 1)
 python3 tools/verify_site.py                 # release gate: sources, ledger, feed, robots, core checks

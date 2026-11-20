@@ -47,7 +47,10 @@
 | T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (stale DIRECTION cross-references and SG-22..30 index vs register, nine-article counts), flag the dual Pages deploy paths as FLG-024, re-run all gates, PR → main, merge, confirm live deploy | done (PR #36, merge commit `a861ed7`; deploy + live check recorded below) | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, Pages repo settings (build_type) |
 | T-46 | Final integration round (session 59a087a1): live line-by-line re-verification of the five published listings against the official Amazon pages (specs only — no prices, ratings or offers recorded), register the official sources that are missing so no register row is left "No official source" where a genuine official source exists, publication-polish fixes, re-run every gate, PR → main, merge, confirm Pages deploy | in progress | `arena/59a087a1-prod3` | `data/products.json`, `data/sources.json`, `data/citations.json`, `data/decisions.json`, `data/open-questions.json`, `data/flagged.json`, `data/verification.json`, `articles/*`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `tools/check_site.py`, `tools/verify_site.py`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
 | T-47 | Integration pass after PR #38 (T-46, session 59a087a1) landed first: re-run all gates on the merged tree; re-check the Pages deploy and live pages; record the duplicate `FLG-021` callout on `flagged.html` as an owner decision (not renumbered); no site content change; PR → main, merge, confirm live deploy | done (PR and merge record below) | `arena/cafc55da-prod3` | `COORDINATION.md` only |
-| T-48 | Session 2cd3bab9 pass after PR #38/#39 (renumbered from T-46): close the guide-cluster coverage gap (all nine guides reachable from the buying-guide hub); add a publishing-coverage gate in `tools/verify_site.py` (sitemap, feed, hub); set the monthly publishing cadence (`docs/publishing-cadence.md`; DT-10 decided, owner instruction); align three feed titles to page H1s; record the five same-day link re-checks and the FLG-022/023 identifier collision (FLG-029) without changing any link or intended ASIN; refresh the executive-summary addendum; PR → main, merge, confirm Pages | in progress | `arena/2cd3bab9-prod3` | `buying-guide.html`, `feed.xml`, `tools/verify_site.py`, `docs/publishing-cadence.md`, `data/decisions.json`, `data/products.json`, `data/flagged.json`, `DIRECTION.md`, `direction.html`, `decisions.html` (generated), `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, `README.md`, `COORDINATION.md` |
+| T-48 | 2026-11-20 buyer-facing link check: all five supplied short links re-tested; all five now end at the Amazon homepage. Record dated observation separately (superseding neither 2026-11-19 record nor the other same-day record); publish FLG-025; refresh summaries. | done (see log below; renumbered from a colliding T-46 claim — upstream T-46 is session 59a087a1) | `arena/6bf60cac-prod3` | `data/products.json`, `data/verification.json`, `data/flagged.json`, `flagged.html`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
+| T-49 | Publishing plan: twelve dated guide proposals with the evidence each needs, rendered from `data/editorial-plan.json` and gated (D31); four blocked rows named rather than filled by inference. New suggestions SG-32..SG-35, questions Q-24..Q-26, decisions DT-11..DT-12 | done (renumbered from a colliding T-47 claim — upstream T-47 is session cafc55da) | `arena/6bf60cac-prod3` | `publishing-plan.html`, `data/editorial-plan.json`, `data/suggestions.json`, `data/open-questions.json`, `data/decisions.json`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `scripts/build_decisions.py`, `tools/check_site.py` |
+| T-50 | One generated page per product (`products/*.html`) from `data/products.json` + `data/flagged.json`, with intended-vs-observed kept separate and the blank intent field shown as blank; linked from both pillars and the front page; three new gates and a CI freshness step | done (2026-11-20) | `arena/6bf60cac-prod3` | `scripts/build_products.py`, `products/*`, `scripts/build_chrome.py`, `scripts/build_sitemap.py`, `scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py`, `.github/workflows/pages.yml`, `index.html`, `air-fryers.html`, `meat-thermometers.html` |
+| T-51 | Session 2cd3bab9 pass after PR #43 (T-48 already taken upstream; renumbered again): verify on the merged tree the guides hub (nine guides), feed titles against H1s, the publishing-coverage gate and the monthly cadence; set DT-10 decided (owner instruction); spot-check six official sources; record the same-day link check (agrees with the third dated check under FLG-025, no product record changed); log duplicate board IDs (FLG-032) and the source fetch-date gap (FLG-033); refresh the executive-summary addendum; PR → main, merge, confirm Pages | in progress | `arena/2cd3bab9-prod3` | `buying-guide.html`, `feed.xml`, `tools/verify_site.py`, `docs/publishing-cadence.md`, `data/decisions.json`, `data/flagged.json`, `flagged.html`, `decisions.html` (generated), `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -1340,68 +1343,73 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 
 FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled Associates workflow · FLG-010 Associates account status · FLG-015 empty campaign ledger (no first-party reports) · DT-03 Search Console · DT-07 analytics endpoint · DT-10 / Q-14 publishing cadence (owner decision) · F-21 / Q-21 share-debugger check.
 
-## Session `arena/2cd3bab9-prod3` — T-48 shop-and-publication pass (2026-11-20)
+### T-47 merge and deploy record (arena/cafc55da-prod3)
 
-**Branch:** `arena/2cd3bab9-prod3`, from `main` at `7c1b939` (PRs #36 and #37 merged). **Task:** T-48. The claim was first written as T-46 (commit `eb88b75`); T-46 had already been taken on `main` by PR #38 (session `59a087a1`, T-46) and T-47 by PR #39, so this task was renumbered to T-48 on rebase.
+- **PR #39:** https://github.com/wingbangboozle1-lang/Prod3/pull/39 (`arena/cafc55da-prod3` → `main`)
+- **Merge result:** merged with `gh pr merge 39 --merge`, merge commit `cbae5c9c431a39f6451ebae5d807bdcc2e4341b8`, 2026-11-20T06:47:47Z. Not waited on for approval, per the project instructions.
+- **Pages:** `Deploy GitHub Pages` run `44690336381` — success; companion `pages build and deployment` run `44690335588` — success. Pages API `status: built`, source `main:/`.
+- **Micro-PR:** this record itself is merged in the follow-up PR that carries it.
 
-### Official sources read on 2026-11-20 (spot-check of the pages the site relies on)
 
-| Source | Read on 2026-11-20 | Result |
+## Session `arena/6bf60cac-prod3` — T-48…T-50 (2026-11-20)
+
+**Renumbering.** Other sessions claimed T-46 (59a087a1) and T-47 (cafc55da) while this branch was open.
+This session's three rows were therefore renumbered **T-48…T-50**; nothing published by another session
+was deleted or overwritten, and the conflicting page rebuilds were merged by keeping upstream's text and
+re-applying only this session's additions.
+
+### What was checked, line by line
+
+| Check | Method | Result |
 |---|---|---|
-| S01 Associates Operating Agreement | "Updated: October 15, 2025"; §5 requires "As an Amazon Associate I earn from qualifying purchases." | Disclosure sentence matches exactly. |
-| S02 Associates Program Policies | "Updated: April 14, 2026" | Opening sections only; policy citations not re-audited clause by clause. |
-| S03 FTC, Disclosures 101 for Social Media Influencers | Brochure dated November 2019: place the disclosure so it is "hard to miss", with the endorsement | Supports the strip above the masthead. |
-| S04 Google, Qualify outbound links | "Last updated 2025-12-10 UTC"; `rel="sponsored"` for paid placements | Amazon product links marked; NIST/USDA/FTC/Google reference links unmarked (not affiliate links). |
-| S06 Creators API, GetItems | ItemIdType ASIN: "10-Character alphanumeric unique identifier assigned by Amazon." | Confirms the ASIN format rule used by the intent gate. |
-| S16 NIST Technical Note 2156 | Page resolves; "Metrological Traceability: Frequently Asked Questions and NIST Policy" | Source for the ±0.5°F article. |
-| Supplied `link.amazon` tokens (5 fetches) | All five final URLs = `https://www.amazon.com/` | Conflicts with the earlier same-day records; recorded as FLG-028 with separate dated observations in `data/products.json`. Not a finding that any link is invalid. |
+| Five supplied short links | `fetch_page` of each `link.amazon` URL, final URL read | **All five ended at `https://www.amazon.com/`** on this pass. Four dated observations now exist and disagree; all are kept (FLG-025) |
+| Program Policies §2(b) tag requirement | Live read of <https://affiliate-program.amazon.com/help/operating/policies> (updated 2026-04-14) | Text quoted verbatim in `data/verification.json`; required to appear as a URL parameter |
+| Tag presence on shipped links | Regex over all HTML | 23 `link.amazon` buy anchors, 192 `amazon.com` anchors, **0 anchors carrying `tag=`** (FLG-026) |
+| Operating Agreement §5 disclosure sentence | Live read of the Agreement | Sentence present above the first heading and in the footer on all 37 pages |
+| Flag register integrity | Ids compared between `data/flagged.json` and `flagged.html` | Four ids named two findings each after the merge; page-only callouts renumbered to FLG-030/031, register ids untouched (FLG-027) |
 
-### Repository checks run in this session
+### Defects found and fixed
 
-- Brief items checked by script across 31 HTML pages: `rel="sponsored"` on every Amazon link (0 misses); disclosure strip before the first `<h1>` on every page; footer repeats the disclosure; every dashboard surface (suggestions, questions, decisions, direction, flagged, sources, citations, analytics, executive summary, disclosure, about) is in the footer; one navigation group with six items.
-- The four working-title guides in the brief are published under those exact H1s.
-- Product images in `assets/product-art/` are typographic label art, not product photographs (SG-11).
-- Sitemap lists all nine guides. Feed had nine items, but three headlines differed from their H1s.
-- No browser is installed in this sandbox, so layout was verified structurally (HTML, gates, link crawl), not by screenshot.
+| Defect | Evidence | Fix |
+|---|---|---|
+| `FLG-020` and `FLG-021` each published two different findings | Two callouts per id on `flagged.html` | Later pair renumbered FLG-028/FLG-029 with the old wording kept and the change dated |
+| Post-merge, `FLG-022` and `FLG-023` also doubled (upstream register vs page-only callouts) | `git show HEAD:flagged.html` | Page-only callouts renumbered FLG-030/FLG-031; the register's ids kept |
+| No page per product — five products existed only inside comparison pages | Tree listing | `products/*.html` generated from `data/products.json` by `scripts/build_products.py`, linked from both pillars and the front page |
+| No reviewable answer to "what gets written next" | 9 articles, no plan | `publishing-plan.html` + `data/editorial-plan.json`, gated by D31 |
+| A buy button promised a destination no link reached on 2026-11-20 | FLG-025 vs the button label | Registered as SG-32 and DT-11 rather than quietly changed: the wording choice belongs to the owner |
 
-### Changes in this pass
+### New gates (each negative-tested)
 
-1. `buying-guide.html`: the hub now lists all nine guides in four clusters (before: four links, so the Thanksgiving plan was not reachable from the hub).
-2. `feed.xml`: three item titles changed to match their page H1 (FLG-027).
-3. `tools/verify_site.py`: new publishing-coverage check (sitemap, feed headline = H1, hub link, no orphan feed items) and a cadence-document check. The hard-coded "9 feed items" check now compares against the number of guide files. Negative-tested in a scratch copy: removing a hub link fails; changing a headline fails.
-4. `docs/publishing-cadence.md` (new): one guide per calendar month, approver = site owner, next guide due 2026-12-31, topic rule, per-guide checklist. Set on the owner's instruction (DT-10 status `decided` in `data/decisions.json`; row added to `DIRECTION.md` and `direction.html`).
-5. `data/products.json`: a dated 2026-11-20 observation block (`live_recheck_2026_11_20_session_2cd3bab9`) for each of the five links. Earlier records were not overwritten.
-6. `data/flagged.json`: FLG-022 to FLG-024 synced from the page (they were page-only); FLG-025 to FLG-028 added. `flagged.html`: callouts added; FLG-023 note corrected (it claimed both same-day observations were in `products.json`; the homepage one was not).
-7. `EXECUTIVE_SUMMARY.md` and `executive-summary.html`: status paragraph and link rows corrected for the conflicting same-day records; dated addendum added (sources, changes, still-open items, next step).
-8. `README.md`: page count corrected to 31 HTML pages; flag range updated; cadence document and hub note added.
-9. Board: no change needed. T-39 is already marked done on `main`, and the stale in-progress duplicates of T-20 to T-22 were already removed there (`fc1aed9`).
+- **D31** — the publishing plan may not drift from `data/editorial-plan.json`, must be in the sitemap and linked, and may not carry a forecast claim. Negative test: changing one row title in the JSON without re-rendering fails `D31-plan-title`.
+- **D32** — one page per registered product, each in the sitemap, linked from its pillar, naming its observed ASIN and showing the blank intent field. Negative test: editing a product page by hand fails `build_products.py --check`.
+- `P17-unique-descriptions` caught two product pages sharing a meta description; the description now leads with the product name.
 
-### Gates (all run after the changes)
+### Verification on the merged tree
 
-`build_chrome --check`, `build_registers --check`, `build_decisions --check`, `build_sitemap --check`, `tools/verify_site.py` (release gate passed, including the new checks), `scripts/check_site.py` (all checks passed), `tools/check_site.py` (31 pages, 4016 assertions), `tools/crawl_links.py` (31 pages crawled; 0 broken links, 0 dead anchors, 0 orphans).
+```
+scripts/build_chrome.py --check        OK (37 pages)
+scripts/build_registers.py --check     OK
+scripts/build_decisions.py --check     OK
+scripts/build_products.py --check      OK
+scripts/build_sitemap.py --check       OK (36 URLs)
+scripts/check_site.py                  All checks passed
+tools/verify_site.py                   Release gate passed
+tools/check_site.py                    37 pages · 5,219 assertions · all rules passed
+tools/crawl_links.py                   37 pages crawled · 36 reachable · no broken links/anchors/orphans
+```
 
-### New irregularities for owner review (published on `flagged.html`; none blocks the merge)
+### Not claimed
 
-- **FLG-029** (open, owner): identifier collision. PR #38 (session 59a087a1) introduced listing-conflict callouts for FLG-022 (P-01 capacity) and FLG-023 (P-03 temperature and wattage), but the older FLG-022 (broken script) and FLG-023 (short links) callouts were still on the page. Both sets now carry the same IDs. Not renumbered here, following the FLG-021 convention; owner decision.
-- **FLG-025** (corrected): board duplicates and a stale T-39 status.
-- **FLG-026** (open): `data/sources.json` has no per-row fetch date; six Amazon listing rows have a blank `updated` field, which is correct for listings.
-- **FLG-027** (corrected): three RSS headlines differed from their page H1s; one claimed more than its page.
-- **FLG-028** (open, owner): same-day fetches of the five supplied links disagree; fetching cannot settle it; decision is the signed-in check in Q-22.
+Associates account status (FLG-010) · intended ASINs (FLG-001) · Special Link validity or per-link tag
+presence (FLG-006, Q-24) · cause of the four disagreeing link observations (Q-25) · Search Console ·
+analytics endpoint · any traffic, click, conversion or revenue figure.
 
-### Not claimed, not changed (owner-gated, unchanged)
+## Session `arena/2cd3bab9-prod3` — T-51 (merge record)
 
-FLG-001 intended ASINs (blank) · FLG-006 and DT-01 Special Link test in the enrolled workflow · FLG-010 / Q-23 Associates eligibility · FLG-017, FLG-023, FLG-028 signed-in check (Q-22) · DT-03 Search Console · DT-07 / FLG-015 analytics endpoint (GitHub Pages cannot receive POSTs) · DT-08 / FLG-014 reader email · Q-05 named author · FLG-024 Pages build type (one-click owner setting) · the campaign ledger stays empty. No conversion, commission, demand, ranking or revenue claim is made.
-
-### Pull request and deploy record
-
-- PR: (recorded in the follow-up board commit after the PR is created)
-- Merge result: (recorded after merge)
-- Pages deploy: (recorded after merge)
-
-### Merge notes (rebase onto `main` at `cbae5c9`)
-
-- The first commit (claim, T-46) and this work commit both conflicted with `main`, which had taken T-46 (PR #38) and T-47 (PR #39). The claim is now T-48 on the board; the T-46 row of this session is not kept.
-- `data/products.json`: upstream's `official_listing_check_2026_11_20` blocks and `live_recheck_2026_11_20` entries are kept unchanged. This session's `live_recheck_2026_11_20_session_2cd3bab9` block is added beside them for each product.
-- `data/flagged.json`: upstream's entries are kept unchanged. FLG-022 to FLG-024 were synced from the page in the first draft of this session but were dropped at merge, because the IDs were already used upstream; FLG-024 remains page-only, as it was before this session.
-- `decisions.html` regenerated from `data/decisions.json` after the merge.
-
+- **Claim history.** T-46 was taken on `main` by PR #38 (session 59a087a1). T-48 was taken by PR #43 (session 6bf60cac). This session's task is T-51.
+- **Merge.** `origin/main` (at `2c8d152`) merged into `arena/2cd3bab9-prod3`. Upstream rows, FLG entries, product records and generated pages are kept. My earlier T-46/T-48 rows and session log are not carried forward.
+- **Decision.** DT-10 marked decided (owner instruction, one guide a month, owner approver, next due 2026-12-31). DT-12 remains open.
+- **Flags.** FLG-032 (duplicate board task IDs T-12 to T-23; earlier wording that the T-20 to T-22 duplicates were removed is corrected: they are superseded, not deleted). FLG-033 (no consistent per-row fetch date in the source register). The FLG-022/023 identifier collision and the RSS-title mismatch are already resolved upstream, so no new flag is raised for them.
+- **Gates.** build_chrome, build_registers, build_decisions, build_sitemap `--check`; verify_site; scripts/check_site.py; tools/check_site.py; tools/crawl_links.py. All pass on the merged tree.
+- **Not done.** Source spot-check for S05, S10–S15, S17–S19, S21–S25. Pages deploy outcome for this merge: pending at the time of writing.
+- **PR and merge.** Recorded below once merged.

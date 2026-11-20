@@ -4,11 +4,11 @@
 
 **Tracking ID:** `shopnow047c-20` (provided for the project; Associates account enrollment and eligibility are not confirmed — FLG-010).
 
-**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links and both Associates policy pages were fetched again. Same-day fetches disagree. The 2026-11-20 record in `data/products.json` shows product pages for `B02NbDxp3`, `B00hJ57DV`, `B0c8moW59` and `B0f3GKalj`, and the Amazon.com homepage for `B04G1MEwY` (FLG-017). Another session's note records the homepage for `B0c8moW59` too (FLG-023, short-links callout). The check for this addendum found the homepage for all five (FLG-028). Fetches cannot settle which result is right; the signed-in check in Q-22 can. This is not an account-side test, and no price, rating, or offer was recorded.
+**Status date:** 2026-11-20. Product and policy facts below reflect the repository's dated source records; the listing snapshot date is 2026-11-19. On 2026-11-20 the five supplied short links were fetched three separate times by three sessions, with different results each time: four of five reached product pages, then three of five, then — on the most recent pass (session 6bf60cac, ~07:0x UTC) — **none of the five**, with every final URL reading `https://www.amazon.com/`. All four dated observations are kept side by side in `data/products.json`; none is overwritten and no cause is asserted (FLG-017, FLG-023, FLG-025). Separately, the Associates Program Policies (updated 2026-04-14) §2(b) require the Associates tag as a parameter in each link's URL, and no shipped anchor on this site carries one in the URL the reader receives — recorded as FLG-026, with the caveat that a short-link service may add the tag downstream (Q-24). No price, rating or offer was recorded.
 
 ## Bottom line
 
-The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and nine question-shaped articles (eight evergreen guides plus the dated Thanksgiving temperature plan). Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
+The publication site is built and the repository's release gates pass. The reader-facing front page leads with five product listings, a three-question chooser, category pages, a comparison, a buying guide, and nine question-shaped articles (eight evergreen guides plus the dated Thanksgiving temperature plan), one generated spec page per product, and a dated twelve-row publishing plan. Every page has the Associates disclosure above its first heading and repeats it in the footer. Amazon links are marked `rel="sponsored"`.
 
 **Recommendation:** keep the current editorial publication, but do not scale links or claim revenue performance until the owner-side Associates workflow confirms the intended products, link compliance, and tracking. The site does not have aggregate analytics, verified Search Console data, or conversion reports. Consequently, there is no evidence here for product superiority, demand, conversion rate, commission potential, or revenue forecasts.
 
@@ -18,10 +18,10 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 | Submitted token | Observed listing at snapshot | Category | Intent confirmed? | Source |
 |---|---|---|---|---|
-| `B04G1MEwY` | Chefman 6 Qt Dual Basket · `B0CDY277D3` (2026-11-19); 2026-11-20 re-check ended at the Amazon homepage — FLG-017; this addendum's check also the homepage — FLG-028 | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
+| `B04G1MEwY` | Chefman 6 Qt Dual Basket · `B0CDY277D3` (2026-11-19); 2026-11-20 re-check ended at the Amazon homepage — FLG-017 | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
 | `B02NbDxp3` | Emeril Lagasse 26QT French Door · `B09B7SB46R` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B09B7SB46R) |
 | `B00hJ57DV` | Chefman 8 Qt TurboFry · `B08DKYBTPH` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B08DKYBTPH) |
-| `B0c8moW59` | ThermoMaven instant-read · `B0DHZTCNR5` (2026-11-20 records conflict — FLG-023 short-links callout, FLG-028) | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DHZTCNR5) |
+| `B0c8moW59` | ThermoMaven instant-read · `B0DHZTCNR5` | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DHZTCNR5) |
 | `B0f3GKalj` | CHEF iQ Sense Gen3 · `B0DZFD6R9Z` | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DZFD6R9Z) |
 
 **Important distinction:** the observed destination is evidence of where a supplied link resolved during that dated check; it does not prove that destination is the product the owner intended or that the link has been tested in the enrolled Associates account. FLG-001 and FLG-006 remain open. Do not describe the supplied short links as invalid: their exact compliance status is unresolved.
@@ -32,10 +32,10 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 | Area | Current state | What is not established | Official source |
 |---|---|---|---|
-| Publication | Buyer-first front page; two category pillars; comparison and buying guide; nine articles (eight evergreen plus the dated Thanksgiving plan); three decision tools; RSS feed and sitemap | Organic impressions, rankings, readership, or topic popularity | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
+| Publication | Buyer-first front page; two category pillars; comparison and buying guide; nine articles (eight evergreen plus the dated Thanksgiving plan); five per-product spec pages; a twelve-row publishing plan; three decision tools; RSS feed and sitemap | Organic impressions, rankings, readership, or topic popularity | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 | Product facts | Seller-listed specifications linked to dated listing snapshots; conflicts are flagged, not silently resolved | Independent product testing or a current listing re-check after the 2026-11-19 snapshot | [Chefman listing](https://www.amazon.com/dp/B0CDY277D3) · [Emeril listing](https://www.amazon.com/dp/B09B7SB46R) · [Chefman listing](https://www.amazon.com/dp/B08DKYBTPH) · [ThermoMaven listing](https://www.amazon.com/dp/B0DHZTCNR5) · [CHEF iQ listing](https://www.amazon.com/dp/B0DZFD6R9Z) |
 | Pricing and ratings | No price or customer-rating claims are rendered on the site | Current prices, availability, ratings, or commission rates | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
-| Affiliate links | All Amazon anchors use `rel="sponsored"`; supplied links and observed targets are separately recorded | Associates account eligibility, intended products, Special Link compliance, or reporting attribution | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Google sponsored links guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) |
+| Affiliate links | All Amazon anchors use `rel="sponsored"`; supplied links and observed targets are separately recorded; a dated check found all five supplied links ending at the Amazon homepage (FLG-025) and no shipped anchor carrying a visible `tag=` parameter (FLG-026) | Whether the tag is attached downstream by the short-link service (Q-24); Associates account eligibility; intended products; reporting attribution | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) · [Google sponsored links guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) |
 | Measurement | Five event names are defined: `page_view`, `outbound_click`, `article_read`, `chooser_complete`, `reader_signup`. Four are counted locally; signup is reserved for a confirmed provider response | A server endpoint, shared/site-wide counts, actual signup provider, conversions, or orders | [Amazon Associates Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) |
 | Campaign ledger | Defined but empty; rows are to be added only from authorized first-party reports with provenance | Any clicks, sessions, orders, revenue, conversion score, or forecast | [Amazon Associates Program Policies](https://affiliate-program.amazon.com/help/operating/policies) |
 | Search | Canonicals, robots file, sitemap, and RSS feed are present | Search Console ownership/verification, submission, query data, or indexing status | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
@@ -57,7 +57,41 @@ social-preview image is unverified in share previewers. All four release gates
 pass on the rebuilt tree.
 
 
+## Added 2026-11-20 (session 6bf60cac): what a buyer can now do, and what is still blocked
+
+| Addition | What it gives a reader or the owner | File | Gate |
+|---|---|---|---|
+| A spec page per product | One place per machine: every listed value with the listing as its source, the listing's own contradictions printed, the blank intended-ASIN field shown as blank, and no price or rating | `products/*.html` | `build_products.py --check` (in CI) + D32 |
+| A dated publishing plan | Twelve proposed buyer-question guides with the week, the calendar reason, the evidence each needs, and whether that evidence exists — four rows are blocked and say so | `publishing-plan.html`, `data/editorial-plan.json` | D31 |
+| Five reviewable proposals | SG-32…SG-35: what to do about a buy button whose link is unresolved, a link-status table, a plain-words tag statement, and the plan page itself | `suggestions.html` | `build_registers.py --check` |
+| Three missing-information questions | Q-24 (does the redirect attach the tag?), Q-25 (why did all five land on the homepage?), Q-26 (who signs off the plan?) | `questions.html` | `build_registers.py --check` |
+| Two decisions | DT-11 (what a buy button promises while the link is unresolved), DT-12 (plan as promise or proposal) | `decisions.html` | `build_decisions.py --check` |
+| Four flag rows | FLG-025 (third dated link observation), FLG-026 (tag-parameter requirement vs observation), FLG-027 (duplicate ids fixed), plus FLG-028/029 renumbered and FLG-030/031 for two page-only callouts | `flagged.html`, `data/flagged.json` | `check_site.py` |
+
+**The one thing that blocks earning:** the owner's signed-in link test. Nothing on the page can substitute for it, and no claim of
+commission, traffic or conversion is made anywhere in this repository.
+
+**Editorial honesty note.** A buyer-facing site that says "Check price on Amazon" is making a promise about a destination. On
+2026-11-20 that promise was not true for any of the five supplied links, which is why SG-32 proposes a dated line under each button
+until the owner's test passes.
+
 ---
+
+# Addendum — 2026-11-20, session 2cd3bab9 (T-51)
+
+Task T-51. The first claim, T-46, was taken on `main` by PR #38. The second, T-48, was taken by PR #43. This pass ran on the merged tree of `origin/main` at `2c8d152`.
+
+**Verified in this pass.** Six official pages were read on 2026-11-20: the Associates Operating Agreement (S01, updated October 15, 2025; §5 sentence matches the disclosure), Program Policies (S02, updated April 14, 2026, opening sections only), FTC Disclosures 101 (S03, November 2019), Google's outbound-links guidance (S04, last updated 2025-12-10 UTC), Creators API GetItems (S06, ASIN defined as a 10-character identifier), and NIST TN 2156 (S16). The spot-check did not cover S05, S10–S15, S17–S19 or S21–S25.
+
+**Checked on the merged tree.** The buying guide links all nine guides. All nine feed items carry the same title as their page H1. The publishing-coverage check in `tools/verify_site.py` (sitemap, feed, hub, cadence) passes; the eight gates pass.
+
+**Decision.** DT-10 (fixed monthly cadence) is marked decided, on the owner's instruction. One guide per calendar month; approver: the site owner; next guide due 2026-12-31 (`docs/publishing-cadence.md`). It is a rhythm, not a traffic or revenue forecast. DT-12 (promise or proposal for the twelve-week plan) remains open and is not decided here.
+
+**Five supplied links, 2026-11-20.** This pass also found all five to the Amazon homepage. That agrees with the third dated check recorded under FLG-025. No product record changed. The intended ASIN for every link stays blank (FLG-001). No link is called invalid (FLG-003).
+
+**New flags.** FLG-032: the coordination board repeats task IDs T-12 to T-23. An earlier note in this session said the T-20 to T-22 duplicates were removed; they are marked superseded, not deleted, so that note was wrong. FLG-033: 23 of 29 source entries have no verified value, so the register has no consistent fetch date.
+
+**Still not established.** Whether the supplied links work in the enrolled Associates account (FLG-006; Q-02, Q-04, Q-22). Account eligibility (FLG-010). The Pages deploy for this merge (see the board record for T-51).
 
 # Addendum — 2026-11-20, shop-first pass
 
@@ -134,43 +168,6 @@ The editorial hypotheses already in the guide plan include “Basket or oven-sty
 | Who owns the cadence and brand decisions? | A proposal register and path chooser exist | No named editor, domain/brand approval, or confirmed publishing capacity | Assign an owner, cadence, and approval process in the decision register | [Google people-first content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content) |
 
 The proposal ledger, open-question register, and decision log are available on the [Direction page](direction.html). Each suggestion should remain a proposal until its evidence, owner, cost, and decision are recorded.
-
-# Addendum — 2026-11-20, session 2cd3bab9 (T-48)
-
-## What was checked against official sources
-
-Six official pages were fetched and read on 2026-11-20. This is a spot-check of the pages the site relies on most. It is not a line-by-line re-audit of every policy clause.
-
-| Official source | What the page says on 2026-11-20 | Used for |
-|---|---|---|
-| [Operating Agreement (S01)](https://affiliate-program.amazon.com/help/operating/agreement) | "Updated: October 15, 2025". Section 5 requires the statement "As an Amazon Associate I earn from qualifying purchases." | The disclosure uses that exact sentence. Confirmed. |
-| [Program Policies (S02)](https://affiliate-program.amazon.com/help/operating/policies) | "Updated: April 14, 2026". | Policy citations. Only the opening sections were read in this pass. |
-| [FTC, Disclosures 101 (S03)](https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers) | Brochure dated November 2019: place the disclosure where it is "hard to miss", with the endorsement, not only on an about page. | Supports the strip above the masthead. |
-| [Google, Qualify outbound links (S04)](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links) | "Last updated 2025-12-10 UTC". `rel="sponsored"` marks paid placements. | Amazon product links are marked; NIST, USDA and FTC reference links are not affiliate links and are not marked. |
-| [Creators API, GetItems (S06)](https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items) | ASIN is defined as a "10-Character alphanumeric unique identifier assigned by Amazon." | Supports the ASIN format check and the rule that intended ASINs need an owner record. |
-| [NIST, Metrological Traceability (S16)](https://www.nist.gov/metrology/metrological-traceability) | NIST Technical Note 2156, the NIST traceability policy and FAQ. | Source for the ±0.5°F article. The article says what a NIST claim does not establish. |
-
-## What changed in this pass
-
-- **Guides hub.** `buying-guide.html` now lists all nine guides in four clusters. Before this pass it linked four, so the Thanksgiving plan was not reachable from the hub.
-- **RSS headlines.** Three feed titles now match their page H1s. One of them claimed more than its page does (FLG-027).
-- **Release gate.** `tools/verify_site.py` checks that every guide is in the sitemap, the feed (headline equal to H1) and the hub, and that the cadence is written down. It was negative-tested: removing a hub link and changing a headline both fail the build.
-- **Publishing cadence set.** One guide per calendar month, approver: the site owner, next guide due 2026-12-31 (DT-10, on the owner's instruction). This is a rhythm, not a traffic forecast. See `docs/publishing-cadence.md`.
-- **Link observations.** The 2026-11-20 check for this addendum is recorded as separate, dated observations for all five links. The conflicting same-day records are flagged (FLG-023, FLG-028). The FLG-023 note was corrected, because it said both observations were in `data/products.json` when they were not.
-- **Board hygiene.** T-39 is marked done. Duplicate in-progress rows for T-20 to T-22 were removed (FLG-025).
-- **Source register.** The register has no per-row fetch date (FLG-026, open for the owner).
-
-## Still not established
-
-- The intended ASIN for every link (FLG-001). The fields stay blank.
-- Whether the supplied links work in the enrolled Associates account (FLG-006, Q-02, Q-04, Q-22).
-- Associates account eligibility (FLG-010, Q-23).
-- Search Console (DT-03), the analytics endpoint (DT-07, FLG-015), reader email (DT-08, FLG-014), the named author (Q-05), and the Pages build type (FLG-024).
-- No conversion, commission, demand, ranking or revenue claim is made in this pass.
-
-## Recommended next step
-
-The first owner action is still the signed-in check in Q-22 on all five links, together with the Special Link test in DT-01. Until that result exists, treat every fetch-based link result as unresolved.
 
 ## Release and review status
 

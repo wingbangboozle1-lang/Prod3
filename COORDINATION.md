@@ -2042,4 +2042,4 @@ homepage-link cause · FLG-026 tag parameter demonstration · Search Console ver
 - **Live checks (fetched, not assumed):** `suggestions.html` serves "Register updated 2026-11-20" and renders SG-43 ("Give the seasonal block a retirement date…") with its options and recommendation; `questions.html` serves Q-28 ("Is any of this site in Google's index yet…") citing S26, with Q-29 in the same Measurement group; the disclosure strip is above the first heading on both.
 - **This record's own landing:** the board update and this record ship as a follow-up micro-PR (same session), merged after PR #62; its PR number is recorded below when merged.
 
-*(micro-PR record: to be appended after the board-update PR merges)*
+*Board update shipped as **PR #63** ("T-56 record: PR #62 merge/deploy results and live checks"), merged `2026-11-20T07:11:56Z`, merge commit `225c263caa8935c85cf22b49962f01d761a5065c`; `Deploy GitHub Pages` run `44693192323` and the legacy `pages build and deployment` run `44693190661` both **success** on it.*

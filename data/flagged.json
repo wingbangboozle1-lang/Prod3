@@ -1,459 +1,473 @@
 {
-  "generated": "2026-11-19",
-  "premise": "These are the things that could not be confirmed, or that conflict, at the capture date. None of them blocks publication; all of them are published openly instead of being smoothed over.",
-  "severity_scale": {
-    "high": "Affects a claim a buyer would rely on, or a compliance question that needs the Associates account to settle.",
-    "medium": "A gap or conflict that changes how a page should be read.",
-    "low": "Housekeeping, or a figure that will drift without anyone doing anything wrong."
+ "generated": "2026-11-19",
+ "premise": "These are the things that could not be confirmed, or that conflict, at the capture date. None of them blocks publication; all of them are published openly instead of being smoothed over.",
+ "severity_scale": {
+  "high": "Affects a claim a buyer would rely on, or a compliance question that needs the Associates account to settle.",
+  "medium": "A gap or conflict that changes how a page should be read.",
+  "low": "Housekeeping, or a figure that will drift without anyone doing anything wrong."
+ },
+ "items": [
+  {
+   "id": "F-01",
+   "severity": "high",
+   "area": "Specification conflict",
+   "product": "P1",
+   "detail": "The listing's Capacity field reads \"6 liters\" while the title and bullets read \"6-quart\" with two 3-quart baskets. 6 US quarts is about 5.68 litres, so the field is not a conversion of the title.",
+   "why_it_matters": "A buyer sizing a machine against a litre-based recipe or a litre-labelled competitor is working from a number that does not match the page's own headline.",
+   "action": "Both readings are published verbatim and the conflict is named on the product page. Not resolved by inference.",
+   "status": "open — needs a measurement or a retailer clarification",
+   "sources": [
+    "S10"
+   ],
+   "sources_checked": "2026-11-19"
   },
-  "items": [
-    {
-      "id": "F-01",
-      "severity": "high",
-      "area": "Specification conflict",
-      "product": "P1",
-      "detail": "The listing's Capacity field reads \"6 liters\" while the title and bullets read \"6-quart\" with two 3-quart baskets. 6 US quarts is about 5.68 litres, so the field is not a conversion of the title.",
-      "why_it_matters": "A buyer sizing a machine against a litre-based recipe or a litre-labelled competitor is working from a number that does not match the page's own headline.",
-      "action": "Both readings are published verbatim and the conflict is named on the product page. Not resolved by inference.",
-      "status": "open — needs a measurement or a retailer clarification",
-      "sources": [
-        "S10"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-02",
-      "severity": "medium",
-      "area": "Specification conflict",
-      "product": "P2",
-      "detail": "The title says \"24 One-Touch Preset Options\"; a bullet says \"25 COOKING PRE-SETS\".",
-      "why_it_matters": "Preset count is a comparison point between oven-style machines. Publishing either number as fact would be publishing a coin flip.",
-      "action": "Neither number is used as a selling point. The conflict is shown on the product page.",
-      "status": "open",
-      "sources": [
-        "S11"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-03",
-      "severity": "medium",
-      "area": "Model currency",
-      "product": "P4",
-      "detail": "The listing displays \"There is a newer model of this item\" linking to ASIN B0GL7Z4KP4.",
-      "why_it_matters": "The supplied short link resolves to the older ASIN. A reader following the site may reach a superseded listing without being told.",
-      "action": "Disclosed on the product page. The site does not silently switch to the newer ASIN, because the supplied link is the owner's stated intent.",
-      "status": "needs review — owner decision on whether to point at B0GL7Z4KP4",
-      "sources": [
-        "S13"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-04",
-      "severity": "medium",
-      "area": "Missing specification",
-      "product": "P4, P5",
-      "detail": "Neither thermometer listing has a Product Dimensions field. Probe length is also not stated.",
-      "why_it_matters": "Probe length decides whether a thermometer reaches the centre of a large roast, and whether it can be left in a closed oven. Footprint decides whether it fits a drawer.",
-      "action": "Left blank and marked unverified on both product pages. No value guessed.",
-      "status": "open — check the manufacturer's own specification sheet",
-      "sources": [
-        "S13",
-        "S14"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-05",
-      "severity": "medium",
-      "area": "Missing rating",
-      "product": "P2, P4",
-      "detail": "No star rating was present on either page at capture time. A rating for a different ASIN appeared in a recommendation widget on the same page.",
-      "why_it_matters": "Quoting a neighbouring product's rating is the single easiest way to publish a false number on an affiliate site.",
-      "action": "Ratings left blank. Only ratings rendered in the page's own rating block are stored.",
-      "status": "open — re-capture; the rating may be region- or session-dependent",
-      "sources": [
-        "S11",
-        "S13"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-06",
-      "severity": "medium",
-      "area": "Seller-declared attribute",
-      "product": "P4, P5",
-      "detail": "The \"Specification Met\" field on P5 lists roughly twenty schemes including FDA, ISO 13485 and HACCP. P4 lists NIST and NSF.",
-      "why_it_matters": "This field is populated by the seller. It is not a certificate, and some entries (ISO 13485 covers medical devices) are unlikely to apply to a kitchen thermometer.",
-      "action": "Shown as a seller-declared attribute, never as verified certification. See F-07 for the accuracy figure.",
-      "status": "open — request certificates from the manufacturer",
-      "sources": [
-        "S13",
-        "S14"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-07",
-      "severity": "high",
-      "area": "Unverified claim",
-      "product": "P4",
-      "detail": "A bullet states a NIST certification for the claimed plus-or-minus 0.5 F accuracy.",
-      "why_it_matters": "Accuracy is the reason to buy a thermometer. A certification claim that has not been sighted is a manufacturer assertion, not a verified fact.",
-      "action": "Published as a vendor claim, labelled as such, with the listing cited. Not repeated in editorial voice.",
-      "status": "open — verify with NIST's own certification database or the manufacturer",
-      "sources": [
-        "S13"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-08",
-      "severity": "high",
-      "area": "Positioning",
-      "product": "all",
-      "detail": "The five products span two families — three air fryers and two thermometers — across four brands.",
-      "why_it_matters": "A site that is about both air fryers and thermometers has to justify the pairing or it reads as a list of things someone happened to have links for. The honest pairing is cooking to a target temperature, which the guides build on.",
-      "action": "Built the site around that pairing rather than hiding the span. Whether to narrow to air fryers only is a decision for the owner.",
-      "status": "needs review",
-      "sources": [
-        "S10",
-        "S11",
-        "S12",
-        "S13",
-        "S14"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-09",
-      "severity": "high",
-      "area": "Tracking",
-      "product": "all",
-      "detail": "The resolved short-link URLs served to this session carried query parameters but no visible tag= value.",
-      "why_it_matters": "Program Policies 2(a) requires Special Links to use the assigned Associates ID. If tag=shopnow047c-20 is not on the link, clicks earn nothing — a commercial failure, not a compliance one, but the more expensive of the two.",
-      "action": "Nothing is called invalid. The observation is recorded and the verification is routed to the owner's dashboard.",
-      "status": "blocked — requires the Associates account",
-      "sources": [
-        "S01",
-        "S02"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-10",
-      "severity": "high",
-      "area": "Measurement",
-      "product": "all",
-      "detail": "No first-party traffic, click, order, revenue or commission data exists for this site.",
-      "why_it_matters": "Any conversion rate or revenue estimate would be invented. There is no baseline to optimise against yet.",
-      "action": "No performance figure appears anywhere on the site. The campaign ledger starts empty and defined (data/campaigns.json).",
-      "status": "open — measure after launch",
-      "sources": [],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-11",
-      "severity": "medium",
-      "area": "Editorial discipline",
-      "product": "all",
-      "detail": "Popularity, trending and \"best\" claims are easy to write and hard to support; the listings themselves display dynamic badges.",
-      "why_it_matters": "Google's people-first guidance treats exaggerated headings as a quality problem, and Program Policies 2(b) prohibits overbroad product claims.",
-      "action": "No editorial superlatives. Where the listing shows a badge (Amazon's Choice, \"1K+ bought in past month\") it is quoted with the capture date and attributed to Amazon.",
-      "status": "controlled by rule",
-      "sources": [
-        "S02",
-        "S21"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-12",
-      "severity": "medium",
-      "area": "Missing specification",
-      "product": "P1, P2, P4",
-      "detail": "P1 and P2 do not state a maximum temperature; P1 states no preset count; P4 states no probe length or physical size.",
-      "why_it_matters": "Maximum temperature decides whether a machine can finish food that needs high heat; probe length decides whether a thermometer reaches a roast's centre.",
-      "action": "Blank and flagged. No number inferred from a similar model.",
-      "status": "open",
-      "sources": [
-        "S10",
-        "S11",
-        "S13"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-13",
-      "severity": "high",
-      "area": "Link format",
-      "product": "all",
-      "detail": "The supplied links use the link.amazon domain rather than amzn.to, and their compliance status cannot be settled from outside the account.",
-      "why_it_matters": "Program Policies 2(b) prohibits a shortening service used so that it is unclear the link goes to an Amazon Site. Whether these particular links meet that test in the enrolled workflow is unresolved.",
-      "action": "The site publishes direct amazon.com/dp/ destinations so clarity is not in question. The short links remain the recorded provenance. Test one link in the enrolled Associates workflow and confirm destination and reporting before relying on the short form. This is a test to run, not a verdict on the links.",
-      "status": "unresolved — needs the enrolled Associates workflow",
-      "sources": [
-        "S01",
-        "S02"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-14",
-      "severity": "low",
-      "area": "Variants",
-      "product": "P3, P5",
-      "detail": "Both ASINs are multi-variant listings (P3: 6/8/9 qt; P5: 1/2/3/4 probes). The resolved pages are the 8 qt and 3-probe variants.",
-      "why_it_matters": "Capacity and probe count differ by variant, and the reader will land on whichever variant Amazon defaults to at the time.",
-      "action": "Variant span stated in the table and on each product page, with the captured variant named.",
-      "status": "open — will drift as Amazon changes defaults",
-      "sources": [
-        "S12",
-        "S14"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-15",
-      "severity": "medium",
-      "area": "Product dependency",
-      "product": "P5",
-      "detail": "The CHEF iQ Sense displays readings in an app; its listing's display type is \"App\".",
-      "why_it_matters": "A reader without a smartphone or Wi-Fi in the kitchen is buying something they cannot fully use. That is a fit question, not a defect.",
-      "action": "Stated plainly in the watch-outs and in the which-one-is-for-you chooser.",
-      "status": "disclosed",
-      "sources": [
-        "S14"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-16",
-      "severity": "low",
-      "area": "Site hosting",
-      "product": "site",
-      "detail": "The site is served from a GitHub Pages project path (wingbangboozle1-lang.github.io/Prod3/) rather than an apex domain.",
-      "why_it_matters": "Search engines can index it, but a project path shares a hostname with every other project on the account, and the URL is harder to say out loud than a domain.",
-      "action": "Canonicals, sitemap and feed all use the absolute project-path URLs so nothing resolves relatively. A custom domain is a decision for the owner.",
-      "status": "open",
-      "sources": [
-        "S05"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-17",
-      "severity": "medium",
-      "area": "Measurement access",
-      "product": "site",
-      "detail": "No Search Console property and no analytics endpoint are configured for this site.",
-      "why_it_matters": "Without Search Console the site cannot see which queries it is being shown for, so the next topic has to be guessed rather than read off data.",
-      "action": "The site is built to accept both. A verification file slot and an analytics stub are documented in content/measurement.md.",
-      "status": "blocked — requires the owner's account access",
-      "sources": [],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-18",
-      "severity": "low",
-      "area": "Volatile figure",
-      "product": "P1, P3, P5",
-      "detail": "Star ratings, rating counts, \"Amazon's Choice\" and \"N bought in past month\" figures were captured on one day and change continuously.",
-      "why_it_matters": "A date-stamped figure is defensible; an undated one is a slow-motion error.",
-      "action": "Every such figure carries the capture date and the listing as its source. Nothing is presented as current.",
-      "status": "accepted — refresh on each release",
-      "sources": [
-        "S10",
-        "S12",
-        "S14"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-19",
-      "severity": "medium",
-      "area": "Imagery",
-      "product": "site",
-      "detail": "No product photography is used. The site ships typographic hero art and illustrated product placeholders instead.",
-      "why_it_matters": "The Operating Agreement treats images and text as Program Content, and a generated or copied photograph of a product is the wrong way to close that gap. A placeholder is honest; a fake photograph is not.",
-      "action": "Placeholders only, labelled. Real photography requires a decision on sourcing and rights.",
-      "status": "needs review",
-      "sources": [
-        "S01"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-20",
-      "severity": "low",
-      "area": "Missing specification",
-      "product": "P1, P2, P3",
-      "detail": "None of the three air fryer listings states a manufacturer warranty period.",
-      "why_it_matters": "Warranty length is one of the few after-sale terms a buyer can compare before purchase, and its absence is a real gap in the decision rather than something to assume a default for.",
-      "action": "Left blank in the register and on every product page. Only the CHEF iQ listing states a term (two years); it is the only warranty published anywhere on this site.",
-      "status": "open — check the manufacturer's own product page",
-      "sources": [
-        "S10",
-        "S11",
-        "S12"
-      ],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "F-21",
-      "severity": "low",
-      "area": "Social preview",
-      "product": "site-wide",
-      "detail": "Every page now references assets/og-image.png (1200×630 raster) as its og:image; the earlier SVG reference was replaced during the publication-polish pass. No share-debugger test has been run from this environment.",
-      "why_it_matters": "If preview bots skip SVG, shared links render without a card, costing clicks on exactly the surfaces a marketing site depends on.",
-      "action": "PNG card adopted (SG-16 option A, minus the debugger check). The remaining step is a share-debugger run on the live URL.",
-      "status": "open — run a share debugger on the live URL to confirm the card renders (format concern resolved 2026-11-19)",
-      "sources": [],
-      "sources_checked": "2026-11-19"
-    },
-    {
-      "id": "FLG-017",
-      "severity": "medium",
-      "area": "Short-link re-check",
-      "product": "P-01 (link.amazon/B04G1MEwY)",
-      "detail": "On 2026-11-20 the submitted short link link.amazon/B04G1MEwY ended at the amazon.com homepage, not a product page. The /dp/B0CDY277D3 listing still loads with a matching title. The other four short links resolved to their recorded /dp/ ASINs the same day. Recorded in data/products.json (live_recheck_2026_11_20) and flagged.html.",
-      "why_it_matters": "A buyer who clicks the supplied link could land on a generic page. The 2026-11-19 observed destination for P-01 is not re-confirmed through the short link today.",
-      "action": "Owner: open the short link in a normal browser and in the enrolled Associates workflow, and record the landing ASIN. Do not infer the redirect from the /dp/ page alone. This does not show the link is invalid.",
-      "status": "open — short-link redirect not re-confirmed on 2026-11-20; /dp/ page matches",
-      "sources": [
-        "S15",
-        "S10"
-      ],
-      "sources_checked": "2026-11-20"
-    },
-    {
-      "id": "FLG-020",
-      "severity": "medium",
-      "area": "Policy citations (Associates Program Policies)",
-      "product": "Site-wide (citation log, compare, direction)",
-      "detail": "The site cites Program Policies §2(t) (customer star ratings), §2(v) (URL obscuring), and a shortener prohibition under §2(b). On 2026-11-20 the live Program Policies page (updated April 14, 2026) showed Section 2 with subsections (a) and (b) only; none of the three clauses was found there. Their wording is marked unverified in citations.json, citations.html, and suggestions.json.",
-      "why_it_matters": "A reader or reviewer who checks the cited clause will not find it. Ratings and prices are not shown on the site, so the conduct does not depend on these citations, but the stated basis is unverified.",
-      "action": "Owner or editorial review: locate the Associates text that carries these clauses (Operating Agreement, Program Policies, or a dated version) and cite it, or remove the citation. Do not infer replacement wording.",
-      "status": "open — citations reworded to 'not located'; owner review",
-      "sources": [
-        "S02"
-      ],
-      "sources_checked": "2026-11-20"
-    },
-    {
-      "id": "FLG-021",
-      "severity": "low",
-      "area": "Source register and one quotation",
-      "product": "P-04 (ThermoMaven 1 Sec), source register",
-      "detail": "(1) data/sources.json has no entries for the S-series numbers 07, 08, 09 and 20; no current data file cites them. (2) The P-04 listing quotation \"There is a newer model of this item\" is cited to S13. The 2026-11-20 re-read covered the first page of that listing only, so the quoted wording is not re-confirmed. (3) SG-21 duplicates SG-20 and is retired on main.",
-      "why_it_matters": "Gaps in the source register make a cited ID unresolvable if a future page uses one. The quotation is a listing claim that may change.",
-      "action": "Owner: confirm the quotation on the live listing and record the date, or remove it. Decide whether the S-series numbers 07, 08, 09 and 20 are to be defined or retired (DIRECTION.md I-03).",
-      "status": "open — quotation not re-confirmed; register gap recorded",
-      "sources": [
-        "S13"
-      ],
-      "sources_checked": "2026-11-20"
-    },
-    {
-      "id": "FLG-025",
-      "severity": "high",
-      "area": "Outbound links (buy buttons)",
-      "product": "All five (P-01..P-05)",
-      "detail": "On 2026-11-20 (session 6bf60cac, T-46) all five supplied link.amazon URLs were fetched again and every one ended at https://www.amazon.com/ — the Amazon homepage — rather than at a product page. That is a wider result than either earlier same-day record (session 70e8475c: one of five; session ce911db5: two of five) and wider than 2026-11-19, when all five read as /dp/ product pages.",
-      "why_it_matters": "A reader who presses a buy button is meant to reach the product. If the final destination is the Amazon homepage, the reader has to search for the product again, and the site's own claim that a button opens the listing is wrong at the moment of the click.",
-      "action": "Owner: click each of the five links signed in to Associates, record the landing page, and replace the href with a freshly generated SiteStripe Special Link once it is confirmed (DT-01). Do not treat this as proof that the links are invalid: the destination depends on Amazon's redirect, which changed between observations.",
-      "status": "open — third dated observation recorded; no record overwritten",
-      "sources": [
-        "S10",
-        "S11",
-        "S12",
-        "S13",
-        "S14",
-        "S15"
-      ],
-      "sources_checked": "2026-11-20"
-    },
-    {
-      "id": "FLG-026",
-      "severity": "high",
-      "area": "Special Link tag parameter",
-      "product": "All five buy links plus 192 evidence links",
-      "detail": "Program Policies (updated 2026-04-14) §2(b) require the Associates ID or tag as a parameter in the URL of each link placed on a site to an Amazon Site, and §2(a) require Special Links to use the assigned Associates ID. None of the 23 shipped link.amazon buy anchors and none of the 192 shipped amazon.com anchors contains a tag parameter in the URL the reader receives; 0 anchors carry tag=shopnow047c-20.",
-      "why_it_matters": "If a click is not tagged, Amazon cannot attribute it and the click cannot earn. The rule is quoted in the Program Policies, so this is the one link question with a written, checkable requirement behind it.",
-      "action": "Owner: read the redirect chain of one supplied link in the Associates workflow and confirm whether the tag is attached by the short-link service. If it is not, replace all five buy hrefs with tagged SiteStripe links. This record does not assert that the short links are non-compliant — the tag may be added downstream (Q-02).",
-      "status": "open — requirement quoted from the official policy; per-link status needs the owner's signed-in report",
-      "sources": [
-        "S01",
-        "S02"
-      ],
-      "sources_checked": "2026-11-20"
-    },
-    {
-      "id": "FLG-027",
-      "severity": "medium",
-      "area": "Flag register integrity",
-      "product": "flagged.html (site-wide)",
-      "detail": "Two flag identifiers each named two different findings on the published page: FLG-020 was used for both the unlocated Program Policies citations and the DIRECTION.md question-id mismatch, and FLG-021 for both the source-register gap and the nonexistent suggestion id. The page said an identifier names one thing while showing two.",
-      "why_it_matters": "A reader who is sent to a flag by its id can land on the wrong finding, which is the one behaviour a review register must not have.",
-      "action": "The later pair was renumbered FLG-028 and FLG-029 in place, with the old wording kept and the change dated. No finding was deleted, merged or re-graded.",
-      "status": "fixed in place 2026-11-20 (T-46); prior wording retained in each row",
-      "sources": [
-        "S02"
-      ],
-      "sources_checked": "2026-11-20"
-    },
-    {
-      "id": "FLG-028",
-      "severity": "low",
-      "area": "Register history",
-      "product": "DIRECTION.md",
-      "detail": "Previously published as a second FLG-020: DIRECTION.md described questions whose subjects did not exist in the open-questions register (the digest listed an account-status question as Q-08 while the register carried it elsewhere).",
-      "why_it_matters": "A digest that cites ids which do not exist sends the reader to a page that cannot answer them.",
-      "action": "The account-status question was registered as Q-23 and the link question as Q-22; the digest was corrected. Renumbered from FLG-020 to FLG-028 on 2026-11-20 so one id names one finding.",
-      "status": "fixed 2026-11-20; id renumbered",
-      "sources": [
-        "S02"
-      ],
-      "sources_checked": "2026-11-20"
-    },
-    {
-      "id": "FLG-029",
-      "severity": "low",
-      "area": "Register history",
-      "product": "data/suggestions.json, DIRECTION.md",
-      "detail": "Previously published as a second FLG-021: the digest cited a suggestion id absent from the register, and the register itself skips the SG-26 slot.",
-      "why_it_matters": "A cited proposal that does not exist cannot be reviewed.",
-      "action": "The gap is documented rather than reconstructed, because the original wording of the missing row is unknown. Renumbered from FLG-021 to FLG-029 on 2026-11-20.",
-      "status": "open — SG-26 slot intentionally left unoccupied and documented",
-      "sources": [
-        "S02"
-      ],
-      "sources_checked": "2026-11-20"
-    },
-    {
-      "id": "FLG-032",
-      "severity": "medium",
-      "area": "Coordination board: duplicate task identifiers",
-      "product": "COORDINATION.md",
-      "detail": "The board has two or more rows for each of T-12 to T-23 (T-16 and T-17 have three and four). Each duplicate pair has a different scope. Some duplicates are marked superseded or done, but the rows are not removed. Session 2cd3bab9 wrote earlier that the duplicate in-progress rows for T-20 to T-22 had been removed. That was wrong: they are marked superseded, not deleted.",
-      "why_it_matters": "The board rule is one identifier, one meaning. A reader who looks up T-17 finds four different tasks.",
-      "action": "Owner or the next integration session: decide whether superseded rows are kept as history or consolidated. Rows of other sessions are not edited in this pass.",
-      "status": "open — duplicates recorded; no rows removed or renumbered in this pass",
-      "sources": [],
-      "sources_checked": "2026-11-20"
-    },
-    {
-      "id": "FLG-033",
-      "severity": "low",
-      "area": "Source register: no consistent per-row fetch date",
-      "product": "data/sources.json; sources.html",
-      "detail": "Of the 29 source entries, 23 have no verified value. The updated field mixes publication or update dates (for example 2025-10-15, 2019-11) with fetch dates (for example 'fetched 2026-11-19').",
-      "why_it_matters": "A reader cannot tell when a page was last read, or whether a quotation still matches the page.",
-      "action": "Owner or integration session: add a fetch-date field to each source entry, separate from the publisher's update date. Until then, treat each quotation as dated to the date of the record only where one is stated.",
-      "status": "open — recorded; no source entry changed in this pass",
-      "sources": [],
-      "sources_checked": "2026-11-20"
-    }
-  ]
+  {
+   "id": "F-02",
+   "severity": "medium",
+   "area": "Specification conflict",
+   "product": "P2",
+   "detail": "The title says \"24 One-Touch Preset Options\"; a bullet says \"25 COOKING PRE-SETS\".",
+   "why_it_matters": "Preset count is a comparison point between oven-style machines. Publishing either number as fact would be publishing a coin flip.",
+   "action": "Neither number is used as a selling point. The conflict is shown on the product page.",
+   "status": "open",
+   "sources": [
+    "S11"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-03",
+   "severity": "medium",
+   "area": "Model currency",
+   "product": "P4",
+   "detail": "The listing displays \"There is a newer model of this item\" linking to ASIN B0GL7Z4KP4.",
+   "why_it_matters": "The supplied short link resolves to the older ASIN. A reader following the site may reach a superseded listing without being told.",
+   "action": "Disclosed on the product page. The site does not silently switch to the newer ASIN, because the supplied link is the owner's stated intent.",
+   "status": "needs review — owner decision on whether to point at B0GL7Z4KP4",
+   "sources": [
+    "S13"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-04",
+   "severity": "medium",
+   "area": "Missing specification",
+   "product": "P4, P5",
+   "detail": "Neither thermometer listing has a Product Dimensions field. Probe length is also not stated.",
+   "why_it_matters": "Probe length decides whether a thermometer reaches the centre of a large roast, and whether it can be left in a closed oven. Footprint decides whether it fits a drawer.",
+   "action": "Left blank and marked unverified on both product pages. No value guessed.",
+   "status": "open — check the manufacturer's own specification sheet",
+   "sources": [
+    "S13",
+    "S14"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-05",
+   "severity": "medium",
+   "area": "Missing rating",
+   "product": "P2, P4",
+   "detail": "No star rating was present on either page at capture time. A rating for a different ASIN appeared in a recommendation widget on the same page.",
+   "why_it_matters": "Quoting a neighbouring product's rating is the single easiest way to publish a false number on an affiliate site.",
+   "action": "Ratings left blank. Only ratings rendered in the page's own rating block are stored.",
+   "status": "open — re-capture; the rating may be region- or session-dependent",
+   "sources": [
+    "S11",
+    "S13"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-06",
+   "severity": "medium",
+   "area": "Seller-declared attribute",
+   "product": "P4, P5",
+   "detail": "The \"Specification Met\" field on P5 lists roughly twenty schemes including FDA, ISO 13485 and HACCP. P4 lists NIST and NSF.",
+   "why_it_matters": "This field is populated by the seller. It is not a certificate, and some entries (ISO 13485 covers medical devices) are unlikely to apply to a kitchen thermometer.",
+   "action": "Shown as a seller-declared attribute, never as verified certification. See F-07 for the accuracy figure.",
+   "status": "open — request certificates from the manufacturer",
+   "sources": [
+    "S13",
+    "S14"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-07",
+   "severity": "high",
+   "area": "Unverified claim",
+   "product": "P4",
+   "detail": "A bullet states a NIST certification for the claimed plus-or-minus 0.5 F accuracy.",
+   "why_it_matters": "Accuracy is the reason to buy a thermometer. A certification claim that has not been sighted is a manufacturer assertion, not a verified fact.",
+   "action": "Published as a vendor claim, labelled as such, with the listing cited. Not repeated in editorial voice.",
+   "status": "open — verify with NIST's own certification database or the manufacturer",
+   "sources": [
+    "S13"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-08",
+   "severity": "high",
+   "area": "Positioning",
+   "product": "all",
+   "detail": "The five products span two families — three air fryers and two thermometers — across four brands.",
+   "why_it_matters": "A site that is about both air fryers and thermometers has to justify the pairing or it reads as a list of things someone happened to have links for. The honest pairing is cooking to a target temperature, which the guides build on.",
+   "action": "Built the site around that pairing rather than hiding the span. Whether to narrow to air fryers only is a decision for the owner.",
+   "status": "needs review",
+   "sources": [
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-09",
+   "severity": "high",
+   "area": "Tracking",
+   "product": "all",
+   "detail": "The resolved short-link URLs served to this session carried query parameters but no visible tag= value.",
+   "why_it_matters": "Program Policies 2(a) requires Special Links to use the assigned Associates ID. If tag=shopnow047c-20 is not on the link, clicks earn nothing — a commercial failure, not a compliance one, but the more expensive of the two.",
+   "action": "Nothing is called invalid. The observation is recorded and the verification is routed to the owner's dashboard.",
+   "status": "blocked — requires the Associates account",
+   "sources": [
+    "S01",
+    "S02"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-10",
+   "severity": "high",
+   "area": "Measurement",
+   "product": "all",
+   "detail": "No first-party traffic, click, order, revenue or commission data exists for this site.",
+   "why_it_matters": "Any conversion rate or revenue estimate would be invented. There is no baseline to optimise against yet.",
+   "action": "No performance figure appears anywhere on the site. The campaign ledger starts empty and defined (data/campaigns.json).",
+   "status": "open — measure after launch",
+   "sources": [],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-11",
+   "severity": "medium",
+   "area": "Editorial discipline",
+   "product": "all",
+   "detail": "Popularity, trending and \"best\" claims are easy to write and hard to support; the listings themselves display dynamic badges.",
+   "why_it_matters": "Google's people-first guidance treats exaggerated headings as a quality problem, and Program Policies 2(b) prohibits overbroad product claims.",
+   "action": "No editorial superlatives. Where the listing shows a badge (Amazon's Choice, \"1K+ bought in past month\") it is quoted with the capture date and attributed to Amazon.",
+   "status": "controlled by rule",
+   "sources": [
+    "S02",
+    "S21"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-12",
+   "severity": "medium",
+   "area": "Missing specification",
+   "product": "P1, P2, P4",
+   "detail": "P1 and P2 do not state a maximum temperature; P1 states no preset count; P4 states no probe length or physical size.",
+   "why_it_matters": "Maximum temperature decides whether a machine can finish food that needs high heat; probe length decides whether a thermometer reaches a roast's centre.",
+   "action": "Blank and flagged. No number inferred from a similar model.",
+   "status": "open",
+   "sources": [
+    "S10",
+    "S11",
+    "S13"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-13",
+   "severity": "high",
+   "area": "Link format",
+   "product": "all",
+   "detail": "The supplied links use the link.amazon domain rather than amzn.to, and their compliance status cannot be settled from outside the account.",
+   "why_it_matters": "Program Policies 2(b) prohibits a shortening service used so that it is unclear the link goes to an Amazon Site. Whether these particular links meet that test in the enrolled workflow is unresolved.",
+   "action": "The site publishes direct amazon.com/dp/ destinations so clarity is not in question. The short links remain the recorded provenance. Test one link in the enrolled Associates workflow and confirm destination and reporting before relying on the short form. This is a test to run, not a verdict on the links.",
+   "status": "unresolved — needs the enrolled Associates workflow",
+   "sources": [
+    "S01",
+    "S02"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-14",
+   "severity": "low",
+   "area": "Variants",
+   "product": "P3, P5",
+   "detail": "Both ASINs are multi-variant listings (P3: 6/8/9 qt; P5: 1/2/3/4 probes). The resolved pages are the 8 qt and 3-probe variants.",
+   "why_it_matters": "Capacity and probe count differ by variant, and the reader will land on whichever variant Amazon defaults to at the time.",
+   "action": "Variant span stated in the table and on each product page, with the captured variant named.",
+   "status": "open — will drift as Amazon changes defaults",
+   "sources": [
+    "S12",
+    "S14"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-15",
+   "severity": "medium",
+   "area": "Product dependency",
+   "product": "P5",
+   "detail": "The CHEF iQ Sense displays readings in an app; its listing's display type is \"App\".",
+   "why_it_matters": "A reader without a smartphone or Wi-Fi in the kitchen is buying something they cannot fully use. That is a fit question, not a defect.",
+   "action": "Stated plainly in the watch-outs and in the which-one-is-for-you chooser.",
+   "status": "disclosed",
+   "sources": [
+    "S14"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-16",
+   "severity": "low",
+   "area": "Site hosting",
+   "product": "site",
+   "detail": "The site is served from a GitHub Pages project path (wingbangboozle1-lang.github.io/Prod3/) rather than an apex domain.",
+   "why_it_matters": "Search engines can index it, but a project path shares a hostname with every other project on the account, and the URL is harder to say out loud than a domain.",
+   "action": "Canonicals, sitemap and feed all use the absolute project-path URLs so nothing resolves relatively. A custom domain is a decision for the owner.",
+   "status": "open",
+   "sources": [
+    "S05"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-17",
+   "severity": "medium",
+   "area": "Measurement access",
+   "product": "site",
+   "detail": "No Search Console property and no analytics endpoint are configured for this site.",
+   "why_it_matters": "Without Search Console the site cannot see which queries it is being shown for, so the next topic has to be guessed rather than read off data.",
+   "action": "The site is built to accept both. A verification file slot and an analytics stub are documented in content/measurement.md.",
+   "status": "blocked — requires the owner's account access",
+   "sources": [],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-18",
+   "severity": "low",
+   "area": "Volatile figure",
+   "product": "P1, P3, P5",
+   "detail": "Star ratings, rating counts, \"Amazon's Choice\" and \"N bought in past month\" figures were captured on one day and change continuously.",
+   "why_it_matters": "A date-stamped figure is defensible; an undated one is a slow-motion error.",
+   "action": "Every such figure carries the capture date and the listing as its source. Nothing is presented as current.",
+   "status": "accepted — refresh on each release",
+   "sources": [
+    "S10",
+    "S12",
+    "S14"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-19",
+   "severity": "medium",
+   "area": "Imagery",
+   "product": "site",
+   "detail": "No product photography is used. The site ships typographic hero art and illustrated product placeholders instead.",
+   "why_it_matters": "The Operating Agreement treats images and text as Program Content, and a generated or copied photograph of a product is the wrong way to close that gap. A placeholder is honest; a fake photograph is not.",
+   "action": "Placeholders only, labelled. Real photography requires a decision on sourcing and rights.",
+   "status": "needs review",
+   "sources": [
+    "S01"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-20",
+   "severity": "low",
+   "area": "Missing specification",
+   "product": "P1, P2, P3",
+   "detail": "None of the three air fryer listings states a manufacturer warranty period.",
+   "why_it_matters": "Warranty length is one of the few after-sale terms a buyer can compare before purchase, and its absence is a real gap in the decision rather than something to assume a default for.",
+   "action": "Left blank in the register and on every product page. Only the CHEF iQ listing states a term (two years); it is the only warranty published anywhere on this site.",
+   "status": "open — check the manufacturer's own product page",
+   "sources": [
+    "S10",
+    "S11",
+    "S12"
+   ],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "F-21",
+   "severity": "low",
+   "area": "Social preview",
+   "product": "site-wide",
+   "detail": "Every page now references assets/og-image.png (1200×630 raster) as its og:image; the earlier SVG reference was replaced during the publication-polish pass. No share-debugger test has been run from this environment.",
+   "why_it_matters": "If preview bots skip SVG, shared links render without a card, costing clicks on exactly the surfaces a marketing site depends on.",
+   "action": "PNG card adopted (SG-16 option A, minus the debugger check). The remaining step is a share-debugger run on the live URL.",
+   "status": "open — run a share debugger on the live URL to confirm the card renders (format concern resolved 2026-11-19)",
+   "sources": [],
+   "sources_checked": "2026-11-19"
+  },
+  {
+   "id": "FLG-017",
+   "severity": "medium",
+   "area": "Short-link re-check",
+   "product": "P-01 (link.amazon/B04G1MEwY)",
+   "detail": "On 2026-11-20 the submitted short link link.amazon/B04G1MEwY ended at the amazon.com homepage, not a product page. The /dp/B0CDY277D3 listing still loads with a matching title. The other four short links resolved to their recorded /dp/ ASINs the same day. Recorded in data/products.json (live_recheck_2026_11_20) and flagged.html.",
+   "why_it_matters": "A buyer who clicks the supplied link could land on a generic page. The 2026-11-19 observed destination for P-01 is not re-confirmed through the short link today.",
+   "action": "Owner: open the short link in a normal browser and in the enrolled Associates workflow, and record the landing ASIN. Do not infer the redirect from the /dp/ page alone. This does not show the link is invalid.",
+   "status": "open — short-link redirect not re-confirmed on 2026-11-20; /dp/ page matches",
+   "sources": [
+    "S15",
+    "S10"
+   ],
+   "sources_checked": "2026-11-20"
+  },
+  {
+   "id": "FLG-020",
+   "severity": "medium",
+   "area": "Policy citations (Associates Program Policies)",
+   "product": "Site-wide (citation log, compare, direction)",
+   "detail": "The site cites Program Policies §2(t) (customer star ratings), §2(v) (URL obscuring), and a shortener prohibition under §2(b). On 2026-11-20 the live Program Policies page (updated April 14, 2026) showed Section 2 with subsections (a) and (b) only; none of the three clauses was found there. Their wording is marked unverified in citations.json, citations.html, and suggestions.json.",
+   "why_it_matters": "A reader or reviewer who checks the cited clause will not find it. Ratings and prices are not shown on the site, so the conduct does not depend on these citations, but the stated basis is unverified.",
+   "action": "Owner or editorial review: locate the Associates text that carries these clauses (Operating Agreement, Program Policies, or a dated version) and cite it, or remove the citation. Do not infer replacement wording.",
+   "status": "open — citations reworded to 'not located'; owner review",
+   "sources": [
+    "S02"
+   ],
+   "sources_checked": "2026-11-20"
+  },
+  {
+   "id": "FLG-021",
+   "severity": "low",
+   "area": "Source register and one quotation",
+   "product": "P-04 (ThermoMaven 1 Sec), source register",
+   "detail": "(1) data/sources.json has no entries for the S-series numbers 07, 08, 09 and 20; no current data file cites them. (2) The P-04 listing quotation \"There is a newer model of this item\" is cited to S13. The 2026-11-20 re-read covered the first page of that listing only, so the quoted wording is not re-confirmed. (3) SG-21 duplicates SG-20 and is retired on main.",
+   "why_it_matters": "Gaps in the source register make a cited ID unresolvable if a future page uses one. The quotation is a listing claim that may change.",
+   "action": "Owner: confirm the quotation on the live listing and record the date, or remove it. Decide whether the S-series numbers 07, 08, 09 and 20 are to be defined or retired (DIRECTION.md I-03).",
+   "status": "open — quotation not re-confirmed; register gap recorded",
+   "sources": [
+    "S13"
+   ],
+   "sources_checked": "2026-11-20"
+  },
+  {
+   "id": "FLG-025",
+   "severity": "high",
+   "area": "Outbound links (buy buttons)",
+   "product": "All five (P-01..P-05)",
+   "detail": "On 2026-11-20 (session 6bf60cac, T-46) all five supplied link.amazon URLs were fetched again and every one ended at https://www.amazon.com/ — the Amazon homepage — rather than at a product page. That is a wider result than either earlier same-day record (session 70e8475c: one of five; session ce911db5: two of five) and wider than 2026-11-19, when all five read as /dp/ product pages. Reproduced a fourth time on 2026-11-20 by session 52f418e7: all five supplied links ended at the homepage again, so the behavior tracks the fetch path as much as the link, and no page on this site presents a fetch as proof about a link.",
+   "why_it_matters": "A reader who presses a buy button is meant to reach the product. If the final destination is the Amazon homepage, the reader has to search for the product again, and the site's own claim that a button opens the listing is wrong at the moment of the click.",
+   "action": "Owner: click each of the five links signed in to Associates, record the landing page, and replace the href with a freshly generated SiteStripe Special Link once it is confirmed (DT-01). Do not treat this as proof that the links are invalid: the destination depends on Amazon's redirect, which changed between observations.",
+   "status": "open — third dated observation recorded; no record overwritten",
+   "sources": [
+    "S10",
+    "S11",
+    "S12",
+    "S13",
+    "S14",
+    "S15"
+   ],
+   "sources_checked": "2026-11-20"
+  },
+  {
+   "id": "FLG-026",
+   "severity": "high",
+   "area": "Special Link tag parameter",
+   "product": "All five buy links plus 192 evidence links",
+   "detail": "Program Policies (updated 2026-04-14) §2(b) require the Associates ID or tag as a parameter in the URL of each link placed on a site to an Amazon Site, and §2(a) require Special Links to use the assigned Associates ID. None of the 23 shipped link.amazon buy anchors and none of the 192 shipped amazon.com anchors contains a tag parameter in the URL the reader receives; 0 anchors carry tag=shopnow047c-20. 2026-11-20 (session 52f418e7): the site-side fix was implemented rather than queued — a policy requirement that a generator can enforce should not wait on a person.",
+   "why_it_matters": "If a click is not tagged, Amazon cannot attribute it and the click cannot earn. The rule is quoted in the Program Policies, so this is the one link question with a written, checkable requirement behind it.",
+   "action": "Owner: open any product link on the live site and read the destination URL for the tag (S34 gives the exact procedure), then run one tagged link through the Link Checker and confirm a click appears in the account's reports before scaling. Re-test the five supplied short links at the same time (Q-02, Q-24); this record still does not assert that they are non-compliant — a short-link service may attach the tag downstream.",
+   "status": "partly resolved — the site-side half is done: 329 product links across 36 pages now carry tag=shopnow047c-20, and tools/link_tagger.py --check runs as release gate D38 so an untagged product link fails the build. Open: the account-side confirmation.",
+   "sources": [
+    "S01",
+    "S02"
+   ],
+   "sources_checked": "2026-11-20",
+   "reverified": "2026-11-20"
+  },
+  {
+   "id": "FLG-027",
+   "severity": "medium",
+   "area": "Flag register integrity",
+   "product": "flagged.html (site-wide)",
+   "detail": "Two flag identifiers each named two different findings on the published page: FLG-020 was used for both the unlocated Program Policies citations and the DIRECTION.md question-id mismatch, and FLG-021 for both the source-register gap and the nonexistent suggestion id. The page said an identifier names one thing while showing two.",
+   "why_it_matters": "A reader who is sent to a flag by its id can land on the wrong finding, which is the one behaviour a review register must not have.",
+   "action": "The later pair was renumbered FLG-028 and FLG-029 in place, with the old wording kept and the change dated. No finding was deleted, merged or re-graded.",
+   "status": "fixed in place 2026-11-20 (T-46); prior wording retained in each row",
+   "sources": [
+    "S02"
+   ],
+   "sources_checked": "2026-11-20"
+  },
+  {
+   "id": "FLG-028",
+   "severity": "low",
+   "area": "Register history",
+   "product": "DIRECTION.md",
+   "detail": "Previously published as a second FLG-020: DIRECTION.md described questions whose subjects did not exist in the open-questions register (the digest listed an account-status question as Q-08 while the register carried it elsewhere).",
+   "why_it_matters": "A digest that cites ids which do not exist sends the reader to a page that cannot answer them.",
+   "action": "The account-status question was registered as Q-23 and the link question as Q-22; the digest was corrected. Renumbered from FLG-020 to FLG-028 on 2026-11-20 so one id names one finding.",
+   "status": "fixed 2026-11-20; id renumbered",
+   "sources": [
+    "S02"
+   ],
+   "sources_checked": "2026-11-20"
+  },
+  {
+   "id": "FLG-029",
+   "severity": "low",
+   "area": "Register history",
+   "product": "data/suggestions.json, DIRECTION.md",
+   "detail": "Previously published as a second FLG-021: the digest cited a suggestion id absent from the register, and the register itself skips the SG-26 slot.",
+   "why_it_matters": "A cited proposal that does not exist cannot be reviewed.",
+   "action": "The gap is documented rather than reconstructed, because the original wording of the missing row is unknown. Renumbered from FLG-021 to FLG-029 on 2026-11-20.",
+   "status": "open — SG-26 slot intentionally left unoccupied and documented",
+   "sources": [
+    "S02"
+   ],
+   "sources_checked": "2026-11-20"
+  },
+  {
+   "id": "FLG-032",
+   "severity": "medium",
+   "area": "Coordination board: duplicate task identifiers",
+   "product": "COORDINATION.md",
+   "detail": "The board has two or more rows for each of T-12 to T-23 (T-16 and T-17 have three and four). Each duplicate pair has a different scope. Some duplicates are marked superseded or done, but the rows are not removed. Session 2cd3bab9 wrote earlier that the duplicate in-progress rows for T-20 to T-22 had been removed. That was wrong: they are marked superseded, not deleted.",
+   "why_it_matters": "The board rule is one identifier, one meaning. A reader who looks up T-17 finds four different tasks.",
+   "action": "Owner or the next integration session: decide whether superseded rows are kept as history or consolidated. Rows of other sessions are not edited in this pass.",
+   "status": "open — duplicates recorded; no rows removed or renumbered in this pass",
+   "sources": [],
+   "sources_checked": "2026-11-20"
+  },
+  {
+   "id": "FLG-033",
+   "severity": "low",
+   "area": "Source register: no consistent per-row fetch date",
+   "product": "data/sources.json; sources.html",
+   "detail": "Of the 29 source entries, 23 have no verified value. The updated field mixes publication or update dates (for example 2025-10-15, 2019-11) with fetch dates (for example 'fetched 2026-11-19').",
+   "why_it_matters": "A reader cannot tell when a page was last read, or whether a quotation still matches the page.",
+   "action": "Owner or integration session: add a fetch-date field to each source entry, separate from the publisher's update date. Until then, treat each quotation as dated to the date of the record only where one is stated.",
+   "status": "open — recorded; no source entry changed in this pass",
+   "sources": [],
+   "sources_checked": "2026-11-20"
+  },
+  {
+   "id": "FLG-034",
+   "severity": "low",
+   "area": "Register integrity — flag numbering",
+   "product": "data/flagged.json; flagged.html",
+   "detail": "data/flagged.json holds FLG-017, 020, 021 and 025–033 but not FLG-001–016 or 022–024, which are published on flagged.html and cited from data/products.json. The JSON is therefore a partial copy of the flag register, and the two surfaces are checked by different rules: tools/verify_site.py only proves that every flag id cited by a product appears somewhere in flagged.html.",
+   "why_it_matters": "A reader who filters the machine-readable register gets a shorter list than the page publishes, so an audit against the JSON under-counts open items. It also means a flag can exist on the page and in products.json with no structured row at all.",
+   "action": "Integration or owner pass: move the remaining FLG rows into data/flagged.json and generate flagged.html from it, the way the other three registers work; until then, treat flagged.html as the complete list and the JSON as its subset. Recorded here rather than silently merged, because a renumbered flag would break citations on published pages.",
+   "status": "open — recorded, not renumbered",
+   "sources": [],
+   "evidence_status": "unverified",
+   "sources_checked": "2026-11-20"
+  }
+ ]
 }

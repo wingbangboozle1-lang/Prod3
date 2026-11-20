@@ -1,232 +1,242 @@
 {
-  "verified_on": "2026-11-19",
-  "sources": [
-    {
-      "id": "S01",
-      "title": "Amazon Associates Program Operating Agreement",
-      "url": "https://affiliate-program.amazon.com/help/operating/agreement",
-      "used_for": "Special Links definition; Program Content (data, images, text); compliance duties",
-      "quote": "The links must properly use the special 'tagged' link formats we provide and comply with this Agreement ('Special Links').",
-      "updated": "2025-10-15"
-    },
-    {
-      "id": "S02",
-      "title": "Amazon Associates Program Policies",
-      "url": "https://affiliate-program.amazon.com/help/operating/policies",
-      "used_for": "Qualifying Purchases / session rules; Participation Requirements (do not obscure link destinations)",
-      "quote": "a customer clicks through a Special Link on your Site to an Amazon Site",
-      "updated": "2026-04-14"
-    },
-    {
-      "id": "S03",
-      "title": "FTC — Disclosures 101 for Social Media Influencers",
-      "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
-      "used_for": "Disclosure placement: hard to miss, with the endorsement, simple clear language",
-      "quote": "Place it so it's hard to miss. The disclosure should be placed with the endorsement message itself.",
-      "updated": "2019-11"
-    },
-    {
-      "id": "S04",
-      "title": "Google Search Central — Qualify outbound links (rel=\"sponsored\")",
-      "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
-      "used_for": "Marking paid/affiliate outbound links",
-      "quote": "Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value.",
-      "updated": "2025-12-10"
-    },
-    {
-      "id": "S05",
-      "title": "GitHub Docs — What is GitHub Pages?",
-      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
-      "used_for": "Static hosting of this site; project-site URL pattern",
-      "quote": "GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub",
-      "updated": "2026-11-19"
-    },
-    {
-      "id": "S06",
-      "title": "Amazon Associates Creators API — GetItems, ItemIdType parameter (ASIN definition)",
-      "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
-      "used_for": "Why a 9-character short-link token cannot be an ASIN",
-      "quote": "ASIN — Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.",
-      "updated": "fetched 2026-11-19",
-      "note": "Verified live 2026-11-19: the ItemIdType table on this page carries the exact 10-character wording. The earlier citation pointed at the Program Policies page, which does not carry that definition (corrected by session 28d2d6c0, T-23)."
-    },
-    {
-      "id": "S10",
-      "title": "Official listing — CHEFMAN 6 Qt Dual Basket (B0CDY277D3)",
-      "url": "https://www.amazon.com/dp/B0CDY277D3",
-      "used_for": "P-01 title, specs, rating, price, rank",
-      "verified": "2026-11-19"
-    },
-    {
-      "id": "S11",
-      "title": "Official listing — Emeril Lagasse 26QT (B09B7SB46R)",
-      "url": "https://www.amazon.com/dp/B09B7SB46R",
-      "used_for": "P-02 title, specs, rating, price, rank",
-      "verified": "2026-11-19"
-    },
-    {
-      "id": "S12",
-      "title": "Official listing — Chefman 8 Qt TurboFry (B08DKYBTPH)",
-      "url": "https://www.amazon.com/dp/B08DKYBTPH",
-      "used_for": "P-03 title, specs, rating, price, rank, newer-model notice",
-      "verified": "2026-11-19"
-    },
-    {
-      "id": "S13",
-      "title": "Official listing — ThermoMaven 1 Sec (B0DHZTCNR5)",
-      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
-      "used_for": "P-04 title, specs, price, cross-promoted-model wording; accuracy/NIST/NSF wording recorded as seller claims (FLG-009)",
-      "verified": "2026-11-19"
-    },
-    {
-      "id": "S14",
-      "title": "Official listing — CHEF iQ Sense Gen3 (B0DZFD6R9Z)",
-      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
-      "used_for": "P-05 title, specs, rating, price, rank",
-      "verified": "2026-11-19"
-    },
-    {
-      "id": "S15",
-      "title": "Observation — amazon.com/dp/<9-char token> returns Page Not Found",
-      "url": "https://www.amazon.com/dp/B04G1MEwY",
-      "used_for": "Records an observation only: pasting a submitted 9-char token as /dp/<token> returned Page Not Found on 2026-11-19. The 9-character length alone shows the tokens are not ASINs (ASINs are 10 characters). This observation does not test or establish the status of the supplied link.amazon short links — see FLG-011.",
-      "verified": "2026-11-19"
-    },
-    {
-      "id": "S16",
-      "title": "NIST — Metrological Traceability: FAQ and NIST Policy",
-      "url": "https://www.nist.gov/metrology/metrological-traceability",
-      "used_for": "Explains that traceability is a property of a measurement result, not an instrument or product; NIST certifies traceability only for results it provides",
-      "updated": "fetched 2026-11-19"
-    },
-    {
-      "id": "S17",
-      "title": "USDA FSIS — Safe Minimum Internal Temperature Chart",
-      "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
-      "used_for": "Food-safety temperatures cited in the thermometer accuracy article (145°F + 3-min rest; 160°F ground; 165°F poultry)",
-      "updated": "fetched 2026-11-19"
-    },
-    {
-      "id": "S18",
-      "title": "USDA FSIS — Correct Place to Insert a Food Thermometer",
-      "url": "https://www.fsis.usda.gov/news-events/news-press-releases/do-you-know-correct-place-insert-your-food-thermometer",
-      "used_for": "Thermometer placement guidance cited in the accuracy article",
-      "updated": "fetched 2026-11-19"
-    },
-    {
-      "id": "S19",
-      "title": "Google (Chrome for Developers) — Lighthouse: Tap targets are not sized appropriately",
-      "url": "https://developer.chrome.com/docs/lighthouse/seo/tap-targets",
-      "used_for": "Mobile-first pass (S-20): tap targets below 48x48px that overlap a neighbour fail the audit; ~8px spacing between targets recommended; padding is the suggested way to grow a hit area",
-      "quote": "Tap targets that are 48 px by 48 px never fail the audit ... 8 px between tap targets is a good starting point.",
-      "updated": "fetched 2026-11-19 (page lists last update 2019-05-02)"
-    },
-    {
-      "id": "S21",
-      "title": "Google Search Central — Creating helpful, reliable, people-first content",
-      "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
-      "used_for": "E-E-A-T questions (who, how, why), originality and insight beyond the obvious, descriptive non-exaggerated headings",
-      "quote": "Does the content provide insightful analysis or interesting information that is beyond the obvious? … Does the main heading or page title avoid exaggerating or being shocking in nature?",
-      "updated": "fetched 2026-11-19",
-      "note": "Quote corrected to the page's verbatim self-assessment questions (session 28d2d6c0, T-23)."
-    },
-    {
-      "id": "S22",
-      "title": "Google Search Central — Spam policies for Google web search (thin affiliation, scaled content abuse)",
-      "url": "https://developers.google.com/search/docs/essentials/spam-policies",
-      "used_for": "Thin-affiliation problem: affiliate pages with little original value beyond the links",
-      "quote": "Thin affiliation is the practice of publishing content with product affiliate links where the product descriptions and reviews are copied directly from the original merchant without any original content or added value. … Examples of good affiliate pages include offering additional information about price, original product reviews, rigorous testing and ratings, navigation of products or categories, and product comparisons.",
-      "updated": "fetched 2026-11-19",
-      "note": "Quote and title corrected to the page's verbatim section text (session 28d2d6c0, T-23)."
-    },
-    {
-      "id": "S23",
-      "title": "GitHub Pages — Creating a custom 404 page",
-      "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site",
-      "used_for": "Custom 404 behaviour for a GitHub Pages project site",
-      "quote": "You can create a custom 404 page for your GitHub Pages site.",
-      "updated": "fetched 2026-11-19"
-    },
-    {
-      "id": "S24",
-      "title": "Google Search Central — Control your snippets in search results (meta descriptions)",
-      "url": "https://developers.google.com/search/docs/appearance/snippet",
-      "used_for": "Unique descriptions per page; snippet quality",
-      "quote": "Create unique descriptions for each page on your site. Identical or similar descriptions on every page are not helpful to users.",
-      "updated": "fetched 2026-11-19"
-    },
-    {
-      "id": "S25",
-      "title": "Google Search Central — Provide a great page experience",
-      "url": "https://developers.google.com/search/docs/appearance/page-experience",
-      "used_for": "Page-experience expectations behind the mobile-first and performance rules",
-      "quote": "Google's core systems reward pages that provide a great page experience.",
-      "updated": "fetched 2026-11-19"
-    },
-    {
-      "id": "S26",
-      "title": "Google Search Console — Get started (verify ownership, sitemap, Search performance report)",
-      "url": "https://developers.google.com/search/docs/monitor-debug/search-console-start",
-      "used_for": "DT-03 / Q-07: ownership verification before property data; sitemap submission is optional; Search performance report",
-      "quote": "Verify site ownership. Get access to all of the information Search Console makes available.",
-      "updated": "2026-11-20"
-    },
-    {
-      "id": "S27",
-      "title": "Google Search Console Help — Verify your site ownership",
-      "url": "https://support.google.com/webmasters/answer/9008080?hl=en",
-      "used_for": "DT-03: file, HTML-tag, DNS and related ownership-verification methods",
-      "quote": "Verify ownership of your site to access Search Console data.",
-      "updated": "2026-11-20"
-    },
-    {
-      "id": "S28",
-      "title": "Google Search Console Help — Getting started",
-      "url": "https://support.google.com/webmasters/answer/10267942?hl=en",
-      "used_for": "DT-03: add and verify ownership before using property data; a sitemap lists URLs used as crawl starting points",
-      "quote": "A sitemap lists URLs used as crawl starting points.",
-      "updated": "2026-11-20"
-    },
-    {
-      "id": "S29",
-      "title": "Amazon listing B0CDY277D3 — Chefman 6-quart dual-basket air fryer (P-01)",
-      "url": "https://www.amazon.com/dp/B0CDY277D3",
-      "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
-      "quote": "Dual 3-quart baskets; 200–450°F; 120V/1700W; model RJ38-SQPF-3TDB-2W; UPC 810087845025. CONFLICT: details table says Capacity 6 liters; title and bullets say 6 quarts.",
-      "updated": "2026-11-20"
-    },
-    {
-      "id": "S30",
-      "title": "Amazon listing B09B7SB46R — Emeril Lagasse 26QT French Door air fryer toaster oven (P-02)",
-      "url": "https://www.amazon.com/dp/B09B7SB46R",
-      "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
-      "quote": "24 presets; 75–500°F; 1700W/120V; 16.9×15.8×14.8 in; 24.6 L capacity; model 4-00675-02X-VN; UPC 752356835682.",
-      "updated": "2026-11-20"
-    },
-    {
-      "id": "S31",
-      "title": "Amazon listing B08DKYBTPH — Chefman 8-quart TurboFry air fryer (P-03)",
-      "url": "https://www.amazon.com/dp/B08DKYBTPH",
-      "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
-      "quote": "8 qt; four presets; 12.75×13.5×10 in; 12.8 lb; 120V/1700W; model RJ38-SQSS-8T; UPC 816458024518. CONFLICTS: title claims 450°F Hi-Fry while bullets and specification table state 200–400°F; a resource bullet says 1000W while the specification table says 1700W.",
-      "updated": "2026-11-20"
-    },
-    {
-      "id": "S32",
-      "title": "Amazon listing B0DHZTCNR5 — ThermoMaven 1-second instant-read thermometer (P-04)",
-      "url": "https://www.amazon.com/dp/B0DHZTCNR5",
-      "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
-      "quote": "Claimed ±0.5°F accuracy; NIST/NSF specification metadata; 1-second response; rotating LED; IP67; motion activation; auto-off; AAA battery; calibration certificate included. Accuracy and response values are seller claims.",
-      "updated": "2026-11-20"
-    },
-    {
-      "id": "S33",
-      "title": "Amazon listing B0DZFD6R9Z — CHEF iQ Sense Gen3 smart wireless meat thermometer, 3-probe variant (P-05)",
-      "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
-      "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
-      "quote": "3 ultra-thin probes; 5 sensors; 1000°F heat-safe; WiFi and Bluetooth; app monitoring; model CQ60-3C-Z1-E; UPC 810170921148. CONFLICTS: battery life 50 h vs 70 h and warranty 2 vs 3 years appear in the listing (see FLG-003).",
-      "updated": "2026-11-20"
-    }
-  ],
-  "note": "\"verified\"/\"updated\" fields record when a page was fetched or its listed update date; a fetch date is not an endorsement of the page's product claims. Listing sources are seller pages: specs, ratings, and prices transcribed from them are seller statements. Amazon page availability and content can change. Session a25ccde6 added the Google people-first, thin-affiliation, custom-404, snippet and page-experience sources (S21-S25) after finding that the people-first and thin-affiliation sources had been cited in the data registers without ever being defined (audit I-03). Those additions were renumbered after the merge to avoid colliding with this branch's tap-target source."
+ "verified_on": "2026-11-19",
+ "sources": [
+  {
+   "id": "S01",
+   "title": "Amazon Associates Program Operating Agreement",
+   "url": "https://affiliate-program.amazon.com/help/operating/agreement",
+   "used_for": "Special Links definition; the required disclosure sentence (§5, read verbatim 2026-11-20); Program Content scope; compliance duties",
+   "quote": "The links must properly use the special “tagged” link formats we provide and comply with this Agreement (“Special Links”) — §1; and §5: You must clearly and prominently state the following … on your Site: “As an Amazon Associate I earn from qualifying purchases.”",
+   "updated": "2025-10-15",
+   "reverified": "2026-11-20"
+  },
+  {
+   "id": "S02",
+   "title": "Amazon Associates Program Policies",
+   "url": "https://affiliate-program.amazon.com/help/operating/policies",
+   "used_for": "Qualifying Purchases / session rules; price and availability display limits; link-tag requirement (Participation Requirements 2(b), read line by line 2026-11-20); promotional-claim, program-content and automation limits",
+   "quote": "you must include your Associates ID or “tag” (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site — Participation Requirements 2(b); “a customer clicks through a Special Link on your Site to an Amazon Site” — Commission Income Statement 1(a); “your Site may only show prices and availability if: (a) we serve the link in which that price and availability data are displayed, or (b) you obtain Product pricing and availability data via Creators API or PA API” — 2(b)",
+   "updated": "2026-04-14",
+   "reverified": "2026-11-20"
+  },
+  {
+   "id": "S03",
+   "title": "FTC — Disclosures 101 for Social Media Influencers",
+   "url": "https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers",
+   "used_for": "Disclosure placement: hard to miss, with the endorsement, simple clear language",
+   "quote": "Place it so it's hard to miss. The disclosure should be placed with the endorsement message itself.",
+   "updated": "2019-11"
+  },
+  {
+   "id": "S04",
+   "title": "Google Search Central — Qualify outbound links (rel=\"sponsored\")",
+   "url": "https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links",
+   "used_for": "Marking paid/affiliate outbound links",
+   "quote": "Mark links that are advertisements or paid placements (commonly called paid links) with the sponsored value.",
+   "updated": "2025-12-10"
+  },
+  {
+   "id": "S05",
+   "title": "GitHub Docs — What is GitHub Pages?",
+   "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages",
+   "used_for": "Static hosting of this site; project-site URL pattern",
+   "quote": "GitHub Pages is a static site hosting service that takes HTML, CSS, and JavaScript files straight from a repository on GitHub",
+   "updated": "2026-11-19"
+  },
+  {
+   "id": "S06",
+   "title": "Amazon Associates Creators API — GetItems, ItemIdType parameter (ASIN definition)",
+   "url": "https://affiliate-program.amazon.com/creatorsapi/docs/en-us/api-reference/operations/get-items",
+   "used_for": "Why a 9-character short-link token cannot be an ASIN",
+   "quote": "ASIN — Amazon Standard Identification Number: 10-Character alphanumeric unique identifier assigned by Amazon.",
+   "updated": "fetched 2026-11-19",
+   "note": "Verified live 2026-11-19: the ItemIdType table on this page carries the exact 10-character wording. The earlier citation pointed at the Program Policies page, which does not carry that definition (corrected by session 28d2d6c0, T-23)."
+  },
+  {
+   "id": "S10",
+   "title": "Official listing — CHEFMAN 6 Qt Dual Basket (B0CDY277D3)",
+   "url": "https://www.amazon.com/dp/B0CDY277D3",
+   "used_for": "P-01 title, specs, rating, price, rank",
+   "verified": "2026-11-19"
+  },
+  {
+   "id": "S11",
+   "title": "Official listing — Emeril Lagasse 26QT (B09B7SB46R)",
+   "url": "https://www.amazon.com/dp/B09B7SB46R",
+   "used_for": "P-02 title, specs, rating, price, rank",
+   "verified": "2026-11-19"
+  },
+  {
+   "id": "S12",
+   "title": "Official listing — Chefman 8 Qt TurboFry (B08DKYBTPH)",
+   "url": "https://www.amazon.com/dp/B08DKYBTPH",
+   "used_for": "P-03 title, specs, rating, price, rank, newer-model notice",
+   "verified": "2026-11-19"
+  },
+  {
+   "id": "S13",
+   "title": "Official listing — ThermoMaven 1 Sec (B0DHZTCNR5)",
+   "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+   "used_for": "P-04 title, specs, price, cross-promoted-model wording; accuracy/NIST/NSF wording recorded as seller claims (FLG-009)",
+   "verified": "2026-11-19"
+  },
+  {
+   "id": "S14",
+   "title": "Official listing — CHEF iQ Sense Gen3 (B0DZFD6R9Z)",
+   "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+   "used_for": "P-05 title, specs, rating, price, rank",
+   "verified": "2026-11-19"
+  },
+  {
+   "id": "S15",
+   "title": "Observation — amazon.com/dp/<9-char token> returns Page Not Found",
+   "url": "https://www.amazon.com/dp/B04G1MEwY",
+   "used_for": "Records an observation only: pasting a submitted 9-char token as /dp/<token> returned Page Not Found on 2026-11-19. The 9-character length alone shows the tokens are not ASINs (ASINs are 10 characters). This observation does not test or establish the status of the supplied link.amazon short links — see FLG-011.",
+   "verified": "2026-11-19"
+  },
+  {
+   "id": "S16",
+   "title": "NIST — Metrological Traceability: FAQ and NIST Policy",
+   "url": "https://www.nist.gov/metrology/metrological-traceability",
+   "used_for": "Explains that traceability is a property of a measurement result, not an instrument or product; NIST certifies traceability only for results it provides",
+   "updated": "fetched 2026-11-19"
+  },
+  {
+   "id": "S17",
+   "title": "USDA FSIS — Safe Minimum Internal Temperature Chart",
+   "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart",
+   "used_for": "Food-safety temperatures cited in the thermometer accuracy article (145°F + 3-min rest; 160°F ground; 165°F poultry)",
+   "updated": "fetched 2026-11-19"
+  },
+  {
+   "id": "S18",
+   "title": "USDA FSIS — Correct Place to Insert a Food Thermometer",
+   "url": "https://www.fsis.usda.gov/news-events/news-press-releases/do-you-know-correct-place-insert-your-food-thermometer",
+   "used_for": "Thermometer placement guidance cited in the accuracy article",
+   "updated": "fetched 2026-11-19"
+  },
+  {
+   "id": "S19",
+   "title": "Google (Chrome for Developers) — Lighthouse: Tap targets are not sized appropriately",
+   "url": "https://developer.chrome.com/docs/lighthouse/seo/tap-targets",
+   "used_for": "Mobile-first pass (S-20): tap targets below 48x48px that overlap a neighbour fail the audit; ~8px spacing between targets recommended; padding is the suggested way to grow a hit area",
+   "quote": "Tap targets that are 48 px by 48 px never fail the audit ... 8 px between tap targets is a good starting point.",
+   "updated": "fetched 2026-11-19 (page lists last update 2019-05-02)"
+  },
+  {
+   "id": "S21",
+   "title": "Google Search Central — Creating helpful, reliable, people-first content",
+   "url": "https://developers.google.com/search/docs/fundamentals/creating-helpful-content",
+   "used_for": "E-E-A-T questions (who, how, why), originality and insight beyond the obvious, descriptive non-exaggerated headings",
+   "quote": "Does the content provide insightful analysis or interesting information that is beyond the obvious? … Does the main heading or page title avoid exaggerating or being shocking in nature?",
+   "updated": "fetched 2026-11-19",
+   "note": "Quote corrected to the page's verbatim self-assessment questions (session 28d2d6c0, T-23)."
+  },
+  {
+   "id": "S22",
+   "title": "Google Search Central — Spam policies for Google web search (thin affiliation, scaled content abuse)",
+   "url": "https://developers.google.com/search/docs/essentials/spam-policies",
+   "used_for": "Thin-affiliation problem: affiliate pages with little original value beyond the links",
+   "quote": "Thin affiliation is the practice of publishing content with product affiliate links where the product descriptions and reviews are copied directly from the original merchant without any original content or added value. … Examples of good affiliate pages include offering additional information about price, original product reviews, rigorous testing and ratings, navigation of products or categories, and product comparisons.",
+   "updated": "fetched 2026-11-19",
+   "note": "Quote and title corrected to the page's verbatim section text (session 28d2d6c0, T-23)."
+  },
+  {
+   "id": "S23",
+   "title": "GitHub Pages — Creating a custom 404 page",
+   "url": "https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-custom-404-page-for-your-github-pages-site",
+   "used_for": "Custom 404 behaviour for a GitHub Pages project site",
+   "quote": "You can create a custom 404 page for your GitHub Pages site.",
+   "updated": "fetched 2026-11-19"
+  },
+  {
+   "id": "S24",
+   "title": "Google Search Central — Control your snippets in search results (meta descriptions)",
+   "url": "https://developers.google.com/search/docs/appearance/snippet",
+   "used_for": "Unique descriptions per page; snippet quality",
+   "quote": "Create unique descriptions for each page on your site. Identical or similar descriptions on every page are not helpful to users.",
+   "updated": "fetched 2026-11-19"
+  },
+  {
+   "id": "S25",
+   "title": "Google Search Central — Provide a great page experience",
+   "url": "https://developers.google.com/search/docs/appearance/page-experience",
+   "used_for": "Page-experience expectations behind the mobile-first and performance rules",
+   "quote": "Google's core systems reward pages that provide a great page experience.",
+   "updated": "fetched 2026-11-19"
+  },
+  {
+   "id": "S26",
+   "title": "Google Search Console — Get started (verify ownership, sitemap, Search performance report)",
+   "url": "https://developers.google.com/search/docs/monitor-debug/search-console-start",
+   "used_for": "DT-03 / Q-07: ownership verification before property data; sitemap submission is optional; Search performance report",
+   "quote": "Verify site ownership. Get access to all of the information Search Console makes available.",
+   "updated": "2026-11-20"
+  },
+  {
+   "id": "S27",
+   "title": "Google Search Console Help — Verify your site ownership",
+   "url": "https://support.google.com/webmasters/answer/9008080?hl=en",
+   "used_for": "DT-03: file, HTML-tag, DNS and related ownership-verification methods",
+   "quote": "Verify ownership of your site to access Search Console data.",
+   "updated": "2026-11-20"
+  },
+  {
+   "id": "S28",
+   "title": "Google Search Console Help — Getting started",
+   "url": "https://support.google.com/webmasters/answer/10267942?hl=en",
+   "used_for": "DT-03: add and verify ownership before using property data; a sitemap lists URLs used as crawl starting points",
+   "quote": "A sitemap lists URLs used as crawl starting points.",
+   "updated": "2026-11-20"
+  },
+  {
+   "id": "S29",
+   "title": "Amazon listing B0CDY277D3 — Chefman 6-quart dual-basket air fryer (P-01)",
+   "url": "https://www.amazon.com/dp/B0CDY277D3",
+   "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
+   "quote": "Dual 3-quart baskets; 200–450°F; 120V/1700W; model RJ38-SQPF-3TDB-2W; UPC 810087845025. CONFLICT: details table says Capacity 6 liters; title and bullets say 6 quarts.",
+   "updated": "2026-11-20"
+  },
+  {
+   "id": "S30",
+   "title": "Amazon listing B09B7SB46R — Emeril Lagasse 26QT French Door air fryer toaster oven (P-02)",
+   "url": "https://www.amazon.com/dp/B09B7SB46R",
+   "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
+   "quote": "24 presets; 75–500°F; 1700W/120V; 16.9×15.8×14.8 in; 24.6 L capacity; model 4-00675-02X-VN; UPC 752356835682.",
+   "updated": "2026-11-20"
+  },
+  {
+   "id": "S31",
+   "title": "Amazon listing B08DKYBTPH — Chefman 8-quart TurboFry air fryer (P-03)",
+   "url": "https://www.amazon.com/dp/B08DKYBTPH",
+   "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
+   "quote": "8 qt; four presets; 12.75×13.5×10 in; 12.8 lb; 120V/1700W; model RJ38-SQSS-8T; UPC 816458024518. CONFLICTS: title claims 450°F Hi-Fry while bullets and specification table state 200–400°F; a resource bullet says 1000W while the specification table says 1700W.",
+   "updated": "2026-11-20"
+  },
+  {
+   "id": "S32",
+   "title": "Amazon listing B0DHZTCNR5 — ThermoMaven 1-second instant-read thermometer (P-04)",
+   "url": "https://www.amazon.com/dp/B0DHZTCNR5",
+   "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
+   "quote": "Claimed ±0.5°F accuracy; NIST/NSF specification metadata; 1-second response; rotating LED; IP67; motion activation; auto-off; AAA battery; calibration certificate included. Accuracy and response values are seller claims.",
+   "updated": "2026-11-20"
+  },
+  {
+   "id": "S33",
+   "title": "Amazon listing B0DZFD6R9Z — CHEF iQ Sense Gen3 smart wireless meat thermometer, 3-probe variant (P-05)",
+   "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+   "used_for": "Official listing check, 2026-11-20 (line-by-line specification and conflict record)",
+   "quote": "3 ultra-thin probes; 5 sensors; 1000°F heat-safe; WiFi and Bluetooth; app monitoring; model CQ60-3C-Z1-E; UPC 810170921148. CONFLICTS: battery life 50 h vs 70 h and warranty 2 vs 3 years appear in the listing (see FLG-003).",
+   "updated": "2026-11-20"
+  },
+  {
+   "id": "S34",
+   "title": "Amazon Associates Help — Can I Check If My Links Are Tagging to My Account?",
+   "url": "https://affiliate-program.amazon.com/help/node/topic/G6253GFSARDQENZR",
+   "used_for": "The account-side check for a tagged link, and the Link Checker for links built outside Associates Central. Read 2026-11-20.",
+   "quote": "Once you update your site, click the link you want to check and look for your Store ID or Tracking ID in the URL. Most often, it will appear as “&tag=(store/tracking ID)” within the URL. … The Link Checker tool is intended for checking links that you have created or modified on your own outside of Associates Central.",
+   "updated": "2026-11-20"
+  }
+ ],
+ "note": "\"verified\"/\"updated\" fields record when a page was fetched or its listed update date; a fetch date is not an endorsement of the page's product claims. Listing sources are seller pages: specs, ratings, and prices transcribed from them are seller statements. Amazon page availability and content can change. Session a25ccde6 added the Google people-first, thin-affiliation, custom-404, snippet and page-experience sources (S21-S25) after finding that the people-first and thin-affiliation sources had been cited in the data registers without ever being defined (audit I-03). Those additions were renumbered after the merge to avoid colliding with this branch's tap-target source."
 }

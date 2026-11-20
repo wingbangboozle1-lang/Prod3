@@ -13,6 +13,7 @@ same identifier named two different proposals on one site.
 """
 import html
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -118,6 +119,27 @@ FOOTER = f'''<footer><div class="wrap">
 </body></html>
 '''
 
+AMZ_PRODUCT = re.compile(r"^https://www\.amazon\.com/dp/[A-Z0-9]{10}$")
+
+
+def href_for(url: str) -> str:
+    """The URL a reader is actually sent to.
+
+    Associates Program Policies, Participation Requirements 2(b) (read line by
+    line on 2026-11-20 at
+    https://affiliate-program.amazon.com/help/operating/policies): "you must
+    include your Associates ID or \u201ctag\u201d (appearing as XXXXX-##, or such other
+    format as we may designate) as a parameter in the URL of each link you place
+    on your Site to an Amazon Site". The register keeps the canonical listing URL
+    as the citation; only the rendered href carries the tag, so a reader who
+    follows a citation lands on the same official page while every click through
+    the site stays attributable. Policy pages and help topics are not Product
+    links, so they are left alone. tools/link_tagger.py enforces the same rule
+    across the published tree (tools/check_site.py gate D38).
+    """
+    return f"{url}?tag={TRACKING}" if AMZ_PRODUCT.match(url) else url
+
+
 def pill(text, kind="grey"):
     return f'<span class="badge {kind}">{html.escape(text)}</span>'
 
@@ -219,7 +241,7 @@ def render_questions():
             if not s:
                 raise SystemExit(f"questions.html: cites unregistered source {sid}")
             rel = "sponsored noopener" if "amazon.com" in s["url"] else "noopener"
-            out.append(f'<a href="{html.escape(s["url"])}" rel="{rel}">{html.escape(sid)}</a>')
+            out.append(f'<a href="{html.escape(href_for(s["url"]))}" rel="{rel}">{html.escape(sid)}</a>')
         return " · ".join(out)
 
     def row(q):
@@ -262,7 +284,7 @@ the screen said, and the rest of the register becomes decidable.</p>
 <thead><tr><th>#</th><th>Do this</th><th>You end up with</th><th>Then unblocks</th></tr></thead>
 <tbody>
 <tr><td><strong>Q-23</strong></td><td>Associates Central → Account Settings. Is <code>shopnow047c-20</code> listed, and is the account in good standing?</td><td>Yes or no, with the date</td><td>Whether the disclosure describes a live relationship, and whether any link can earn at all</td></tr>
-<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the two homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-023)</td></tr>
+<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the two homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-031)</td></tr>
 <tr><td><strong>Q-18</strong></td><td>Add the site as a Search Console property, verify it, submit <code>sitemap.xml</code>.</td><td>A verified property and a submitted sitemap</td><td>Choosing the next guide from measured queries instead of instinct</td></tr>
 <tr><td><strong>Q-19</strong></td><td>Associates Central → Product Advertising API. Is the tab available?</td><td>Available, or not yet</td><td>Whether prices and ratings can ever be displayed compliantly</td></tr>
 </tbody></table></div>
@@ -306,7 +328,7 @@ def render_citations():
         # Same test as tools/check_site.py P07: any amazon.com or link.amazon URL is an Amazon link.
         amazon = "amazon.com" in s["url"] or "link.amazon" in s["url"]
         rel = "sponsored noopener" if amazon else "noopener"
-        return f'<a href="{html.escape(s["url"])}" rel="{rel}">{html.escape(c["source"])}</a>'
+        return f'<a href="{html.escape(href_for(s["url"]))}" rel="{rel}">{html.escape(c["source"])}</a>'
 
     prod_rows = "\n".join(
         f'<tr><td><strong>{html.escape(c["product"])}</strong><br><span class="small muted">{html.escape(c["asin"])}</span></td>'

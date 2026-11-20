@@ -152,7 +152,9 @@ def render(p, flags, products_doc):
     pid = p["id"]
     slug = SLUG[pid]
     asin = p["observed_asin"]
-    listing = f"https://www.amazon.com/dp/{asin}"
+    # Participation Requirements 2(b): the tag goes on every link we place to an
+    # Amazon Site. tools/link_tagger.py --check enforces it on the built page.
+    listing = f"https://www.amazon.com/dp/{asin}?tag={TRACKING}"
     short = SHORT_NAME[pid]
     assert p["observed_title"].startswith(short), f"{pid}: short name is not a prefix of the listing title"
 
@@ -234,7 +236,7 @@ def render(p, flags, products_doc):
         '<thead><tr><th>Record</th><th>Value</th></tr></thead><tbody>'
         f'<tr><td>Supplied short link</td><td><code>{esc(p["submitted_link"])}</code></td></tr>'
         f'<tr><td>Token length</td><td>{p["token_length"]} characters — an ASIN is 10, so this is a short-link code, not an ASIN. <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">Program Policies</a></td></tr>'
-        f'<tr><td>Observed destination, 2026-11-19</td><td><a href="{esc(p["observed_redirect_target"])}" rel="sponsored noopener">{esc(p["observed_redirect_target"])}</a></td></tr>'
+        f'<tr><td>Observed destination, 2026-11-19</td><td><code>{esc(p["observed_redirect_target"])}</code> <span class="muted small">(recorded as read; the routed link is the tagged listing below &mdash; Participation Requirements 2(b))</span></td></tr>' 
         f'<tr><td><strong>Intended ASIN (owner-confirmed)</strong></td><td><span class="unverified">No official source</span> — not confirmed by the owner (FLG-001)</td></tr>'
         f'<tr><td>Owner confirmation date</td><td><span class="unverified">No official source</span> — blank</td></tr>'
         f'<tr><td>Newer model noted on the listing</td><td>{esc(p.get("newer_model_note") or "None recorded")} — <a href="{listing}" rel="sponsored noopener">check the listing</a></td></tr>'

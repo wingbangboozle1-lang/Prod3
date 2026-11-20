@@ -414,6 +414,18 @@ for _sid in sorted(set(re.findall(r"\bSG-\d{2}\b", _dir))):
     check("D29-direction-suggestion-refs", _sid in _sgids,
           f"DIRECTION.md cites {_sid}, which is not in data/suggestions.json")
 
+# D38: every link we place to an Amazon product must carry the associate tag.
+# Associates Program Policies, Participation Requirements 2(b) (read 2026-11-20):
+# "you must include your Associates ID or \u201ctag\u201d ... as a parameter in the URL of each
+# link you place on your Site to an Amazon Site". FLG-026 recorded this as an open
+# owner question for a day; on 2026-11-20 the site-side half was implemented and
+# turned into a build rule, because a checklist cannot hold a line that a generator
+# can. tools/link_tagger.py does the rewrite and the check.
+_r38 = _sp2.run([sys.executable, str(ROOT / "tools" / "link_tagger.py"), "--check"],
+                capture_output=True, text=True)
+check("D38-outbound-tag", _r38.returncode == 0,
+      f"untagged Amazon links: {(_r38.stdout.strip().splitlines() or ['?'])[-1][:150]}")
+
 # D27: the tools pages must exist and be reachable from the front page
 for _tool in ("tools/index.html", "tools/compare-builder.html",
               "tools/oven-converter.html", "tools/cook-temperatures.html"):

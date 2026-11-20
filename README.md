@@ -60,9 +60,11 @@ The tools use Python's standard library; no third-party Python dependencies are 
 
 ## Release workflow
 
-`.github/workflows/pages.yml` runs the five `--check` freshness gates, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` and `tools/crawl_links.py` before deploying to GitHub Pages. On 2026-11-20 the same checks passed locally, including 31 HTML pages and 3,938 assertions, with 0 broken links and 0 orphans. That is an internal repository check; it does not re-fetch Amazon listings or verify Associates account settings.
+`.github/workflows/pages.yml` runs the five `--check` freshness gates, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py` and `tools/crawl_links.py` before deploying to GitHub Pages. On 2026-11-20 the same checks passed locally on 37 HTML pages (36 in the sitemap; `404.html` is deliberately not listed), with 0 broken links and 0 orphans. That is an internal repository check; it does not re-fetch Amazon listings or verify Associates account settings.
 
 **Deploy path note (FLG-024):** this workflow is the only deployer the site has ever shipped through. The repo's Pages build type is still set to `legacy`, so a second, redundant "pages build and deployment" run also triggers on every push to `main` and can fail its deploy step behind the successful artifact deploy without affecting the live site. The automation token cannot change that setting (`PATCH /pages` → HTTP 404); the one-click owner fix is Settings → Pages → Build and deployment → Source: **GitHub Actions**. Judge deploys by the `Deploy GitHub Pages` workflow and the live URL.
+
+Outbound link tagging follows Associates Program Policies, Participation Requirements 2(b) (read 2026-11-20): the Associates tag must appear as a URL parameter on each link placed on the Site to an Amazon Site. `tools/link_tagger.py` applies and enforces it, and the three builders emit the tagged href while the JSON registers keep the canonical listing URL as the record.
 
 The checks enforce site structure, disclosures, sponsored-link marking, source references, price restrictions, data provenance, and generated-page consistency. Historical audit details and the supporting official policy links are on [`sources.html`](sources.html), [`citations.html`](citations.html), and [`EXECUTIVE_SUMMARY.md`](EXECUTIVE_SUMMARY.md).
 
@@ -70,12 +72,12 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 
 | Register | Page | Data | IDs | Count |
 |---|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-38 (SG-21 retired in place; SG-26 is unoccupied — FLG-021) | 37 rows, 1 retired |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-27 | 27 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-41 (SG-21 retired in place; SG-26 is unoccupied — FLG-021) | 40 rows, 1 retired |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-28 | 28 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | — |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | 12 dated proposals | 12 |
-| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-031, F-01..F-21 | 29 in the data file |
+| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-034, F-01..F-21 | 30 rows in the data file; the page carries the full list — see FLG-034 |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | — |
 
 One table, not two. An earlier revision carried a 2026-11-19 table and a 2026-11-20 table side by

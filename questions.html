@@ -38,7 +38,7 @@
 <main id="main"><div class="article" style="max-width:1100px">
 <p class="kicker">Direction · Open questions</p>
 <h1>The questions that have to be answered before the next decision</h1>
-<p class="byline">Kitchen Counter · Register updated 2026-11-19 · 23 open questions, grouped by what they block</p>
+<p class="byline">Kitchen Counter · Register updated 2026-11-19 · 25 open questions, grouped by what they block</p>
 
 <p>A decision made on missing information is a guess with better manners. Each row states what is known, what is not, why it matters, and the cheapest concrete action that would settle it. Machine-readable copy: <code>data/open-questions.json</code>.</p>
 
@@ -168,7 +168,7 @@
   <td><span class="small">owner · 60 days and one report</span><br><span class="badge grey">watch</span></td>
   <td class="small"><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">S21</a></td>
 </tr>
-</tbody></table></div><h2>Measurement (3)</h2>
+</tbody></table></div><h2>Measurement (4)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
 <tbody>
@@ -198,6 +198,15 @@
   <td><span class="small">Owner adds the property in Search Console, verifies via DNS or file upload, submits sitemap.xml, and reports back. Ten minutes, once.</span></td>
   <td><span class="small">owner · 10 minutes</span><br><span class="badge grey">blocking</span></td>
   <td class="small"><a href="https://developers.google.com/search/docs/appearance/snippet" rel="noopener">S24</a></td>
+</tr>
+<tr>
+  <td><strong>Q-24</strong></td>
+  <td><strong>What does PageSpeed Insights report for the live front page and one guide page?</strong><br><span class="small muted">Blocks: Any performance-driven change. The brief requires measurement before optimization, so no performance work is justified until a dated measurement exists.</span></td>
+  <td><span class="small">The site is static HTML, CSS and JavaScript with no third-party loaded assets (gate A12), and every image is under 400 KB (gate A13). Those are properties of the source tree, not measurements of the deployed pages.</span></td>
+  <td><span class="small">The actual Lighthouse and field scores of the deployed pages. Nothing has been measured, and nothing is invented here.</span></td>
+  <td><span class="small">Run PageSpeed Insights (or Lighthouse) on the live front page URL and one article URL. Record the date, the scores and the top opportunities in data/verification.json. SG-34 holds the proposal.</span></td>
+  <td><span class="small">engineering · 15 minutes</span><br><span class="badge grey">queued</span></td>
+  <td class="small"><span class="unverified">No official source</span></td>
 </tr>
 </tbody></table></div><h2>Product (2)</h2>
 <div class="table-wrap"><table>
@@ -260,7 +269,7 @@
   <td><span class="small">owner · One decision + one half-day</span><br><span class="badge grey">queued</span></td>
   <td class="small"><a href="https://www.ftc.gov/business-guidance/resources/disclosures-101-social-media-influencers" rel="noopener">S03</a></td>
 </tr>
-</tbody></table></div><h2>Distribution (1)</h2>
+</tbody></table></div><h2>Distribution (2)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
 <tbody>
@@ -271,6 +280,15 @@
   <td><span class="small">Whether Facebook, X, LinkedIn, or messaging apps draw the card from an SVG reference.</span></td>
   <td><span class="small">Run any public share debugger on the live URL and screenshot the result. The PNG per SG-16 is already shipped; this run only confirms the card renders.</span></td>
   <td><span class="small">editorial · 10 minutes with a browser</span><br><span class="badge grey">queued</span></td>
+  <td class="small"><span class="unverified">No official source</span></td>
+</tr>
+<tr>
+  <td><strong>Q-25</strong></td>
+  <td><strong>Do the FAQPage rich results actually appear for the new guides once they are indexed?</strong><br><span class="small muted">Blocks: SG-32 — the rollout of FAQ structured data to the older guides.</span></td>
+  <td><span class="small">Two guides ship FAQPage JSON-LD that mirrors their visible FAQ text; block validity is enforced by gate D15. Whether a search engine shows a rich result is its own decision.</span></td>
+  <td><span class="small">Whether the deployed pages earn the rich result in search, and how long that takes.</span></td>
+  <td><span class="small">After Q-18 (Search Console), read the Enhancements reports for FAQ and note what appears and when. If nothing appears, revise the markup or drop the pattern — do not assume success.</span></td>
+  <td><span class="small">owner · 5 minutes once indexed</span><br><span class="badge grey">queued</span></td>
   <td class="small"><span class="unverified">No official source</span></td>
 </tr>
 </tbody></table></div><h2>Links (1)</h2>
@@ -309,7 +327,7 @@ the screen said, and the rest of the register becomes decidable.</p>
 <thead><tr><th>#</th><th>Do this</th><th>You end up with</th><th>Then unblocks</th></tr></thead>
 <tbody>
 <tr><td><strong>Q-23</strong></td><td>Associates Central → Account Settings. Is <code>shopnow047c-20</code> listed, and is the account in good standing?</td><td>Yes or no, with the date</td><td>Whether the disclosure describes a live relationship, and whether any link can earn at all</td></tr>
-<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the two homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-023)</td></tr>
+<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the two homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-028)</td></tr>
 <tr><td><strong>Q-18</strong></td><td>Add the site as a Search Console property, verify it, submit <code>sitemap.xml</code>.</td><td>A verified property and a submitted sitemap</td><td>Choosing the next guide from measured queries instead of instinct</td></tr>
 <tr><td><strong>Q-19</strong></td><td>Associates Central → Product Advertising API. Is the tab available?</td><td>Available, or not yet</td><td>Whether prices and ratings can ever be displayed compliantly</td></tr>
 </tbody></table></div>

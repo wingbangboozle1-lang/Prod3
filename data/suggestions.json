@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-19",
-  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-31 added 2026-11-20 (session ce911db5) to give the conflict chip its own registered row; SG-26 is absent from this register and was cited by DIRECTION.md — see FLG-021.",
+  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-31 added 2026-11-20 (session ce911db5) to give the conflict chip its own registered row; SG-26 is absent from this register and was cited by DIRECTION.md — see FLG-026.",
   "scale": {
     "effort": [
       "S — a short session",
@@ -556,6 +556,98 @@
         "risk": "A conflict chip with no source reads as a slur on the seller, so each one links to the flag row and the official listing.",
         "reversible": "yes",
         "falsifier": "If click data shows no interaction with the chip, keep the headline spec and drop the chip."
+      }
+    },
+    {
+      "id": "SG-32",
+      "title": "Roll FAQ structured data out to the remaining question-shaped guides",
+      "problem": "The two guides published on 2026-11-20 carry FAQPage JSON-LD that mirrors their visible FAQs. The older question-shaped guides render the same question-and-answer blocks but ship only Article markup, so the machine-readable shape is missing exactly where the answers already exist.",
+      "evidence": "articles/are-air-fryers-worth-it.html and articles/smart-thermometer-questions.html each ship an Article block plus a FAQPage block; the earlier guides ship Article only. The JSON-LD validity gate (D15) already parses every block.",
+      "options": [
+        "A. Add a FAQPage block to every guide that renders visible FAQ text, mirroring it exactly.",
+        "B. Only new guides get structured data; the old ones stay as they are.",
+        "C. Remove the FAQ sections from the older guides."
+      ],
+      "recommendation": "A — the pattern is proven on two pages and guarded by gate D15. Each block must mirror the visible text exactly; markup that drifts from the page is worse than no markup.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "Search engines can parse the question-and-answer content the pages already render.",
+        "risk": "Markup that drifts from the visible FAQ text would misrepresent the page.",
+        "reversible": "Yes — delete the block; the visible FAQ is unaffected.",
+        "falsifier": "Q-25: no eligible rich result appears after indexing, in which case the pattern is revised or dropped."
+      }
+    },
+    {
+      "id": "SG-33",
+      "title": "Give the earlier guides a dated voice refresh",
+      "problem": "The shop surfaces were rewritten in the shop voice on 2026-11-20, but the nine earlier guides keep the earlier register-voice. A reader who moves from a product card to a guide notices the tone change, which is the difference between a publication and a generated site.",
+      "evidence": "The T-48 pass changed index.html, air-fryers.html, meat-thermometers.html, compare.html and buying-guide.html only. The nine files in articles/ keep their 2026-11-19 prose and bylines.",
+      "options": [
+        "A. Refresh one guide per publishing slot in the same voice, bumping dateModified honestly each time.",
+        "B. Leave the older guides as they are.",
+        "C. Rewrite all nine in one pass."
+      ],
+      "recommendation": "A — small, dated increments keep the gate story honest and spread the work across the publishing cadence (Q-14).",
+      "effort": "M",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "One tone across the whole site, which is the cheapest signal of a publication rather than a generator.",
+        "risk": "A rushed rewrite could weaken the careful claim wording the audit passes established; each refreshed guide must keep its attribution lines.",
+        "reversible": "Yes — git history holds the earlier prose.",
+        "falsifier": "Reader research or Search Console data (Q-18) shows the tone change makes no difference to engagement."
+      }
+    },
+    {
+      "id": "SG-34",
+      "title": "Measure the live site with PageSpeed Insights before any performance work",
+      "problem": "Nothing about the deployed site's performance has been measured. The brief requires measurement before optimization, and the ledger rule forbids inventing numbers, so the only honest next step is a dated measurement of the live pages.",
+      "evidence": "The site is static HTML with no third-party loaded assets (gate A12) and images under 400 KB each (gate A13). No performance scores exist in data/verification.json or anywhere else.",
+      "options": [
+        "A. Run PageSpeed Insights on the live front page and one guide, and record the dated scores and opportunity list.",
+        "B. Start optimizing on assumption.",
+        "C. Skip performance entirely."
+      ],
+      "recommendation": "A — it is fifteen minutes of work and converts an assumption into a dated record. B is exactly the instinct the brief asks to replace with measurement.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "engineering",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "A dated, first-party measurement record that the next performance decision can cite.",
+        "risk": "None — a measurement changes nothing on its own.",
+        "reversible": "Yes — the record is additive.",
+        "falsifier": "Q-24: the recorded scores are already green across the board, closing the thread."
+      }
+    },
+    {
+      "id": "SG-35",
+      "title": "Make the seasonal block data-driven so it cannot go stale by hand",
+      "problem": "The front-page seasonal block is hand-written HTML. A previous pass had to correct a hardcoded holiday date in it by hand, and the block promises future Search Console ordering (Q-18), so it is the one front-page surface guaranteed to drift again.",
+      "evidence": "T-46 corrected the sentence 'Thanksgiving is Thursday, 26 November' during integration. The seasonal tiles on index.html and the shelf links are literal strings in the page, not generated from data.",
+      "options": [
+        "A. Generate the seasonal block from a small dated table (for example data/seasons.json) with a freshness gate, like the other registers.",
+        "B. Keep hand-editing and rely on integration passes to catch drift.",
+        "C. Remove the seasonal block."
+      ],
+      "recommendation": "A at the next seasonal handoff; B is acceptable until then and costs nothing today.",
+      "effort": "M",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "engineering",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "The seasonal surface becomes auditable and dated like every other generated surface.",
+        "risk": "Another generator is another moving part; it only pays off if the seasonal cadence continues.",
+        "reversible": "Yes — the block can be inlined back into the page.",
+        "falsifier": "The site drops the seasonal cadence entirely, making the table dead weight."
       }
     }
   ],

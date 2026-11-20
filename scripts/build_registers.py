@@ -262,7 +262,7 @@ the screen said, and the rest of the register becomes decidable.</p>
 <thead><tr><th>#</th><th>Do this</th><th>You end up with</th><th>Then unblocks</th></tr></thead>
 <tbody>
 <tr><td><strong>Q-23</strong></td><td>Associates Central → Account Settings. Is <code>shopnow047c-20</code> listed, and is the account in good standing?</td><td>Yes or no, with the date</td><td>Whether the disclosure describes a live relationship, and whether any link can earn at all</td></tr>
-<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the two homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-023)</td></tr>
+<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the two homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-028)</td></tr>
 <tr><td><strong>Q-18</strong></td><td>Add the site as a Search Console property, verify it, submit <code>sitemap.xml</code>.</td><td>A verified property and a submitted sitemap</td><td>Choosing the next guide from measured queries instead of instinct</td></tr>
 <tr><td><strong>Q-19</strong></td><td>Associates Central → Product Advertising API. Is the tab available?</td><td>Available, or not yet</td><td>Whether prices and ratings can ever be displayed compliantly</td></tr>
 </tbody></table></div>

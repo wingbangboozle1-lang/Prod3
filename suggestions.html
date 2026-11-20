@@ -45,7 +45,7 @@
 <div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (12)</h2>
+<h2>Waiting on a decision (16)</h2>
 <div class="grid mt"><article class="card decision-card" id="SG-06">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
@@ -190,6 +190,54 @@
         <div class="opts" data-decide="SG-30"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
       </div>
       <p class="small muted">Unblocks: Reader-capture metrics</p>
+    </article><article class="card decision-card" id="SG-32">
+      <div class="meta">SG-32 · editorial decides</div>
+      <h3>Roll FAQ structured data out to the remaining question-shaped guides</h3>
+      <p><strong>The situation.</strong> The two guides published on 2026-11-20 carry FAQPage JSON-LD that mirrors their visible FAQs. The older question-shaped guides render the same question-and-answer blocks but ship only Article markup, so the machine-readable shape is missing exactly where the answers already exist.</p>
+      <p><strong>The evidence.</strong> articles/are-air-fryers-worth-it.html and articles/smart-thermometer-questions.html each ship an Article block plus a FAQPage block; the earlier guides ship Article only. The JSON-LD validity gate (D15) already parses every block.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Add a FAQPage block to every guide that renders visible FAQ text, mirroring it exactly.</li><li>B. Only new guides get structured data; the old ones stay as they are.</li><li>C. Remove the FAQ sections from the older guides.</li></ul>
+        <p><strong>Recommendation.</strong> A — the pattern is proven on two pages and guarded by gate D15. Each block must mirror the visible text exactly; markup that drifts from the page is worse than no markup.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> Search engines can parse the question-and-answer content the pages already render.</p><p class="small"><strong>What could go wrong:</strong> Markup that drifts from the visible FAQ text would misrepresent the page.</p><p class="small"><strong>Reversible:</strong> Yes — delete the block; the visible FAQ is unaffected. · <strong>What would prove it wrong:</strong> Q-25: no eligible rich result appears after indexing, in which case the pattern is revised or dropped.</p>
+        <div class="opts" data-decide="SG-32"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-33">
+      <div class="meta">SG-33 · editorial decides</div>
+      <h3>Give the earlier guides a dated voice refresh</h3>
+      <p><strong>The situation.</strong> The shop surfaces were rewritten in the shop voice on 2026-11-20, but the nine earlier guides keep the earlier register-voice. A reader who moves from a product card to a guide notices the tone change, which is the difference between a publication and a generated site.</p>
+      <p><strong>The evidence.</strong> The T-48 pass changed index.html, air-fryers.html, meat-thermometers.html, compare.html and buying-guide.html only. The nine files in articles/ keep their 2026-11-19 prose and bylines.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Refresh one guide per publishing slot in the same voice, bumping dateModified honestly each time.</li><li>B. Leave the older guides as they are.</li><li>C. Rewrite all nine in one pass.</li></ul>
+        <p><strong>Recommendation.</strong> A — small, dated increments keep the gate story honest and spread the work across the publishing cadence (Q-14).</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> One tone across the whole site, which is the cheapest signal of a publication rather than a generator.</p><p class="small"><strong>What could go wrong:</strong> A rushed rewrite could weaken the careful claim wording the audit passes established; each refreshed guide must keep its attribution lines.</p><p class="small"><strong>Reversible:</strong> Yes — git history holds the earlier prose. · <strong>What would prove it wrong:</strong> Reader research or Search Console data (Q-18) shows the tone change makes no difference to engagement.</p>
+        <div class="opts" data-decide="SG-33"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-34">
+      <div class="meta">SG-34 · engineering decides</div>
+      <h3>Measure the live site with PageSpeed Insights before any performance work</h3>
+      <p><strong>The situation.</strong> Nothing about the deployed site&#x27;s performance has been measured. The brief requires measurement before optimization, and the ledger rule forbids inventing numbers, so the only honest next step is a dated measurement of the live pages.</p>
+      <p><strong>The evidence.</strong> The site is static HTML with no third-party loaded assets (gate A12) and images under 400 KB each (gate A13). No performance scores exist in data/verification.json or anywhere else.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Run PageSpeed Insights on the live front page and one guide, and record the dated scores and opportunity list.</li><li>B. Start optimizing on assumption.</li><li>C. Skip performance entirely.</li></ul>
+        <p><strong>Recommendation.</strong> A — it is fifteen minutes of work and converts an assumption into a dated record. B is exactly the instinct the brief asks to replace with measurement.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> A dated, first-party measurement record that the next performance decision can cite.</p><p class="small"><strong>What could go wrong:</strong> None — a measurement changes nothing on its own.</p><p class="small"><strong>Reversible:</strong> Yes — the record is additive. · <strong>What would prove it wrong:</strong> Q-24: the recorded scores are already green across the board, closing the thread.</p>
+        <div class="opts" data-decide="SG-34"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
+    </article><article class="card decision-card" id="SG-35">
+      <div class="meta">SG-35 · engineering decides</div>
+      <h3>Make the seasonal block data-driven so it cannot go stale by hand</h3>
+      <p><strong>The situation.</strong> The front-page seasonal block is hand-written HTML. A previous pass had to correct a hardcoded holiday date in it by hand, and the block promises future Search Console ordering (Q-18), so it is the one front-page surface guaranteed to drift again.</p>
+      <p><strong>The evidence.</strong> T-46 corrected the sentence &#x27;Thanksgiving is Thursday, 26 November&#x27; during integration. The seasonal tiles on index.html and the shelf links are literal strings in the page, not generated from data.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
+      <details><summary>The options and the recommendation</summary><ul><li>A. Generate the seasonal block from a small dated table (for example data/seasons.json) with a freshness gate, like the other registers.</li><li>B. Keep hand-editing and rely on integration passes to catch drift.</li><li>C. Remove the seasonal block.</li></ul>
+        <p><strong>Recommendation.</strong> A at the next seasonal handoff; B is acceptable until then and costs nothing today.</p></details>
+      <div class="decide-box"><p class="small"><strong>Why it matters for the money:</strong> The seasonal surface becomes auditable and dated like every other generated surface.</p><p class="small"><strong>What could go wrong:</strong> Another generator is another moving part; it only pays off if the seasonal cadence continues.</p><p class="small"><strong>Reversible:</strong> Yes — the block can be inlined back into the page. · <strong>What would prove it wrong:</strong> The site drops the seasonal cadence entirely, making the table dead weight.</p>
+        <div class="opts" data-decide="SG-35"><button type="button" data-v="do" aria-pressed="false">Do this</button><button type="button" data-v="maybe" aria-pressed="false">Maybe</button><button type="button" data-v="no" aria-pressed="false">No</button></div>
+      </div>
+      <p class="small muted">Unblocks: nothing</p>
     </article></div>
 
 <h2 class="mt">Already shipped (18)</h2>

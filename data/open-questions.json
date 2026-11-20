@@ -1,6 +1,6 @@
 {
   "generated": "2026-11-19",
-  "premise": "A decision made on missing information is a guess wearing a suit. Each entry states what is known, what is not, why it blocks a decision, and the cheapest concrete action that would answer it. Q-22 and Q-23 were added 2026-11-20 by session ce911db5; the account-status question had been described in DIRECTION.md but never registered (FLG-020).",
+  "premise": "A decision made on missing information is a guess wearing a suit. Each entry states what is known, what is not, why it blocks a decision, and the cheapest concrete action that would answer it. Q-22 and Q-23 were added 2026-11-20 by session ce911db5; the account-status question had been described in DIRECTION.md but never registered (FLG-025).",
   "status_scale": {
     "blocking": "A decision is on hold until this is answered.",
     "queued": "Should be answered before the next content release.",
@@ -396,6 +396,36 @@
         "S02"
       ],
       "evidence_status": "observed"
+    },
+    {
+      "id": "Q-24",
+      "group": "Measurement",
+      "question": "What does PageSpeed Insights report for the live front page and one guide page?",
+      "blocks": "Any performance-driven change. The brief requires measurement before optimization, so no performance work is justified until a dated measurement exists.",
+      "known": "The site is static HTML, CSS and JavaScript with no third-party loaded assets (gate A12), and every image is under 400 KB (gate A13). Those are properties of the source tree, not measurements of the deployed pages.",
+      "unknown": "The actual Lighthouse and field scores of the deployed pages. Nothing has been measured, and nothing is invented here.",
+      "how_to_find_out": "Run PageSpeed Insights (or Lighthouse) on the live front page URL and one article URL. Record the date, the scores and the top opportunities in data/verification.json. SG-34 holds the proposal.",
+      "who": "engineering",
+      "cost": "15 minutes",
+      "status": "queued",
+      "changes": "Whether SG-34 becomes work or is closed as already green.",
+      "sources": [],
+      "evidence_status": "unverified"
+    },
+    {
+      "id": "Q-25",
+      "group": "Distribution",
+      "question": "Do the FAQPage rich results actually appear for the new guides once they are indexed?",
+      "blocks": "SG-32 — the rollout of FAQ structured data to the older guides.",
+      "known": "Two guides ship FAQPage JSON-LD that mirrors their visible FAQ text; block validity is enforced by gate D15. Whether a search engine shows a rich result is its own decision.",
+      "unknown": "Whether the deployed pages earn the rich result in search, and how long that takes.",
+      "how_to_find_out": "After Q-18 (Search Console), read the Enhancements reports for FAQ and note what appears and when. If nothing appears, revise the markup or drop the pattern — do not assume success.",
+      "who": "owner",
+      "cost": "5 minutes once indexed",
+      "status": "queued",
+      "changes": "Whether the FAQ pattern is rolled out (SG-32) or revised.",
+      "sources": [],
+      "evidence_status": "unverified"
     }
   ],
   "sources_note": "Each question carries the registered source IDs of the official document that speaks to it, or an empty list plus evidence_status='unverified' when no official document settles it. Nothing is cited that does not answer the question."

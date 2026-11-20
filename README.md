@@ -65,7 +65,7 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 
 | Register | Page | Data | IDs |
 |---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-31 (SG-21 retired in place; the ID slot between SG-25 and SG-27 is unoccupied — FLG-021) |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-31 (SG-21 retired in place; the ID slot between SG-25 and SG-27 is unoccupied — FLG-026) |
 | Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
 | Decisions | `direction.html` | `DIRECTION.md` | dated rows |
 | Flagged findings | `flagged.html` | `data/flagged.json` | F-01..F-21 |

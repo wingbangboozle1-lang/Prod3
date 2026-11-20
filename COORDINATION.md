@@ -92,7 +92,7 @@ via direct fetch. Findings (full detail in `data/products.json`):
 - FLG-015 — Campaign ledger empty by design; no first-party reports yet.
 - FLG-016 — Social preview card not yet confirmed in an external share debugger (F-21/Q-21); PNG format shipped.
 - FLG-017 — B04G1MEwY resolves to the Amazon homepage on 2026-11-20; it resolved to B0CDY277D3 on 2026-11-19 (session 70e8475c). Cause not established; may be transient; owner check in the Associates workflow.
-- FLG-022 — Dual GitHub Pages deploy paths: the legacy branch builder races the artifact deploy and failed behind it (run 44686774699) while the live site served current content; settings change blocked by token permissions — owner one-click fix documented on `flagged.html` (session 09d7261c).
+- FLG-024 — Dual GitHub Pages deploy paths: the legacy branch builder races the artifact deploy and failed behind it (run 44686774699) while the live site served current content; settings change blocked by token permissions — owner one-click fix documented on `flagged.html` (session 09d7261c).
 
 ## Cross-scope requests
 
@@ -1145,7 +1145,82 @@ git diff --check                           clean
 - **Live check:** `https://wingbangboozle1-lang.github.io/Prod3/feed.xml` lists the guides, including the Thanksgiving guide added on `main`. `suggestions.html` renders from the same `data/suggestions.json` that passed the gates. (The page's "Register updated 2026-11-19" line predates this pass; it is generator text from `main`, logged here as an irregularity rather than edited.)
 - **Collision log:** T-25 was taken by PR #27 (arena/70e8475c), and T-26 by PR #30 (arena/e83cdf55). This session's first two claims were withdrawn and renumbered to T-37. No other session's work was overwritten; the history was kept with `-s ours` merges, not force-pushes.
 
+
+## Session arena/ce911db5-prod3 — T-40…T-45 (2026-11-20), rebased onto `68fb159`
+
+**Renumeration.** Other sessions had already taken T-26 (PR #30) and T-31…T-39 while this branch was
+open. This session's six rows are therefore **T-40…T-45**. Nothing published by another session was
+deleted: on rebase, the conflicting page rebuilds (`index.html`, `air-fryers.html`,
+`meat-thermometers.html`, `compare.html`) were resolved **in favour of the mainline version**, and only
+this session's additive changes were re-applied on top.
+
+| ID | Task | Status | Files touched |
+|----|------|--------|---------------|
+| T-40 | Shopper card anatomy: headline spec, plain trade-off line, and a conflict chip carrying both readings where a listing contradicts itself | done | `index.html`, `air-fryers.html`, `meat-thermometers.html`, `assets/style.css` |
+| T-41 | Card art regenerated at 2x and re-compressed; still typographic label art, never a photograph of the product | done | `assets/product-art/*.png` |
+| T-42 | `compare.html` at-a-glance banner: pick by the constraining spec, not by a declared winner | done | `compare.html`, `assets/style.css` |
+| T-43 | Review surface: `ideas.html` (ranked moves, rejected ideas with reasons, decision block) wired into the Decision desk nav and footer; per-row **Do this / Maybe / No** marks plus a copyable decision block on the suggestions register; four-question half-hour short list on the questions register | done | `ideas.html` (new), `scripts/build_registers.py`, `scripts/build_chrome.py`, `suggestions.html`, `questions.html`, `assets/style.css` |
+| T-44 | Two register defects found by reading and fixed: `DIRECTION.md` named question ids whose subjects did not exist (FLG-020), and cited a suggestion id absent from the register while the register skipped a number (FLG-021). Account-status question registered as Q-23; link question as Q-22 | done | `DIRECTION.md`, `data/open-questions.json`, `data/suggestions.json` |
+| T-45 | Three new gates, each negative-tested: `D28`/`D29` (the digest may not cite a `Q-`/`SG-` id that is not in its data), `J01–J03` (`node --check` over every inline script and `assets/app.js`), plus `actions/setup-node@v4` in the Pages workflow | done | `tools/check_site.py`, `.github/workflows/pages.yml` |
+
+### Live observation, 2026-11-20 (T-41 / Q-22)
+
+| Supplied link | Final URL read | vs 2026-11-19 | vs the other same-day record |
+|---|---|---|---|
+| `B04G1MEwY` | `https://www.amazon.com/` (homepage), 2 attempts | changed | agrees (FLG-017) |
+| `B02NbDxp3` | `/dp/B09B7SB46R` | same ASIN | agrees |
+| `B00hJ57DV` | `/dp/B08DKYBTPH` | same ASIN | agrees |
+| `B0c8moW59` | `https://www.amazon.com/` (homepage), **2 attempts** | changed | **disagrees** — the other record reads `/dp/B0DHZTCNR5` |
+| `B0f3GKalj` | `/dp/B0DZFD6R9Z` | same ASIN | agrees |
+
+Both records are kept side by side; no tie is broken by seniority. Cause unestablished and not
+asserted. Published as FLG-023 and registered as Q-22.
+
+### Why this pass changed the shop pages at all
+
+The cards previously carried a paragraph of prose each. Three fields were added and nothing was removed:
+the largest honest figure (capacity, or probe count), a trade-off line naming who the product does *not*
+suit, and — for the two listings that contradict themselves — a chip carrying both readings with a link
+to the flag row. No price, no star rating, and no test claim was introduced; the conflict text is copied
+from `data/products.json`, not invented. Measured figures added to the front page are the listed
+dimensions and the stated temperature ranges only.
+
+### Verification on the final tree
+
+```
+tools/verify_site.py                 Release gate passed
+tools/check_site.py                  31 pages · 3891 assertions · all rules passed
+scripts/check_site.py                All checks passed
+scripts/build_sitemap.py --check     OK (30 URLs)
+scripts/build_registers.py --check   OK
+scripts/build_chrome.py --check      OK
+scripts/build_decisions.py --check   OK
+tools/crawl_links.py                 31 pages crawled · 30 reachable from index.html
+                                     no broken links, no dead anchors, no orphans
+```
+
+Negative tests run this session: injecting the original JS defect fails `J02`; citing a phantom `SG-26`
+from the digest failed `D29` before the digest was corrected, which is how FLG-021 was found.
+
+### Flagged for owner review (do not block the deploy)
+
+- **FLG-020** — `DIRECTION.md` question ids did not match the register; account-status question now Q-23.
+- **FLG-021** — a cited suggestion id is absent and the register skips SG-26; not reconstructed.
+- **FLG-022** — a generated decision block shipped a JS syntax error; a gate now parses every script.
+- **FLG-023** — two of five links reached the Amazon homepage on 2026-11-20 and one same-day record
+  disagrees. Not a finding that the links are invalid.
+- Unchanged and owner-side: FLG-001 (intended ASINs), FLG-006 (Special Link test), FLG-010 (account
+  status), Search Console (Q-18), analytics endpoint, email provider, share-debugger check (Q-21).
+
 **PR and merge (T-38).** PR: https://github.com/wingbangboozle1-lang/Prod3/pull/33 (`arena/9f36f5ee-prod3` → `main`). Merge result is recorded in the next integration record after the merge.
+### T-38 integration record (session `arena/9f36f5ee-prod3`, 2026-11-20)
+
+- **PR #33:** https://github.com/wingbangboozle1-lang/Prod3/pull/33 (`arena/9f36f5ee-prod3` → `main`), head `694a95a`, merged with `gh pr merge 33 --merge`, `mergedAt` 2026-11-20T06:27:52Z, merge commit `266c1a63d642913d8d894f1521c6d56642fbabd5`.
+- **Pre-merge gates:** all green on the branch (scripts/check_site, verify_site, tools/check_site incl. D15, the four `--check` freshness gates, crawl_links, feed/sitemap XML well-formed, `git diff --check`).
+- **GitHub Pages:** `Deploy GitHub Pages` and `pages build and deployment` both `completed / success` for `266c1a6`.
+- **Live check:** https://wingbangboozle1-lang.github.io/Prod3/flagged.html serves FLG-020 and FLG-021 (the two new flags).
+- **Not claimed:** Associates account status, intended ASINs, Special Link validity, tracking-report attribution, Search Console, analytics volume, live traffic.
+
 ## Session `arena/09d7261c-prod3` — T-39 final integration round (2026-11-20)
 
 Scope: fresh line-by-line review of the post-rebuild tree, demonstrable-defect fixes only,
@@ -1170,7 +1245,7 @@ rating, or account data was added; no owner-only gate was claimed.
   `suggestions`, `open-questions`, `decisions`, `policy-checks`, `verification`,
   `analysis`, `campaign-ledger`, `campaigns`); counts cross-checked against the pages that
   publish them (SG-01..SG-30 with SG-21 retired and SG-26 unoccupied, Q-01..Q-21, F-01..F-21,
-  FLG-001..FLG-022, DT-01..DT-10).
+  FLG-001..FLG-024, DT-01..DT-11).
 
 ### Collisions encountered and how they were resolved (no other session's work discarded)
 
@@ -1185,6 +1260,12 @@ rating, or account data was added; no owner-only gate was claimed.
 - `flagged.html` briefly carried two FLG-018 callouts mid-rebase (upstream's intent-provenance
   flag and this session's deploy-path flag); resolved by renumbering this session's to FLG-022.
   Upstream FLG-018/019/020/021 are untouched.
+- A third collision before the PR could merge: `main` gained PR #35 (T-40..T-45,
+  `arena/ce911db5-prod3`), which took **FLG-022 and FLG-023** for different subjects, so this
+  session's deploy-path flag was renumbered again, to **FLG-024** (`flagged.html`, README,
+  board). Upstream FLG-022/023 are untouched. The merge kept upstream's SG-31 row and its
+  FLG-021 gap note alongside this session's register-mirrored SG-26..SG-30 index rows, and
+  kept upstream's T-38 record next to this session's T-39 record.
 - Board sections for all 13 prior sessions read; the `assets/brand.js` file named in the
   T-30/T-31/T-35 scope rows does **not** exist in `assets/` — the seasonality/chrome logic
   ships in `assets/decision-desk.js`, `assets/decision-tools.js` and `scripts/build_chrome.py`.
@@ -1203,6 +1284,6 @@ rating, or account data was added; no owner-only gate was claimed.
 FLG-001 intended ASINs · FLG-006 Special Link test in the enrolled workflow · FLG-010
 Associates account status · FLG-017 B04G1MEwY link check · Search Console (DT-03) ·
 analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_type setting
-(FLG-022, owner one-click). No new claims about traffic, conversion, or product superiority.
+(FLG-024, owner one-click). No new claims about traffic, conversion, or product superiority.
 
 (merge result and deploy confirmation recorded below after the PR merges)

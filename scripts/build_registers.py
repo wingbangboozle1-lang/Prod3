@@ -59,6 +59,51 @@ def head(title, desc, slug):
 {DISCLOSURE}
 '''
 
+DECIDE_SCRIPT = '''<script>
+(function(){
+  var KEY='kc-decisions-v1', LABEL={do:'Do this',maybe:'Maybe',no:'No'};
+  var store={}; try{ store=JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ store={}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(store)); }catch(e){} }
+  var out=document.getElementById('decide-out');
+  function render(){
+    if(!out) return;
+    var ids=Object.keys(store);
+    if(!ids.length){ out.textContent='No marks yet. Choose Do this / Maybe / No on a card above.'; return; }
+    var head='Decisions ('+new Date().toISOString().slice(0,10)+'):';
+    out.textContent=[head].concat(ids.map(function(id){ return id+' = '+LABEL[store[id]]; })).join(String.fromCharCode(10));
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-decide]'), function(group){
+    var id=group.getAttribute('data-decide');
+    Array.prototype.forEach.call(group.querySelectorAll('button'), function(btn){
+      var v=btn.getAttribute('data-v');
+      if(store[id]===v) btn.setAttribute('aria-pressed','true');
+      btn.addEventListener('click', function(){
+        if(store[id]===v){ delete store[id]; } else { store[id]=v; }
+        Array.prototype.forEach.call(group.querySelectorAll('button'), function(b){
+          b.setAttribute('aria-pressed', store[id]===b.getAttribute('data-v') ? 'true':'false');
+        });
+        save(); render();
+      });
+    });
+  });
+  var cp=document.getElementById('decide-copy');
+  if(cp) cp.addEventListener('click', function(){
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(out.textContent);
+      cp.textContent='Copied'; setTimeout(function(){ cp.textContent='Copy this block'; },1500);
+    }
+  });
+  var cl=document.getElementById('decide-clear');
+  if(cl) cl.addEventListener('click', function(){
+    store={}; save();
+    Array.prototype.forEach.call(document.querySelectorAll('[data-decide] button'), function(b){ b.setAttribute('aria-pressed','false'); });
+    render();
+  });
+  render();
+})();
+</script>
+'''
+
 FOOTER = f'''<footer><div class="wrap">
   <div class="cols">
     <div><h4>Kitchen Counter</h4><p>Listed specs, plainly told. Seller-stated details cite the official listing; contradictions stay visible.</p>
@@ -90,15 +135,27 @@ def render_suggestions():
     def card(s):
         opts = "".join(f"<li>{html.escape(o)}</li>" for o in s.get("options", []))
         kind = STATUS_KIND.get(s["status"], "grey")
-        return f'''<article class="card">
+        dec = s.get("decision") or {}
+        money = ""
+        if dec:
+            money = (f'<p class="small"><strong>Why it matters for the money:</strong> {html.escape(dec.get("benefit",""))}</p>'
+                     f'<p class="small"><strong>What could go wrong:</strong> {html.escape(dec.get("risk",""))}</p>'
+                     f'<p class="small"><strong>Reversible:</strong> {html.escape(str(dec.get("reversible","unknown")))}'
+                     f' · <strong>What would prove it wrong:</strong> {html.escape(dec.get("falsifier","not stated"))}</p>')
+        choices = "".join(f'<button type="button" data-v="{k}" aria-pressed="false">{v}</button>'
+                          for k, v in (("do", "Do this"), ("maybe", "Maybe"), ("no", "No")))
+        return f'''<article class="card decision-card" id="{html.escape(s["id"])}">
       <div class="meta">{html.escape(s["id"])} · {html.escape(s.get("decision_owner", "owner"))} decides</div>
       <h3>{html.escape(s["title"])}</h3>
-      <p><strong>Problem.</strong> {html.escape(s.get("problem", ""))}</p>
-      <p><strong>Evidence.</strong> {html.escape(s.get("evidence", ""))}</p>
-      <p><strong>Options.</strong></p><ul>{opts}</ul>
-      <p><strong>Recommendation.</strong> {html.escape(s.get("recommendation", ""))}</p>
+      <p><strong>The situation.</strong> {html.escape(s.get("problem", ""))}</p>
+      <p><strong>The evidence.</strong> {html.escape(s.get("evidence", ""))}</p>
       <p>{pill(s["status"], kind)} {pill("Effort " + s.get("effort", "?"), "grey")} {pill("Confidence " + s.get("confidence", "?"), "grey")}</p>
-      <p class="small muted">Blocks: {html.escape(s.get("blocks", "nothing"))}</p>
+      <details><summary>The options and the recommendation</summary><ul>{opts}</ul>
+        <p><strong>Recommendation.</strong> {html.escape(s.get("recommendation", ""))}</p></details>
+      <div class="decide-box">{money}
+        <div class="opts" data-decide="{html.escape(s["id"])}">{choices}</div>
+      </div>
+      <p class="small muted">Unblocks: {html.escape(s.get("blocks", "nothing"))}</p>
     </article>'''
 
     body = f'''<main id="main"><div class="article" style="max-width:1000px">
@@ -108,6 +165,7 @@ def render_suggestions():
 
 <p>This is the review desk. Every proposal carries its problem, the evidence behind it, the options considered, a recommendation, and the person who decides. Machine-readable copy: <code>data/suggestions.json</code>. The questions that block these proposals live on <a href="questions.html">Open questions</a>; what was actually decided is on the <a href="direction.html">decision log</a>.</p>
 
+<div class="callout"><strong>How to use this page.</strong> Read a card, then mark it. The block at the bottom collects your marks into text you can paste back into a session or a document. <strong>Implemented</strong> means it is live today; <strong>retired</strong> means it was decided against and the row keeps the reason; <strong>proposed</strong> means it has no effect until someone chooses.</div>
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
 <h2>Waiting on a decision ({len(open_items)})</h2>
@@ -116,6 +174,14 @@ def render_suggestions():
 <h2 class="mt">Already shipped ({len(shipped)})</h2>
 <p>Listed so the register stays complete, not to take credit. Each one can be reverted if a decision goes the other way.</p>
 <div class="grid mt">{''.join(card(s) for s in shipped)}</div>
+
+<h2 class="mt" id="decide">Your decision block</h2>
+<p>Mark a card <em>Do this</em>, <em>Maybe</em> or <em>No</em>. The marks stay in this browser and
+appear here as one block of text you can copy back. A mark is a preference; nothing is implemented
+by being marked.</p>
+<div class="card"><pre id="decide-out" class="decide-out">No marks yet. Choose Do this / Maybe / No on a card above.</pre>
+<p class="small"><button type="button" class="btn ghost" id="decide-copy">Copy this block</button> <button type="button" class="btn ghost" id="decide-clear">Clear my marks</button></p>
+<p class="small muted">Stored only in this browser under <code>kc-decisions-v1</code>. No cookie, no identifier, no request to any server.</p></div>
 
 <h2 class="mt">How a suggestion becomes a change</h2>
 <ol>
@@ -131,7 +197,7 @@ def render_suggestions():
 '''
     return (head("Suggestions Register — What to Change and What It Waits On | Kitchen Counter",
                  "Every proposed change to Kitchen Counter with its problem, evidence, options, recommendation and decision owner, plus what has already shipped.",
-                 "suggestions.html") + body + FOOTER)
+                 "suggestions.html") + body + DECIDE_SCRIPT + FOOTER)
 
 
 def render_questions():
@@ -171,6 +237,20 @@ def render_questions():
 <div class="callout"><strong>Read this first.</strong> Several rows can only be answered from inside the Associates account — they are marked <em>owner-only</em>. They are not blockers for publishing; they are blockers for claiming that the site earns anything. Nothing on this site presents a conversion rate, revenue figure, or ranking, because the data behind those figures does not exist yet.</div>
 
 {''.join(sections)}
+
+<h2 id="cheapest">The shortest path: four questions, about half an hour, signed in once</h2>
+<p>Most of this register cannot be answered from outside an account. These four can, and nearly every
+proposal on the site depends on at least one of them. Do them in one sitting, record the date and what
+the screen said, and the rest of the register becomes decidable.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>#</th><th>Do this</th><th>You end up with</th><th>Then unblocks</th></tr></thead>
+<tbody>
+<tr><td><strong>Q-23</strong></td><td>Associates Central → Account Settings. Is <code>shopnow047c-20</code> listed, and is the account in good standing?</td><td>Yes or no, with the date</td><td>Whether the disclosure describes a live relationship, and whether any link can earn at all</td></tr>
+<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the two homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-023)</td></tr>
+<tr><td><strong>Q-18</strong></td><td>Add the site as a Search Console property, verify it, submit <code>sitemap.xml</code>.</td><td>A verified property and a submitted sitemap</td><td>Choosing the next guide from measured queries instead of instinct</td></tr>
+<tr><td><strong>Q-19</strong></td><td>Associates Central → Product Advertising API. Is the tab available?</td><td>Available, or not yet</td><td>Whether prices and ratings can ever be displayed compliantly</td></tr>
+</tbody></table></div>
+<div class="callout"><strong>What this register cannot do for you.</strong> It cannot read your Associates account, your Search Console, or a share debugger. Those answers come back as facts with a date, or they stay open. Nothing here is invented to fill the gap.</div>
 
 <h2>What would change if these were answered</h2>
 <div class="table-wrap"><table>

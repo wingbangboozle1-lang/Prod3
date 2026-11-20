@@ -37,11 +37,13 @@ options, and recommendations live there.
 | SG-23 | Make one page the definitive answer to "how big is it really" | implemented | editorial |
 | SG-24 | Give the site a named editor before giving it a voice | proposed | owner |
 | SG-25 | Stop calling it a decision log until decisions are actually recorded there | implemented | engineering |
-| SG-26 | — | **unoccupied ID** — no row in `data/suggestions.json` holds SG-26; the registered SG-27..SG-30 (below) are the canonical rows (registered by session e52053d1, T-37, because the register had ended at SG-25) | — |
+| — | *(gap)* The ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json` — see the FLG-021 gap note below; the registered SG-27..SG-31 rows (this session re-mirrored them verbatim) are the canonical ones | — |
+**Gap, 2026-11-20 (FLG-021):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id.
 | SG-27 | One name for the Direction page, in the nav and the footer | implemented | engineering |
 | SG-28 | Ship the RSS feed and advertise it on every page | implemented | engineering |
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
 | SG-30 | Decide how readers stay in touch: RSS only, or an email provider with consent | proposed | owner |
+| SG-31 | Put the listing's own contradiction on the product card, not only the flag page | implemented 2026-11-20 | editorial |
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
@@ -51,27 +53,37 @@ SG-19. The ledger is the single source of truth.
 
 ## Open questions — what must be answered before deciding
 
-Twenty-one questions are registered in `data/open-questions.json`. Each carries
-`known`, `unknown`, `how_to_find_out`, `who`, and a status
+Twenty-three questions are registered in `data/open-questions.json` (Q-01…Q-23). Each carries
+`known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only`).
+
+**Correction, 2026-11-20 (FLG-020).** This digest used to list Q-08 as the account-status question
+and Q-05 as "which query set converts". Neither matched the register: Q-08 is "what counts as a
+session for the ledger" and Q-05 is "who is the named author". The account-status question had never
+been registered at all, so it was added as **Q-23** rather than renumbered into a used id. Every id
+below is the register's own subject; `tools/check_site.py` fails the build if this file cites an id
+that does not exist.
 
 Owner-only, cheapest first — these unblock the most:
 
-| # | Question | Cost |
-|---|----------|------|
-| Q-08 | Is tracking ID `shopnow047c-20` on an enrolled, eligible Associates account? | 5 min in Associates Central |
+| # | Question (as registered) | Cost |
+|---|--------------------------|------|
+| Q-23 | Is `shopnow047c-20` on an enrolled, eligible Associates account? | 5 min in Associates Central |
 | Q-19 | Is the account eligible for the Product Advertising API? | 5 min in Associates Central |
 | Q-02 | Do the five Special Links carry `tag=shopnow047c-20`? | One signed-in click each |
-| Q-04 | Is the `link.amazon` short-link format acceptable in this account’s enrollment? | Same session as Q-02 (FLG-006) |
+| Q-04 | Is the `link.amazon` short-link format acceptable in this account's enrollment? | Same session as Q-02 (FLG-006) |
+| Q-22 | Why did two of the five links end at the Amazon homepage on 2026-11-20? | 15 min, signed in (FLG-017) |
 | Q-18 | Will the owner verify the site in Search Console this month? | 10 min |
-| Q-01 | What product did the owner intend for each short link? (FLG-001) | One confirmation per link |
+| Q-05 | Who is the named author, and what is their experience? | One decision |
+| Q-09 | What is the 90-day target outcome? | One decision |
 
-Queued / watch (full text in the JSON and on `direction.html`): Q-03 (commission rates),
-Q-05 (which query set converts — data required), Q-06 (test purchases), Q-07 (which analytics
-endpoint and retention), Q-09 (90-day target), Q-10 (newer ASIN swap for P4), Q-11 (P1 litres),
-Q-12 (brand/visual sign-off), Q-13 (endpoint storage schema), Q-14 (cadence owner), Q-15
-(disclosure reach), Q-16 (custom domain), Q-17 (retire zero-impression guides), Q-20 (email
-provider + consent), Q-21 (does the SVG preview render anywhere).
+Queued / watch, in register order (full text in the JSON and on `decisions.html`): Q-01 (one beat or
+two), Q-03 (commission rates), Q-06 (test purchases), Q-07 (which analytics can be installed),
+Q-08 (what counts as a session), Q-10 (newer ASIN swap for P4), Q-11 (P1 capacity in litres),
+Q-12 (brand and visual sign-off), Q-13 (endpoint storage schema), Q-14 (cadence and who writes),
+Q-15 (disclosure reach when a reader never scrolls), Q-16 (custom domain), Q-17 (retire
+zero-impression guides), Q-20 (email provider and consent), Q-21 (does the PNG preview render in
+a share debugger).
 
 ## The SG-20 / SG-21 duplicate — reproduced and resolved
 
@@ -128,7 +140,7 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |
 | 2026-11-20 | Reconcile the path chooser on `direction.html` and in this file with the canonical paths in `data/decisions.json` (DT-01..DT-10); retire the stale “Steady publication / Conversion focus / Hold” wording and its wrong SG-04/SG-06 citations | session T-39 audit | The digest and the decision desk cannot disagree about what the three paths are |
-| 2026-11-20 | Reconcile the SG-26..SG-30 index rows with the registered SG-27..SG-30 (T-37); SG-26 recorded as an unoccupied ID | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
+| 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-021, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
 
 ## Audit findings, session a25ccde6 (2026-11-19)
 

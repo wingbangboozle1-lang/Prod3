@@ -72,12 +72,12 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 | Register | Page | Data | IDs | Count |
 |---|---|---|---|---|
 | Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-53 (SG-21 retired in place); unoccupied: SG-26 | 52 rows |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-29 | 29 |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-30 | 30 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | - |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | dated proposals | 12 |
-| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-017..FLG-040, F-01..F-21 | 36 in the data file |
-| Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | 21 |
+| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-001..FLG-040, F-01..F-21 | 56 in the data file |
+| Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | 28 |
 <!-- build-registers-table:end -->
 
 One table, not two. An earlier revision carried a 2026-11-19 table and a 2026-11-20 table side by

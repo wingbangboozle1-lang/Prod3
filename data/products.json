@@ -96,8 +96,34 @@
     "intended_asin_changed": false,
     "flag": "FLG-031"
    },
+   "official_listing_check_2026_11_20": {
+    "date": "2026-11-20",
+    "asin_checked": "B0CDY277D3",
+    "listing_url": "https://www.amazon.com/dp/B0CDY277D3",
+    "source": "S29",
+    "method": "fetch_page of the official Amazon product page; each value read from the page text",
+    "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
+    "conflicts": [
+     "Capacity: title/bullets 6 quarts (2 × 3 qt) vs details table 6 liters (FLG-022)"
+    ]
+   },
+   "short_link_rechecks": [
+    {
+     "date": "2026-11-20",
+     "session": "arena/6c0972fb-prod3",
+     "task": "T-60",
+     "method": "fetch_page of the supplied link.amazon URL; the final URL and the page <title> after redirects were read from the response",
+     "result": "Final URL https://www.amazon.com/ with the page title 'Amazon.com. Spend less. Smile more.' — the Amazon homepage, not a product page. No /dp/ ASIN appeared in the final URL.",
+     "reproduced": true,
+     "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
+     "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
+     "intended_asin_changed": false,
+     "flag": "FLG-039",
+     "token": "B04G1MEwY"
+    }
+   ],
    "site_outbound_url": "https://www.amazon.com/dp/B0CDY277D3?tag=shopnow047c-20",
-   "site_outbound_url_note": "Reader buttons and citation links on this site go to the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link stays recorded as the submitted input; it is not the route a reader is sent through, because its tagging cannot be confirmed from outside the account."
+   "site_outbound_url_note": "Reader buttons and citation links on this site go to the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20, S37). The owner-supplied short link stays recorded here as the submitted input; it is not the route a reader is sent through, because its tagging cannot be confirmed from outside the account."
   },
   {
    "id": "P-02",
@@ -192,8 +218,31 @@
     "intended_asin_changed": false,
     "flag": "FLG-031"
    },
+   "official_listing_check_2026_11_20": {
+    "date": "2026-11-20",
+    "asin_checked": "B09B7SB46R",
+    "listing_url": "https://www.amazon.com/dp/B09B7SB46R",
+    "source": "S30",
+    "method": "fetch_page of the official Amazon product page; each value read from the page text",
+    "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says"
+   },
+   "short_link_rechecks": [
+    {
+     "date": "2026-11-20",
+     "session": "arena/6c0972fb-prod3",
+     "task": "T-60",
+     "method": "fetch_page of the supplied link.amazon URL; the final URL and the page <title> after redirects were read from the response",
+     "result": "Final URL https://www.amazon.com/ with the page title 'Amazon.com. Spend less. Smile more.' — the Amazon homepage, not a product page. No /dp/ ASIN appeared in the final URL.",
+     "reproduced": true,
+     "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
+     "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
+     "intended_asin_changed": false,
+     "flag": "FLG-039",
+     "token": "B02NbDxp3"
+    }
+   ],
    "site_outbound_url": "https://www.amazon.com/dp/B09B7SB46R?tag=shopnow047c-20",
-   "site_outbound_url_note": "Reader buttons and citation links on this site go to the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link stays recorded as the submitted input; it is not the route a reader is sent through, because its tagging cannot be confirmed from outside the account."
+   "site_outbound_url_note": "Reader buttons and citation links on this site go to the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20, S37). The owner-supplied short link stays recorded here as the submitted input; it is not the route a reader is sent through, because its tagging cannot be confirmed from outside the account."
   },
   {
    "id": "P-03",
@@ -286,8 +335,35 @@
     "intended_asin_changed": false,
     "flag": "FLG-031"
    },
+   "official_listing_check_2026_11_20": {
+    "date": "2026-11-20",
+    "asin_checked": "B08DKYBTPH",
+    "listing_url": "https://www.amazon.com/dp/B08DKYBTPH",
+    "source": "S31",
+    "method": "fetch_page of the official Amazon product page; each value read from the page text",
+    "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
+    "conflicts": [
+     "Temperature: title 450°F vs bullets/spec 200–400°F (FLG-023)",
+     "Wattage: resource bullet 1000W vs spec table 1700W (FLG-023)"
+    ]
+   },
+   "short_link_rechecks": [
+    {
+     "date": "2026-11-20",
+     "session": "arena/6c0972fb-prod3",
+     "task": "T-60",
+     "method": "fetch_page of the supplied link.amazon URL; the final URL and the page <title> after redirects were read from the response",
+     "result": "Final URL https://www.amazon.com/ with the page title 'Amazon.com. Spend less. Smile more.' — the Amazon homepage, not a product page. No /dp/ ASIN appeared in the final URL.",
+     "reproduced": true,
+     "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
+     "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
+     "intended_asin_changed": false,
+     "flag": "FLG-039",
+     "token": "B00hJ57DV"
+    }
+   ],
    "site_outbound_url": "https://www.amazon.com/dp/B08DKYBTPH?tag=shopnow047c-20",
-   "site_outbound_url_note": "Reader buttons and citation links on this site go to the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link stays recorded as the submitted input; it is not the route a reader is sent through, because its tagging cannot be confirmed from outside the account."
+   "site_outbound_url_note": "Reader buttons and citation links on this site go to the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20, S37). The owner-supplied short link stays recorded here as the submitted input; it is not the route a reader is sent through, because its tagging cannot be confirmed from outside the account."
   },
   {
    "id": "P-04",
@@ -378,8 +454,31 @@
     "intended_asin_changed": false,
     "flag": "FLG-031"
    },
+   "official_listing_check_2026_11_20": {
+    "date": "2026-11-20",
+    "asin_checked": "B0DHZTCNR5",
+    "listing_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+    "source": "S32",
+    "method": "fetch_page of the official Amazon product page; each value read from the page text",
+    "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says"
+   },
+   "short_link_rechecks": [
+    {
+     "date": "2026-11-20",
+     "session": "arena/6c0972fb-prod3",
+     "task": "T-60",
+     "method": "fetch_page of the supplied link.amazon URL; the final URL and the page <title> after redirects were read from the response",
+     "result": "Final URL https://www.amazon.com/ with the page title 'Amazon.com. Spend less. Smile more.' — the Amazon homepage, not a product page. No /dp/ ASIN appeared in the final URL.",
+     "reproduced": true,
+     "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
+     "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
+     "intended_asin_changed": false,
+     "flag": "FLG-039",
+     "token": "B0c8moW59"
+    }
+   ],
    "site_outbound_url": "https://www.amazon.com/dp/B0DHZTCNR5?tag=shopnow047c-20",
-   "site_outbound_url_note": "Reader buttons and citation links on this site go to the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link stays recorded as the submitted input; it is not the route a reader is sent through, because its tagging cannot be confirmed from outside the account."
+   "site_outbound_url_note": "Reader buttons and citation links on this site go to the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20, S37). The owner-supplied short link stays recorded here as the submitted input; it is not the route a reader is sent through, because its tagging cannot be confirmed from outside the account."
   },
   {
    "id": "P-05",
@@ -471,8 +570,34 @@
     "intended_asin_changed": false,
     "flag": "FLG-031"
    },
+   "official_listing_check_2026_11_20": {
+    "date": "2026-11-20",
+    "asin_checked": "B0DZFD6R9Z",
+    "listing_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+    "source": "S33",
+    "method": "fetch_page of the official Amazon product page; each value read from the page text",
+    "intent_status": "unchanged — intended ASIN is still owner-unconfirmed (FLG-001); this check confirms only what the listing says",
+    "conflicts": [
+     "Battery life 50 h vs 70 h; warranty 2 vs 3 years (FLG-003)"
+    ]
+   },
+   "short_link_rechecks": [
+    {
+     "date": "2026-11-20",
+     "session": "arena/6c0972fb-prod3",
+     "task": "T-60",
+     "method": "fetch_page of the supplied link.amazon URL; the final URL and the page <title> after redirects were read from the response",
+     "result": "Final URL https://www.amazon.com/ with the page title 'Amazon.com. Spend less. Smile more.' — the Amazon homepage, not a product page. No /dp/ ASIN appeared in the final URL.",
+     "reproduced": true,
+     "independent_confirmation": "Session arena/6bf60cac-prod3 recorded the same outcome for the same five links the same day under live_recheck_2026_11_20_link_check (FLG-025). The two records came from separate fetches; neither is derived from the other.",
+     "earlier_records_kept": "The 2026-11-19 product-page observation and the 2026-11-20 observations by sessions 70e8475c and ce911db5 are unchanged and remain the record of those fetches.",
+     "intended_asin_changed": false,
+     "flag": "FLG-039",
+     "token": "B0f3GKalj"
+    }
+   ],
    "site_outbound_url": "https://www.amazon.com/dp/B0DZFD6R9Z?tag=shopnow047c-20",
-   "site_outbound_url_note": "Reader buttons and citation links on this site go to the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20). The owner-supplied short link stays recorded as the submitted input; it is not the route a reader is sent through, because its tagging cannot be confirmed from outside the account."
+   "site_outbound_url_note": "Reader buttons and citation links on this site go to the official listing with the tracking ID attached, per Participation Requirements 2(b) (read 2026-11-20, S37). The owner-supplied short link stays recorded here as the submitted input; it is not the route a reader is sent through, because its tagging cannot be confirmed from outside the account."
   }
  ],
  "price_snapshot_note": "price_observed fields are archival snapshots dated 2026-11-19. Observation time and delivery location were not recorded; prices are not current offers. See FLG-012.",
@@ -481,17 +606,39 @@
  "verified_on_live_recheck": "2026-11-20",
  "live_recheck_note": "Three dated observations now exist for the five supplied links: 2026-11-19 (all five read as /dp/ product pages), 2026-11-20 session 70e8475c (B04G1MEwY homepage, four product pages), 2026-11-20 session ce911db5 (B04G1MEwY and B0c8moW59 homepage, three product pages), and 2026-11-20 session 6bf60cac/T-46 (all five homepage). No record is merged into another. See FLG-017, FLG-023 and FLG-025.",
  "observation_note": "Three dated observations of the supplied links exist for 2026-11-20 and they do not agree. Nothing is deleted and no record outranks another. A fetch cannot establish what a signed-in reader sees, so only the owner's click-through inside the enrolled Associates workflow (Q-02 + Q-22) settles the question. No observation here is evidence that the links are invalid.",
+ "link_policy_2026_11_20": {
+  "date": "2026-11-20",
+  "session": "arena/6c0972fb-prod3",
+  "flag": "FLG-039",
+  "decision": "Every reader-facing product button points at https://www.amazon.com/dp/<observed ASIN>?tag=shopnow047c-20&linkCode=sl1 — 30 buttons across the front page, both category shelves, the comparison table, the gift guide and the five generated product pages. None uses a link.amazon short link and none is untagged.",
+  "basis": "Program Policies, Participation Requirements 2(a) (S37) and 2(b); Commission Income Statement 2(g) (S38) and 2(e) (S38). Observed 2026-11-20: no short link delivered a URL carrying a tag, and all five delivered the Amazon homepage.",
+  "limits": "A fetch from outside the account cannot see whether Amazon attaches a tag server-side, and cannot confirm the tracking ID belongs to an eligible enrolled account (FLG-010). The owner test (FLG-006, Q-02, Q-22) settles both.",
+  "gates": "scripts/check_site.py rule 7b and tools/check_site.py P09 fail the build if a button loses its tag, loses its product target, or returns to a shortener. Both were negative-tested the same day: they named two untagged hand-written buttons and five untagged generated pages before the fix.",
+  "sources": [
+   "S37",
+   "S38"
+  ]
+ },
+ "integration_repair_2026-11-20": {
+  "date": "2026-11-20",
+  "session": "arena/6c0972fb-prod3",
+  "flag": "FLG-040",
+  "what": "Restored the five official_listing_check_2026_11_20 blocks (added by session 59a087a1 in 56cddb5, sources S29-S33) that commit ffcb419 dropped when it rewrote data/products.json, and corrected the README register ranges that were failing gate D37 on main.",
+  "why": "flagged.html and air-fryers.html publish the conflicts those blocks document, and the register is the only place a reader can trace a published spec value back to its dated check. Nothing ffcb419 added was changed."
+ },
  "link_tagging": {
   "date": "2026-11-20",
   "session": "arena/52f418e7-prod3",
-  "rule": "Associates Program Participation Requirements, Section 2 (Links on Your Site), read on the live page 2026-11-20: 2(a) “Special Links must use the Associates ID we have assigned to you”; 2(b) “you must include your Associates ID or ‘tag’ (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site”. Disqualified Purchases, Commission Income Statement 2(g), adds the commercial consequence: a purchase “is not correctly tracked or reported” when the links are “not properly formatted”.",
+  "rule": "Associates Program Participation Requirements, Section 2 (Links on Your Site), read on the live page 2026-11-20: 2(a) “Special Links must use the Associates ID we have assigned to you”; 2(b) “you must include your Associates ID or ‘tag’ (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site”, which also states that Special Links “may be created by you or made available to you by us”. Commission Income Statement 2(g): a purchase is disqualified when it “is not correctly tracked or reported because the links from your site to the relevant Amazon Site are not properly formatted”.",
   "source": [
    "S02",
-   "S01",
-   "S34"
+   "S37",
+   "S38",
+   "S40",
+   "S01"
   ],
-  "before": "329 product links carried no tag parameter, and 23 reader CTAs ran through the supplied link.amazon short links, whose tagging cannot be read from outside the account. FLG-026 recorded the requirement as an open owner question.",
-  "after": "Every product link the site places now ends in ?tag=shopnow047c-20 (372 tagged anchors over 39 pages as counted 2026-11-20), emitted by the four builders (scripts/build_registers.py, build_decisions.py, build_products.py, build_ideas.py) and applied to the hand-written pages by tools/link_tagger.py, which also runs as release gate D41. The registers keep the canonical untagged URL as the recorded value, so no observation is altered; a link to a 9-character token path (/dp/B04G1MEwY, source S15) stays untagged because it is evidence of an observation, not a link to a Product.",
-  "not_claimed": "Whether this account accepts a tag added to a URL built outside Associates Central, and whether the supplied short links attach the tag downstream, can only be settled inside the account (S34 documents the click-and-read check and the Link Checker). FLG-026 stays open for that half and Q-28 asks it. Nothing here asserts the supplied links are invalid, and Commission Income Statement 2(g) is quoted as the reason the question is worth ten minutes."
+  "before": "329 product links carried no tag parameter and 23 reader CTAs ran through the supplied link.amazon short links. F-09, Q-02, Q-22 and Q-24 recorded the tracking ID as an owner-only unknown — true of the short links, and beside the point for the links the site itself emits, which the policy addresses directly.",
+  "after": "Every product link the site places now ends in ?tag=shopnow047c-20 (369 tagged anchors over 42 pages as counted 2026-11-20), emitted by the four builders (scripts/build_registers.py, build_decisions.py, build_products.py, build_ideas.py) through a shared href_for(), and applied to the hand-written pages by tools/link_tagger.py, which also runs as release gate D41. Two things are deliberately untagged: /dp/B04G1MEwY, a 9-character short-link token published as evidence of an observation rather than as a link to a Product, and the URL fields in this file, which record what was read instead of routing a reader.",
+  "not_claimed": "Whether this account credits a tag added to a URL built outside Associates Central, and whether the supplied short links attach the tag downstream, can only be settled inside the account — S40 is Amazon's documented procedure (open the link, read the destination URL for &tag=; the Link Checker covers links created or modified outside Associates Central). FLG-026 stays open for that half and Q-30 asks it. Nothing here asserts the supplied links are invalid, and 2(b) explicitly permits a link “created by you”, so the open question is credit, not format."
  }
 }

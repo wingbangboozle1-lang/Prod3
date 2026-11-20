@@ -361,7 +361,7 @@
    "severity": "high",
    "area": "Outbound links (buy buttons)",
    "product": "All five (P-01..P-05)",
-   "detail": "On 2026-11-20 (session 6bf60cac, T-46) all five supplied link.amazon URLs were fetched again and every one ended at https://www.amazon.com/ — the Amazon homepage — rather than at a product page. That is a wider result than either earlier same-day record (session 70e8475c: one of five; session ce911db5: two of five) and wider than 2026-11-19, when all five read as /dp/ product pages. Reproduced again on 2026-11-20: all five supplied links ended at the homepage from an unauthenticated fetch, so this record keeps the fetch as an observation and no page treats it as proof about a link.",
+   "detail": "On 2026-11-20 (session 6bf60cac, T-46) all five supplied link.amazon URLs were fetched again and every one ended at https://www.amazon.com/ — the Amazon homepage — rather than at a product page. That is a wider result than either earlier same-day record (session 70e8475c: one of five; session ce911db5: two of five) and wider than 2026-11-19, when all five read as /dp/ product pages. A fifth same-day unauthenticated fetch (session 52f418e7) reproduced the homepage outcome for all five, which is why this record reads as a statement about fetch paths and not about links.",
    "why_it_matters": "A reader who presses a buy button is meant to reach the product. If the final destination is the Amazon homepage, the reader has to search for the product again, and the site's own claim that a button opens the listing is wrong at the moment of the click.",
    "action": "Owner: click each of the five links signed in to Associates, record the landing page, and replace the href with a freshly generated SiteStripe Special Link once it is confirmed (DT-01). Do not treat this as proof that the links are invalid: the destination depends on Amazon's redirect, which changed between observations.",
    "status": "open — third dated observation recorded; no record overwritten",
@@ -380,10 +380,10 @@
    "severity": "high",
    "area": "Special Link tag parameter",
    "product": "All five buy links plus 192 evidence links",
-   "detail": "Program Policies (updated 2026-04-14) §2(b) require the Associates ID or tag as a parameter in the URL of each link placed on a site to an Amazon Site, and §2(a) require Special Links to use the assigned Associates ID. None of the 23 shipped link.amazon buy anchors and none of the 192 shipped amazon.com anchors contains a tag parameter in the URL the reader receives; 0 anchors carry tag=shopnow047c-20. 2026-11-20 (session 52f418e7): the site-side half was implemented rather than queued, because a rule a generator can enforce should not sit on a checklist. The clause letters in this row were re-read on the live page at the same time: they are 2(a) and 2(b) of Participation Requirements, Section 2 (Links on Your Site).",
+   "detail": "Program Policies (updated 2026-04-14) §2(b) require the Associates ID or tag as a parameter in the URL of each link placed on a site to an Amazon Site, and §2(a) require Special Links to use the assigned Associates ID. None of the 23 shipped link.amazon buy anchors and none of the 192 shipped amazon.com anchors contains a tag parameter in the URL the reader receives; 0 anchors carry tag=shopnow047c-20. 2026-11-20 (session 52f418e7): the site-side half was implemented rather than queued — a rule a generator can enforce should not wait on a person. The clause letters were re-read on the live page at the same time and are 2(a) and 2(b) of the Participation Requirements, Section 2 (Links on Your Site), recorded as S37.",
    "why_it_matters": "If a click is not tagged, Amazon cannot attribute it and the click cannot earn. The rule is quoted in the Program Policies, so this is the one link question with a written, checkable requirement behind it.",
-   "action": "Owner: open any product link on the live site and read the destination URL for the tag (S34 is Amazon's documented procedure), run one tagged link through the Link Checker, and confirm a click appears in the reports before treating the site as live for traffic. Re-test the five supplied short links in the same pass (Q-02, Q-24). This record still does not assert the short links are non-compliant — 2(b) allows Special Links to be “created by you”, so the open question is whether this account credits a manually tagged link, not whether the format exists.",
-   "status": "partly resolved — site side done 2026-11-20: every product link on 39 pages carries tag=shopnow047c-20 and tools/link_tagger.py --check runs as release gate D41, so an untagged product link fails the build. Open: the account-side confirmation (Q-28).",
+   "action": "Owner: open any product link on the live site and read the destination URL for the tag (S40 is Amazon's documented procedure), run one tagged link through the Link Checker, and confirm a click appears in the reports before treating the site as live for traffic. Re-test the five supplied short links in the same pass (Q-02, Q-24, FLG-039). This record does not assert the short links are non-compliant: 2(b) permits a Special Link “created by you”, so what is unknown is whether this account credits it.",
+   "status": "partly resolved — site side done 2026-11-20: every product link on 42 pages carries tag=shopnow047c-20 (372 anchors), the four builders emit the tag, and tools/link_tagger.py --check runs as release gate D41 so an untagged product link fails the build. Open: the account-side confirmation (Q-30).",
    "sources": [
     "S01",
     "S02"
@@ -471,33 +471,66 @@
    "sources_checked": "2026-11-20"
   },
   {
-   "id": "FLG-040",
-   "severity": "low",
-   "area": "Register integrity — flag numbering",
-   "product": "data/flagged.json; flagged.html",
-   "detail": "data/flagged.json carries 11 rows (FLG-017, 020, 021, 025–029, 032, 037–038) while flagged.html publishes FLG-001–038; the page therefore holds roughly two dozen callouts with no structured row, and tools/verify_site.py only proves that a flag id cited by a product appears somewhere on the page. The generator check meant to catch the reverse case (a data row with no published callout) was itself inverted — it read `not not _fmissing`, which passes when rows are unpublished — so this class of gap could not fail a build. It was first published under a number the board record shows had briefly been in use for two other findings, and moved to FLG-040 the same day rather than reuse an id a reader may have met under another meaning.",
-   "why_it_matters": "A reader who audits the machine-readable register gets a shorter list than the page publishes, and an inverted gate is worse than no gate: it reports the check as passing precisely when the defect is present.",
-   "action": "Integration pass: generate flagged.html from data/flagged.json the way the other three registers work, and keep the two checks pointed the right way. The inverted check was corrected the same day this row was written (D35-flag-published now fails when a data row is missing from the page). Rows are not renumbered: an id that has been published keeps its meaning.",
-   "status": "open — recorded; the inverted check is fixed, the register split is not",
-   "sources": [],
-   "evidence_status": "unverified",
+   "id": "FLG-039",
+   "severity": "high",
+   "area": "Outbound link format",
+   "product": "All five (P-01..P-05)",
+   "detail": "Fourth dated observation on 2026-11-20 (session 6c0972fb, independent of session 6bf60cac's same-day check): each of the five supplied link.amazon short links ended at the Amazon homepage with no /dp/ ASIN and no tag in the URL the reader receives. Participation Requirements 2(a)/2(b) (S37) require the assigned Associates ID as a URL parameter on every link to an Amazon Site, and Commission Income Statement 2(g) (S38) disqualifies purchases whose links are “not properly formatted”; 2(e) disqualifies a Redirecting Link that bounces a customer through an intermediate site without an affirmative click there. Every reader-facing product button now goes to the official product page with this site's tag, and two gate rules (scripts/check_site.py 7b, tools/check_site.py P09) fail the build if a button loses its tag, its product target, or returns to a shortener.",
+   "why_it_matters": "A button that lands a buyer on a homepage loses the sale and earns nothing; a link with no tag cannot be attributed even when it lands correctly. Both were true at once before this change.",
+   "action": "Owner: the signed-in test in Q-02 / Q-22 — generate a Special Link per product with SiteStripe, click it, and confirm the destination plus a matching row in the click reports. If the supplied links do carry the tag inside the enrolled account, restoring them is one line per button.",
+   "status": "open — site response shipped, owner test still required",
+   "sources": [
+    "S01",
+    "S02",
+    "S37",
+    "S38"
+   ],
    "sources_checked": "2026-11-20"
   },
   {
-   "id": "FLG-039",
+   "id": "FLG-040",
+   "severity": "medium",
+   "area": "Coordination: another session's records were dropped by a rewrite",
+   "product": "All five (P-01..P-05)",
+   "detail": "Commit ffcb419 rewrote data/products.json and lost the five official_listing_check_2026_11_20 blocks session 59a087a1 had added in 56cddb5 (the dated 2026-11-20 read of each official listing, cited by sources S29–S33 and by the published listing-conflict flags). They are restored verbatim from 56cddb5; nothing ffcb419 added was altered. The README register ranges (SG-01..SG-38, Q-01..Q-27) were also stale on main and failed gate D37 — a red build that merged because the gate set runs on push to main rather than as a required check on pull requests.",
+   "why_it_matters": "Two failure modes in one day: a wholesale file rewrite silently deleting another session's evidence, and a register table the release gate only reads after the damage is merged.",
+   "action": "Adopt append-only edits for data/*.json registers (patch the keys you mean, never re-render a whole file from a summary), and consider making the gate set a required status check on pull requests.",
+   "status": "open — data repaired; workflow change is the owner's call",
+   "sources": [
+    "S05"
+   ],
+   "sources_checked": "2026-11-20"
+  },
+  {
+   "id": "FLG-041",
    "severity": "medium",
    "area": "Policy citations — one clause letter still wrong after the correction pass",
    "product": "data/policy-clause-map.json; citations.html",
-   "detail": "The 2026-11-20 clause-correction pass (FLG-037) moved several citations out of Section 2 into Section 6 and recorded the wording in data/policy-clause-map.json. One entry landed in the wrong place: the cookies, pixels and visitor-data disclosure requirement was recorded as 6(e), and citations.html repeated “6(e) privacy disclosure”. On the live page read the same day, that wording is Section 3 item (e) (“Responsibility for Your Site”); Section 6 item (e) is a different rule — not purchasing, registering or otherwise using an Amazon Mark “for use in any Search Engine”, with the Proprietary Terms exclusion on request. Both are real; the letter attached to the first one was not.",
-   "why_it_matters": "The point of the clause map is that a reader can open the policy page and find the quoted words under the quoted number. One misplaced letter makes the whole map look inferred, which is the opposite of what it exists to prove.",
-   "action": "Corrected 2026-11-20 (session 52f418e7): the map entry was renumbered to 3(e) with a supersedes_citation note, Section 6(e) now carries the search-engine wording it actually has, and citations.html was regenerated from data/citations.json. Sections 1(g), 4, 5 and 6(f) were added at the same time so the guardrail rows on the suggestions page cite letters that are in the map rather than letters from memory. Owner: nothing.",
-   "status": "resolved on the site 2026-11-20; recorded so the correction is visible, not silent",
+   "detail": "The 2026-11-20 clause-mapping pass (FLG-037) moved several citations out of Section 2 of the Participation Requirements into Section 6 and recorded the wording in data/policy-clause-map.json. One entry landed in the wrong place: the cookies, pixels and visitor-data disclosure requirement was recorded as 6(e), and citations.html repeated “6(e) privacy disclosure”. Re-read against the live page the same day, that wording is Section 3 item (e) (“Responsibility for Your Site”); Section 6 item (e) is a different rule — not purchasing, registering or otherwise using an Amazon Mark “for use in any Search Engine”, with the Proprietary Terms exclusion on request. Both rules are real; the letter attached to the first one was not.",
+   "why_it_matters": "The clause map exists so a reader can open the policy page and find the quoted words under the quoted number. One misplaced letter makes the whole map look inferred, which is the opposite of what it is for — and this site's only claim to authority is that its citations were actually read.",
+   "action": "Corrected 2026-11-20 (session 52f418e7): the map entry is renumbered to 3(e) with a supersedes_citation note rather than silently edited; 6(e) now carries the search-engine wording it actually holds; and 1(g), 4, 5, 6(f) and the Commission Income Statement's 2(g) were added from the same read so the guardrail rows cite letters that exist in the map. Owner: nothing. First published as FLG-039; that id went to a parallel session's outbound-link-format record while this branch was in flight, so this row moved — the two findings are different and both stand.",
+   "status": "resolved on the site 2026-11-20; recorded so the correction is visible",
    "sources": [
-    "S02"
+    "S02",
+    "S37",
+    "S38"
    ],
    "evidence_status": "verified",
    "sources_checked": "2026-11-20",
    "quote": "Participation Requirements 3(e): “disclosing on your Site accurately and adequately … the use of cookies, pixels, and other technologies by you and third parties …” | 6(e): “You will not (and you will not seek to) purchase, register or otherwise use any Amazon Mark … for use in any Search Engine …”"
+  },
+  {
+   "id": "FLG-042",
+   "severity": "low",
+   "area": "Register integrity — published rows versus data rows",
+   "product": "data/flagged.json; flagged.html",
+   "detail": "data/flagged.json held the 21 F-series findings while flagged.html published 3 of them, so 18 findings existed in a machine-readable file with no definition on the page readers are sent to. The check written to prevent that, D35-flag-published in tools/check_site.py, was inverted: it read `not not _fmissing`, which passes when rows are missing from the page and fails when they are all published. The F half of the register is now generated from the data file by scripts/build_flag_index.py and watched as gate D42, with a source link or an explicit “No official source” marker in every row; the FLG callouts above it stay hand-written. The two registers were not merged: F-rows are findings about the five listings, FLG-rows are findings about the program relationship and this site.",
+   "why_it_matters": "An inverted gate is worse than no gate, because it reports the check as passed exactly when the defect is present. And a finding that exists only in a data file is a finding no buyer or reviewer will ever read.",
+   "action": "Owner or integration pass: decide whether every FLG callout should also be generated from data (that is a content decision, recorded as I-15 in DIRECTION.md). The inverted condition itself is fixed, negative-tested by deleting one generated row (D42 failed, then restored). First published as FLG-040; that id went to a parallel session's record of dropped product blocks, so this row moved.",
+   "status": "partly resolved 2026-11-20 — F register published and gated; the FLG half stays hand-written",
+   "sources": [],
+   "evidence_status": "unverified",
+   "sources_checked": "2026-11-20"
   }
  ],
  "alias_records": [
@@ -649,5 +682,5 @@
    "verified_on": "2026-11-20"
   }
  ],
- "id_policy": "One identifier carries one finding. On 2026-11-20 two collisions were found and fixed by earlier work (FLG-020/021 renumbered to FLG-028/029, and the earlier two-link record renumbered to FLG-032). This alias_records list covers the opposite failure: a flag a reader sees on the page but cannot find in the data file is enumerated here with its published title, so nothing is silently undocumented. On 2026-11-20 a second collision was found: two flags were published as FLG-040 and FLG-036 while this session's policy-citation and article-duplication findings held the same numbers. The published FLG-034 (listing-conflict ids) and the published FLG-040/FLG-036 records are untouched; the two late additions are renumbered FLG-037 and FLG-038 here and on flagged.html. Gate D32 is what caught it."
+ "id_policy": "One identifier carries one finding. On 2026-11-20 two collisions were found and fixed by earlier work (FLG-020/021 renumbered to FLG-028/029, and the earlier two-link record renumbered to FLG-032). This alias_records list covers the opposite failure: a flag a reader sees on the page but cannot find in the data file is enumerated here with its published title, so nothing is silently undocumented. On 2026-11-20 a second collision was found: two flags were published as FLG-040 and FLG-036 while this session's policy-citation and article-duplication findings held the same numbers. The published FLG-039 (listing-conflict ids) and the published FLG-040/FLG-036 records are untouched; the two late additions are renumbered FLG-037 and FLG-038 here and on flagged.html. Gate D32 is what caught it."
 }

@@ -3,7 +3,7 @@
 
 Why this exists: flagged.html carried FLG-001..FLG-038 plus three F rows by hand,
 while data/flagged.json held 21 F rows. A register row with no published definition
-is how an id ends up meaning two things — which is what FLG-040 and FLG-027 were
+is how an id ends up meaning two things — which is what FLG-042 and FLG-027 were
 about. The F half of the page is therefore generated from the same file the product
 pages read, so a new row cannot be published in one place and missed in the other.
 

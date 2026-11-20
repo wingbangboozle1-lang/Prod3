@@ -15,7 +15,7 @@ options, and recommendations live there.
 | SG-01 | One beat: cooking to a target temperature — both families in one sentence | implemented | owner |
 | SG-02 | Publish the two spec conflicts instead of picking a winner | implemented | editorial |
 | SG-03 | No prices anywhere, with the policy explained on its own page | implemented | editorial |
-| SG-04 | Eight question-shaped guides instead of eight product reviews | implemented | editorial |
+| SG-04 | 8 question-shaped guides instead of 8 product reviews | implemented | editorial |
 | SG-05 | Compliance gate inside the build, not a checklist promise | implemented | editorial |
 | SG-06 | Buy one air fryer and one thermometer to earn original testing | proposed | owner |
 | SG-07 | Search Console verification + sitemap submission before guide nine | proposed | owner |
@@ -44,6 +44,19 @@ options, and recommendations live there.
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
 | SG-30 | Decide how readers stay in touch: RSS only, or an email provider with consent | proposed | owner |
 | SG-31 | Put the listing's own contradiction on the product card, not only the flag page | implemented 2026-11-20 | editorial |
+| SG-43 | Give the seasonal block a retirement date and a successor, before Thanksgiving ends | proposed | editorial |
+| SG-44 | Do not add FAQ markup expecting a Google FAQ rich result — that feature is gone | proposed | editorial |
+| SG-45 | Fact-check any AI-assisted draft line by line before it ships, and say how the site is made | proposed | owner |
+| SG-46 | Measure Core Web Vitals once, then gate new frontend effects on the result | proposed | editorial |
+| SG-47 | Keep internal anchors descriptive — add a gate so the discipline cannot slip | proposed | engineering |
+
+SG-43..SG-47 were added 2026-11-20 (session `arena/7878cdbe-prod3`, T-54; renumbered twice while
+this branch was queued — first from SG-32..SG-36 after upstream 6bf60cac/8692a390 registered
+SG-32..SG-38, then from SG-39..SG-43 after upstream PR #52 registered SG-39..SG-42) with sources
+verified that day:
+S34 (Google link best practices), S35 (Google search-doc changelog: the FAQ rich result was
+deprecated 2026-05-07/08 and its documentation removed June 2026), S36 (Google generative-AI
+content guidance, page updated 2026-10-01). The rows above mirror `data/suggestions.json` verbatim.
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
@@ -142,7 +155,7 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | 2026-11-20 | Reconcile the path chooser on `direction.html` and in this file with the canonical paths in `data/decisions.json` (DT-01..DT-10); retire the stale “Steady publication / Conversion focus / Hold” wording and its wrong SG-04/SG-06 citations | session T-39 audit | The digest and the decision desk cannot disagree about what the three paths are |
 | 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-021, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
 | 2026-11-20 | Tag every product link the site places (`?tag=shopnow047c-20`), emit the tag from the builders rather than by hand, and add `tools/link_tagger.py --check` as a release gate; stop routing reader CTAs through the supplied short links while leaving them recorded | Participation Requirements 2(a), 2(b) and the Commission Income Statement's Disqualified Purchases rule, read on the live page 2026-11-20 (S02) · `data/policy-clause-map.json` · `flagged.html` FLG-026 |
-| 2026-11-20 | Publish the F-series register from the data file (`scripts/build_flag_index.py`, gate `D42`), and correct the clause letter 6(e) → 3(e) with a `supersedes_citation` note instead of a silent edit | `data/flagged.json` vs `flagged.html` on 2026-11-20 · the live Participation Requirements Sections 3 and 6, read the same day (S02) · FLG-040, FLG-039 |
+| 2026-11-20 | Publish the F-series register from the data file (`scripts/build_flag_index.py`, gate `D42`), and correct the clause letter 6(e) → 3(e) with a `supersedes_citation` note instead of a silent edit | `data/flagged.json` vs `flagged.html` on 2026-11-20 · the live Participation Requirements Sections 3 and 6, read the same day (S02) · FLG-042, FLG-041 (both ids moved: 039 and 040 went to a parallel session's records while this branch was in flight) |
 | 2026-11-20 | Publish one question-shaped guide a calendar month; approver: the site owner; next guide due 2026-12-31 (DT-10, owner instruction in the 2026-11-20 brief) | Owner instruction · `docs/publishing-cadence.md` · `data/decisions.json` DT-10 | The commitment is a rhythm, not a traffic or revenue forecast; `tools/verify_site.py` now fails a guide that is missing from the sitemap, the feed (headline = H1) or the guides hub |
 
 ## Audit findings, session a25ccde6 (2026-11-19)
@@ -167,5 +180,5 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | I-11 | `analysis.json` computes "quarts per square inch" from listed dimensions | The arithmetic is reproducible and `scripts/check_site.py` bans the phrase "capacity per inch" from reader pages, so it stays internal. Whether to publish it is proposal SG-18. |
 | I-12 | RESOLVED 2026-11-20 (session 52f418e7): the F-series is now published — `scripts/build_flag_index.py` renders all 21 data findings into `flagged.html` from `data/flagged.json`, with one source link or an explicit `No official source` marker per row, and gate `D42` fails the build when the page drifts. The two registers were not merged: F-rows stay findings about the listings, FLG-rows stay findings about the program relationship and this site. | What was left as a content decision turned out to be a publishing gap: 18 of 21 findings existed only in a data file, and the check that should have caught it (`D35-flag-published`) was written inverted. |
 | I-15 | Whether the F-series and FLG-series should share one numbering scheme | Recorded, not changed. Renumbering a published identifier breaks citations on pages already live, which is the failure mode FLG-027, FLG-040 and FLG-037 are about. |
-| I-13 | Partly closed 2026-11-20: the site no longer routes readers through the five `link.amazon` destinations, and every product link it places carries `tag=shopnow047c-20` (372 anchors, gate `D41`). What remains owner-side is whether this account credits a manually tagged link and whether the short links attach the tag downstream — an account report, not a fetch (FLG-026, Q-02, Q-24, Q-28). | Participation Requirements 2(a) and 2(b) can be satisfied by the site; the credit decision cannot be observed from outside the account. |
+| I-13 | Partly closed 2026-11-20: the site no longer routes readers through the five `link.amazon` destinations, and every product link it places carries `tag=shopnow047c-20` (369 anchors, gate `D41`). What remains owner-side is whether this account credits a manually tagged link and whether the short links attach the tag downstream — an account report, not a fetch (FLG-026, Q-02, Q-24, Q-30). | Participation Requirements 2(a) and 2(b) can be satisfied by the site; the credit decision cannot be observed from outside the account. |
 | I-14 | No build step regenerates article HTML from data | Articles are hand-written prose; a generator would be a project, not a fix. |

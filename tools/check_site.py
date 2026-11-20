@@ -114,9 +114,18 @@ for name, html in docs.items():
         check("P08-noopener", "noopener" in tag,
               f"{name}: Amazon link without noopener → {href.group(1) if href else '?'}")
         if href:
+            # P09, tightened 2026-11-20 (T-60). The old form ("… or sponsored in tag")
+            # passed every link.amazon anchor that merely carried the attribute, so it
+            # could not fail. The rule is now the one the policy text supports: a
+            # reader-facing buy button (marked data-asin) must not be a redirecting
+            # shortener, because Participation Requirements 2(b) (S34) requires the tag
+            # as a URL parameter and Commission Income Statement 2(g) (S35)
+            # disqualifies improperly formatted links. Evidence rows that merely
+            # display the submitted link are untouched.
+            is_button = "data-asin=" in tag or 'data-event="outbound_click"' in tag
             check("P09-no-shortener",
-                  "link.amazon/" not in href.group(1) or "sponsored" in tag,
-                  f"{name}: shortened link qualifier missing → {href.group(1)}")
+                  not is_button or "link.amazon/" not in href.group(1),
+                  f"{name}: buy button routes a buyer through a redirecting short link → {href.group(1)}")
 
     # ---- no currency amount, anywhere
     for m in re.finditer(r"[$£€]\s?\d", html):

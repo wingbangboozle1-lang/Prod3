@@ -5,19 +5,17 @@
    "id": "S01",
    "title": "Amazon Associates Program Operating Agreement",
    "url": "https://affiliate-program.amazon.com/help/operating/agreement",
-   "used_for": "Special Links definition; the required disclosure sentence (§5, read verbatim 2026-11-20); Program Content scope; compliance duties",
-   "quote": "The links must properly use the special “tagged” link formats we provide and comply with this Agreement (“Special Links”) — §1; and §5: You must clearly and prominently state the following … on your Site: “As an Amazon Associate I earn from qualifying purchases.”",
-   "updated": "2025-10-15",
-   "reverified": "2026-11-20"
+   "used_for": "Special Links definition; Program Content (data, images, text); compliance duties",
+   "quote": "The links must properly use the special 'tagged' link formats we provide and comply with this Agreement ('Special Links').",
+   "updated": "2025-10-15"
   },
   {
    "id": "S02",
    "title": "Amazon Associates Program Policies",
    "url": "https://affiliate-program.amazon.com/help/operating/policies",
-   "used_for": "the tag parameter on every product link (2(a), 2(b)); price and availability limits; promotional and content limits (3(e), 4, 5, 6(e)–(f), 6(t)–(w), 6(y)); each rule is quoted in data/policy-clause-map.json rather than paraphrased",
-   "quote": "2(a): “Special Links must use the Associates ID we have assigned to you.” 2(b): “you must include your Associates ID or ‘tag’ (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site” and “Special Links may be created by you or made available to you by us”. 6(y): “Unless otherwise agreed by Amazon, your Site must not have price tracking and/or price alerting functionality.”",
-   "updated": "page states Updated 2026-04-14",
-   "reverified": "2026-11-20"
+   "used_for": "Qualifying Purchases / session rules; Participation Requirements (do not obscure link destinations)",
+   "quote": "a customer clicks through a Special Link on your Site to an Amazon Site",
+   "updated": "2026-04-14"
   },
   {
    "id": "S03",
@@ -56,35 +54,35 @@
    "id": "S10",
    "title": "Official listing — CHEFMAN 6 Qt Dual Basket (B0CDY277D3)",
    "url": "https://www.amazon.com/dp/B0CDY277D3",
-   "used_for": "P-01 title, specs, rating, price, rank",
+   "used_for": "P-01 title, specs; snapshot price/rating/rank recorded to the data files on 2026-11-19 only — never rendered on any page",
    "verified": "2026-11-19"
   },
   {
    "id": "S11",
    "title": "Official listing — Emeril Lagasse 26QT (B09B7SB46R)",
    "url": "https://www.amazon.com/dp/B09B7SB46R",
-   "used_for": "P-02 title, specs, rating, price, rank",
+   "used_for": "P-02 title, specs; snapshot price/rating/rank recorded to the data files on 2026-11-19 only — never rendered on any page",
    "verified": "2026-11-19"
   },
   {
    "id": "S12",
    "title": "Official listing — Chefman 8 Qt TurboFry (B08DKYBTPH)",
    "url": "https://www.amazon.com/dp/B08DKYBTPH",
-   "used_for": "P-03 title, specs, rating, price, rank, newer-model notice",
+   "used_for": "P-03 title, specs, newer-model notice; snapshot price/rating/rank recorded to the data files on 2026-11-19 only — never rendered on any page",
    "verified": "2026-11-19"
   },
   {
    "id": "S13",
    "title": "Official listing — ThermoMaven 1 Sec (B0DHZTCNR5)",
    "url": "https://www.amazon.com/dp/B0DHZTCNR5",
-   "used_for": "P-04 title, specs, price, cross-promoted-model wording; accuracy/NIST/NSF wording recorded as seller claims (FLG-009)",
+   "used_for": "P-04 title, specs, cross-promoted-model wording; accuracy/NIST/NSF wording recorded as seller claims (FLG-009); snapshot price recorded to the data files on 2026-11-19 only — never rendered on any page",
    "verified": "2026-11-19"
   },
   {
    "id": "S14",
    "title": "Official listing — CHEF iQ Sense Gen3 (B0DZFD6R9Z)",
    "url": "https://www.amazon.com/dp/B0DZFD6R9Z",
-   "used_for": "P-05 title, specs, rating, price, rank",
+   "used_for": "P-05 title, specs; snapshot price/rating/rank recorded to the data files on 2026-11-19 only — never rendered on any page",
    "verified": "2026-11-19"
   },
   {
@@ -231,9 +229,61 @@
   },
   {
    "id": "S34",
+   "title": "Google Search Central — Link best practices for Google (crawlable links, anchor text)",
+   "url": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable",
+   "used_for": "SG-36 internal anchor-text rule: anchors that describe the destination; Google can only crawl <a href> links",
+   "quote": "Good anchor text is descriptive, reasonably concise, and relevant to the page that it's on and to the page it links to.",
+   "updated": "fetched 2026-11-20"
+  },
+  {
+   "id": "S35",
+   "title": "Google Search Central — Search documentation updates (changelog)",
+   "url": "https://developers.google.com/search/updates",
+   "used_for": "SG-33: the FAQ rich result is deprecated — deprecation notice added 2026-05-08 (\"no longer appear in Google Search starting May 7, 2026\") and the feature documentation removed June 2026; the old FAQ-page URL now redirects to this changelog",
+   "quote": "Deprecating the FAQ rich result feature — This feature will no longer appear in Google Search starting May 7, 2026.",
+   "updated": "fetched 2026-11-20"
+  },
+  {
+   "id": "S36",
+   "title": "Google Search Central — Google Search's guidance on using generative AI content",
+   "url": "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content",
+   "used_for": "SG-34: fact-check rule and how-content-was-created disclosure for any AI-assisted draft; page last updated 2026-10-01 UTC",
+   "quote": "It is critical to manually factcheck and review all AI-generated content for accuracy and trustworthiness before publishing.",
+   "updated": "2026-10-01 (fetched 2026-11-20)"
+  },
+  {
+   "id": "S37",
+   "title": "Amazon Associates Program Policies — Participation Requirements, Section 2 “Links on Your Site”",
+   "url": "https://affiliate-program.amazon.com/help/operating/policies#Associates%20Program%20Participation%20Requirements",
+   "used_for": "Buy-button format: Special Links must use the assigned Associates ID and the tag must appear as a URL parameter; the price/availability display condition; the duty to remove limited-time promotion mentions; the bar on inaccurate or misleading claims about a Product, an Amazon Site, or Amazon's policies, promotions or prices Re-read and quoted line by line 2026-11-20 (session 52f418e7); the tag requirement is 2(a) and 2(b) of this section.",
+   "quote": "Special Links must use the Associates ID we have assigned to you. … you must include your Associates ID or “tag” (appearing as XXXXX-##, or such other format as we may designate) as a parameter in the URL of each link you place on your Site to an Amazon Site.",
+   "updated": "2026-04-14",
+   "verified": "2026-11-20",
+   "reverified": "2026-11-20"
+  },
+  {
+   "id": "S38",
+   "title": "Amazon Associates Program Policies — Commission Income Statement, Section 2 “Disqualified Purchases”",
+   "url": "https://affiliate-program.amazon.com/help/operating/policies#Associates%20Program%20Fee%20Statement",
+   "used_for": "Why an untagged or redirecting link earns nothing; the 24-hour Session, 89-day cart and 180-day shipment windows the campaign ledger must respect Re-read 2026-11-20; item (g) is the reason an untagged or badly formatted link costs earnings rather than breaking a page.",
+   "quote": "any Product purchase that is not correctly tracked or reported because the links from your site to the relevant Amazon Site are not properly formatted",
+   "updated": "2026-04-14",
+   "verified": "2026-11-20",
+   "reverified": "2026-11-20"
+  },
+  {
+   "id": "S39",
+   "title": "USDA FSIS — Food Thermometers (fact sheet)",
+   "url": "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/food-thermometers",
+   "used_for": "The 2–4°F ordinary-accuracy expectation, the ice-water and boiling-water calibration methods, minimum insertion depth and the dimple on the stem, placement away from bone, fat and gristle, and the two-hour limit in the 40–140°F span",
+   "quote": "Most food thermometers will give an accurate reading within 2 to 4 degrees F (see Calibration). However, the reading will only be correct if the thermometer is placed in the proper location of the food.",
+   "verified": "2026-11-20"
+  },
+  {
+   "id": "S40",
    "title": "Amazon Associates Help — Can I Check If My Links Are Tagging to My Account?",
    "url": "https://affiliate-program.amazon.com/help/node/topic/G6253GFSARDQENZR",
-   "used_for": "The account-side check for a tagged link, and the Link Checker for links built outside Associates Central. Read 2026-11-20.",
+   "used_for": "The account-side check for a tagged link, and the Link Checker's stated scope. Read 2026-11-20. (This record was first published as S34; that id went to a Google link-best-practices source upstream while this branch was in flight, so the row moved.)",
    "quote": "Once you update your site, click the link you want to check and look for your Store ID or Tracking ID in the URL. Most often, it will appear as “&tag=(store/tracking ID)” within the URL. … The Link Checker tool is intended for checking links that you have created or modified on your own outside of Associates Central.",
    "updated": "2026-11-20"
   }

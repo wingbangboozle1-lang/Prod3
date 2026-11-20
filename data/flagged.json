@@ -332,15 +332,15 @@
       "severity": "medium",
       "area": "Policy citations (Associates Program Policies)",
       "product": "Site-wide (citation log, compare, direction)",
-      "detail": "The site cites Program Policies §2(t) (customer star ratings), §2(v) (URL obscuring), and a shortener prohibition under §2(b). On 2026-11-20 the live Program Policies page (updated April 14, 2026) showed Section 2 with subsections (a) and (b) only; none of the three clauses was found there. Their wording is marked unverified in citations.json, citations.html, and suggestions.json. RESOLVED 2026-11-20 (session 1fbc2432, T-53): the restructured page carries the three clauses in the Participation Requirements — §6(t) for customer reviews and star ratings, §6(v) for cloaking or obscuring Special-Link URLs, §6(w) for link shortening — while §2(b) itself carries the tag, price/availability, misleading-claims, product-list and sub-tag clauses. All were read verbatim on the live page (updated 2026-04-14); the quotes are recorded in data/policy-checks.json, data/citations.json and data/recheck-2026-11-20-1fbc2432.json.",
+      "detail": "The site attached three rules to Section 2 of the Program Policies: the customer star-ratings rule, the rule against obscuring the referring URL, and a prohibition on unclear link shortening. On 2026-11-20 the live page was re-read and those three rules were not in Section 2 (which is titled \"Links on Your Site\" and has subsections (a) and (b) only). They are in Section 6, items (t), (v) and (w). CORRECTED 2026-11-20: every citation now carries the right letter; the wording is quoted in data/policy-clause-map.json; gate D35 fails the build if a retired letter reappears.",
       "why_it_matters": "A reader or reviewer who checks the cited clause will not find it. Ratings and prices are not shown on the site, so the conduct does not depend on these citations, but the stated basis is unverified.",
-      "action": "Done 2026-11-20 (T-53): clauses located on the official page and cited in citations.json (S02 entry) and policy-checks.json (C-04/C-05/C-06) with the verbatim text; suggestions.json SG-13's evidence now cites §6(w)/§2(b) correctly. No wording was inferred — every quote is from the 2026-11-20 fetch.",
-      "status": "resolved 2026-11-20 — clauses located verbatim and cited (T-53)",
+      "action": "None outstanding. The rules the site already follows did not change; only the reference did. A reviewer can check each quotation in data/policy-clause-map.json against the live page.",
+      "status": "resolved 2026-11-20 - the clauses were located in Section 6 and every citation was corrected (see FLG-033)",
       "sources": [
         "S02"
       ],
       "sources_checked": "2026-11-20",
-      "resolved_on": "2026-11-20"
+      "historical_citation": "As published before the correction this record cited those three rules with Section 2 letters. Those letters are kept out of the live text on purpose: they are invalid on the current page. The verified letters are 6(t), 6(v) and 6(w) - see data/policy-clause-map.json."
     },
     {
       "id": "FLG-021",
@@ -361,10 +361,10 @@
       "severity": "high",
       "area": "Outbound links (buy buttons)",
       "product": "All five (P-01..P-05)",
-      "detail": "On 2026-11-20 (session 6bf60cac, T-46) all five supplied link.amazon URLs were fetched again and every one ended at https://www.amazon.com/ — the Amazon homepage — rather than at a product page. That is a wider result than either earlier same-day record (session 70e8475c: one of five; session ce911db5: two of five) and wider than 2026-11-19, when all five read as /dp/ product pages. Fourth dated observation (session 1fbc2432, T-53, 2026-11-20): all five short links again ended at https://www.amazon.com/; B02NbDxp3 was reproduced twice within the session, and the direct listing https://www.amazon.com/dp/B09B7SB46R served the Emeril 26QT product page with the recorded title, isolating the drift to the short-link resolution rather than the listings. Recorded in data/recheck-2026-11-20-1fbc2432.json.",
+      "detail": "On 2026-11-20 (session 6bf60cac, T-46) all five supplied link.amazon URLs were fetched again and every one ended at https://www.amazon.com/ — the Amazon homepage — rather than at a product page. That is a wider result than either earlier same-day record (session 70e8475c: one of five; session ce911db5: two of five) and wider than 2026-11-19, when all five read as /dp/ product pages. Fourth dated observation (session 1fbc2432, T-57, 2026-11-20): all five again ended at https://www.amazon.com/; B02NbDxp3 was reproduced twice within the session, and the direct listing https://www.amazon.com/dp/B09B7SB46R served the Emeril 26QT product page with the recorded title, isolating the drift to the short-link resolution rather than the listings. Recorded in data/recheck-2026-11-20-1fbc2432.json.",
       "why_it_matters": "A reader who presses a buy button is meant to reach the product. If the final destination is the Amazon homepage, the reader has to search for the product again, and the site's own claim that a button opens the listing is wrong at the moment of the click.",
       "action": "Owner: click each of the five links signed in to Associates, record the landing page, and replace the href with a freshly generated SiteStripe Special Link once it is confirmed (DT-01). Do not treat this as proof that the links are invalid: the destination depends on Amazon's redirect, which changed between observations.",
-      "status": "open — fourth dated observation recorded (T-53); no record overwritten",
+      "status": "open — fourth dated observation recorded (T-57); no record overwritten",
       "sources": [
         "S10",
         "S11",
@@ -433,6 +433,32 @@
       "sources_checked": "2026-11-20"
     },
     {
+      "id": "FLG-037",
+      "severity": "high",
+      "area": "Policy citations (Associates Program Policies)",
+      "product": "Site-wide (citations, policy checks, questions, suggestions, compare, ideas, direction, disclosure)",
+      "detail": "Ten places cited the Associates Program Policies with a section letter that does not exist there. The customer-ratings rule was cited as the Section 2 letter; so were URL obscuring and the shortener rule. Re-read on 2026-11-20, the live page (states Updated 2026-04-14) has Section 2 titled 'Links on Your Site' with subsections (a) and (b) only; the three rules are Section 6 'Content on your Site', items (t), (v) and (w). This is related to FLG-020 but is a different finding: FLG-020 recorded that the wording could not be found; this is the positive identification of where it is, with quotations.",
+      "why_it_matters": "A citation a reader cannot follow is a claim taken on trust, which is the one thing this site exists not to do. The conduct was already compliant; the reference was not.",
+      "action": "Corrected 2026-11-20: every citation now cites 6(t) / 6(v) / 6(w), the quoted wording sits in data/policy-clause-map.json, and gate D35 fails the release if a retired letter returns or if a clause letter is used that is not in the map.",
+      "status": "resolved 2026-11-20 - corrected and gated",
+      "sources": [
+        "S02"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-038",
+      "severity": "medium",
+      "area": "Published page consistency",
+      "product": "articles/*.html, index.html",
+      "detail": "Two things on the published pages read as template output rather than writing. (1) All eight evergreen articles closed with a byte-identical five-product shopping block, whatever the article was about. (2) Every product card on the front page rendered its spec pills twice: the second copy was the same three values HTML-entity-encoded, so it displayed as a near-repeat underneath the first.",
+      "why_it_matters": "The brief is that the shop should not read as generated. Repeating the same closing block under eight different arguments, and printing the same three numbers twice in one card, is the most visible version of that problem - and it is visible to a reader, not just to a reviewer.",
+      "action": "Fixed 2026-11-20: each article now closes with a next step specific to its argument, and the duplicate pill block is removed. Gate D36 fails the build if an article-length block repeats across articles.",
+      "status": "resolved 2026-11-20",
+      "sources": [],
+      "sources_checked": "2026-11-20"
+    },
+    {
       "id": "FLG-032",
       "severity": "medium",
       "area": "Coordination board: duplicate task identifiers",
@@ -443,18 +469,156 @@
       "status": "open — duplicates recorded; no rows removed or renumbered in this pass",
       "sources": [],
       "sources_checked": "2026-11-20"
+    }
+  ],
+  "alias_records": [
+    {
+      "id": "FLG-001",
+      "title": "Intended product for each short link is unconfirmed.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
     },
     {
-      "id": "FLG-033",
-      "severity": "low",
-      "area": "Source register: no consistent per-row fetch date",
-      "product": "data/sources.json; sources.html",
-      "detail": "Of the 29 source entries, 23 have no verified value. The updated field mixes publication or update dates (for example 2025-10-15, 2019-11) with fetch dates (for example 'fetched 2026-11-19').",
-      "why_it_matters": "A reader cannot tell when a page was last read, or whether a quotation still matches the page.",
-      "action": "Owner or integration session: add a fetch-date field to each source entry, separate from the publisher's update date. Until then, treat each quotation as dated to the date of the record only where one is stated.",
-      "status": "open — recorded; no source entry changed in this pass",
-      "sources": [],
-      "sources_checked": "2026-11-20"
+      "id": "FLG-002",
+      "title": "Emeril preset count contradicts itself.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-003",
+      "title": "CHEF iQ battery life and warranty contradict themselves.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-004",
+      "title": "Chefman 8 Qt has a newer model.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-005",
+      "title": "ThermoMaven has a newer model.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-006",
+      "title": "Short-link compliance status is unresolved.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-007",
+      "title": "Prices are not displayed.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-008",
+      "title": "No product photography.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-009",
+      "title": "ThermoMaven accuracy/NIST/NSF wording is seller marketing, not a test.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-010",
+      "title": "Amazon Associates account status is unverified.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-011",
+      "title": "The /dp/&lt;token&gt; Page-Not-Found check: investigated and dismissed as link evidence.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-012",
+      "title": "Price/rating snapshot metadata is incomplete.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-013",
+      "title": "Emeril accessories count contradicts itself.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-014",
+      "title": "Reader email signup is not connected.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-015",
+      "title": "Campaign ledger is empty by design.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-016",
+      "title": "Social preview card not yet confirmed in a share debugger (F-21).",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-024",
+      "title": "Two GitHub Pages deploy paths ran in parallel; the legacy one failed behind the working one (found 2026-11-20, session T-39).",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-018",
+      "title": "Intent provenance was corrected (2026-11-20).",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-019",
+      "title": "The policy record described direct destinations the buttons do not use.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-030",
+      "title": "A generated page shipped a broken script, and no gate was reading scripts.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
+    },
+    {
+      "id": "FLG-031",
+      "title": "Two of the five supplied short links reached the Amazon homepage on 2026-11-20, and one same-day record disagrees.",
+      "published_on": "flagged.html",
+      "data_record": "none - narrative callout on the page, written before data/flagged.json was introduced",
+      "verified_on": "2026-11-20"
     }
-  ]
+  ],
+  "id_policy": "One identifier carries one finding. On 2026-11-20 two collisions were found and fixed by earlier work (FLG-020/021 renumbered to FLG-028/029, and the earlier two-link record renumbered to FLG-032). This alias_records list covers the opposite failure: a flag a reader sees on the page but cannot find in the data file is enumerated here with its published title, so nothing is silently undocumented. On 2026-11-20 a second collision was found: two flags were published as FLG-035 and FLG-036 while this session's policy-citation and article-duplication findings held the same numbers. The published FLG-034 (listing-conflict ids) and the published FLG-035/FLG-036 records are untouched; the two late additions are renumbered FLG-037 and FLG-038 here and on flagged.html. Gate D32 is what caught it."
 }

@@ -262,7 +262,7 @@ the screen said, and the rest of the register becomes decidable.</p>
 <thead><tr><th>#</th><th>Do this</th><th>You end up with</th><th>Then unblocks</th></tr></thead>
 <tbody>
 <tr><td><strong>Q-23</strong></td><td>Associates Central → Account Settings. Is <code>shopnow047c-20</code> listed, and is the account in good standing?</td><td>Yes or no, with the date</td><td>Whether the disclosure describes a live relationship, and whether any link can earn at all</td></tr>
-<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the two homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-023)</td></tr>
+<tr><td><strong>Q-02</strong> + <strong>Q-22</strong></td><td>Signed in, click each of the five links once. Read the final URL: does it carry <code>tag=shopnow047c-20</code>, and does it land on the product or the homepage?</td><td>Five final URLs and five yes/no answers</td><td>Whether the homepage links get replaced with freshly generated Special Links (FLG-017 / FLG-025)</td></tr>
 <tr><td><strong>Q-18</strong></td><td>Add the site as a Search Console property, verify it, submit <code>sitemap.xml</code>.</td><td>A verified property and a submitted sitemap</td><td>Choosing the next guide from measured queries instead of instinct</td></tr>
 <tr><td><strong>Q-19</strong></td><td>Associates Central → Product Advertising API. Is the tab available?</td><td>Available, or not yet</td><td>Whether prices and ratings can ever be displayed compliantly</td></tr>
 </tbody></table></div>
@@ -321,7 +321,7 @@ def render_citations():
     body = f'''<main id="main"><div class="article" style="max-width:1050px">
 <p class="kicker">Trust · Citation log</p>
 <h1>Every figure on this site, and the observation behind it</h1>
-<p class="byline">Kitchen Counter · Log generated 2026-11-19 · Machine-readable copy in <code>data/citations.json</code></p>
+<p class="byline">Kitchen Counter · Log generated {html.escape(cites["generated"])} · Machine-readable copy in <code>data/citations.json</code></p>
 
 <p>The <a href="sources.html">source register</a> lists the pages we read. This log is the other half: one row per figure the site renders, naming the observation, its date, and the official page it came from. If a figure has no row here, it does not belong on the site.</p>
 
@@ -345,7 +345,7 @@ def render_citations():
 <h2>What is deliberately not here</h2>
 <ul>
 <li><strong>Prices and availability.</strong> Program Policies §2(b) permits them only when Amazon serves the data or they arrive through Creators/PA API. Neither applies, so no price is rendered and none is logged as a published figure.</li>
-<li><strong>Customer star ratings.</strong> Participation Requirements §6(t) (located 2026-11-20, session 1fbc2432, T-53; previously cited as §2(t) under FLG-020, now resolved): ratings may be displayed only when obtained through Creators API or PA API. Star ratings were removed from this site on 2026-11-19.</li>
+<li><strong>Customer star ratings.</strong> Program Policies §6(t) — &ldquo;Content on your Site&rdquo;, not Section 2 — bars displaying customer reviews or star ratings unless they were obtained through Creators API or PA API. The clause was located and quoted on 2026-11-20 (<code>data/policy-clause-map.json</code>). Star ratings were removed from this site on 2026-11-19.</li>
 <li><strong>Revenue, conversion rates, traffic.</strong> No first-party report exists. The ledger is empty by design.</li>
 <li><strong>Product photography.</strong> No licensed photography is used; the cards are typographic art built from listed specs.</li>
 </ul>

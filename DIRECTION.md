@@ -8,11 +8,6 @@ at the bottom. Suggestions are proposals; open questions are unknowns. The
 ledger index below mirrors `data/suggestions.json` — full problem statements,
 options, and recommendations live there.
 
-*Mirror extended 2026-11-20 (session `arena/1fbc2432-prod3`, T-53): rows SG-32..SG-39
-added verbatim from the register, restoring the mirror claim above. SG-39 records the
-IP-License Agent Terms finding from the same-day official-source recheck
-(`data/recheck-2026-11-20-1fbc2432.json`).*
-
 ## Suggestion ledger (index)
 
 | # | Suggestion | Status | Decided by |
@@ -49,14 +44,20 @@ IP-License Agent Terms finding from the same-day official-source recheck
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
 | SG-30 | Decide how readers stay in touch: RSS only, or an email provider with consent | proposed | owner |
 | SG-31 | Put the listing's own contradiction on the product card, not only the flag page | implemented 2026-11-20 | editorial |
-| SG-32 | Show a dated status line on every buy button until the link test passes | proposed | editorial |
-| SG-33 | Add a five-row link-status table to the front page footer area, one row per product | proposed | editorial |
-| SG-34 | State the tag-parameter requirement once, in plain words, on the disclosure page | proposed | owner |
-| SG-35 | Give the twelve guide proposals a home with a gate, so the writing plan is reviewable | implemented | editorial |
-| SG-36 | Lead the front page with a buyer question and five shop cards, not with the audit trail | implemented | editorial |
-| SG-37 | Publish catchy, trend-led question articles to earn organic traffic | proposed | editorial |
-| SG-38 | Review every change in the suggestions section before anything is built | implemented | owner |
-| SG-39 | Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms | proposed | owner |
+| SG-43 | Give the seasonal block a retirement date and a successor, before Thanksgiving ends | proposed | editorial |
+| SG-44 | Do not add FAQ markup expecting a Google FAQ rich result — that feature is gone | proposed | editorial |
+| SG-45 | Fact-check any AI-assisted draft line by line before it ships, and say how the site is made | proposed | owner |
+| SG-46 | Measure Core Web Vitals once, then gate new frontend effects on the result | proposed | editorial |
+| SG-47 | Keep internal anchors descriptive — add a gate so the discipline cannot slip | proposed | engineering |
+| SG-48 | Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms | proposed | owner |
+
+SG-48 was added 2026-11-20 (session `arena/1fbc2432-prod3`, T-57) from the same-day official-source recheck (`data/recheck-2026-11-20-1fbc2432.json`); the row was drafted as SG-39 and renumbered twice with the register. SG-43..SG-47 were added 2026-11-20 (session `arena/7878cdbe-prod3`, T-54; renumbered twice while
+this branch was queued — first from SG-32..SG-36 after upstream 6bf60cac/8692a390 registered
+SG-32..SG-38, then from SG-39..SG-43 after upstream PR #52 registered SG-39..SG-42) with sources
+verified that day:
+S34 (Google link best practices), S35 (Google search-doc changelog: the FAQ rich result was
+deprecated 2026-05-07/08 and its documentation removed June 2026), S36 (Google generative-AI
+content guidance, page updated 2026-10-01). The rows above mirror `data/suggestions.json` verbatim.
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
@@ -66,7 +67,7 @@ SG-19. The ledger is the single source of truth.
 
 ## Open questions — what must be answered before deciding
 
-Twenty-seven questions are registered in `data/open-questions.json` (Q-01…Q-27). Each carries
+Twenty-three questions are registered in `data/open-questions.json` (Q-01…Q-23). Each carries
 `known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only`).
 
@@ -148,7 +149,7 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 |---|---|---|---|
 | 2026-11-19 | Publish both readings when a listing contradicts itself | S02 | Preset count, battery life, warranty and accessory count shown as conflicts |
 | 2026-11-19 | Display no price while neither Amazon-served nor PA-API data is used | S02 §2(b) | Price slots read "Current price on Amazon"; the gate fails on a currency amount |
-| 2026-11-19 | Remove customer star ratings and rating counts from every page | S02 §2(t) | Ratings replaced with a policy note in the comparison table |
+| 2026-11-19 | Remove customer star ratings and rating counts from every page | S02 §6(t) *(recorded as the Section 2 letter until corrected 2026-11-20)* | Ratings replaced with a policy note in the comparison table |
 | 2026-11-19 | Mark every outbound Amazon link `rel="sponsored"` and open in a new tab | S04 | The gate walks every anchor |
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |

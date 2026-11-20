@@ -67,21 +67,22 @@
       "product": "site",
       "brand": "—",
       "asin": "—",
-      "observed": "Operating Agreement §1 Special Links; §5 the required statement; §6 material breach",
+      "observed": "Operating Agreement §1 Special Links and Program Content; §5 the required statement; §6 material breach",
       "observed_on": "2026-11-19",
       "source": "S01",
-      "used_for": "Operating Agreement §1 Special Links; §5 the required statement; §6 material breach",
+      "used_for": "Operating Agreement §1 Special Links and Program Content; §5 the required statement; §6 material breach",
       "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
     },
     {
       "product": "site",
       "brand": "—",
       "asin": "—",
-      "observed": "Program Policies: §2(a) Special Links must use the assigned Associates ID; §2(b) tag parameter in every link placed to an Amazon Site, price/availability only when Amazon serves it or via Creators/PA API, no inaccurate or misleading product claims, product-list links need additional original content, no sub-tag tied to a specific end user; §6(t) customer reviews/star ratings only via Creators API or PA API; §6(v) no cloaking or obscuring Special-Link URLs; §6(w) no link shortening that makes the Amazon destination unclear. All read verbatim on the live page (updated 2026-04-14) on 2026-11-20, session 1fbc2432, T-53 — the three clauses FLG-020 could not find in Section 2 are located in §6(t)/(v)/(w) of the Participation Requirements (see data/recheck-2026-11-20-1fbc2432.json)",
-      "observed_on": "2026-11-20",
+      "observed": "Program Policies: 2(a) tag in every link; 2(b) price display only from Amazon-served data, no misleading product claims, no sub-tag tied to an end user, original content required when linking to product lists; 6(e) privacy disclosure; 6(t) no customer reviews or star ratings; 6(v) no obscuring of the referring site; 6(w) no unclear link shortening; 6(y) no price tracking. Clause letters read and quoted 2026-11-20 - see data/policy-clause-map.json",
+      "observed_on": "2026-11-19",
       "source": "S02",
-      "used_for": "Program Policies: §2(a) Special Links and Associates ID; §2(b) tag, price, misleading-claims, product-list, sub-tag clauses; §6(t) ratings; §6(v) URL obscuring; §6(w) shortener — locations resolved 2026-11-20 (FLG-020)",
-      "claim_status": "official policy or government guidance, quoted not paraphrased as fact"
+      "used_for": "Program Policies: 2(a) tag in every link; 2(b) price display only from Amazon-served data, no misleading product claims, no sub-tag tied to an end user, original content required when linking to product lists; 6(e) privacy disclosure; 6(t) no customer reviews or star ratings; 6(v) no obscuring of the referring site; 6(w) no unclear link shortening; 6(y) no price tracking. Clause letters read and quoted 2026-11-20 - see data/policy-clause-map.json",
+      "claim_status": "official policy or government guidance, quoted not paraphrased as fact",
+      "correction": "On 2026-11-20 the star-ratings, URL-obscuring and shortener rules were located in Participation Requirements Section 6 (6(t), 6(v), 6(w)), not Section 2. This row previously recorded them as not located under Section 2."
     },
     {
       "product": "site",

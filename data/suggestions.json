@@ -81,7 +81,7 @@
       "problem": "Product pages answer \"what is it\"; buyers arrive with \"which one, and will it fit\".",
       "evidence": "People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S21).",
       "options": [
-        "A. Eight question-shaped guides, each answerable from published specifications and USDA targets.",
+        "A. Ten question-shaped guides, each answerable from published specifications and USDA targets.",
         "B. Five long product reviews written without handling the products.",
         "C. One long \"best air fryers 2026\" listicle."
       ],
@@ -258,7 +258,7 @@
       "id": "SG-13",
       "title": "Test one short link inside the enrolled Associates workflow before trusting the format",
       "problem": "The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.",
-      "evidence": "Program Policies Participation Requirements §6(w) prohibits a shortener used so the destination is unclear, and §2(b) requires the Associates tag in every link placed to an Amazon Site (S02; both clauses read verbatim on the live page on 2026-11-20, session 1fbc2432, T-53). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
+      "evidence": "Program Policies 6(w) prohibits a shortener used so the destination is unclear (S02; clause read 2026-11-20). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
       "options": [
         "A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.",
         "B. Switch every link to direct /dp/ URLs and drop the short form.",
@@ -353,7 +353,7 @@
       "problem": "Another article today would be picked from taste. The site has no query data yet, and the brief is explicit that topics should be chosen from measured demand.",
       "evidence": "Search Console is the first-party source for the queries a site actually appears for (https://search.google.com/search-console/about — SG-07 is the verification prerequisite). analytics.html records that no data exists yet.",
       "options": [
-        "A. Hold at eight guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
+        "A. Hold at ten guides until 30 days of Search Console data exist, then write the guide whose query cluster has impressions but no dedicated page.",
         "B. Keep the weekly cadence with self-selected topics until data arrives.",
         "C. Retire or merge any guide with zero impressions after 60 days (Q-17)."
       ],
@@ -613,7 +613,7 @@
       "id": "SG-32",
       "title": "Show a dated status line on every buy button until the link test passes",
       "problem": "FLG-025 records all five supplied short links ending at the Amazon homepage on 2026-11-20. The buttons still read “Check price on Amazon”, which promises a product page. A reader who lands on the homepage has been given a promise the link did not keep.",
-      "evidence": "Third dated observation in data/products.json (live_recheck_2026_11_20_link_check): five of five final URLs were https://www.amazon.com/. Earlier records: 2026-11-19 five product pages; two partial same-day records. FLG-017, FLG-023, FLG-025.",
+      "evidence": "Third dated observation in data/products.json (live_recheck_2026_11_20_link_check): five of five final URLs were https://www.amazon.com/. Earlier records: 2026-11-19 five product pages; two partial same-day records. FLG-017, FLG-025, FLG-031.",
       "options": [
         "A. Keep the button but add one dated line: “Link re-tested 20 Nov 2026 — if it opens the Amazon homepage, use the listing link below.”",
         "B. Point every buy button at the official /dp/ listing instead and keep the short link on the flag page as the object under test.",
@@ -636,7 +636,7 @@
       "id": "SG-33",
       "title": "Add a five-row link-status table to the front page footer area, one row per product",
       "problem": "The reader cannot tell which of five buy links reached its product on which date. That information exists in four separate observations across three sessions and is spread over products.json, verification.json and three flag rows.",
-      "evidence": "data/products.json now holds four dated observations; flagged.html publishes FLG-017, FLG-023 and FLG-025.",
+      "evidence": "data/products.json now holds four dated observations; flagged.html publishes FLG-017, FLG-025 and FLG-031.",
       "options": [
         "A. One five-row table: product · supplied link · last fetched (date) · landed on (product page / homepage) · source.",
         "B. Keep it on flagged.html only.",
@@ -725,7 +725,7 @@
     {
       "id": "SG-37",
       "title": "Publish catchy, trend-led question articles to earn organic traffic",
-      "problem": "The eight guides are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
+      "problem": "The ten guides are question-shaped and policy-safe, but none of them is tied to a season or a trend, and no topic has been chosen from measured queries yet. Organic traffic needs questions people actually type, answered with listed specs and honest watch-outs.",
       "evidence": "SG-04 chose question-shaped guides over reviews (shipped). SG-18 says guide nine must come from measured queries once Search Console exists (Q-18). Google's thin-affiliation policy treats affiliate pages with no added value as spam (S22), so each trend article must add buying criteria, not just repeat the listing (S21).",
       "options": [
         "A. Keep a small seasonal calendar of catchy question articles — Thanksgiving temperature planning, holiday air-fryer gifts, January meal prep, summer grilling thermometers — each answering one buyer question with listed specs.",
@@ -763,9 +763,189 @@
     },
     {
       "id": "SG-39",
+      "title": "Give a first-time visitor an intent fork before a product list",
+      "problem": "The front page opens on five products and a featured pick. A reader who does not already know whether they want a basket, an oven cabinet or a thermometer has to read the whole page to find out which shelf applies to them.",
+      "evidence": "Five products across two families (F-08). The three-question chooser answers a version of this, but it sits below the short list and returns a paragraph rather than a destination. Implemented 2026-11-20 as start.html: four intent paths, each two clicks from an official listing; the front page links to it in the primary nav and in a four-tile strip above the featured pick. (Registered as SG-36 on 2026-11-20: SG-32..SG-35 had already been taken by another session for four different proposals.) (Registered as SG-39 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
+      "options": [
+        "A. An intent page (start.html) that forks by how the reader cooks, with the product list left intact.",
+        "B. Put the chooser above the featured pick and delete the short list.",
+        "C. Leave the front page as the single entry point."
+      ],
+      "recommendation": "A — shipped. The short list still serves a reader who wants the recommendation immediately; the fork serves the reader who does not yet know what to compare. B loses the recommendation, C loses the reader who arrives without a product name.",
+      "effort": "S",
+      "confidence": "medium",
+      "status": "implemented",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "A first-time visitor reaches a relevant shelf in two clicks instead of scanning a long front page.",
+        "risk": "A fork adds a page between the reader and the listing; if the four paths are not mutually exclusive it becomes another index to read.",
+        "reversible": "yes — remove start.html from NAV in scripts/build_chrome.py and the front-page strip",
+        "falsifier": "If outbound clicks from start.html are zero over a measured period while front-page clicks stay flat, the fork is in the way and should become a single section."
+      }
+    },
+    {
+      "id": "SG-40",
+      "title": "One question-shaped guide for the month people are actually buying",
+      "problem": "The seasonal block led with Thanksgiving into December. Gift buying is the dominant December kitchen-appliance question, and the site's only gift page was a list of five ideas with no decision rule.",
+      "evidence": "Nine of the ten guides had shipped before this later gift-guide pass, which added the tenth (articles/kitchen-gifts-that-get-used.html); the gift guide (articles/holiday-kitchen-gift-guide.html) lists five ideas without explaining how to choose between shapes. Implemented 2026-11-20: articles/kitchen-gifts-that-get-used.html sorts the five by cook, gives the one listed number that decides each, and is wired into feed.xml and sitemap.xml. (Registered as SG-37 on 2026-11-20 for the same reason.) (Registered as SG-40 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
+      "options": [
+        "A. A decision-shaped gift guide, linked from the seasonal block and the feed.",
+        "B. Rewrite the existing gift guide in place.",
+        "C. Wait for search data before publishing another guide."
+      ],
+      "recommendation": "A — shipped, because C has no data behind it yet and B would have replaced a page that already works for a different intent.",
+      "effort": "S",
+      "confidence": "medium",
+      "status": "implemented",
+      "decision_owner": "editorial",
+      "blocks": "nothing",
+      "decision": {
+        "benefit": "Catches the December gift search with a page that answers a real decision rather than another list.",
+        "risk": "Two gift pages can cannibalise each other in search if both target the same query.",
+        "reversible": "yes — remove the feed item and the seasonal tile",
+        "falsifier": "If Search Console shows the two gift pages competing for one query, merge them and keep the decision-shaped one."
+      }
+    },
+    {
+      "id": "SG-41",
+      "title": "Decide what a reader-capture path would be, before writing any signup copy",
+      "problem": "There is no email list, and the site says so in the footer. That is honest, but it also means no reader can be reached again without an RSS reader. The missing decision is not the copy, it is the provider, the consent record and who owns the list.",
+      "evidence": "FLG-014: the demo form was removed rather than shipped unconnected. assets/app.js reserves reader_signup and only emits it on kc:reader-signup-confirmed, which no integration dispatches. SG-30 proposes RSS-only versus an email provider; this row records the decision that has to precede any form markup. (Registered as SG-38 on 2026-11-20 for the same reason.) (Registered as SG-41 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
+      "options": [
+        "A. RSS only; state it plainly and stop treating capture as a gap.",
+        "B. Double opt-in provider, with the provider named on the privacy page before the first field ships.",
+        "C. Ask for a bookmark instead of an address."
+      ],
+      "recommendation": "B is the only option that creates a reader relationship, and it needs an owner-chosen provider, a consent record and a deletion path. Until those three exist, A stays the shipped behaviour and no form appears.",
+      "effort": "M",
+      "confidence": "low",
+      "status": "proposed",
+      "decision_owner": "owner",
+      "blocks": "Reader-capture metrics; any signup form on any page"
+    },
+    {
+      "id": "SG-42",
+      "title": "Ship a way for the owner to look at every page without installing anything",
+      "problem": "Review rounds have argued about layout from HTML source. A reader sees a rendered page, and a phone-width layout defect (horizontal scroll, a card that overflows) is invisible in source.",
+      "evidence": "Ten pages are rendered at 1366px and 390px by .github/workflows/snapshots.yml and uploaded as a downloadable artifact; the job fails when a page is wider than the viewport. design/pages.json lists the pages so the set is reviewable rather than hidden in a workflow file. (Registered as SG-39 on 2026-11-20 for the same reason.) (Registered as SG-42 on 2026-11-20: SG-32..SG-38 were already taken by other sessions for different proposals.)",
+      "options": [
+        "A. Render on CI, upload PNGs, fail on horizontal overflow.",
+        "B. Ask the owner to screenshot manually.",
+        "C. Trust the CSS review."
+      ],
+      "recommendation": "A — shipped. It adds no third-party asset to the published site (the browser runs on the runner, not for the reader) and it makes a layout regression a red check.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "implemented",
+      "decision_owner": "editorial",
+      "blocks": "nothing"
+    },
+    {
+      "id": "SG-43",
+      "title": "Give the seasonal block a retirement date and a successor, before Thanksgiving ends",
+      "problem": "The front page's seasonal block is hand-edited HTML. The 2026-11-20 wording fix (PR #38) made it accurate for this week — the block now says Thanksgiving is Thursday, 26 November — but nothing retires it: on 2026-11-27 the shop would still open on Thanksgiving. Stale seasonal copy is the exact generated-site smell this project is trying to avoid.",
+      "evidence": "index.html hardcodes the block, its “Right now” label and its dated paragraph; the only related gate (D30 in tools/check_site.py) checks that the Thanksgiving guide is linked from the front page and cannot expire. The holiday gift guide beneath it already carries the December theme, so a successor slot exists.",
+      "options": [
+        "A. Rotate the block by hand on a calendar date — an owner task that recurs every season.",
+        "B. Move the seasonal block into a dated JSON and generate it, so build_chrome renders the current slot and a gate fails when a dated slot is past its end date.",
+        "C. Drop the seasonal block entirely."
+      ],
+      "recommendation": "B — generation plus a dated gate makes staleness impossible to ship silently, and it is the same pattern the rest of the chrome already uses. Fallback: if B is not built by 2026-11-26, rotate by hand that day (A).",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "front-page timeliness after 2026-11-26",
+      "sources": []
+    },
+    {
+      "id": "SG-44",
+      "title": "Do not add FAQ markup expecting a Google FAQ rich result — that feature is gone",
+      "problem": "Adding FAQPage JSON-LD to the guides is advice that still circulates in older SEO guides. If the site followed it, effort would go into markup whose only search-feature payoff has ended, and future guides would inherit a dead pattern — one of the tells of a site built from stale templates.",
+      "evidence": "Google's own changelog (S35, fetched 2026-11-20): a deprecation notice added 2026-05-08 states the FAQ rich result “will no longer appear in Google Search starting May 7, 2026”, and the June 2026 entry records that the feature documentation was removed — the old documentation URL now redirects to the changelog.",
+      "options": [
+        "A. Keep question-shaped headings and visible answers in prose; add no FAQPage markup; revisit only if Google restores the feature.",
+        "B. Add FAQPage markup anyway so AI answer engines can extract the questions and answers.",
+        "C. Add the markup but hide it from readers."
+      ],
+      "recommendation": "A — the guides already answer questions in visible prose, which is what people-first guidance rewards. B duplicates every answer in a second surface to maintain, for no search-feature benefit. C is hidden-text abuse under Google's spam policies (S22) and is rejected outright.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "guide nine onward",
+      "sources": [
+        "S35",
+        "S22"
+      ]
+    },
+    {
+      "id": "SG-45",
+      "title": "Fact-check any AI-assisted draft line by line before it ships, and say how the site is made",
+      "problem": "The publication is intended to scale with AI assistance. Without an explicit review step, a hallucinated specification could reach a product card — the exact failure this site's registers exist to prevent — and pages produced for search engines rather than readers are a named spam category.",
+      "evidence": "Google's guidance on generative AI content (S36, page updated 2026-10-01, fetched 2026-11-20) states that generative outputs “may contain inaccuracies (also known as hallucinations)” and that it is critical to manually fact-check before publishing; the scaled content abuse policy (S22) covers unoriginal content “no matter how it's created”; the same page recommends sharing how content was created.",
+      "options": [
+        "A. Write the rule into docs/verification.md and about.html: every AI-assisted draft is checked line by line against the dated listing snapshots and policy records before it ships, and the about page states how the site is produced.",
+        "B. Keep the fact-checking practice informal, depending on each session's judgement.",
+        "C. Publish drafts unreviewed and correct after reader reports."
+      ],
+      "recommendation": "A — one page of documentation and it matches the gates the repo already runs. C violates the spam policy and the site's own accuracy rules. B is how the SG-20/SG-21 duplicate happened.",
+      "effort": "M",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "owner",
+      "blocks": "scaling content production (Q-14 cadence, SG-18 topic pipeline)",
+      "sources": [
+        "S36",
+        "S22"
+      ]
+    },
+    {
+      "id": "SG-46",
+      "title": "Measure Core Web Vitals once, then gate new frontend effects on the result",
+      "problem": "The site has never recorded a Core Web Vitals measurement. “Deliberately light” is a design claim, not a measurement, and any future effect could erode it silently — the hover lift on product cards already exists.",
+      "evidence": "Google's page-experience guidance (S25, fetched 2026-11-20) states Core Web Vitals are used by Google's ranking systems and recommends site owners achieve good Core Web Vitals; its self-assessment checklist asks whether pages have good Core Web Vitals and display well on mobile. PageSpeed Insights requires no account.",
+      "options": [
+        "A. Run pagespeed.web.dev on the front page and one guide (mobile), record the dated results on analytics.html, and require a fresh dated pass with any new frontend effect.",
+        "B. Skip measurement and rely on the light stylesheet.",
+        "C. Add heavier visual effects first and measure later."
+      ],
+      "recommendation": "A — it is free, minutes-scale, and turns a design claim into a dated record that future sessions can compare against. C inverts the evidence order every other decision on this site follows.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "any new animation, script or image weight on the shop pages",
+      "sources": [
+        "S25"
+      ]
+    },
+    {
+      "id": "SG-47",
+      "title": "Keep internal anchors descriptive — add a gate so the discipline cannot slip",
+      "problem": "A scan on 2026-11-20 found zero generic anchors (“click here”, “read more”, “learn more”) across the published pages, but nothing tests for them, so guide nine could reintroduce them without anyone noticing.",
+      "evidence": "Google's link best practices (S34, fetched 2026-11-20) state that good anchor text “is descriptive, reasonably concise, and relevant to the page that it's on and to the page it links to”, and that generic text gives neither readers nor Google context. The scan method is recorded in COORDINATION.md (T-54).",
+      "options": [
+        "A. Add a check_site rule that fails on the generic anchor texts Google names, then keep writing as now.",
+        "B. Leave anchor quality to code review.",
+        "C. Rewrite existing anchors for keywords beyond Google's guidance."
+      ],
+      "recommendation": "A — one regex in an existing gate converts today's clean scan into a standing guarantee, which is how every other discipline on this site is enforced. C is unneeded: the scan is already clean.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "engineering",
+      "blocks": "nothing (protective)",
+      "sources": [
+        "S34"
+      ]
+    },
+    {
+      "id": "SG-48",
       "title": "Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms",
       "problem": "The roadmap wants automated refreshes of listing and price data, but the Associates IP License now carries explicit Agent Terms: software that accesses Program Content must identify itself in its user-agent string, must not conceal that it is an agent, and must not circumvent human-verification measures. A scheduled scraper of Amazon listing pages built into CI would breach those terms even if the copied values were handled carefully afterwards.",
-      "evidence": "Associates Program Policies → IP License and Usage Requirements §4 (Agent Terms), read verbatim on the live page on 2026-11-20 (session 1fbc2432, T-53): an agent must identify itself (\"Agent/[agent name]\" in the request user-agent string), must not mimic human speed or keystroke patterns, must respond truthfully to human-verification prompts, and must not circumvent such measures. PA API access has separate credential requirements (§2). The site today records listing values only from dated manual fetches (data/products.json verification_method); no automated Amazon fetch exists in CI.",
+      "evidence": "Associates Program Policies → IP License and Usage Requirements §4 (Agent Terms), read verbatim on the live page on 2026-11-20 (session 1fbc2432, T-57; recheck file carries the quotes): an agent must identify itself (\"Agent/[agent name]\" in the request user-agent string), must not mimic human speed or keystroke patterns, must respond truthfully to human-verification prompts, and must not circumvent such measures. PA API access has separate credential requirements (§2). The site today records listing values only from dated manual fetches (data/products.json verification_method); no automated Amazon fetch exists in CI. Originally drafted as SG-39; renumbered after PR #52 and the T-54 renumber took SG-39..42.",
       "options": [
         "A. Enroll in the Product Advertising API (owner account action) and refresh prices, availability and star ratings only through it, with the required date/time stamp and disclaimer whenever displayed.",
         "B. Keep manual dated fetches only; if an automated fetch of Amazon pages is ever added, configure it to identify itself per the Agent Terms and halt immediately on any anti-bot measure.",
@@ -779,5 +959,5 @@
       "blocks": "any future automation of listing or price data (follow-on to DT-02)"
     }
   ],
-  "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed."
+  "integrity_note": "2026-11-20: SG-21 was found byte-identical to SG-20 and retired in place. The register keeps retired rows so an ID never changes meaning and a deletion can be audited. scripts/check_site.py rule D20 fails the build if any two live suggestions share a title. SG-32..SG-35 were added on 2026-11-20 by session arena/6bf60cac-prod3 (T-46/T-47); SG-36..SG-38 were added the same day by session arena/8692a390-prod3 (T-48), renumbered from SG-32..SG-34 because that ID range was already in use on main; both rows kept, no work discarded. SG-26 remains an unoccupied id and was not reconstructed. | 2026-11-20 (session f3900cd3): this session's four rows were renumbered twice while the branch was open — first written SG-32..SG-35, then SG-36..SG-39, now SG-39..SG-42 — each time because another session had registered different proposals under those ids. Text is unchanged; each moved row carries a dated note. No upstream row was edited."
 }

@@ -44,13 +44,13 @@ The tools use Python's standard library; no third-party Python dependencies are 
 ## Site map
 
 - `index.html` — shop front: a named starting pick with a "look elsewhere if", the rest of the short list, the chooser, the seasonal block, all guides, the full data table
-- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-12), every unanswered question (Q-01..Q-27) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
+- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-12), every unanswered question (Q-01..Q-29) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
 - `tools/` — comparison builder, oven-to-air-fryer converter, USDA cook-to-temperature card
 - `air-fryers.html`, `meat-thermometers.html` — category hubs
 - `compare.html`, `buying-guide.html` — comparison and decision framework
 - `products/` — five per-product spec pages, generated from `data/products.json` by `scripts/build_products.py`; each prints the listing's own contradictions and shows the blank intended-ASIN field as blank
 - `publishing-plan.html` — twelve dated guide proposals from `data/editorial-plan.json`, with the evidence each needs and whether it exists
-- `articles/` — nine question-shaped guides, included in `feed.xml` and `sitemap.xml`
+- `articles/` — ten question-shaped guides, included in `feed.xml` and `sitemap.xml`
 - `suggestions.html`, `questions.html`, `direction.html` — proposals, missing-information questions, and decisions
 - `sources.html`, `citations.html`, `flagged.html`, `disclosure.html`, `analytics.html`, `executive-summary.html`, `about.html` — source, disclosure, analytics, and trust pages
 - `suggestions.html`, `questions.html`, and `citations.html` are generated from JSON by `scripts/build_registers.py`; `decisions.html` by `scripts/build_decisions.py`; the masthead/disclosure/footer of every page by `scripts/build_chrome.py`. Do not hand-edit any of them.
@@ -71,12 +71,12 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 <!-- build-registers-table:start -->
 | Register | Page | Data | IDs | Count |
 |---|---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-39 (SG-21 retired in place); unoccupied: SG-26 | 38 rows |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-27 | 27 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-48 (SG-21 retired in place); unoccupied: SG-26 | 47 rows |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-29 | 29 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-12 | 12 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows | - |
 | Publishing plan | `publishing-plan.html` | `data/editorial-plan.json` | dated proposals | 12 |
-| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-017..FLG-033, F-01..F-21 | 31 in the data file |
+| Flagged findings | `flagged.html` | `data/flagged.json` + callouts | FLG-017..FLG-038, F-01..F-21 | 32 in the data file |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows | 21 |
 <!-- build-registers-table:end -->
 
@@ -87,3 +87,4 @@ that went stale the moment another session added rows. The table above is now ge
 
 An ID prefix belongs to exactly one register. A proposal, a question and a decision
 are never given the same identifier, so no reader has to guess which page is authoritative.
+

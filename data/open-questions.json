@@ -301,7 +301,7 @@
       "group": "Content",
       "question": "Which of the published guides should be retired if Search Console shows no impressions after 60 days?",
       "blocks": "Nothing yet. It is the question that stops a site accumulating pages nobody reads.",
-      "known": "Fifteen guides are published (articles/*.html) and no impression or query data exists yet (F-17).",
+      "known": "The published guides live in articles/*.html, and no impression or query data exists yet (F-17).",
       "unknown": "Which pages, if any, will fail to earn an impression. That number cannot be guessed.",
       "how_to_find_out": "After 60 days, sort the Pages report by impressions. Any page with zero impressions earns a rewrite, a merge, or a removal — decided with data, not taste.",
       "who": "owner",

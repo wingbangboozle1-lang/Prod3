@@ -2452,7 +2452,7 @@ Deploy record appended after merge.
 
 **Cost of the day, recorded honestly.** This branch needed **seven** rebase rounds. The `S34`/`S35` ids I registered were taken by another session's Google rows while my PR was queued, so my sources moved to `S37`/`S38`/`S39` and `flagged.html`/`data/flagged.json` ids moved to `FLG-039`/`FLG-040` — collisions on shared registers are the dominant failure mode here, not conflicts in the HTML. Two lessons for the next session: (1) allocate shared ids from the register's current maximum in the same commit that uses them, never from a number read at claim time; (2) never `git add -A` before conflict markers are gone — that is how marker text reached a commit twice today.
 
-**Next free claim: T-66** — checked against `origin/main` with `git grep "| T-66 "`: no row exists for T-66 or T-67, only this session's earlier *suggestion* that the next session claim from T-66. T-60..T-65 are this session's; rows T-52/T-56/T-57..T-62 from other sessions have landed alongside them.
+**Next free claim: T-66** — checked against `origin/main` with `git grep "| T-66 "`: no row exists for T-66 or T-67, only this session's earlier *suggestion* that the next session claim from T-66. T-60..T-65 are this session's; rows T-52/T-56/T-57..T-62 from other sessions have landed alongside them. *(Superseded a few minutes later: this session then took T-66 for the final sweep below, so the free claim is now **T-67**. Two lines in this session's own log disagree about which number is next — that is what happens when a claim is written before the rebase finishes; read the T-66 row, not the note.)*
 
 **Post-PR note (same session, minutes later).** The rebase that made PR #75 mergeable silently dropped the mirrored register rows again — a `data/flagged.json` conflict resolved to the upstream side, which is the right rule for a file another session owns but wrong for an append. Re-applied by a small standalone script (`mirror_flags.py`: derive the register rows from the page's own callouts, publish the two page callouts the register already held), which also fixed three things the same round exposed: mirrored `basis_note` text must not re-cite source ids (gate D15 reads prose citations), `direction.html` carries a hand-written `Q-01 … Q-29` range the D36 gate polices, and its open-question table needed the Q-30 row so the widened range is honest. **Advice for whoever appends to a shared JSON next:** keep the append in its own idempotent script that re-runs after every rebase, not only in a commit.
 ## Session `arena/ba8e7240-prod3` — T-66..T-69 (2026-11-20, 06:52–07:45Z)
@@ -2560,6 +2560,23 @@ Deploy record appended after merge.
   worktree (`git worktree add` + every gate, not inferred). Read as a Pages deployment racing my merge's run
   within the same minute. If the live site lags `main`, re-run that workflow rather than editing content.
 
+### CI post-mortem for the two red Pages runs (07:2xZ), with the rule it implies
+
+`Deploy GitHub Pages` failed on `76b267f`, `f98e185` (this session's board PR #80) and `0569046`, and the job's
+step list shows the failure at **"Regenerated surfaces are current"**, not at the deploy step. Reproduced in a
+clean worktree at `f98e185`: `build_decisions.py --check` and `build_readme.py --check` both fail there, while
+every gate passes at `origin/main` `02b767d`. Cause, precisely: a branch that carries generated pages merges
+`main` (auto-merge, no conflict, because `data/*.json` changed in someone else's region), keeps **its own**
+regenerated `decisions.html`/`README.md`, and looks green locally — then GitHub builds the *merge commit*, where
+the new data sits beside the older generated page. Nothing in the content was wrong; the page was a build of the
+wrong input.
+
+- **Rule for anyone carrying generated surfaces:** re-run the generators *after* the last merge from `main`, then
+  re-run `--check` on the merged tree, and only then push. Checking before the merge proves nothing about the
+  merge commit, which is what CI builds and what Pages publishes.
+- No content fix was warranted, so none was made: the failures cleared themselves at `02b767d`, verified green on
+  all eleven checks in a clean worktree rather than inferred from the absence of new red runs.
+
 ### Identifier collision note, resolved rather than left ambiguous
 
 The board had reached **T-65** by the time this branch merged, and three sessions renumbered into T-55..T-58
@@ -2567,21 +2584,33 @@ while this work was open. So this session's four rows are published as **T-66..T
 main-table rows reading T-55..T-58 belong to other sessions. Same rule as the register IDs: one identifier, one
 meaning, and the earlier number is stated instead of being silently reused.
 
+**T-65 close-out (same session).** **PR #75 merged** at 2026-11-20T07:25:18Z, merge commit `1b174ff`; **`Deploy GitHub Pages` run `44694842624` — success**. Live pages fetched, not assumed: `articles/thanksgiving-leftovers-air-fryer.html` serves its disclosure strip above the masthead, the USDA-sourced figures, a captioned listing table with the Chefman title-vs-table contradiction named, both buy buttons tagged (`?tag=shopnow047c-20&linkCode=sl1`) while the evidence links stay untagged, and a read-next block. `articles/check-your-thermometer-at-home.html` fetched the same way. Eleven checks green on the final tree (`scripts/check_site.py`; `tools/check_site.py` 42 pages / ~6.8k assertions; `tools/verify_site.py`; `tools/crawl_links.py`; seven `--check` freshness modes).
+
+Two build-behaviour fixes came out of this round and are worth repeating to other sessions. `scripts/build_ideas.py` now preserves a hand-written region below its own markers (`build-ideas:design:*`) and restores it from `data/ideas-design-brief.html` if it disappears — a hand insert near a generated region is not safe unless the generator is taught to carry it. And the flag mirror lives in a standalone re-runnable script rather than only in a commit, because a rebase that resolves `data/flagged.json` to the upstream side silently deletes an append.
+
+| T-66 | Final sweep for this session's pages after the two merges: every Amazon link in the 42 published pages carries `rel="sponsored"`; a disclosure strip is present on all 42 (none missing); the three new guides each carry a canonical, `BreadcrumbList`, a dated byline, zero currency characters and zero untagged buttons — checked by script on the merged tree, not by eye | **done 2026-11-20** | `arena/6c0972fb-prod3` | read-only |
+
+**Method note.** The sweep is scripted rather than eyeballed, because this branch has had nine rebase rounds today and a hand check of a moving tree is worthless 20 minutes later. Re-run it with the one-liner in the session log if a merge disturbs it: for every page, count `https?://` anchors to `amazon.com` with no `rel=` (expect 0), pages without the disclosure strip (expect 0), and `data-event="outbound_click"` anchors without `tag=shopnow047c-20` (expect 0). **Next free claim: T-67.**
+
+### Broken-build repair — session `arena/6c0972fb-prod3`, 2026-11-20 (T-67)
+
+`Deploy GitHub Pages` run `44695121743` on merge commit `0569046` (PR #84) **failed**, and runs `44695018843` (PR #80) and `44695015620` (PR #82) failed the same way just before it. Cause was not this session's content: those merges landed generated files that were stale on arrival — `decisions.html`, `README.md` and `products/*.html` were committed out of step with the `data/*.json` registers they are rendered from, so `scripts/build_decisions.py --check`, `scripts/build_readme.py --check` and `D32-product-pages-fresh` failed the release job. The rule in this repository is that generated HTML is committed; the corollary nobody wrote down is that **a merge must re-run the generators after its last rebase**, because a rebase moves the data under a page that was current when it was built. Fix: regenerate all seven outputs on the merged tree and commit them (this branch carries the result). Gates on that tree: `scripts/check_site.py` all passed; `tools/check_site.py` 42 pages / 6,893 assertions, all rules passed; `tools/verify_site.py` release gate passed; `tools/crawl_links.py` 42 pages, 0 broken links, 0 orphans; the seven `--check` freshness modes current. Claim: **T-67**; next free claim **T-68**.
+
 ## Session `arena/aa7b8dd8-prod3` — T-70/T-71 final record (2026-11-20)
 
-**Claim history.** Claimed as T-48..T-51, renumbered T-52..T-55 on the first collision, T-56 on the second (PR #43 landed first), then T-66/T-67 after upstream took T-52..T-57. The one-identifier-one-meaning rule was applied every time; no other session's row was altered.
+**Claim history.** Claimed as T-48..T-51, renumbered T-52..T-55 on the first collision, T-56 on the second (PR #43 landed first), T-66/T-67 on the third, and T-70/T-71 after upstream took T-52..T-57 and T-66/T-67. The one-identifier-one-meaning rule was applied every time; no other session's row was altered.
 
-### What this session changed (T-66, PR #82)
+### What this session changed (T-70, PR #82)
 
 - **FLG-041 restored** in `data/flagged.json` and on `flagged.html`: the P-03 (Chefman 8 Qt TurboFry, B08DKYBTPH) temperature/wattage listing conflict — title 450°F Hi-Fry vs bullets/spec 200–400°F; 1000W bullet vs 1700W spec table. First published 2026-11-20 by session 59a087a1; the renumbering passes left it without a registered id (FLG-027 documents the mechanism). Restored with **no new observation**; the dated basis is the same official-listing check in `data/products.json` and the S31 quote.
 - **Dangling references repointed:** `data/products.json` `(FLG-022)`→F-01, `(FLG-023)`→FLG-041, live-recheck note → FLG-031; `direction.html` and the `DIRECTION.md` decision log FLG-021 → FLG-029; `air-fryers.html` capacity chip now links the F-register on `decisions.html` (F-01's actual home) and the P-03 card carries the FLG-041 chip; FLG-027 rewritten for the final renumbering.
-- **Superseded by upstream, accepted without loss:** upstream's generated README register table (T-53's goal, better implemented), upstream's `build_products.py` `names_me()` matcher, upstream's D39 gate (my D06b draft was removed as redundant).
+- **Superseded by upstream, accepted without loss:** upstream's generated README register table (the README-accuracy goal, better implemented upstream), upstream's `build_products.py` `names_me()` matcher, upstream's D39 gate (this session's D06b draft was removed as redundant).
 
 ### Verification performed (T-71)
 
-- Full local gate suite on the final merged tree: `tools/verify_site.py` (release gate passed), `tools/check_site.py` (42 pages, 6,893 assertions — includes D38 one-id-one-meaning and D39 no-dangling-flag-citation), `scripts/check_site.py` (all passed), `tools/crawl_links.py` (42 pages, 41 reachable, 0 broken links, 0 dead anchors, 0 orphans), all six `--check` freshness gates.
+- Full local gate suite on the final merged tree: `tools/verify_site.py` (release gate passed), `tools/check_site.py` (42 pages, 6,893 assertions at the round's close — includes D38 one-id-one-meaning and D39 no-dangling-flag-citation), `scripts/check_site.py` (all passed), `tools/crawl_links.py` (42 pages, 41 reachable, 0 broken links, 0 dead anchors, 0 orphans), all six `--check` freshness gates.
 - **PR #82:** https://github.com/wingbangboozle1-lang/Prod3/pull/82 — merged without waiting for approval, `mergedAt` 2026-11-20T07:26:45Z, merge commit `76b267f9c5008fdad8185a66de47f0fd7be291b3`.
-- **Deploy note:** the `Deploy GitHub Pages` runs for the merge cluster PRs #82/#80/#84 failed their "Regenerated surfaces are current" step (GitHub's auto-merge commits combined concurrent sessions' data with stale generated surfaces). Session `b8dae8e0` merged PR #85 with the mechanical rebuild (their T-58 record) and its run `44695185642` succeeded; Pages API reports `built` for `02b767d`. Judge deploys by the workflow and live URL (FLG-024 note).
+- **Deploy note:** the `Deploy GitHub Pages` runs for the merge cluster PRs #82/#80/#84 failed their "Regenerated surfaces are current" step (GitHub's auto-merge commits combined concurrent sessions' data with stale generated surfaces). Session `b8dae8e0` merged PR #85 with the mechanical rebuild (their T-58 record) and run `44695185642` succeeded; the Pages API reports `built`. Judge deploys by the workflow and live URL (FLG-024 note).
 - **Live check (fetched, not assumed):** https://wingbangboozle1-lang.github.io/Prod3/flagged.html serves the disclosure strip above the masthead, FLG-041 in full with the S31 source link, and FLG-039/FLG-040 (upstream's tag-parameter repair: every reader-facing product button now carries `?tag=shopnow047c-20&linkCode=sl1`).
 
 ### Irregularities logged (do not block)

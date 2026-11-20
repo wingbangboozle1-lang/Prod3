@@ -50,23 +50,23 @@
 | T-48 | 2026-11-20 buyer-facing link check: all five supplied short links re-tested; all five now end at the Amazon homepage. Record dated observation separately (superseding neither 2026-11-19 record nor the other same-day record); publish FLG-025; refresh summaries. | done (see log below; renumbered from a colliding T-46 claim — upstream T-46 is session 59a087a1) | `arena/6bf60cac-prod3` | `data/products.json`, `data/verification.json`, `data/flagged.json`, `flagged.html`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
 | T-49 | Publishing plan: twelve dated guide proposals with the evidence each needs, rendered from `data/editorial-plan.json` and gated (D31); four blocked rows named rather than filled by inference. New suggestions SG-32..SG-35, questions Q-24..Q-26, decisions DT-11..DT-12 | done (renumbered from a colliding T-47 claim — upstream T-47 is session cafc55da) | `arena/6bf60cac-prod3` | `publishing-plan.html`, `data/editorial-plan.json`, `data/suggestions.json`, `data/open-questions.json`, `data/decisions.json`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `scripts/build_decisions.py`, `tools/check_site.py` |
 | T-50 | One generated page per product (`products/*.html`) from `data/products.json` + `data/flagged.json`, with intended-vs-observed kept separate and the blank intent field shown as blank; linked from both pillars and the front page; three new gates and a CI freshness step | done (2026-11-20) | `arena/6bf60cac-prod3` | `scripts/build_products.py`, `products/*`, `scripts/build_chrome.py`, `scripts/build_sitemap.py`, `scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py`, `.github/workflows/pages.yml`, `index.html`, `air-fryers.html`, `meat-thermometers.html` |
+| T-51 | Design + content suggestions round (renumbered from T-48 because T-48 was already in use on main by session arena/6bf60cac-prod3; both rows kept, no work discarded): add shopfront-design (SG-36), trend-led-article (SG-37), and review-before-build (SG-38) suggestions to the register; add the missing-info discovery question Q-27; refresh the executive summary; run every release gate; PR `arena/8692a390-prod3` → main (#42); merge; confirm Pages deploys; record PR link and merge result here | in progress | `arena/8692a390-prod3` | `data/suggestions.json`, `data/open-questions.json`, `scripts/build_registers.py`, `suggestions.html`, `questions.html`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
 
-## Session `arena/f3900cd3-prod3` — T-51 (claimed as T-47, renumbered)
+## Session `arena/f3900cd3-prod3` — T-52 (claimed as T-47, renumbered twice)
 
 **Session ID:** `arena/f3900cd3-prod3` · **Branch:** `arena/f3900cd3-prod3` · **Base:** `372afb0` (main after PR #38)
 
 | ID | Task | Status | Owner | File scope |
 |----|------|--------|-------|------------|
-| T-51 | Shop pass, round 2: (a) fix the duplicate FLG-020…FLG-023 identifiers on `flagged.html` left by T-46; (b) add an audience front door `/start.html` ("what kind of cook are you") so a buyer picks a shelf instead of reading a register; (c) ship one new question-shaped guide for the December gift season, wired into the existing sitemap **and** the existing `feed.xml`; (d) reader-capture decision proposed in the register rather than silently implemented (no email provider exists — FLG-014 stands); (e) add a visual-review workflow so the owner can *look* at every page without installing anything; (f) re-run every gate, PR → main, merge, confirm the live deploy, and fetch the live pages back to prove it | in progress | `arena/f3900cd3-prod3` | `COORDINATION.md`, `flagged.html`, `start.html`, `data/suggestions.json`, `data/open-questions.json`, `articles/*` (new guide only), `feed.xml`, `index.html`, `assets/style.css`, `scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py`, `.github/workflows/snapshots.yml`, `design/pages.json`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html` |
+| T-52 | Shop pass, round 2: (a) fix the duplicate FLG-020…FLG-023 identifiers on `flagged.html` left by T-46; (b) add an audience front door `/start.html` ("what kind of cook are you") so a buyer picks a shelf instead of reading a register; (c) ship one new question-shaped guide for the December gift season, wired into the existing sitemap **and** the existing `feed.xml`; (d) reader-capture decision proposed in the register rather than silently implemented (no email provider exists — FLG-014 stands); (e) add a visual-review workflow so the owner can *look* at every page without installing anything; (f) re-run every gate, PR → main, merge, confirm the live deploy, and fetch the live pages back to prove it | in progress | `arena/f3900cd3-prod3` | `COORDINATION.md`, `flagged.html`, `start.html`, `data/suggestions.json`, `data/open-questions.json`, `articles/*` (new guide only), `feed.xml`, `index.html`, `assets/style.css`, `scripts/check_site.py`, `tools/check_site.py`, `tools/crawl_links.py`, `.github/workflows/snapshots.yml`, `design/pages.json`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html` |
 
 
-**Renumbered T-47 → T-51, 2026-11-20.** Four other sessions merged while this work was open and
+**Renumbered T-47 → T-51 → T-52, 2026-11-20.** Four other sessions merged while this work was open and
 took T-46 through T-50 for their own passes (T-47: post-PR-#38 integration; T-48: the buyer-facing
 link re-check; T-49: the publishing plan; T-50: one page per product). Per the board's
-one-identifier-one-meaning rule, this claim is now **T-51** and the original row text is kept.
+one-identifier-one-meaning rule, this claim became T-51 and the original row text is kept. A second session took **T-51** for a design-and-content round before this branch merged (merge commit `ddb50f8`), so the row is now **T-52**; the T-51 row above is untouched. My four suggestion rows were renumbered twice for the same reason and now sit at **SG-39..SG-42**.
 Two further collisions were resolved the same way and are logged in the completion record at the
-end of this file: my four suggestion rows were renumbered SG-36…SG-39 (upstream had already used
-SG-32…SG-35), and my `flagged.html` renumbering was dropped in favour of upstream's, which fixed
+end of this file: my four suggestion rows were renumbered twice, ending at SG-39…SG-42, and my `flagged.html` renumbering was dropped in favour of upstream's, which fixed
 the same four duplicate ids while this branch was open.
 
 **Scope notes, so a later session is not surprised:**
@@ -1442,7 +1442,7 @@ Associates account status (FLG-010) · intended ASINs (FLG-001) · Special Link 
 presence (FLG-006, Q-24) · cause of the four disagreeing link observations (Q-25) · Search Console ·
 analytics endpoint · any traffic, click, conversion or revenue figure.
 
-## T-51 completion record (session `arena/f3900cd3-prod3`, 2026-11-20)
+## T-52 completion record (session `arena/f3900cd3-prod3`, 2026-11-20)
 
 **Status:** done. Branch `arena/f3900cd3-prod3`, based on `372afb0` and merged with `f483b89` (PR #48).
 
@@ -1453,7 +1453,7 @@ analytics endpoint · any traffic, click, conversion or revenue figure.
 | `/start.html` — four cooking-intent paths, each two clicks from an official listing | `start.html`, `scripts/build_chrome.py` (primary nav), `index.html` (four-tile strip + hero CTA) | `crawl_links.py`: reachable from `index.html`, 0 dead anchors; gate `A06/A07/P01` pass |
 | December guide, question-shaped | `articles/kitchen-gifts-that-get-used.html` | every figure copied from `data/products.json` (S29–S33 records); `check_site` P07–P09 (sponsored/noopener on every Amazon anchor) |
 | Feed + sitemap wiring | `feed.xml` (item 10), `sitemap.xml` | `verify_site.py` now asserts **one feed item per published article** instead of a hard-coded 9, plus canonical link shape. Negative-tested: deleting the new item fails the gate |
-| Register rows for this pass | `data/suggestions.json` SG-36..SG-39 | `build_registers --check` passes; `decisions.html` regenerated by its own builder |
+| Register rows for this pass | `data/suggestions.json` SG-39..SG-42 | `build_registers --check` passes; `decisions.html` regenerated by its own builder |
 | Render-on-CI design review | `.github/workflows/snapshots.yml`, `design/pages.json` | renders 10 pages at 1366 px and 390 px, fails on horizontal overflow, uploads PNGs as an artifact (see verification note below) |
 | Flag-citation gate | `tools/check_site.py` D32 | negative-tested: repointing a citation at an undefined id fails the build; it caught four real dangling citations on the merged tree |
 | Flag-id uniqueness gate | `tools/check_site.py` D31 | negative-tested by duplicating an id |

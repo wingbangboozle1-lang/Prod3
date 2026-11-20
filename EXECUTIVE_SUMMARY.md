@@ -137,6 +137,18 @@ The official policy and guidance sources are indexed in the [source register](so
 
 The editorial hypotheses already in the guide plan include “Basket or oven-style air fryer: what should you compare?”, “A no-hype checklist for comparing air fryer capacity”, “How to assess cleanup and counter-space trade-offs”, and “Questions to ask before buying a multi-function kitchen appliance.” These are working topics—not claims about search volume, popularity, or product superiority.
 
+## Design and content decisions awaiting review
+
+The suggestions register (`suggestions.html`, generated from `data/suggestions.json`) carries three additions from this review round (SG-32..SG-34), each with its problem, evidence, options, recommendation, decision owner, and a Do / Maybe / No mark that copies out as a decision block. Nothing is implemented by being listed; the ideas review page (`ideas.html`) is where a choice gets marked before anything is built.
+
+| ID | Suggestion | Status | Decided by |
+|---|---|---|---|
+| SG-32 | Lead the front page with a buyer question and five shop cards, not with the audit trail | Implemented — live on the front page and both category pillars | editorial |
+| SG-33 | Publish catchy, trend-led question articles to earn organic traffic (seasonal calendar; Search Console is the gate before guide nine) | Proposed | editorial |
+| SG-34 | Review every change in the suggestions section before anything is built | Implemented — the suggestions page, questions page, ideas review page and decision desk ship today | owner |
+
+The open question that discovers missing information for the traffic path is Q-24: “Which of the trend-led article topics earns impressions, and should guide nine be one of them?” — queued, and unanswerable until Q-18 (Search Console verification) is done.
+
 ## Questions that must be answered before consequential decisions
 
 | Question | Known from repository | Unknown / why it matters | How to discover it | Official source |

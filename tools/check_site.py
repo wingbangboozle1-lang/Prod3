@@ -176,6 +176,58 @@ for s in _sources["sources"]:
     check("D07-source-shape", s["url"].startswith("https://") and bool(s.get("used_for")),
           f"{s['id']}: source url not https or used_for missing")
 
+# ---- citation attribution: a claim must cite a source by the same publisher --
+# The D06 rule only proves that a cited ID exists. A 2026-11-20 audit found
+# claims cited to the wrong publisher: a Google policy cited to a Chefman
+# listing (S12), an FTC quotation cited to Google's spam policy (S22), and a
+# Google rule cited to an Emeril listing (S11). This rule checks that the
+# publisher named in a clause appears in the title of at least one cited source.
+# Heuristic by design: it reads the clause before each "(Sxx)" group, back to
+# the previous sentence or semicolon. Claims it cannot parse need manual review.
+_source_titles = {s["id"]: s["title"] for s in _sources["sources"]}
+_PUBLISHER_KEYS = {
+    "FTC": "FTC", "NIST": "NIST", "USDA": "USDA", "Lighthouse": "Lighthouse",
+    "Program Policies": "Program Policies", "Operating Agreement": "Operating Agreement",
+    "CAN-SPAM": "CAN-SPAM", "Google": "Google", "people-first": "Google",
+    "People-first": "Google", "E-E-A-T": "Google", "Page-experience": "Google",
+    "thin-affiliation": "Google",
+}
+_CITE_GROUP = re.compile(r"\((S\d{2}(?:\s*(?:[-\u2013,]|and|or)\s*S?\d{2})*)\)")
+
+
+def _cited_ids(group):
+    out = set()
+    for a, b in re.findall(r"S(\d{2})\s*[-\u2013]\s*S?(\d{2})", group):
+        out.update(f"S{n:02d}" for n in range(int(a), int(b) + 1))
+    out.update(re.findall(r"S\d{2}", group))
+    return {i for i in out if i in _source_titles}
+
+
+def _json_strings(obj):
+    if isinstance(obj, str):
+        yield obj
+    elif isinstance(obj, dict):
+        for v in obj.values():
+            yield from _json_strings(v)
+    elif isinstance(obj, list):
+        for v in obj:
+            yield from _json_strings(v)
+
+
+for _f in sorted((ROOT / "data").glob("*.json")):
+    if _f.name == "sources.json":
+        continue
+    for _text in _json_strings(json.loads(_f.read_text(encoding="utf-8"))):
+        for _m in _CITE_GROUP.finditer(_text):
+            _pre = _text[:_m.start()]
+            _cut = max(_pre.rfind(". "), _pre.rfind("; "))
+            _clause = _pre[_cut + 1:][-220:]
+            _cited = _cited_ids(_m.group(1))
+            for _key, _pub in _PUBLISHER_KEYS.items():
+                if _key in _clause:
+                    check("D15-attribution", any(_pub in _source_titles[c] for c in _cited),
+                          f"{_f.name}: '{_key}' claim cites {_m.group(1)}, none of which is a {_pub} source: ...{_clause.strip()[-90:]}")
+
 # ---- product citation blocks travel with the product ---------------------
 _products = json.loads((ROOT / "data" / "products.json").read_text(encoding="utf-8"))["products"]
 for p in _products:

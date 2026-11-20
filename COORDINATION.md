@@ -43,7 +43,7 @@
 | T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
 | T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
-| T-26 | Source-attribution integrity: every cited S-ID in `data/*.json` must match the source it names (fix wrong-ID citations such as S12/S14/S16/S22 misuse); add gate rule so a citation to the wrong publisher fails; register SG-27..SG-30 (nav labels, shipped RSS feed, Search Console, reader capture) as proposals with evidence | in progress | arena/9f36f5ee-prod3 | `data/suggestions.json`, `data/open-questions.json`, `data/policy-checks.json`, `data/citations.json`, `DIRECTION.md`, `tools/check_site.py`, generated `suggestions.html` / `questions.html` / `citations.html`, `COORDINATION.md` (board + log) |
+| T-26 | Source-attribution integrity: every cited S-ID must name a source by the same publisher (16 wrong IDs corrected; gate rule `D15-attribution`); verify Program Policies §2 citations; register SG-27..SG-30 as proposals with evidence; flag SG-21 duplicate, FLG-018, FLG-019 | done (see log) | arena/9f36f5ee-prod3 | `data/suggestions.json`, `data/open-questions.json`, `data/policy-checks.json`, `data/sources.json`, `sources.html`, `flagged.html`, `README.md`, `DIRECTION.md`, `tools/check_site.py`, generated `suggestions.html` / `questions.html` / `citations.html`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -863,3 +863,80 @@ Scope: live re-check only. No intended-ASIN, price, rating, or account value was
 - Not claimed: Associates account status, Special Link test in the enrolled workflow, and any campaign report.
 
 **Remaining owner-side gates:** FLG-001 (intended ASIN per link), FLG-006 (Special Link test), FLG-010 (account), FLG-017 (B04G1MEwY link check in Associates workflow).
+
+## Session arena/9f36f5ee-prod3 — T-26 source-attribution integrity (2026-11-20)
+
+Claimed at `5b64eb8` (board row T-26) before any file edit. Rebased onto `origin/main` at `f2b3a07` (PR #27 by session 70e8475c, T-25). I did not repeat T-25's full re-check; my own short-link fetches are recorded below as an additional data point for FLG-017.
+
+### Live observations (2026-11-20, `fetch_page`)
+
+- `https://link.amazon/B04G1MEwY`, attempt 1: final URL `https://www.amazon.com/` (homepage). A second request to the same URL (chunkIndex 1): final URL `https://www.amazon.com/dp/B0CDY277D3`, title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven…", matching the 2026-11-19 observation. Session 70e8475c recorded homepage on two attempts. Across the four requests on 2026-11-20 (two here, two in 70e8475c): homepage ×3, product page ×1. This is consistent with an intermittent redirect, not a settled change. FLG-017 stays open for the owner's Associates check.
+- Other four short links, first attempt: final URLs `…/dp/B09B7SB46R`, `…/dp/B08DKYBTPH`, `…/dp/B0DHZTCNR5`, `…/dp/B0DZFD6R9Z`. Each title matches the `observed_title` in `data/products.json`.
+
+### Official sources re-read (2026-11-20)
+
+- FTC, Disclosures 101 for Social Media Influencers (S03): contains "You can't talk about your experience with a product you haven't tried." Hard-to-miss placement and "ABOUT ME" warning also confirmed.
+- Google, How to Write Meta Descriptions (S24): contains "Create unique descriptions for each page on your site."
+- Program Policies (S02), section 2(b) (General Requirements) read in full on 2026-11-20. Confirmed: no sub-tag or ID may be tied to an end user; product-list links need additional original content; no inaccurate or misleading claims; prices and availability shown only if Amazon serves them or they come through Creators/PA API. Section 4 confirmed: Special Links in email only when "solicited (i.e., opted into by the receiving customer)".
+- **Not confirmed:** Section 2 of the current text has only subsections (a) and (b). The repository's citations to "§2(t)" (customer star ratings), "§2(v)" (obscuring the URL), and a shortener prohibition attributed to "§2(b)" were **not found** there. Logged as FLG-018 (UNVERIFIED). The rating/price/sponsored conduct on the site does not depend on those citations.
+
+### Citation corrections (fixed in data)
+
+Checked every `S##` reference in `data/*.json` against the title of the source it names. Found 16 wrong or non-matching IDs and fixed them:
+
+| File | Claim (short) | Was | Now | Basis |
+|---|---|---|---|---|
+| suggestions.json SG-01 | Google thin-affiliation policy | S12 (Chefman listing) | S22 | sources.json titles |
+| suggestions.json | Google `rel="sponsored"` requirement | S11 (Emeril listing) | S04 | Google qualify-outbound-links |
+| suggestions.json | FTC "can't talk about your experience" | S22 (Google spam) | S03 | FTC page, verified |
+| suggestions.json | Google E-E-A-T / experience | S14 (CHEF iQ listing) | S21 | Google people-first |
+| suggestions.json | Page-experience guidance | S14 | S25 | Google page experience |
+| suggestions.json | Google people-first (readers, not crawlers) | S12 | S21 | Google people-first |
+| suggestions.json | People-first heading guidance | S14 | S21 | Google people-first |
+| suggestions.json | Unique meta descriptions | S13 (ThermoMaven listing) | S24 | Google snippet, verified |
+| open-questions.json | Five products across four brands | S03-S21 (invalid range) | S10-S14 | listing sources |
+| open-questions.json | Links resolve to five ASINs | S16 (NIST) | S10-S14 | listing sources |
+| open-questions.json | Google "who created the content" | S14 (listing) | S21 | Google people-first |
+| open-questions.json | "The FTC prohibits…" | S22 (Google spam) | rewritten to FTC Disclosures 101 wording, S03 | FTC page, verified |
+| open-questions.json | Handled-unit honesty | S22 | S03 | policy-checks C-07 source |
+| open-questions.json | FTC "hard to miss" placement | S22 | S03 | FTC page, verified |
+| open-questions.json | P4 "newer model" wording | S06 (Creators API doc) | S13 (listing), quote not re-read — see FLG-019 | FLG-005 |
+| policy-checks.json C-11 evidence | "Air Fryers storefront" link | S15 (dp-token observation) | "internal site check, not an external source" | S15 covers only the dp token |
+
+Shortener statements (suggestions SG-, open-questions, policy-checks C-"shortener") are reworded as UNVERIFIED with a pointer to FLG-018. Nothing else in the compliance copy was removed.
+
+### New sources (verified 2026-11-20, added to `data/sources.json` and `sources.html`)
+
+- S26 Google Search Console Help, Verify your site ownership — https://support.google.com/webmasters/answer/9008080
+- S27 Google Search Central, Link best practices — https://developers.google.com/search/docs/crawling-indexing/links-crawlable
+- S28 Google Search Central, Build and submit a sitemap — https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap
+- S29 RSS Advisory Board, RSS 2.0 Specification — https://www.rssboard.org/rss-specification
+- S30 FTC, CAN-SPAM Act: A Compliance Guide for Business — https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business
+
+### Register and gate changes
+
+- `data/suggestions.json`: SG-27 (one navigation label for the review desk), SG-28 (RSS autodiscovery and lastBuildDate), SG-29 (Search Console property type and verification; extends SG-07), SG-30 (reader capture: RSS first, email only after provider and CAN-SPAM check). All `proposed`; none implemented. SG-26 intentionally unassigned. **SG-21 marked `duplicate`:** its text is identical to SG-20 (kept so IDs do not shift; owner to delete or replace).
+- `tools/check_site.py`: new rule `D15-attribution`. A clause that names a publisher (Google, FTC, NIST, USDA, Lighthouse, Program Policies, Operating Agreement, CAN-SPAM, RSS, GitHub) must cite a source whose title names that publisher. **Mutation test:** re-inserting the S12 and S11 errors on a temporary copy made the rule fail with three named findings. The heuristic reads only back to the previous sentence or semicolon, so manual review still applies.
+- `flagged.html`: FLG-018 (policy citations UNVERIFIED), FLG-019 (S07/S08/S09/S20 undefined; P4 quote not re-confirmed; SG-20/SG-21 duplicate). Byline updated to 2026-11-20.
+- `README.md`: register table now lists SG-01..SG-30 and flagged IDs FLG-001..FLG-019 (flagged.html) with F-01..F-21 for `data/flagged.json` (not linked). The README previously listed F-IDs for flagged.html, which uses FLG IDs.
+- `DIRECTION.md`: index rows added for SG-20..SG-30; four decision-log rows dated 2026-11-20.
+
+### Gates (all pass on the working tree)
+
+`python3 scripts/check_site.py` (24 HTML pages); `python3 tools/check_site.py` (24 pages, 2637 assertions, including D15); `python3 tools/verify_site.py` (release gate passed; 26 sources); `python3 scripts/build_registers.py --check`; `python3 scripts/build_sitemap.py --check`; `git diff --check`.
+
+### Brief cross-references that do not match this repository (for the owner)
+
+- The brief places short-link compliance in "FLG-003". In this repository FLG-003 is the CHEF iQ battery-life conflict. Short-link compliance is FLG-006.
+- The brief cites "S07" and "S24" for a policy and for API checks. S07 is not defined in `data/sources.json`. S24 here is Google's meta-description guidance.
+- The brief's SG-27..SG-30 rows did not exist in the register. They are now registered (see above).
+
+### Not done, and why (owner or external; not blocking)
+
+- **Self-hosted analytics endpoint:** not built. GitHub Pages is static and cannot receive POSTs. A relay or backend needs an owner decision first (`docs/analytics-endpoint.md`).
+- **Special Link test in the Associates workflow, intended-ASIN confirmation, account eligibility:** FLG-006, FLG-001, FLG-010. These need the owner's signed-in Associates account.
+- **Search Console property and sitemap submission:** SG-29 and Q-18. Requires the owner's Google account.
+- **Publishing cadence and email capture:** Q-14, Q-20, SG-30. Owner decisions.
+- **New guides:** none added. The four editorial hypotheses in the brief already exist as published guides: `articles/basket-or-oven-air-fryer.html`, `articles/air-fryer-capacity-checklist.html`, `articles/cleanup-counter-space.html`, `articles/questions-before-multi-function.html`. Adding a fifth guide needs the cadence decision first (Path A).
+- **Campaign ledger:** still empty. No first-party Associates report is available to this session.
+- **Executive summary:** unchanged in this session. T-24/T-25 updated it on 2026-11-20 and no statement in it changed.

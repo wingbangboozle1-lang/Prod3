@@ -38,7 +38,7 @@
     {
       "id": "C-04",
       "area": "Link integrity",
-      "requirement": "Do not obscure that a link goes to an Amazon Site; a shortener used so the destination is unclear is prohibited.",
+      "requirement": "Do not obscure that a link goes to an Amazon Site. The shortener wording cited to S02 was not found in section 2(b) on 2026-11-20 (UNVERIFIED, see FLG-018).",
       "source": "S02",
       "quote_basis": "Section 2(b) prohibits using a link-shortening service or placement in a manner that makes it unclear you are linking to an Amazon Site.",
       "status": "met",
@@ -120,7 +120,7 @@
       "quote_basis": "Section 2(b): when linking to pages with product lists you must have additional original content relevant to the Special Link.",
       "status": "met",
       "automated": false,
-      "evidence": "The only category link on the site points at the Air Fryers storefront (S15) and appears inside the comparison guide, which carries its own analysis. No bare list links are published.",
+      "evidence": "The only category link on the site points at the Air Fryers storefront (internal site check, not an external source) and appears inside the comparison guide, which carries its own analysis. No bare list links are published.",
       "gate": "Review any future category link before it ships."
     },
     {

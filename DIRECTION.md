@@ -31,6 +31,17 @@ options, and recommendations live there.
 | SG-17 | Product Advertising API as the only path to displayed prices (retires the old price-re-check idea) | proposed | owner |
 | SG-18 | Guide nine chosen from measured queries, not instinct | proposed | editorial |
 | SG-19 | Mobile-first tap-target pass ≥44/48px, ≥8px spacing (S-20, session 65474d4f; Google Lighthouse guidance, source S19) | implemented 2026-11-19 | engineering |
+| SG-20 | Pick one product as the site's spine and let the other four support it | proposed | owner |
+| SG-21 | Pick one product as the site's spine and let the other four support it | duplicate | owner |
+| SG-22 | Write the first-hand answer only after someone has actually used the appliance for a month | proposed | owner |
+| SG-23 | Make one page the definitive answer to "how big is it really" | implemented | editorial |
+| SG-24 | Give the site a named editor before giving it a voice | proposed | owner |
+| SG-25 | Stop calling it a decision log until decisions are actually recorded there | implemented | engineering |
+| SG-26 | _Unassigned — no proposal in the 2026-11-20 brief uses this number_ | — | — |
+| SG-27 | Give the navigation one group and one name for the review desk | proposed | editorial |
+| SG-28 | Make the shipped RSS feed discoverable from every page | proposed | engineering |
+| SG-29 | Choose the Search Console property type and verification method (extends SG-07) | proposed | owner |
+| SG-30 | Reader capture: RSS first, email only after a provider and a CAN-SPAM check | proposed | owner |
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
@@ -87,6 +98,10 @@ Unchosen suggestions stay proposals.
 | 2026-11-19 | Mark every outbound Amazon link `rel="sponsored"` and open in a new tab | S04 | The gate walks every anchor |
 | 2026-11-19 | Keep intended ASIN and observed redirect in separate fields | S01 | `intended_*` stays null until an owner confirms |
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |
+| 2026-11-20 | Register SG-27..SG-30 as proposals: one navigation label for the review desk, RSS discoverability, Search Console property choice (extends SG-07), reader capture | S26–S30; S02 §4 | Four proposals await a choice. None is implemented. |
+| 2026-11-20 | Mark SG-21 as a duplicate of SG-20 (identical text); keep the ID so later IDs do not shift | `data/suggestions.json` | Owner may delete or replace SG-21 |
+| 2026-11-20 | Correct 16 source IDs that named the wrong publisher (e.g., a Google rule cited to a product listing; an FTC quotation cited to Google) and add gate rule `D15-attribution` | S03, S04, S21, S22, S24, S25 | Fixed in the data; the gate fails on future publisher mismatches |
+| 2026-11-20 | Flag the Program Policies §2(t), §2(v) and shortener citations as UNVERIFIED (FLG-018); compliance copy otherwise unchanged | S02 (section 2 text read 2026-11-20) | Owner or editorial review needed; no claim removed without a source |
 
 ## Audit findings, session a25ccde6 (2026-11-19)
 

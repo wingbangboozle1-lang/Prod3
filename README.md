@@ -55,10 +55,10 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 
 | Register | Page | Data | IDs |
 |---|---|---|---|
-| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-25 |
+| Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-30 (SG-26 unassigned; SG-21 duplicates SG-20) |
 | Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
 | Decisions | `direction.html` | `DIRECTION.md` | dated rows |
-| Flagged findings | `flagged.html` | `data/flagged.json` | F-01..F-21 |
+| Flagged findings | `flagged.html` | `flagged.html` (FLG-001..FLG-019); `data/flagged.json` (F-01..F-21, not linked from any page) |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
 
 Each register has its own ID prefix so proposals, questions, decisions, and flagged findings are distinguishable.

@@ -37,12 +37,12 @@
 
 <div class="callout"><strong>How to read the status.</strong> <em>Implemented</em> means the change is live on the site today. <em>Partly implemented</em> means part of the change is live and the remainder is tracked as an open question or flag — the row says which. <em>Proposed</em> means it is waiting for a decision and has no effect yet. Nothing in the proposed column has been quietly half-built.</div>
 
-<h2>Waiting on a decision (10)</h2>
+<h2>Waiting on a decision (14)</h2>
 <div class="grid mt"><article class="card">
       <div class="meta">SG-06 · owner decides</div>
       <h3>Buy one air fryer and one thermometer, and earn the right to say &quot;we used it&quot;</h3>
       <p><strong>Problem.</strong> The highest-value content in this niche — what the thing is like to live with — cannot be written honestly without the thing.</p>
-      <p><strong>Evidence.</strong> FTC: &quot;You can&#x27;t talk about your experience with a product you haven&#x27;t tried&quot; (S22). Google&#x27;s E-E-A-T guidance rewards demonstrated experience (S14).</p>
+      <p><strong>Evidence.</strong> FTC: &quot;You can&#x27;t talk about your experience with a product you haven&#x27;t tried&quot; (S03). Google&#x27;s E-E-A-T guidance rewards demonstrated experience (S21).</p>
       <p><strong>Options.</strong></p><ul><li>A. Buy one unit per family out of the commission budget and document a fixed set of tests: heat-up time, evenness with a thermocouple grid, basket clean-up time, counter footprint.</li><li>B. Stay specification-only, and be the site that is scrupulous about it.</li><li>C. Accept review units only if the site discloses the gift.</li></ul>
       <p><strong>Recommendation.</strong> B until the site earns anything, then A. A is the only durable moat in this niche, but it should be funded by the site, not by a credit card.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence low</span></p>
@@ -60,7 +60,7 @@
       <div class="meta">SG-13 · owner decides</div>
       <h3>Test one short link inside the enrolled Associates workflow before trusting the format</h3>
       <p><strong>Problem.</strong> The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.</p>
-      <p><strong>Evidence.</strong> Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links&#x27; own status is unresolved (F-13).</p>
+      <p><strong>Evidence.</strong> A shortener clause is cited to Program Policies (S02), but the wording was not found in section 2(b) of the text read on 2026-11-20 (UNVERIFIED, see FLG-018). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links&#x27; own status is unresolved (F-13).</p>
       <p><strong>Options.</strong></p><ul><li>A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.</li><li>B. Switch every link to direct /dp/ URLs and drop the short form.</li><li>C. Declare the short links non-compliant and remove them.</li></ul>
       <p><strong>Recommendation.</strong> A for the short form as provenance, with the site continuing to publish direct URLs either way. C is a claim the evidence does not support.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
@@ -104,11 +104,11 @@
     </article><article class="card">
       <div class="meta">SG-21 · owner decides</div>
       <h3>Pick one product as the site&#x27;s spine and let the other four support it</h3>
-      <p><strong>Problem.</strong> Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.</p>
+      <p><strong>Problem.</strong> Duplicate of SG-20: the title, problem, evidence and options are identical to SG-20 (both entries were recorded in session a25ccde6). Kept so IDs do not shift. The owner can delete this entry or replace it with the intended second proposal.</p>
       <p><strong>Evidence.</strong> The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google&#x27;s thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).</p>
       <p><strong>Options.</strong></p><ul><li>A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.</li><li>B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.</li><li>C. Keep the current two-family balance and expand only when the analytics say which family reads better.</li></ul>
-      <p><strong>Recommendation.</strong> A. Air fryers have the wider search intent and three products to compare, which is enough for a comparison table that earns its place. Revisit at the first Search Console report.</p>
-      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
+      <p><strong>Recommendation.</strong> Use SG-20 only. Do not implement SG-21 separately.</p>
+      <p><span class="badge grey">duplicate</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
       <p class="small muted">Blocks: Which guides get written next</p>
     </article><article class="card">
       <div class="meta">SG-22 · owner decides</div>
@@ -128,6 +128,42 @@
       <p><strong>Recommendation.</strong> A if the owner is willing to be named, B otherwise. C is not on the table. Until then the About page should state that the desk is unnamed rather than leave the reader to notice.</p>
       <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
       <p class="small muted">Blocks: Nothing; it changes how much a reader should trust the page</p>
+    </article><article class="card">
+      <div class="meta">SG-27 · editorial decides</div>
+      <h3>Give the navigation one group and one name for the review desk</h3>
+      <p><strong>Problem.</strong> The same page is called Direction in the navigation and Decision log in the footer, and the review desk is reached through three labels. A reader looking for the decisions cannot tell which link is which.</p>
+      <p><strong>Evidence.</strong> The generated pages write the navigation label &#x27;Direction&#x27; and the footer label &#x27;Decision log&#x27; for the same destination (scripts/build_registers.py, navigation and footer templates). Google&#x27;s link guidance asks for anchor text that tells people what the target is (S27).</p>
+      <p><strong>Options.</strong></p><ul><li>A. Keep &#x27;Direction&#x27; in the navigation and &#x27;Decision log&#x27; in the footer (current state).</li><li>B. Use one label, &#x27;Decision log&#x27;, everywhere, and let the page heading explain that it holds suggestions, open questions and the path chooser.</li><li>C. Put Suggestions, Open questions and the Decision log under one &#x27;Review&#x27; entry in the single navigation group.</li></ul>
+      <p><strong>Recommendation.</strong> B or C. Either removes the second name for the same page and keeps one navigation group, as the brief asks.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <p class="small muted">Blocks: Nothing. Changes labels only; no product link, disclosure or price is touched.</p>
+    </article><article class="card">
+      <div class="meta">SG-28 · engineering decides</div>
+      <h3>Make the shipped RSS feed discoverable from every page</h3>
+      <p><strong>Problem.</strong> The feed ships and is well-formed, but browsers and feed readers only find its autodiscovery link on four of 24 HTML pages, and the channel has no lastBuildDate.</p>
+      <p><strong>Evidence.</strong> feed.xml has the three required channel elements (title, link, description), 8 items and 8 pubDate values (S29). lastBuildDate is optional (S29) and is absent. The rel=&quot;alternate&quot; feed link appears on index.html, citations.html, questions.html and suggestions.html only. Google&#x27;s sitemap guidance lists RSS, mRSS and Atom 1.0 among sitemap formats (S28); whether to submit this feed to Search Console is a separate decision.</p>
+      <p><strong>Options.</strong></p><ul><li>A. Leave the feed as shipped, linked from the front page and the register pages.</li><li>B. Add the autodiscovery link to the head of every page, add lastBuildDate to the channel, and run the feed through the RSS Validator (S29).</li><li>C. Also submit feed.xml as a sitemap in Search Console once SG-29 is done.</li></ul>
+      <p><strong>Recommendation.</strong> B. It is a template change that needs no account. C waits for SG-29.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <p class="small muted">Blocks: Nothing.</p>
+    </article><article class="card">
+      <div class="meta">SG-29 · owner decides</div>
+      <h3>Choose the Search Console property type and verification method (extends SG-07)</h3>
+      <p><strong>Problem.</strong> SG-07 says to turn Search Console on, but the register does not say which property type fits a GitHub Pages project path or how to verify it. A Domain property cannot be verified without DNS control of a domain the owner holds.</p>
+      <p><strong>Evidence.</strong> Google: a Domain property is verified only through a domain name provider (S26); a URL-prefix property can be verified by HTML file, HTML tag, Google Analytics or Google Tag Manager (S26). Google: data is collected for a property as soon as anyone adds it, even before verification (S26). Sitemap submission is a separate step (S28). The sitemap is sitemap.xml and robots.txt names it (repository check, tools/verify_site.py).</p>
+      <p><strong>Options.</strong></p><ul><li>A. URL-prefix property for https://wingbangboozle1-lang.github.io/Prod3/, verified by one HTML meta tag on index.html. The owner supplies the token.</li><li>B. URL-prefix property verified by an HTML file at the repository root. The owner supplies the file name and token.</li><li>C. Wait for a custom domain (Q-16), then add a Domain property.</li></ul>
+      <p><strong>Recommendation.</strong> A now, then submit sitemap.xml (S28). Adding the property early starts data collection (S26).</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
+      <p class="small muted">Blocks: Q-18 (owner sign-in to Search Console). Nothing else waits on it.</p>
+    </article><article class="card">
+      <div class="meta">SG-30 · owner decides</div>
+      <h3>Reader capture: RSS first, email only after a provider and a CAN-SPAM check</h3>
+      <p><strong>Problem.</strong> The only way for a reader to follow new guides is the RSS feed. The demo email form was removed (FLG-014), so nothing is collected today, and any future form needs consent, a provider and a compliance check.</p>
+      <p><strong>Evidence.</strong> The FTC&#x27;s CAN-SPAM guide requires commercial email to identify itself as an ad, carry a valid physical postal address, offer a clear opt-out, and honor opt-outs within 10 business days (S30). Program Policies section 4 allows Special Links in email only when the messages are solicited, meaning the customer opted in (S02). Q-20 (email provider and consent) is open.</p>
+      <p><strong>Options.</strong></p><ul><li>A. RSS only. No personal data is collected and no consent is needed (current state).</li><li>B. Email signup through a named provider, with opt-in consent recorded, a postal address in every send, and a one-step opt-out (S30).</li><li>C. Social follow links only, with no list.</li></ul>
+      <p><strong>Recommendation.</strong> A now. Choose B only after the owner names a provider (Q-20) and the consent text and unsubscribe flow pass a compliance check.</p>
+      <p><span class="badge grey">proposed</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
+      <p class="small muted">Blocks: Q-20 (email provider and consent).</p>
     </article></div>
 
 <h2 class="mt">Already shipped (15)</h2>
@@ -136,7 +172,7 @@
       <div class="meta">SG-01 · owner decides</div>
       <h3>Narrow the site to one question: air fryer, or thermometer — not both</h3>
       <p><strong>Problem.</strong> Five products across two families read as a list of things someone had links for, not a publication with a beat.</p>
-      <p><strong>Evidence.</strong> The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google&#x27;s thin-affiliation policy specifically targets affiliate pages whose only reason to exist is the links (S12).</p>
+      <p><strong>Evidence.</strong> The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google&#x27;s thin-affiliation policy specifically targets affiliate pages whose only reason to exist is the links (S22).</p>
       <p><strong>Options.</strong></p><ul><li>A. Keep both, and make the beat &quot;cooking to a target temperature&quot; — the air fryer gets food hot, the thermometer proves it is done. This is what the site currently does.</li><li>B. Narrow to air fryers, and treat the thermometers as one comparison article.</li><li>C. Split into two sites later, if either earns enough traffic to justify it.</li></ul>
       <p><strong>Recommendation.</strong> A for now. It is the only framing in which both product families belong in the same sentence, and it gives every guide an obvious place to link back to. Revisit at the first Search Console data drop.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence medium</span></p>
@@ -163,7 +199,7 @@
       <div class="meta">SG-04 · editorial decides</div>
       <h3>Answer eight buyer questions, not eight product reviews</h3>
       <p><strong>Problem.</strong> Product pages answer &quot;what is it&quot;; buyers arrive with &quot;which one, and will it fit&quot;.</p>
-      <p><strong>Evidence.</strong> People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S14). A product question has a real answer; a review of an untouched product does not (S22).</p>
+      <p><strong>Evidence.</strong> People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S22).</p>
       <p><strong>Options.</strong></p><ul><li>A. Eight question-shaped guides, each answerable from published specifications and USDA targets.</li><li>B. Five long product reviews written without handling the products.</li><li>C. One long &quot;best air fryers 2026&quot; listicle.</li></ul>
       <p><strong>Recommendation.</strong> A. C is the format that reads as generated, because every site in the niche already has it and none of them can differentiate inside it.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence high</span></p>
@@ -172,7 +208,7 @@
       <div class="meta">SG-05 · engineering decides</div>
       <h3>Build the compliance gate into the build, not into a checklist</h3>
       <p><strong>Problem.</strong> Disclosure placement and rel=&quot;sponsored&quot; are the two things that are easy to forget on page fourteen.</p>
-      <p><strong>Evidence.</strong> Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=&quot;sponsored&quot; on paid links (S11).</p>
+      <p><strong>Evidence.</strong> Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=&quot;sponsored&quot; on paid links (S04).</p>
       <p><strong>Options.</strong></p><ul><li>A. Generate every page from one template that always emits the disclosure strip, and run a checker that fails on any Amazon link without rel=&quot;sponsored&quot;.</li><li>B. A written checklist someone reads before publishing.</li></ul>
       <p><strong>Recommendation.</strong> A. A checklist is a promise; a failing build is a fact. The checker is in tools/check_site.py and runs in CI.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
@@ -190,7 +226,7 @@
       <div class="meta">SG-09 · engineering decides</div>
       <h3>Give every page a unique title and description, and test that the build rejects duplicates</h3>
       <p><strong>Problem.</strong> Duplicate titles and descriptions are the most common self-inflicted indexing problem for generated sites.</p>
-      <p><strong>Evidence.</strong> Google: &quot;Create unique descriptions for each page on your site&quot;; identical descriptions on every page are named as a problem (S13).</p>
+      <p><strong>Evidence.</strong> Google: &quot;Create unique descriptions for each page on your site&quot;; identical descriptions on every page are named as a problem (S24).</p>
       <p><strong>Options.</strong></p><ul><li>A. Generate each page&#x27;s title and description from its own content, and fail the build on a duplicate.</li><li>B. One site-wide description.</li></ul>
       <p><strong>Recommendation.</strong> A. B is the specific failure mode the guidance names.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>
@@ -199,7 +235,7 @@
       <div class="meta">SG-10 · design decides</div>
       <h3>Make the front page a publication front page, and keep the dashboards one click away in the footer</h3>
       <p><strong>Problem.</strong> The verification machinery is genuinely interesting to the owner and irrelevant to a buyer.</p>
-      <p><strong>Evidence.</strong> Page-experience guidance (S14); the reader came for a question, not an audit trail.</p>
+      <p><strong>Evidence.</strong> Page-experience guidance (S25); the reader came for a question, not an audit trail.</p>
       <p><strong>Options.</strong></p><ul><li>A. Front page leads with the products and the guides; the register, gate, ledger and flagged pages sit in a single footer group.</li><li>B. Front page leads with the source register, because that is what makes this site different.</li><li>C. Two sites.</li></ul>
       <p><strong>Recommendation.</strong> A. The audit trail is the site&#x27;s credibility, not its pitch. It should be exhaustively present and never in the way.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort M</span> <span class="badge grey">Confidence medium</span></p>
@@ -235,7 +271,7 @@
       <div class="meta">SG-15 · editorial decides</div>
       <h3>Lead every shop page with the products, and keep the verification record one click away</h3>
       <p><strong>Problem.</strong> The front page opened with the process (verification framing) instead of the picks, so a first-time buyer landed on an audit rather than a shop.</p>
-      <p><strong>Evidence.</strong> Google&#x27;s people-first guidance asks that content exist for readers, not for crawlers (S12). The compliance record stays reachable in the footer group, where the release gates already require it.</p>
+      <p><strong>Evidence.</strong> Google&#x27;s people-first guidance asks that content exist for readers, not for crawlers (S21). The compliance record stays reachable in the footer group, where the release gates already require it.</p>
       <p><strong>Options.</strong></p><ul><li>A. Product-first front page: hero question, five cards with CTAs, chooser, then the data table and trust row.</li><li>B. Keep the audit-first layout; readers who care will scroll.</li><li>C. Split into two sites — shop vs. process.</li></ul>
       <p><strong>Recommendation.</strong> A. Implemented 2026-11-19: the front page now leads with the five picks and their CTAs; disclosure stays above the fold and every dashboard page remains in the footer group. The chooser pointer was kept deliberately humble — a starting point, not a test verdict.</p>
       <p><span class="badge green">implemented</span> <span class="badge grey">Effort S</span> <span class="badge grey">Confidence high</span></p>

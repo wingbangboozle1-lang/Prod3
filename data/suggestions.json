@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-19",
-  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree.",
+  "generated": "2026-11-20",
+  "premise": "Each suggestion is a decision with a path. None is implemented by being listed; some are already shipped and say so. Read the evidence, weigh the options, then choose. Session a25ccde6 added SG-20..SG-25 after the merge; ids were shifted from SG-15..SG-20 because that range was already in use. This file is the single source of truth for suggestions.html and scripts/build_registers.py --check fails when the page and this file disagree. SG-26 is intentionally unassigned: no proposal named in the 2026-11-20 brief uses that number. SG-27..SG-30 were registered on 2026-11-20 (session arena/9f36f5ee-prod3) as proposals with evidence from the source register. SG-21 is a verbatim duplicate of SG-20 and is marked status \"duplicate\".",
   "scale": {
     "effort": [
       "S — a short session",
@@ -18,7 +18,7 @@
       "id": "SG-01",
       "title": "Narrow the site to one question: air fryer, or thermometer — not both",
       "problem": "Five products across two families read as a list of things someone had links for, not a publication with a beat.",
-      "evidence": "The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google's thin-affiliation policy specifically targets affiliate pages whose only reason to exist is the links (S12).",
+      "evidence": "The set divides 3 air fryers / 2 thermometers across four brands (F-08). Google's thin-affiliation policy specifically targets affiliate pages whose only reason to exist is the links (S22).",
       "options": [
         "A. Keep both, and make the beat \"cooking to a target temperature\" — the air fryer gets food hot, the thermometer proves it is done. This is what the site currently does.",
         "B. Narrow to air fryers, and treat the thermometers as one comparison article.",
@@ -69,7 +69,7 @@
       "id": "SG-04",
       "title": "Answer eight buyer questions, not eight product reviews",
       "problem": "Product pages answer \"what is it\"; buyers arrive with \"which one, and will it fit\".",
-      "evidence": "People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S14). A product question has a real answer; a review of an untouched product does not (S22).",
+      "evidence": "People-first content guidance asks whether a page provides insight beyond the obvious and a descriptive, non-exaggerated heading (S21). A product question has a real answer; a review of an untouched product does not (S22).",
       "options": [
         "A. Eight question-shaped guides, each answerable from published specifications and USDA targets.",
         "B. Five long product reviews written without handling the products.",
@@ -86,7 +86,7 @@
       "id": "SG-05",
       "title": "Build the compliance gate into the build, not into a checklist",
       "problem": "Disclosure placement and rel=\"sponsored\" are the two things that are easy to forget on page fourteen.",
-      "evidence": "Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=\"sponsored\" on paid links (S11).",
+      "evidence": "Agreement §5 makes a disclosure failure a material breach (S01). Google requires rel=\"sponsored\" on paid links (S04).",
       "options": [
         "A. Generate every page from one template that always emits the disclosure strip, and run a checker that fails on any Amazon link without rel=\"sponsored\".",
         "B. A written checklist someone reads before publishing."
@@ -102,7 +102,7 @@
       "id": "SG-06",
       "title": "Buy one air fryer and one thermometer, and earn the right to say \"we used it\"",
       "problem": "The highest-value content in this niche — what the thing is like to live with — cannot be written honestly without the thing.",
-      "evidence": "FTC: \"You can't talk about your experience with a product you haven't tried\" (S22). Google's E-E-A-T guidance rewards demonstrated experience (S14).",
+      "evidence": "FTC: \"You can't talk about your experience with a product you haven't tried\" (S03). Google's E-E-A-T guidance rewards demonstrated experience (S21).",
       "options": [
         "A. Buy one unit per family out of the commission budget and document a fixed set of tests: heat-up time, evenness with a thermocouple grid, basket clean-up time, counter footprint.",
         "B. Stay specification-only, and be the site that is scrupulous about it.",
@@ -152,7 +152,7 @@
       "id": "SG-09",
       "title": "Give every page a unique title and description, and test that the build rejects duplicates",
       "problem": "Duplicate titles and descriptions are the most common self-inflicted indexing problem for generated sites.",
-      "evidence": "Google: \"Create unique descriptions for each page on your site\"; identical descriptions on every page are named as a problem (S13).",
+      "evidence": "Google: \"Create unique descriptions for each page on your site\"; identical descriptions on every page are named as a problem (S24).",
       "options": [
         "A. Generate each page's title and description from its own content, and fail the build on a duplicate.",
         "B. One site-wide description."
@@ -168,7 +168,7 @@
       "id": "SG-10",
       "title": "Make the front page a publication front page, and keep the dashboards one click away in the footer",
       "problem": "The verification machinery is genuinely interesting to the owner and irrelevant to a buyer.",
-      "evidence": "Page-experience guidance (S14); the reader came for a question, not an audit trail.",
+      "evidence": "Page-experience guidance (S25); the reader came for a question, not an audit trail.",
       "options": [
         "A. Front page leads with the products and the guides; the register, gate, ledger and flagged pages sit in a single footer group.",
         "B. Front page leads with the source register, because that is what makes this site different.",
@@ -219,7 +219,7 @@
       "id": "SG-13",
       "title": "Test one short link inside the enrolled Associates workflow before trusting the format",
       "problem": "The five supplied links use link.amazon, and their status in the enrolled workflow cannot be settled from outside the account.",
-      "evidence": "Program Policies 2(b) prohibits a shortener used so the destination is unclear (S02). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
+      "evidence": "A shortener clause is cited to Program Policies (S02), but the wording was not found in section 2(b) of the text read on 2026-11-20 (UNVERIFIED, see FLG-018). The site publishes direct amazon.com/dp/ destinations so clarity is not in question, but the short links' own status is unresolved (F-13).",
       "options": [
         "A. Click one link while signed in, confirm the destination ASIN and confirm the click appears in the Associates report, then repeat for the rest.",
         "B. Switch every link to direct /dp/ URLs and drop the short form.",
@@ -252,7 +252,7 @@
       "id": "SG-15",
       "title": "Lead every shop page with the products, and keep the verification record one click away",
       "problem": "The front page opened with the process (verification framing) instead of the picks, so a first-time buyer landed on an audit rather than a shop.",
-      "evidence": "Google's people-first guidance asks that content exist for readers, not for crawlers (S12). The compliance record stays reachable in the footer group, where the release gates already require it.",
+      "evidence": "Google's people-first guidance asks that content exist for readers, not for crawlers (S21). The compliance record stays reachable in the footer group, where the release gates already require it.",
       "options": [
         "A. Product-first front page: hero question, five cards with CTAs, chooser, then the data table and trust row.",
         "B. Keep the audit-first layout; readers who care will scroll.",
@@ -353,17 +353,17 @@
     {
       "id": "SG-21",
       "title": "Pick one product as the site's spine and let the other four support it",
-      "problem": "Five products across two families gives every page a split personality. A publication has a lead story; this one has a list.",
+      "problem": "Duplicate of SG-20: the title, problem, evidence and options are identical to SG-20 (both entries were recorded in session a25ccde6). Kept so IDs do not shift. The owner can delete this entry or replace it with the intended second proposal.",
       "evidence": "The set is 3 air fryers and 2 thermometers across four brands (S10-S14). Google's thin-affiliation guidance treats a page whose only value is its links as the problem to avoid (S22).",
       "options": [
         "A. Make the dual-basket air fryer the spine: guides about capacity, counters and two-zone cooking, with the oven and single-basket models as alternatives.",
         "B. Make the wireless thermometer the spine: guides about doneness and long cooks, with the instant-read as the entry point.",
         "C. Keep the current two-family balance and expand only when the analytics say which family reads better."
       ],
-      "recommendation": "A. Air fryers have the wider search intent and three products to compare, which is enough for a comparison table that earns its place. Revisit at the first Search Console report.",
+      "recommendation": "Use SG-20 only. Do not implement SG-21 separately.",
       "effort": "M",
       "confidence": "medium",
-      "status": "proposed",
+      "status": "duplicate",
       "decision_owner": "owner",
       "blocks": "Which guides get written next"
     },
@@ -434,6 +434,74 @@
       "status": "implemented",
       "decision_owner": "engineering",
       "blocks": "Nothing"
+    },
+    {
+      "id": "SG-27",
+      "title": "Give the navigation one group and one name for the review desk",
+      "problem": "The same page is called Direction in the navigation and Decision log in the footer, and the review desk is reached through three labels. A reader looking for the decisions cannot tell which link is which.",
+      "evidence": "The generated pages write the navigation label 'Direction' and the footer label 'Decision log' for the same destination (scripts/build_registers.py, navigation and footer templates). Google's link guidance asks for anchor text that tells people what the target is (S27).",
+      "options": [
+        "A. Keep 'Direction' in the navigation and 'Decision log' in the footer (current state).",
+        "B. Use one label, 'Decision log', everywhere, and let the page heading explain that it holds suggestions, open questions and the path chooser.",
+        "C. Put Suggestions, Open questions and the Decision log under one 'Review' entry in the single navigation group."
+      ],
+      "recommendation": "B or C. Either removes the second name for the same page and keeps one navigation group, as the brief asks.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "editorial",
+      "blocks": "Nothing. Changes labels only; no product link, disclosure or price is touched."
+    },
+    {
+      "id": "SG-28",
+      "title": "Make the shipped RSS feed discoverable from every page",
+      "problem": "The feed ships and is well-formed, but browsers and feed readers only find its autodiscovery link on four of 24 HTML pages, and the channel has no lastBuildDate.",
+      "evidence": "feed.xml has the three required channel elements (title, link, description), 8 items and 8 pubDate values (S29). lastBuildDate is optional (S29) and is absent. The rel=\"alternate\" feed link appears on index.html, citations.html, questions.html and suggestions.html only. Google's sitemap guidance lists RSS, mRSS and Atom 1.0 among sitemap formats (S28); whether to submit this feed to Search Console is a separate decision.",
+      "options": [
+        "A. Leave the feed as shipped, linked from the front page and the register pages.",
+        "B. Add the autodiscovery link to the head of every page, add lastBuildDate to the channel, and run the feed through the RSS Validator (S29).",
+        "C. Also submit feed.xml as a sitemap in Search Console once SG-29 is done."
+      ],
+      "recommendation": "B. It is a template change that needs no account. C waits for SG-29.",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "engineering",
+      "blocks": "Nothing."
+    },
+    {
+      "id": "SG-29",
+      "title": "Choose the Search Console property type and verification method (extends SG-07)",
+      "problem": "SG-07 says to turn Search Console on, but the register does not say which property type fits a GitHub Pages project path or how to verify it. A Domain property cannot be verified without DNS control of a domain the owner holds.",
+      "evidence": "Google: a Domain property is verified only through a domain name provider (S26); a URL-prefix property can be verified by HTML file, HTML tag, Google Analytics or Google Tag Manager (S26). Google: data is collected for a property as soon as anyone adds it, even before verification (S26). Sitemap submission is a separate step (S28). The sitemap is sitemap.xml and robots.txt names it (repository check, tools/verify_site.py).",
+      "options": [
+        "A. URL-prefix property for https://wingbangboozle1-lang.github.io/Prod3/, verified by one HTML meta tag on index.html. The owner supplies the token.",
+        "B. URL-prefix property verified by an HTML file at the repository root. The owner supplies the file name and token.",
+        "C. Wait for a custom domain (Q-16), then add a Domain property."
+      ],
+      "recommendation": "A now, then submit sitemap.xml (S28). Adding the property early starts data collection (S26).",
+      "effort": "S",
+      "confidence": "high",
+      "status": "proposed",
+      "decision_owner": "owner",
+      "blocks": "Q-18 (owner sign-in to Search Console). Nothing else waits on it."
+    },
+    {
+      "id": "SG-30",
+      "title": "Reader capture: RSS first, email only after a provider and a CAN-SPAM check",
+      "problem": "The only way for a reader to follow new guides is the RSS feed. The demo email form was removed (FLG-014), so nothing is collected today, and any future form needs consent, a provider and a compliance check.",
+      "evidence": "The FTC's CAN-SPAM guide requires commercial email to identify itself as an ad, carry a valid physical postal address, offer a clear opt-out, and honor opt-outs within 10 business days (S30). Program Policies section 4 allows Special Links in email only when the messages are solicited, meaning the customer opted in (S02). Q-20 (email provider and consent) is open.",
+      "options": [
+        "A. RSS only. No personal data is collected and no consent is needed (current state).",
+        "B. Email signup through a named provider, with opt-in consent recorded, a postal address in every send, and a one-step opt-out (S30).",
+        "C. Social follow links only, with no list."
+      ],
+      "recommendation": "A now. Choose B only after the owner names a provider (Q-20) and the consent text and unsubscribe flow pass a compliance check.",
+      "effort": "M",
+      "confidence": "medium",
+      "status": "proposed",
+      "decision_owner": "owner",
+      "blocks": "Q-20 (email provider and consent)."
     }
   ]
 }

@@ -434,6 +434,21 @@ def main():
         raise SystemExit(f"ideas.html: missing {START} / {END} markers")
     before, rest = page.split(START, 1)
     _, after = rest.split(END, 1)
+    # A hand-written design brief lives just below the generated region in its own
+    # markers, so a rebuild carries it forward instead of deleting it (found the hard
+    # way on 2026-11-20: an insert after END still sat inside the region a later
+    # rebuild replaced). If the block goes missing, it is restored from data/.
+    DSTART, DEND = "<!-- build-ideas:design:start -->", "<!-- build-ideas:design:end -->"
+    fallback = (ROOT / "data/ideas-design-brief.html").read_text(encoding="utf-8")
+    dfile = ROOT / "data/ideas-design-brief.html"
+    if DSTART in after:
+        head, tail = after.split(DSTART, 1)
+        block = DSTART + tail.split(DEND, 1)[0] + DEND
+        rest_after = tail.split(DEND, 1)[1]
+        dfile.write_text(block + "\n", encoding="utf-8")
+        after = head + block + rest_after
+    elif DSTART not in after and fallback.strip():
+        after = "\n" + fallback + after
     new = before + build() + after
     if new != page:
         if check:

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-19",
+  "generated": "2026-11-20",
   "premise": "These are the things that could not be confirmed, or that conflict, at the capture date. None of them blocks publication; all of them are published openly instead of being smoothed over.",
   "severity_scale": {
     "high": "Affects a claim a buyer would rely on, or a compliance question that needs the Associates account to settle.",
@@ -778,6 +778,20 @@
       "status": "open — both readings published; seller/manufacturer confirmation needed",
       "sources": [
         "S31"
+      ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-043",
+      "severity": "low",
+      "area": "Spine proposal status vs the shipped starting pick (SG-21)",
+      "product": "DIRECTION.md; data/suggestions.json; direction.html",
+      "detail": "Found2026-11-20 (session 62b9cc82, T-58): the DIRECTION.md ledger index marked the spine proposal (then SG-20) as implemented 2026-11-20 while data/suggestions.json marked it proposed. The same day the register was restructured (session aa7b8dd8 and the register-sync passes): the spine proposal now carries SG-21, SG-20 holds a different proposal, the retired SG-21 tombstone was withdrawn, and DIRECTION.md's index became a generated block (scripts/build_digest.py, gate D45) that mirrors the register — so the digest half of this contradiction is resolved. What remains is the live half: the front page still ships a named starting pick (option A, the dual-basket air fryer) while SG-21 reads proposed, SG-21's decision owner is the owner, and no spine decision appears in the decision log. The starting pick is recorded in SG-21's evidence note rather than promoted to a status the owner has not set.",
+      "why_it_matters": "A reader comparing the front page's starting pick with the proposals register cannot tell whether the site's lead-product choice was decided or assumed. One of the two statements has to be wrong; neither is silently deleted.",
+      "action": "Owner: confirm whether option A is the decided spine. If yes, set SG-21 implemented in data/suggestions.json with a dated decision-log row (SG-25); if no, the front-page starting pick stays an editorial default recorded as evidence only. The generated digest will mirror either outcome on the next build.",
+      "status": "open — digest side resolved 2026-11-20; owner confirmation of the spine decision still pending",
+      "sources": [
+        "S21"
       ],
       "sources_checked": "2026-11-20"
     }

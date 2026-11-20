@@ -19,7 +19,7 @@ options, and recommendations live there.
 | SG-04 | Answer eight buyer questions, not eight product reviews | implemented | editorial |
 | SG-05 | Build the compliance gate into the build, not into a checklist | implemented | engineering |
 | SG-06 | Buy one air fryer and one thermometer, and earn the right to say "we used it" | proposed | owner |
-| SG-07 | Turn on Search Console before writing guide nine | proposed | owner |
+| SG-07 | Turn on Search Console before writing the next guide | proposed | owner |
 | SG-08 | Add a working outbound-click counter that stores nothing about the reader | implemented | engineering |
 | SG-09 | Give every page a unique title and description, and test that the build rejects duplicates | implemented | engineering |
 | SG-10 | Make the front page a publication front page, and keep the dashboards one click away in the footer | implemented | design |
@@ -30,7 +30,7 @@ options, and recommendations live there.
 | SG-15 | Lead every shop page with the products, and keep the verification record one click away | implemented | editorial |
 | SG-16 | Replace the SVG social preview with a raster card, and verify it before relying on it | partly implemented | editorial |
 | SG-17 | Make the Product Advertising API the only path to displayed prices | proposed | owner |
-| SG-18 | Choose guide nine from measured queries, not instinct | proposed | editorial |
+| SG-18 | Choose the next guide from measured queries, not instinct | proposed | editorial |
 | SG-19 | Mobile-first tap-target pass: every control ≥44px (48px at touch widths) with ≥8px spacing | implemented | engineering |
 | SG-20 | Ask the Associates account one question and let the answer price the whole site | proposed | owner |
 | SG-21 | Pick one product as the site's spine and let the other four support it | proposed | owner |
@@ -133,7 +133,7 @@ product buttons, and where the counts land) is open.
 Verified 2026-11-20: `SG-20` and `SG-21` carried byte-identical `title`, `problem`,
 `evidence`, `options`, `recommendation`, `effort`, `confidence`, `decision_owner` and
 `blocks` fields. This is the same "one identifier, two meanings" failure the a25ccde6
-audit fixed for SG-01..SG-08, so it was treated as a recurrence rather than a typo.
+audit fixed for SG-01 through SG-08, so it was treated as a recurrence rather than a typo.
 
 **Resolution:** SG-21 was retired in place — not deleted — with a `retired_note` recording
 the byte-for-byte comparison. Deleted rows cannot be audited; retired rows can. Gate rule
@@ -188,13 +188,13 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | 2026-11-20 | Correct the section number under the no-ratings decision: the clause is Participation Requirements **§6(t)**, read on the live Program Policies page today. §2 has subsections (a) and (b) only. The 2026-11-19 decision stands; its citation did not | Program Policies, fetched and read 2026-11-20 (header: Updated April 14, 2026) | `compare.html` footnote and policy check C-15 now cite §6(t); the row above is kept as written, and FLG-020's "not located" text is superseded by a located clause |
 | 2026-11-20 | Add five rows to the machine-readable policy register for the clauses that bind an automated publisher: no price tracking or alerting (§6(y)), no artificial clicks or impressions "by way of a robot or software program or otherwise" (§6(s)), no incentive for using Special Links and none of it inside Amazon customer content (§6(g), §6(p)), no framing and no altered Program Content (§6(a), §6(n)), and original-content plus public-availability eligibility (§1) with the dual-attribution limit (Commission Income Statement §5) | Program Policies, read 2026-11-20 · `data/policy-checks.json` C-16..C-20 | `ideas.html` now rejects price-drop alerts and synthetic traffic on the clause that forbids them, rather than on taste |
 | 2026-11-20 | Publish the shop-polish defects found by reading the built HTML as five register rows (SG-49..SG-53; they arrived as SG-36..SG-41, moved to SG-43..SG-48, and settled here as upstream filled each range first — one ID, one meaning); the sixth idea, dating the seasonal block, was withdrawn as a duplicate of upstream's SG-43, which words the same request betteras SG-49..SG-53 and renumbered when upstream filled those IDs) instead of editing the pages under another session's active claim | `data/suggestions.json` · `docs/policy-verification-2026-11-20.md` | A redesign prompt can be assembled from named, checkable defects; the front page itself waits for the T-46 claim to clear |
-| 2026-11-20 | Re-mirror the digest index to the full register (SG-01..SG-48, SG-21 retired, the SG-25/SG-27 gap documented) and correct the open-questions count in this file | `data/suggestions.json`, `data/open-questions.json` | The digest and the register name the same rows again |
+| 2026-11-20 | Re-mirror the digest index to the full register (SG-01 through SG-48 as the register then stood, SG-21 retired, the SG-25/SG-27 gap documented) and correct the open-questions count in this file | `data/suggestions.json`, `data/open-questions.json` | The digest and the register name the same rows again |
 
 ## Audit findings, session a25ccde6 (2026-11-19)
 
 | ID | Finding | Severity | Status |
 |---|---|---|---|
-| I-01 | `direction.html` carried SG-01..SG-08 with meanings different from `data/suggestions.json` | high | fixed — three generated registers, ID prefixes are exclusive |
+| I-01 | `direction.html` carried SG-01 through SG-08 with meanings different from `data/suggestions.json` | high | fixed — three generated registers, ID prefixes are exclusive |
 | I-02 | Customer star ratings and rating counts rendered on four pages | high | fixed — removed; gate rule `D10-no-ratings` |
 | I-03 | Data registers cited S07 and S08, which `sources.json` never defined | medium | fixed — S07/S08/S09/S19-S21 now defined; gate rule `D06-source-refs` |
 | I-04 | `feed.xml` described the gift guide as "five verified kitchen gifts, $16.99-$149.99" and the capacity guide as using a "whole-chicken test" the site never ran | high | fixed — descriptions rewritten; gate rules `D11`, `D12` |

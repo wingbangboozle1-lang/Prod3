@@ -1307,3 +1307,6 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 - Gates on the rebuilt tree: build_chrome/build_registers freshness OK; check_site.py, verify_site.py, crawl_links.py (31 pages, 30 reachable, no broken links/anchors/orphans), tools/check_site.py all pass.
 - Irregularity logged: flagged.html contains duplicate FLG-020 and FLG-021 identifiers (different subjects, pre-existing); not renumbered in this round — owner to decide.
 - PR #37 Pages runs 44689292593 / 44689291961: outcomes to be confirmed by exact run ID after this push.
+- PR: https://github.com/wingbangboozle1-lang/Prod3/pull/38 (arena/59a087a1-prod3 → main), merged 2026-11-20T06:46:23Z with a merge commit (no approval wait, no auto-merge).
+- Pages: run 44690171255 (merge commit 372afb0) completed success; live questions.html confirmed serving the Official source column.
+- Status: T-46 done.

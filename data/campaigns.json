@@ -1,6 +1,8 @@
 {
   "generated": "2026-11-19",
-  "premise": "This ledger starts empty on purpose. A column is filled only from an authorized first-party report, and every filled row carries the date the report was read. No estimate, projection or modelled figure belongs in this file.",
+  "tracking_id": "shopnow047c-20",
+  "canonical_ledger": "data/campaign-ledger.json",
+  "premise": "This file carries the column definitions for the campaign ledger. The canonical ledger — tracking id, defined events, provenance trail and rows — is data/campaign-ledger.json; both files start empty on purpose. A column is filled only from an authorized first-party report, and every filled row carries the date the report was read. No estimate, projection or modelled figure belongs in either file.",
   "definitions": {
     "timestamp": "ISO 8601 UTC instant at which the row was recorded.",
     "source": "Where the numbers came from, naming the exact report — for example \"Associates Click Reports\" or \"Associates Orders Report\".",

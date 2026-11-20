@@ -3374,6 +3374,17 @@ Eight freshness checks (`build_chrome`, `build_registers`, `build_decisions`, `b
 `tools/verify_site.py` · `tools/check_site.py` (44 pages, D31–D46 + P/I series) ·
 `tools/crawl_links.py` (0 broken links, 0 dead anchors, 0 orphans).
 
+### Final release record
+
+- **PR #106** (this session): https://github.com/wingbangboozle1-lang/Prod3/pull/106 — **merged**
+  `7ae4d80` (merge without waiting for approval, per the brief).
+- **GitHub Pages:** `Deploy GitHub Pages` run on `7ae4d80c` — **success**; site status **built** at
+  https://wingbangboozle1-lang.github.io/Prod3/ (the legacy `pages build and deployment` path is the
+  FLG-024 dual-path; judge deploys by the workflow run and the live URL).
+- **Gates at merge:** all eight freshness checks, `scripts/check_site.py`, `tools/verify_site.py`,
+  `tools/check_site.py` (44 pages), `tools/crawl_links.py` (0 broken links) — green on the merged
+  tree immediately before the PR was opened.
+
 ### Open after this session (owner-side, non-blocking)
 
 - **FLG-043**: is the front-page starting pick (option A) the decided spine? Register says proposed.

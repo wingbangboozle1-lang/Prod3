@@ -1142,3 +1142,10 @@ git diff --check                           clean
 - **Collision log:** T-25 was taken by PR #27 (arena/70e8475c), and T-26 by PR #30 (arena/e83cdf55). This session's first two claims were withdrawn and renumbered to T-37. No other session's work was overwritten; the history was kept with `-s ours` merges, not force-pushes.
 
 **PR and merge (T-38).** PR: https://github.com/wingbangboozle1-lang/Prod3/pull/33 (`arena/9f36f5ee-prod3` → `main`). Merge result is recorded in the next integration record after the merge.
+### T-38 integration record (session `arena/9f36f5ee-prod3`, 2026-11-20)
+
+- **PR #33:** https://github.com/wingbangboozle1-lang/Prod3/pull/33 (`arena/9f36f5ee-prod3` → `main`), head `694a95a`, merged with `gh pr merge 33 --merge`, `mergedAt` 2026-11-20T06:27:52Z, merge commit `266c1a63d642913d8d894f1521c6d56642fbabd5`.
+- **Pre-merge gates:** all green on the branch (scripts/check_site, verify_site, tools/check_site incl. D15, the four `--check` freshness gates, crawl_links, feed/sitemap XML well-formed, `git diff --check`).
+- **GitHub Pages:** `Deploy GitHub Pages` and `pages build and deployment` both `completed / success` for `266c1a6`.
+- **Live check:** https://wingbangboozle1-lang.github.io/Prod3/flagged.html serves FLG-020 and FLG-021 (the two new flags).
+- **Not claimed:** Associates account status, intended ASINs, Special Link validity, tracking-report attribution, Search Console, analytics volume, live traffic.

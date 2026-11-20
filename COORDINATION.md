@@ -45,7 +45,7 @@
 | T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-26 | Final integration integrity pass: reconcile product-intent evidence, link/policy copy, automation claims, and flags; strengthen gates; re-run site and Pages release checks | done (2026-11-20, PR and Pages result below) | `arena/e83cdf55-prod3` | `data/verification.json`, `data/policy-checks.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `flagged.html`, `suggestions.html`, `questions.html`, `docs/verification.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `scripts/check_site.py`, `tools/check_site.py`, `tools/verify_site.py`, `COORDINATION.md` |
 | T-39 | Final integration for the 2026-11-20 round (renumbered from a colliding T-26 claim; see handoff log): fresh line-by-line review of all registers and published pages, fix demonstrable defects only (stale DIRECTION cross-references and SG-22..30 index vs register, nine-article counts), flag the dual Pages deploy paths as FLG-024, re-run all gates, PR → main, merge, confirm live deploy | done (PR #36, merge commit `a861ed7`; deploy + live check recorded below) | `arena/09d7261c-prod3` | `COORDINATION.md`, `DIRECTION.md`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `flagged.html`, Pages repo settings (build_type) |
-| T-46 | Integration pass for the 2026-11-20 request: re-run all gates on the current tree, re-fetch the live site and the five short links, re-check the Pages deploy, record blockers that need owner accounts; publish a dated verification record; PR → main, merge, confirm live deploy | done (2026-11-20; PR and merge record below) | `arena/cafc55da-prod3` | `COORDINATION.md` only |
+| T-46 | Final integration round (session 59a087a1): live line-by-line re-verification of the five published listings against the official Amazon pages (specs only — no prices, ratings or offers recorded), register the official sources that are missing so no register row is left "No official source" where a genuine official source exists, publication-polish fixes, re-run every gate, PR → main, merge, confirm Pages deploy | in progress | `arena/59a087a1-prod3` | `data/products.json`, `data/sources.json`, `data/citations.json`, `data/decisions.json`, `data/open-questions.json`, `data/flagged.json`, `data/verification.json`, `articles/*`, `index.html`, `buying-guide.html`, `air-fryers.html`, `meat-thermometers.html`, `scripts/build_registers.py`, `scripts/build_chrome.py`, `tools/check_site.py`, `tools/verify_site.py`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -1296,37 +1296,14 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 
 *(final micro-PR: T-26 → T-39 label fix on direction.html + this record)*
 
-## Session arena/cafc55da-prod3 — T-46 integration pass (2026-11-20)
+## T-46 completion record (arena/59a087a1-prod3)
 
-Branch `arena/cafc55da-prod3` cut from `main` at `7c1b939` (PR #37). The request asked for a full build. Most of it already exists on `main` and was checked again here; the rest depends on owner accounts or owner decisions that this sandbox cannot make or verify, so nothing was invented to fill them. Board hygiene: the stale `in progress` duplicate rows for T-20/T-21/T-22 (superseded by the `done` rows) and T-19 (stale claim, session 65412034) are marked superseded. No site content changed in this pass.
-
-### What was checked (2026-11-20)
-
-| Check | Result | Source / evidence |
-|---|---|---|
-| Release gates on the current tree: `build_chrome --check`, `build_registers --check`, `build_decisions --check`, `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`, `tools/crawl_links.py` | all pass; 31 pages; 0 broken links, 0 dead anchors, 0 orphans | local run |
-| Amazon anchors on all 31 HTML pages | 215 of 215 carry `rel="sponsored"`; 0 violations | local scan |
-| Exact Associates disclosure sentence on every page | present on 31 of 31 pages | local scan; Operating Agreement §5 (`data/sources.json`) |
-| Live front page | serves the disclosure strip above the first heading, the five-product short list, the chooser and the nav group | `https://wingbangboozle1-lang.github.io/Prod3/` fetched 2026-11-20 |
-| `link.amazon/B04G1MEwY` | ends at `https://www.amazon.com/` (homepage), not a product page, on the 2026-11-20 fetch | `https://link.amazon/B04G1MEwY` fetched 2026-11-20; remains FLG-017 |
-| Pages deploy | `status: built`, source `main:/`; latest `Deploy GitHub Pages` runs on `main` (PR #36, #37) succeeded | `gh api repos/wingbangboozle1-lang/Prod3/pages`; `gh run list` |
-| Dashboard surfaces reachable | nav group (6 links) and footer (23 links) cover suggestions, questions, decisions, direction, flagged, sources, citations, analytics, disclosure, executive summary | `index.html` markup |
-
-### Blockers that remain owner-side (not blocking the merge)
-
-- **Intended ASINs, Special Link test, Associates account status:** FLG-001, FLG-006, FLG-010. Requires the enrolled Associates account (SiteStripe / Special Links) — not reachable from this sandbox.
-- **B04G1MEwY routing:** FLG-017 (still lands on the Amazon homepage on 2026-11-20).
-- **Search Console property, analytics endpoint, reader-signup provider:** DT-03, DT-07, FLG-014. The site is a static GitHub Pages build; a self-hosted endpoint needs an external host and an owner decision.
-- **Publishing cadence and who writes the next guide:** DT-10 / Q-14 (owner-only). No cadence has been set in this pass.
-- **Share-debugger check of the social card:** F-21 / Q-21.
-- **Pages build type:** FLG-024 (owner one-click: Settings → Pages → Source: GitHub Actions).
-
-### Sources
-
-Official: Amazon Associates Operating Agreement and Program Policies, FTC *Disclosures 101*, Google `rel="sponsored"` guidance, GitHub Pages documentation — all as listed in `data/sources.json` and `sources.html`. Amazon listing pages: the five `amazon.com/dp/<ASIN>` URLs in `data/products.json`. No new claims about traffic, conversions, product superiority, or prices were added.
-
-### Irregularities (flagged, published on `flagged.html`)
-
-- Board: duplicate `T-20/T-21/T-22` rows and a stale `T-19` row existed on the board before this pass; now marked superseded (not deleted).
-- FLG-017 re-confirmed on 2026-11-20 by this session's independent fetch.
-
+- Status: done — ready for PR to main.
+- Official listing checks, 2026-11-20 (fetch_page of amazon.com/dp pages): S29 B0CDY277D3, S30 B09B7SB46R, S31 B08DKYBTPH, S32 B0DHZTCNR5, S33 B0DZFD6R9Z. Recorded in data/products.json under `official_listing_check_2026_11_20`; intended-ASIN fields are unchanged (still owner-unconfirmed, FLG-001).
+- New conflicts published: FLG-022 (P-01 title 6 qt vs details table 6 liters); FLG-023 (P-03 450°F title vs 200–400°F spec; 1000W bullet vs 1700W spec). Cards on air-fryers.html now show both readings.
+- Google Search Console sources registered: S26 (developers.google.com Search Console get-started), S27 (support.google.com ownership verification 9008080), S28 (support.google.com getting started 10267942). DT-03 now cites S26–S28 (evidence verified); Search Console questions cite them too.
+- questions.html: new "Official source" column generated from data/open-questions.json; rows without a registered source show "No official source".
+- Seasonal block corrected: "Thanksgiving is Thursday, 26 November" (2026-11-26 is the fourth Thursday of November).
+- Gates on the rebuilt tree: build_chrome/build_registers freshness OK; check_site.py, verify_site.py, crawl_links.py (31 pages, 30 reachable, no broken links/anchors/orphans), tools/check_site.py all pass.
+- Irregularity logged: flagged.html contains duplicate FLG-020 and FLG-021 identifiers (different subjects, pre-existing); not renumbered in this round — owner to decide.
+- PR #37 Pages runs 44689292593 / 44689291961: outcomes to be confirmed by exact run ID after this push.

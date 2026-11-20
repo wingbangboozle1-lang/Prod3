@@ -1612,3 +1612,21 @@ session's work:
 Final gates on the merged tree: `build_chrome --check`, `build_registers --check`,
 `build_decisions --check`, `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`,
 `tools/check_site.py` (37 pages, 5,436 assertions) and `tools/crawl_links.py` — all pass.
+
+#### Superseded claim text, kept for the record
+
+This session's original claim was written as **T-47** before three other sessions took T-47/48/49/50.
+The authoritative row is **T-51** above; the file scope and task are the same, and the work landed on the rebuilt branch.
+The claim text is kept here so the board shows what was claimed, when, and why the number moved. Nothing was deleted.
+
+**Claim (pushed first, before any edit).** Base commit `7c1b939`; rebased onto `372afb0`.
+Renumbered **T-46 → T-47** on rebase: session `arena/59a087a1-prod3` had already claimed
+T-46 for the official-listing checks below. Their row and record are untouched.
+
+| ID | Task | Status | Owner | File scope |
+|----|------|--------|-------|------------|
+| T-47 | Correct demonstrable citation errors against the official Program Policies / Operating Agreement text; record the dated 2026-11-20 five-link observation as a second, separate record; remove duplicated card markup that makes the shop read as generated; add a gate that binds every Program Policies clause citation to a verified clause map; refresh the summaries; PR → main, merge, confirm Pages | in progress | `arena/d42249a7-prod3` | `data/policy-checks.json`, `data/policy-clause-map.json` (new), `data/citations.json`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `data/products.json`, `flagged.html`, `citations.html`, `questions.html`, `suggestions.html`, `ideas.html`, `compare.html`, `index.html`, `direction.html`, `DIRECTION.md`, `tools/check_site.py`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `README.md`, `COORDINATION.md` |
+
+Not editing: `assets/product-art/*` (typographic label art is deliberate and compliant —
+FLG-008), article bodies, `assets/app.js`, `sitemap.xml`, `feed.xml` (authoritative
+generated surfaces; regenerated only by their own builders if a builder input changes).

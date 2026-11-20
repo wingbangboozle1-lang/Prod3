@@ -32,17 +32,13 @@ options, and recommendations live there.
 | SG-17 | Make the Product Advertising API the only path to displayed prices | proposed | owner |
 | SG-18 | Choose guide nine from measured queries, not instinct | proposed | editorial |
 | SG-19 | Mobile-first tap-target pass: every control ≥44px (48px at touch widths) with ≥8px spacing | implemented | engineering |
-| SG-20 | Pick one product as the site's spine and let the other four support it | proposed | owner |
-| SG-21 | [RETIRED — duplicate of SG-20] Pick one product as the site's spine and let the other four support it | retired — Verified duplicate on 2026-11-20: SG-20 and SG-21 carried byte-identical title, problem, evidence, options, recommendation, effort, confidence, owner and blocks fields. SG-21 is retained here as a retired row rather than deleted, so the register shows what happened instead of silently shrinking. Action SG-20, never both. | owner |
+| SG-20 | Ask the Associates account one question and let the answer price the whole site | proposed | owner |
+| SG-21 | Pick one product as the site's spine and let the other four support it | proposed | owner |
 | SG-22 | Write the first-hand answer only after someone has actually used the appliance for a month | proposed | owner |
 | SG-23 | Make one page the definitive answer to "how big is it really" | implemented | editorial |
 | SG-24 | Give the site a named editor before giving it a voice | proposed | owner |
 | SG-25 | Stop calling it a decision log until decisions are actually recorded there | implemented | engineering |
-<<<<<<< HEAD
-=======
 | SG-26 | Run the reader-facing polish path: authorship, navigation, brand, imagery, seasons, and clusters | partly implemented | owner |
-**Gap, 2026-11-20 (FLG-029):** this digest listed a "one generated chrome for all pages" row carrying an id that does not exist in `data/suggestions.json`, and the register skips from SG-25 to SG-27. Either a row was renumbered during a merge or one was never written. Neither is reconstructed here; the digest now names the ids that exist, and gate `D29` fails the build if it cites another phantom id. **Resolved 2026-11-20 (T-27 integration):** SG-26 is now registered &mdash; the reader-facing polish-path row that carries the parallel passes SG-27..SG-31 &mdash; so the register no longer skips a number and the digest cites no phantom id; this note is kept for the audit trail.
->>>>>>> origin/main
 | SG-27 | One name for the Direction page, in the nav and the footer | implemented | engineering |
 | SG-28 | Ship the RSS feed and advertise it on every page | implemented | engineering |
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
@@ -71,6 +67,10 @@ options, and recommendations live there.
 | SG-52 | Drop the price placeholder line and keep the button | proposed | editorial |
 | SG-53 | Put the disqualifier directly under the buy button | proposed | editorial |
 | SG-54 | Before any automated Amazon listing or price refresh, use the Product Advertising API or make the fetcher identify itself under the IP License Agent Terms | proposed | owner |
+| SG-55 | Stand up the self-hosted analytics endpoint the spec already describes, or keep measurement local-only | proposed | owner |
+| SG-56 | Design brief for the next design pass: the concrete asks that beat the generated look | proposed | design |
+| SG-57 | Seasonal topic clusters: working titles for the next cluster, chosen as moments, not products | proposed | editorial |
+| SG-58 | Publishing cadence: one question-shaped guide a month, joined to the sitemap and the feed on day one | implemented | owner |
 <!-- sg-index:end -->
 
 **Gap, 2026-11-20 (FLG-029):** the ID slot between SG-25 and SG-27 is unoccupied in `data/suggestions.json`. This digest once listed a "one generated chrome for all pages" row carrying an id that does not exist in the register, and the suggestion-id finding is published as FLG-029 on `flagged.html`. Nothing is reconstructed to fill a number. Gate `D29` fails the build if this digest cites an id the register does not hold, and `scripts/build_digest.py` now generates the table above from the register so it cannot drift again.

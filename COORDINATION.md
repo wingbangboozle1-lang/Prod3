@@ -816,6 +816,7 @@ session does not reopen them.
 | T-34 | Three working decision tools: comparison builder, measurement converter, oven-to-air-fryer cheat sheet | done | arena/2ef30474-prod3 | `tools/*.html` (new), `assets/decision-tools.js` (new) |
 | T-35 | Seasonality module: which guide a reader should see by month, stated as editorial judgement not demand data | done | arena/2ef30474-prod3 | `assets/brand.js`, `index.html`, `articles/holiday-kitchen-gift-guide.html` |
 | T-36 | Gate extension for the new surfaces; then integration PR → `main`, merge, confirm Pages | done | arena/2ef30474-prod3 | `tools/check_site.py`, `scripts/build_sitemap.py`, `.github/workflows/pages.yml`, all |
+| T-37 | Publication-polish follow-up on current `main`: RSS `rel="alternate"` in the head of all 30 pages; SG-27..SG-30 registered with evidence-based status; FLG-017 added to `data/flagged.json`; footer link label "Search Console is connected" reworded to "Search Console setup" | done (2026-11-20) | arena/e52053d1-prod3 | `*.html` (head feed link + one index.html label), `data/suggestions.json`, `data/flagged.json`, generated `suggestions.html`, `decisions.html`, `COORDINATION.md` |
 
 **Non-overlap:** no other session has a live claim (every earlier row is `done`, and its
 branch is merged). If a session appears while this one is running, this scope is
@@ -1052,3 +1053,41 @@ Scope: integrity pass on product-intent provenance, policy-record copy, and gate
 
 **Not claimed:** Associates enrollment, intended ASINs, Special Link validity, tracking-report attribution, Search Console, analytics volume, or live traffic.
 
+
+## Session arena/e52053d1-prod3 — T-37 (2026-11-20)
+
+**Collision and handoff log.** This session first claimed T-25 and built a 2026-11-20 link re-check. Before its push, `origin/main` gained PR #27 (`arena/70e8475c-prod3`), which already held T-25 for the same re-check and FLG-017. Rebase conflicted on this file. Resolution: the duplicate T-25 work was dropped from this branch and not pushed. The other session's work is unchanged. This session then renumbered to **T-26** for the non-overlapping parts. A later `main` (PR #26 and the shop-first rebuild `9032a35`) changed the nav and generated the page chrome, so this pass was reduced again to what `main` still lacked. Two branch-history merges with `-s ours` were used to keep the remote branch history without force-pushing.
+
+**ID note.** Renumbered from T-26: T-26 was already taken on `main` by session `arena/e83cdf55-prod3` (PR #30), so this record uses T-37, the next free ID on the board.
+
+**What changed**
+
+1. **RSS head link on the pages that lacked it.** On `origin/main` at `c49de86`, 20 of 30 HTML pages had no `<link rel="alternate" type="application/rss+xml">` in their head. The head is hand-written (`scripts/build_chrome.py` owns only the header and footer markers), so the link was added directly. All 30 pages now carry it.
+2. **SG-27..SG-30 registered** in `data/suggestions.json`. The request named these rows, but the register ended at SG-25. SG-27 (one name for the Direction page) is `implemented` upstream in `9032a35`. SG-28 (RSS) is `implemented` by this pass. SG-29 (Search Console) and SG-30 (reader capture) are `proposed`, owner-decided, and not verified from this environment.
+3. **FLG-017 added to `data/flagged.json`** so the machine-readable register matches `flagged.html`. The re-check and the `flagged.html` callout are from PR #27.
+4. **Footer/home link label reworded.** `index.html` had a link labelled "Search Console is connected" (inside a sentence that says "When … is connected"). No Search Console property exists, so the link now reads "Search Console setup". Owner-side item SG-29 is unchanged.
+5. **Generated files regenerated, not hand-edited:** `suggestions.html` (`build_registers.py`) and `decisions.html` (`build_decisions.py`).
+
+**Verification (all exit 0 on this branch)**
+
+```
+python3 scripts/check_site.py              all checks passed
+python3 tools/verify_site.py               release gate passed
+python3 tools/check_site.py                all additional rules passed
+python3 scripts/build_sitemap.py --check   up to date
+python3 scripts/build_registers.py --check register pages match data/*.json
+python3 scripts/build_chrome.py --check    chrome current on 30 pages
+python3 scripts/build_decisions.py --check decisions.html matches its data
+python3 tools/crawl_links.py               no broken links, no dead anchors, no orphans
+feed.xml, sitemap.xml                       well-formed XML
+rel=alternate feed link                    30 of 30 pages
+git diff --check                           clean
+```
+
+**Sources:** no new external source. SG-27..30 cite only repo files, the FLG-014 record, and `git log` history.
+
+**Irregularities (non-blocking)**
+- The T-25 collision above, logged rather than edited on the other session's row.
+- The SG-27..30 rows the request named did not exist in the register before this pass.
+- Owner-side items unchanged: FLG-001, FLG-006, FLG-010, FLG-015, FLG-016, FLG-017 (short-link check in the Associates workflow), SG-29 (Search Console), SG-30 (reader capture).
+- Not done: a self-hosted analytics endpoint. GitHub Pages cannot receive POST requests, and the repo has no backend.

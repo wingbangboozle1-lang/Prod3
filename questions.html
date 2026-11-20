@@ -197,16 +197,16 @@
   <td><span class="small">Whether the site&#x27;s own ledger should mirror Amazon&#x27;s definition or use a page-view-based one.</span></td>
   <td><span class="small">Adopt Amazon&#x27;s definition verbatim for any column that will be reconciled against Associates reporting; use a separate, clearly named column otherwise.</span></td>
   <td><span class="small">engineering · one decision</span><br><span class="badge grey">queued</span></td>
-  <td class="small"><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a> · <a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></td>
+  <td class="small"><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></td>
 </tr>
 <tr>
   <td><strong>Q-18</strong></td>
-  <td><strong>Does the owner have Search Console access for this GitHub Pages site, and will they verify it this month?</strong><br><span class="small muted">Blocks: Every measured-topic decision (SG-07, SG-18, Q-04, Q-17).</span></td>
+  <td><strong>Does the owner have Search Console access for this GitHub Pages site, and will they verify it this month?</strong><br><span class="small muted">Blocks: Every measured-topic decision (SG-07, SG-18, Q-17).</span></td>
   <td><span class="small">The site emits sitemap.xml and robots.txt pointing at it; verification is an account action, not a code action.</span></td>
   <td><span class="small">Whether anyone will actually open the property. Without it the site publishes blind.</span></td>
   <td><span class="small">Owner adds the property in Search Console, verifies via DNS or file upload, submits sitemap.xml, and reports back. Ten minutes, once.</span></td>
   <td><span class="small">owner · 10 minutes</span><br><span class="badge grey">blocking</span></td>
-  <td class="small"><a href="https://developers.google.com/search/docs/appearance/snippet" rel="noopener">S24</a></td>
+  <td class="small"><span class="unverified">No official source</span></td>
 </tr>
 <tr>
   <td><strong>Q-28</strong></td>
@@ -246,7 +246,7 @@
   <td><span class="small">Whether the owner deliberately chose the older ASIN, or supplied a stale link.</span></td>
   <td><span class="small">Compare the two listings directly and decide. If the newer one is chosen, update intended.asin and record the change with a date — never edit observed.</span></td>
   <td><span class="small">owner · 10 minutes</span><br><span class="badge grey">owner-only</span></td>
-  <td class="small"><a href="https://www.amazon.com/dp/B08DKYBTPH" rel="sponsored noopener">S12</a> · <a href="https://www.amazon.com/dp/B0DHZTCNR5" rel="sponsored noopener">S13</a></td>
+  <td class="small"><a href="https://www.amazon.com/dp/B0DHZTCNR5" rel="sponsored noopener">S13</a></td>
 </tr>
 <tr>
   <td><strong>Q-11</strong></td>
@@ -315,8 +315,8 @@
 <tbody>
 <tr>
   <td><strong>Q-22</strong></td>
-  <td><strong>Why do the supplied short links sometimes end at the Amazon homepage instead of a product page — on 2026-11-20, four of the five did so in at least one recorded attempt?</strong><br><span class="small muted">Blocks: Whether any buy button can be attributed at all when its destination varies within a day, and which links a fresh Special Link should replace.</span></td>
-  <td><span class="small">On 2026-11-19 all five ended at a product page. Three dated passes on 2026-11-20 disagree and all are kept: (1) an earlier session (data/products.json, live_recheck_2026_11_20) — B04G1MEwY ended at https://www.amazon.com/ twice, the other four ended at their product pages; (2) session arena/ce911db5-prod3 — B0c8moW59 ended at https://www.amazon.com/ twice (kept on FLG-023, this row and the coordination board, not in data/products.json); (3) session arena/74e655e9-prod3 (data/products.json, live_recheck_2026_11_20_session_74e655e9) — B04G1MEwY reached its product page twice, B02NbDxp3 and B00hJ57DV ended at the homepage, B0c8moW59 returned HTTP 500 then reached its product page, and B0f3GKalj reached its product page. No final URL in pass 3 carried tag=shopnow047c-20. Nothing is deleted and no tie is broken.</span></td>
+  <td><strong>Why do the supplied short links sometimes end at the Amazon homepage instead of a product page?</strong><br><span class="small muted">Blocks: Whether any buy button can be attributed at all when its destination varies within a day, and which links a fresh Special Link should replace.</span></td>
+  <td><span class="small">On 2026-11-19 all five ended at a product page. Six dated passes on 2026-11-20 disagree and all are kept: (1) an earlier session (data/products.json, live_recheck_2026_11_20) — B04G1MEwY ended at https://www.amazon.com/ twice, the other four ended at their product pages; (2) session arena/ce911db5-prod3 — B0c8moW59 ended at https://www.amazon.com/ twice (kept on FLG-031, this row and the coordination board); (3) session arena/6bf60cac-prod3 (live_recheck_2026_11_20_link_check) — all five ended at the homepage (FLG-025); (4) session arena/6c0972fb-prod3 recorded the same independently for all five (FLG-039); (5) session arena/d52ad947-prod3 again recorded the homepage for B04G1MEwY and B0c8moW59; (6) session arena/74e655e9-prod3 (live_recheck_2026_11_20_session_74e655e9) — B04G1MEwY reached its product page twice, B0c8moW59 reached its product page after an HTTP 500, and B0f3GKalj reached its product page, while B02NbDxp3 and B00hJ57DV ended at the homepage; no final URL in pass 6 carried tag=shopnow047c-20. Nothing is deleted and no tie is broken.</span></td>
   <td><span class="small">Whether the cause is link expiry, a signed-out fetch versus an enrolled account, a profile gate or a transient response. None can be distinguished from outside the account, so none is asserted.</span></td>
   <td><span class="small">Signed in, open each of the five links once. Note the final URL, whether it lands on the product or the homepage, and whether it carries tag=shopnow047c-20. Then check Link Reports for a same-day click. If a link still lands on the homepage there, regenerate that Special Link from the product page with SiteStripe and record the new URL.</span></td>
   <td><span class="small">owner · 15 minutes, signed in</span><br><span class="badge grey">blocking</span></td>

@@ -42,6 +42,7 @@
 | T-23 | Line-by-line verification of data registers and published claims against official sources; fix only demonstrable defects; final integration PR → main, merge, confirm Pages deploy | done (PR #18, https://github.com/wingbangboozle1-lang/Prod3/pull/18) | arena/28d2d6c0-prod3 | `data/sources.json`, `data/analysis.json`, `data/flagged.json`, `data/policy-checks.json`, `sources.html`, `tools/verify_site.py` (source-resolution gate), `COORDINATION.md` |
 | T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
+| T-25 | 2026-11-20 live re-check of the five supplied short links and both Associates policy pages (official sources); record dated observation separately from the 2026-11-19 observation; flag the changed B04G1MEwY result as FLG-017; refresh executive summaries | done (see log) | arena/70e8475c-prod3 | `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
 
@@ -829,3 +830,35 @@ Claimed and completed the executive-summary refresh only. Scope: `executive-summ
 - **Pre-merge verification (all pass):** `python3 scripts/check_site.py` (24 HTML pages), `python3 tools/verify_site.py` (21 sources; release gate passed), `python3 tools/check_site.py` (24 pages / 2,521 assertions), `python3 scripts/build_sitemap.py --check`, `python3 scripts/build_registers.py --check`, `git diff --check`.
 - **GitHub Pages deploy:** workflow run `44686152047` (Deploy GitHub Pages) — success on the merged SHA; companion build run `44686151504` — success. Pages API status: `built`, source `main:/`, URL https://wingbangboozle1-lang.github.io/Prod3/. Live spot-check of `/executive-summary.html` after the earlier deploy confirmed the updated summary, dated intent/observed link table, official-source links, and above-the-fold disclosure.
 - **Not claimed:** Associates account enrollment/eligibility (FLG-010), intended product confirmation (FLG-001), Special Link compliance/testing (FLG-006), social-preview debugger validation (F-21/SG-16/Q-21), Search Console setup, server analytics endpoint, or email provider — all remain flagged on `flagged.html` / `questions.html` and were not verified by this session.
+
+## Session arena/70e8475c-prod3 — T-25 (2026-11-20)
+
+Scope: live re-check only. No intended-ASIN, price, rating, or account value was added, and no new product was introduced. Single commit for claim, work, and log.
+
+**Live fetches (2026-11-20, `fetch_page`):**
+
+| Supplied link | Final URL read | Result vs 2026-11-19 |
+|---|---|---|
+| https://link.amazon/B04G1MEwY | https://www.amazon.com/ (homepage), 2 attempts | **Changed.** 2026-11-19 ended at `B0CDY277D3`. Flagged as FLG-017. |
+| https://link.amazon/B02NbDxp3 | https://www.amazon.com/dp/B09B7SB46R | Same ASIN |
+| https://link.amazon/B00hJ57DV | https://www.amazon.com/dp/B08DKYBTPH | Same ASIN |
+| https://link.amazon/B0c8moW59 | https://www.amazon.com/dp/B0DHZTCNR5 | Same ASIN |
+| https://link.amazon/B0f3GKalj | https://www.amazon.com/dp/B0DZFD6R9Z | Same ASIN |
+| https://www.amazon.com/dp/B0CDY277D3 (control) | product page, title matches | Product page live |
+
+**Official policy pages re-read 2026-11-20:** [Operating Agreement](https://affiliate-program.amazon.com/help/operating/agreement) (Updated October 15, 2025) and [Program Policies](https://affiliate-program.amazon.com/help/operating/policies) (Updated April 14, 2026). Both match `data/sources.json`.
+
+**Changes made:**
+- `data/products.json`: new `live_recheck_2026_11_20` object per product (dated, method, final URL, ASIN match). The 2026-11-19 `observed_*` fields and blank `intended_*` fields are unchanged. P-01 gains flag FLG-017.
+- `flagged.html`: FLG-017 added (B04G1MEwY ending at homepage; cause not established; owner check in the Associates workflow).
+- `executive-summary.html`, `EXECUTIVE_SUMMARY.md`: status note and link table now say the 2026-11-20 re-check happened and what it found. They no longer say no live check was made.
+
+**Gates (all pass on the working tree):** `tools/verify_site.py` (release gate passed), `tools/check_site.py` (24 pages, 2589 assertions), `scripts/check_site.py`, `scripts/build_sitemap.py --check`, `scripts/build_registers.py --check`, `git diff --check`.
+
+**Irregularities for owner review:**
+- FLG-017 — B04G1MEwY resolves to the Amazon homepage today; it resolved to B0CDY277D3 on 2026-11-19. The product page itself is live. The cause is not established. It may be transient or a link-level change. A fetch cannot tell these apart.
+- FLG-001, FLG-006, FLG-010 remain open and are unchanged by this session.
+- Prices and ratings were not recorded in this re-check (FLG-007, FLG-012).
+- Not claimed: Associates account status, Special Link test in the enrolled workflow, and any campaign report.
+
+**Remaining owner-side gates:** FLG-001 (intended ASIN per link), FLG-006 (Special Link test), FLG-010 (account), FLG-017 (B04G1MEwY link check in Associates workflow).

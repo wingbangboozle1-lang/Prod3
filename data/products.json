@@ -44,7 +44,8 @@
         "FLG-006",
         "FLG-007",
         "FLG-011",
-        "FLG-012"
+        "FLG-012",
+        "FLG-017"
       ],
       "newer_model_note": null,
       "citation": {
@@ -58,6 +59,17 @@
         "intended_value": null,
         "intended_confirmed_by": null,
         "note": "Observed and intended stay in separate fields. Nothing here confirms that the owner intended this product."
+      },
+      "live_recheck_2026_11_20": {
+        "date": "2026-11-20",
+        "method": "fetch_page of the supplied link.amazon URL; final URL read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "submitted_link": "https://link.amazon/B04G1MEwY",
+        "final_url": "https://www.amazon.com/",
+        "asin_in_final_url": null,
+        "matches_2026_11_19_observed_asin": false,
+        "result": "Redirected to the Amazon.com homepage (https://www.amazon.com/); no /dp/ ASIN in the final URL. Reproduced on a second attempt the same day. The 2026-11-19 observation (B0CDY277D3) was not reproduced.",
+        "intended_asin_changed": false,
+        "flag": "FLG-017"
       }
     },
     {
@@ -116,6 +128,17 @@
         "intended_value": null,
         "intended_confirmed_by": null,
         "note": "Observed and intended stay in separate fields. Nothing here confirms that the owner intended this product."
+      },
+      "live_recheck_2026_11_20": {
+        "date": "2026-11-20",
+        "method": "fetch_page of the supplied link.amazon URL; final URL read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "submitted_link": "https://link.amazon/B02NbDxp3",
+        "final_url": "https://www.amazon.com/dp/B09B7SB46R",
+        "asin_in_final_url": "B09B7SB46R",
+        "matches_2026_11_19_observed_asin": true,
+        "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
+        "intended_asin_changed": false,
+        "flag": null
       }
     },
     {
@@ -172,6 +195,17 @@
         "intended_value": null,
         "intended_confirmed_by": null,
         "note": "Observed and intended stay in separate fields. Nothing here confirms that the owner intended this product."
+      },
+      "live_recheck_2026_11_20": {
+        "date": "2026-11-20",
+        "method": "fetch_page of the supplied link.amazon URL; final URL read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "submitted_link": "https://link.amazon/B00hJ57DV",
+        "final_url": "https://www.amazon.com/dp/B08DKYBTPH",
+        "asin_in_final_url": "B08DKYBTPH",
+        "matches_2026_11_19_observed_asin": true,
+        "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
+        "intended_asin_changed": false,
+        "flag": null
       }
     },
     {
@@ -226,6 +260,17 @@
         "intended_value": null,
         "intended_confirmed_by": null,
         "note": "Observed and intended stay in separate fields. Nothing here confirms that the owner intended this product."
+      },
+      "live_recheck_2026_11_20": {
+        "date": "2026-11-20",
+        "method": "fetch_page of the supplied link.amazon URL; final URL read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "submitted_link": "https://link.amazon/B0c8moW59",
+        "final_url": "https://www.amazon.com/dp/B0DHZTCNR5",
+        "asin_in_final_url": "B0DHZTCNR5",
+        "matches_2026_11_19_observed_asin": true,
+        "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
+        "intended_asin_changed": false,
+        "flag": null
       }
     },
     {
@@ -281,10 +326,22 @@
         "intended_value": null,
         "intended_confirmed_by": null,
         "note": "Observed and intended stay in separate fields. Nothing here confirms that the owner intended this product."
+      },
+      "live_recheck_2026_11_20": {
+        "date": "2026-11-20",
+        "method": "fetch_page of the supplied link.amazon URL; final URL read for an /dp/<ASIN>. No price, rating or offer text recorded.",
+        "submitted_link": "https://link.amazon/B0f3GKalj",
+        "final_url": "https://www.amazon.com/dp/B0DZFD6R9Z",
+        "asin_in_final_url": "B0DZFD6R9Z",
+        "matches_2026_11_19_observed_asin": true,
+        "result": "Redirected to the product page; ASIN in final URL matches the 2026-11-19 observation.",
+        "intended_asin_changed": false,
+        "flag": null
       }
     }
   ],
   "price_snapshot_note": "price_observed fields are archival snapshots dated 2026-11-19. Observation time and delivery location were not recorded; prices are not current offers. See FLG-012.",
   "claim_basis": "Specs, ratings, and prices are seller/listing statements from the snapshot. Claim-marked fields (accuracy, certification, response time, heat-safe ratings, function names) are marketing claims the site has not tested. See FLG-009.",
-  "citation_policy": "Every value rendered on the site must trace to one of: (a) a dated fetch of the official listing, (b) a dated fetch of an official policy page, or (c) arithmetic over (a) that states its inputs. Values with no such trace are left blank and published on flagged.html. See data/citations.json."
+  "citation_policy": "Every value rendered on the site must trace to one of: (a) a dated fetch of the official listing, (b) a dated fetch of an official policy page, or (c) arithmetic over (a) that states its inputs. Values with no such trace are left blank and published on flagged.html. See data/citations.json.",
+  "verified_on_live_recheck": "2026-11-20"
 }

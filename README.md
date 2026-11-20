@@ -44,7 +44,7 @@ The tools use Python's standard library; no third-party Python dependencies are 
 ## Site map
 
 - `index.html` — shop front: a named starting pick with a "look elsewhere if", the rest of the short list, the chooser, the seasonal block, all guides, the full data table
-- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-10), every unanswered question (Q-01..Q-21) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
+- `decisions.html` — **the decision desk.** Every open choice (DT-01..DT-10), every unanswered question (Q-01..Q-23) with what would settle it, the irregularities reproduced before repair, and a three-path chooser
 - `tools/` — comparison builder, oven-to-air-fryer converter, USDA cook-to-temperature card
 - `air-fryers.html`, `meat-thermometers.html` — category hubs
 - `compare.html`, `buying-guide.html` — comparison and decision framework
@@ -71,7 +71,7 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 | Register | Page | Data | IDs |
 |---|---|---|---|
 | Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-31 (SG-21 retired in place; the ID slot between SG-25 and SG-27 is unoccupied — FLG-021) |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-23 |
 | Decisions | `direction.html` | `DIRECTION.md` | dated rows |
 | Flagged findings | `flagged.html` | `data/flagged.json` | F-01..F-21 |
 | Citation log | `citations.html` | `data/citations.json` | claim-to-source rows |
@@ -81,7 +81,7 @@ The checks enforce site structure, disclosures, sponsored-link marking, source r
 | Register | Page | Data | IDs |
 |---|---|---|---|
 | Suggestions | `suggestions.html` | `data/suggestions.json` | SG-01..SG-30 (SG-21 retired) |
-| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-21 |
+| Open questions | `questions.html` | `data/open-questions.json` | Q-01..Q-23 |
 | Decisions to make | `decisions.html` | `data/decisions.json` | DT-01..DT-10 |
 | Decisions taken | `direction.html` | `DIRECTION.md` | dated rows |
 | Flagged findings | `flagged.html` | `data/flagged.json` | FLG-001..FLG-017, F-01..F-21 |

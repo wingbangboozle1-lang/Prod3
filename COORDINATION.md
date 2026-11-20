@@ -1324,8 +1324,8 @@ analytics endpoint (DT-07) · share-debugger check (F-21/Q-21) · Pages build_ty
 | `tools/verify_site.py` | release gate passed |
 | `tools/check_site.py` | all additional rules passed |
 | `tools/crawl_links.py` | 31 pages crawled; no broken links, no dead anchors, no orphans |
-| Amazon anchors on all HTML pages | counted and checked for `rel="sponsored"` (see the run record in this session's final report) |
-| Exact Associates disclosure sentence | present on every page |
+| Amazon anchors on all HTML pages | 226 of 226 carry `rel="sponsored"`; 0 violations (31 pages) |
+| Exact Associates disclosure sentence | present on all 31 pages |
 | `data/products.json` after PR #38 | intended-ASIN fields unchanged and still owner-unconfirmed (FLG-001); the new 2026-11-20 official listing checks are recorded separately under `official_listing_check_2026_11_20` |
 | Pages | `Deploy GitHub Pages` run `44690171472` (PR #38 merge) **success**; companion `pages build and deployment` was in progress at the time of this check |
 

@@ -62,14 +62,14 @@
 <thead><tr><th>Change</th><th>What it replaced</th><th>Enforced by</th></tr></thead>
 <tbody>
 <tr><td><strong>A named starting pick on the front page</strong>, with a &ldquo;look elsewhere if&rdquo; that names the alternative</td><td>Five equally weighted cards and a method paragraph. A shop with no recommendation is a catalogue.</td><td><a href="index.html">index.html</a> · gate <code>D30</code></td></tr>
-<tr><td><strong>One navigation group plus a shelf</strong>, active on all 30 pages</td><td>Six labels with active state on 9 of 24 pages, hand-copied per page</td><td><a href="scripts/build_chrome.py">scripts/build_chrome.py</a> · gate <code>D22</code></td></tr>
+<tr><td><strong>One navigation group plus a shelf</strong>, active on all 31 pages</td><td>Six labels with active state on 9 of 24 pages, hand-copied per page</td><td><a href="scripts/build_chrome.py">scripts/build_chrome.py</a> · gate <code>D22</code></td></tr>
 <tr><td><strong>Three working decision tools</strong>: comparison builder, oven-to-air-fryer converter, USDA cook-to-temperature card</td><td>Guides that described the arithmetic instead of doing it</td><td><a href="tools/index.html">tools/</a> · gates <code>D27&ndash;D29</code></td></tr>
 <tr><td><strong>A decision desk</strong> with every open choice, every unknown, a reproduced defect and three costed paths</td><td>Three registers on three pages with no single place to choose</td><td><a href="decisions.html">decisions.html</a> · gate <code>D21</code></td></tr>
 <tr><td><strong>A dated seasonal guide</strong> that leads with what the calendar makes urgent this week</td><td>A static gift-guide tile that read the same in July</td><td><a href="articles/thanksgiving-temperature-plan.html">Thanksgiving plan</a> · gate <code>D30</code></td></tr>
 <tr><td><strong>The SG-20 duplicate retired in place</strong></td><td>Two identifiers naming one proposal</td><td><a href="suggestions.html">suggestions register</a> · gate <code>D20</code></td></tr>
 </tbody>
 </table>
-<p class="small muted">What did <em>not</em> change: no price is rendered anywhere, every Amazon anchor is <code>rel="sponsored"</code>, the exact &sect;5 disclosure sentence appears in the strip and the footer of all 30 pages, and every new table row carries a source link or an explicit <em>No official source</em> marker.</p>
+<p class="small muted">What did <em>not</em> change: no price is rendered anywhere, every Amazon anchor is <code>rel="sponsored"</code>, the exact &sect;5 disclosure sentence appears in the strip and the footer of all 31 pages, and every new table row carries a source link or an explicit <em>No official source</em> marker.</p>
 
 <h2>The three decisions that actually gate revenue</h2>
 <ol>
@@ -81,7 +81,7 @@
 
 <h2>What is flagged (does not block)</h2>
 <h2>Five supplied links: observed destination is not confirmed intent</h2>
-<p>Targets below are dated observations from the repository's 2026-11-19 records. On 2026-11-20 the five short links were fetched again: four still end at the recorded product page, and <code>B04G1MEwY</code> ended at the Amazon.com homepage (<a href="flagged.html">FLG-017</a>). These observations do not prove which products were intended or validate the Special Links in the enrolled Associates account. The intended-ASIN, official-intended-listing, confirmation-date and confirmation-source fields remain blank until confirmed.</p>
+<p>Targets below are dated observations from the repository's 2026-11-19 records. Same-day checks disagree. The 2026-11-20 record shows product pages for four links (P-02 to P-05) and the Amazon.com homepage for <code>B04G1MEwY</code> (<a href="flagged.html">FLG-017</a>). Another session's note records the homepage for <code>B0c8moW59</code> too (<a href="flagged.html">FLG-023</a>, short-links callout). The check for this addendum found the homepage for all five (<a href="flagged.html">FLG-028</a>). Fetches cannot settle which result is right; the signed-in check in Q-22 can. These observations do not prove which products were intended or validate the Special Links in the enrolled Associates account. The intended-ASIN, official-intended-listing, confirmation-date and confirmation-source fields remain blank until confirmed.</p>
 <div class="table-wrap"><table data-source-required="amazon-listing">
 <thead><tr><th>Submitted token</th><th>Observed listing</th><th>Category</th><th>Intent</th><th>Official source</th></tr></thead><tbody>
 <tr><td><code>B04G1MEwY</code></td><td>Chefman 6 Qt Dual Basket<br><code>B0CDY277D3</code></td><td>Air fryer</td><td>Unconfirmed</td><td><a href="https://www.amazon.com/dp/B0CDY277D3" rel="sponsored noopener">Amazon listing</a></td></tr>
@@ -145,8 +145,14 @@
 <li>The social-preview PNG is present; a share-debugger check remains outstanding. Product photography is not used.</li>
 </ul>
 
-<h2>Release status</h2>
-<p>On the reviewed repository tree, all of these commands pass: <code>python3 scripts/check_site.py</code>, <code>python3 tools/verify_site.py</code>, <code>python3 scripts/build_registers.py --check</code>, and <code>python3 scripts/build_sitemap.py --check</code>. The coordination record documents a successful Pages deployment at the <a href="https://wingbangboozle1-lang.github.io/Prod3/">project site</a>. These checks validate repository content and structure; they do not establish account eligibility, external indexing, traffic, or conversions.</p>
+<h2>Addendum — 2026-11-20, session 2cd3bab9 (T-52)</h2>
+<p>Task T-52. The first claim, T-46, was taken on <code>main</code> by PR #38; the second, T-48, by PR #43, and the third, T-51, by PR #42. This pass ran on the merged tree of <code>origin/main</code> at <code>ddb50f8</code>.</p>
+<p><strong>Verified in this pass.</strong> Six official pages were read on 2026-11-20: the Associates Operating Agreement (S01, updated October 15, 2025; the §5 sentence matches the disclosure), Program Policies (S02, updated April 14, 2026, opening sections only), FTC Disclosures 101 (S03, November 2019), Google's outbound-links guidance (S04, last updated 2025-12-10 UTC), Creators API GetItems (S06, ASIN defined as a 10-character identifier), and NIST TN 2156 (S16). The spot-check did not cover S05, S10–S15, S17–S19 or S21–S25.</p>
+<p><strong>Checked on the merged tree.</strong> The buying guide links all nine guides. All nine feed items carry the same title as their page H1. The publishing-coverage check in <code>tools/verify_site.py</code> (sitemap, feed, hub, cadence) passes, and the eight gates pass.</p>
+<p><strong>Decision.</strong> DT-10 (fixed monthly cadence) is marked decided, on the owner's instruction. One guide per calendar month; approver: the site owner; next guide due 2026-12-31 (<code>docs/publishing-cadence.md</code>). It is a rhythm, not a traffic or revenue forecast. DT-12 (promise or proposal for the twelve-week plan) remains open and is not decided here.</p>
+<p><strong>Five supplied links, 2026-11-20.</strong> This pass also found all five to the Amazon homepage. That agrees with the third dated check recorded under <a href="flagged.html">FLG-025</a>. No product record changed. The intended ASIN for every link stays blank (<a href="flagged.html">FLG-001</a>). No link is called invalid (<a href="flagged.html">FLG-003</a>).</p>
+<p><strong>New flags.</strong> <a href="flagged.html">FLG-032</a>: the coordination board repeats task IDs T-12 to T-23. An earlier note in this session said the T-20 to T-22 duplicates were removed; they are marked superseded, not deleted, so that note was wrong. <a href="flagged.html">FLG-033</a>: 23 of 29 source entries have no verified value, so the register has no consistent fetch date.</p>
+<p><strong>Still not established.</strong> Whether the supplied links work in the enrolled Associates account (<a href="flagged.html">FLG-006</a>; Q-02, Q-04, Q-22). Account eligibility (<a href="flagged.html">FLG-010</a>). The Pages deploy for this merge (see the board record for T-52).</p>
 <p class="mt"><a href="index.html">← Shop the publication</a> · <a href="sources.html">Source register →</a></p>
 </div>
   <h2>Round record — session a9b513e9 (T-51), 2026-11-20</h2>

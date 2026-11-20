@@ -408,9 +408,9 @@
       "severity": "low",
       "area": "Register history",
       "product": "DIRECTION.md",
-      "detail": "Previously published as a second FLG-020: DIRECTION.md described questions whose subjects did not exist in the open-questions register (the digest listed an account-status question as Q-08 while the register carried it elsewhere).",
-      "why_it_matters": "A digest that cites ids which do not exist sends the reader to a page that cannot answer them.",
-      "action": "The account-status question was registered as Q-23 and the link question as Q-22; the digest was corrected. Renumbered from FLG-020 to FLG-028 on 2026-11-20 so one id names one finding.",
+      "detail": "DIRECTION.md described questions whose subjects did not exist in the open-questions register, and the account-status question had never been registered at all. The digest listed \"Q-08 — Is tracking ID shopnow047c-20 on an enrolled, eligible Associates account?\" and described Q-05 as a question about which query set converts; in data/open-questions.json Q-08 is \"what counts as a session for the ledger\" and Q-05 is \"who is the named author\".",
+      "why_it_matters": "A digest that renames questions is worse than no digest: a reader who follows Q-08 lands on a different question.",
+      "action": "Published in full on flagged.html with the original observation retained; gate D28/D29 and I01–I03 now fail the build if the digest cites an id that does not exist or a registered flag stops being published.",
       "status": "fixed 2026-11-20; id renumbered",
       "sources": [
         "S02"
@@ -422,13 +422,37 @@
       "severity": "low",
       "area": "Register history",
       "product": "data/suggestions.json, DIRECTION.md",
-      "detail": "Previously published as a second FLG-021: the digest cited a suggestion id absent from the register, and the register itself skips the SG-26 slot.",
-      "why_it_matters": "A cited proposal that does not exist cannot be reviewed.",
-      "action": "The gap is documented rather than reconstructed, because the original wording of the missing row is unknown. Renumbered from FLG-021 to FLG-029 on 2026-11-20.",
+      "detail": "The digest cited a suggestion id that does not exist in data/suggestions.json (\"One generated chrome for all pages\") and the register runs SG-25 to SG-27 with no SG-26 between them. The likeliest explanation is a row retired or renumbered during a merge, but that is not established, so nothing was reconstructed.",
+      "why_it_matters": "A cited id that resolves to nothing makes the register look authoritative while being unverifiable.",
+      "action": "Published in full on flagged.html with the original observation retained; gate D28/D29 and I01–I03 now fail the build if the digest cites an id that does not exist or a registered flag stops being published.",
       "status": "open — SG-26 slot intentionally left unoccupied and documented",
       "sources": [
         "S02"
       ],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-032",
+      "severity": "medium",
+      "area": "Coordination board: duplicate task identifiers",
+      "product": "COORDINATION.md",
+      "detail": "The board has two or more rows for each of T-12 to T-23 (T-16 and T-17 have three and four). Each duplicate pair has a different scope. Some duplicates are marked superseded or done, but the rows are not removed. Session 2cd3bab9 wrote earlier that the duplicate in-progress rows for T-20 to T-22 had been removed. That was wrong: they are marked superseded, not deleted.",
+      "why_it_matters": "The board rule is one identifier, one meaning. A reader who looks up T-17 finds four different tasks.",
+      "action": "Owner or the next integration session: decide whether superseded rows are kept as history or consolidated. Rows of other sessions are not edited in this pass.",
+      "status": "open — duplicates recorded; no rows removed or renumbered in this pass",
+      "sources": [],
+      "sources_checked": "2026-11-20"
+    },
+    {
+      "id": "FLG-033",
+      "severity": "low",
+      "area": "Source register: no consistent per-row fetch date",
+      "product": "data/sources.json; sources.html",
+      "detail": "Of the 29 source entries, 23 have no verified value. The updated field mixes publication or update dates (for example 2025-10-15, 2019-11) with fetch dates (for example 'fetched 2026-11-19').",
+      "why_it_matters": "A reader cannot tell when a page was last read, or whether a quotation still matches the page.",
+      "action": "Owner or integration session: add a fetch-date field to each source entry, separate from the publisher's update date. Until then, treat each quotation as dated to the date of the record only where one is stated.",
+      "status": "open — recorded; no source entry changed in this pass",
+      "sources": [],
       "sources_checked": "2026-11-20"
     }
   ]

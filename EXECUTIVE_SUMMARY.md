@@ -50,11 +50,13 @@ and the data table. Stylesheet: 44 px tap targets, visible focus states, card
 lift on hover (mobile-first pass S-20 in effect). The RSS feed no longer
 advertises a price range in the gift-guide description, and its channel title
 drops the overstated channel title the audit flagged. The
-Direction desk was rebuilt as a full ledger (SG-01…18 with statuses, Q-01…21
-with discovery paths) and now matches `data/suggestions.json` /
-`data/open-questions.json` exactly. New open item: FLG-016 / F-21 — the SVG
-social-preview image is unverified in share previewers. All four release gates
-pass on the rebuilt tree.
+Direction desk was rebuilt as a ledger and now matches `data/suggestions.json` /
+`data/open-questions.json` exactly: 30 suggestion rows (SG-21 retired in place,
+SG-26 unoccupied) and 23 open questions. That paragraph was written when the
+registers held 18 and 21 rows; the counts here were re-read from the JSON on
+2026-11-20 rather than copied forward. Still open: FLG-016 / F-21 — the
+social-preview image has never been run through a share debugger. All release
+gates pass on the current tree.
 
 
 ## Added 2026-11-20 (session 6bf60cac): what a buyer can now do, and what is still blocked
@@ -76,6 +78,22 @@ commission, traffic or conversion is made anywhere in this repository.
 until the owner's test passes.
 
 ---
+
+# Addendum — 2026-11-20, session 2cd3bab9 (T-52)
+
+Task T-52. The first claim, T-46, was taken on `main` by PR #38. The second, T-48, was taken by PR #43, and the third, T-51, by PR #42. This pass ran on the merged tree of `origin/main` at `ddb50f8`.
+
+**Verified in this pass.** Six official pages were read on 2026-11-20: the Associates Operating Agreement (S01, updated October 15, 2025; §5 sentence matches the disclosure), Program Policies (S02, updated April 14, 2026, opening sections only), FTC Disclosures 101 (S03, November 2019), Google's outbound-links guidance (S04, last updated 2025-12-10 UTC), Creators API GetItems (S06, ASIN defined as a 10-character identifier), and NIST TN 2156 (S16). The spot-check did not cover S05, S10–S15, S17–S19 or S21–S25.
+
+**Checked on the merged tree.** The buying guide links all nine guides. All nine feed items carry the same title as their page H1. The publishing-coverage check in `tools/verify_site.py` (sitemap, feed, hub, cadence) passes; the eight gates pass.
+
+**Decision.** DT-10 (fixed monthly cadence) is marked decided, on the owner's instruction. One guide per calendar month; approver: the site owner; next guide due 2026-12-31 (`docs/publishing-cadence.md`). It is a rhythm, not a traffic or revenue forecast. DT-12 (promise or proposal for the twelve-week plan) remains open and is not decided here.
+
+**Five supplied links, 2026-11-20.** This pass also found all five to the Amazon homepage. That agrees with the third dated check recorded under FLG-025. No product record changed. The intended ASIN for every link stays blank (FLG-001). No link is called invalid (FLG-003).
+
+**New flags.** FLG-032: the coordination board repeats task IDs T-12 to T-23. An earlier note in this session said the T-20 to T-22 duplicates were removed; they are marked superseded, not deleted, so that note was wrong. FLG-033: 23 of 29 source entries have no verified value, so the register has no consistent fetch date.
+
+**Still not established.** Whether the supplied links work in the enrolled Associates account (FLG-006; Q-02, Q-04, Q-22). Account eligibility (FLG-010). The Pages deploy for this merge (see the board record for T-52).
 
 # Addendum — 2026-11-20, shop-first pass
 
@@ -107,7 +125,7 @@ gate rule `D20` now fails the build if any two live suggestions share a title.
 
 **Nothing was softened.** No price is rendered anywhere. Every Amazon anchor is
 `rel="sponsored"`. The exact §5 disclosure sentence appears in the strip and the footer of all
-30 pages. Every new table row carries a source link or an explicit "No official source" marker,
+31 pages. Every new table row carries a source link or an explicit "No official source" marker,
 and the gate fails a row that has neither — so "unverified" can never hide.
 
 **Still true, still not this session's to fix.** The five short links carry no visible
@@ -119,7 +137,7 @@ minutes-scale costs, and they are published on `decisions.html` rather than buri
 
 **Gates at close:** `build_chrome --check`, `build_registers --check`, `build_decisions --check`,
 `build_sitemap --check`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`
-(30 pages, 3541 assertions) and `tools/crawl_links.py` (30 pages, 0 broken links, 0 dead
+(31 pages, 4,073 assertions) and `tools/crawl_links.py` (31 pages, 0 broken links, 0 dead
 anchors, 0 orphans) all pass on the merged tree.
 
 The official policy and guidance sources are indexed in the [source register](sources.html), with figure-level sourcing in the [citation log](citations.html). Product details are seller statements, not independent test results. See [Flagged for Review](flagged.html) for unresolved listing conflicts and account-dependent issues.

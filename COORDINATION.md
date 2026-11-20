@@ -1165,6 +1165,8 @@ this session's additive changes were re-applied on top.
 | T-44 | Two register defects found by reading and fixed: `DIRECTION.md` named question ids whose subjects did not exist (FLG-020), and cited a suggestion id absent from the register while the register skipped a number (FLG-021). Account-status question registered as Q-23; link question as Q-22 | done | `DIRECTION.md`, `data/open-questions.json`, `data/suggestions.json` |
 | T-45 | Three new gates, each negative-tested: `D28`/`D29` (the digest may not cite a `Q-`/`SG-` id that is not in its data), `J01–J03` (`node --check` over every inline script and `assets/app.js`), plus `actions/setup-node@v4` in the Pages workflow | done | `tools/check_site.py`, `.github/workflows/pages.yml` |
 
+| T-46 | Fresh line-by-line review of the registers and published surfaces; fix only demonstrable defects (mis-cited evidence, duplicate/renumbered flag IDs, stale counts), add gates so each defect cannot return, re-run all gates, PR → main, merge, confirm live Pages deploy | in progress | `arena/77e66f80-prod3` | `tools/check_site.py`, `flagged.html`, `data/flagged.json`, `data/open-questions.json`, `data/suggestions.json`, `data/analysis.json`, `ideas.html`, `direction.html`, `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `COORDINATION.md` |
+
 ### Live observation, 2026-11-20 (T-41 / Q-22)
 
 | Supplied link | Final URL read | vs 2026-11-19 | vs the other same-day record |

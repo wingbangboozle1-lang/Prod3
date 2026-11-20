@@ -2309,7 +2309,34 @@ superiority were made. No product value, link target, or flag was altered.
   freshness gates `--check` OK, release gate passed, crawl 0 broken / 0 dead / 0 orphans.
 _(recorded after the PR merges)_
 
-| T-58 | Publication-pass completion (renumbered from T-25, then T-26, then T-39, then T-53 — every earlier number collided with a row already on main (T-53..T-56 were taken by session 7878cdbe, T-57 by session 6f44d8c9); session b8dae8e0): fix the remaining demonstrable defects on the direction surfaces (stale register ranges, FLG-021→FLG-029 mis-citation for the SG-26 gap, duplicate SG-19 fragment); add page-wide RSS-autodiscovery and register-reference gates; flag the eight-vs-nine guide count as FLG-035; re-run every gate; PR → main, merge, confirm Pages | in progress | `arena/b8dae8e0-prod3` | `COORDINATION.md`, `direction.html`, `DIRECTION.md`, `tools/check_site.py`, `flagged.html`, `docs/verification.md` |
+| T-58 | Publication-pass completion (renumbered from T-25, then T-26, then T-39, then T-53 — every earlier number collided with a row already on main (T-53..T-56 were taken by session 7878cdbe, T-57 by session 6f44d8c9); session b8dae8e0): fix the remaining demonstrable defects on the direction surfaces (stale register ranges, FLG-021→FLG-029 mis-citation for the SG-26 gap, duplicate SG-19 fragment); add page-wide RSS-autodiscovery and register-reference gates; re-run every gate (the guide-count flag was dropped — upstream's D40 gate already covers it); PR → main, merge, confirm Pages | done (PR #72, merge commit `cd47196`; deploy confirmed below) | `arena/b8dae8e0-prod3` | `COORDINATION.md`, `direction.html`, `
+
+### Merge and deploy record (T-58, session `arena/b8dae8e0-prod3`)
+
+- **PR:** #72 — `arena/b8dae8e0-prod3` → `main` — https://github.com/wingbangboozle1-lang/Prod3/pull/72
+- **Outcome:** MERGED. Merge commit `cd47196e27c0fd97d51070f5f5c98c7c89ce8f99`, merged
+  2026-11-20T07:21:53Z (merged without waiting for approval, per the owner instruction).
+- **Rebases required:** four (PRs #36–#67 landed while this branch was open; the claim
+  renumbered T-24 → T-25 → T-26 → T-39 → T-53 → **T-58** under the
+  one-identifier-one-meaning rule; conflicts resolved keeping every upstream row).
+- **Cross-scope edits logged in commit/PR text:** `scripts/build_decisions.py` was edited
+  earlier in the session (retired rows excluded from the open-proposals count — upstream
+  later landed an equivalent fix; nothing was double-applied), and one field of
+  `data/flagged.json` (FLG-029 detail) was reworded so `decisions.html` stops rendering
+  the unoccupied id token. No finding, id or grading changed.
+- **Upstream defect corrected during conflict resolution:** `DIRECTION.md` on `main` had
+  been repointed (PR #67) to cite FLG-026/FLG-025 for the SG-gap note and the Q-digest
+  correction; those ids name unrelated findings in both `flagged.html` and
+  `data/flagged.json`. PR #72 restores FLG-029/FLG-028 (declared in place inside
+  FLG-027's renumber note, so D39 accepts them). Noted on the PR.
+- **Gates on the merged tree (`cd47196`, 42 pages):** `scripts/check_site.py` ✅ ·
+  `tools/check_site.py` ✅ (6720 assertions, all additional rules passed, incl. this
+  session's D41-rss-autodiscovery/D41-rss-once and D42-sg-refs-resolve/D42-q-refs-resolve) ·
+  `tools/verify_site.py` ✅ · `build_sitemap.py --check` ✅ · `build_registers.py --check` ✅ ·
+  custom crawl: 42 pages, 0 broken internal links/anchors.
+- **GitHub Pages:** `Deploy GitHub Pages` run `44694421239` — **success** on the merge
+  commit. Companion legacy `pages build and deployment` run `44694420462` and the
+  screenshot run were still in progress at record time (FLG-024 dual-path context).
 ## Session `arena/ba8e7240-prod3` — T-55..T-58 (2026-11-20, 06:52–07:45Z)
 
 Claimed as T-51..T-54; renumbered twice because four sessions merged during this branch and took those IDs

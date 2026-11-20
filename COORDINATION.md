@@ -1016,3 +1016,17 @@ cannot distinguish those.
 - **Gates re-run on the combined tree at `c49de86`:** `tools/verify_site.py`, `tools/check_site.py`, `scripts/check_site.py`, `scripts/build_sitemap.py --check`, `scripts/build_registers.py --check` — all pass.
 - **Irregularity logged:** one red `pages build and deployment` run (deploy job, transient) on `f2b3a07`, superseded by the successful `c49de86` build. Not a content failure. A `POST /pages/builds` request from this session returned 403 (insufficient integration permission), so no manual Pages rebuild was requested.
 - **Not claimed:** intended-ASIN confirmation (FLG-001), Special Link test (FLG-006), account status (FLG-010), FLG-017 cause, or any campaign data.
+
+### Follow-up after PR #26 merged — source accuracy correction (2026-11-20)
+
+One defect in this session's own work was found by re-reading the rendered decision desk on the
+live site, and corrected:
+
+| Row | Was | Why that was wrong | Now |
+|---|---|---|---|
+| DT-07 (analytics endpoint) | cited **S23**, GitHub's *custom 404 page* doc | S23 says nothing about static hosting or POST handling. It was a nearby-looking GitHub Pages page, which is exactly the kind of citation the brief forbids. | cites **S05** (*What is GitHub Pages?*), which describes static hosting, and the row states the POST limit plainly |
+| DT-03 (Search Console) | cited **S21**, Google's people-first *content* guidance | S21 is about content quality, not Search Console verification. No registered source answers this question. | `sources: []` with `evidence_status: "unverified"` — rendered as **No official source**, which is the honest answer |
+
+Both rows now pass gate rules `D23`/`D25` (every decision and question either resolves its
+sources or is explicitly marked unverified). This is a correction to this session's own
+publication, found after deploy rather than before it — recorded here rather than quietly fixed.

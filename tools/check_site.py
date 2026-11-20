@@ -279,6 +279,11 @@ _r = _sp.run([sys.executable, str(ROOT / "scripts" / "build_registers.py"), "--c
              capture_output=True, text=True)
 check("D18-registers-fresh", _r.returncode == 0, f"registers stale: {_r.stdout.strip()[:200]}")
 
+# ---- the reader brief on ideas.html must match the registers ---------------
+_rb = _sp.run([sys.executable, str(ROOT / "scripts" / "build_ideas.py"), "--check"],
+              capture_output=True, text=True)
+check("D18b-ideas-fresh", _rb.returncode == 0, f"ideas brief stale: {_rb.stdout.strip()[:200]}")
+
 # ---- one identifier must mean one thing ----------------------------------
 # This rule used to end in `or True`, so it could never fail. It was written for
 # SG ids but the defect that actually shipped was in the FLG register: on

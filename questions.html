@@ -38,7 +38,7 @@
 <main id="main"><div class="article" style="max-width:1100px">
 <p class="kicker">Direction · Open questions</p>
 <h1>The questions that have to be answered before the next decision</h1>
-<p class="byline">Kitchen Counter · Register updated 2026-11-19 · 27 open questions, grouped by what they block</p>
+<p class="byline">Kitchen Counter · Register updated 2026-11-20 · 27 open questions, grouped by what they block</p>
 
 <p>A decision made on missing information is a guess with better manners. Each row states what is known, what is not, why it matters, and the cheapest concrete action that would settle it. Machine-readable copy: <code>data/open-questions.json</code>.</p>
 
@@ -57,7 +57,7 @@
   <td><span class="small">owner · 30 days of waiting</span><br><span class="badge grey">watch</span></td>
   <td class="small"><a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener">S22</a></td>
 </tr>
-</tbody></table></div><h2>Commercial (5)</h2>
+</tbody></table></div><h2>Commercial (4)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
 <tbody>
@@ -97,15 +97,6 @@
   <td><span class="small">owner · the price of a domain</span><br><span class="badge grey">owner-only</span></td>
   <td class="small"><a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages" rel="noopener">S05</a></td>
 </tr>
-<tr>
-  <td><strong>Q-27</strong></td>
-  <td><strong>Is a signed-out fetch of a Special Link a meaningful test of what a reader will experience?</strong><br><span class="small muted">Blocks: How the site talks about its own link checks, and whether repeated homepage results should keep being published as findings.</span></td>
-  <td><span class="small">Four dated observations of the same five links disagree with each other, and every one was made by an unauthenticated automated fetch (FLG-017, FLG-023, FLG-025, FLG-034). The repository has never recorded a signed-in observation.</span></td>
-  <td><span class="small">Whether Amazon serves different destinations to signed-out or automated sessions, and therefore whether any fetch-based result describes a reader&#x27;s experience at all.</span></td>
-  <td><span class="small">Owner clicks each link once, signed in, in a normal browser, and records the final URL plus whether the Associates report shows the click. That is the only observation this project can treat as representative.</span></td>
-  <td><span class="small">owner · Five minutes</span><br><span class="badge grey">owner-only</span></td>
-  <td class="small"><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="sponsored noopener">S01</a></td>
-</tr>
 </tbody></table></div><h2>Compliance (3)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
@@ -137,7 +128,7 @@
   <td><span class="small">owner · 5 minutes</span><br><span class="badge grey">owner-only</span></td>
   <td class="small"><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="sponsored noopener">S02</a></td>
 </tr>
-</tbody></table></div><h2>Content (4)</h2>
+</tbody></table></div><h2>Content (5)</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>ID</th><th>Question</th><th>What we know</th><th>What we do not know</th><th>How to find out</th><th>Who · cost</th><th>Official source</th></tr></thead>
 <tbody>
@@ -176,6 +167,15 @@
   <td><span class="small">After 60 days, sort the Pages report by impressions. Any page with zero impressions earns a rewrite, a merge, or a removal — decided with data, not taste.</span></td>
   <td><span class="small">owner · 60 days and one report</span><br><span class="badge grey">watch</span></td>
   <td class="small"><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">S21</a></td>
+</tr>
+<tr>
+  <td><strong>Q-27</strong></td>
+  <td><strong>Which of the trend-led article topics earns impressions, and should guide nine be one of them?</strong><br><span class="small muted">Blocks: Choosing the ninth article from measured demand (SG-18, SG-37); depends on Q-18 first.</span></td>
+  <td><span class="small">No Search Console impressions or query data exist yet (F-17). Q-18 must be answered before any topic can be chosen from data.</span></td>
+  <td><span class="small">Which question clusters around air fryers and meat thermometers actually bring qualified visitors, and whether a seasonal topic or a specification topic wins.</span></td>
+  <td><span class="small">After Q-18 is answered (Search Console verified and sitemap submitted), review the Queries report after enough data accrues, pick a cluster with impressions and no dedicated page, and write guide nine around it.</span></td>
+  <td><span class="small">owner · 10 minutes after Q-18</span><br><span class="badge grey">queued</span></td>
+  <td class="small"><a href="https://developers.google.com/search/docs/fundamentals/creating-helpful-content" rel="noopener">S21</a> · <a href="https://developers.google.com/search/docs/appearance/snippet" rel="noopener">S24</a></td>
 </tr>
 </tbody></table></div><h2>Measurement (3)</h2>
 <div class="table-wrap"><table>
@@ -288,8 +288,8 @@
 <tbody>
 <tr>
   <td><strong>Q-22</strong></td>
-  <td><strong>Why did the supplied short links end at the Amazon homepage on 2026-11-20 instead of a product page?</strong><br><span class="small muted">Blocks: Whether the two homepage-resolving buy buttons can be attributed at all, and whether the other three are stable.</span></td>
-  <td><span class="small">On 2026-11-19 all five ended at a product page. Two separate 2026-11-20 records disagree with each other and with that: one session saw two of five reach the homepage (B04G1MEwY, B0c8moW59) while three reached their product pages, and a third session later the same day saw all five reach the homepage (FLG-028). All five /dp/ listings loaded on 2026-11-20 with titles matching the recorded ones. No tag parameter was visible in any final URL (F-09).</span></td>
+  <td><strong>Why did two of the five supplied short links (B04G1MEwY, B0c8moW59) end at the Amazon homepage on 2026-11-20 instead of a product page?</strong><br><span class="small muted">Blocks: Whether the two homepage-resolving buy buttons can be attributed at all, and whether the other three are stable.</span></td>
+  <td><span class="small">On 2026-11-19 both ended at a product page. On 2026-11-20 B04G1MEwY ended at https://www.amazon.com/ twice (FLG-017) and B0c8moW59 ended at https://www.amazon.com/ twice (observed independently by session ce911db5), while B02NbDxp3, B00hJ57DV and B0f3GKalj still resolved to their product pages. Another session&#x27;s same-day record reads B0c8moW59 as still resolving; both dated records are kept in data/products.json and neither is deleted.</span></td>
   <td><span class="small">Whether the cause is link expiry, a signed-out fetch versus an enrolled account, a profile gate or a transient response. None can be distinguished from outside the account, so none is asserted.</span></td>
   <td><span class="small">Signed in, open each of the five links once. Note the final URL, whether it lands on the product or the homepage, and whether it carries tag=shopnow047c-20. Then check Link Reports for a same-day click. If a link still lands on the homepage there, regenerate that Special Link from the product page with SiteStripe and record the new URL.</span></td>
   <td><span class="small">owner · 15 minutes, signed in</span><br><span class="badge grey">blocking</span></td>

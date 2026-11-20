@@ -44,6 +44,13 @@ options, and recommendations live there.
 | SG-29 | Connect Google Search Console once the owner has an account | proposed | owner |
 | SG-30 | Decide how readers stay in touch: RSS only, or an email provider with consent | proposed | owner |
 | SG-31 | Put the listing's own contradiction on the product card, not only the flag page | implemented 2026-11-20 | editorial |
+| SG-32 | Show a dated status line on every buy button until the link test passes | proposed | editorial |
+| SG-33 | Add a five-row link-status table to the front page footer area, one row per product | proposed | editorial |
+| SG-34 | State the tag-parameter requirement once, in plain words, on the disclosure page | proposed | owner |
+| SG-35 | Give the twelve guide proposals a home with a gate, so the writing plan is reviewable | implemented | editorial |
+| SG-36 | Lead the front page with a buyer question and five shop cards, not with the audit trail | implemented | editorial |
+| SG-37 | Publish catchy, trend-led question articles to earn organic traffic | proposed | editorial |
+| SG-38 | Review every change in the suggestions section before anything is built | implemented | owner |
 
 Retired 2026-11-19: the earlier `direction.html` row “Weekly price re-check: re-fetch the five
 listings and update dated prices” contradicted Program Policies 2(b) and the site’s own no-prices
@@ -53,7 +60,7 @@ SG-19. The ledger is the single source of truth.
 
 ## Open questions — what must be answered before deciding
 
-Twenty-three questions are registered in `data/open-questions.json` (Q-01…Q-23). Each carries
+Twenty-seven questions are registered in `data/open-questions.json` (Q-01…Q-27). Each carries
 `known`, `unknown`, `how_to_find_out`, `who`, `cost`, `sources` and a status
 (`blocking` / `queued` / `watch` / `owner-only`).
 
@@ -83,7 +90,10 @@ Q-08 (what counts as a session), Q-10 (newer ASIN swap for P4), Q-11 (P1 capacit
 Q-12 (brand and visual sign-off), Q-13 (endpoint storage schema), Q-14 (cadence and who writes),
 Q-15 (disclosure reach when a reader never scrolls), Q-16 (custom domain), Q-17 (retire
 zero-impression guides), Q-20 (email provider and consent), Q-21 (does the PNG preview render in
-a share debugger).
+a share debugger), Q-26 (who signs off the twelve-week plan), Q-27 (which trend-led topic earns
+impressions). Q-24 (whether the redirect attaches the tag) is owner-only and Q-25 (why all five
+links reached the homepage on the third check) is blocking; both are link-check questions for the
+same signed-in session as Q-22.
 
 ## The SG-20 / SG-21 duplicate — reproduced and resolved
 
@@ -98,7 +108,7 @@ the byte-for-byte comparison. Deleted rows cannot be audited; retired rows can. 
 
 **What is still open:** only the owner knows whether a second, different proposal was ever
 meant to occupy SG-21. If so, the duplicate displaced it and it needs re-entering. That would
-need a new decision row once the owner answers: DT-01..DT-10 are the registered decisions and
+need a new decision row once the owner answers: DT-01..DT-12 are the registered decisions and
 none of them covers it. The possibility is recorded in the SG-21 retired row
 (`data/suggestions.json`) and here.
 
@@ -143,6 +153,7 @@ proposal. The table above, from `data/decisions.json`, is the only path definiti
 | 2026-11-19 | Split suggestions, questions and decisions into three registers | audit I-01 | SG-01 no longer names two different proposals |
 | 2026-11-20 | Reconcile the path chooser on `direction.html` and in this file with the canonical paths in `data/decisions.json` (DT-01..DT-10); retire the stale “Steady publication / Conversion focus / Hold” wording and its wrong SG-04/SG-06 citations | session T-39 audit | The digest and the decision desk cannot disagree about what the three paths are |
 | 2026-11-20 | Reconcile the digest's tail index rows with the registered SG-27..SG-31 rows (T-37/T-40..45); the unoccupied ID between SG-25 and SG-27 is documented under FLG-021, not re-numbered | session T-39 audit · `data/suggestions.json` | The digest index names the same proposals as the register for every live ID |
+| 2026-11-20 | Publish one question-shaped guide a calendar month; approver: the site owner; next guide due 2026-12-31 (DT-10, owner instruction in the 2026-11-20 brief) | Owner instruction · `docs/publishing-cadence.md` · `data/decisions.json` DT-10 | The commitment is a rhythm, not a traffic or revenue forecast; `tools/verify_site.py` now fails a guide that is missing from the sitemap, the feed (headline = H1) or the guides hub |
 
 ## Audit findings, session a25ccde6 (2026-11-19)
 

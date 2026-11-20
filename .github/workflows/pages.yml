@@ -32,7 +32,10 @@ jobs:
           python3 scripts/build_chrome.py --check
           python3 scripts/build_registers.py --check
           python3 scripts/build_decisions.py --check
+          python3 scripts/build_products.py --check
           python3 scripts/build_sitemap.py --check
+          python3 scripts/build_readme.py --check
+          python3 scripts/build_ideas.py --check
 
       - name: Release gate (structure, disclosure, sources)
         run: |

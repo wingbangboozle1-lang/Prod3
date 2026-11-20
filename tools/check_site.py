@@ -952,6 +952,18 @@ for _name46, _txt46 in (("DIRECTION.md", (ROOT / "DIRECTION.md").read_text(encod
               f"{_name46}: states Q-01..Q-{_m.group(1)} but the register reaches Q-{_qmax46}")
 
 
+# I04 (ported from PR #50, session a9b513e9, at close): every dated
+# re-check observation block must carry a date and a method, so a pass
+# cannot be recorded as a bare result with no way to tell how it was
+# taken. The three same-day passes on 2026-11-20 disagreed (FLG-023);
+# what makes that auditable is that each block says when and how.
+for _p in products:
+    for _k, _v in _p.items():
+        if _k.startswith("live_recheck_") and isinstance(_v, dict):
+            check("I04-recheck-shape",
+                  bool(_v.get("date")) and bool(_v.get("method")),
+                  f"{_p.get('id', '?')}.{_k}: observation block missing date or method")
+
 # ---- report
 print(f"{len(docs)} pages checked, {checks_run} assertions run")
 if failures:

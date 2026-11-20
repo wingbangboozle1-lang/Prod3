@@ -41,6 +41,7 @@
 | T-22 | Executive summary refresh + line-by-line verification + gates + PR to main + Pages confirm | done (PR #14 + #15, live-verified at `bb7d3d2`) | `arena/33e3e80f-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `README.md`, `COORDINATION.md` |
 | T-23 | Line-by-line verification of data registers and published claims against official sources; fix only demonstrable defects; final integration PR → main, merge, confirm Pages deploy | done (PR #18, https://github.com/wingbangboozle1-lang/Prod3/pull/18) | arena/28d2d6c0-prod3 | `data/sources.json`, `data/analysis.json`, `data/flagged.json`, `data/policy-checks.json`, `sources.html`, `tools/verify_site.py` (source-resolution gate), `COORDINATION.md` |
 | T-24 | Refresh the executive summary against the current tree; correct stale claims; publish decision-ready facts, gaps, and ranked next steps | done | `arena/f4694e48-prod3` | `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `COORDINATION.md` |
+| T-25 | Final integration session: line-by-line verification of every published table row and register against official sources; fix demonstrable defects; publish the F-series findings and the product-intent record as source-linked tables; extend the release gate to cover the defects found; PR → main → merge → confirm Pages deploy | in progress | `arena/0a1638a1-prod3` (session 0a1638a1) | `data/verification.json`, `data/flagged.json`, `data/analysis.json`, `data/policy-checks.json`, `data/products.json`, `flagged.html`, `executive-summary.html`, `EXECUTIVE_SUMMARY.md`, `scripts/build_registers.py`, `scripts/check_site.py`, `tools/verify_site.py`, `tools/check_site.py`, `README.md`, `sitemap.xml`, `COORDINATION.md` |
 | T-24b | Final consistency audit of README, both executive summaries, analytics endpoint status/docs, and published rating copy; fix only stale or contradictory statements; release checks re-run and passed | done (2026-11-20) | `arena/71a41253-prod3` | `README.md`, `EXECUTIVE_SUMMARY.md`, `executive-summary.html`, `docs/analytics-endpoint.md`, `analytics.html`, `index.html`, `air-fryers.html`, `compare.html`, `direction.html`, `COORDINATION.md` |
 
 ## Verification log (2026-11-19, session 5a4e180c)
@@ -829,3 +830,86 @@ Claimed and completed the executive-summary refresh only. Scope: `executive-summ
 - **Pre-merge verification (all pass):** `python3 scripts/check_site.py` (24 HTML pages), `python3 tools/verify_site.py` (21 sources; release gate passed), `python3 tools/check_site.py` (24 pages / 2,521 assertions), `python3 scripts/build_sitemap.py --check`, `python3 scripts/build_registers.py --check`, `git diff --check`.
 - **GitHub Pages deploy:** workflow run `44686152047` (Deploy GitHub Pages) — success on the merged SHA; companion build run `44686151504` — success. Pages API status: `built`, source `main:/`, URL https://wingbangboozle1-lang.github.io/Prod3/. Live spot-check of `/executive-summary.html` after the earlier deploy confirmed the updated summary, dated intent/observed link table, official-source links, and above-the-fold disclosure.
 - **Not claimed:** Associates account enrollment/eligibility (FLG-010), intended product confirmation (FLG-001), Special Link compliance/testing (FLG-006), social-preview debugger validation (F-21/SG-16/Q-21), Search Console setup, server analytics endpoint, or email provider — all remain flagged on `flagged.html` / `questions.html` and were not verified by this session.
+
+---
+
+## Session `arena/0a1638a1-prod3` — T-25 final integration (2026-11-20)
+
+**Claim.** T-25 claimed by `arena/0a1638a1-prod3` (session 0a1638a1) on branch
+`arena/0a1638a1-prod3`, cut from `main` at `cd2a886`. All other task rows on the
+board were already `done` before this session started, so this session acts as
+the final integration session: it re-verifies the combined data line by line,
+repairs demonstrable defects, extends the release gate so the defects cannot
+return, and publishes.
+
+### Baseline established before any edit (all green)
+
+`python3 scripts/check_site.py` (24 pages), `python3 tools/verify_site.py`
+(21 sources), `python3 tools/check_site.py` (24 pages / 2,572 assertions),
+`python3 scripts/build_sitemap.py --check`, `python3 scripts/build_registers.py --check`
+— all passed at `cd2a886`. The site is live at
+https://wingbangboozle1-lang.github.io/Prod3/ (Pages API status `built`, source `main:/`).
+
+### Live re-verification performed in this session (2026-11-20)
+
+Fetched through the sandbox's outbound proxy (the `bash` tool's network is
+allowlisted to GitHub/npm/PyPI only; the page-fetch tool reaches Amazon):
+
+| Item | Observed 2026-11-20 | Matches the record |
+|---|---|---|
+| `link.amazon/B02NbDxp3` | → `https://www.amazon.com/dp/B09B7SB46R` | ✔ |
+| `link.amazon/B00hJ57DV` | → `https://www.amazon.com/dp/B08DKYBTPH` | ✔ |
+| `link.amazon/B0f3GKalj` | → `https://www.amazon.com/dp/B0DZFD6R9Z` | ✔ |
+| `https://www.amazon.com/dp/B0CDY277D3` | title "CHEFMAN 6 Quart Dual Basket Air Fryer Oven …" | ✔ matches `P-01.observed_title` |
+| `https://www.amazon.com/dp/B09B7SB46R` | title "Emeril Lagasse 26QT French Door Multi-Function Air Fryer Toaster Oven \| 24 One-Touch Preset Options …" | ✔ matches `P-02.observed_title` (24 in the title, as recorded) |
+| `https://www.amazon.com/dp/B0DHZTCNR5` | title "ThermoMaven 1 Sec Professional Digital Meat Thermometer, ±0.5℉ Accuracy \| NIST&NSF Certified …" | ✔ matches `P-04.observed_title` |
+| `https://www.amazon.com/dp/B0DZFD6R9Z` | title "CHEF iQ Sense \| Smart Wireless Meat Thermometer \| 3 Ultra-Thin Probes …" | ✔ matches `P-05.observed_title` |
+| `https://www.amazon.com/dp/B08DKYBTPH` | title "Chefman Air Fryer 8 Qt \| TurboFry® 4-in-1 with 450°F Hi-Fry Option …" | ✔ matches `P-03.observed_title` |
+
+`link.amazon/B04G1MEwY` and `link.amazon/B0c8moW59` were re-fetched twice on
+2026-11-20 and both times the fetch tool returned the Amazon **home page**
+rather than a product page. That is a fetch-tool resolution artefact, not
+evidence that the short links changed: the direct listing pages for the ASINs
+recorded against them (`B0CDY277D3`, `B0DHZTCNR5`) both resolved normally and
+match their recorded titles, and three of the five short links resolved exactly
+as recorded on the same run. Recorded as an observation only; the stored
+observed destinations are unchanged and still dated 2026-11-19.
+
+### Defects found by line-by-line review (all demonstrable, none inferred)
+
+1. **`data/verification.json` contradicts the site.** It records
+   `intended.asin`/`listing_url`/`confirmation_date` **populated** for all five
+   products with `"source": "S16"`, and `"agrees": true`. `data/products.json`
+   records the same five products with `intended_asin`, `intended_listing_url`,
+   `confirmation_date` and `intent_source` all **null**. `S16` is the NIST
+   traceability page, which is not a source for an Amazon listing at all — the
+   correct listing sources are S10–S14. The file's own `rules` block says
+   "No value in this file is inferred from a title, a URL slug, or a sibling
+   product", yet its `intended` block is exactly the observed destination
+   copied across. This directly contradicts FLG-001, the release gate's
+   `D09-intent-stays-null` rule, and the site's published statement that
+   intended ASINs are unconfirmed. The file was also **not published anywhere**
+   on the site, so no gate covered it.
+2. **Two product-ID namespaces.** `data/products.json` and `data/citations.json`
+   use `P-01`…`P-05`; `data/flagged.json`, `data/analysis.json`,
+   `data/verification.json`, `data/open-questions.json`, `data/suggestions.json`
+   and `data/policy-checks.json` use `P1`…`P5`. Readers following `P4` in a
+   question row could not match it to `P-04` in the comparison table.
+3. **The F-series findings register was not published.** `data/flagged.json`
+   holds 21 findings (`F-01`…`F-21`) with `why_it_matters`, `action`, `status`
+   and `sources` — but `flagged.html` renders only the separate hand-written
+   FLG-series callouts. The published pages cite `F-01`, `F-03`, `F-08`,
+   `F-09`, `F-10`, `F-13`, `F-16`, `F-17`, `F-19` and `F-21` as parenthetical
+   references with **no target on the page** — `flagged.html` contains no
+   `F-xx` anchor and no `F-xx` entry at all. A reader could not follow any of
+   them.
+4. **`F-10`, `F-17` and `F-21` carry no source.** Every other flagged row
+   names at least one registered source; these three name none, so they fail
+   the "every table row must have a source link" rule the brief sets.
+5. **`data/analysis.json` had a duplicated finding.** Findings 3 and 4 were
+   near-identical sentences about counter depth, differing only in "about 7 in"
+   vs "about 7.1 in" and "standard" vs "nominal" — one of them is a stale
+   duplicate. The register was also **not published** on the site at all: the
+   capacity-per-square-inch numbers appear nowhere in any HTML page.
+6. **`data/verification.json` was unreachable** from the site, so the
+   product-intent confirmation record the brief asks for was not published.

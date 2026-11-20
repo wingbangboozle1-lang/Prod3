@@ -240,8 +240,8 @@ for p in _products:
           f"{p['id']}: an intended value was filled in without owner confirmation")
 
 # ---- no customer star ratings or rating counts rendered ------------------
-# Program Policies 2(t) was cited for this rule. The wording was not located in
-# Section 2 on 2026-11-20 (FLG-020). The rule is kept as a conservative site check.
+# Program Policies Participation Requirements 6(t) governs this rule (located
+# 2026-11-20; the earlier 2(t) label was wrong — FLG-020 corrected). Kept as a site check.
 for name, html in docs.items():
     m = re.search(r"[0-9]\.[0-9]\s*★|\b\d+\s*ratings?\)", html)
     check("D10-no-ratings", not m, f"{name}: customer rating rendered ({m.group(0) if m else ''})")

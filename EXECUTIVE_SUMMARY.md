@@ -14,11 +14,11 @@ The publication site is built and the repository's release gates pass. The reade
 
 ## Five submitted links: what is and is not known
 
-The supplied short-link tokens and their observed redirect targets are recorded separately in `data/products.json`. The observations below were captured on 2026-11-19; the 2026-11-20 re-check is recorded beside them in `data/products.json` (`live_recheck_2026_11_20`). Intended product identity remains unconfirmed for every link. The intended-ASIN, intended-listing, confirmation-date, and confirmation-source fields remain blank by design.
+The supplied short-link tokens and their observed redirect targets are recorded separately in `data/products.json`. The observations below were captured on 2026-11-19; the 2026-11-20 re-checks are recorded beside them in `data/products.json` (`live_recheck_2026_11_20` and `live_recheck_2026_11_20_session_74e655e9`), and the same-day passes disagree — see FLG-017/FLG-023. Intended product identity remains unconfirmed for every link. The intended-ASIN, intended-listing, confirmation-date, and confirmation-source fields remain blank by design.
 
 | Submitted token | Observed listing at snapshot | Category | Intent confirmed? | Source |
 |---|---|---|---|---|
-| `B04G1MEwY` | Chefman 6 Qt Dual Basket · `B0CDY277D3` (2026-11-19); 2026-11-20 re-check ended at the Amazon homepage — FLG-017 | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
+| `B04G1MEwY` | Chefman 6 Qt Dual Basket · `B0CDY277D3` (2026-11-19); 2026-11-20 re-checks disagree — Amazon homepage in one pass, product page in another — FLG-017/FLG-023 | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B0CDY277D3) |
 | `B02NbDxp3` | Emeril Lagasse 26QT French Door · `B09B7SB46R` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B09B7SB46R) |
 | `B00hJ57DV` | Chefman 8 Qt TurboFry · `B08DKYBTPH` | Air fryer | No | [Official Amazon listing](https://www.amazon.com/dp/B08DKYBTPH) |
 | `B0c8moW59` | ThermoMaven instant-read · `B0DHZTCNR5` | Meat thermometer | No | [Official Amazon listing](https://www.amazon.com/dp/B0DHZTCNR5) |
@@ -26,7 +26,7 @@ The supplied short-link tokens and their observed redirect targets are recorded 
 
 **Important distinction:** the observed destination is evidence of where a supplied link resolved during that dated check; it does not prove that destination is the product the owner intended or that the link has been tested in the enrolled Associates account. FLG-001 and FLG-006 remain open. Do not describe the supplied short links as invalid: their exact compliance status is unresolved.
 
-**Correction (2026-11-20, FLG-018/019):** earlier 2026-11-19 records had copied observed ASINs into the intended-ASIN fields and cited a NIST reference page as their source. Those intended fields are now blank, and a release gate blocks any intended ASIN without an owner-confirmation record. The policy record also said product buttons go straight to `/dp/` URLs; the buttons actually use the supplied short links, and the `/dp/` URLs are separate source links. Both corrections are recorded.
+**Correction (2026-11-20, FLG-018/019):** earlier 2026-11-19 records had copied observed ASINs into the intended-ASIN fields and cited a NIST reference page as their source. Those intended fields are now blank, and a release gate blocks any intended ASIN without an owner-confirmation record. The policy record also said product buttons go straight to `/dp/` URLs; the buttons actually use the supplied short links for four of the five products (the Chefman dual basket goes direct after its short link's same-day homepage results, FLG-017), and the `/dp/` URLs are separate source links. Both corrections are recorded.
 
 ## Current capabilities and evidence limits
 
@@ -50,9 +50,9 @@ and the data table. Stylesheet: 44 px tap targets, visible focus states, card
 lift on hover (mobile-first pass S-20 in effect). The RSS feed no longer
 advertises a price range in the gift-guide description, and its channel title
 drops the overstated channel title the audit flagged. The
-Direction desk was rebuilt as a full ledger (SG-01…18 with statuses, Q-01…21
-with discovery paths) and now matches `data/suggestions.json` /
-`data/open-questions.json` exactly. New open item: FLG-016 / F-21 — the SVG
+registers now live on their own pages — suggestions (SG-01…SG-31), open
+questions (Q-01…Q-23) and the decision desk (DT-01…DT-10) — each generated
+from its JSON so a page cannot drift from its data. New open item: FLG-016 / F-21 — the SVG
 social-preview image is unverified in share previewers. All four release gates
 pass on the rebuilt tree.
 
@@ -93,8 +93,9 @@ gate rule `D20` now fails the build if any two live suggestions share a title.
 and the gate fails a row that has neither — so "unverified" can never hide.
 
 **Still true, still not this session's to fix.** The five short links carry no visible
-`tag=shopnow047c-20`; the enrolled-account test has not been run (DT-01, FLG-006), and one of
-them no longer reaches its product at all (FLG-017). There is no
+`tag=shopnow047c-20`; the enrolled-account test has not been run (DT-01, FLG-006), and four of
+them ended at the Amazon homepage in at least one same-day attempt on 2026-11-20, with passes
+disagreeing and every record kept (FLG-017, FLG-023). There is no
 analytics endpoint and no Search Console property (DT-03, DT-07). Every figure remains a seller
 statement, because nothing has been purchased or tested (DT-05). These are owner actions with
 minutes-scale costs, and they are published on `decisions.html` rather than buried here.

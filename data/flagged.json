@@ -190,7 +190,7 @@
       "area": "Link format",
       "product": "all",
       "detail": "The supplied links use the link.amazon domain rather than amzn.to, and their compliance status cannot be settled from outside the account.",
-      "why_it_matters": "Program Policies 2(b) prohibits a shortening service used so that it is unclear the link goes to an Amazon Site. Whether these particular links meet that test in the enrolled workflow is unresolved.",
+      "why_it_matters": "Program Policies Participation Requirements 6(w) prohibits a link shortening service used so that it is unclear you are linking to an Amazon Site (located 2026-11-20; earlier 2(b) label corrected, FLG-020). Whether these particular links meet that test in the enrolled workflow is unresolved.",
       "action": "The site publishes direct amazon.com/dp/ destinations so clarity is not in question. The short links remain the recorded provenance. Test one link in the enrolled Associates workflow and confirm destination and reporting before relying on the short form. This is a test to run, not a verdict on the links.",
       "status": "unresolved — needs the enrolled Associates workflow",
       "sources": [
@@ -332,10 +332,10 @@
       "severity": "medium",
       "area": "Policy citations (Associates Program Policies)",
       "product": "Site-wide (citation log, compare, direction)",
-      "detail": "The site cites Program Policies §2(t) (customer star ratings), §2(v) (URL obscuring), and a shortener prohibition under §2(b). On 2026-11-20 the live Program Policies page (updated April 14, 2026) showed Section 2 with subsections (a) and (b) only; none of the three clauses was found there. Their wording is marked unverified in citations.json, citations.html, and suggestions.json.",
-      "why_it_matters": "A reader or reviewer who checks the cited clause will not find it. Ratings and prices are not shown on the site, so the conduct does not depend on these citations, but the stated basis is unverified.",
-      "action": "Owner or editorial review: locate the Associates text that carries these clauses (Operating Agreement, Program Policies, or a dated version) and cite it, or remove the citation. Do not infer replacement wording.",
-      "status": "open — citations reworded to 'not located'; owner review",
+      "detail": "The site cites Program Policies §2(t) (customer star ratings), §2(v) (URL obscuring), and a shortener prohibition under §2(b). On 2026-11-20 a first re-read of the live Program Policies page (updated April 14, 2026) looked at Section 2, found only subsections (a) and (b), and reported none of the three clauses as located. A second re-read the same day (session arena/74e655e9-prod3) located all three in the Associates Program Participation Requirements, in the lettered list under the section headed \"Content on your Site\": (t) customer reviews and star ratings only via a link obtained through Creators API or PA API; (v) do not cloak, hide, spoof or otherwise obscure the URL of your Site containing Special Links; (w) do not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site. Section 2\u0027s own (b) does carry the price-display and tag-parameter rules cited elsewhere. The section numbers on the site\u0027s citations were wrong, not the clauses; citations were renumbered to §6(t), §6(v) and §6(w) on 2026-11-20 with exact wording recorded in citations.json and flagged.html.",
+      "why_it_matters": "A reader or reviewer who checks the old citations goes to Section 2 and finds only (a) and (b). The clauses themselves exist under the Participation Requirements section headed \"Content on your Site\". Ratings and prices are not shown on the site, so the conduct never depended on the section numbers.",
+      "action": "Done 2026-11-20 (session arena/74e655e9-prod3): all three clauses located and quoted; site citations renumbered to §6(t), §6(v), §6(w). Re-check the live page for each quoted section number before reusing it in a new surface.",
+      "status": "corrected 2026-11-20 — clauses located at Participation Requirements §6(t)/§6(v)/§6(w); site citations renumbered",
       "sources": [
         "S02"
       ],

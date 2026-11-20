@@ -64,7 +64,7 @@
       "group": "Compliance",
       "question": "Is the link.amazon short-link format acceptable in this account's enrolled workflow?",
       "blocks": "Whether the supplied links can ever be the published destination.",
-      "known": "Program Policies 2(b) prohibits a shortening service used so that it is unclear the link goes to an Amazon Site (S02). The site currently publishes direct amazon.com/dp/ URLs, so clarity is not in question there.",
+      "known": "Program Policies Participation Requirements 6(w) prohibits using a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site (S02; located on 2026-11-20 — the earlier 2(b) label was wrong, FLG-020). The site currently publishes direct amazon.com/dp/ URLs, so clarity is not in question there.",
       "unknown": "Whether these particular links resolve visibly and are accepted in the enrolled workflow. Their compliance status is not established either way — nothing here calls them invalid (F-13).",
       "how_to_find_out": "Run SG-13: click one link while signed in, confirm the destination and confirm the click is reported. Repeat if it passes.",
       "who": "owner",

@@ -38,9 +38,9 @@
     {
       "id": "C-04",
       "area": "Link integrity",
-      "requirement": "Do not obscure that a link goes to an Amazon Site. The shortener wording cited to S02 was not found in section 2(b) on 2026-11-20 (UNVERIFIED, see FLG-020).",
+      "requirement": "Do not obscure that a link goes to an Amazon Site. Participation Requirements 6(w), located on 2026-11-20: \"You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.\" The earlier 2(b) label was wrong (FLG-020 corrected).",
       "source": "S02",
-      "quote_basis": "Section 2(b) prohibits using a link-shortening service or placement in a manner that makes it unclear you are linking to an Amazon Site.",
+      "quote_basis": "Participation Requirements 6(w) (located 2026-11-20): \"You will not use a link shortening service, button, hyperlink or other ad placement in a manner that makes it unclear that you are linking to an Amazon Site.\"",
       "status": "partial",
       "automated": true,
       "evidence": "Recounted against the built HTML on 2026-11-20 (session arena/74e655e9-prod3): 20 product CTA buttons carry data-event=\"outbound_click\" — 16 point to the supplied link.amazon Special-Link URLs (the four products whose supplied links are still used as buttons) and 4 point to the direct https://www.amazon.com/dp/B0CDY277D3 listing (the Chefman dual basket, whose supplied short link reached the Amazon homepage in some same-day attempts on 2026-11-20 — FLG-017). All 20 are marked rel=\"sponsored noopener\" and tagged with data-asin. Each product also has plain-text source links to https://www.amazon.com/dp/<ASIN>, labelled with the ASIN and the phrase \"official listing\". Across all published pages, 215 of 356 outbound anchors point to amazon.com or link.amazon, and all 215 carry rel=\"sponsored\". The supplied short links are used as-is for the other four products; they are not described as invalid or compliant. Their compliance status is unresolved (FLG-006). An earlier version of this evidence counted 25 short-link buttons and 138 sponsored anchors; those counts predated the FLG-017 button change and this recount.",
